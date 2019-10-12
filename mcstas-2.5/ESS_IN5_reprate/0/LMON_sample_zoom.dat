@@ -1,0 +1,173 @@
+# Format: McCode with text headers
+# URL: http://www.mccode.org
+# Creator: McStas 2.5 - Dec. 12, 2018
+# Instrument: ESS_IN5_reprate.instr
+# Ncount: 1000000
+# Trace: no
+# Gravitation: no
+# Seed: 1570824474
+# Directory: ESS_IN5_reprate/0
+# Param: Lmin=4.9
+# Param: Lmax=5.1
+# Param: lambda0=5
+# Param: Pulse_width=0.002
+# Param: Num_pulses=1
+# Param: GUI_start=2
+# Param: FO1_DIST=6
+# Param: L_ballistic_begin=19.5
+# Param: L_ballistic_end=17
+# Param: Length=100
+# Param: SAMPLE_DIST=1.2
+# Param: DETECTOR_DIST=4
+# Param: GUI_h=0.105
+# Param: GUI_w=0.1
+# Param: GUI_GAP=0.05
+# Param: H1=0.167
+# Param: W1=0.116
+# Param: H2=0.185
+# Param: W2=0.15
+# Param: H3=0.19
+# Param: W3=0.15
+# Param: H4=0.213
+# Param: W4=0.14
+# Param: H_chop=0.075
+# Param: W_chop=0.03
+# Param: H_end=0.042
+# Param: W_end=0.0215
+# Param: ALPHA=3.4
+# Param: M=3.5
+# Param: F_slow1=16.6667
+# Param: F_slow2=0
+# Param: F_fast1=0
+# Param: F_fast2=200
+# Param: N_fast=1
+# Param: SLOW1_THETA=120
+# Param: FO3=1
+# Param: THETA_fast1=180
+# Param: FAST_THETA=5
+# Param: Gamma=0
+# Param: Etun=1
+# Param: V_HOLE=0
+# Param: FRAC_QUASIEL=0
+# Param: FRAC_TUNNEL=0
+# Param: TT=50
+# Param: RES_DE=0.5
+# Param: port=30
+# Param: cold=0.95
+# Date: Fri Oct 11 20:16:17 2019 (1570817777)
+# type: array_1d(100)
+# Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+# component: Lmon_sample_zoom
+# position: 0 0 102.175
+# title: Wavelength monitor
+# Ncount: 1000000
+# filename: LMON_sample_zoom.dat
+# statistics: X0=4.97444; dX=0.0116822;
+# signal: Min=0; Max=319489; Mean=3616.25;
+# values: 361625 364207 3
+# xvar: L
+# yvar: (I,I_err)
+# xlabel: Wavelength [AA]
+# ylabel: Intensity
+# xlimits: 4.9 5.1
+# variables: L I I_err N
+4.901 0 0 0 
+4.903 0 0 0 
+4.905 0 0 0 
+4.907 0 0 0 
+4.909 0 0 0 
+4.911 0 0 0 
+4.913 0 0 0 
+4.915 0 0 0 
+4.917 0 0 0 
+4.919 0 0 0 
+4.921 0 0 0 
+4.923 0 0 0 
+4.925 0 0 0 
+4.927 0 0 0 
+4.929 0 0 0 
+4.931 0 0 0 
+4.933 0 0 0 
+4.935 0 0 0 
+4.937 0 0 0 
+4.939 0 0 0 
+4.941 0 0 0 
+4.943 0 0 0 
+4.945 0 0 0 
+4.947 0 0 0 
+4.949 0 0 0 
+4.951 0 0 0 
+4.953 0 0 0 
+4.955 0 0 0 
+4.957 0 0 0 
+4.959 0 0 0 
+4.961 0 0 0 
+4.963 0 0 0 
+4.965 0 0 0 
+4.967 0 0 0 
+4.969 0 0 0 
+4.971 319489.4469 319489.4469 1 
+4.973 0 0 0 
+4.975 0 0 0 
+4.977 0 0 0 
+4.979 0 0 0 
+4.981 21541.25589 21541.25589 1 
+4.983 0 0 0 
+4.985 0 0 0 
+4.987 0 0 0 
+4.989 0 0 0 
+4.991 0 0 0 
+4.993 0 0 0 
+4.995 0 0 0 
+4.997 0 0 0 
+4.999 0 0 0 
+5.001 0 0 0 
+5.003 0 0 0 
+5.005 0 0 0 
+5.007 0 0 0 
+5.009 0 0 0 
+5.011 0 0 0 
+5.013 0 0 0 
+5.015 0 0 0 
+5.017 0 0 0 
+5.019 0 0 0 
+5.021 20594.02987 20594.02987 1 
+5.023 0 0 0 
+5.025 0 0 0 
+5.027 0 0 0 
+5.029 0 0 0 
+5.031 0 0 0 
+5.033 0 0 0 
+5.035 0 0 0 
+5.037 0 0 0 
+5.039 0 0 0 
+5.041 0 0 0 
+5.043 0 0 0 
+5.045 0 0 0 
+5.047 0 0 0 
+5.049 0 0 0 
+5.051 0 0 0 
+5.053 0 0 0 
+5.055 0 0 0 
+5.057 0 0 0 
+5.059 0 0 0 
+5.061 0 0 0 
+5.063 0 0 0 
+5.065 0 0 0 
+5.067 0 0 0 
+5.069 0 0 0 
+5.071 0 0 0 
+5.073 0 0 0 
+5.075 0 0 0 
+5.077 0 0 0 
+5.079 0 0 0 
+5.081 0 0 0 
+5.083 0 0 0 
+5.085 0 0 0 
+5.087 0 0 0 
+5.089 0 0 0 
+5.091 0 0 0 
+5.093 0 0 0 
+5.095 0 0 0 
+5.097 0 0 0 
+5.099 0 0 0 

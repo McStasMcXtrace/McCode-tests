@@ -1,0 +1,156 @@
+McStas simulation description file for Test_Pol_Bender.
+Date:    Fri Oct 11 20:12:22 2019
+Program: McStas 2.5 - Dec. 12, 2018
+
+begin instrument: Test_Pol_Bender
+  File: Test_Pol_Bender/0/mccode
+  Source: Test_Pol_Bender.instr
+  Parameters:  GUIDELENGTH(double) GUIDERADIUS(double) ENDOPTION(int) NSLITS(int) WSPACER(double) DRAWOPTION(int)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: Test_Pol_Bender/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Dec. 12, 2018
+  Instrument: Test_Pol_Bender.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570823911
+  Directory: Test_Pol_Bender/0
+  Param: GUIDELENGTH=1
+  Param: GUIDERADIUS=10
+  Param: ENDOPTION=0
+  Param: NSLITS=5
+  Param: WSPACER=0.005
+  Param: DRAWOPTION=1
+end simulation
+
+begin data
+  Date: Fri Oct 11 20:12:22 2019 (1570817542)
+  type: array_1d(30)
+  Source: Test_Pol_Bender (Test_Pol_Bender.instr)
+  component: lamStart
+  position: 0 0 0.1
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: lambdaStart.dat
+  statistics: X0=14.9967; dX=8.38575;
+  signal: Min=0.0276222; Max=0.0562395; Mean=0.0538942;
+  values: 1.61683 0.00161683 1e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 30
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:12:22 2019 (1570817542)
+  type: array_2d(40, 40)
+  Source: Test_Pol_Bender (Test_Pol_Bender.instr)
+  component: psdStart
+  position: 0 0 1.15
+  title: PSD monitor
+  Ncount: 1000000
+  filename: psdStart.dat
+  statistics: X0=0.00523026; dX=2.21354; Y0=-0.00337467; dY=2.21525;
+  signal: Min=0; Max=0.00186798; Mean=0.00101052;
+  values: 1.61683 0.00161683 1e+06
+  xvar: X 
+  yvar: Y 
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -5 5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:12:22 2019 (1570817542)
+  type: array_1d(30)
+  Source: Test_Pol_Bender (Test_Pol_Bender.instr)
+  component: lamStopBender
+  position: 0.0500582 0 2.19933
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: lambdaStopBender.dat
+  statistics: X0=19.6306; dX=6.07672;
+  signal: Min=7.75453e-07; Max=0.0377102; Mean=0.0234865;
+  values: 0.704594 0.00100798 580006
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 30
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:12:22 2019 (1570817542)
+  type: array_2d(80, 80)
+  Source: Test_Pol_Bender (Test_Pol_Bender.instr)
+  component: psdBender
+  position: 0.0500582 0 2.19933
+  title: PSD monitor
+  Ncount: 1000000
+  filename: psdBender.dat
+  statistics: X0=-0.081328; dX=2.27255; Y0=-0.00689238; dY=2.40361;
+  signal: Min=0; Max=0.0006592; Mean=0.000110093;
+  values: 0.704594 0.00100798 580006
+  xvar: X 
+  yvar: Y 
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -5 5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:12:22 2019 (1570817542)
+  type: array_2d(30, 41)
+  Source: Test_Pol_Bender (Test_Pol_Bender.instr)
+  component: pollambdaMonitorY
+  position: 0.05495 0 2.24808
+  title: Pol-wavelength monitor
+  Ncount: 1000000
+  filename: pollambdaMonY.data
+  statistics: X0=19.6306; dX=6.07672; Y0=0.071095; dY=0.23451;
+  signal: Min=0; Max=0.0377102; Mean=0.000572841;
+  values: 0.704594 0.00100798 580006
+  xvar: Wa
+  yvar: Po
+  xlabel: Wavelength [AA]
+  ylabel: Polarisation projection
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 30 -1 1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:12:22 2019 (1570817542)
+  type: array_1d(30)
+  Source: Test_Pol_Bender (Test_Pol_Bender.instr)
+  component: meanpollambdaMonitorY
+  position: 0.05495 0 2.24808
+  title: Pol-wavelength monitor
+  Ncount: 1000000
+  filename: meanpollambdaMonY.data
+  statistics: X0=6.63759; dX=3.46902;
+  signal: Min=1.77618e-07; Max=0.588294; Mean=0.196726;
+  values: 5.90177 0.112826 580006
+  xvar: Wavelength
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Mean Polarisation
+  xlimits: 0 30
+  variables: Wavelength I I_err N
+end data

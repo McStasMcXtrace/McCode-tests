@@ -1,1 +1,2 @@
-# McCode-tests
+# Repository with McCode test-data
+

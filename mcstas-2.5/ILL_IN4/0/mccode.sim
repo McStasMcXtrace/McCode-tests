@@ -1,0 +1,543 @@
+McStas simulation description file for ILL_IN4.
+Date:    Fri Oct 11 20:20:02 2019
+Program: McStas 2.5 - Dec. 12, 2018
+
+begin instrument: ILL_IN4
+  File: ILL_IN4/0/mccode
+  Source: ILL_IN4.instr
+  Parameters:  lambda(double) dlambda(double) DM(double) ETAM(double) RMH(double) ratio(double) dE(double) Sapphire_present(double) sample_coh(string) sample_inc(string) order(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: ILL_IN4/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Dec. 12, 2018
+  Instrument: ILL_IN4.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570825033
+  Directory: ILL_IN4/0
+  Param: lambda=1.2
+  Param: dlambda=0.1
+  Param: DM=1.677
+  Param: ETAM=35
+  Param: RMH=-1
+  Param: ratio=4
+  Param: dE=0
+  Param: Sapphire_present=1
+  Param: sample_coh=Dirac2D.sqw
+  Param: sample_inc=NULL
+  Param: order=1
+end simulation
+
+begin data
+  Date: Fri Oct 11 20:20:05 2019 (1570818005)
+  type: array_2d(100, 100)
+  Source: ILL_IN4 (ILL_IN4.instr)
+  component: Obt1
+  position: 0 0 5.2
+  title:  Intensity Position Position Monitor (Disk) per bin
+  Ncount: 1000000
+  filename: Obt1_1570818002.x_y
+  statistics: X0=2.43976e-05; dX=0.0249971; Y0=-1.49569e-05; dY=0.0250073;
+  signal: Min=0; Max=2.01958e+07; Mean=1.11661e+07;
+  values: 1.11661e+11 1.25957e+08 786108
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.05 0.05 -0.05 0.05
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:05 2019 (1570818005)
+  type: array_1d(100)
+  Source: ILL_IN4 (ILL_IN4.instr)
+  component: Obt1_lambda
+  position: 0 0 5.21
+  title: Wavelength [Angs] monitor
+  Ncount: 1000000
+  filename: Obt1_lambda_1570818002.L
+  statistics: X0=1.19907; dX=0.0589408;
+  signal: Min=0; Max=1.92815e+10; Mean=1.11634e+09;
+  values: 1.11634e+11 1.25941e+08 785917
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.1 3.5
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:05 2019 (1570818005)
+  type: array_2d(100, 100)
+  Source: ILL_IN4 (ILL_IN4.instr)
+  component: Win1
+  position: 0 0 5.6
+  title:  Intensity Position Position Monitor (Disk) per bin
+  Ncount: 1000000
+  filename: Win1_1570818002.x_y
+  statistics: X0=2.59332e-05; dX=0.0269887; Y0=-1.72094e-05; dY=0.0270026;
+  signal: Min=0; Max=1.89794e+07; Mean=8.74834e+06;
+  values: 8.74834e+10 9.86802e+07 786108
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.06 0.06 -0.06 0.06
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:05 2019 (1570818005)
+  type: array_1d(100)
+  Source: ILL_IN4 (ILL_IN4.instr)
+  component: Win1_lambda
+  position: 0 0 5.61
+  title: Wavelength [Angs] monitor
+  Ncount: 1000000
+  filename: Win1_lambda_1570818002.L
+  statistics: X0=1.20064; dX=0.0589401;
+  signal: Min=0; Max=9.72524e+09; Mean=5.634e+08;
+  values: 5.634e+10 7.91924e+07 506241
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.1 3.5
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:05 2019 (1570818005)
+  type: array_1d(100)
+  Source: ILL_IN4 (ILL_IN4.instr)
+  component: BC2_t
+  position: 0 0 8.54746
+  title: TOF [s] monitor
+  Ncount: 1000000
+  filename: BC2_t_1570818002.t
+  statistics: X0=0.00074309; dX=0.000249997;
+  signal: Min=56051.4; Max=3.21756e+08; Mean=1.69253e+08;
+  values: 1.69253e+10 3.06942e+07 304127
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 6.99108e-05 0.00146895
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:05 2019 (1570818005)
+  type: array_1d(100)
+  Source: ILL_IN4 (ILL_IN4.instr)
+  component: BC2_t_post
+  position: 0 0 8.56746
+  title: TOF [s] monitor
+  Ncount: 1000000
+  filename: BC2_t_post_1570818002.t
+  statistics: X0=0.000748648; dX=0.000240399;
+  signal: Min=167227; Max=3.0557e+08; Mean=1.5387e+08;
+  values: 1.5387e+10 2.92667e+07 276471
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 7.87197e-05 0.00142503
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:05 2019 (1570818005)
+  type: array_2d(50, 50)
+  Source: ILL_IN4 (ILL_IN4.instr)
+  component: Cradle
+  position: 0 0 10.2086
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Cradle_1570818002.x_y
+  statistics: X0=5.73519e-05; dX=0.0243122; Y0=0.000454518; dY=0.0411853;
+  signal: Min=0; Max=3.78016e+07; Mean=6.1962e+06;
+  values: 1.54905e+10 2.9365e+07 278330
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.125 0.125 -0.125 0.125
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:05 2019 (1570818005)
+  type: array_1d(100)
+  Source: ILL_IN4 (ILL_IN4.instr)
+  component: Cradle_lambda
+  position: 0 0 10.2186
+  title: Wavelength [Angs] monitor
+  Ncount: 1000000
+  filename: Cradle_lambda_1570818002.L
+  statistics: X0=1.20066; dX=0.0586337;
+  signal: Min=0; Max=2.70056e+09; Mean=1.54905e+08;
+  values: 1.54905e+10 2.9365e+07 278330
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.1 3.5
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:05 2019 (1570818005)
+  type: array_1d(100)
+  Source: ILL_IN4 (ILL_IN4.instr)
+  component: Cradle_t
+  position: 0 0 10.2086
+  title: TOF [s] monitor
+  Ncount: 1000000
+  filename: Cradle_t_1570818002.t
+  statistics: X0=0.00124675; dX=0.000243772;
+  signal: Min=280294; Max=3.23839e+08; Mean=1.54903e+08;
+  values: 1.54903e+10 2.93648e+07 278326
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.000558488 0.00195659
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:05 2019 (1570818005)
+  type: array_2d(50, 50)
+  Source: ILL_IN4 (ILL_IN4.instr)
+  component: Mono_xy
+  position: 0 0 10.2086
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Mono_xy_1570818002.x_y
+  statistics: X0=9.35861e-05; dX=0.0260196; Y0=0.000456065; dY=0.041177;
+  signal: Min=0; Max=2.53273e+07; Mean=6.1962e+06;
+  values: 1.54905e+10 2.9365e+07 278330
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.11 0.11 -0.1 0.1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:05 2019 (1570818005)
+  type: array_1d(100)
+  Source: ILL_IN4 (ILL_IN4.instr)
+  component: Mono_t
+  position: 0 0 10.2086
+  title: TOF [s] monitor
+  Ncount: 1000000
+  filename: Mono_t_1570818002.t
+  statistics: X0=0.00135019; dX=0.000215868;
+  signal: Min=0; Max=1.89165e+07; Mean=9.86623e+06;
+  values: 9.86623e+08 2.34567e+06 176941
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.000777658 0.00195452
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:05 2019 (1570818005)
+  type: array_1d(100)
+  Source: ILL_IN4 (ILL_IN4.instr)
+  component: FC_Pos
+  position: -0.848967 0 11.1538
+  title: TOF [s] monitor
+  Ncount: 1000000
+  filename: FC_Pos_1570818002.t
+  statistics: X0=0.0016325; dX=0.000227395;
+  signal: Min=11110.4; Max=1.03047e+07; Mean=5.19704e+06;
+  values: 5.19704e+08 1.7071e+06 92684
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.00101255 0.00224487
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:05 2019 (1570818005)
+  type: array_2d(60, 60)
+  Source: ILL_IN4 (ILL_IN4.instr)
+  component: sample_flux
+  position: -1.3 0 11.656
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: sample_flux_1570818002.x_y
+  statistics: X0=0.000947123; dX=0.013514; Y0=0.000388851; dY=0.0138158;
+  signal: Min=0; Max=21278.3; Mean=1272.53;
+  values: 4.58111e+06 15621.6 86000
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.03 0.03 -0.03 0.03
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:05 2019 (1570818005)
+  type: array_2d(100, 100)
+  Source: ILL_IN4 (ILL_IN4.instr)
+  component: sample_tof
+  position: -1.3 0 11.656
+  title:  Intensity Position Time_Of_Flight Monitor (Square) per bin
+  Ncount: 1000000
+  filename: sample_tof_1570818002.x_t
+  statistics: X0=0.000854731; dX=0.0141189; Y0=0.0018364; dY=1.30966e-05;
+  signal: Min=0; Max=96358.8; Mean=944.901;
+  values: 9.44901e+06 31726.9 88701
+  xvar: x 
+  yvar: TO
+  xlabel: x [m]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.05 0.05 0.00180959 0.00187105
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:05 2019 (1570818005)
+  type: array_1d(300)
+  Source: ILL_IN4 (ILL_IN4.instr)
+  component: sample_lambda
+  position: -1.3 0 11.656
+  title: Wavelength [Angs] monitor
+  Ncount: 1000000
+  filename: sample_lambda_1570818002.L
+  statistics: X0=1.20026; dX=0.0244283;
+  signal: Min=0; Max=1.74048e+06; Mean=31532;
+  values: 9.45961e+06 31744.8 88800
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.1 3.5
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:05 2019 (1570818005)
+  type: array_1d(100)
+  Source: ILL_IN4 (ILL_IN4.instr)
+  component: sample_w
+  position: -1.3 0 11.656
+  title: Energy [meV] monitor
+  Ncount: 1000000
+  filename: sample_w_1570818002.E
+  statistics: X0=56.8167; dX=2.3465;
+  signal: Min=0; Max=1.67651e+06; Mean=94596.1;
+  values: 9.45961e+06 31744.8 88800
+  xvar: E
+  yvar: (I,I_err)
+  xlabel: Energy [meV]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0 113.617
+  variables: E I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:05 2019 (1570818005)
+  type: array_2d(100, 100)
+  Source: ILL_IN4 (ILL_IN4.instr)
+  component: sample_qxy
+  position: -1.3 0 11.656
+  title:  Intensity Wavevector Wavevector Monitor (Square) per bin
+  Ncount: 1000000
+  filename: sample_qxy_1570818002.kx_ky
+  statistics: X0=0.00180217; dX=0.0901998; Y0=-0.000328335; dY=0.0556566;
+  signal: Min=0; Max=53520.2; Mean=943.853;
+  values: 9.43853e+06 31709.6 88601
+  xvar: kx
+  yvar: ky
+  xlabel: kx [Angs-1]
+  ylabel: ky [Angs-1]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.204249 0.17764 -0.167533 0.172291
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:05 2019 (1570818005)
+  type: array_2d(300, 100)
+  Source: ILL_IN4 (ILL_IN4.instr)
+  component: Detector
+  position: -1.3 0 11.656
+  title:  Intensity Angle Position Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: Detector_1570818003.th_y
+  statistics: X0=0.828693; dX=8.266; Y0=0.000169761; dY=0.0647294;
+  signal: Min=0; Max=225436; Mean=193.725;
+  values: 5.81174e+06 56667.3 69409
+  xvar: Lo
+  yvar: y 
+  xlabel: Longitude [deg]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -15 135 -1 1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:05 2019 (1570818005)
+  type: array_2d(300, 100)
+  Source: ILL_IN4 (ILL_IN4.instr)
+  component: Detector_sample
+  position: -1.3 0 11.656
+  title:  Intensity Angle Position Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: Detector_sample_1570818003.th_y
+  statistics: X0=54.7684; dX=40.8416; Y0=0.00254054; dY=0.537995;
+  signal: Min=0; Max=15.307; Mean=0.81212;
+  values: 24363.6 187.301 38010
+  xvar: Lo
+  yvar: y 
+  xlabel: Longitude [deg]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -15 135 -1 1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:05 2019 (1570818005)
+  type: array_2d(300, 100)
+  Source: ILL_IN4 (ILL_IN4.instr)
+  component: Detector_env
+  position: -1.3 0 11.656
+  title:  Intensity Angle Position Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: Detector_env_1570818003.th_y
+  statistics: X0=60.2392; dX=40.5624; Y0=0.0170198; dY=0.52012;
+  signal: Min=0; Max=308.084; Mean=1.77547;
+  values: 53264.1 2775.82 4147
+  xvar: Lo
+  yvar: y 
+  xlabel: Longitude [deg]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -15 135 -1 1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:05 2019 (1570818005)
+  type: array_2d(1000, 1000)
+  Source: ILL_IN4 (ILL_IN4.instr)
+  component: Detector_Sqw
+  position: -1.3 0 11.656
+  title:  Intensity Momentum transfer Q [Angs-1] Energy transfer w [meV] Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: Detector_Sqw_1570818003.U1_U2
+  statistics: X0=5.31308; dX=5.75226; Y0=85.5332; dY=86.5487;
+  signal: Min=0; Max=1748.14; Mean=0.0345447;
+  values: 34544.7 256.44 25352
+  xvar: Mo
+  yvar: En
+  xlabel: Momentum transfer Q [Angs-1]
+  ylabel: Energy transfer w [meV]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 15.708 -56.8085 227.234
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:05 2019 (1570818005)
+  type: array_2d(500, 500)
+  Source: ILL_IN4 (ILL_IN4.instr)
+  component: Detector_qe
+  position: -1.3 0 11.656
+  title:  Intensity Angle Energy Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: Detector_qe_1570818003.A_E
+  statistics: X0=-2.31445; dX=87.1136; Y0=103.832; dY=62.5079;
+  signal: Min=0; Max=58.8287; Mean=0.0976076;
+  values: 24401.9 210.035 18424
+  xvar: An
+  yvar: En
+  xlabel: Angle [deg]
+  ylabel: Energy [meV]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -150 150 0 227.234
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:05 2019 (1570818005)
+  type: array_2d(1000, 1000)
+  Source: ILL_IN4 (ILL_IN4.instr)
+  component: Detector_SqwV
+  position: -1.3 0 11.656
+  title:  Intensity Momentum transfer Q [Angs-1] Energy transfer w [meV] Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: Detector_SqwV_1570818003.U1_U2
+  statistics: X0=6.27699; dX=3.53456; Y0=1.86061; dY=1.64029;
+  signal: Min=0; Max=129.109; Mean=0.00867728;
+  values: 8677.28 59.4862 29359
+  xvar: Mo
+  yvar: En
+  xlabel: Momentum transfer Q [Angs-1]
+  ylabel: Energy transfer w [meV]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 15.708 -56.8085 227.234
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:06 2019 (1570818006)
+  type: array_2d(500, 500)
+  Source: ILL_IN4 (ILL_IN4.instr)
+  component: Detector_qeV
+  position: -1.3 0 11.656
+  title:  Intensity Angle Energy Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: Detector_qeV_1570818003.A_E
+  statistics: X0=45.1038; dX=44.4691; Y0=56.7076; dY=1.62762;
+  signal: Min=0; Max=10.0466; Mean=0.0346699;
+  values: 8667.49 59.4779 29239
+  xvar: An
+  yvar: En
+  xlabel: Angle [deg]
+  ylabel: Energy [meV]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -150 150 0 227.234
+  variables: I I_err N
+end data

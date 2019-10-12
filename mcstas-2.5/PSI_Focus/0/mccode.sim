@@ -1,0 +1,511 @@
+McStas simulation description file for PSI_Focus.
+Date:    Fri Oct 11 20:09:07 2019
+Program: McStas 2.5 - Dec. 12, 2018
+
+begin instrument: PSI_Focus
+  File: PSI_Focus/0/mccode
+  Source: PSI_Focus.instr
+  Parameters:  lambda(double) chopp_ratio(double) DET(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: PSI_Focus/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Dec. 12, 2018
+  Instrument: PSI_Focus.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570823613
+  Directory: PSI_Focus/0
+  Param: lambda=3.4
+  Param: chopp_ratio=1
+  Param: DET=-69.9
+end simulation
+
+begin data
+  Date: Fri Oct 11 20:09:09 2019 (1570817349)
+  type: array_1d(60)
+  Source: PSI_Focus (PSI_Focus.instr)
+  component: lambdaGuideExit
+  position: 0 0 66.611
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: lambdaguide.dat
+  statistics: X0=3.4259; dX=0.395097;
+  signal: Min=5.84403e+07; Max=8.08998e+07; Mean=7.25757e+07;
+  values: 4.35454e+09 1.37088e+07 375031
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 2.7 4.1
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:09 2019 (1570817349)
+  type: array_2d(60, 60)
+  Source: PSI_Focus (PSI_Focus.instr)
+  component: DivMonGuideExit
+  position: 0 0 66.612
+  title: Divergence monitor
+  Ncount: 1000000
+  filename: divguide.dat
+  statistics: X0=4.13075e-05; dX=0.282855; Y0=0.000804755; dY=0.329328;
+  signal: Min=0; Max=2.37841e+07; Mean=1.20948e+06;
+  values: 4.35413e+09 1.37082e+07 374951
+  xvar: X 
+  yvar: Y 
+  xlabel: X divergence [deg]
+  ylabel: Y divergence [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -2 2 -2 2
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:09 2019 (1570817349)
+  type: array_2d(60, 60)
+  Source: PSI_Focus (PSI_Focus.instr)
+  component: PSDGuideExit
+  position: 0 0 66.613
+  title: PSD monitor
+  Ncount: 1000000
+  filename: psdguide.dat
+  statistics: X0=0.00488604; dX=1.43676; Y0=-0.00814631; dY=3.46923;
+  signal: Min=516146; Max=2.02708e+06; Mean=1.20934e+06;
+  values: 4.35362e+09 1.37074e+07 374845
+  xvar: X 
+  yvar: Y 
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -2.5 2.5 -6 6
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:09 2019 (1570817349)
+  type: array_1d(30)
+  Source: PSI_Focus (PSI_Focus.instr)
+  component: DISCTOF
+  position: 0 0 69.718
+  title: TOF [s] monitor
+  Ncount: 1000000
+  filename: DISC_TOF.dat
+  statistics: X0=0.00343269; dX=0.000490631;
+  signal: Min=155968; Max=1.61489e+07; Mean=8.93832e+06;
+  values: 2.6815e+08 852665 369135
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.00218845 0.00467532
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:09 2019 (1570817349)
+  type: array_2d(60, 60)
+  Source: PSI_Focus (PSI_Focus.instr)
+  component: PSDmon1Chopper
+  position: 0 0 69.719
+  title: PSD monitor
+  Ncount: 1000000
+  filename: psdchopper.dat
+  statistics: X0=0.00797937; dX=1.44752; Y0=-0.00624866; dY=2.86013;
+  signal: Min=0; Max=447520; Mean=74486.8;
+  values: 2.68152e+08 852668 369141
+  xvar: X 
+  yvar: Y 
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -10 10
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:09 2019 (1570817349)
+  type: array_2d(60, 60)
+  Source: PSI_Focus (PSI_Focus.instr)
+  component: PSDmonMono
+  position: 0 0 72.4
+  title: PSD monitor
+  Ncount: 1000000
+  filename: psdmono.dat
+  statistics: X0=0.00814645; dX=1.97585; Y0=-0.00654546; dY=2.96645;
+  signal: Min=2.87452e-96; Max=422961; Mean=74328.6;
+  values: 2.67583e+08 852430 313360
+  xvar: X 
+  yvar: Y 
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -10 10
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:09 2019 (1570817349)
+  type: array_1d(30)
+  Source: PSI_Focus (PSI_Focus.instr)
+  component: MONOTOF
+  position: 0 0 72.41
+  title: TOF [s] monitor
+  Ncount: 1000000
+  filename: MONO_TOF.dat
+  statistics: X0=0.00576368; dX=0.000561995;
+  signal: Min=21764.2; Max=1.96287e+07; Mean=8.91829e+06;
+  values: 2.67549e+08 852408 312734
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.00411289 0.00745174
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:09 2019 (1570817349)
+  type: array_2d(60, 60)
+  Source: PSI_Focus (PSI_Focus.instr)
+  component: DivMonMono
+  position: 0 0 72.42
+  title: Divergence monitor
+  Ncount: 1000000
+  filename: divmono.dat
+  statistics: X0=8.6474e-05; dX=0.280616; Y0=9.30249e-05; dY=0.47681;
+  signal: Min=0; Max=2.51668e+06; Mean=74314.3;
+  values: 2.67532e+08 852400 312080
+  xvar: X 
+  yvar: Y 
+  xlabel: X divergence [deg]
+  ylabel: Y divergence [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -3 3 -3 3
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:09 2019 (1570817349)
+  type: array_1d(30)
+  Source: PSI_Focus (PSI_Focus.instr)
+  component: FERMITOF_before
+  position: 0.786314 0 73.0548
+  title: TOF [s] monitor
+  Ncount: 1000000
+  filename: FERMI_TOF_before.dat
+  statistics: X0=0.00669642; dX=0.000509721;
+  signal: Min=453.46; Max=1.0475e+06; Mean=517038;
+  values: 1.55111e+07 55198 552718
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.00536076 0.00805395
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:09 2019 (1570817349)
+  type: array_1d(60)
+  Source: PSI_Focus (PSI_Focus.instr)
+  component: lambdaFermi
+  position: 0.787188 0 73.0553
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: lambdafermi.dat
+  statistics: X0=3.39791; dX=0.0449873;
+  signal: Min=0; Max=3.00706e+06; Mean=258519;
+  values: 1.55112e+07 55198 552436
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 2.7 4.1
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:09 2019 (1570817349)
+  type: array_1d(60)
+  Source: PSI_Focus (PSI_Focus.instr)
+  component: EMON_Fermi
+  position: 0.820999 0 73.0742
+  title: Energy monitor
+  Ncount: 1000000
+  filename: emon_fermi.dat
+  statistics: X0=7.08956; dX=0.185847;
+  signal: Min=0; Max=3.13423e+06; Mean=243883;
+  values: 1.4633e+07 54663.8 309975
+  xvar: E
+  yvar: (I,I_err)
+  xlabel: Energy [meV]
+  ylabel: Intensity
+  xlimits: 4.86675 11.2222
+  variables: E I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:09 2019 (1570817349)
+  type: array_2d(30, 30)
+  Source: PSI_Focus (PSI_Focus.instr)
+  component: DivMonfermi1
+  position: 0.821086 0 73.0742
+  title: Divergence monitor
+  Ncount: 1000000
+  filename: divfermi1.dat
+  statistics: X0=-0.0462434; dX=0.857939; Y0=-0.00351536; dY=0.98425;
+  signal: Min=674.105; Max=43101.5; Mean=14985.4;
+  values: 1.34868e+07 53048.5 194794
+  xvar: X 
+  yvar: Y 
+  xlabel: X divergence [deg]
+  ylabel: Y divergence [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -2 2 -2 2
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:09 2019 (1570817349)
+  type: array_2d(30, 30)
+  Source: PSI_Focus (PSI_Focus.instr)
+  component: PSD_Fermi1
+  position: 0.821174 0 73.0743
+  title: PSD monitor
+  Ncount: 1000000
+  filename: psdfermi1.dat
+  statistics: X0=-0.0550638; dX=1.36656; Y0=-0.0227453; dY=1.7671;
+  signal: Min=1.70876e-09; Max=76926.6; Mean=16261.5;
+  values: 1.46353e+07 54666.9 323218
+  xvar: X 
+  yvar: Y 
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -3 3 -5.5 5.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:09 2019 (1570817349)
+  type: array_2d(30, 30)
+  Source: PSI_Focus (PSI_Focus.instr)
+  component: PSD_Fermi2
+  position: 0.928724 0 73.1341
+  title: PSD monitor
+  Ncount: 1000000
+  filename: psdfermi2.dat
+  statistics: X0=-0.0275367; dX=1.3592; Y0=0.0686519; dY=1.71639;
+  signal: Min=0; Max=4723.86; Mean=535.639;
+  values: 482075 9772.68 9574
+  xvar: X 
+  yvar: Y 
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -3 3 -5.5 5.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:09 2019 (1570817349)
+  type: array_2d(30, 30)
+  Source: PSI_Focus (PSI_Focus.instr)
+  component: DivMonfermi2
+  position: 0.929598 0 73.1346
+  title: Divergence monitor
+  Ncount: 1000000
+  filename: divfermi2.dat
+  statistics: X0=-0.0322585; dX=0.836677; Y0=-0.038841; dY=0.902861;
+  signal: Min=0; Max=2973.25; Mean=495.502;
+  values: 445952 9499.24 6419
+  xvar: X 
+  yvar: Y 
+  xlabel: X divergence [deg]
+  ylabel: Y divergence [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -2 2 -2 2
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:09 2019 (1570817349)
+  type: array_1d(30)
+  Source: PSI_Focus (PSI_Focus.instr)
+  component: FERMITOF1
+  position: 1.00823 0 73.1784
+  title: TOF [s] monitor
+  Ncount: 1000000
+  filename: FERMI_TOF1.dat.dat
+  statistics: X0=0.00701476; dX=2.35867e-05;
+  signal: Min=1.06683e-120; Max=61162.8; Mean=16129.2;
+  values: 483875 9776.75 9898
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.00690678 0.00712069
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:09 2019 (1570817349)
+  type: array_1d(30)
+  Source: PSI_Focus (PSI_Focus.instr)
+  component: FERMITOF2
+  position: 1.04842 0 73.2008
+  title: TOF [s] monitor
+  Ncount: 1000000
+  filename: FERMI_TOF2.dat.dat
+  statistics: X0=0.00705402; dX=2.17085e-05;
+  signal: Min=0; Max=26547.2; Mean=6968.71;
+  values: 209061 6979.59 2099
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.00696853 0.00713357
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:09 2019 (1570817349)
+  type: array_2d(30, 30)
+  Source: PSI_Focus (PSI_Focus.instr)
+  component: PSD_SAMPLE
+  position: 1.26684 0 73.3224
+  title: PSD monitor
+  Ncount: 1000000
+  filename: psdsample.dat
+  statistics: X0=0.0118177; dX=0.532597; Y0=0.119633; dY=1.42935;
+  signal: Min=0; Max=2155.56; Mean=191.577;
+  values: 172419 6546.31 1476
+  xvar: X 
+  yvar: Y 
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -1 1 -5 5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:09 2019 (1570817349)
+  type: array_2d(30, 30)
+  Source: PSI_Focus (PSI_Focus.instr)
+  component: DivMon_Sample
+  position: 1.26771 0 73.3229
+  title: Divergence monitor
+  Ncount: 1000000
+  filename: div2.dat
+  statistics: X0=0.00161413; dX=0.691861; Y0=-0.0123961; dY=0.975181;
+  signal: Min=0; Max=3880.35; Mean=107.301;
+  values: 96571.2 5052.31 753
+  xvar: X 
+  yvar: Y 
+  xlabel: X divergence [deg]
+  ylabel: Y divergence [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -3 3 -3 3
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:09 2019 (1570817349)
+  type: array_1d(60)
+  Source: PSI_Focus (PSI_Focus.instr)
+  component: EMON_SAMPLE
+  position: 1.26859 0 73.3234
+  title: Energy monitor
+  Ncount: 1000000
+  filename: emon_sample.dat
+  statistics: X0=7.09248; dX=0.118667;
+  signal: Min=0; Max=36272; Mean=1609.52;
+  values: 96571.2 5052.31 752
+  xvar: E
+  yvar: (I,I_err)
+  xlabel: Energy [meV]
+  ylabel: Intensity
+  xlimits: 4.86675 11.2222
+  variables: E I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:09 2019 (1570817349)
+  type: array_2d(100, 100)
+  Source: PSI_Focus (PSI_Focus.instr)
+  component: TOF_Det
+  position: 1.31052 0 73.3467
+  title:  Intensity Time_Of_Flight Angle Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: TOF_Det_1570817347.t_A
+  statistics: X0=0; dX=0; Y0=0; dY=0;
+  signal: Min=0; Max=0; Mean=0;
+  values: 0 0 0
+  xvar: TO
+  yvar: An
+  xlabel: TOF [s]
+  ylabel: Angle [deg] (abs)
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0.00789009 0.00802264 10 180
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:09 2019 (1570817349)
+  type: array_1d(20)
+  Source: PSI_Focus (PSI_Focus.instr)
+  component: FoDet
+  position: 3.49473 0 74.563
+  title: TOF [s] monitor
+  Ncount: 1000000
+  filename: tofdet.dat
+  statistics: X0=0.00942712; dX=9.55653e-05;
+  signal: Min=0.0237073; Max=6693.95; Mean=2049.92;
+  values: 40998.5 940.044 6633
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.00926133 0.00964998
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:09 2019 (1570817349)
+  type: array_1d(80)
+  Source: PSI_Focus (PSI_Focus.instr)
+  component: EMON_DET
+  position: 3.4956 0 74.5635
+  title: Energy monitor
+  Ncount: 1000000
+  filename: emon_det.dat
+  statistics: X0=7.11487; dX=0.175597;
+  signal: Min=0; Max=10168.7; Mean=665.684;
+  values: 53254.8 1053.82 9351
+  xvar: E
+  yvar: (I,I_err)
+  xlabel: Energy [meV]
+  ylabel: Intensity
+  xlimits: 4.86675 11.2222
+  variables: E I I_err N
+end data

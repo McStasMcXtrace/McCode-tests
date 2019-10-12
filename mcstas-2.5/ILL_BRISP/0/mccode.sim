@@ -1,0 +1,239 @@
+McStas simulation description file for ILL_BRISP.
+Date:    Fri Oct 11 20:24:38 2019
+Program: McStas 2.5 - Dec. 12, 2018
+
+begin instrument: ILL_BRISP
+  File: ILL_BRISP/0/mccode
+  Source: ILL_BRISP.instr
+  Parameters:  DM(double) coh(string) inc(string) container(string) LSD(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: ILL_BRISP/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Dec. 12, 2018
+  Instrument: ILL_BRISP.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570825671
+  Directory: ILL_BRISP/0
+  Param: DM=3.355
+  Param: coh=V.laz
+  Param: inc=NULL
+  Param: container=NULL
+  Param: LSD=4.5
+end simulation
+
+begin data
+  Date: Fri Oct 11 20:24:41 2019 (1570818281)
+  type: array_1d(20)
+  Source: ILL_BRISP (ILL_BRISP.instr)
+  component: LmonokOUT
+  position: -5.97064e-17 4.07239 7.51598
+  title: Wavelength [Angs] monitor
+  Ncount: 1000000
+  filename: LmonokOUT_1570818278.L
+  statistics: X0=2.01756; dX=0.011464;
+  signal: Min=2.77815e+07; Max=3.15382e+07; Mean=3.01591e+07;
+  values: 6.03182e+08 678343 1.00924e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 1.99756 2.03791
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:24:41 2019 (1570818281)
+  type: array_2d(20, 20)
+  Source: ILL_BRISP (ILL_BRISP.instr)
+  component: Monitor1
+  position: -6.00576e-17 4.07239 7.52598
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Monitor1_1570818278.x_y
+  statistics: X0=-2.57765e-05; dX=0.0157959; Y0=-8.42279e-05; dY=0.0159349;
+  signal: Min=494712; Max=2.12216e+06; Mean=1.50626e+06;
+  values: 6.02505e+08 678010 1.00776e+06
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.03 0.03 -0.03 0.03
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:24:41 2019 (1570818281)
+  type: array_1d(100)
+  Source: ILL_BRISP (ILL_BRISP.instr)
+  component: DC_OUT_T
+  position: -6.77844e-17 4.07239 7.74598
+  title: TOF [s] monitor
+  Ncount: 1000000
+  filename: DC_OUT_T_1570818278.t
+  statistics: X0=0.000100322; dX=0.000272409;
+  signal: Min=6130.9; Max=4.10791e+06; Mean=1.95241e+06;
+  values: 1.95241e+08 223126 973291
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: -0.00062859 0.000827965
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:24:41 2019 (1570818281)
+  type: array_2d(50, 50)
+  Source: ILL_BRISP (ILL_BRISP.instr)
+  component: HC_OUT_PSD
+  position: -1.66124e-16 4.07239 10.546
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: HC_OUT_PSD_1570818278.x_y
+  statistics: X0=-2.00829e-05; dX=0.0125247; Y0=5.14567e-05; dY=0.0122046;
+  signal: Min=0; Max=45970.5; Mean=7905.41;
+  values: 1.97635e+07 75964.8 72111
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.035 0.035 -0.035 0.035
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:24:41 2019 (1570818281)
+  type: array_1d(20)
+  Source: ILL_BRISP (ILL_BRISP.instr)
+  component: FC_OUT_T
+  position: -2.01597e-16 4.07239 11.556
+  title: TOF [s] monitor
+  Ncount: 1000000
+  filename: FC_OUT_T_1570818278.t
+  statistics: X0=0.00216258; dX=4.83722e-06;
+  signal: Min=39.63; Max=3422.91; Mean=1726.03;
+  values: 34520.6 230.995 23832
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.0021496 0.00217573
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:24:41 2019 (1570818281)
+  type: array_2d(20, 20)
+  Source: ILL_BRISP (ILL_BRISP.instr)
+  component: SampleXY
+  position: -2.29694e-16 4.07239 12.356
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: SampleXY_1570818278.x_y
+  statistics: X0=-0.000114544; dX=0.0079164; Y0=0.00128464; dY=0.00725573;
+  signal: Min=0; Max=15.1356; Mean=7.07636;
+  values: 2830.54 21.9759 17750
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.015 0.015 -0.015 0.015
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:24:41 2019 (1570818281)
+  type: array_2d(50, 50)
+  Source: ILL_BRISP (ILL_BRISP.instr)
+  component: Detector
+  position: -3.88092e-16 4.07239 16.866
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Detector_1570818278.x_y
+  statistics: X0=-7.89447e-05; dX=0.538575; Y0=0.00541243; dY=0.307906;
+  signal: Min=0; Max=0.0517819; Mean=0.0125157;
+  values: 31.2894 0.409943 6889
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -1.016 1.016 -0.559 0.559
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:24:41 2019 (1570818281)
+  type: array_1d(50)
+  Source: ILL_BRISP (ILL_BRISP.instr)
+  component: Detector_Q
+  position: -3.88443e-16 4.07239 16.876
+  title: Q transfer [Angs-1] monitor
+  Ncount: 1000000
+  filename: Detector_Q_1570818278.U1
+  statistics: X0=0.392167; dX=0.160388;
+  signal: Min=0; Max=2.22555; Mean=0.624064;
+  values: 31.2032 0.409396 6870
+  xvar: U1
+  yvar: (I,I_err)
+  xlabel: Q transfer [Angs-1]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0 1.5
+  variables: U1 I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:24:41 2019 (1570818281)
+  type: array_1d(50)
+  Source: ILL_BRISP (ILL_BRISP.instr)
+  component: Detector_E
+  position: -3.88794e-16 4.07239 16.886
+  title: Energy transfer [meV] monitor
+  Ncount: 1000000
+  filename: Detector_E_1570818278.U1
+  statistics: X0=0.0069753; dX=0.222126;
+  signal: Min=0.37425; Max=0.872255; Mean=0.621565;
+  values: 31.0783 0.408578 6844
+  xvar: U1
+  yvar: (I,I_err)
+  xlabel: Energy transfer [meV]
+  ylabel: Intensity [n/s/bin]
+  xlimits: -0.395859 0.407817
+  variables: U1 I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:24:41 2019 (1570818281)
+  type: array_2d(50, 50)
+  Source: ILL_BRISP (ILL_BRISP.instr)
+  component: Detector_QE
+  position: -3.89145e-16 4.07239 16.896
+  title:  Intensity Q transfer [Angs-1] Energy transfer [meV] Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Detector_QE_1570818278.U1_U2
+  statistics: X0=0.390753; dX=0.159769; Y0=0.00602063; dY=0.204953;
+  signal: Min=0; Max=1.11743; Mean=0.0123939;
+  values: 30.9848 0.408016 6821
+  xvar: Q 
+  yvar: En
+  xlabel: Q transfer [Angs-1]
+  ylabel: Energy transfer [meV]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 1.5 -10 10
+  variables: I I_err N
+end data

@@ -1,0 +1,777 @@
+McStas simulation description file for ESS_IN5_reprate.
+Date:    Fri Oct 11 20:16:15 2019
+Program: McStas 2.5 - Dec. 12, 2018
+
+begin instrument: ESS_IN5_reprate
+  File: ESS_IN5_reprate/0/mccode
+  Source: ESS_IN5_reprate.instr
+  Parameters:  Lmin(double) Lmax(double) lambda0(double) Pulse_width(double) Num_pulses(double) GUI_start(double) FO1_DIST(double) L_ballistic_begin(double) L_ballistic_end(double) Length(double) SAMPLE_DIST(double) DETECTOR_DIST(double) GUI_h(double) GUI_w(double) GUI_GAP(double) H1(double) W1(double) H2(double) W2(double) H3(double) W3(double) H4(double) W4(double) H_chop(double) W_chop(double) H_end(double) W_end(double) ALPHA(double) M(double) F_slow1(double) F_slow2(double) F_fast1(double) F_fast2(double) N_fast(double) SLOW1_THETA(double) FO3(double) THETA_fast1(double) FAST_THETA(double) Gamma(double) Etun(double) V_HOLE(double) FRAC_QUASIEL(double) FRAC_TUNNEL(double) TT(double) RES_DE(double) port(double) cold(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: ESS_IN5_reprate/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Dec. 12, 2018
+  Instrument: ESS_IN5_reprate.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570824474
+  Directory: ESS_IN5_reprate/0
+  Param: Lmin=4.9
+  Param: Lmax=5.1
+  Param: lambda0=5
+  Param: Pulse_width=0.002
+  Param: Num_pulses=1
+  Param: GUI_start=2
+  Param: FO1_DIST=6
+  Param: L_ballistic_begin=19.5
+  Param: L_ballistic_end=17
+  Param: Length=100
+  Param: SAMPLE_DIST=1.2
+  Param: DETECTOR_DIST=4
+  Param: GUI_h=0.105
+  Param: GUI_w=0.1
+  Param: GUI_GAP=0.05
+  Param: H1=0.167
+  Param: W1=0.116
+  Param: H2=0.185
+  Param: W2=0.15
+  Param: H3=0.19
+  Param: W3=0.15
+  Param: H4=0.213
+  Param: W4=0.14
+  Param: H_chop=0.075
+  Param: W_chop=0.03
+  Param: H_end=0.042
+  Param: W_end=0.0215
+  Param: ALPHA=3.4
+  Param: M=3.5
+  Param: F_slow1=16.6667
+  Param: F_slow2=0
+  Param: F_fast1=0
+  Param: F_fast2=200
+  Param: N_fast=1
+  Param: SLOW1_THETA=120
+  Param: FO3=1
+  Param: THETA_fast1=180
+  Param: FAST_THETA=5
+  Param: Gamma=0
+  Param: Etun=1
+  Param: V_HOLE=0
+  Param: FRAC_QUASIEL=0
+  Param: FRAC_TUNNEL=0
+  Param: TT=50
+  Param: RES_DE=0.5
+  Param: port=30
+  Param: cold=0.95
+end simulation
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_1d(1000)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: TOFmoderator_zoom
+  position: 0 0 1e-06
+  title: Time-of-flight monitor
+  Ncount: 1000000
+  filename: TOFmoderator_zoom.dat
+  statistics: X0=1306.56; dX=640.697;
+  signal: Min=0; Max=3.91918e+08; Mean=1.46577e+08;
+  values: 1.46577e+11 2.1038e+08 962582
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: Time-of-flight [\gms]
+  ylabel: Intensity
+  xlimits: 0 5000
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_1d(1000)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: TOFmoderator
+  position: 0 0 1e-06
+  title: Time-of-flight monitor
+  Ncount: 1000000
+  filename: TOFmoderator.dat
+  statistics: X0=1305.98; dX=646.812;
+  signal: Min=0; Max=2.19877e+10; Mean=1.4658e+08;
+  values: 1.4658e+11 2.10387e+08 962586
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: Time-of-flight [\gms]
+  ylabel: Intensity
+  xlimits: 0 300000
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_1d(1000)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: Lmon_guistart
+  position: 0 0 2
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: Lmon_guistart.dat
+  statistics: X0=4.99773; dX=0.0577784;
+  signal: Min=0; Max=4.78731e+09; Mean=1.4658e+08;
+  values: 1.4658e+11 2.10387e+08 962586
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 6.1
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_1d(2880)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: Lmon_normalize
+  position: 0 0 2
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: Lmon_guistart_normalize.dat
+  statistics: X0=4.99773; dX=0.0578419;
+  signal: Min=0; Max=5.08977e+09; Mean=4.75503e+07;
+  values: 1.36945e+11 2.03366e+08 899364
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 20
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_1d(200)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: Lmonslow1
+  position: 0 0 6
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: Lmonslow1.dat
+  statistics: X0=4.99793; dX=0.0587469;
+  signal: Min=0; Max=9.02994e+09; Mean=2.83047e+08;
+  values: 5.66093e+10 1.24501e+08 465224
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 6.1
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_2d(90, 90)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: PSDslow1
+  position: 0 0 6
+  title: PSD monitor
+  Ncount: 1000000
+  filename: PSDslow1.dat
+  statistics: X0=0.00384865; dX=2.87731; Y0=-0.00876013; dY=4.78305;
+  signal: Min=0; Max=2.77832e+07; Mean=1.15874e+07;
+  values: 9.3858e+10 1.60227e+08 796884
+  xvar: X 
+  yvar: Y 
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -12.5 12.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_2d(200, 200)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: TOFLmon1
+  position: 0 0 6
+  title: TOF-wavelength monitor
+  Ncount: 1000000
+  filename: TOFLmon1.dat
+  statistics: X0=8922.37; dX=765.804; Y0=4.99783; dY=0.0587743;
+  signal: Min=0; Max=4.66365e+09; Mean=1.1788e+06;
+  values: 4.71518e+10 1.13614e+08 384822
+  xvar: Ti
+  yvar: Wa
+  xlabel: Time-of-flight [\gms]
+  ylabel: Wavelength [AA]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 300000 0 6.1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_1d(200)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: Lmon_afterslow1
+  position: 0 0 6
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: Lmon_afterslow1.dat
+  statistics: X0=4.99793; dX=0.0587469;
+  signal: Min=0; Max=9.02994e+09; Mean=2.83047e+08;
+  values: 5.66093e+10 1.24501e+08 465224
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 6.1
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_2d(90, 90)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: PSD_afterslow1
+  position: 0 0 6
+  title: PSD monitor
+  Ncount: 1000000
+  filename: PSD_afterslow1.dat
+  statistics: X0=0.00384748; dX=2.87731; Y0=-0.0087606; dY=4.78305;
+  signal: Min=0; Max=2.77832e+07; Mean=1.15874e+07;
+  values: 9.3858e+10 1.60227e+08 796883
+  xvar: X 
+  yvar: Y 
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -12.5 12.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_1d(200)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: Lmon_slow2
+  position: 0 0 50
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: Lmon_slow2.dat
+  statistics: X0=4.99837; dX=0.0587422;
+  signal: Min=0; Max=6.01964e+09; Mean=1.89871e+08;
+  values: 3.79742e+10 9.68642e+07 379939
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 6.1
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_2d(90, 90)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: PSD_afterslow2
+  position: 0 0 50.05
+  title: PSD monitor
+  Ncount: 1000000
+  filename: PSD_afterslow2.dat
+  statistics: X0=-0.0063333; dX=2.85517; Y0=0.00671312; dY=5.47907;
+  signal: Min=0; Max=1.74799e+07; Mean=7.68265e+06;
+  values: 6.22295e+10 1.24124e+08 627499
+  xvar: X 
+  yvar: Y 
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -12.5 12.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_1d(200)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: Lmon_afterslow2
+  position: 0 0 50.05
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: Lmon_afterslow2.dat
+  statistics: X0=4.99835; dX=0.0587427;
+  signal: Min=0; Max=6.02967e+09; Mean=1.90012e+08;
+  values: 3.80024e+10 9.68934e+07 380671
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 6.1
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_2d(200, 200)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: TOFL_afterslow2
+  position: 0 0 50.05
+  title: TOF-wavelength monitor
+  Ncount: 1000000
+  filename: TOFL_afterslow2.dat
+  statistics: X0=64549.3; dX=1073.62; Y0=4.99844; dY=0.0587242;
+  signal: Min=0; Max=3.57503e+09; Mean=792786;
+  values: 3.17114e+10 8.84492e+07 317207
+  xvar: Ti
+  yvar: Wa
+  xlabel: Time-of-flight [\gms]
+  ylabel: Wavelength [AA]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 300000 0 6.1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_1d(200)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: Lmon_beforeballistic
+  position: 0 0 82.975
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: Lmon_before_ballistic.dat
+  statistics: X0=4.99816; dX=0.0587223;
+  signal: Min=0; Max=4.84704e+09; Mean=1.52341e+08;
+  values: 3.04682e+10 8.61484e+07 330768
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 6.1
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_2d(90, 90)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: PSD_beforeballistic
+  position: 0 0 82.975
+  title: PSD monitor
+  Ncount: 1000000
+  filename: PSD_beforeballistic.dat
+  statistics: X0=0.0015564; dX=2.87988; Y0=0.0178376; dY=6.15628;
+  signal: Min=0; Max=1.46824e+07; Mean=7.40219e+06;
+  values: 5.99578e+10 1.20807e+08 652531
+  xvar: X 
+  yvar: Y 
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -12.5 12.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_1d(200)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: Lmonfast2
+  position: 0 0 99.975
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: Lmonfast2.dat
+  statistics: X0=4.99863; dX=0.0588318;
+  signal: Min=0; Max=5.13559e+09; Mean=1.63981e+08;
+  values: 3.27961e+10 8.92098e+07 416679
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 6.1
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_1d(200)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: Lmonfast2_zoom
+  position: 0 0 99.975
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: Lmonfast2_zoom.dat
+  statistics: X0=4.99877; dX=0.0578315;
+  signal: Min=0; Max=3.6267e+08; Mean=1.63981e+08;
+  values: 3.27961e+10 8.92098e+07 416679
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 4.8 5.2
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_2d(200, 200)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: TOFLfast2
+  position: 0 0 99.975
+  title: TOF-wavelength monitor
+  Ncount: 1000000
+  filename: TOFLfast2.dat
+  statistics: X0=127641; dX=1653.93; Y0=4.99863; dY=0.0588318;
+  signal: Min=0; Max=3.46826e+09; Mean=819903;
+  values: 3.27961e+10 8.92098e+07 416679
+  xvar: Ti
+  yvar: Wa
+  xlabel: Time-of-flight [\gms]
+  ylabel: Wavelength [AA]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 300000 0 6.1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_2d(200, 200)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: TOFLfast2zoom
+  position: 0 0 99.975
+  title: TOF-wavelength monitor
+  Ncount: 1000000
+  filename: TOFLfast2_zoom.dat
+  statistics: X0=127556; dX=577.098; Y0=4.99533; dY=0.0339049;
+  signal: Min=0; Max=4.29848e+06; Mean=323193;
+  values: 1.29277e+10 5.61151e+07 164559
+  xvar: Ti
+  yvar: Wa
+  xlabel: Time-of-flight [\gms]
+  ylabel: Wavelength [AA]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 126559 128559 4.8 5.2
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_2d(90, 90)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: PSDfast2
+  position: 0 0 99.975
+  title: PSD monitor
+  Ncount: 1000000
+  filename: PSDfast2.dat
+  statistics: X0=0.00168687; dX=0.869432; Y0=0.00827807; dY=2.16769;
+  signal: Min=0; Max=5.42521e+07; Mean=4.0489e+06;
+  values: 3.27961e+10 8.92098e+07 416679
+  xvar: X 
+  yvar: Y 
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -12.5 12.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_1d(100)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: TOFfast2_zoom
+  position: 0 0 100.1
+  title: Time-of-flight monitor
+  Ncount: 1000000
+  filename: TOF_fast2.dat
+  statistics: X0=127564; dX=10.5477;
+  signal: Min=0; Max=895269; Mean=42389.1;
+  values: 4.23891e+06 965539 68
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: Time-of-flight [\gms]
+  ylabel: Intensity
+  xlimits: 127486 127886
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_1d(500)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: Lmon_afterfast2
+  position: 0 0 100.1
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: Lmon_afterfast2.dat
+  statistics: X0=4.98564; dX=0.0281905;
+  signal: Min=0; Max=1.13097e+06; Mean=8477.82;
+  values: 4.23891e+06 965539 68
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 6.1
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_2d(200, 200)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: TOFL_afterfast2
+  position: 0 0 100.1
+  title: TOF-wavelength monitor
+  Ncount: 1000000
+  filename: TOF_afterfast2.dat
+  statistics: X0=128250; dX=0.00195312; Y0=4.98399; dY=0.032209;
+  signal: Min=0; Max=1.45525e+06; Mean=105.973;
+  values: 4.23891e+06 965539 68
+  xvar: Ti
+  yvar: Wa
+  xlabel: Time-of-flight [\gms]
+  ylabel: Wavelength [AA]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 300000 0 6.1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_2d(200, 200)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: TOFL_afterfast2_zoom
+  position: 0 0 100.1
+  title: TOF-wavelength monitor
+  Ncount: 1000000
+  filename: TOFL_afterfast2_zoom.dat
+  statistics: X0=127564; dX=10.4197; Y0=4.98489; dY=0.0275453;
+  signal: Min=0; Max=332138; Mean=105.973;
+  values: 4.23891e+06 965539 68
+  xvar: Ti
+  yvar: Wa
+  xlabel: Time-of-flight [\gms]
+  ylabel: Wavelength [AA]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 126559 128559 4.8 5.2
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_2d(90, 90)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: PSD_afterfast2
+  position: 0 0 100.1
+  title: PSD monitor
+  Ncount: 1000000
+  filename: PSD_afterfast2.dat
+  statistics: X0=-1.56931; dX=0.193905; Y0=-2.46573; dY=1.04897;
+  signal: Min=0; Max=599408; Mean=523.322;
+  values: 4.23891e+06 965539 68
+  xvar: X 
+  yvar: Y 
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -12.5 12.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_1d(1000)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: Lmon_guideend
+  position: 0 0 101.125
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: Lmon_guideend.dat
+  statistics: X0=4.99245; dX=0.0215787;
+  signal: Min=0; Max=332138; Mean=965.586;
+  values: 965586 483043 11
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 6.1
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_2d(90, 90)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: PSDsample
+  position: 0 0 102.175
+  title: PSD monitor
+  Ncount: 1000000
+  filename: PSDsample.dat
+  statistics: X0=1.60699; dX=1.35807; Y0=1.30397; dY=1.92577;
+  signal: Min=0; Max=341031; Mean=119.208;
+  values: 965586 483043 11
+  xvar: X 
+  yvar: Y 
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -12.5 12.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_1d(500)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: TOFsample_zoom
+  position: 0 0 102.175
+  title: Time-of-flight monitor
+  Ncount: 1000000
+  filename: TOF_sample.dat
+  statistics: X0=130176; dX=0;
+  signal: Min=0; Max=361625; Mean=723.249;
+  values: 361625 364207 3
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: Time-of-flight [\gms]
+  ylabel: Intensity
+  xlimits: 79075.9 179076
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_1d(400)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: Esample
+  position: 0 0 102.175
+  title: Energy monitor
+  Ncount: 1000000
+  filename: Esample.dat
+  statistics: X0=3.30647; dX=0.0151706;
+  signal: Min=0; Max=319489; Mean=904.062;
+  values: 361625 364207 3
+  xvar: E
+  yvar: (I,I_err)
+  xlabel: Energy [meV]
+  ylabel: Intensity
+  xlimits: 2.77217 3.77217
+  variables: E I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_1d(100)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: Lmon_sample_zoom
+  position: 0 0 102.175
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: LMON_sample_zoom.dat
+  statistics: X0=4.97444; dX=0.0116822;
+  signal: Min=0; Max=319489; Mean=3616.25;
+  values: 361625 364207 3
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 4.9 5.1
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_1d(512)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: TOFdetector
+  position: 3.06418 0 103.771
+  title: Time-of-flight monitor
+  Ncount: 1000000
+  filename: TOF.dat
+  statistics: X0=0; dX=0;
+  signal: Min=0; Max=0; Mean=0;
+  values: 0 0 0
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: Time-of-flight [\gms]
+  ylabel: Intensity
+  xlimits: 0 200000
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_1d(100)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: TOFdetector_zoom
+  position: 3.06418 0 103.771
+  title: Time-of-flight monitor
+  Ncount: 1000000
+  filename: TOF_zoom.dat
+  statistics: X0=0; dX=0;
+  signal: Min=0; Max=0; Mean=0;
+  values: 0 0 0
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: Time-of-flight [\gms]
+  ylabel: Intensity
+  xlimits: 133131 135131
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_1d(400)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: Edetector
+  position: 3.06418 0 103.771
+  title: Energy monitor
+  Ncount: 1000000
+  filename: Edet.dat
+  statistics: X0=0; dX=0;
+  signal: Min=0; Max=0; Mean=0;
+  values: 0 0 0
+  xvar: E
+  yvar: (I,I_err)
+  xlabel: Energy [meV]
+  ylabel: Intensity
+  xlimits: 2.77217 3.77217
+  variables: E I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:17 2019 (1570817777)
+  type: array_1d(200)
+  Source: ESS_IN5_reprate (ESS_IN5_reprate.instr)
+  component: TOF2Edetector
+  position: 3.06418 0 103.771
+  title: TOF-to-Energy monitor
+  Ncount: 1000000
+  filename: TOF2E.dat
+  statistics: X0=0; dX=0;
+  signal: Min=0; Max=0; Mean=0;
+  values: 0 0 0
+  xvar: E
+  yvar: (I,I_err)
+  xlabel: Energy [meV]
+  ylabel: Intensity
+  xlimits: 2.77217 3.77217
+  variables: E I I_err N
+end data

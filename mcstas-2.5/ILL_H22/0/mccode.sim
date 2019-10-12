@@ -1,0 +1,107 @@
+McStas simulation description file for ILL_H22.
+Date:    Fri Oct 11 20:23:51 2019
+Program: McStas 2.5 - Dec. 12, 2018
+
+begin instrument: ILL_H22
+  File: ILL_H22/0/mccode
+  Source: ILL_H22.instr
+  Parameters:  m(double) lambda(double) dlambda(double) mip(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: ILL_H22/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Dec. 12, 2018
+  Instrument: ILL_H22.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570825590
+  Directory: ILL_H22/0
+  Param: m=2
+  Param: lambda=4
+  Param: dlambda=3.9
+  Param: mip=0
+end simulation
+
+begin data
+  Date: Fri Oct 11 20:23:52 2019 (1570818232)
+  type: array_2d(20, 20)
+  Source: ILL_H22 (ILL_H22.instr)
+  component: GuideOut_xy
+  position: -0.13977 0 92.585
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: GuideOut_xy_1570818231.x_y
+  statistics: X0=0.000327349; dX=0.0087234; Y0=-0.000518962; dY=0.057231;
+  signal: Min=2.10803e+06; Max=9.64027e+06; Mean=5.05396e+06;
+  values: 2.02158e+09 2.40015e+07 75939
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.015 0.015 -0.1 0.1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:23:52 2019 (1570818232)
+  type: array_2d(20, 20)
+  Source: ILL_H22 (ILL_H22.instr)
+  component: GuideOut_dxdy
+  position: -0.13977 0 92.585
+  title:  Intensity Divergence Divergence Monitor (Square) per bin
+  Ncount: 1000000
+  filename: GuideOut_dxdy_1570818231.hd_vd
+  statistics: X0=-0.000948037; dX=0.163831; Y0=-0.00264893; dY=0.266766;
+  signal: Min=0; Max=1.12795e+08; Mean=5.05403e+06;
+  values: 2.02161e+09 2.40015e+07 75938
+  xvar: Ho
+  yvar: Ve
+  xlabel: Hor. Divergence [deg]
+  ylabel: Vert. Divergence [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.602896 0.597119 -2.10864 2.10802
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:23:52 2019 (1570818232)
+  type: array_0d
+  Source: ILL_H22 (ILL_H22.instr)
+  component: GuideOut_Phic
+  position: -0.13977 0 92.585
+  title:  Intensity Monitor (Square)
+  Ncount: 1000000
+  statistics: None
+  signal: None
+  values: 2.72388e+09 2.1325e+07 75939
+  xylimits: 0 0 0 0 0 0
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:23:52 2019 (1570818232)
+  type: array_1d(20)
+  Source: ILL_H22 (ILL_H22.instr)
+  component: GuideOut_L
+  position: -0.13977 0 92.585
+  title: Wavelength [Angs] monitor
+  Ncount: 1000000
+  filename: GuideOut_L_1570818231.L
+  statistics: X0=2.56392; dX=1.45725;
+  signal: Min=0; Max=9.33259e+08; Mean=9.46067e+07;
+  values: 1.89213e+09 2.2765e+07 74772
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/cm2/bin]
+  xlimits: 1 21
+  variables: L I I_err N
+end data

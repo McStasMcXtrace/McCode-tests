@@ -1,0 +1,48 @@
+# Format: McCode with text headers
+# URL: http://www.mccode.org
+# Creator: McStas 2.5 - Dec. 12, 2018
+# Instrument: Test_Pol_Guide_mirror.instr
+# Ncount: 1000000
+# Trace: no
+# Gravitation: no
+# Seed: 1570825357
+# Directory: Test_Pol_Guide_mirror/0
+# Param: polariserIn=1
+# Param: Nov=0
+# Date: Fri Oct 11 20:22:19 2019 (1570818139)
+# type: array_1d(20)
+# Source: Test_Pol_Guide_mirror (Test_Pol_Guide_mirror.instr)
+# component: lamStopPolGuide
+# position: 0 0 17.85
+# title: Wavelength monitor
+# Ncount: 1000000
+# filename: lambdaStopPolGuide.dat
+# statistics: X0=5.02862; dX=2.69536;
+# signal: Min=1.53687e+09; Max=1.06339e+11; Mean=1.69028e+10;
+# values: 3.38055e+11 1.76057e+09 43030
+# xvar: L
+# yvar: (I,I_err)
+# xlabel: Wavelength [AA]
+# ylabel: Intensity
+# xlimits: 3 19
+# variables: L I I_err N
+3.4 1.063387189e+11 985780861.6 16021 
+4.2 9.682741606e+10 943628015.5 12051 
+5 6.615152269e+10 779279270.7 7450 
+5.8 3.295626671e+10 548908102.4 3614 
+6.6 8864169436 284189414.6 973 
+7.4 1958455287 134201939.9 213 
+8.2 1805388543 128965105.1 196 
+9 1752275484 127130858.4 190 
+9.8 1536872459 118935767.2 167 
+10.6 1899263568 132338357.1 206 
+11.4 1760675379 127405455.4 191 
+12.2 1750698729 127017280.5 190 
+13 1870497729 131291126.7 203 
+13.8 1539641843 119148640.3 167 
+14.6 1661129081 123821882.7 180 
+15.4 1866527524 131013811.1 203 
+16.2 1726824103 126287179.5 187 
+17 1879869808 131627523.5 204 
+17.8 1973726606 134931581 214 
+18.6 1935551599 133574844.7 210 

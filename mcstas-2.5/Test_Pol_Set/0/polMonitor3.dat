@@ -1,0 +1,22 @@
+# Format: McCode with text headers
+# URL: http://www.mccode.org
+# Creator: McStas 2.5 - Dec. 12, 2018
+# Instrument: Test_Pol_Set.instr
+# Ncount: 1000000
+# Trace: no
+# Gravitation: no
+# Seed: 1570826406
+# Directory: Test_Pol_Set/0
+# Date: Fri Oct 11 20:28:38 2019 (1570818518)
+# type: array_0d
+# Source: Test_Pol_Set (Test_Pol_Set.instr)
+# component: polMonitor3
+# position: 0.25 0 1
+# title: Polarisation monitor m=(0 1 0) polMonitor3
+# Ncount: 1000000
+# statistics: None
+# signal: None
+# values: -0.333333 3.33333e-07 1e+06
+# xylimits: 0 0 0 0 0 0
+# variables: I I_err N
+-0.333333 3.33333e-07 1e+06

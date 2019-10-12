@@ -1,0 +1,182 @@
+McStas simulation description file for BTsimple.
+Date:    Fri Oct 11 20:18:09 2019
+Program: McStas 2.5 - Dec. 12, 2018
+
+begin instrument: BTsimple
+  File: BTsimple/0/mccode
+  Source: BTsimple.instr
+  Parameters:  lambda(double) dlambda(double) maxhd(double) maxvd(double) gw(double) gh(double) gL(double) gm(double) delta1(double) delta2(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: BTsimple/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Dec. 12, 2018
+  Instrument: BTsimple.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570824741
+  Directory: BTsimple/0
+  Param: lambda=10
+  Param: dlambda=9.9
+  Param: maxhd=3
+  Param: maxvd=3
+  Param: gw=0.1
+  Param: gh=0.1
+  Param: gL=50
+  Param: gm=6
+  Param: delta1=0
+  Param: delta2=0
+end simulation
+
+begin data
+  Date: Fri Oct 11 20:18:34 2019 (1570817914)
+  type: array_1d(101)
+  Source: BTsimple (BTsimple.instr)
+  component: BT_in
+  position: 0 0 2
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: BT_in.dat
+  statistics: X0=2.89528; dX=1.87477;
+  signal: Min=14.2548; Max=5.83722e+10; Mean=8.11497e+09;
+  values: 8.19612e+11 2.71885e+09 400283
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0.1 19.9
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:18:34 2019 (1570817914)
+  type: array_2d(20, 20)
+  Source: BTsimple (BTsimple.instr)
+  component: Div_in
+  position: 0 0 2
+  title: Divergence monitor
+  Ncount: 10000000
+  filename: Div_in.dat
+  statistics: X0=-2.2066e-06; dX=1.20078; Y0=0.00108469; dY=1.2008;
+  signal: Min=0; Max=4.85609e+11; Mean=5.10901e+10;
+  values: 2.0436e+13 1.35579e+10 1e+07
+  xvar: X 
+  yvar: Y 
+  xlabel: X divergence [deg]
+  ylabel: Y divergence [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -5 5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:18:34 2019 (1570817914)
+  type: array_2d(20, 20)
+  Source: BTsimple (BTsimple.instr)
+  component: PSD_in
+  position: 0 0 2
+  title: PSD monitor
+  Ncount: 10000000
+  filename: PSD_in.dat
+  statistics: X0=-0.000461059; dX=2.88266; Y0=0.00278386; dY=2.88249;
+  signal: Min=4.89082e+10; Max=5.31397e+10; Mean=5.10901e+10;
+  values: 2.0436e+13 1.35579e+10 1e+07
+  xvar: X 
+  yvar: Y 
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -5 5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:18:34 2019 (1570817914)
+  type: array_1d(101)
+  Source: BTsimple (BTsimple.instr)
+  component: BT_out
+  position: 0 0 54
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: BT_out.dat
+  statistics: X0=3.38677; dX=1.98398;
+  signal: Min=4.31226e-10; Max=2.82353e+10; Mean=4.76924e+09;
+  values: 4.81694e+11 1.6701e+09 327447
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0.1 19.9
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:18:34 2019 (1570817914)
+  type: array_2d(20, 20)
+  Source: BTsimple (BTsimple.instr)
+  component: Div_out
+  position: 0 0 54
+  title: Divergence monitor
+  Ncount: 10000000
+  filename: Div_out.dat
+  statistics: X0=-0.000505606; dX=0.830141; Y0=0.00340771; dY=0.83135;
+  signal: Min=0; Max=3.63551e+11; Mean=1.65508e+10;
+  values: 6.62034e+12 5.75137e+09 6.07067e+06
+  xvar: X 
+  yvar: Y 
+  xlabel: X divergence [deg]
+  ylabel: Y divergence [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -5 5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:18:34 2019 (1570817914)
+  type: array_2d(20, 20)
+  Source: BTsimple (BTsimple.instr)
+  component: PSD_out
+  position: 0 0 54
+  title: PSD monitor
+  Ncount: 10000000
+  filename: PSD_out.dat
+  statistics: X0=0.00107913; dX=2.50523; Y0=0.00678003; dY=2.50606;
+  signal: Min=4.53122e+09; Max=3.15897e+10; Mean=1.65508e+10;
+  values: 6.62034e+12 5.75137e+09 6.07067e+06
+  xvar: X 
+  yvar: Y 
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -5 5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:18:34 2019 (1570817914)
+  type: array_1d(101)
+  Source: BTsimple (BTsimple.instr)
+  component: BTsimple
+  position: 0 0 0
+  title: Brilliance transfer
+  Ncount: 10000000
+  filename: Brilliance_transfer.dat
+  statistics: X0=10.6868; dX=5.22039;
+  signal: Min=3.02513e-11; Max=0.877315; Mean=0.750207;
+  values: 75.771 1.93526 327447
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: BT
+  xlimits: 0.1 19.9
+  variables: L I I_err N
+end data

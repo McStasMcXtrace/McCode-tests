@@ -1,0 +1,129 @@
+McStas simulation description file for Test_MCPL_output.
+Date:    Sat Oct 12 09:06:15 2019
+Program: McStas 3.0-dev - Oct. 11, 2019
+
+begin instrument: Test_MCPL_output
+  File: Test_MCPL_output/0/mccode
+  Source: Test_MCPL_output.instr
+  Parameters:  merge(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: Test_MCPL_output/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 3.0-dev - Oct. 11, 2019
+  Instrument: Test_MCPL_output.instr
+  Ncount: 1000
+  Trace: no
+  Gravitation: no
+  Seed: 44635
+  Directory: Test_MCPL_output/0
+  Param: merge=0
+end simulation
+
+begin data
+  Date: Sat Oct 12 09:06:15 2019 (1570863975)
+  type: array_1d(40)
+  Source: Test_MCPL_output (Test_MCPL_output.instr)
+  component: m1
+  position: 0 0 0
+  title: Wavelength [Angs] monitor
+  Ncount: 1000
+  filename: m1_1570863975.L
+  statistics: X0=3.23354; dX=2.01041;
+  signal: Min=3.79576e+08; Max=3.85758e+10; Mean=6.54774e+09;
+  values: 2.6191e+11 1.15482e+10 1000
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 1.00339 10.9899
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:06:15 2019 (1570863975)
+  type: array_2d(40, 40)
+  Source: Test_MCPL_output (Test_MCPL_output.instr)
+  component: m2
+  position: 0 0 0
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000
+  filename: m2_1570863975.x_y
+  statistics: X0=0.000125442; dX=0.00296138; Y0=-2.60672e-05; dY=0.00281847;
+  signal: Min=0; Max=2.25155e+09; Mean=1.63418e+08;
+  values: 2.61469e+11 1.15403e+10 999
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.00499322 0.00499209 -0.00499879 0.00499946
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:06:15 2019 (1570863975)
+  type: array_1d(40)
+  Source: Test_MCPL_output (Test_MCPL_output.instr)
+  component: m3
+  position: 0 0 0
+  title: TOF [s] monitor
+  Ncount: 1000
+  filename: m3_1570863975.t
+  statistics: X0=0.000509089; dX=0.000289359;
+  signal: Min=3.27152e+09; Max=1.20031e+10; Mean=6.54335e+09;
+  values: 2.61734e+11 1.15467e+10 1000
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 2.02179e-06 0.000998815
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:06:15 2019 (1570863975)
+  type: array_1d(40)
+  Source: Test_MCPL_output (Test_MCPL_output.instr)
+  component: m4
+  position: 0 0 0
+  title: Energy [meV] monitor
+  Ncount: 1000
+  filename: m4_1570863975.E
+  statistics: X0=19.8496; dX=19.3676;
+  signal: Min=0; Max=3.74028e+10; Mean=6.53309e+09;
+  values: 2.61323e+11 1.15325e+10 1000
+  xvar: E
+  yvar: (I,I_err)
+  xlabel: Energy [meV]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.677305 81.2521
+  variables: E I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:06:15 2019 (1570863975)
+  type: array_2d(11, 1000)
+  Source: Test_MCPL_output (Test_MCPL_output.instr)
+  component: m5
+  position: 0 0 0
+  title:  Intensity Neutron_ID  Energy Position Position Position Velocity Velocity Velocity Time_Of_Flight Monitor (Square)
+  Ncount: 1000
+  filename: m5_1570863975_list.p.n.U1.E.x.y.z.vx.vy.vz.t
+  statistics: X0=0; dX=0; Y0=0; dY=0;
+  signal: Min=1.44241e+08; Max=1.44241e+08; Mean=0;
+  values: 0 0 0
+  xvar: Li
+  yvar: p 
+  xlabel: List of neutron events
+  ylabel: p n U1 E x y z vx vy vz t 
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 1 1000 1 11
+  variables: p n U1 E x y z vx vy vz t 
+end data

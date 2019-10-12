@@ -1,0 +1,112 @@
+McStas simulation description file for templateSANS.
+Date:    Fri Oct 11 20:14:32 2019
+Program: McStas 2.5 - Dec. 12, 2018
+
+begin instrument: templateSANS
+  File: templateSANS/0/mccode
+  Source: templateSANS.instr
+  Parameters:  lambda(double) dlambda(double) r(double) PHI(double) Delta_Rho(double) sigma_abs(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: templateSANS/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Dec. 12, 2018
+  Instrument: templateSANS.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570824276
+  Directory: templateSANS/0
+  Param: lambda=6
+  Param: dlambda=0.05
+  Param: r=100
+  Param: PHI=0.001
+  Param: Delta_Rho=0.6
+  Param: sigma_abs=0.5
+end simulation
+
+begin data
+  Date: Fri Oct 11 20:14:32 2019 (1570817672)
+  type: array_2d(128, 128)
+  Source: templateSANS (templateSANS.instr)
+  component: detector
+  position: 0 0 9.2
+  title: PSD monitor
+  Ncount: 1000000
+  filename: PSD.dat
+  statistics: X0=-0.00398374; dX=5.06041; Y0=0.0106893; dY=5.04412;
+  signal: Min=0; Max=1.67842e-19; Mean=3.99023e-21;
+  values: 6.5376e-17 4.03032e-19 466645
+  xvar: X 
+  yvar: Y 
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -30 30 -30 30
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:14:32 2019 (1570817672)
+  type: array_1d(1000)
+  Source: templateSANS (templateSANS.instr)
+  component: Ldetector
+  position: 0 0 9.21
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: Edet.dat
+  statistics: X0=5.99552; dX=0.0285301;
+  signal: Min=0; Max=9.17833e-19; Mean=6.53738e-20;
+  values: 6.53738e-17 4.03032e-19 463598
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 5.5 6.5
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:14:32 2019 (1570817672)
+  type: array_1d(100)
+  Source: templateSANS (templateSANS.instr)
+  component: PSDrad
+  position: 0 0 9.22
+  title: PSD monitor radial sum
+  Ncount: 1000000
+  filename: psd2.dat
+  statistics: X0=0.0626656; dX=0.0358563;
+  signal: Min=0; Max=3.35934e-18; Mean=6.52925e-19;
+  values: 6.52925e-17 4.03032e-19 361443
+  xvar: r
+  yvar: (I,I_err)
+  xlabel: Radius [m]
+  ylabel: Intensity
+  xlimits: 0.0015 0.3015
+  variables: r I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:14:32 2019 (1570817672)
+  type: array_1d(100)
+  Source: templateSANS (templateSANS.instr)
+  component: PSDrad
+  position: 0 0 9.22
+  title: PSD monitor radial average
+  Ncount: 1000000
+  filename: psd2_av.dat
+  statistics: X0=0.0500304; dX=0.0247627;
+  signal: Min=0; Max=5.81339e-15; Mean=7.13754e-16;
+  values: 7.13754e-14 5.79571e-16 361443
+  xvar: r
+  yvar: (I,I_err)
+  xlabel: Radius [m]
+  ylabel: Intensity/m^2
+  xlimits: 0.0015 0.3015
+  variables: r I I_err N
+end data

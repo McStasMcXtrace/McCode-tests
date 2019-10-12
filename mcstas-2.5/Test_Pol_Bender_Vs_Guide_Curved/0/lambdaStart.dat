@@ -1,0 +1,48 @@
+# Format: McCode with text headers
+# URL: http://www.mccode.org
+# Creator: McStas 2.5 - Dec. 12, 2018
+# Instrument: Test_Pol_Bender_Vs_Guide_Curved.instr
+# Ncount: 1000000
+# Trace: no
+# Gravitation: no
+# Seed: 1570825457
+# Directory: Test_Pol_Bender_Vs_Guide_Curved/0
+# Param: guideLength=10
+# Param: guideRadius=100
+# Date: Fri Oct 11 20:22:57 2019 (1570818177)
+# type: array_1d(20)
+# Source: Test_Pol_Bender_Vs_Guide_Curved (Test_Pol_Bender_Vs_Guide_Curved.instr)
+# component: lamStart
+# position: 0 0 0.1
+# title: Wavelength monitor
+# Ncount: 1000000
+# filename: lambdaStart.dat
+# statistics: X0=4.99477; dX=2.59278;
+# signal: Min=0; Max=0.00702918; Mean=0.00627346;
+# values: 0.125469 0.000125469 1e+06
+# xvar: L
+# yvar: (I,I_err)
+# xlabel: Wavelength [AA]
+# ylabel: Intensity
+# xlimits: 0 10
+# variables: L I I_err N
+0.25 0 0 0 
+0.75 0.007002431492 2.964101648e-05 55810 
+1.25 0.006960696745 2.955265222e-05 55477 
+1.75 0.006947686371 2.952483607e-05 55374 
+2.25 0.006945718203 2.952073739e-05 55358 
+2.75 0.007009740185 2.965654767e-05 55868 
+3.25 0.007029184503 2.969764383e-05 56023 
+3.75 0.007004189188 2.964473889e-05 55824 
+4.25 0.007001466223 2.963905486e-05 55802 
+4.75 0.007001716497 2.963958304e-05 55804 
+5.25 0.006968667212 2.956944091e-05 55541 
+5.75 0.006992634533 2.962025219e-05 55732 
+6.25 0.00692724059 2.948137243e-05 55211 
+6.75 0.006897898056 2.941890398e-05 54977 
+7.25 0.006976420198 2.958582984e-05 55603 
+7.75 0.006952266761 2.953470157e-05 55410 
+8.25 0.006966549368 2.956497947e-05 55524 
+8.75 0.006933054408 2.949383131e-05 55257 
+9.25 0.006951621657 2.953329355e-05 55405 
+9.75 0 0 0 

@@ -1,0 +1,24 @@
+McStas simulation description file for templateLaue.
+Date:    Sat Oct 12 09:04:40 2019
+Program: McStas 3.0-dev - Oct. 11, 2019
+
+begin instrument: templateLaue
+  File: templateLaue/0/mccode
+  Source: templateLaue.instr
+  Parameters:  reflections(string)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: templateLaue/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 3.0-dev - Oct. 11, 2019
+  Instrument: templateLaue.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 44855
+  Directory: templateLaue/0
+  Param: reflections=YBaCuO.lau

@@ -1,0 +1,29 @@
+McStas simulation description file for Test_Monochromators.
+Date:    Sat Oct 12 09:06:18 2019
+Program: McStas 3.0-dev - Oct. 11, 2019
+
+begin instrument: Test_Monochromators
+  File: Test_Monochromators/0/mccode
+  Source: Test_Monochromators.instr
+  Parameters:  Mono(int) lambda(double) Moz(double) PG(double) powder(double) order(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: Test_Monochromators/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 3.0-dev - Oct. 11, 2019
+  Instrument: Test_Monochromators.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 45272
+  Directory: Test_Monochromators/0
+  Param: Mono=1
+  Param: lambda=2
+  Param: Moz=40
+  Param: PG=0
+  Param: powder=0
+  Param: order=1

@@ -1,0 +1,99 @@
+McStas simulation description file for Test_Pol_Set.
+Date:    Sat Oct 12 09:07:07 2019
+Program: McStas 3.0-dev - Oct. 11, 2019
+
+begin instrument: Test_Pol_Set
+  File: Test_Pol_Set/0/mccode
+  Source: Test_Pol_Set.instr
+  Parameters: 
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: Test_Pol_Set/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 3.0-dev - Oct. 11, 2019
+  Instrument: Test_Pol_Set.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 44729
+  Directory: Test_Pol_Set/0
+end simulation
+
+begin data
+  Date: Sat Oct 12 09:07:07 2019 (1570864027)
+  type: array_0d
+  Source: Test_Pol_Set (Test_Pol_Set.instr)
+  component: polMonitor1x
+  position: 0 0 0.2
+  title: Polarisation monitor m=(1 0 0) polMonitor1x
+  ratio: 100000/1e+06
+  statistics: None
+  signal: None
+  values: 0.00022933 0.000577052 1e+06
+  xylimits: 0 0 0 0 0 0
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:07:07 2019 (1570864027)
+  type: array_0d
+  Source: Test_Pol_Set (Test_Pol_Set.instr)
+  component: polMonitor1y
+  position: 0 0 0.25
+  title: Polarisation monitor m=(0 1 0) polMonitor1y
+  ratio: 100000/1e+06
+  statistics: None
+  signal: None
+  values: -0.000747791 0.000577492 1e+06
+  xylimits: 0 0 0 0 0 0
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:07:07 2019 (1570864027)
+  type: array_0d
+  Source: Test_Pol_Set (Test_Pol_Set.instr)
+  component: polMonitor1z
+  position: 0 0 0.3
+  title: Polarisation monitor m=(0 0 1) polMonitor1z
+  ratio: 100000/1e+06
+  statistics: None
+  signal: None
+  values: 0.000191555 0.000577507 1e+06
+  xylimits: 0 0 0 0 0 0
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:07:07 2019 (1570864027)
+  type: array_0d
+  Source: Test_Pol_Set (Test_Pol_Set.instr)
+  component: polMonitor2
+  position: 0 0 0.75
+  title: Polarisation monitor m=(0 1 0) polMonitor2
+  ratio: 100000/1e+06
+  statistics: None
+  signal: None
+  values: 1 1e-06 1e+06
+  xylimits: 0 0 0 0 0 0
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:07:07 2019 (1570864027)
+  type: array_0d
+  Source: Test_Pol_Set (Test_Pol_Set.instr)
+  component: polMonitor3
+  position: 0.25 0 1
+  title: Polarisation monitor m=(0 1 0) polMonitor3
+  ratio: 100000/1e+06
+  statistics: None
+  signal: None
+  values: -0.333333 3.33333e-07 1e+06
+  xylimits: 0 0 0 0 0 0
+  variables: I I_err N
+end data

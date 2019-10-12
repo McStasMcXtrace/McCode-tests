@@ -1,0 +1,23 @@
+McStas simulation description file for Test_Pol_MSF.
+Date:    Sat Oct 12 09:04:59 2019
+Program: McStas 3.0-dev - Oct. 11, 2019
+
+begin instrument: Test_Pol_MSF
+  File: Test_Pol_MSF/0/mccode
+  Source: Test_Pol_MSF.instr
+  Parameters: 
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: Test_Pol_MSF/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 3.0-dev - Oct. 11, 2019
+  Instrument: Test_Pol_MSF.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 44469
+  Directory: Test_Pol_MSF/0

@@ -1,0 +1,57 @@
+McStas simulation description file for Tomography.
+Date:    Fri Oct 11 20:20:18 2019
+Program: McStas 2.5 - Dec. 12, 2018
+
+begin instrument: Tomography
+  File: Tomography/0/mccode
+  Source: Tomography.instr
+  Parameters:  geometry(string) omega(double) sigma_abs(double) frac_scatt(double) div_v(double) div_h(double) source_w(double) source_h(double) det_w(double) det_h(double) opts(string)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: Tomography/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Dec. 12, 2018
+  Instrument: Tomography.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570825137
+  Directory: Tomography/0
+  Param: geometry=socket.off
+  Param: omega=0
+  Param: sigma_abs=100
+  Param: frac_scatt=0
+  Param: div_v=0.0001
+  Param: div_h=0.0001
+  Param: source_w=0.4
+  Param: source_h=0.2
+  Param: det_w=0.4
+  Param: det_h=0.2
+  Param: opts=x bins=80 y bins=40
+end simulation
+
+begin data
+  Date: Fri Oct 11 20:20:35 2019 (1570818035)
+  type: array_2d(80, 40)
+  Source: Tomography (Tomography.instr)
+  component: monitor
+  position: 0 0 2
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: monitor_1570818018.x_y
+  statistics: X0=0.000127247; dX=0.120287; Y0=8.19604e-05; dY=0.0597314;
+  signal: Min=7.31359e-37; Max=9.06542e-13; Mean=6.98266e-13;
+  values: 2.23445e-09 2.3335e-12 999652
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.2 0.2 -0.1 0.1
+  variables: I I_err N
+end data

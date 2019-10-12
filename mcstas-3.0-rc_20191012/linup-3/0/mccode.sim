@@ -1,0 +1,30 @@
+McStas simulation description file for TAS1_Diff_Slit.
+Date:    Sat Oct 12 09:05:07 2019
+Program: McStas 3.0-dev - Oct. 11, 2019
+
+begin instrument: TAS1_Diff_Slit
+  File: linup-3/0/mccode
+  Source: linup-3.instr
+  Parameters:  PHM(double) TTM(double) TT(double) C1(double) OMC1(double) C2(double) C3(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: linup-3/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 3.0-dev - Oct. 11, 2019
+  Instrument: linup-3.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 44310
+  Directory: linup-3/0
+  Param: PHM=-37.077
+  Param: TTM=-74
+  Param: TT=0
+  Param: C1=30
+  Param: OMC1=5.5
+  Param: C2=28
+  Param: C3=67

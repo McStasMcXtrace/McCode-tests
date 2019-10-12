@@ -1,0 +1,300 @@
+   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        __bos (__s), __fmt, __va_arg_pack ());
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/share/mcstas/2.5/monitors/Monitor_nD.comp: In function ‘Monitor_nD_Init’:
+/usr/share/mcstas/2.5/monitors/Monitor_nD.comp:636:29: warning: ‘%li’ directive writing between 1 and 20 bytes into a region of size between 0 and 127 [-Wformat-overflow=]
+In file included from /usr/include/stdio.h:867:0,
+                 from mccode-r.h:42:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:36:10: note: ‘__builtin___sprintf_chk’ output between 3 and 149 bytes into a destination of size 128
+   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       __bos (__s), __fmt, __va_arg_pack ());
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ILL_H22_D1A.c: In function ‘mcraytrace’:
+ILL_H22_D1A.c:49879:6: note: variable tracking size limit exceeded with -fvar-tracking-assignments, retrying without
+ 
+      ^         
+ILL_H22_D1A.c: In function ‘mcinit’:
+ILL_H22_D1A.c:23368:6: note: variable tracking size limit exceeded with -fvar-tracking-assignments, retrying without
+ 
+      ^     
+[OK] ILL_H22_D1A: BananaPSD_I = 422241 +/- 9330.39, equals 3.8578E+05
+ within 10 %
+Instrument without test: Union_single_crystal_validation
+Executing: mcrun.pl -c -n0 --no-cflags Union_single_crystal_validation
+CFLAGS= -I@MCCODE_LIB@/share/
+In file included from /usr/share/mcstas/2.5/contrib/union/Incoherent_process.comp:62:0:
+/usr/share/mcstas/2.5/share/Union_functions.c: In function ‘write_tagging_tree’:
+/usr/share/mcstas/2.5/share/Union_functions.c:1377:105: warning: passing argument 4 of ‘qsort’ from incompatible pointer type [-Wincompatible-pointer-types]
+   qsort(total_history.saved_histories,total_history.used_elements,sizeof (struct saved_history_struct), Sample_compare_history_intensities);
+                                                                                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from mccode-r.h:41:0:
+/usr/include/stdlib.h:827:13: note: expected ‘__compar_fn_t {aka int (*)(const void *, const void *)}’ but argument is of type ‘int (*)(const struct saved_history_struct *, const struct saved_history_struct *)’
+ extern void qsort (void *__base, size_t __nmemb, size_t __size,
+             ^~~~~
+/usr/share/mcstas/2.5/share/Union_functions.c:1386:20: warning: passing argument 1 of ‘printf_history’ from incompatible pointer type [-Wincompatible-pointer-types]
+     printf_history(&total_history.saved_histories[history_iterate]);
+                    ^
+mccode-r.h:214:27: note: in definition of macro ‘MPI_MASTER’
+In file included from /usr/share/mcstas/2.5/contrib/union/Incoherent_process.comp:62:0:
+/usr/share/mcstas/2.5/share/Union_functions.c:1207:6: note: expected ‘struct dynamic_history_list *’ but argument is of type ‘struct saved_history_struct *’
+ void printf_history(struct dynamic_history_list *history) {
+      ^~~~~~~~~~~~~~
+/usr/share/mcstas/2.5/contrib/union/Single_crystal_process.comp: In function ‘off_getBlocksIndex’:
+/usr/share/mcstas/2.5/contrib/union/Single_crystal_process.comp:1875:22: warning: format ‘%d’ expects argument of type ‘int’, but argument 4 has type ‘size_t {aka long unsigned int}’ [-Wformat=]
+/usr/share/mcstas/2.5/contrib/union/Single_crystal_process.comp: In function ‘off_init’:
+/usr/share/mcstas/2.5/contrib/union/Single_crystal_process.comp:2179:23: warning: format ‘%i’ expects argument of type ‘int’, but argument 5 has type ‘long int’ [-Wformat=]
+/usr/share/mcstas/2.5/contrib/union/Single_crystal_process.comp:2266:23: warning: format ‘%i’ expects argument of type ‘int’, but argument 3 has type ‘long int’ [-Wformat=]
+/usr/share/mcstas/2.5/contrib/union/Single_crystal_process.comp: In function ‘off_display’:
+/usr/share/mcstas/2.5/contrib/union/Single_crystal_process.comp:2477:24: warning: format ‘%u’ expects argument of type ‘unsigned int’, but argument 3 has type ‘long int’ [-Wformat=]
+/usr/share/mcstas/2.5/contrib/union/Single_crystal_process.comp:2477:24: warning: format ‘%u’ expects argument of type ‘unsigned int’, but argument 4 has type ‘long int’ [-Wformat=]
+/usr/share/mcstas/2.5/contrib/union/Single_crystal_process.comp:2477:24: warning: format ‘%u’ expects argument of type ‘unsigned int’, but argument 5 has type ‘long int’ [-Wformat=]
+mccode-r.c: In function ‘mcdetector_import’:
+mccode-r.c:767:51: warning: ‘ ’ directive output may be truncated writing 1 byte into a region of size between 0 and 1023 [-Wformat-truncation=]
+mccode-r.c:767:5: note: ‘snprintf’ output 9 or more bytes (assuming 1032) into a destination of size 1024
+Test Abstract for selftest_36GJ
+[OK]     templateDIFF_1 (accuracy, 1 %)
+[OK]     Test_Pol_Mirror_2 (accuracy, 1 %)
+[OK]     PSI_Focus_3 (accuracy, 2 %)
+[OK]     Test_Magnetic_Constant_4 (accuracy, 0 %)
+[OK]     ILL_H15_5 (accuracy, 1 %)
+[OK]     Test_Jump_Iterate_6 (accuracy, 1 %)
+[notest] templateSasView_Mantid (no test procedure)
+[OK]     Samples_Phonon_7 (accuracy, 1 %)
+[OK]     ILL_H15_D11_8 (accuracy, 8 %)
+[OK]     Test_Guides_Curved_9 (accuracy, 1 %)
+[OK]     Test_Guides_Curved_10 (accuracy, 1 %)
+[OK]     Test_Guides_Curved_11 (accuracy, 0 %)
+[OK]     Test_Guides_Curved_12 (accuracy, 1 %)
+[OK]     templateLaue_13 (accuracy, 1 %)
+[notest] Test_Scatter_log_losses (no test procedure)
+[OK]     Test_Pol_Bender_14 (accuracy, 1 %)
+[notest] ESS_Brilliance_TDR (no test procedure)
+[notest] ESS_butterfly_tfocus_test (no test procedure)
+[notest] SAFARI_PITSI (no test procedure)
+[notest] h8_test_legacy (no test procedure)
+[notest] Test_focus (no test procedure)
+[notest] Test_PreMonitor_nD (no test procedure)
+[notest] Granroth_SNS_decoupled_poisoned (no test procedure)
+[notest] Union_test_box (no test procedure)
+[OK]     Test_Guides_15 (accuracy, 1 %)
+[OK]     Test_Guides_16 (accuracy, 1 %)
+[OK]     Test_Guides_17 (accuracy, 1 %)
+[OK]     Test_Guides_18 (accuracy, 1 %)
+[OK]     Test_Guides_19 (accuracy, 1 %)
+[OK]     Test_Guides_20 (accuracy, 1 %)
+[OK]     Test_Guides_21 (accuracy, 1 %)
+[OK]     Test_Guides_22 (accuracy, 1 %)
+[OK]     ILL_H22_D1B_23 (accuracy, 6 %)
+[notest] ILL_H16_Mantid (no test procedure)
+[OK]     Test_pol_tabled_24 (accuracy, 0 %)
+[notest] template (no test procedure)
+[notest] Vout_test (no test procedure)
+[OK]     ILL_IN5_Mantid_25 (accuracy, 2 %)
+[OK]     ILL_H113_26 (accuracy, 1 %)
+[notest] ISIS_CRISP (no test procedure)
+[notest] Test_SSR_SSW (no test procedure)
+[notest] ESS_Brilliance_2001 (no test procedure)
+[notest] ESS_2001_bispectral (no test procedure)
+[notest] Union_test_mask (no test procedure)
+[notest] Union_external_component (no test procedure)
+[OK]     linup-1_27 (accuracy, 2 %)
+[OK]     Test_MCPL_input_28 (accuracy, 3 %)
+[notest] ESS_butterfly_MCPL_test (no test procedure)
+[OK]     templateSANS_29 (accuracy, 1 %)
+[notest] Union_demonstration (no test procedure)
+[notest] templateNMX_TOF (no test procedure)
+[OK]     Test_Pol_MSF_30 (accuracy, 0 %)
+[notest] ESS_Brilliance_2015 (no test procedure)
+[OK]     ILL_H142_IN12_31 (accuracy, 5 %)
+[OK]     Test_DiskChoppers_32 (accuracy, 1 %)
+[OK]     Test_DiskChoppers_33 (accuracy, 1 %)
+[notest] ESS_butterfly_test (no test procedure)
+[OK]     HZB_NEAT_34 (accuracy, fair 6 %)
+[OK]     HZB_NEAT_35 (accuracy, 1 %)
+[OK]     ILL_H22_VIVALDI_36 (accuracy, 4 %)
+[notest] ESS_Brilliance_2014 (no test procedure)
+[OK]     ESS_IN5_reprate_37 (accuracy, fair 9 %)
+[OK]     ISIS_test_38 (accuracy, 1 %)
+[notest] ESS_butterfly_Guide_curved_test (no test procedure)
+[notest] ISIS_TOSCA_preupgrade (no test procedure)
+[notest] Test_shellguides (no test procedure)
+[OK]     templateTOF_39 (accuracy, fair 14 %)
+[OK]     templateTOF_40 (accuracy, 4 %)
+[notest] Test_Single_crystal_inelastic (no test procedure)
+[OK]     linup-3_41 (accuracy, 6 %)
+[notest] Mezei_SNS_decoupled_poisoned (no test procedure)
+[notest] Union_incoherent_validation (no test procedure)
+[OK]     ILL_H10_IN8_42 (accuracy, 1 %)
+[notest] Union_powder_validation (no test procedure)
+[notest] LLB_6T2 (no test procedure)
+[OK]     ILL_H16_IN5_Mantid_43 (accuracy, 3 %)
+[OK]     ILL_H16_IN5_Mantid_44 (accuracy, fair 9 %)
+[OK]     linup-7_45 (accuracy, 3 %)
+[notest] Test_Magnon_bcc_2D (no test procedure)
+[notest] templateNMX (no test procedure)
+[OK]     Test_StatisticalChopper_46 (accuracy, 1 %)
+[OK]     BTsimple_47 (accuracy, 1 %)
+[notest] ESS_Brilliance_2013 (no test procedure)
+[notest] templateSasView (no test procedure)
+[notest] Test_Magnon_bcc_TAS (no test procedure)
+[notest] Test_Sample_nxs_imaging (no test procedure)
+[notest] ESS_butterfly_tfocus_NOFOCUS_test (no test procedure)
+[OK]     Test_PSD_Detector_48 (accuracy, 1 %)
+[OK]     Test_Magnetic_Majorana_49 (accuracy, 0 %)
+[OK]     ILL_H25_IN22_50 (accuracy, 4 %)
+[notest] Vin_test (no test procedure)
+[notest] SNS_test (no test procedure)
+[OK]     Test_Sources_51 (accuracy, 1 %)
+[OK]     Test_Sources_52 (accuracy, 1 %)
+[OK]     Test_Sources_53 (accuracy, 0 %)
+[OK]     Test_Sources_54 (accuracy, 0 %)
+[OK]     Test_Sources_55 (accuracy, 1 %)
+[OK]     Test_Sources_56 (accuracy, 1 %)
+[OK]     Test_Sources_57 (accuracy, 1 %)
+[OK]     Test_Sources_58 (accuracy, 1 %)
+[OK]     Test_Selectors_59 (accuracy, 1 %)
+[OK]     Test_Selectors_60 (accuracy, 1 %)
+[OK]     ISIS_GEM_61 (accuracy, 1 %)
+[OK]     Samples_Incoherent_62 (accuracy, 1 %)
+[OK]     Samples_Incoherent_63 (accuracy, 1 %)
+[OK]     Samples_Incoherent_64 (accuracy, 1 %)
+[OK]     Samples_Incoherent_65 (accuracy, 1 %)
+[OK]     Samples_Incoherent_66 (accuracy, 1 %)
+[OK]     Samples_Incoherent_67 (accuracy, 1 %)
+[OK]     Samples_Incoherent_68 (accuracy, 1 %)
+[OK]     Samples_Incoherent_69 (accuracy, 1 %)
+[OK]     Samples_Incoherent_70 (accuracy, 1 %)
+[OK]     Samples_Incoherent_71 (accuracy, 1 %)
+[OK]     ILL_D2B_72 (accuracy, 4 %)
+[OK]     ILL_IN4_73 (accuracy, 4 %)
+[notest] SNS_ARCS_Mantid (no test procedure)
+[notest] template_simple (no test procedure)
+[OK]     Test_Pol_Guide_Vmirror_74 (accuracy, 1 %)
+[notest] Demo_shape_primitives (no test procedure)
+[notest] ISIS_TOSCA_preupgrade_Mantid (no test procedure)
+[notest] ESS_mcpl2hist (no test procedure)
+[notest] ILL_H143_LADI (no test procedure)
+[notest] ISIS_SANS2d (no test procedure)
+[notest] Test_Sample_nxs_diffraction (no test procedure)
+[notest] RTP_NeutronRadiography (no test procedure)
+[OK]     Tomography_75 (accuracy, 1 %)
+[notest] RTP_SANS (no test procedure)
+[notest] ILL_H15_IN6 (no test procedure)
+[OK]     ILL_D4_76 (accuracy, 1 %)
+[OK]     ILL_H53_77 (accuracy, 4 %)
+[OK]     ILL_IN5_78 (accuracy, 4 %)
+[notest] SAFARI_MPISI (no test procedure)
+[notest] Histogrammer (no test procedure)
+[OK]     ILL_H512_D22_79 (accuracy, 28 %)
+[notest] Gallmeier_SNS_decoupled_poisoned (no test procedure)
+[OK]     Samples_Incoherent_off_80 (accuracy, 2 %)
+[OK]     Test_MCPL_output_81 (accuracy, 4 %)
+[OK]     Test_Pol_Guide_mirror_82 (accuracy, 1 %)
+[notest] ISIS_IMAT (no test procedure)
+[OK]     templateTAS_83 (accuracy, 1 %)
+[OK]     templateTAS_84 (accuracy, 2 %)
+[notest] SE_example2 (no test procedure)
+[OK]     Test_FocalisationMirrors_85 (accuracy, 1 %)
+[OK]     Test_Monochromators_86 (accuracy, 1 %)
+[OK]     Test_Monochromators_87 (accuracy, 1 %)
+[OK]     Test_Monochromators_88 (accuracy, 1 %)
+[OK]     Test_Monochromators_89 (accuracy, 1 %)
+[OK]     Test_Monochromators_90 (accuracy, 1 %)
+[OK]     linup-6_91 (accuracy, 1 %)
+[OK]     Test_Pol_Bender_Vs_Guide_Curved_92 (accuracy, 1 %)
+[OK]     Test_Magnetic_Rotation_93 (accuracy, 1 %)
+[notest] MCPL2hist (no test procedure)
+[notest] NCrystal_example_mcstas (no test procedure)
+[notest] templateVanadiumMultipleScat_Mantid (no test procedure)
+[notest] ISIS_SANS2d_Mantid (no test procedure)
+[notest] ILL_H5_new (no test procedure)
+[OK]     ILL_H13_IN20_94 (accuracy, 5 %)
+[notest] Test_Scatter_log_ssw_mcnp (no test procedure)
+[OK]     linup-4_95 (accuracy, 3 %)
+[OK]     ILL_H22_96 (accuracy, 1 %)
+[OK]     ISIS_Prisma2_97 (accuracy, 1 %)
+[OK]     ILL_H25_98 (accuracy, 1 %)
+[notest] Test_PowderN_Res (no test procedure)
+[OK]     ILL_BRISP_99 (accuracy, 1 %)
+[OK]     ILL_H53_IN14_100 (accuracy, 4 %)
+[notest] ILL_IN6 (no test procedure)
+[notest] Union_demonstration_absorption_image (no test procedure)
+[notest] Union_test_absorption (no test procedure)
+[notest] ILL_IN5_Spots (no test procedure)
+[notest] ILL_H142_D33 (no test procedure)
+[OK]     ILL_H24_101 (accuracy, 3 %)
+[notest] RTP_DIF (no test procedure)
+[notest] Union_test_absorption_image (no test procedure)
+[notest] Reflectometer (no test procedure)
+[OK]     Test_Pol_TripleAxis_102 (accuracy, 1 %)
+[OK]     FZJ_SANS_KWS2_AnySample_103 (accuracy, 1 %)
+[OK]     FZJ_SANS_KWS2_AnySample_104 (accuracy, 6 %)
+[OK]     FZJ_SANS_KWS2_AnySample_105 (accuracy, 1 %)
+[OK]     FZJ_SANS_KWS2_AnySample_106 (accuracy, 4 %)
+[notest] templateSANS_Mantid (no test procedure)
+[notest] ISIS_TS2_Brilliance (no test procedure)
+[notest] Union_time_of_flight (no test procedure)
+[notest] Union_laue_camera (no test procedure)
+[notest] HZB_FLEX (no test procedure)
+[notest] RITA-II (no test procedure)
+[OK]     Samples_Isotropic_Sqw_107 (accuracy, 2 %)
+[notest] Test_Lens (no test procedure)
+[OK]     linup-2_108 (accuracy, 1 %)
+[notest] SE_example (no test procedure)
+[notest] SNS_analytic_test (no test procedure)
+[OK]     Test_Fermi_109 (accuracy, fair 6 %)
+[OK]     Test_Fermi_110 (accuracy, 1 %)
+[OK]     Test_Fermi_111 (accuracy, fair 7 %)
+[OK]     Test_Fermi_112 (accuracy, 3 %)
+[OK]     Test_Fermi_113 (accuracy, 2 %)
+[notest] Union_test_powder (no test procedure)
+[notest] Union_sample_picture_replica (no test procedure)
+[notest] ISIS_MERLIN (no test procedure)
+[OK]     linup-5_114 (accuracy, 3 %)
+[OK]     ILL_IN13_115 (accuracy, 2 %)
+[notest] RTP_Laue (no test procedure)
+[OK]     ISIS_HET_116 (accuracy, fair 19 %)
+[OK]     Test_Magnetic_Userdefined_117 (accuracy, 1 %)
+[notest] ESS_2015_test (no test procedure)
+[OK]     ILL_H8_IN1_118 (accuracy, 1 %)
+[notest] Union_manual_example (no test procedure)
+[notest] Test_SSR_SSW_Guide (no test procedure)
+[OK]     Samples_vanadium_119 (accuracy, 1 %)
+[notest] Test_Pol_SF_ideal (no test procedure)
+[notest] FZJ_BenchmarkSfin2 (no test procedure)
+[OK]     FZJ_KWS2_Lens_120 (accuracy, 1 %)
+[notest] ILL_H5 (no test procedure)
+[notest] ILL_H53_D16 (no test procedure)
+[notest] Union_tagging_demo (no test procedure)
+[OK]     Test_Monitor_Sqw_121 (accuracy, 3 %)
+[OK]     Test_Monitor_Sqw_122 (accuracy, fair 11 %)
+[notest] ISIS_TS1_Brilliance (no test procedure)
+[OK]     BNL_H8_123 (accuracy, 4 %)
+[OK]     PSI_DMC_124 (accuracy, 1 %)
+[notest] ESS_Testbeamline_HZB_V20 (no test procedure)
+[notest] ESS_BEER_MCPL (no test procedure)
+[notest] SNS_ARCS (no test procedure)
+[OK]     ILL_Lagrange_125 (accuracy, 9 %)
+[OK]     ILL_H16_IN5_126 (accuracy, 3 %)
+[OK]     ILL_H16_IN5_127 (accuracy, 3 %)
+[notest] Union_external_component_test (no test procedure)
+[notest] SEMSANS_instrument (no test procedure)
+[notest] TestSANS (no test procedure)
+[notest] SNS_BASIS (no test procedure)
+[notest] ISIS_OSIRIS (no test procedure)
+[OK]     Test_Pol_Set_128 (accuracy, 0 %)
+[OK]     Test_Collimator_Radial_129 (accuracy, 3 %)
+[OK]     Test_Collimator_Radial_130 (accuracy, 3 %)
+[OK]     Test_Collimator_Radial_131 (accuracy, 2 %)
+[OK]     ILL_H16_132 (accuracy, 1 %)
+[OK]     ILL_H142_133 (accuracy, 2 %)
+[notest] Test_Scatter_log_mvalues (no test procedure)
+[OK]     ILL_H22_D1A_134 (accuracy, fair 10 %)
+[notest] Union_single_crystal_validation (no test procedure)
+
+
+# Execution check:    OK.     Computing time: 1280 [sec] for 134 tests.
+# Accuracy check:     OK.
+# End Date: Fri Oct 11 20:30:09 2019

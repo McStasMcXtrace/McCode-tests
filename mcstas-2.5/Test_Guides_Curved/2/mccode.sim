@@ -1,0 +1,159 @@
+McStas simulation description file for Test_Guides_Curved.
+Date:    Fri Oct 11 20:12:15 2019
+Program: McStas 2.5 - Dec. 12, 2018
+
+begin instrument: Test_Guides_Curved
+  File: Test_Guides_Curved/2/mccode
+  Source: Test_Guides_Curved.instr
+  Parameters:  Guide(int) curvature(double) length(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: Test_Guides_Curved/2
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Dec. 12, 2018
+  Instrument: Test_Guides_Curved.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570823884
+  Directory: Test_Guides_Curved/2
+  Param: Guide=3
+  Param: curvature=1000
+  Param: length=100
+end simulation
+
+begin data
+  Date: Fri Oct 11 20:12:17 2019 (1570817537)
+  type: array_2d(20, 20)
+  Source: Test_Guides_Curved (Test_Guides_Curved.instr)
+  component: Monitor1_xt
+  position: 0 0 1
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Monitor1_xt_1570817535.x_y
+  statistics: X0=1.24347e-05; dX=0.0144106; Y0=1.50514e-05; dY=0.0144146;
+  signal: Min=8.87651e-05; Max=9.92143e-05; Mean=9.35945e-05;
+  values: 0.0374378 3.74378e-05 1e+06
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.025 0.025 -0.025 0.025
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:12:17 2019 (1570817537)
+  type: array_2d(20, 20)
+  Source: Test_Guides_Curved (Test_Guides_Curved.instr)
+  component: Monitor2_xy1
+  position: 5.1955 0 102.923
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Monitor2_xy1_1570817535.x_y
+  statistics: X0=0; dX=0; Y0=0; dY=0;
+  signal: Min=0; Max=0; Mean=0;
+  values: 0 0 0
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.035 0.035 -0.035 0.035
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:12:17 2019 (1570817537)
+  type: array_2d(20, 20)
+  Source: Test_Guides_Curved (Test_Guides_Curved.instr)
+  component: Monitor2_xy2
+  position: 0 0 103.1
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Monitor2_xy2_1570817535.x_y
+  statistics: X0=0; dX=0; Y0=0; dY=0;
+  signal: Min=0; Max=0; Mean=0;
+  values: 0 0 0
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.035 0.035 -0.035 0.035
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:12:17 2019 (1570817537)
+  type: array_2d(20, 20)
+  Source: Test_Guides_Curved (Test_Guides_Curved.instr)
+  component: Monitor2_xy3
+  position: -5.1955 0 102.923
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Monitor2_xy3_1570817535.x_y
+  statistics: X0=0.00401987; dX=0.0152758; Y0=-4.24407e-05; dY=0.0163634;
+  signal: Min=5.00949e-08; Max=1.2014e-05; Mean=4.65032e-06;
+  values: 0.00186013 6.53268e-06 239254
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.035 0.035 -0.035 0.035
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:12:17 2019 (1570817537)
+  type: array_2d(20, 20)
+  Source: Test_Guides_Curved (Test_Guides_Curved.instr)
+  component: Monitor2_xy4
+  position: 0 0 103.1
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Monitor2_xy4_1570817535.x_y
+  statistics: X0=0; dX=0; Y0=0; dY=0;
+  signal: Min=0; Max=0; Mean=0;
+  values: 0 0 0
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.035 0.035 -0.035 0.035
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:12:17 2019 (1570817537)
+  type: array_2d(90, 90)
+  Source: Test_Guides_Curved (Test_Guides_Curved.instr)
+  component: dummy
+  position: 0 0 0
+  title: 4PI PSD monitor
+  Ncount: 1000000
+  filename: junk.dat
+  statistics: X0=0; dX=0; Y0=0; dY=0;
+  signal: Min=0; Max=0; Mean=0;
+  values: 0 0 0
+  xvar: Lo
+  yvar: La
+  xlabel: Longitude [deg]
+  ylabel: Lattitude [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -180 180 -90 90
+  variables: I I_err N
+end data

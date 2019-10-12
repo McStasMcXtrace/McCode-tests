@@ -1,0 +1,280 @@
+McStas simulation description file for Test_Monitor_Sqw.
+Date:    Fri Oct 11 20:27:32 2019
+Program: McStas 2.5 - Dec. 12, 2018
+
+begin instrument: Test_Monitor_Sqw
+  File: Test_Monitor_Sqw/1/mccode
+  Source: Test_Monitor_Sqw.instr
+  Parameters:  beam_wavelength_Angs(double) beam_resolution_meV(double) sample_coh(string) sample_inc(string) sample_thickness_m(double) sample_height_m(double) sample_radius_m(double) container(string) container_thickness_m(double) environment(string) environment_radius_m(double) environment_thickness_m(double) detector_height_m(double) sample_detector_distance_m(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: Test_Monitor_Sqw/1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Dec. 12, 2018
+  Instrument: Test_Monitor_Sqw.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570826230
+  Directory: Test_Monitor_Sqw/1
+  Param: beam_wavelength_Angs=1.6
+  Param: beam_resolution_meV=1.07
+  Param: sample_coh=Rb_liq_coh.sqw
+  Param: sample_inc=Rb_liq_inc.sqw
+  Param: sample_thickness_m=0.001
+  Param: sample_height_m=0.03
+  Param: sample_radius_m=0.005
+  Param: container=Al.laz
+  Param: container_thickness_m=5e-05
+  Param: environment=Al.laz
+  Param: environment_radius_m=0.025
+  Param: environment_thickness_m=0.002
+  Param: detector_height_m=3
+  Param: sample_detector_distance_m=4
+end simulation
+
+begin data
+  Date: Fri Oct 11 20:27:35 2019 (1570818455)
+  type: array_2d(100, 100)
+  Source: Test_Monitor_Sqw (Test_Monitor_Sqw.instr)
+  component: SampleIn
+  position: 0 0 6.965
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: SampleIn_1570818452.x_y
+  statistics: X0=1.55415e-06; dX=0.00286674; Y0=-3.24599e-07; dY=0.00861848;
+  signal: Min=3.90078e-11; Max=1.66591e-10; Mean=1.14074e-10;
+  values: 1.14074e-06 1.14203e-09 997899
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.005 0.005 -0.015 0.015
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:27:35 2019 (1570818455)
+  type: array_2d(468, 468)
+  Source: Test_Monitor_Sqw (Test_Monitor_Sqw.instr)
+  component: Detector_nM
+  position: 0 0 7
+  title:  Intensity Momentum transfer Q [Angs-1] Energy transfer w [meV] Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: Detector_nM_1570818453.U1_U2
+  statistics: X0=2.617; dX=2.96997; Y0=-0.694733; dY=6.48584;
+  signal: Min=0; Max=1.16271e-09; Mean=6.04673e-14;
+  values: 1.32438e-08 8.00394e-11 326830
+  xvar: Mo
+  yvar: En
+  xlabel: Momentum transfer Q [Angs-1]
+  ylabel: Energy transfer w [meV]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 11.781 -63.9095 127.819
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:27:35 2019 (1570818455)
+  type: array_2d(468, 468)
+  Source: Test_Monitor_Sqw (Test_Monitor_Sqw.instr)
+  component: Detector_nM_coh
+  position: 0 0 7
+  title:  Intensity Momentum transfer Q [Angs-1] Energy transfer w [meV] Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: Detector_nM_coh_1570818453.U1_U2
+  statistics: X0=2.68027; dX=3.05565; Y0=-1.12544; dY=8.2292;
+  signal: Min=0; Max=1.51013e-10; Mean=3.35725e-14;
+  values: 7.35318e-09 2.06668e-11 209368
+  xvar: Mo
+  yvar: En
+  xlabel: Momentum transfer Q [Angs-1]
+  ylabel: Energy transfer w [meV]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 11.781 -63.9095 127.819
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:27:35 2019 (1570818455)
+  type: array_2d(468, 468)
+  Source: Test_Monitor_Sqw (Test_Monitor_Sqw.instr)
+  component: Detector_nM_inc
+  position: 0 0 7
+  title:  Intensity Momentum transfer Q [Angs-1] Energy transfer w [meV] Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: Detector_nM_inc_1570818453.U1_U2
+  statistics: X0=2.57585; dX=3.01162; Y0=-1.08913; dY=8.11672;
+  signal: Min=0; Max=1.43611e-11; Mean=2.7655e-15;
+  values: 6.05711e-10 5.95192e-12 17107
+  xvar: Mo
+  yvar: En
+  xlabel: Momentum transfer Q [Angs-1]
+  ylabel: Energy transfer w [meV]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 11.781 -63.9095 127.819
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:27:35 2019 (1570818455)
+  type: array_2d(468, 468)
+  Source: Test_Monitor_Sqw (Test_Monitor_Sqw.instr)
+  component: Detector_nM_multi
+  position: 0 0 7
+  title:  Intensity Momentum transfer Q [Angs-1] Energy transfer w [meV] Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: Detector_nM_multi_1570818453.U1_U2
+  statistics: X0=2.469; dX=2.94605; Y0=-2.05026; dY=10.8915;
+  signal: Min=0; Max=1.15295e-12; Mean=5.57119e-16;
+  values: 1.22022e-10 9.611e-13 53907
+  xvar: Mo
+  yvar: En
+  xlabel: Momentum transfer Q [Angs-1]
+  ylabel: Energy transfer w [meV]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 11.781 -63.9095 127.819
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:27:35 2019 (1570818455)
+  type: array_2d(468, 468)
+  Source: Test_Monitor_Sqw (Test_Monitor_Sqw.instr)
+  component: Detector_nM_env
+  position: 0 0 7
+  title:  Intensity Momentum transfer Q [Angs-1] Energy transfer w [meV] Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: Detector_nM_env_1570818453.U1_U2
+  statistics: X0=2.53478; dX=2.83884; Y0=-0.0275199; dY=1.07017;
+  signal: Min=0; Max=1.0013e-09; Mean=2.39503e-14;
+  values: 5.2457e-09 7.70927e-11 113542
+  xvar: Mo
+  yvar: En
+  xlabel: Momentum transfer Q [Angs-1]
+  ylabel: Energy transfer w [meV]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 11.781 -63.9095 127.819
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:27:35 2019 (1570818455)
+  type: array_2d(468, 468)
+  Source: Test_Monitor_Sqw (Test_Monitor_Sqw.instr)
+  component: M_total
+  position: 0 0 7
+  title:  Intensity Angle Time_Of_Flight Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: M_total_1570818453.A_t
+  statistics: X0=67.8363; dX=43.1339; Y0=0.0016493; dY=0.000171542;
+  signal: Min=0; Max=4.21769e-11; Mean=2.57958e-14;
+  values: 5.64989e-09 5.25918e-11 142362
+  xvar: An
+  yvar: TO
+  xlabel: Angle [deg]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -30 140 0.000808891 0.00323556
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:27:35 2019 (1570818455)
+  type: array_2d(468, 468)
+  Source: Test_Monitor_Sqw (Test_Monitor_Sqw.instr)
+  component: M_single_coh
+  position: 0 0 7
+  title:  Intensity Angle Time_Of_Flight Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: M_single_coh_1570818453.A_t
+  statistics: X0=65.1224; dX=48.3676; Y0=0.00166648; dY=0.000213864;
+  signal: Min=0; Max=3.27552e-12; Mean=1.43338e-14;
+  values: 3.13946e-09 1.35189e-11 91014
+  xvar: An
+  yvar: TO
+  xlabel: Angle [deg]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -30 140 0.000808891 0.00323556
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:27:35 2019 (1570818455)
+  type: array_2d(468, 468)
+  Source: Test_Monitor_Sqw (Test_Monitor_Sqw.instr)
+  component: M_single_inc
+  position: 0 0 7
+  title:  Intensity Angle Time_Of_Flight Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: M_single_inc_1570818453.A_t
+  statistics: X0=61.7091; dX=48.8269; Y0=0.00166559; dY=0.000208216;
+  signal: Min=0; Max=3.42541e-13; Mean=1.23548e-15;
+  values: 2.70599e-10 3.96769e-12 7687
+  xvar: An
+  yvar: TO
+  xlabel: Angle [deg]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -30 140 0.000808891 0.00323556
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:27:36 2019 (1570818456)
+  type: array_2d(468, 468)
+  Source: Test_Monitor_Sqw (Test_Monitor_Sqw.instr)
+  component: M_multi
+  position: 0 0 7
+  title:  Intensity Angle Time_Of_Flight Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: M_multi_1570818453.A_t
+  statistics: X0=56.1482; dX=49.3365; Y0=0.00174921; dY=0.000357925;
+  signal: Min=0; Max=1.1037e-13; Mean=2.53814e-16;
+  values: 5.55913e-11 6.47096e-13 24515
+  xvar: An
+  yvar: TO
+  xlabel: Angle [deg]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -30 140 0.000808891 0.00323556
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:27:36 2019 (1570818456)
+  type: array_2d(468, 468)
+  Source: Test_Monitor_Sqw (Test_Monitor_Sqw.instr)
+  component: M_env_container
+  position: 0 0 7
+  title:  Intensity Angle Time_Of_Flight Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: M_env_container_1570818453.A_t
+  statistics: X0=72.5191; dX=32.8186; Y0=0.00162178; dY=3.97435e-05;
+  signal: Min=0; Max=4.16001e-11; Mean=1.01478e-14;
+  values: 2.22262e-09 5.06676e-11 50209
+  xvar: An
+  yvar: TO
+  xlabel: Angle [deg]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -30 140 0.000808891 0.00323556
+  variables: I I_err N
+end data

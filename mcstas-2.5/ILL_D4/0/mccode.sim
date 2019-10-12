@@ -1,0 +1,158 @@
+McStas simulation description file for ILL_D4.
+Date:    Fri Oct 11 20:20:41 2019
+Program: McStas 2.5 - Dec. 12, 2018
+
+begin instrument: ILL_D4
+  File: ILL_D4/0/mccode
+  Source: ILL_D4.instr
+  Parameters:  lambda(double) DM(double) sample(string) RV(double) L1(double) L2(double) L3(double) verbose(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: ILL_D4/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Dec. 12, 2018
+  Instrument: ILL_D4.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570825184
+  Directory: ILL_D4/0
+  Param: lambda=0.7
+  Param: DM=1.807
+  Param: sample=SiO2_liq.qSq
+  Param: RV=-1
+  Param: L1=6.4
+  Param: L2=2.61
+  Param: L3=1.148
+  Param: verbose=1
+end simulation
+
+begin data
+  Date: Fri Oct 11 20:20:48 2019 (1570818048)
+  type: array_2d(20, 20)
+  Source: ILL_D4 (ILL_D4.instr)
+  component: PSD
+  position: 0 0 5.9
+  title: PSD monitor
+  Ncount: 1000000
+  filename: PSD1.dat
+  statistics: X0=-0.0013255; dX=0.859453; Y0=-0.000397564; dY=0.863955;
+  signal: Min=5.46644e+06; Max=8.27672e+06; Mean=7.03156e+06;
+  values: 2.81262e+09 7.25125e+06 150642
+  xvar: X 
+  yvar: Y 
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -1.5 1.5 -1.5 1.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:48 2019 (1570818048)
+  type: array_1d(50)
+  Source: ILL_D4 (ILL_D4.instr)
+  component: Lmon1
+  position: 0 0 5.91
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: Lmon1.dat
+  statistics: X0=0.699552; dX=0.0121079;
+  signal: Min=0; Max=3.58354e+08; Mean=2.02182e+08;
+  values: 1.01091e+10 1.37475e+07 541407
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0.665 0.735
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:48 2019 (1570818048)
+  type: array_1d(50)
+  Source: ILL_D4 (ILL_D4.instr)
+  component: Lmon2
+  position: -0.0760093 0 6.58499
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: Lmon2.dat
+  statistics: X0=0.699755; dX=0.0108918;
+  signal: Min=0; Max=1.83314e+08; Mean=8.62257e+07;
+  values: 4.31128e+09 2.83801e+06 2.3101e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0.665 0.735
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:48 2019 (1570818048)
+  type: array_2d(10, 10)
+  Source: ILL_D4 (ILL_D4.instr)
+  component: Sample_mon
+  position: -0.972919 0 8.76792
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Sample_mon_1570818041.x_y
+  statistics: X0=0.000609599; dX=0.00839957; Y0=-3.88285e-05; dY=0.00860881;
+  signal: Min=1.45028e+06; Max=2.04345e+06; Mean=1.84189e+06;
+  values: 1.84189e+08 195006 892614
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.015 0.015 -0.015 0.015
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:48 2019 (1570818048)
+  type: array_1d(360)
+  Source: ILL_D4 (ILL_D4.instr)
+  component: BananaTheta
+  position: -0.991921 0 8.81417
+  title: Longitude [deg] monitor
+  Ncount: 1000000
+  filename: BananaTheta_1570818041.th
+  statistics: X0=92.5645; dX=48.4779;
+  signal: Min=312.642; Max=7170.87; Mean=4007.28;
+  values: 1.44262e+06 4244.51 192117
+  xvar: th
+  yvar: (I,I_err)
+  xlabel: Longitude [deg]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0 180
+  variables: th I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:20:48 2019 (1570818048)
+  type: array_2d(360, 50)
+  Source: ILL_D4 (ILL_D4.instr)
+  component: BananaPSD
+  position: -0.991921 0 8.81417
+  title:  Intensity Angle Position Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: BananaPSD_1570818041.th_y
+  statistics: X0=92.0983; dX=49.6893; Y0=0.000184986; dY=0.0359595;
+  signal: Min=0; Max=989.063; Mean=96.877;
+  values: 1.74379e+06 4741.45 227043
+  xvar: Lo
+  yvar: y 
+  xlabel: Longitude [deg]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 180 -0.25 0.25
+  variables: I I_err N
+end data

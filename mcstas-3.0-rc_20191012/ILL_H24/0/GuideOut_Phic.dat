@@ -1,0 +1,26 @@
+# Format: McCode with text headers
+# URL: http://www.mccode.org
+# Creator: McStas 3.0-dev - Oct. 11, 2019
+# Instrument: ILL_H24.instr
+# Ncount: 1000000
+# Trace: no
+# Gravitation: no
+# Seed: 46689
+# Directory: ILL_H24/0
+# Param: m=1
+# Param: lambda=4
+# Param: dlambda=3.9
+# Param: mip=0
+# Date: Sat Oct 12 09:06:39 2019 (1570863999)
+# type: array_0d
+# Source: ILL_H24 (ILL_H24.instr)
+# component: GuideOut_Phic
+# position: -0.107003 0 60.6499
+# title:  Intensity Monitor (Square)
+# ratio: 100000/1e+06
+# statistics: None
+# signal: None
+# values: 1.23278e+09 1.31922e+07 59506
+# xylimits: 0 0 0 0 0 0
+# variables: I I_err N
+1.23278e+09 1.31922e+07 59506

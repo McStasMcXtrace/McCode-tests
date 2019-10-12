@@ -1,0 +1,154 @@
+McStas simulation description file for Test_Fermi.
+Date:    Fri Oct 11 20:25:45 2019
+Program: McStas 2.5 - Dec. 12, 2018
+
+begin instrument: Test_Fermi
+  File: Test_Fermi/1/mccode
+  Source: Test_Fermi.instr
+  Parameters:  Fermi(int) lambda(double) width_FC(double) height_FC(double) length_FC(double) FC_Hz(double) Nslit_FC(double) d_SF(double) d_FD(double) phase(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: Test_Fermi/1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Dec. 12, 2018
+  Instrument: Test_Fermi.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570825954
+  Directory: Test_Fermi/1
+  Param: Fermi=2
+  Param: lambda=3.39
+  Param: width_FC=0.044
+  Param: height_FC=0.064
+  Param: length_FC=0.012
+  Param: FC_Hz=100
+  Param: Nslit_FC=120
+  Param: d_SF=3
+  Param: d_FD=3
+  Param: phase=271.92
+end simulation
+
+begin data
+  Date: Fri Oct 11 20:26:29 2019 (1570818389)
+  type: array_1d(20)
+  Source: Test_Fermi (Test_Fermi.instr)
+  component: Monitor1_xt
+  position: 0 0 2.9
+  title: x [m] monitor
+  Ncount: 1000000
+  filename: Monitor1_xt_1570818345.x
+  statistics: X0=1.04512e-05; dX=0.0126835;
+  signal: Min=0.000281468; Max=0.000284646; Mean=0.000282803;
+  values: 0.00565606 5.65608e-06 999994
+  xvar: x
+  yvar: (I,I_err)
+  xlabel: x [m]
+  ylabel: Intensity [n/s/bin]
+  xlimits: -0.0219999 0.0219999
+  variables: x I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:26:29 2019 (1570818389)
+  type: array_1d(20)
+  Source: Test_Fermi (Test_Fermi.instr)
+  component: Monitor1_xt
+  position: 0 0 2.9
+  title: y [m] monitor
+  Ncount: 1000000
+  filename: Monitor1_xt_1570818345.y
+  statistics: X0=-1.0643e-05; dX=0.0184552;
+  signal: Min=0.000280623; Max=0.000284332; Mean=0.0002828;
+  values: 0.00565599 5.65605e-06 999982
+  xvar: y
+  yvar: (I,I_err)
+  xlabel: y [m]
+  ylabel: Intensity [n/s/bin]
+  xlimits: -0.0319996 0.032
+  variables: y I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:26:29 2019 (1570818389)
+  type: array_1d(20)
+  Source: Test_Fermi (Test_Fermi.instr)
+  component: Monitor1_xt
+  position: 0 0 2.9
+  title: TOF [s] monitor
+  Ncount: 1000000
+  filename: Monitor1_xt_1570818345.t
+  statistics: X0=0.00248523; dX=0.000139133;
+  signal: Min=3.48246e-05; Max=0.000407618; Mean=0.000282795;
+  values: 0.00565589 5.65599e-06 999964
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.00216947 0.00280137
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:26:29 2019 (1570818389)
+  type: array_1d(20)
+  Source: Test_Fermi (Test_Fermi.instr)
+  component: Monitor2_xt
+  position: 0 0 6
+  title: x [m] monitor
+  Ncount: 1000000
+  filename: Monitor2_xt_1570818345.x
+  statistics: X0=0.000429517; dX=0.0126242;
+  signal: Min=2.77423e-05; Max=3.02184e-05; Mean=2.89694e-05;
+  values: 0.000579388 1.81027e-06 102436
+  xvar: x
+  yvar: (I,I_err)
+  xlabel: x [m]
+  ylabel: Intensity [n/s/bin]
+  xlimits: -0.0216073 0.021997
+  variables: x I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:26:29 2019 (1570818389)
+  type: array_1d(20)
+  Source: Test_Fermi (Test_Fermi.instr)
+  component: Monitor2_xt
+  position: 0 0 6
+  title: y [m] monitor
+  Ncount: 1000000
+  filename: Monitor2_xt_1570818345.y
+  statistics: X0=-1.48739e-05; dX=0.018425;
+  signal: Min=2.84001e-05; Max=3.01065e-05; Mean=2.89691e-05;
+  values: 0.000579382 1.81026e-06 102435
+  xvar: y
+  yvar: (I,I_err)
+  xlabel: y [m]
+  ylabel: Intensity [n/s/bin]
+  xlimits: -0.0319984 0.0319996
+  variables: y I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:26:29 2019 (1570818389)
+  type: array_1d(20)
+  Source: Test_Fermi (Test_Fermi.instr)
+  component: Monitor2_xt
+  position: 0 0 6
+  title: TOF [s] monitor
+  Ncount: 1000000
+  filename: Monitor2_xt_1570818345.t
+  statistics: X0=0.00489754; dX=6.57062e-05;
+  signal: Min=6.56096e-07; Max=5.20757e-05; Mean=2.89688e-05;
+  values: 0.000579377 1.81025e-06 102434
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.00474433 0.00508216
+  variables: t I I_err N
+end data

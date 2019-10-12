@@ -1,0 +1,139 @@
+McStas simulation description file for Test_Jump_Iterate.
+Date:    Fri Oct 11 20:09:40 2019
+Program: McStas 2.5 - Dec. 12, 2018
+
+begin instrument: Test_Jump_Iterate
+  File: Test_Jump_Iterate/0/mccode
+  Source: Test_Jump_Iterate.instr
+  Parameters:  L(double) numel(double) R(double) width(double) m(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: Test_Jump_Iterate/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Dec. 12, 2018
+  Instrument: Test_Jump_Iterate.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570823672
+  Directory: Test_Jump_Iterate/0
+  Param: L=60
+  Param: numel=30
+  Param: R=1500
+  Param: width=0.03
+  Param: m=2
+end simulation
+
+begin data
+  Date: Fri Oct 11 20:09:44 2019 (1570817384)
+  type: array_2d(100, 100)
+  Source: Test_Jump_Iterate (Test_Jump_Iterate.instr)
+  component: Mon_LambdaX_In
+  position: 0 0 0.5
+  title:  Intensity Position Wavelength Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Mon_LambdaX_In_1570817380.x_L
+  statistics: X0=3.2703e-06; dX=0.0086684; Y0=10.0099; dY=5.48266;
+  signal: Min=0; Max=0.00200204; Mean=0.00110649;
+  values: 11.0649 0.0110688 1e+06
+  xvar: x 
+  yvar: Wa
+  xlabel: x [m]
+  ylabel: Wavelength [Angs]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.02 0.02 0.5 19.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:44 2019 (1570817384)
+  type: array_2d(100, 100)
+  Source: Test_Jump_Iterate (Test_Jump_Iterate.instr)
+  component: Mon_LambdaDX_In
+  position: 0 0 0.5
+  title:  Intensity Divergence Wavelength Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Mon_LambdaDX_In_1570817380.hd_L
+  statistics: X0=-8.66414e-05; dX=1.11287; Y0=10.0048; dY=5.48358;
+  signal: Min=0.00036776; Max=0.00111496; Mean=0.000732152;
+  values: 7.32152 0.00901063 660687
+  xvar: Ho
+  yvar: Wa
+  xlabel: Hor. Divergence [deg]
+  ylabel: Wavelength [Angs]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -2 2 0.5 19.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:44 2019 (1570817384)
+  type: array_2d(100, 100)
+  Source: Test_Jump_Iterate (Test_Jump_Iterate.instr)
+  component: CG_2_out
+  position: 0.00266867 0 12.501
+  title:  Intensity Divergence Wavelength Monitor (Square) per bin
+  Ncount: 1000000
+  filename: CG_2_out_1570817380.hd_L
+  statistics: X0=0.00553287; dX=1.00979; Y0=13.8582; dY=3.95541;
+  signal: Min=0; Max=0.00784266; Mean=0.00272924;
+  values: 27.2924 0.0163578 5.5393e+06
+  xvar: Ho
+  yvar: Wa
+  xlabel: Hor. Divergence [deg]
+  ylabel: Wavelength [Angs]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -2 2 0.5 19.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:44 2019 (1570817384)
+  type: array_2d(100, 100)
+  Source: Test_Jump_Iterate (Test_Jump_Iterate.instr)
+  component: Mon_LambdaX_Out
+  position: 0.00280207 0 12.601
+  title:  Intensity Position Wavelength Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Mon_LambdaX_Out_1570817380.x_L
+  statistics: X0=9.46905e-05; dX=0.0095489; Y0=14.173; dY=3.91115;
+  signal: Min=0; Max=0.00737673; Mean=8.7459e-05;
+  values: 0.87459 0.00276641 256133
+  xvar: x 
+  yvar: Wa
+  xlabel: x [m]
+  ylabel: Wavelength [Angs]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.5 0.5 0.5 19.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:09:44 2019 (1570817384)
+  type: array_2d(100, 100)
+  Source: Test_Jump_Iterate (Test_Jump_Iterate.instr)
+  component: Mon_LambdaDX_Out
+  position: 0.00280207 0 12.601
+  title:  Intensity Divergence Wavelength Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Mon_LambdaDX_Out_1570817380.hd_L
+  statistics: X0=0.013188; dX=0.975437; Y0=13.8731; dY=3.95295;
+  signal: Min=0; Max=0.000324263; Mean=7.91142e-05;
+  values: 0.791142 0.00267388 181939
+  xvar: Ho
+  yvar: Wa
+  xlabel: Hor. Divergence [deg]
+  ylabel: Wavelength [Angs]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -2 2 0.5 19.5
+  variables: I I_err N
+end data

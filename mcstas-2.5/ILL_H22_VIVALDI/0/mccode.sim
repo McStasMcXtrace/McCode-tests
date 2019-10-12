@@ -1,0 +1,172 @@
+McStas simulation description file for ILL_H22_VIVALDI.
+Date:    Fri Oct 11 20:16:03 2019
+Program: McStas 2.5 - Dec. 12, 2018
+
+begin instrument: ILL_H22_VIVALDI
+  File: ILL_H22_VIVALDI/0/mccode
+  Source: ILL_H22_VIVALDI.instr
+  Parameters:  lambda(double) dlambda(double) crystal(string) container(string) verbose(double) m(double) mip(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: ILL_H22_VIVALDI/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Dec. 12, 2018
+  Instrument: ILL_H22_VIVALDI.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570824445
+  Directory: ILL_H22_VIVALDI/0
+  Param: lambda=3
+  Param: dlambda=2.2
+  Param: crystal=YBaCuO.lau
+  Param: container=V.laz
+  Param: verbose=1
+  Param: m=2
+  Param: mip=2
+end simulation
+
+begin data
+  Date: Fri Oct 11 20:16:08 2019 (1570817768)
+  type: array_2d(20, 20)
+  Source: ILL_H22_VIVALDI (ILL_H22_VIVALDI.instr)
+  component: GuideOut_xy
+  position: -0.13977 0 92.585
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: GuideOut_xy_1570817763.x_y
+  statistics: X0=0.000326644; dX=0.00865141; Y0=0.000680031; dY=0.0573304;
+  signal: Min=3.00484e+06; Max=8.22637e+06; Mean=5.34651e+06;
+  values: 2.13861e+09 1.84249e+07 214443
+  xvar: x 
+  yvar: y 
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.015 0.015 -0.1 0.1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:08 2019 (1570817768)
+  type: array_2d(20, 20)
+  Source: ILL_H22_VIVALDI (ILL_H22_VIVALDI.instr)
+  component: GuideOut_dxdy
+  position: -0.13977 0 92.585
+  title:  Intensity Divergence Divergence Monitor (Square) per bin
+  Ncount: 1000000
+  filename: GuideOut_dxdy_1570817763.hd_vd
+  statistics: X0=0.00152036; dX=0.199218; Y0=0.00217935; dY=0.249885;
+  signal: Min=0; Max=2.24501e+08; Mean=5.34651e+06;
+  values: 2.13861e+09 1.84249e+07 214440
+  xvar: Ho
+  yvar: Ve
+  xlabel: Hor. Divergence [deg]
+  ylabel: Vert. Divergence [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -1.77691 1.76317 -1.7812 1.78092
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:08 2019 (1570817768)
+  type: array_0d
+  Source: ILL_H22_VIVALDI (ILL_H22_VIVALDI.instr)
+  component: GuideOut_Phic
+  position: -0.13977 0 92.585
+  title:  Intensity Monitor (Square)
+  Ncount: 1000000
+  statistics: None
+  signal: None
+  values: 2.70163e+09 1.65427e+07 214441
+  xylimits: 0 0 0 0 0 0
+  variables: I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:08 2019 (1570817768)
+  type: array_1d(20)
+  Source: ILL_H22_VIVALDI (ILL_H22_VIVALDI.instr)
+  component: GuideOut_L
+  position: -0.13977 0 92.585
+  title: Wavelength [Angs] monitor
+  Ncount: 1000000
+  filename: GuideOut_L_1570817763.L
+  statistics: X0=2.36457; dX=1.04639;
+  signal: Min=0; Max=9.99804e+08; Mean=1.02251e+08;
+  values: 2.04503e+09 1.76638e+07 213360
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/cm2/bin]
+  xlimits: 1 21
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:08 2019 (1570817768)
+  type: array_1d(20)
+  Source: ILL_H22_VIVALDI (ILL_H22_VIVALDI.instr)
+  component: D2B_Mono_Dx
+  position: -0.140569 0 92.8349
+  title: Hor. Divergence [deg] monitor
+  Ncount: 1000000
+  filename: D2B_Mono_Dx_1570817763.hd
+  statistics: X0=0.000505438; dX=0.200345;
+  signal: Min=0; Max=6.61876e+08; Mean=9.96625e+07;
+  values: 1.99325e+09 1.75186e+07 192937
+  xvar: hd
+  yvar: (I,I_err)
+  xlabel: Hor. Divergence [deg]
+  ylabel: Intensity [n/s/cm2/bin]
+  xlimits: -1.74726 1.76317
+  variables: hd I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:08 2019 (1570817768)
+  type: array_1d(20)
+  Source: ILL_H22_VIVALDI (ILL_H22_VIVALDI.instr)
+  component: SALSA_Mono_Dx
+  position: -0.172785 0 102.92
+  title: Hor. Divergence [deg] monitor
+  Ncount: 1000000
+  filename: SALSA_Mono_Dx_1570817763.hd
+  statistics: X0=-0.00254135; dX=0.192038;
+  signal: Min=0; Max=6.4097e+08; Mean=9.26213e+07;
+  values: 1.85243e+09 1.70231e+07 158769
+  xvar: hd
+  yvar: (I,I_err)
+  xlabel: Hor. Divergence [deg]
+  ylabel: Intensity [n/s/cm2/bin]
+  xlimits: -1.74726 1.74943
+  variables: hd I I_err N
+end data
+
+begin data
+  Date: Fri Oct 11 20:16:08 2019 (1570817768)
+  type: array_2d(180, 180)
+  Source: ILL_H22_VIVALDI (ILL_H22_VIVALDI.instr)
+  component: PSD_Vivaldi
+  position: -0.191153 0 108.67
+  title:  Intensity Angle Position Monitor (Cylinder) [out] per bin
+  Ncount: 1000000
+  filename: PSD_Vivaldi_1570817763.th_y
+  statistics: X0=2.19286; dX=121.074; Y0=0.00446359; dY=0.0610586;
+  signal: Min=0; Max=3.05582e+06; Mean=8291.61;
+  values: 2.68648e+08 7.83554e+06 27527
+  xvar: Lo
+  yvar: y 
+  xlabel: Longitude [deg]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -180 180 -0.25 0.25
+  variables: I I_err N
+end data

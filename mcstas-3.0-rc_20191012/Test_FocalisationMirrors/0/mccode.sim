@@ -1,0 +1,32 @@
+McStas simulation description file for Test_FocalisationMirrors.
+Date:    Sat Oct 12 09:06:16 2019
+Program: McStas 3.0-dev - Oct. 11, 2019
+
+begin instrument: Test_FocalisationMirrors
+  File: Test_FocalisationMirrors/0/mccode
+  Source: Test_FocalisationMirrors.instr
+  Parameters:  Qmin(double) G(double) H(double) F(double) DET(double) lambda(double) divergence(double) BeamWidth(double) TetaMin(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: Test_FocalisationMirrors/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 3.0-dev - Oct. 11, 2019
+  Instrument: Test_FocalisationMirrors.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 44347
+  Directory: Test_FocalisationMirrors/0
+  Param: Qmin=0.0001
+  Param: G=1
+  Param: H=0.0001
+  Param: F=0.00066
+  Param: DET=8.2
+  Param: lambda=14
+  Param: divergence=0.1
+  Param: BeamWidth=0.05
+  Param: TetaMin=3

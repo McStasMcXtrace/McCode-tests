@@ -1,0 +1,72 @@
+# Format: McCode with text headers
+# URL: http://www.mccode.org
+# Creator: McStas 2.5 - Dec. 12, 2018
+# Instrument: ILL_H22_D1B.instr
+# Ncount: 1000000
+# Trace: no
+# Gravitation: no
+# Seed: 1570824068
+# Directory: ILL_H22_D1B/0
+# Param: lambda=2.52
+# Param: dlambda=0.03
+# Param: DM=3.34763
+# Param: Powder=Na2Ca3Al2F14.laz
+# Param: RV=2.2
+# Param: L1=0.25
+# Param: L2=3
+# Param: L3=1.5
+# Param: TRAS_X=-0
+# Param: TRAS_Z=0
+# Param: TILT=0
+# Param: THETA_M=22.11
+# Param: R_pitch=0.42
+# Param: R_ri=0.324
+# Param: R_ro=0.419
+# Param: R_h=0.09
+# Param: R_ttmin=-130
+# Param: R_ttmax=-2
+# Param: R_present=1
+# Param: verbose=1
+# Param: Inc_Cryo=0.02
+# Param: Trans_Cryo=0.85
+# Param: Trans_Spl=0.2
+# Param: Inc_Spl=0.05
+# Param: m=2
+# Param: mip=2
+# Date: Fri Oct 11 20:13:29 2019 (1570817609)
+# type: array_1d(20)
+# Source: ILL_H22_D1B (ILL_H22_D1B.instr)
+# component: D2B_Mono_Dx
+# position: -0.140569 0 92.8349
+# title: Hor. Divergence [deg] monitor
+# Ncount: 1000000
+# filename: D2B_Mono_Dx_1570817605.hd
+# statistics: X0=-0.000431329; dX=0.198411;
+# signal: Min=6.7302e-268; Max=4.83586e+06; Mean=1.58321e+06;
+# values: 3.16641e+07 155300 147096
+# xvar: hd
+# yvar: (I,I_err)
+# xlabel: Hor. Divergence [deg]
+# ylabel: Intensity [n/s/cm2/bin]
+# xlimits: -0.873453 0.87223
+# variables: hd I I_err N
+-0.8298111008 6.730199963e-268 0 5811 
+-0.7425269496 1.099586413e-151 9.312533793e-152 6819 
+-0.6552427984 3.711711118e-82 2.014681768e-82 6997 
+-0.5679586473 6.137946149e-20 2.474009139e-20 6360 
+-0.4806744961 8676.010389 393.6004799 6783 
+-0.3933903449 916494.5133 16143.61139 7372 
+-0.3061061938 2440508.133 38331.72757 7482 
+-0.2188220426 3663954.564 54929.71715 7903 
+-0.1315378914 3963184.067 57467.95031 8488 
+-0.04425374024 4835860.062 63466.80042 10158 
+0.04303041094 4772913.524 63012.16135 10213 
+0.1303145621 4049053.76 58067.08328 8532 
+0.2175987133 3641568.807 54592.68782 7953 
+0.3048828645 2443417.336 38161.77464 7536 
+0.3921670156 920856.384 16187.28012 7239 
+0.4794511668 7629.240731 357.6804501 6782 
+0.566735318 8.521981326e-20 6.341927653e-20 6312 
+0.6540194691 9.284699636e-81 6.861973642e-81 6264 
+0.7413036203 1.933207633e-154 1.263220065e-154 6632 
+0.8285877715 1.87760787e-263 0 5460 

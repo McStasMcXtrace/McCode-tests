@@ -1,0 +1,70 @@
+McStas simulation description file for ESS_IN5_reprate.
+Date:    Sat Oct 12 09:05:03 2019
+Program: McStas 3.0-dev - Oct. 11, 2019
+
+begin instrument: ESS_IN5_reprate
+  File: ESS_IN5_reprate/0/mccode
+  Source: ESS_IN5_reprate.instr
+  Parameters:  Lmin(double) Lmax(double) lambda0(double) Pulse_width(double) Num_pulses(double) GUI_start(double) FO1_DIST(double) L_ballistic_begin(double) L_ballistic_end(double) Length(double) SAMPLE_DIST(double) DETECTOR_DIST(double) GUI_h(double) GUI_w(double) GUI_GAP(double) H1(double) W1(double) H2(double) W2(double) H3(double) W3(double) H4(double) W4(double) H_chop(double) W_chop(double) H_end(double) W_end(double) ALPHA(double) M(double) F_slow1(double) F_slow2(double) F_fast1(double) F_fast2(double) N_fast(double) SLOW1_THETA(double) FO3(double) THETA_fast1(double) FAST_THETA(double) Gamma(double) Etun(double) V_HOLE(double) FRAC_QUASIEL(double) FRAC_TUNNEL(double) TT(double) RES_DE(double) port(double) cold(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: ESS_IN5_reprate/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 3.0-dev - Oct. 11, 2019
+  Instrument: ESS_IN5_reprate.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 45302
+  Directory: ESS_IN5_reprate/0
+  Param: Lmin=4.9
+  Param: Lmax=5.1
+  Param: lambda0=5
+  Param: Pulse_width=0.002
+  Param: Num_pulses=1
+  Param: GUI_start=2
+  Param: FO1_DIST=6
+  Param: L_ballistic_begin=19.5
+  Param: L_ballistic_end=17
+  Param: Length=100
+  Param: SAMPLE_DIST=1.2
+  Param: DETECTOR_DIST=4
+  Param: GUI_h=0.105
+  Param: GUI_w=0.1
+  Param: GUI_GAP=0.05
+  Param: H1=0.167
+  Param: W1=0.116
+  Param: H2=0.185
+  Param: W2=0.15
+  Param: H3=0.19
+  Param: W3=0.15
+  Param: H4=0.213
+  Param: W4=0.14
+  Param: H_chop=0.075
+  Param: W_chop=0.03
+  Param: H_end=0.042
+  Param: W_end=0.0215
+  Param: ALPHA=3.4
+  Param: M=3.5
+  Param: F_slow1=16.6667
+  Param: F_slow2=0
+  Param: F_fast1=0
+  Param: F_fast2=200
+  Param: N_fast=1
+  Param: SLOW1_THETA=120
+  Param: FO3=1
+  Param: THETA_fast1=180
+  Param: FAST_THETA=5
+  Param: Gamma=0
+  Param: Etun=1
+  Param: V_HOLE=0
+  Param: FRAC_QUASIEL=0
+  Param: FRAC_TUNNEL=0
+  Param: TT=50
+  Param: RES_DE=0.5
+  Param: port=30
+  Param: cold=0.95

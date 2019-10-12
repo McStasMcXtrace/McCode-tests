@@ -1,0 +1,30 @@
+McStas simulation description file for Samples_Phonon.
+Date:    Sat Oct 12 09:04:38 2019
+Program: McStas 3.0-dev - Oct. 11, 2019
+
+begin instrument: Samples_Phonon
+  File: Samples_Phonon/0/mccode
+  Source: Samples_Phonon.instr
+  Parameters:  E(double) DE(double) HDIV(double) VDIV(double) TT(double) OM(double) C(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: Samples_Phonon/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 3.0-dev - Oct. 11, 2019
+  Instrument: Samples_Phonon.instr
+  Ncount: 100000
+  Trace: no
+  Gravitation: no
+  Seed: 52099
+  Directory: Samples_Phonon/0
+  Param: E=10
+  Param: DE=0
+  Param: HDIV=0.0001
+  Param: VDIV=0.0001
+  Param: TT=72.69
+  Param: OM=-43.3
+  Param: C=8

@@ -1,0 +1,54 @@
+McStas simulation description file for FZJ_KWS2_Lens.
+Date:    Fri Oct 11 20:27:10 2019
+Program: McStas 2.5 - Dec. 12, 2018
+
+begin instrument: FZJ_KWS2_Lens
+  File: FZJ_KWS2_Lens/0/mccode
+  Source: FZJ_KWS2_Lens.instr
+  Parameters:  lambda(double) dlambda(double) FLUX(double) NGblen(double) Cblen(double) Clen(double) Dlen(double) Rlense(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: FZJ_KWS2_Lens/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Dec. 12, 2018
+  Instrument: FZJ_KWS2_Lens.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570826168
+  Directory: FZJ_KWS2_Lens/0
+  Param: lambda=20.15
+  Param: dlambda=2.015
+  Param: FLUX=1e+08
+  Param: NGblen=0.03
+  Param: Cblen=0.005
+  Param: Clen=20
+  Param: Dlen=20
+  Param: Rlense=0.025
+end simulation
+
+begin data
+  Date: Fri Oct 11 20:27:11 2019 (1570818431)
+  type: array_2d(128, 384)
+  Source: FZJ_KWS2_Lens (FZJ_KWS2_Lens.instr)
+  component: detector
+  position: 0 0 100.302
+  title: PSD monitor
+  Ncount: 1000000
+  filename: PSD.dat
+  statistics: X0=0.000775794; dX=0.207687; Y0=-9.97341; dY=0.548593;
+  signal: Min=0; Max=0.12745; Mean=0.000703053;
+  values: 34.5564 0.183159 47747
+  xvar: X 
+  yvar: Y 
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -3 3 -15 3
+  variables: I I_err N
+end data
