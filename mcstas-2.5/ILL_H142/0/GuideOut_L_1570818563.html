@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "x": [
+        1.5,
+        2.5,
+        3.5,
+        4.5,
+        5.5,
+        6.5,
+        7.5,
+        8.5,
+        9.5,
+        10.5,
+        11.5,
+        12.5,
+        13.5,
+        14.5,
+        15.5,
+        16.5,
+        17.5,
+        18.5,
+        19.5,
+        20.5
+    ],
+    "y": [
+        551150.6046,
+        95611249.7,
+        311161641.4,
+        391329729.1,
+        370347045.5,
+        298713107.2,
+        239770374.6,
+        180063297.1,
+        128333354.4,
+        95324400.16,
+        73145618.13,
+        54169355.47,
+        41726515.93,
+        33259980.89,
+        25108474.07,
+        18977497.65,
+        14999372.16,
+        11632298.34,
+        8425364.008,
+        0.0
+    ],
+    "yerr": [
+        259080.3987,
+        8224699.501,
+        14683229.06,
+        14148450.74,
+        10873151.57,
+        7510564.75,
+        5179504.634,
+        3489651.747,
+        2319677.311,
+        1584947.789,
+        1119474.541,
+        785125.8941,
+        568603.1942,
+        422299.7067,
+        308290.7396,
+        226970.758,
+        172392.6675,
+        130406.4841,
+        96602.31541,
+        0.0
+    ],
+    "xlabel": "Wavelength [Angs]",
+    "ylabel": "Intensity [n/s/cm2/bin]",
+    "title": "GuideOut_L [GuideOut_L_1570818563.L] Wavelength [Angs] monitor\nI = 2.39265E+9 Err = 2.65976E+7 N = 173381.0\n X0=6.91E+00; dX=3.32E+00;",
+    "autosize": true
+};
+  var plt = new Plot1D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="GuideOut_L_1570818563.L">Click for ascii data</a>
+</body>
+</html>

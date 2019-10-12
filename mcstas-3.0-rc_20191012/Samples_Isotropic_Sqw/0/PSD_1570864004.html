@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": -0.00999418,
+    "xmax": 0.00999466,
+    "ymin": -0.00999541,
+    "ymax": 0.00999229,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAByklEQVR4nH2V4Y3bMAyFP3oCZQNlA2WCOhukE3SEZpNeJzh0grgTJJ0g3iDawOoE7A+LMm3flYABieR7fBJhSuCHsrMI0wVF4Ax5hAz0PfAOEhQOA7N3bbIjfF7RkzAC40LPCCSg1H2KIHeF49tnhIGb/ibJwKMGk9MQ6jpWUiuEJk7yvXm7Jkx/ggxNiakycDCCTYEiI3f91fwz4etKlrE5S/1SBZovuwKFxYo84HU1woiehOjApsyO6Im8mUoAPQsQESbV+0Ea2JJiJRkdOG2VbU7wdVI6LUIA+kqUXRKVODmQj1tRi2kROk7z5vEJMDmwj3mlf2x/BrmBxno0qxxYmmKqI2srLJ03bAC6yPouQk2wxJF9t73i7PwF6FK/V/aXdTMM5IHZxc36Hjpu+259Ybnw6ADZFY188Pe8QydoI/MAKxIcwKvJm3UEBKXjMJBqplVNG8LM0tm4UWcF+wAcBzrIyFNXyiwR1hMnbch9QXkqkOu/fHyjaN+qw3oomI1OkR11BKKmNsbatDnLN4r2jSg5Bbi1xUslDnqp42u2/YCdrkwH4eEIAuv7ewAXQF7/HbDe4vwElPkJGPNM2AfgCRIVZOCjJ+Afzf/D1jQdw54AAAAASUVORK5CYII=",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 6.391189382e-08,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABLElEQVR4nK2V25WCMBCGv6SBaAfZCoQKWDvQDigBKsESdjuwA48VECswHagVZB9EiHOQy2H/lwQy+eaSnImCKiAUTiV+Cw7wzb8HYAALJICtQaWV3Ip6AxYFt4PipwF8kmnGHFjzDm2BdfjlrhwugpkRMMAGIOzYqwwA/VrwynGOUmMCDOACrNSx/dYAN0oukdEUUKxzwwBQoSYc0vkQKQMUNWj/DzB4MnwK2kUelsoB2kcepMxMRx7QY+mOrUuHutdqIkzaPAC9tHZGzLVdCIwjtIBOGC78nIP5BrQ99UM+RTHkeHUFrbYVuYDIQk9RDqiv6nnKayqSiRv7tKFrY+21uYcdWY+xEaNUBtjQhaNkx75ScuRzqq8eaRhpsLFCXeLT7gmIG65l+An4A0SNWAin5mSwAAAAAElFTkSuQmCC",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -11.721539623245478,
+    "cbMaxLog": -7.194418313363823,
+    "xlabel": "x [m]",
+    "ylabel": "y [m]",
+    "title": "PSD [PSD_1570864004.x_y]  Intensity Position Position Monitor (Square) per bin\nI = 0.000018987 Err = 1.89873E-8 N = 999969.0\n X0=3.14E-06; dX=5.00E-03; Y0=1.18E-06; dY=5.00E-03;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="PSD_1570864004.x_y">Click for ascii data</a>
+</body>
+</html>

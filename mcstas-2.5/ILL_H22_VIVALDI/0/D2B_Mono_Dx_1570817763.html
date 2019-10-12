@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "x": [
+        -1.659500786,
+        -1.483979147,
+        -1.308457508,
+        -1.132935869,
+        -0.9574142298,
+        -0.7818925908,
+        -0.6063709518,
+        -0.4308493127,
+        -0.2553276737,
+        -0.07980603461,
+        0.09571560444,
+        0.2712372435,
+        0.4467588825,
+        0.6222805216,
+        0.7978021606,
+        0.9733237997,
+        1.148845439,
+        1.324367078,
+        1.499888717,
+        1.675410356
+    ],
+    "y": [
+        0.0,
+        0.0,
+        1.123146984e-154,
+        7.820599449e-38,
+        672.7366247,
+        959724.6992,
+        11974829.61,
+        67632922.97,
+        281113354.7,
+        661876097.9,
+        647178183.8,
+        257029252.6,
+        55693749.76,
+        9099353.537,
+        691810.4205,
+        112.2692786,
+        9.82406621e-45,
+        1.152916635e-174,
+        0.0,
+        0.0
+    ],
+    "yerr": [
+        0.0,
+        0.0,
+        1.123320125e-154,
+        7.22257985e-38,
+        103.9288928,
+        28170.03425,
+        198158.13,
+        904456.6861,
+        4911546.399,
+        11577364.96,
+        11355406.23,
+        4285679.195,
+        745897.6527,
+        161352.089,
+        22123.74039,
+        21.82012429,
+        9.813069526e-45,
+        0.0,
+        0.0,
+        0.0
+    ],
+    "xlabel": "Hor. Divergence [deg]",
+    "ylabel": "Intensity [n/s/cm2/bin]",
+    "title": "D2B_Mono_Dx [D2B_Mono_Dx_1570817763.hd] Hor. Divergence [deg] monitor\nI = 1.99325E+9 Err = 1.75186E+7 N = 192937.0\n X0=5.05E-04; dX=2.00E-01;",
+    "autosize": true
+};
+  var plt = new Plot1D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="D2B_Mono_Dx_1570817763.hd">Click for ascii data</a>
+</body>
+</html>

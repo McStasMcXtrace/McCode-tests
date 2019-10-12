@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": -5.0,
+    "xmax": 5.0,
+    "ymin": -10.0,
+    "ymax": 10.0,
+    "img2dData": "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",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 447519.9389,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAABkUlEQVR4nO2aUXHCQBRF73b6T3CAhEVBkRAcBAdUAVRBcEAckDqgClgHxAFxkGrgzBsSXvb837l7hs3y2BCketCM+Bh7Aa8mC3snC3snC3snC3snC3snC3tndsKfJBSHjcqwtl7LUxxVoxz6hEv9orIpgISPYWG9jue571GMPcM1KzPlh8WYcMXKLCnOPcoh4aJgZZZsdEU5JHzRFpVZ0jYlyiHhTitUZsruhGJIeKczKjMFHpzs0OpRypTN/opybztaRiWUQ8KxYGWW1PpGOfa1NIE9HXr2huhtT2m6y5Aw3U6WpCaiHBJeqUNllgwKKIeE1/0NlVmyrS4ox7Z0Mf6WblWiHBKmg7spicWQcFJkbYbEmFAOCf/pC5VZckvsTg0JN6lCZZY0ka2BzdITuMOr1KAcm6UPCZVZEpYzGy31YDEk/OiWrM2SV95a0l8qlhSHHuWQ8C2O+5pFkvrQoBybpZfjz9KroUQ5eKd1QjErFpK60KJsyH8udU4W9k4W9k4W9k4W9k4W9k4W9s7shP8BSatINba3r7gAAAAASUVORK5CYII=",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -237.64946923382354,
+    "cbMaxLog": 5.65081238973313,
+    "xlabel": "X position [cm]",
+    "ylabel": "Y position [cm]",
+    "title": "PSDmon1Chopper [psdchopper.dat] PSD monitor\nI = 2.68152E+8 Err = 852668 N = 369141.0\n X0=7.98E-03; dX=1.45E+00; Y0=-6.25E-03; dY=2.86E+00;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="psdchopper.dat">Click for ascii data</a>
+</body>
+</html>

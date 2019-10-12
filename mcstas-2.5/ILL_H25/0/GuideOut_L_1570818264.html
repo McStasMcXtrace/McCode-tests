@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "x": [
+        1.5,
+        2.5,
+        3.5,
+        4.5,
+        5.5,
+        6.5,
+        7.5,
+        8.5,
+        9.5,
+        10.5,
+        11.5,
+        12.5,
+        13.5,
+        14.5,
+        15.5,
+        16.5,
+        17.5,
+        18.5,
+        19.5,
+        20.5
+    ],
+    "y": [
+        320565267.5,
+        182675345.8,
+        81865060.98,
+        55365315.34,
+        43684492.92,
+        34107557.75,
+        23487287.22,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+    ],
+    "yerr": [
+        8608660.675,
+        3327381.174,
+        1094457.138,
+        589130.7031,
+        397881.5825,
+        276122.2712,
+        182258.2124,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+    ],
+    "xlabel": "Wavelength [Angs]",
+    "ylabel": "Intensity [n/s/cm2/bin]",
+    "title": "GuideOut_L [GuideOut_L_1570818264.L] Wavelength [Angs] monitor\nI = 7.4175E+8 Err = 9.32641E+6 N = 171075.0\n X0=2.85E+00; dX=1.67E+00;",
+    "autosize": true
+};
+  var plt = new Plot1D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="GuideOut_L_1570818264.L">Click for ascii data</a>
+</body>
+</html>

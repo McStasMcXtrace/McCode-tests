@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": -0.591071,
+    "xmax": 0.589154,
+    "ymin": -0.592812,
+    "ymax": 0.592834,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAA1klEQVR4nO3UwW3CMBQG4C9VB/AGDRMQNigTFDYgE5RNKBNAJ2g6AWGCZIN4g7oT0EN6NRJVbuWdbFn/p1/v4ILdxYTzMCV2B6eZx+xLuVUO0VDPpEPQq0Sl2oEiormx4YbBjJ5QJ+eitWmPTpZI2VgejBxtxH48z2HJ3itVdSsYmBMk5ZZ0ClZf6Pg4rumzXg5MYNU0RMIi0eKdorzI7e8KiG9UxMbY6DwW9wyrP4BP2BMuge733rD1RpVNXQH31LuD0Cb9YmyWuuDFJ33Kxor7b/MPwB8CQz9lJ6okywAAAABJRU5ErkJggg==",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 86107.68722,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAB3UlEQVR4nJWT0W3bMBRFjwT9+2WC0hOUnaDqBFIniDxBnQliTVBtYHUC2xNEncDsBGYmEDPB6wcp2whaR77AAwHy6fBeksoQVY6wM9+p93v4AwSiPP+WAQT4FEdfG5b9CVYdwEmtHnWntWqDao2qQVU+KJNqh+oRbXSrWFXYqZb6EmFlagYdQU9pvK5pTknAOgJFR6VULWihqg/niCHEpOF9zCuFlNr4mBxACIStkHFSVTJYAQ5cAHcDNkkAm8DsoK03dPwgX5vu3DEkWJhZUy9P8EhPQCge+RVXhsvOAXib6RKiTYOHrCNveY4rZbQfZoAmTU4RaNmw0TeKZ1owEPYXd3cDDQQWdP2afMUWHEh9ecdz4iZjUXuoOECA3Dkbt9lffoDFHS4FoAGLw64d+dp2uMaCiQ7lv5/ecDjAF444b8krDtjBpQd1/xkKQAUnluAh/9a/3H8b7/UKPkXMseCtgTKuSepZfFDClao4NE1PUdohPkrOqc9xbkmIv94EHijps4YCol3jPSJgwnzg2cVvCKUAHYXBR+BXDx7Ez4caQzyqBTz5n7CFon9oMOMrZTnEF+1AXKSdXQiXK512MSlzleZXwODJYFRGYZQHpE3dfmbmz0Ad4ZlXWHb8Bd/Q9+pDN6FtAAAAAElFTkSuQmCC",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -256.8188404044832,
+    "cbMaxLog": 4.935041924603487,
+    "xlabel": "Hor. Divergence [deg]",
+    "ylabel": "Vert. Divergence [deg]",
+    "title": "GuideOut_dxdy [GuideOut_dxdy_1570817711.hd_vd]  Intensity Divergence Divergence Monitor (Square) per bin\nI = 3.01445E+6 Err = 81064.6 N = 27654.0\n X0=-1.21E-02; dX=1.06E-01; Y0=-2.54E-03; dY=1.32E-01;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="GuideOut_dxdy_1570817711.hd_vd">Click for ascii data</a>
+</body>
+</html>

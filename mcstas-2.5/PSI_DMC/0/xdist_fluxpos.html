@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "x": [
+        -0.009090909091,
+        -0.007272727273,
+        -0.005454545455,
+        -0.003636363636,
+        -0.001818181818,
+        0.0,
+        0.001818181818,
+        0.003636363636,
+        0.005454545455,
+        0.007272727273,
+        0.009090909091
+    ],
+    "y": [
+        3241247.532,
+        3149678.459,
+        3104665.076,
+        3096894.273,
+        3155448.091,
+        3247089.178,
+        3360078.019,
+        3266521.698,
+        3205643.191,
+        3233826.363,
+        3225720.371
+    ],
+    "yerr": [
+        85673.04802,
+        84579.59776,
+        83939.79502,
+        83472.16123,
+        84668.65799,
+        85646.03972,
+        87451.75689,
+        85815.26604,
+        84750.87658,
+        85120.73204,
+        85215.6141
+    ],
+    "xlabel": "x-Position [m]",
+    "ylabel": "Intensity",
+    "title": "xdist_flux_pos [xdist_fluxpos.dat] Linear PSD monitor\nI = 3.52868E+7 Err = 282321 N = 78528.0\n X0=5.70E-05; dX=5.75E-03;",
+    "autosize": true
+};
+  var plt = new Plot1D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="xdist_fluxpos.dat">Click for ascii data</a>
+</body>
+</html>

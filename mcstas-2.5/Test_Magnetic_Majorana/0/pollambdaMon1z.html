@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": 0.0,
+    "xmax": 30.0,
+    "ymin": -1.0,
+    "ymax": 1.0,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAAGQAAAAVCAYAAACwnEswAAAA8ElEQVR4nO2YXQ2DQBCEp1WAhEpAQiWchEqohHNwEpBwEpCABCQgYfqwey2tgc7DfMmGwLF/+RIeuACNMDJc/z2A+cZCxLAQMSxEDAsRw0LEsBAxLEQMC9GjcURnYQfIO8gZZAU5gTsi2OOeG3gA5J7v1riuQORPp9hANpAF3BDBJevdss8D5BF16uiPrLvkdQb5jFhwOr/n85o1n5+ZWbL3LeuPvUrMtY8a0+dsQezBBnLNXj3zeubWn7wScx6IXdaxW83dWs6b+7/7FnDjzLODi3+daOFPlhgWIoaFiGEhYliIGBYihoWIYSFiWIgYL5Hv4BmQtHzpAAAAAElFTkSuQmCC",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 1.161131017e-08,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAAGQAAAAVCAYAAACwnEswAAAA5UlEQVR4nO2YQRHCMBBFXxkEREIlREIdUAlIACUgARxUQiVUQiTEARzITgMG+If/LttuNsmmb6aHDHB7YWQ4/LsB842FiGEhYliIGBYihoWIYSFiWIgYFiLGsX95zVfuC0xABUZga88AZ2AB5gRL/cStQmo1WzcvmFuutPHILV1dAvIIpcATOLX6zL526epjbm5jqeVXPr1HH7k7wzTCVvb6nOBR9/qxO0OcNQF34PKzduwX82hx7WLsXbsc7N9yih4nGNYbweCrEy38yxLDQsSwEDEsRAwLEcNCxLAQMSxEDAsR4w2qJzVHmSCpoAAAAABJRU5ErkJggg==",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -9.204434270675828,
+    "cbMaxLog": -7.935118773586282,
+    "xlabel": "Wavelength [AA]",
+    "ylabel": "Polarisation projection",
+    "title": "pollambdaMonitor1z [pollambdaMon1z.data] Pol-wavelength monitor\nI = 8.79645E-7 Err = 8.79645E-9 N = 10000.0\n X0=1.50E+01; dX=8.12E+00; Y0=0.00E+00; dY=0.00E+00;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="pollambdaMon1z.data">Click for ascii data</a>
+</body>
+</html>

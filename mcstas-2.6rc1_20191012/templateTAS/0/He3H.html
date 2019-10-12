@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": -2.54,
+    "xmax": 2.54,
+    "ymin": -4.285,
+    "ymax": 4.285,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABbElEQVR4nJ3U3ZHTMBRA4Q+Gd0QFiArWVLCmAtwBuxUkqYDZCpJUsFuCqQBvB6YCRAe3g+VBzs9M1oFEMx5L1ujcI90rv2H94qSl6WnpErfT8Bd6lAEFcbLy7SnsCJoS3yrX3fS5eBX0H8AgT90G4yHOYeIiYK7rGjq9dbPiRrWt1CuAI20eLGwthw3djhXXAIOWkLSfB1pyKnydgs1sewaY9pLfPdT+Fxa2R4avW84Ag5QnG/xE4Y+PR5yLgKmaRE3I04cKXMdK7orrshzktohp+w/QU4Z8LsnngKHIUoS7Zb0sOvxwLsnnzrBqjKlhQdtNUzfzsPOGTX1lpd7fW4bUToXN3L7ngYUkJCFWhwB1u3GFYSGekl5ngHuetdOdTrPQ+TOshefeo+Yl88h7cfizXWaYKnBDRPKp/23Vrq2seUaMlwJ3lhhNxVxj7H9jM+3dPCztRcuYbWJZ7cajYJcZokQt5O1u7J9Z/gvhrHK5seXYQwAAAABJRU5ErkJggg==",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 4.718532893,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABr0lEQVR4nIWT3XXbMAxGr3r6HmxQZoKwE1SZIN6g7gSVN3AmkDZIuoE8QdQJykxQjoBO4D6Af7ZPJJxjS4SEi4/Epw7GMzleBhD4s/uKnwOcgAWI6bkAHvgJy67nMb7B/UQbny9WPyb8uccTbB1BE0wBl6ECglryKj5dJxQhWmkp0MQpixN4Ajs/bwCPA56A02jbTCIUTLNSt6/WnPOwBpyYu4iKwLvJyoz8K3IFen5DN60AAV4GRNWKkpqYGApo7jCDcndTfgMc94e6Leq5x+YegXzMm8BDGM0aIan5qNZTh7cGxGHe06rwvVEbs1ySdTaBMUHlYuf8o/GimrqH0moFOPpDgUrKfSErApH67iGMG8D9wC++m4xGnkCdp1I6Hf3zBvB1ome5ATaMknYhsvBtAwgs9NV4DbBVm59p+9JHwB2nJKHMpgxEMksheG+2eRtWgH8HlDue3bHQHPDQCNb052Ngzys8TivA+4mI44nZRust3Ztg6yEpQTqeq7gEnofq/nQRLv2YpUbnbICrwG4idMvNJ+WSWJcXyZjTMmwAUyhiBAFxjZnz1V1X1PgPh2yR+UwJySoAAAAASUVORK5CYII=",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -4.015645289730841,
+    "cbMaxLog": 0.6738069868718115,
+    "xlabel": "X position [cm]",
+    "ylabel": "Y position [cm]",
+    "title": "He3H [He3H.psd] PSD monitor\nI = 260.432 Err = 1.65642 N = 54893.0\n X0=-8.15E-05; dX=4.34E-01; Y0=-4.69E-02; dY=2.05E+00;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="He3H.psd">Click for ascii data</a>
+</body>
+</html>

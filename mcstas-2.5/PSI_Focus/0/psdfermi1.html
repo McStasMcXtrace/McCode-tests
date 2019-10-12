@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": -3.0,
+    "xmax": 3.0,
+    "ymin": -5.5,
+    "ymax": 5.5,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAEA0lEQVR4nMWX0VEjMQyGPxjeTx3gDuIOcAdsB+QqgKsgpAKggoQKLlSQTQUsFeCrIKYC3YPkXWcP7hXP7Hgty7/0y7K8ewYPyje08+8w6oaF6Zm3Kgszna905zif6Vm7+FqpNfLV3FxWPtEJQP7McJ1owaR52rkADD4OjTz7uDTGS+OMMHfsYgJsFwqECDkDyWQizbows9MCNxgjqdwQMpAzeNfJ48bDKCbaAdGfyeEJs8rE+4HTQGWA3icnADdckSpbJ1r9uGrek4NXw28uX7hzL43RvnWuvpwwFgjucprsy6ZQdu5IBKGwYs0vHghkhEImUAY5TYmKf/DxSLiMITkDVQKT0YW/x4ZlhCQ9iQNX9BSENStWrCkIz9xQEAKZXe6miAi2VS8+7vG8EYCjIqokVR5UuVNlr8qr6lI3yrvqg95pp79Vj+hRRY8qeqcPqnt0r0lfNeqrRk2616iviqpyVOXdsZLjRtVq75wgUwIGZ+wsMwEKRAaueYEtFATpCw/lF2QIZAKZgcgNz0QGQs3iyroAl0yt1JKZmxC/2YKOnRmOEzjizjw54AHCLiN9Yfm45Y0FtzzRsbMcoSCxQAd81Agb0fPKbu5ZQchDINETemPEG9aL79eCKYsD3PJEZED48L5Y4mXHrZEVOB+NeggIILFwyxMp9mz4SUnCXX6EG0j0ZtAB8naKYOjzmMEjc5iOIxh74HysHc9YVgOlmFbiwBO3SClsw5IhRgt1wrI12TI6i9pjurPoYWG+4jARqmwHfI8j/5TqIJlnbvjh53SQyBsLIoOxWDNuzy2c3gEFVuWeNyJrVib74LTK0d7HgbEaZQLXvLBki1AYiFzyxxZvgWszPEhENtPajh3FT0nmkqE4/R9YLlTDpSZXDUXPWDnXrFizYsDYfiBsw3IMZT1KdFBEWHNPyNlxxbZk4PRIFcZEvKgeAHaUnH2OwTIYy2Tbs95Aoj09iW7YkVNgyw1DWIxnuCBWMiPwh6ZymYkLeqdbWW+xLNxBnxKd7AwEi4Id41sArjjwM21YuMdXnox5CLjHloTZcWNlWQC8jMVa0lRZqnI/lb2keyunPo76qryrBn1X0aONNzbm1UvvXpXOcZIqQa00865wVL+dCki020MESoYU4Ga2DVf+3nnY4mzvCpbBfUushjfTXNCcwV4ZryeZtGOYjlj0kMF0bRZOb6DAaZImsG1swytY/MdPn9xMuANDBgmN18Wi0TOd2+Dyui43NPvA9DnSGrf5M/jdfNBXkMaBsZhXkPpe5WWmU5twWjVKIxPOYPOfP4nWgTzzfj7fymvfOl9ot/LiVGmuXFv5ZFz7wL/fza2Rz/BPPujnC9t+Lm/b3Oj/dCfZt/07/QVnHSNe0mmzIAAAAABJRU5ErkJggg==",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 1.708759711e-09,
+    "cbMax": 76926.60208,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAACgElEQVR4nKWX0bHaMBBFjxn+n0pwCXQQpwM6CKng0UHogEkFJBVQAqQCXge4A5QKbj4kmX2LbMxkZxjJu2f3row/VsBVR62lE9IGbXSQbkgd0g7pgrRFW+11VStukjYkvkM77aQj0j7la5fYkzpxknRDXCWtE7vXVjqgRhfEd6AFAtCT7AfwM/vPwAn4CnTABxAzG4B34E/O+wKsgN+Z+5ZjMe9Jz40Cotgqw2TBj7TGPtWPQAg5Pjjyc2m45Bbfyhwo5MaBRiACxJiLxlSvWNl7HYwfEyvNxWieW5ccoLmCCmCtJmhzLR8c7/MC6cCtCTSXCeGav+bzcV+jrTDLWnI0Py80JeoFbS1vzYX0cfngXLHgmDAS9+tySqQmGHl8nT5uRSP172P5qqgVL8/hgaxz1r+YEvVrrYmyrzFT3GIMgulXOiYyh3sQnmt/3VprYJZwnAl7e5sQf9bMwjoC8/7ft5lCtRplvwgVUQ/9r4WK79OJ59rc11sTHIRfgYu9jexfaeJBODpwTiPPhGLFv/AioQJ5/5iQZ8LICubj8nCx+EIjcSIW+Pw2hxMHB/ku/Wq5Z4znI7CsQS33EcrGn1lNZCy2rAWmCsURLj559nWaax4EAvdBsCTZtR0RHWs2VgTturRgKe4Teh4LjvltXvmV2j338TiNt8ai2/tE27XncfGSGzAFWmAFy+GYq0SE8z0r9J+zW8z8XSr3DPP4w4zT5pm6Jw3yvxhuLI1aRGe6KceK3G8C0fhyg5yBI+maczYxy31wv97E/Osyoz3SGumGTuqkA5LyZe2WYmsdhz1c0iVsm+I3BemKDtqIo3TUWp1O0h6x1cDcFESrdLk7oH93B2BKHXYqOwAAAABJRU5ErkJggg==",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -8.767319004291434,
+    "cbMaxLog": 4.886076549667736,
+    "xlabel": "X position [cm]",
+    "ylabel": "Y position [cm]",
+    "title": "PSD_Fermi1 [psdfermi1.dat] PSD monitor\nI = 1.46353E+7 Err = 54666.9 N = 323218.0\n X0=-5.51E-02; dX=1.37E+00; Y0=-2.27E-02; dY=1.77E+00;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="psdfermi1.dat">Click for ascii data</a>
+</body>
+</html>

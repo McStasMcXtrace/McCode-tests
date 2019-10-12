@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": -5.0,
+    "xmax": 5.0,
+    "ymin": -5.0,
+    "ymax": 5.0,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAsklEQVR4nO2UbQ3CMBCGnxEEdApWC3MwHAwJSEDBJMwCEupgOAAJQ8EOBePHjRRYWj7Sf+xNLnd5L3n6Jpc0g3YkoVYpYQswjdbhlYWqBvti98DRTcNc4YRVzdDljGRaojV0uT70dUIDZiscHFyAAu3NTuapP0poAAvyYBV3P6L4UcSDLJoQiUMjRwF6uPpRE75RGHgGORmavTylktZA+RPQkW8GfwCZeqm7kLLlt/kD4A1tPCw9iO4zMwAAAABJRU5ErkJggg==",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 2.541548905e-06,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAoUlEQVR4nO2U0Q2DIBRFD43/dQTcwG4AG7STOUrdADYonUBGoBPYD21CrBhp+Kv345Hcl3seeSQI6EYK6lQSdgDLqEo11Nhieg1hNj6nBH01WOHygMZq/A3iWAAUYIxG0OUB8RPsubAdINcvB2ztMKRD1L8AFzrvHLYJjHOvnYPTO2ynB3Df9lwygY0aGO4N0kdmDUi4qAdgV3Pi+G3+APgGtUYibbGKS7QAAAAASUVORK5CYII=",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -8.07375616181669,
+    "cbMaxLog": -5.594901529098286,
+    "xlabel": "X position [cm]",
+    "ylabel": "Y position [cm]",
+    "title": "psd1 [psd1.dat] PSD monitor\nI = 0.0000897234 Err = 2.40096E-7 N = 237480.0\n X0=-2.10E-03; dX=9.14E-01; Y0=3.40E-03; dY=9.14E-01;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="psd1.dat">Click for ascii data</a>
+</body>
+</html>

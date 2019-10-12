@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": -5.0,
+    "xmax": 5.0,
+    "ymin": -5.0,
+    "ymax": 5.0,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAABuUlEQVR4nO2Y0VHDMAyGv3AMoE6AmaBhBEZgMlZgg47ACGQDzAQVE5SHyNhuw5HId20e8t/l7NrK6TvpJDvt4PXEinV3a4D/tAG2agNs1QbYqtUD3vtfFXvmSO1ZLidgj5x6DrwAIChawCqCGJCgPPOOdgMwXAtQOA473p7SL4i2ExhjFYHexuPHjo7PawLymzGx6TfwYEDBTGIyk+KFhfIXSYAvmwojXJprNmlhA5qKBPYTvsXGyHlpCB75I6hFhJgOkmLpntqcKSegAGOUxPwLNWwgF0sLpTPF2Vm8WMnQfVqPaXW5mlKchsBYxQkhkluPQi5rh5qqmAJkT53uNArcoooF9NLvQJ3Iev/cep6cEdSqUQdyqqWwksLcK3+KpT7ikvRsLm4Ho5oAE0C0JeUPqMDU6iz5+6DWK0rRmMnbWlksl78Pmr9AneZIrl5lbD/FjWGx/GexjH4HpttcoAAXuP5tRnPVJtcJKDCCq+1fVNIC+QH72q9Q3wPF5gpNReJMcWQnRw6nfOWPBKS6+CdA4ZFXvGHs/P9uCcuiEl1eGi6sStMRMVOr/y7eAFu1AbZqA2zV6gF/ADaBeLCQO0UAAAAAAElFTkSuQmCC",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 44054639100.0,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAABFUlEQVR4nO2Y223DMAxFj4L+l9nAI6QTtCtkk2ySrNBJ2m7gbuANzEyg/DgwECAPkihrBLo/fl3iHkiUIbvAvrJgrf4b4J4aYFQNMKoGGNXiAV9cVeOOSgGdroX5nOlc5mcqwrof4e2QA1i/C8MWhgf9HUr9KhT25izfCA7QA78P2hXoflxJ/h5Ua8GrL8cNKAavekNIWsUCcPTVpgBqoNYHaBwNgeQeNIYp5E+xGrziDSFpFUeU0oNAfg+qwW7xXupJp9gogeRV/Gw9COS/B8VakL2b0T/yXsoHKLYRFHBPsW9HvYENM6RyG7gDeHcl+QDLZ2Wsaz4Gvf7hdL43HUtfgYM9q/1+C6oBRtUAo2qAUS0e8ATMOjX2a1d/0wAAAABJRU5ErkJggg==",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": 6.275287527363982,
+    "cbMaxLog": 10.643991647809317,
+    "xlabel": "X position [cm]",
+    "ylabel": "Y position [cm]",
+    "title": "psdStart [psdStart.dat] PSD monitor\nI = 9.42362E+12 Err = 9.42362E+9 N = 1000000.0\n X0=4.51E-04; dX=8.41E-01; Y0=-1.05E-03; dY=1.39E+00;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="psdStart.dat">Click for ascii data</a>
+</body>
+</html>

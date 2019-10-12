@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": 0.0,
+    "xmax": 1.5,
+    "ymin": -10.0,
+    "ymax": 10.0,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAA7ElEQVR4nO3YwU3DMBSA4a+IOx7BGzRs0A2ADegG3aBigoYN2ADYACag3cAjhAngYJAizlCeqvdJkRPLjvwrtyzYfTgBZ/99gN+SIdFkSDQZEk2GRJMh0WRINBkSTYZEkyHRZEg0px5SZled3ZvN/Vw/H4/vvA8rVgNX2FA1xeStXfYzj7hjmrjH9hqPeMIBW7z0Nz2sbh0sjfsNN2jjUUL6FylDf6poTIqqabXaG3jGjlLY1q+dY1/rAmu89umDpeKdCa39ecC3Rf5pDCZDosmQaDIkmgyJJkOiyZBoMiSaDIkmQ6LJkGgyJJpPA+gl8s7iLOEAAAAASUVORK5CYII=",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 1.241366602,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAA9ElEQVR4nO3YwU0DMRRF0euIfUwHLiElTCpg6ABKSAWUkHSAqCBDBUwHpAR3gFOBWWSQrIFlEp6id6SRvr43/24nwLZyAxb/fcC5OESNQ9Q4RI1D1DhEjUPUOESNQ9Q4RI1D1NxMyN188VHf6coIGfIqkcYMEYiQUyKRYYSh6wEoRHoG7sML9WvDY9xzYMUrz6zDw7U6CLCt9WkDA5QCuXk8nO6nTB/AEVgCqdnF2Ryn95Qg9BV2u3Pf/cvis76dLm4OYTrsr3nZ7H7kZo7NTDd7vKDgP41iHKLGIWocosYhahyixiFqHKLGIWocosYhahyi5htSmTBs/PD2GwAAAABJRU5ErkJggg==",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -4.99723903963288,
+    "cbMaxLog": 0.093900056852325,
+    "xlabel": "Q transfer [Angs-1]",
+    "ylabel": "Energy transfer [meV]",
+    "title": "Detector_QE [Detector_QE_1570867391.U1_U2]  Intensity Q transfer [Angs-1] Energy transfer [meV] Monitor (Square) per bin\nI = 31.8637 Err = 0.415269 N = 6975.0\n X0=3.95E-01; dX=1.58E-01; Y0=4.98E-03; dY=2.06E-01;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="Detector_QE_1570867391.U1_U2">Click for ascii data</a>
+</body>
+</html>

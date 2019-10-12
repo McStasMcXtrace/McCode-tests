@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": 0.0,
+    "xmax": 10.0,
+    "ymin": -1.0,
+    "ymax": 1.0,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAAGQAAAAVCAYAAACwnEswAAAArUlEQVR4nO2Yyw2DMBBEHxH3uIO4NUqgEkpIa9ABHSQXg9arfI7MYd7JWs2sjJ7EwQMsL4wMt6svYHosRAwLEcNCxLAQMSxEDAsRw0LEsBAxRoAn8znYgEc770BJhdLmvyjAGrI17Is7d/p99cPufIeYj3ty7lsv9nMud/5lCv135u4G3NPsyNbWPWYAEwuDn0608C9LDAsRw0LEsBAxLEQMCxHDQsSwEDEsRIw3A9cfR8SAVlgAAAAASUVORK5CYII=",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 0.0008079543012,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAAGQAAAAVCAYAAACwnEswAAAAfklEQVR4nO3YsQmAMBgF4Rexz6yZJLM6gTYqCIqgRa64rwmEBH84SGFJ+hphTKMH0JVBYAwCYxAYg8AYBMYgMAaBMQjMnCQ97dxYktQBgzx99+s8X+79meHuzLKv9eXMsdfSU/x1wuKTBWMQGIPAGATGIDAGgTEIjEFgDAKzAbzlD0e/Hh2/AAAAAElFTkSuQmCC",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -4.114306445513459,
+    "cbMaxLog": -3.092613202712958,
+    "xlabel": "Wavelength [AA]",
+    "ylabel": "Polarisation projection",
+    "title": "pollambdaMonitor1y [pollambdaMon1y.data] Pol-wavelength monitor\nI = 0.0768972 Err = 0.0000768972 N = 1000000.0\n X0=5.00E+00; dX=2.83E+00; Y0=0.00E+00; dY=0.00E+00;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="pollambdaMon1y.data">Click for ascii data</a>
+</body>
+</html>

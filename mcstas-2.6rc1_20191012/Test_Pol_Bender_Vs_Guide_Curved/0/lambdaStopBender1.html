@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "x": [
+        0.25,
+        0.75,
+        1.25,
+        1.75,
+        2.25,
+        2.75,
+        3.25,
+        3.75,
+        4.25,
+        4.75,
+        5.25,
+        5.75,
+        6.25,
+        6.75,
+        7.25,
+        7.75,
+        8.25,
+        8.75,
+        9.25,
+        9.75
+    ],
+    "y": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        5.458999891e-23,
+        7.057272356e-18,
+        3.636897529e-14,
+        9.091770157e-11,
+        2.640763626e-08,
+        1.917633668e-06,
+        2.297738774e-05,
+        9.007401064e-05,
+        0.0002078013781,
+        0.0003848684062,
+        0.0005858360884,
+        0.0007657986289,
+        0.0
+    ],
+    "yerr": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.194163838e-23,
+        2.178040581e-18,
+        8.284859548e-15,
+        2.800475186e-11,
+        3.981218295e-09,
+        1.56944265e-07,
+        9.210595895e-07,
+        2.189453889e-06,
+        3.67467954e-06,
+        5.26127174e-06,
+        6.764550205e-06,
+        7.986935861e-06,
+        0.0
+    ],
+    "xlabel": "Wavelength [AA]",
+    "ylabel": "Intensity",
+    "title": "lamStopBender1 [lambdaStopBender1.dat] Wavelength monitor\nI = 0.0020593 Err = 0.0000125059 N = 137508.0\n X0=8.65E+00; dX=6.16E-01;",
+    "autosize": true
+};
+  var plt = new Plot1D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="lambdaStopBender1.dat">Click for ascii data</a>
+</body>
+</html>

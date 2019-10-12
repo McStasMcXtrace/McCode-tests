@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": 0.0,
+    "xmax": 1000000.0,
+    "ymin": 0.1,
+    "ymax": 19.9,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAAIAAAAAUCAYAAABFyTWeAAAFI0lEQVR4nJ2a3WHbOAyAP3WBQyc4ZIIyE5Se4JQJqkxQawLXE9idwMoEUSewOkHYCcJOUG7ge4Cc9q2A8WD5gZ8BUSD+rA4OFwJyGUa6+cLl1NE9HHxMGunKmcvzxs+8jmz0TEWp3ewgEpfDBoBufAX+zvQXpZA4dXdscNqlI139xeXlPd29k9mOdMczl8OGbvQzd4dXGkLrJgcxcHl5DwLd3S/AwZy2vHNZ86f8B7QCLcBkQDJLn91IVSVRSBQnIUzbgbpVQHw6UDPv2W0Wy2sGCjz5Gf4NrP1DalNaEff6lmS1q/qAnhscAEAS/Aisn4FWyHVxI7qvTAwBJY2hm9BjhSQuokwJodEe/FrsHpInwPwWBSSz+ptPCvQSUQIyN8ou+ddLu8EBFDv9S4DJdqmqfuYfUCrzvncCCU6/dblELAqIVwXQVIAKu4CeJyxqRvScxb6olyjwFdK+AMmnY5EbHKCsH58CzA5A0bH6mdFOaNoVJ9BYhkxNCqX5kIRFgNlvlhwb0Lx7bFLMPjZ+ZOqafWleQuHMmm6Ki0i5xB2gDWIKJAAtAJV6UD/zAmTYsfetFyWzoFS8G0CFWhQ5+c3iG0CCMcCcAdQilFO2W1hC4axa6h/A+3DKPsUdQGhAIpieAbX87JV7SFp4GJ0VWqv23Ct4NyDlgqQWO83X0F8DzB1Ac/slAB+g7YWkXkhghobgvv/dDRHARCFQOFkeK7EiSKHUhLM7AxargvVN4V+l55s59L3frJoVaLEIeFptqgHmmz2g6t60BHo9oM1FlOmGCGBeXAMP5mpPCm3aUu0q7iSYkMe22udT9KXu7MQE7kUfq/2+T4XJE0CJFahrjaWBlo498BjQkW9pAxNcw41X6qBAXU+PT/IWqNCq+A07sR7+xUdoIbPEevoThItAsDbQZ5ZJtYdfilPRvJgTCCDqQpLekgKW9br1I/pQAUGn6mbKEfo8I9qcRGPu3jT6dEzJQqzfrDWaVfjoR5ZztholImotak6LExAb0hWs5XRIqbekgI0p+73ZHk0ANXRq0gEKKRABoH8bavsYGZrVGYFJoJ2wHOoCbHhUYingCTJLoBNoHNM2Fpn0lhSw5st+G+Qkx/KmECiAABY4grdrBGhF6HUOFacTg52wiNN8Bcixh/P5TaFPJLMdj7HarN7iALJeo/PttjDp4F5eH7E8qNUHSA8/gQ/gTbaa1t8OFE6ZBVDm1PuhBaDExsfNLmkozvWTPZNjTMfqAIMfeoRY0uTttAzL5EZ0HZq4q+A2W4+u4D3SFbUQ61QBoMUW98fZD4l91N5nFwCjRZviDhuJ/fZL6P6R1QF+Xe78hl2nWb0fsRPQmPLgZ/KKtuwEetvoSEU/Qc8cys01KYjA94CeBLEhCOusbQq0wY1d/bI6W3ERvc7mAOKdncM6CtVYvzkAJIZ58jMziDYGcTJijDmbuJB+mBEa02lwm6WlQltCXcD+CDaja36owHHehopgGmu94ZN56s0BxhSoHG4Zhd4b0HrxM99ty6Z58K2/vqNwBq8DfOKJhcxwnPx2fYXoEGB3AKghB5gqvPT3gVFwMud/Bne1ndcU8LkL9DTXEPviR67/h8um+ZkFmCD3ixMQc4ACqLiIh2rFyRz5Y+fjqutngLmaE4iaPXA/RTa52cswG+x9DYecdcM7+i2B4vztZsr7AHN9iyjyH7oCOVAEIpbLFajFR2ijkOiHgF0/AKZYRX8V9S+Vs60vS3ISlYYwn3v30GnkwP9QRNMl2MMyNgAAAABJRU5ErkJggg==",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 9.729132683e-06,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAAIAAAAAUCAYAAABFyTWeAAAEJElEQVR4nLWa3ZUbNwyFP7mBIBWYrsB0B3QH4w60FSSqYLUV2B2sO9hxBZ6twHQFZioIOlAeOD9y9sTCnXNyH2bmAVeXPyBAkDrAxwsCHjlx/Arje/jAxzDHLgMcxjDnKycKgMHBb3OeLs9wGAEYLnA43OZcOIHBJ4eT0JfjD5jewPv/sf9PnBisf0f6f/l2YnrXv8sPOLwJcMqJV6HWXMEALyZzhnEkqTosj9soTGToGk0QWjhBFKCmLEmYYPuCmOK2Rh8uT0HFhu4AADa5ZO+ADxadS6DPoVl4/mkkxpnHGCQVwDV/aUBuVWB0DOMo2TvgTSM0NGfGdziAbVwZdtPiX3CwY8w010rao2Eax+grTOE4fQEonHxNDqDmjDMvnOgCTTscwOkpwAROAqw6VeA06Cv0c5CQ+6AZwKCIaM7c6NHGBA4zpwn2X9AcM1PX1R9O0XWHAyTgjkeJ44Bn27w6gAzQhPA8dVsHxjTEOAYkLWw6PQWE29UlfpqgCF6D5AHj7PUGhJPtsDMCPHInrwCrLg1aBWiQjkFCuf6c4iJNW2kJ5PxXAY9PC3AVyVrMvjDhCy/IYdy7CWzaZELPUZIG9NEeY/aHdlkn0pqHOItVDbYJ5nZlgcCWAhU49PRnMfsl7/siGEHZ6QCeTNtt0sOmKRri7/+dft8mssU4lvo7CTpV+P0FDox5kDebKzmCZ9ZNYBhtbwTApQlK6DtnWx5Bkk2+TuRYhhipAa45W1ofGoZxlJ3aIRxt6n3ehmoKCrSdDgBa3qx0p2kCxxeiBwlpC+VDNG+UKy0BlSz1v0C8MrmCdbEQEm0r0aNVQNrhAHV+PIu8ES0EJpAiAFwtlhYk1C6Uf231Umeqcun4wFk/O4Bw/yeKHph8ZxmIwVuRp56EqXhI523QokjsOjb2ou2BGnDfzrIOEPbOYRoXf47D9qYA1ynjMMiDtl0I3Mb9dF6/H9L5P+1eimg+4PQqIwkc6PcHLuoA4Xz+oTz9zIvAZge4fDuFOY1+qKMg0XNUEzlAuEcP5bxmjD/4FBeyuOl1c6pGI9HkAyczwu175G49CgmXnD47QH0Xb1haROIUHPiCFgHW3w+SlgjQBA0yuCuEbWOm0Az9HAC0tk2UebPdS84Q2uwAgk73TPFUz4B7ztKq8fmh3Ij5que/sLrC1F8lLoEDddCqgO+g7zQBK4RX2nLT0K6+b6LMDpCFRiXijVrQ6FVAEjg+v60E7efSJ0E4Pjd6V4LmK0e9Dn5LLx1d4PwF1IlwSMutVyYJwQHa7ACfhYb5/EgCB7ZdqqSTCW+CllXvEK+dU39/D7ap6wBt33V4E2x/A3IRCGkraqLXwbXBq8ufp13/WKmCraGXTgbaQNft2MCPFuN4J7yONwvYdtwqTLDNMF89xuyX28CyPmIa/wDxoGYlONjUdQAAAABJRU5ErkJggg==",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -7.9709864834266115,
+    "cbMaxLog": -5.0119258737888,
+    "xlabel": "Time-of-flight [\\gms]",
+    "ylabel": "Wavelength [AA]",
+    "title": "Tofl [TOFlambda.dat] TOF-wavelength monitor\nI = 0.00276928 Err = 0.0000172068 N = 25902.0\n X0=5.12E+05; dX=2.71E+05; Y0=9.86E+00; dY=5.76E+00;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="TOFlambda.dat">Click for ascii data</a>
+</body>
+</html>

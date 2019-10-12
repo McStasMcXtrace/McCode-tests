@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": -2.225,
+    "xmax": 2.225,
+    "ymin": -3.175,
+    "ymax": 3.175,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAACPklEQVR4nFWU0XEbMQxEn2/0H3RgdmB2EHagSwVWCXIH7sBKBVIqkFRBzhWIriB0BUYqQD4AihfOcEgciMUuAd7DbGfbciVTyVqhAgI1ZzKVRkJQRBUUSPjaYuLnL2XmypaHs802c4EFB/vwAzwyxmesT+H7CLsC3/1b2yUaiY0QmX8Bl8g+x174n5UAL0AOvAWyAgXS0tAiTIXlflh7sAC7YJBjJuAA7MPfcbtsQFCmheJy+1DghH/rzC6rQAUNJRcCvHnyVBtT0UBrjrGoE1vWSTrw3pNJdlvWDJPPSUXugF1dBYoMab2i7TUYVtAWxDTA8MAJgHe3O8YMfoeALv5RgZSiq9KoXU64tBbAdsTshlnGLGFHfDWwr75Pq33GTNz/G+xPP/eG2RmbKIE+OxPB5WhcG8n9En6t7miMjpIZ79W8lnzwEx+BL/O4GojKJhABygC8F+zJ1w0SRobT4g9EiHuRWDOIEn3iGbuwkbEzrMPYyV3hqFBeReaYZeSD1abCRAL+AqdogYi5vw712UKjVtATlLRqbI01wdRScp1l+CDk1QGcigdJCtXNz1/qKjHAl4nZEbNXb4sb0RaC2c7bw3Lsc9gl/HnVSjfMDJsq2VNVxiiRteINXmKf8OcXEmtX8OZ2IzEl2iiAQpbx+O8VasDz6r5m9+VO5KfzUITNC2+cyw/PJMASjaqMHroG8ye8UR+Bbfi2Dq5JuDKzATiwZy8H//s+R3BntwDHwU5FkP7v+nS2VTJXZpRv/AMfVSq64iHHdQAAAABJRU5ErkJggg==",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 1.932250333e-05,
+    "cbMax": 4.415494155e-05,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABbklEQVR4nG2T23HEIAxFzzL+j0qgBEpICdtBSkpLmw5cAiVoK3A+4BqhhBkPGN2XDH5c31z8AH0+zhhtrm3O2g/vcYsnUOFxPbk4h5j0jH2IWNO7sAZYG4tDblPzJmaS1md47xNbATtHV0Uq6kRDojdhirUgmDkAhQruCyDnHghnIp4BJ4zPQlHV2c9FpJikzf0aaltCg6JYPomV1WomvVIHMaWAhVC0MNeFuRNmM+G6TA2K99GKRs+gNEtUJh7rDsVsAZWwB6D22lyrG4kopQNms2VnneQ7CcTkFh4PNQW6v6FAHfgIAgLHehTQ/p24QtE/qeixHZl5WAvX+Wf0cG06f79LFFPdWXcxG497WPd0wWy7IjKY/rfYmYwPrSJYc2U/DCWs7GbOunpFu56EJFDZ756I6sKAT6Wo81BiG8b6j3Mq+HvCnf2/P/gaqDaZMb7S9mRg7G2big0O3jPzC2pIK7YDzdjVWC4m9TZqv2cRnftr7dnQAAAAAElFTkSuQmCC",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -4.713936609184641,
+    "cbMaxLog": -4.355020685794135,
+    "xlabel": "X position [cm]",
+    "ylabel": "Y position [cm]",
+    "title": "D2_A4 [D2_A4.psd] PSD monitor\nI = 0.0137857 Err = 0.0000290847 N = 226342.0\n X0=5.31E-04; dX=1.24E+00; Y0=4.33E-05; dY=1.76E+00;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="D2_A4.psd">Click for ascii data</a>
+</body>
+</html>

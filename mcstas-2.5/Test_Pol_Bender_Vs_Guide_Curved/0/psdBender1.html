@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": -5.0,
+    "xmax": 5.0,
+    "ymin": -5.0,
+    "ymax": 5.0,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAE/UlEQVR4nM3Y73HkuBEF8N+6/H3hCBaOQNgIxI1AvAg0G4FWEYwmAkkRaBTBUREsFcFRERyUARzB+UNz/knnskuaKwtVU+CAZOPhdTf6gZ+4/sMHbn/7fwP4b+3DA/z766E09xlt/vUY5r7GWOpo03y/zO/M97Z9mvujAczc9TzhZLb9QP5Z1bYIjLmQ+Fm+edRZrq5Y43c+tT/4ulnXuAfam4G+cHHeEfA8D51TW2YlCCkxvLI0OYmF9JhYpDUdWrPzxNvB8YrBFnbPZyD3WGBNvq7SPFErSefRhRt62i+kxDovAvDWtc173fyawaew2eeBM8HcM3XKplZMQ1Flo1NV1j6F5y3JqXJrD1jauz4KwMaX6IZ1f2i7iVjr6A0u3PruTrpjsYj7F26D8SMA+88A9zoTlsLlD1gES0Pt3TuX1Zkx3PLolM/79uq7Qb4A2EVy5ABjIeJuhYvZhTAy6py756fw8QXFE//aB5a8d5s5BJgFa2WedKRNieuYq9Ysacpi0hmDwTU3Dbciqz+zS5D3t0OAdaQjpRauyzFxyo0Vi7w21aL3YNB70JOCtLrMmhRJlovdRn9MgBrT7NYLjFjSVonEui10eTQ58Zuvlq7oI6+SpsTL895cZ5vpmAALmbrO4ebFbP8U5xGDAeTJytKgN6YuHlu3YHCDS7aH9s3tT2qxqAzrwCuJ6jBQx6yWbNC7Lpd6A7/gDs8M+ljMsDFUvdfVLxisO+PPImHyPGEK4Kk0uVT3zk2K9muKinPBwjq2I/ZAtWMCzNu66lRE/xqF0k3cRlbXKeuMRp30rdGoKRt1wXbhUBVtrt8LMOWdesozyIxLpqnEhi1YrLJnX2ZxQG7V1Eosbpocw72vAbYhbK5n+0Us/o6+DCCXKquKpyhtV7QaDJY0RfZv9WE7MsCtYbvN2lzexl6fB8UkqwZnqsxvM1dfZwYf7Hk0ObKamXZ2q2CzUodMZph6o86gl9XYVsZ4TD9v8FVQetCSt7bXSXJix0KZhx/Ept0iSRbWcyU54wdpgc+i9E0ilg+ODO1YAFuUuA2wyU48JHRclVVkaxNiYWC1Ri8qSTEzWP01cmsZnXtbuZWWLTJVddWW6jrr06DKap+dwcC0WVnarMi7Qb5OkluhpE/xiBvaTUxSVznirI+q8eREvqzKr0JkaPFuay+meTvIFwBTACM8dCrqcSdUypJWE3Wnqp3je7w6KXP8Jocx+Pb2+uD+KARqnv+P8+8LhpBeuYRoaNJ2/ppzxOC0wdQcnheOArBGkBfbw5OGHzPgTGdUW7a0srIMdjvyZTWOXZTKja1tS97aXjN4I9iaD09blS1K3FB7Bi5dO/PADePA6vpK6lqwvW31XeD+BGCOM8ajncyaQaa+aVPyI9/oFqMmRVIkup7ldBXyK7E7/RdHjsG0UzLoyhj2x1DVpUxu/DCOnWKKmHvcYajyHLvVYYl7O8hDwZrFNvMz7I/rbqsDJVFrGwpfPAeDd/gH7jkrD8aTzqFYSO8C+eLQNO0OTdOe7UtBSsVEl0b3zq0tQvlcY8mTk6g8G3zHL3WVL/NRc5qHHoXLn0NqbbJ0UnRGnpm+49v8fDLrwea9CQKfDj8BZ0q/Fabb+MpmnYeHKH2bGLxwK7eqpuyf7ff4/FarzTLeG4cvAKY9ROyycBIpXe2YKRhJ/Z682jz7NjD/A8CP1z78N+oPD/Df03gOT+QUW6kAAAAASUVORK5CYII=",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 8.901184845e-06,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAADYklEQVR4nO1Y0XXbMAw89fU/GIEjaASP4A3iTlBngqQTRCN4g7oT1COoG7AbIBM4HyakI0RI7utH89F7TwFJAIczRdJ0OuD1ig+MT/9awBY+vMDP3LnKE0a9tYtBAjAWm8uYFL+gjjVfonFry3cAT2XgubQBoK8Ju+G1EtjxGvyJp0kEwwS0BL0V+0AxQrFmEwAxhynPxaYynoHu8Qp8GSb+agbX0BK3BnUihZPNQcKqREK4BpWsFNsSZzP35sZNFPNMDX4yaB0Ax+MQC/QCTJwvzPCv2OcnzyvO9rXIYTjGAj2PNPq6iFyHNriqgbHYfAveH8+xwIqECii1I/hXzPlWfyqiqF+twfex8opZmDifUPvBWc+VQEuFibgAJSV3jjQFGqG4cR8HzDPX2iQVl7iAHvUiL3ZEHwtMDSEuPwTPoGL5oTIPCm5rjwtMGnIs0EPaHKEwzvM5xlWd5ILbWpycQMLvWKA6Mm34IvhXbPGJOMWcuVGsYMDXWCCTS6Mvi8h491rtkTjUO02cEfeAuKlYPWbEWcUS0S42JM+nNJidyPHOXexFKuK12JpB5skN/yQyUZFS6KK7WKDnsEJCY/cgYbG05r4Rjw1SwQLNY0awXIP3wur7mmrtRI8NctK4IjC7QiyS2wx/m/FxzKP2R6mYOvtjRaAXpI22x9oubvFMYsQ9Bek1xwI1aFfkDtHu9flNmBYK7t073rzNbCG6D3ou9U5pBAFQN7h5H1RP7nijG7U6O+V40lwHXC67WKAXwkK5CMet3ai3uAEsbiiH3anqb/4uVixng7ElLMGdCNZhMpmDT12q8jcFCpYzyNjaxaXu/EFZHLdLwPE6/plAy2XL4DUoNG5tE5Z8ogDT3TRj+hSDHmOBgo3d54qbMBPqYwX1hxNuJABnCs43c5BTLFARf5uoG9+CYL6sLGCFEgWXwNP5EAsE2oSC9utbg7o4hVuD6shLwmF/igUqWS7AfHDte89B0zLNHAvNc/+MfSwwoQ1BvJNb56CuxC9usK6vWmesXhZa0GCcZ7CVm8yhqBd6xixSgRf5Fgu04q0Cke+Bnru4BO3ft8X3gufKVf37TQDssbzsJix3pKL9hSAA+h7QEZAdoBdATNAet6PFCxQAjwB+AeiGytX9/yf6X+LDC3wHqZIjbDjXDkEAAAAASUVORK5CYII=",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -26.875299570228623,
+    "cbMaxLog": -5.0505521801644875,
+    "xlabel": "X position [cm]",
+    "ylabel": "Y position [cm]",
+    "title": "psdBender1 [psdBender1.dat] PSD monitor\nI = 0.00206691 Err = 0.0000125336 N = 137279.0\n X0=-1.51E+00; dX=1.21E+00; Y0=2.72E-02; dY=2.31E+00;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="psdBender1.dat">Click for ascii data</a>
+</body>
+</html>

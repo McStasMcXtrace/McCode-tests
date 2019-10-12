@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": -0.015,
+    "xmax": 0.015,
+    "ymin": -0.025,
+    "ymax": 0.025,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAB90lEQVR4nG2Ua7XcMAyEZxkYgiEYwpbBlsFCSBmYgS8DQwiElIHLIBBSBl9/SH5kb3OOT/yQZWlmJEkgFQ6e9PkYFZRADTiEgq+fZhe4EKAdnhzoBEmXT4oZRyALFYicvKl2FhebbI/oMHsFX6sgRVDxsUaYPJriF3c72yjTrp+rzL8yFvrzP+n2eZzzi+Bz5v5qOzb7C8FffXtqw9BSK2woGhxUmbONiadki4uANgyznm74iHJ3WBK82Cd+KiQaNKGBRcDIKYuTzZ1EkC7/gyrsvIyI5FFfOL7ZQlZbmSr2WvRIO3Y94h0qb7u3YFnYLGVl11ZdgC4AGukoYhh12WS3X5VRQUoYuMnT6xJq5jDRZvoqJuCuiOCSWjQsHdw09+Sw+eURFYskk1F27PYlsuz4dqcv9oldcjzdceRELz9r/kj1sfNBWh9hea2XoKdnGLqDw5UQGTqUiv176gWXzaIno74Yi8t6VtIFQVObncTho1fBPiVyq+cyHfVm0EgLq8zS8wzRYZi9qbMZuMFgtbeyPDWXaHbW4UggndxCP4kzOmcxcg621RgY37rOaBBdNn55NNrKvTkU7l1lLdE4zx62+f17kvT78UcKm/T3Szo26cfXNCib8q+HckUKkn5KipISzRg9HIvzM42pgEFGcBJ7bXcdB/gHdcFpITDguOIAAAAASUVORK5CYII=",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 272571.4055,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAACHklEQVR4nGWUYZHcMAyFXxgEQsrADC4QcgwCIYugPgSeIjAEl0FaBFkGuwxyDL7+kGwn08x4xpFl+enpScqsSAkk6r4ukgDBJg6Jg8DJCMjOF8Eq8wvmp8RmGyVORl5M7BIU2YXJzl5MzYfdLpNk/swQzU8HAbIg3xGC7HIRRLssJZhEYenBi9uzB2xIPI0WMPf/g9D2p8yeWRvqq6+a0V/amQ3VIdi7Y2HhIMBoXLIYr2Tzq3yqsMAiTvnBpEb8znxDSbJ0T0YInT8pwSxeEqp87cxGdOmoODrxkciLicJiqOTcIhi92pOcw8OrFnuw10UmlbuGJnmQXXcuR6HMaqliaGoByDUFT4cJVnXZFOMvsd0LeTJyyC8kJ7kY4lOCWS39Grwq4qq/k9HAEO3VprngKFbnxZEw+V6WSeuwXURiCzoQhBZpiEknXxqf39Jb0i/Zl6XhRxLxYfYPt39LCpKe0nMLemsy+0Foyq8tWPV3en+TO78HweipVCwmJaJc4K6xVkHvXUbd/523xEZW7+9a4fqYahuR1CTS2oyxtVUkQvQuqdX3KlcfNiGyCzT4yl2PbGpVJXfJ1AzaWTSNnoyITRe4vfkr2jY8Sn+sBr1NnVSnzSXVKouaxq0Ns25T5XpWR6CUGMz4/8f80PAnqfBXn8OHiA8NMfXz8tDXp/Qzm4R+b4smvSVm78vo6zK9ySaJJiv1VOvkucqtsPAPAcp4KOFDhcsAAAAASUVORK5CYII=",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": 3.4177700489913634,
+    "cbMaxLog": 5.435480293593567,
+    "xlabel": "x [m]",
+    "ylabel": "y [m]",
+    "title": "SampleC [SampleC_1570866177.x_y]  Intensity Position Position Monitor (Square) per bin\nI = 2.18904E+7 Err = 915639 N = 586.0\n X0=5.60E-05; dX=8.58E-03; Y0=4.91E-04; dY=1.40E-02;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="SampleC_1570866177.x_y">Click for ascii data</a>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": -0.03,
+    "xmax": 0.03,
+    "ymin": -0.1,
+    "ymax": 0.1,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABVklEQVR4nM3U0VHbQBAG4M+ZvOdSAeog6iBKBYEKgivIpILYFdgd2KkA04GoANKB6OCowHm4NRbWDfDAMNkX3az2//fff0+asdp7w/jwlmTvSZjQjs6n71IlX+LjNNXYry64p1/TbfAXu6e98pbPrjC8pDDxB19C403J5gGZA0dKNfVVhUXBMKdZBMmW1KHBEl3U9VNoReGg39K0LBc4wyXbPggSvuNOdHsas+k9bO2bb/wM8HWAL7GOkq6QzuabCWlFYS6AG2UZmyBe44oh4+uBp52g60tJil9rx3OHZfj6EIorI9cVZsWvW/wKXKPY0OOT8HB4pcLs6GEm9/gR+B73o9pXKUzKMuYFk1ZB9IBFqBvqhJV7mB+b3+1oszJuUr6WFr9xMap9nrAp3TPtYpTe4VzZ8DVWMcFJVO7hiHhieopn9mjwywoPcUp2IKqdj/H//2D/AUMXXlvlJGIcAAAAAElFTkSuQmCC",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 177134.2692,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAhElEQVR4nGNkYOj/z0BFwERNw2hiIAs2wX6GQoaPDAwM8gwMDB+QxA0YGBguIPELGfox9DKihyHMMGIAPxZDMbxMrGG41NI+UvhJ0IxNLUVexgYociFRYTigLqR6GBLlZVJciA1QlA4HJtnoQ22GYRjfH0lMHkoXNGAaiFE4UAoGfwELACcIFuj+/w5hAAAAAElFTkSuQmCC",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -174.76405797020942,
+    "cbMaxLog": 5.248302589901014,
+    "xlabel": "x [m]",
+    "ylabel": "y [m]",
+    "title": "GuideOut_xy [GuideOut_xy_1570817946.x_y]  Intensity Position Position Monitor (Square) per bin\nI = 1.68385E+7 Err = 144674 N = 43543.0\n X0=-1.05E-04; dX=8.70E-03; Y0=6.98E-04; dY=3.48E-02;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="GuideOut_xy_1570817946.x_y">Click for ascii data</a>
+</body>
+</html>

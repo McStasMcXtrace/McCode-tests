@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "x": [
+        1.5,
+        2.5,
+        3.5,
+        4.5,
+        5.5,
+        6.5,
+        7.5,
+        8.5,
+        9.5,
+        10.5,
+        11.5,
+        12.5,
+        13.5,
+        14.5,
+        15.5,
+        16.5,
+        17.5,
+        18.5,
+        19.5,
+        20.5
+    ],
+    "y": [
+        268557715.5,
+        760592208.9,
+        1119849121.0,
+        1205704880.0,
+        999488987.6,
+        760736965.1,
+        556532781.5,
+        404227833.1,
+        293030139.1,
+        211482167.3,
+        153893688.0,
+        112453041.7,
+        83755233.86,
+        61954265.8,
+        47381448.98,
+        36583887.17,
+        28741563.12,
+        22725162.29,
+        16247009.52,
+        0.0
+    ],
+    "yerr": [
+        12619229.25,
+        17059062.37,
+        19636192.12,
+        17439586.65,
+        12659364.51,
+        8549726.575,
+        5628613.33,
+        3740440.781,
+        2513069.748,
+        1709888.768,
+        1186217.034,
+        833207.1234,
+        595881.4922,
+        428415.041,
+        315765.1163,
+        235359.3732,
+        179074.1544,
+        137478.2836,
+        101705.1361,
+        0.0
+    ],
+    "xlabel": "Wavelength [Angs]",
+    "ylabel": "Intensity [n/s/cm2/bin]",
+    "title": "GuideOut_L [GuideOut_L_1570817655.L] Wavelength [Angs] monitor\nI = 7.14394E+9 Err = 3.78281E+7 N = 522661.0\n X0=5.95E+00; dX=3.21E+00;",
+    "autosize": true
+};
+  var plt = new Plot1D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="GuideOut_L_1570817655.L">Click for ascii data</a>
+</body>
+</html>

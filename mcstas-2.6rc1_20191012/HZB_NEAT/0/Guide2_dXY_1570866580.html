@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": -5.0,
+    "xmax": 5.0,
+    "ymin": -5.0,
+    "ymax": 5.0,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAc0lEQVR4nO2Tyw2AIBBEH8YCLIEWqMBYgZZCJ1KSHWAJlIAVrAdMPAmJ4WAic9nsJy8zh1WwChXV1YQ14F+AfX69gNUwXG0E3A5sL4FeI5PCRTiAGTBewDwDy5FjKiOgi8clhyagrNyRQ5rlpNovN+AHgCcA+hT68+YgHQAAAABJRU5ErkJggg==",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 470162.4325,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAApUlEQVR4nO2U0QmDMBRFT0r/mxF0g9cN7AhO0BHaTXSEbiBOULpBRmg3yAb6EYWiTwgSRGjvT+Ddl5PLC4mBqiOhDilhf2AaHfWyAEVYrGI7wD8AHwfsmgu8lH4/HCDAFcy5igO6MoT4aCZwAu617i3OcBou1t/ulu1KoDpDeYK0wHsg+0lDBtyAfL7X6J9DAZkEmP0qj2AHUKsJF4Drtf+n94PAHn+YG/kSNeD0AAAAAElFTkSuQmCC",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -200.62272727925395,
+    "cbMaxLog": 5.6722479246405655,
+    "xlabel": "Hor. Divergence [deg]",
+    "ylabel": "Vert. Divergence [deg]",
+    "title": "Guide2_dXY [Guide2_dXY_1570866580.hd_vd]  Intensity Divergence Divergence Monitor (Square) per bin\nI = 5.08714E+6 Err = 32800.5 N = 117864.0\n X0=2.37E-03; dX=6.95E-01; Y0=1.60E-03; dY=4.00E-01;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="Guide2_dXY_1570866580.hd_vd">Click for ascii data</a>
+</body>
+</html>

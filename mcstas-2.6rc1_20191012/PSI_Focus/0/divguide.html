@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": -2.0,
+    "xmax": 2.0,
+    "ymin": -2.0,
+    "ymax": 2.0,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAC7klEQVR4nO2Y23HbMBBFTzL593YQdCB0IHZgdhClAtkVxK7AVgWmO6A7oDqAO4A7WFeQfCxIyoo9kw8iiSDcGQzenD3A4sVPcPeTM9Lnf23A31YFLl0VuHRV4NJVgUtXBS5dFbh0VeDSVYFL19kBf1n+k/JB/KfSD+JllAEYwAEeEOMdA5j9Y1pSXo+6xwiMYVktDCwp9tCIca+BhhlUU3AYjxzUDan7tTvqsJwWBlaMBIO8gKvNPQCXPBHweAKCogjROQRFUAKend8S1cEOiI6lYSHbDAt8BRr4wW0qUZp+sGqHza4DPChCEwbwsJc1vWuTN+uy5pFtDWPL1ykS1PK3qdwDeyBgwCsQUXDgCTyzsjaDMI/McspzLDnAgyO+tTfCcAN0TMuzu8Zc+DsEPJc8HWxyurhpeYAjoObGwDybAs0dBLV6oi31cSI9wQZpkixuWh5gsRDw8Ay8ACtsIB6NTwfoArgNaA/cmEco8v5RtZDy37S+pvCY8hFELCkAXWLroKc14Em6uDl5gBUQc1FesDBYWVSrjxxs1g/WraUnjseagxNxaUk+m9ZwxGa4BSK4Fu6tGu8T0rXVKULDcHDf0MWtywCsb+1cWRE9BhLglZlHGmwwPHgN0ycyTC6Qcw2rrUleMeNb0Gjpy9QkRiCAdlY/SDO7dMxjVr5d2qf0N4u0nzergE2qG5s/ABeWbqYLdR7l27Q0rWEBHIhnSm9SjMMO4kdgb2u4pz1Bl1amTYjA5NK0qX7MS8o3wNraT4OkWSzL8VoSi6OAQNds8AS8C3Y0rVNwwBbbzK6ACHvW88UjE3GG15Ja2AsAO7dFULayQ1rFEeeNCYhXllYnRJzdzgY4EWBl8tPBskE8BBia5vc/HcK8G3vmF9VYdjrPwwhBLAyp6In5egVvgYWjX1iBXBfqfMCjsVHmoimv7/SRg0bv1S+jDMB6FP9fOrv/0hW4dFXg0lWBS1cFLl0VuHRV4NJVgUtXBS5dZwf8CyWi7SDeSrbHAAAAAElFTkSuQmCC",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 23528778.38,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAYklEQVR4nO3PgQ2AIBDAwJf9E0bWLSCpdxO0z8x+50fW7YDTDNcZrjNcZ7jOcJ3hOsN1husM1xmuM1xnuM5wneE6w3WG6wzXGa4zXGe4znCd4TrDdYbrDNcZrjNcZ7jOcN0HRpYCBlD7NsEAAAAASUVORK5CYII=",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -Infinity,
+    "cbMaxLog": 7.371599379084321,
+    "xlabel": "X divergence [deg]",
+    "ylabel": "Y divergence [deg]",
+    "title": "DivMonGuideExit [divguide.dat] Divergence monitor\nI = 4.36063E+9 Err = 1.37291E+7 N = 375244.0\n X0=-1.08E-03; dX=2.83E-01; Y0=-6.30E-04; dY=3.28E-01;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="divguide.dat">Click for ascii data</a>
+</body>
+</html>

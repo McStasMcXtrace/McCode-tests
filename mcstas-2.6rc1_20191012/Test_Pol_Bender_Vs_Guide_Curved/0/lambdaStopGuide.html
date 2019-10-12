@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "x": [
+        0.25,
+        0.75,
+        1.25,
+        1.75,
+        2.25,
+        2.75,
+        3.25,
+        3.75,
+        4.25,
+        4.75,
+        5.25,
+        5.75,
+        6.25,
+        6.75,
+        7.25,
+        7.75,
+        8.25,
+        8.75,
+        9.25,
+        9.75
+    ],
+    "y": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        4.0206881e-22,
+        6.558850209e-18,
+        4.744517175e-14,
+        6.618863068e-11,
+        3.00294069e-08,
+        2.210272017e-06,
+        2.568689182e-05,
+        9.693077759e-05,
+        0.0002304650287,
+        0.000397439168,
+        0.0006364329592,
+        0.0008270404083,
+        0.0
+    ],
+    "yerr": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.554946048e-22,
+        2.475859135e-18,
+        1.584952424e-14,
+        1.244792879e-11,
+        4.526543791e-09,
+        1.772714533e-07,
+        1.027590695e-06,
+        2.380287462e-06,
+        4.040674406e-06,
+        5.572729021e-06,
+        7.345455584e-06,
+        8.613671693e-06,
+        0.0
+    ],
+    "xlabel": "Wavelength [AA]",
+    "ylabel": "Intensity",
+    "title": "lamStopGuide [lambdaStopGuide.dat] Wavelength monitor\nI = 0.00221624 Err = 0.0000135012 N = 333705.0\n X0=8.65E+00; dX=6.19E-01;",
+    "autosize": true
+};
+  var plt = new Plot1D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="lambdaStopGuide.dat">Click for ascii data</a>
+</body>
+</html>

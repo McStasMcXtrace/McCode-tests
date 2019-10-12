@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": -180.0,
+    "xmax": 180.0,
+    "ymin": -90.0,
+    "ymax": 90.0,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAABFElEQVR4nO3cMXHDQBRF0e8gCYRACwQzsKEFgpkkjXpVulrF58z8bos3F8DeZh6/w+E+zh7wLoSOCB0ROiJ0ROiI0BGhI0JHhI4IHRE6InRE6IjQEaEjQkeEjggdEToidEToiNARoSNCR4SOCB0ROiJ0ROiI0BGhI0JHhI4IHRE6InRE6IjQEaEjQkeEjiwY+vvsAYdYLPTn3Oe28+Zru2tZLPRr7rP3B8DPdteyWOiZmefZAw6xYOj/SeiI0BGhI0JHhI4IHRE6InRE6IjQEaEjQkeEjggdEToidEToiNARoSNCR4SOCB0ROiJ0ROiI0BGhI0JHhI4IHRE6InRE6IjQEaEjQkeEjggdEToidEToiNCRP3TtCEI5GdWTAAAAAElFTkSuQmCC",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 0.0007314918702,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAABMUlEQVR4nO3cMVEDARBA0T0GARdJcRIJoIBBQSRgAQeRFBwcLVVowkuA/+otdv5svcvMcZv8uIdbL/BfFBopNFJopNBIoZFCI4VGCo0UGik0Umik0EihkUIjhUYKjRQaKTRSaKTQSKGRQiOFRgqNFBopNFJopNBIoZFCI4VGCo0UGik0Umik0EihkUIjhUYKjRQaua/Qb0+zHZ8vjqzbYdbtYPa5osdbL/DV6bCf1+XyzPljNzMzyxzBRtdzVxe9fz/Nyzf9dut5lvX3/QlY+m5g3NVF/2WFRgqNFBopNFJopNBIoZFCI4VGCo0UGik0Umik0EihkUIjhUYKjRQaKTRSaKTQSKGRQiOFRgqNFBopNFJopNBIoZFCI4VGCo0UGik0Umik0EihkUIjhUYKjXwCeA0S/VdnzUQAAAAASUVORK5CYII=",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -6.7422970995624985,
+    "cbMaxLog": -3.135790496260337,
+    "xlabel": "Longitude [deg]",
+    "ylabel": "Lattitude [deg]",
+    "title": "Sphere1 [sphere.dat] 4PI PSD monitor\nI = 0.00100507 Err = 0.00000100507 N = 1000000.0\n X0=-3.11E+01; dX=9.73E+00; Y0=1.00E+00; dY=8.50E-01;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="sphere.dat">Click for ascii data</a>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": -0.015,
+    "xmax": 0.015,
+    "ymin": -0.015,
+    "ymax": 0.015,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAdUlEQVR4nG2P3Q2AIAyEPxsHYAPd3LiRI8AG3QAfaKGCTUh/uN5dt3pRuYEMmuGhRQaSvRMQlCUcpKEXsKl9KFAsp5ClI8LwWEWQbiRYiJJe7/Om70E7YjC6rA5AZPS+e0yOMsZi2cHy4xtlHJQ+jBMokHfPL7y2IlRb5yw0AAAAAElFTkSuQmCC",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 1450284.977,
+    "cbMax": 2043453.667,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAXElEQVR4nH2O0QnAMAhEX10g7j9VR+gIyQTpj5ZDTA+EQ853Xhv2DcyYB/DwhAewXKhm483lKperObZKABinoMqFuP6CShxdUOvbH+t/Saphc/mtq8+2j9iRUw688qcVckC7f64AAAAASUVORK5CYII=",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": 6.1614533482888625,
+    "cbMaxLog": 6.310364795023217,
+    "xlabel": "x [m]",
+    "ylabel": "y [m]",
+    "title": "Sample_mon [Sample_mon_1570818041.x_y]  Intensity Position Position Monitor (Square) per bin\nI = 1.84189E+8 Err = 195006 N = 892614.0\n X0=6.10E-04; dX=8.40E-03; Y0=-3.88E-05; dY=8.61E-03;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="Sample_mon_1570818041.x_y">Click for ascii data</a>
+</body>
+</html>

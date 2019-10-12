@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": -2.54,
+    "xmax": 2.54,
+    "ymin": -4.285,
+    "ymax": 4.285,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAy0lEQVR4nO3SwU3DQBCF4c+Ie1xCqACng5RgVwAdECqAVEDowFTAtkAFTgnugKUCc/AeIoU1jog45UlPu9LO/Np5moKXwRl1dU7YBfjvwDJ5WtfTz1WC7LFMhpDtKPJ7WFGu1Z9BaGoeEvcLCzzufuzKjJx+0vEeGs+hMMRCt1nxhFdy42eAcYRG+oZb2PLmTi3Qt6nmWJkM4+iGm25QVtGH1m67SfFF4+UYOp2h9dh4X9Myhnh4ngQ81BL972Vm7+E82AnA+boA/65vC0oydKJcv5wAAAAASUVORK5CYII=",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 39.73476645,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABIElEQVR4nO2T0U3DMBRFjxH/eITHBDgT1JmAdoK2G4QJUCdIOgFhgnaDphMkG8QbECYwH04iQqLQSv2DK1my/XyP/Z5tBannhrq7JewfeBvdT85KAi7rh8ZbyiwCDQg4KzzmNWyzkVWNno1N8AeF04LEDhrAAhXgwhJXCw4hVs8XAIHa7wOsgGPLa1noLokSVJSOgMOUTwleFGyDs2hBe+CBPmMshOCEhpdiW9cTUIXu57ewJlSABDDw4XfzwBMxud7AMrgNsGibBAZLgDxsuON1BByk3BXZeIORChxYC+4IolsqwDocPVNw8GdWatEzJi+lky9fcEaQlYM3aLRGFw0qTin9O5FajzyzwJ/aeE2umtk1V/2U32BXAy/RHwR+AeUdUm+Bn9+RAAAAAElFTkSuQmCC",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -5.255545288576073,
+    "cbMaxLog": 1.59917066469721,
+    "xlabel": "X position [cm]",
+    "ylabel": "Y position [cm]",
+    "title": "He3H [He3H.psd] PSD monitor\nI = 506.774 Err = 18.1421 N = 2897.0\n X0=4.88E-03; dX=4.40E-01; Y0=-3.72E-02; dY=5.04E-01;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="He3H.psd">Click for ascii data</a>
+</body>
+</html>

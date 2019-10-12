@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": 0.0,
+    "xmax": 10.0,
+    "ymin": -1.0,
+    "ymax": 1.0,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAYAAABG1c6oAAAAlElEQVR4nO3QQRHCMBRF0fsxQOMgDggOWidIiIQ4CBJAATjooIA6KA4SFPxugOkCFpCumNztmzmLJwF0A1ggA62F4QYNcNRAkDXfJBD146qeUYQMOA+yj4XgPOfpB6G1YMZElkMhOOukF5yc317yE/is0R1pa6AHMbEcfHX1aCd0qV8IfBT0viwIsFoSq2AFK/g/4ASHLS5ylKJ6+AAAAABJRU5ErkJggg==",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 0.00277371522,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAYAAABG1c6oAAAAjklEQVR4nO3QTRGCUACF0fMsoDYgAhG0ARGwAa+BDaSBRNAEGoEIRrDBc+MgC/9l5fBt78xZ3LAmTd3KcMIMZU5oNz4psEmPxlRFTc0ZOZZe40/Bfoe014ajDEVFqO/jb4P9UhY1p/uXfAV2cBXtahaYX+/4CezgbdSsKIuBwA7O47AgTIbERnAER/B/wAujLCjzvUJfHAAAAABJRU5ErkJggg==",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -4.355175088582088,
+    "cbMaxLog": -2.556938130404561,
+    "xlabel": "Wavelength [AA]",
+    "ylabel": "Polarisation projection",
+    "title": "poly_2 [poly_2.dat] Pol-wavelength monitor\nI = 0.0501575 Err = 0.000501575 N = 10000.0\n X0=4.94E+00; dX=2.90E+00; Y0=7.86E-01; dY=1.75E-01;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="poly_2.dat">Click for ascii data</a>
+</body>
+</html>

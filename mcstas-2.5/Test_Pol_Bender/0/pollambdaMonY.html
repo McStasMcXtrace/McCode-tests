@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": 0.0,
+    "xmax": 30.0,
+    "ymin": -1.0,
+    "ymax": 1.0,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAAB4AAAApCAYAAAAiT5m3AAAAy0lEQVR4nO3W0Q2CMBDG8T/Gd28ERugIbiCbuIIbGDZxBEZghI5QJ8AH2wQLRgqnicl9SXNt0+R3PACt4DrwEomjBtyz1IAHfAB6IIzGulRTeC6SrdeDKbtlx7ZDK2F9fF92XA8veGLdGGywwUw/nz+DdVIIS1Z/BuulAJYP66/A25C5FP6d3jURtGHJ5pLt+YimveUNzMAyqjXgwAENcIKj6zjT0nQ3aIEego9XsqyllHushzQfLkvvXPr5h9fJYIMNNthggw02WCkPDIAisoZvjsIAAAAASUVORK5CYII=",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 0.03771018309,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAAB4AAAApCAYAAAAiT5m3AAACU0lEQVR4nO2W23HbMBBFjzz593YgdGCkgigVhB1EHQiuIE4FojtwKrDSAV2B4QoCdbCugPlYgA/JHpP6yUyGO4MBRIE4dy+Ixwrftv45sueWTWqgAZ6ACCRAQQEBcIDP9RqooHEb7tlx+FnBXc3UWMG+JQS4Ab+NeCLf+I0n4jQZPAtAM7SylyOehg2/+E5cNZOhAJ8AqE1p3AYE5QUPgIgiTq1nAYv9TDgU4cgaQWdBAa4A2Ae4C5BAEZTrzBIDDctJrDkaeB8uAN/WNj9SwELCdeUtuA5UKALzuBkM8BjgHlJyI+ves7E8f81CqS8FvwA72LgGRRC0z0oY14O4Lv2qS8E3wAM0bLpHZ3DtXxxa7UjWmDHPBt4Gy7iyQQqwZJ5JoyjPu//dZOYALHSL3xM74FnGuVlY0smzwm09A+xDt47LcrKx5by39s0ONmzPsjpm6D5A7IHDgU+hvfvW13G0eX5D6/tggBDMJhnbN5pjU9PtYENh3Zft54LrGvYB2RbYa+Z0qY3rQZQvWlD4XM8EA/hze8+s1nF76I4jwZ9wATjSWbsu67LAB3yU7rQSHYKPOJfgeRp8lLEiI+tGVp+WAkfxRAAqDpPt7jeQrzWeOJpfQfuzuNQKvI4FCMoXbKvlMUwC23n8YCo9kfXgXHoXCLbT5RAU72zjSZWjmQwGpN0CBxzJMk8525iBQwGKLa2EbZUJxClVdQBA2x8f3khW7Nt2Gx7YcY/XaKAn+itPNNAptxSyrjlxQ7lz/YO4+rjLAl7AC3gBL+AFvIAX8P8C/guxfxY7SRPhrQAAAABJRU5ErkJggg==",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -7.935102923728551,
+    "cbMaxLog": -1.4235413590082313,
+    "xlabel": "Wavelength [AA]",
+    "ylabel": "Polarisation projection",
+    "title": "pollambdaMonitorY [pollambdaMonY.data] Pol-wavelength monitor\nI = 0.704594 Err = 0.00100798 N = 580006.0\n X0=1.96E+01; dX=6.08E+00; Y0=7.11E-02; dY=2.35E-01;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="pollambdaMonY.data">Click for ascii data</a>
+</body>
+</html>

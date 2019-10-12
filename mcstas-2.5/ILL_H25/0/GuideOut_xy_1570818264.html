@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": -0.03,
+    "xmax": 0.03,
+    "ymin": -0.1,
+    "ymax": 0.1,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABbklEQVR4nM3U0XEaMRSF4Y9M3rPuQFSQpQKvKzCpIFCBoYIdVwAdQAfBFYAr8LoClApQKnAetMQkIwcenJnoRZq7ur/O1VndAYsX7zg+vCfsnwA/lsPVyZxO4qmPHb/HS4BjL9uheEOYYc3u0GiWO+qeFfHIYLnH5rfsQskdj4RFFtQdas20h32hq+sM/drvPa+Q1FZ2gyRidtdxzfomFzxbd0ywLGUWgUG1TJ5xDQ9YMxn3gee+yvuLgZE5bYMVcUhYYY5vREG4imwxugiYQWBImCCgwZSwiOzZXJUVFkxppGm/fOphVRauwjqvx3tef5+/AnfZu8RyhE0/r0iLKh8Qy+oollxranznB2LHrME9VZW4y8LisD/1vMJIm5PaCWEr3x98ll1PhCey3LPAKu9rcZuVucVOdvpThsZRv/c8MGXIHEdzAsY4+PW8w4TSSxm83Q8rrw6kk9hRVVK6wze6zTHhTwVlyOn4/xvsTyOFatQ2QHXmAAAAAElFTkSuQmCC",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 8359723.332,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAtUlEQVR4nOXUwQ3CMAwF0G/EnRGACVA3YQOUCZpMkmwQMUEZgRFgg7IBTGAOlSo54Cquyol/q+M8OWpaAiJjwayWxH4CrstCRMCrcvMGQMgMuDTWPiasxcbep6wJkH0wcEN2vtdB2tpfeE8XHURIZjDzXQfLxZo4OujgGSczGPmhg3Pim6SDV5ohtvKxmPBm9sjFCdB7M4ij3CMvdms/c+6cDtJejl+TyWsDDB98bb710v/9YN+bSyU24+89BwAAAABJRU5ErkJggg==",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -322.0757664217375,
+    "cbMaxLog": 6.9221919045473905,
+    "xlabel": "x [m]",
+    "ylabel": "y [m]",
+    "title": "GuideOut_xy [GuideOut_xy_1570818264.x_y]  Intensity Position Position Monitor (Square) per bin\nI = 7.72981E+8 Err = 9.67889E+6 N = 171776.0\n X0=-2.74E-04; dX=8.75E-03; Y0=-1.62E-04; dY=3.45E-02;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="GuideOut_xy_1570818264.x_y">Click for ascii data</a>
+</body>
+</html>

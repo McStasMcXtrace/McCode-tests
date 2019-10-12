@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": -2.55493,
+    "xmax": 2.6216,
+    "ymin": -4.68008,
+    "ymax": 4.72205,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAiElEQVR4nO2Tyw2AIBAFB2MBWwIl2JqVUJLagSXYgdsBHlC5AIbowQOT7IXP7L4EDDjPh3Rfyprwp8I+vyUPV7VGKGcNgI1uBVjPSlOOLBbnRyY1eDGwExoUpi9EjiyAbCCimaARk/56wh3Z2ri0AboSIqfVmQmvw3OQVFCInJ7gif8/7CZ8zwF3+hmcRkhLFgAAAABJRU5ErkJggg==",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 394777280.2,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABkElEQVR4nJ3U0XEaMRAG4A/PvUclyBXkOsilA1KBcQdOBSYV4A5MKoAOQirgOrBcAXIFm4czhBxkEvhnJO2stP9Ku6udsAjtg7wtOhuQVEWWFVAlST2sx6iSjU6ZFPRoI7xEbKONVUxjFykiRISDvIt0on+JfJDnMY82tsEuJl4iVvmL6XpNxevBNQkfnOJ1tNfy1D34ul6YzGMej+bcnjH8H1R0WDGpobmz5Bt9uZIQbcGS2WypyXVg6q/nU3qmuPNdo2JjlLsr8JM8Kxq9IcAjvP3D/jhXFXpyX9xITt77L7KzSGi5gff6vQjHTtNh2hO211xphISyJ+wvtz+JYaHk7EZnKMy/HL4ESdUozsbwWtLhyXUIQbroNiO03HvWlJzlWdE9/S7uOjKoR3I6s79HVjQbnW6xkdfluu+ShtEvWkXW3JdnP/Jn+bEMbWnv/hz5sf5Y/kSRrcsUeWiw4yb6x9id6vZNdhcpVjEN2wjTiAmL8PxAZtYtJVXypr7neSz3PsqKdPRX5rePlCWmfgGR0+pBNokYlQAAAABJRU5ErkJggg==",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -267.2142817273511,
+    "cbMaxLog": 8.596352150665039,
+    "xlabel": "Hor. Divergence [deg]",
+    "ylabel": "Vert. Divergence [deg]",
+    "title": "GuideOut_dxdy [GuideOut_dxdy_1570866129.hd_vd]  Intensity Divergence Divergence Monitor (Square) per bin\nI = 3.05635E+9 Err = 2.45323E+7 N = 341903.0\n X0=3.79E-04; dX=3.84E-01; Y0=1.12E-04; dY=4.30E-01;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="GuideOut_dxdy_1570866129.hd_vd">Click for ascii data</a>
+</body>
+</html>

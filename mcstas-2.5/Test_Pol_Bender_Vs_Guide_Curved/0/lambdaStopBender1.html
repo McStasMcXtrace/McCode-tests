@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "x": [
+        0.25,
+        0.75,
+        1.25,
+        1.75,
+        2.25,
+        2.75,
+        3.25,
+        3.75,
+        4.25,
+        4.75,
+        5.25,
+        5.75,
+        6.25,
+        6.75,
+        7.25,
+        7.75,
+        8.25,
+        8.75,
+        9.25,
+        9.75
+    ],
+    "y": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.205388762e-22,
+        4.449972713e-18,
+        7.548898888e-14,
+        3.501881115e-11,
+        2.439523742e-08,
+        2.077820287e-06,
+        2.334671589e-05,
+        8.778521731e-05,
+        0.0002128803128,
+        0.0003831157371,
+        0.0005798385018,
+        0.0007778440572,
+        0.0
+    ],
+    "yerr": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        7.586902018e-23,
+        1.071045615e-18,
+        2.411950066e-14,
+        5.382111162e-12,
+        3.295921868e-09,
+        1.625619025e-07,
+        9.346746606e-07,
+        2.189707597e-06,
+        3.690241143e-06,
+        5.254460091e-06,
+        6.733124901e-06,
+        8.05219634e-06,
+        0.0
+    ],
+    "xlabel": "Wavelength [AA]",
+    "ylabel": "Intensity",
+    "title": "lamStopBender1 [lambdaStopBender1.dat] Wavelength monitor\nI = 0.00206691 Err = 0.0000125336 N = 137279.0\n X0=8.65E+00; dX=6.17E-01;",
+    "autosize": true
+};
+  var plt = new Plot1D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="lambdaStopBender1.dat">Click for ascii data</a>
+</body>
+</html>

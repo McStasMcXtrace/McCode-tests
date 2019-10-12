@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": 0.0,
+    "xmax": 6.0,
+    "ymin": 0.0,
+    "ymax": 10000.0,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAAAcAAAPoCAYAAAASqOQZAAAAaklEQVR4nO3JQQEAEAAEsKOxBhqITAHXYPtuJOemmC2klFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkop/7mzaj5IjgpPkZ1H0AAAAABJRU5ErkJggg==",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 7.477493881e-08,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAAAcAAAPoCAYAAAASqOQZAAAAaklEQVR4nO3JQQEAEAAEsKOxBhqITAHXYPtuJOemmC2klFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkop/7mzaj5IjgpPkZ1H0AAAAABJRU5ErkJggg==",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -8.12624393368936,
+    "cbMaxLog": -7.126243933689358,
+    "xlabel": "Mono blade",
+    "ylabel": "TOF [s]",
+    "title": "Detector [prisma2.tof]  Intensity Mono blade Time_Of_Flight Monitor (Square) per bin\nI = 7.47749E-8 Err = 1.98188E-10 N = 267764.0\n X0=4.29E-01; dX=0.00E+00; Y0=5.00E+00; dY=0.00E+00;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="prisma2.tof">Click for ascii data</a>
+</body>
+</html>

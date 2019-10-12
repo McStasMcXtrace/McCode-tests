@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": -3.1424,
+    "xmax": 3.13614,
+    "ymin": -3.14073,
+    "ymax": 3.14728,
+    "img2dData": "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",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 2722262.54,
+    "cbMax": 208443707.1,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAEXUlEQVR4nI2Y3XXjNhCFP+voXdOB2MGyBKWCeDvYEpIK7FSQFpwK4g5WJSgVLF1B4AqUB/GKl4OhNjiHAjB/93IwBEE9Ddcf1xf+4Ft7gwu3FvPV5guTt7mfgGGWt3l8nnvZYLbj3E/A89wr3jTbjkus93jmd/7k6fX6en15e4W/klNbjDuSPJCJkGTyb2brN0DSTcAJ+BXab8HTj+twHb5OtPebzjGGn3Bx7Eh6cWzWQ5/YHDeAIbhl8zvsh/cJLrcAl0TIiWkeNr/QJ8/JVD5OLsvVxgbjBLzBXmlo9KuQyTlgJpGBcyyX5T7SHJZAe5JRsG5y+gQOSZdtpwLIx7Eh9/ndZrh1e0Vt1Heu5uQ+bJ6BHpFp1MvtMZrPA3aq9iE55mAaeyZb0ruN63Jc2VTtHme6zXeqwUsB6L10X4qA0svmYAQadU3ncvHWFHiCXQb6tIC6Yr4+WepM9nnsBETqg/UNO9lmct3UwDLYZY/qQRDRo5GVS0u2VTtS17iTduzJgHf3zY/1cmn8YUCNdVZd7uDKhMdzDK9Rj7PiMQEj7BjpnxBrx+xIXeCNPhOtsGlJ71eYHICzavBSb5pbhLRk/7fFxjzoVwLmfA3MNdhug6A/vKgdqN8Ij0i4rFETcbwoZCCC0/pp1VUR8YAKqprK9m7rJJ2sy4Jb4iY5T3qKh3XQDJQ33kj6qk6Dvqa8r3QzpyV+qAZbfUyT43GxXwVzexH6sL7R12+O7zjBmhyIYKzBc8aa9ZFAXddYNmjVrfbOily1HQlDk50kjT6AyIRdrbBpaV6Rh/6m/aWQsQE4KYPTWi7HfGoRgC952yBVzaPQ5+axbvtg9AYSiYiTeLRJy8bHUH86OF4lV9Bdzt4WsIL4IaCyVy9fgH827IPlocq+mux8i3FDB3WwSPowu9wk2zpaBfUNh36GlMGJvukh0bixzqqCB49b8PgQQdIt58EZzY19fGDZ0x4d87MsrNf4QH+zVZymwWDnQXfMQAcbe6BIdlnvgHmu/dFXqGK699vIgB5YLX+ThI3dz1smoLjBskKehLBB9y52wIqwf284WCZXkYLeNlif1LPTXpaNnlQFAP3xy4l+sj48VOR87NlbtRlgl/+DCLaz+DNQWJbM4+WxP81akS2c+2eniDlgdvLArsskj/QbcG6u8/pbPaQn2HPmvsQVWJ4Hy7JUJAV8ZLsetTlH0a8+J872LnYjb55+OVc15h/q6oP12bCZTxS9+wDzV93AaqP2INDvgR7IQf3c53aK4f6+SWfiK/xLOrA6gIyHIkh+C+S/OTyOZE7oSL1iK/wZ/H7kz0YCqkCPySafD0tAs6/kicb9XbzX9+cwLUZOjAfjLV22geUvZem3/AHGATjB5dvI/jycOL2cCea/XTNSY3nTCEWRnIXbF3czOoPgnqFu/WPG+AKN4Il/r9e/4yvP5/flvDVw+z/uZM4KJrR3oSayZwO5sC7ikeWGK50wTnBh5Be+8x98R9jaftlYNAAAAABJRU5ErkJggg==",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": 6.4349300070447475,
+    "cbMaxLog": 8.318988788342148,
+    "xlabel": "Hor. Divergence [deg]",
+    "ylabel": "Vert. Divergence [deg]",
+    "title": "m3 [m3_1570817955.hd_vd]  Intensity Divergence Divergence Monitor (Square) per bin\nI = 2.42493E+11 Err = 3.40624E+8 N = 999963.0\n X0=-2.99E-03; dX=1.66E+00; Y0=1.83E-03; dY=1.66E+00;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="m3_1570817955.hd_vd">Click for ascii data</a>
+</body>
+</html>

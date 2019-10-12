@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": -2.85184,
+    "xmax": 2.85163,
+    "ymin": -4.71836,
+    "ymax": 4.72628,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAoElEQVR4nO2TwQ2DMAwAz1UH8AiMwAaUDdik6gR0AxiFTgCdoHSDjpAN0o8rIRECqDx4cJIVyXFOtpIIVJ4NOW0pO4Q7FZ7DabVgsA5xwGeN0ER6gRJIzfEGOqDrLeFGpyIjKxTgVWhzwd+EtszhOtX1rNBI4GmOlB6SeHlkZAcNSObhBXcH1MDD9iaQ8F9W5i/lF4s6DBcvYf8P+xD+zxeqfSBrx5LRuAAAAABJRU5ErkJggg==",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 4.738402755e-121,
+    "cbMax": 622956249.8,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABK0lEQVR4nK2UwVHDQAxF32Z8Rx1EqQCoAKcCQgUMFQSXQAWeVEAJGSqIqSDugE0FiAqWQ9Zh2UkMsfMvfyVLX18+yME6LAIsWfFOyRTPDgXgmhbB8CiKR/EAtNwgGACC0VBSzWq2H7e4RViHJSvKWQMLoGUPAxRoIqdQwANljJdABfP1BvcJwfN/GCBH8gKogNtCsKR4CCQZUuRCQ0Utik4sSYwR6zDaoWTx5Fw3OXIDRV/x14n8VU9Pr+A5sMijV04hlxY0/li57191kIwvvnLRPSybNBQHhzJCTBIuusCyj0MFXRBCaydrfw3rG6iAKLjnUIf6pdofTIsdPun2kZWf46tHJj3uyVGGsNnMeeKVmupw2j1KSYMhGHLId2+LXt+4Z8oOxfPg7vgGuElYfmMKB2MAAAAASUVORK5CYII=",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -120.32436802785973,
+    "cbMaxLog": 8.794457547240826,
+    "xlabel": "Hor. Divergence [deg]",
+    "ylabel": "Vert. Divergence [deg]",
+    "title": "GuideOut_dxdy [GuideOut_dxdy_1570817655.hd_vd]  Intensity Divergence Divergence Monitor (Square) per bin\nI = 7.14611E+9 Err = 3.78352E+7 N = 522797.0\n X0=4.87E-03; dX=4.93E-01; Y0=-1.71E-03; dY=5.36E-01;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="GuideOut_dxdy_1570817655.hd_vd">Click for ascii data</a>
+</body>
+</html>

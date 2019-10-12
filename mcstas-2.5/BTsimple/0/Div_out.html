@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": -5.0,
+    "xmax": 5.0,
+    "ymin": -5.0,
+    "ymax": 5.0,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAx0lEQVR4nOXU3WnDMBSG4UclA2gEZRN7E2/QdILSCdxukE3sTZwN6kzgXkQXorWNY3IR6AcHwTnSy/lDgXbyQL08EvZPgYf1cFzwj3uAEakwuBQ2D10oOcNixSkxuNkp+yRL2a/0MNFQtb1pDCZB1fY0ioz/KswvdkTDwCT4PHLF+0AwcYSzubI3Tfm65VLWylAufCV12+m+a1DHjrcc2wU8J71KeM1d+XCrdAW40EP2rs1KhmPxOBa+8rwLuA3wW8//OTw/8AdfkDW5hlOI9AAAAABJRU5ErkJggg==",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 363550838200.0,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABD0lEQVR4nNWU4U3EMAxGXxEDlAmaEbIBZoKb4SZATFB1goMJTozABHgEs0FugzBB+eHCleR0PYkKgaVPiWL7yUmcNLAbWdGu1oT9D+D1qUUZIz0DgkLCBRBcivDADmu0ym3KS4mjsGdLNAMFDgWwAwQsRrbsK2gFfB1fEFV4BmyC5cnZTlABNqAi3DWb81sW1EEG2QpehmDOpQMRdfI5IAa8eWWJ+ggBYppirMo+AcxHfU7fC9c8prRfaJswqfUza2eudtLX5YRLgZ2PwXwpz4ChiFkEKoJEhYMDYoKci8qiS5Fl4EBPkEQgOSD51r+VeAsmkSfuOfaAW9XYcNnTG+jRG4H8uAz8if3972t14AcQ3WEpnZwPigAAAABJRU5ErkJggg==",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": 3.6914576319137637,
+    "cbMaxLog": 11.560565150287037,
+    "xlabel": "X divergence [deg]",
+    "ylabel": "Y divergence [deg]",
+    "title": "Div_out [Div_out.dat] Divergence monitor\nI = 6.62034E+12 Err = 5.75137E+9 N = 6070670.0\n X0=-5.06E-04; dX=8.30E-01; Y0=3.41E-03; dY=8.31E-01;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="Div_out.dat">Click for ascii data</a>
+</body>
+</html>

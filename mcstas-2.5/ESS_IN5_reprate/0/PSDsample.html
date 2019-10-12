@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": -5.0,
+    "xmax": 5.0,
+    "ymin": -12.5,
+    "ymax": 12.5,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAABN0lEQVR4nO3aXW3DMBhAUXdICqEQCmljUAaDMgqDMgpDkALYy7yfk1q55zFKYuvqU+SHnMZ43Ub+3dPeGziKQiOFRgqNFBopNFJopNBIoZFCI4VGCo0UGik0Umik0EihkUIjhUYKjRQaKTRSaKTQSKERGPrslnpAMPSHW+oB9emYdNs+f/TcqZ8cjSYaKTRSaGTR0Ne9NzBt0dDve29g2qKh11PobzmP8fb8qzd0jkaaaKTQyOFCb5eXibsvf7Zu32jkcBO9l0IjhUYKjRQaWSj09cuV25g5qu2r4x2y0ESvrdBIoZFCI4VGCo0UGik0Umik0EihkUIjhUYKjRQaKTRSaKTQSKGRQiOFRgqNFBopNFJopNBIoZFCI4VGCo0UGik0Umik0EihkUIjhUYKjRQaKTRSaOQOMcQRJm7Lh48AAAAASUVORK5CYII=",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 341030.7027,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAABNklEQVR4nO3a3U3DMBhAUZdJGIERGIFR2g3YoKN0FEYyT7wh9Yf2FivnDJBEV18cJ8pujOMcPNzLsy9gK4SOCB0ROiJ0ROiI0BGhI0JHhI4IHRE6InRE6IjQEaEjQkeEjggdEToidEToiNARoc953d/lMDs/0DSyiZ77Q3Wqf8lER6zRVzqN2+5MEx0x0RGhI0JHlgw939bbKnoYRpac6BUJfYH5cRhfN+6ff1g6IiY6InRkc6GPV6y18/1+20hrdGRzE/0sQkeEjggdETqyTOjfvth9/vG1uGR7F1lmolcndEToiNARoSNCR4SOCB0ROiJ0ROiI0BGhI0JHhI4IHRE6InRE6IjQEaEjQkeEjggdEToidEToiNARoSNCR4SOCB0ROiJ0ROiI0BGhI0JHhI4IHRE68g2JZhqOJIWtwwAAAABJRU5ErkJggg==",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -1.317500032748596,
+    "cbMaxLog": 5.53279347991023,
+    "xlabel": "X position [cm]",
+    "ylabel": "Y position [cm]",
+    "title": "PSDsample [PSDsample.dat] PSD monitor\nI = 965586 Err = 483043 N = 11.0\n X0=1.61E+00; dX=1.36E+00; Y0=1.30E+00; dY=1.93E+00;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="PSDsample.dat">Click for ascii data</a>
+</body>
+</html>

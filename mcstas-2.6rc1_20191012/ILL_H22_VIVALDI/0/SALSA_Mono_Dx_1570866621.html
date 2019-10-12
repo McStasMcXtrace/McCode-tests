@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "x": [
+        -1.691185825,
+        -1.514963931,
+        -1.338742038,
+        -1.162520145,
+        -0.9862982516,
+        -0.8100763584,
+        -0.6338544651,
+        -0.4576325719,
+        -0.2814106786,
+        -0.1051887854,
+        0.07103310787,
+        0.2472550011,
+        0.4234768944,
+        0.5996987876,
+        0.7759206809,
+        0.9521425741,
+        1.128364467,
+        1.304586361,
+        1.480808254,
+        1.657030147
+    ],
+    "y": [
+        0.0,
+        0.0,
+        9.814726186e-218,
+        1.143687192e-58,
+        5.456841168,
+        302898.2334,
+        5663913.01,
+        41688103.73,
+        202819044.5,
+        624223695.2,
+        658040662.7,
+        284095125.2,
+        55731385.28,
+        9341696.128,
+        646072.9399,
+        463.2470949,
+        1.48388299e-38,
+        5.561376992e-177,
+        0.0,
+        0.0
+    ],
+    "yerr": [
+        0.0,
+        0.0,
+        0.0,
+        1.062679918e-58,
+        1.768410856,
+        12330.52462,
+        116456.5519,
+        605645.62,
+        3513729.547,
+        11081372.69,
+        11501665.3,
+        5250336.886,
+        813810.1643,
+        174788.1082,
+        22057.58061,
+        81.95566933,
+        1.478687941e-38,
+        0.0,
+        0.0,
+        0.0
+    ],
+    "xlabel": "Hor. Divergence [deg]",
+    "ylabel": "Intensity [n/s/cm2/bin]",
+    "title": "SALSA_Mono_Dx [SALSA_Mono_Dx_1570866621.hd] Hor. Divergence [deg] monitor\nI = 1.88255E+9 Err = 1.72064E+7 N = 159497.0\n X0=5.53E-04; dX=1.91E-01;",
+    "autosize": true
+};
+  var plt = new Plot1D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="SALSA_Mono_Dx_1570866621.hd">Click for ascii data</a>
+</body>
+</html>

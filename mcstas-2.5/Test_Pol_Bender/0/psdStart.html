@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": -5.0,
+    "xmax": 5.0,
+    "ymin": -5.0,
+    "ymax": 5.0,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAEPElEQVR4nO2Y25EsNQyGv6UIQCGYCPBGQBMBTQRMCKRABBDCEsFOCJ3BMRn4ZOAMlgdLI6m7hx1qH+BhVTXlS+vyW7Jke57g9zf+x/TNfw3gPfoE+FH69jh1gVeBAnRmO/ST6By7eXZ92anc83blEZ23bz8D/PEOwC/C6/PTzY5hijZi3/CuAk0nK7AF2dUAjzmOWBuw6Nzzlzd4znCOIR7TgKihpoCCjbT4Ynxj8orKGIjFvo0JOpLZsPa22vcAdlOsAEqQNQBGVcE0lem4h1vgrUGnzYnydRS8HAEeQ1ymsq6KKiAFRp99Mz5U3xX3qNEge9natuO1cQm293T0YJvgOvBr0VD1LNuDYgNAmItjA2d8lWNkjD9tTqWjB+vkq8C1uzcr8KIsRfsFWMkeiqDjz0BuuE5bUNPfGcCjB8Wzr+J75EXHq7JZ25lhXsS9PPBMDmrT3quhf9P3EMAxhQ2cKV12Rje8PBRgG74fK54shbmHu35bcS9b2w1beRDgwMNkMsIEUMhhIxhbyXXcZHrXeshc8FVlTN/Cvwlxm000VAGRXKArHsoWAA2md/uOL6r/qn0J8+t+4i7AxcvLwPdjGx6Kju+pLfBEMluN7O0L8P3uOxyL+H2A6J4ih9dALcyjywxWNQrHUhJ1Dbx8LeT6eVWZx8pMd2ONfKTdjIxcIow/8gVVt2TZdHwhl5qV+yfJaZnZ8A1vACUojYDqCd+GZ31cyAU/Dm0RBffsY2dxAHfZgWh4MpQdAFHZhte4HsAVPHlMpy2qq83HygzZIwZMAhijQt42BfeGyXT8DDe9EvijnTM67sERzlKBMo4ZWQMQM9CUZ9W2455StTdAJmvAq4EeR4Cne9AM2B2vBWMFP08NtIl17b+EhTQdd/KiliBTTI8cAR49KLlbyYd9x/eoKQf3zka+D647tQYa8lWs2sSO7tZB4xVyOKKecfIrwF9B5kp+3jTuH5dndAqw4SfJwE+NqFTIN5IS2h/IITewHb9gNKBKTqqzLD5NksG8gbQeHj74sQY5PDDfYkXHC7ncDOBPBW46BLgOj4zYSnZ0epsR5g1kxW8bBtQAShBpyrMo/5VcQgrwC7l+duZWEDw6Z3Qa4kF+GA08c6/hew8A4gIW8mU36muq6yITdCcnzkMABc/IKnpeSg4vAVgFiuS92HWukG9FFQ9vCfpqVPyPAGX3XhiqfOTkWJXdDNpzVXBv/Dbcg4IvsJNvOVuw/T7A4eEpwWAELaq0kd8shZksBuYnjiWrSN7TEG7i5RGA4ivsHBMjzhtYUSNXPLFaWJzZHczQGriKJxXwYBZLDoeQ375mbMXD0/ATxPrGv5AXOcI42rhHd89iMyJ4PTMDIxhfAugFr4NGfae+4JWgk+vmGR0L9XeD59e3vERDFvsljDte3MauXzhWddnNWfvjEeDT53/UH6RPgB+lvwG01LqsEwDilwAAAABJRU5ErkJggg==",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 0.001867983341,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAC4ElEQVR4nO1Yy3XbQAwc5eVOdMDWUoJcQdSBVUJacgnqAKzAOYQgZ4EBqcSH+OA5iCQWOxhisR/xAry+4xPj2/8WcIYvgR/F92y4vS/4eb8BC4AJwAOArY0OYF7v2Y7VN7AkUqd7W33ZZ+17v17xcpnBuORJ8n57wf1W3+QMRjr4Pp6VVmDPAwBcb8Dl9jq0lwzmoA+MyengFCyLy6IYE+gFRKBag9NIPBAIRBtnwrCPoJMt8xj5eJAk1AwueycOqkj5yn4u+rFvfrbOASqDs7wtxIYxUxzIUMFilsZHGWsG33bfIA1BD3KL2pzJh/1zXG7LdZr9Ge06mDsFcWAiu0PXV86uyvbw/NQksbGgO9I8TE42Q51g+TnzeQ7WCkzIxc92xwi2sTC2eWPv0E4SDm4HJIYxczm4gkhUy18FvtWaUgFDmB/4KFEGvbb69nMmkDsIIkPdHbrlSHE69IpgKhjUMpOiOfrnqfFR4POBYazt+YCjZnDZa0rVyhmin4m2GXpyecR6apnB/kbPDJ2lq+s4W1vuF5iAcdxXSIEuCBSxoWYjHxI6QaqPQnua6eDp3pJ9Rn0JQxX8oPaJnU8F0mnGUd/O0pUDhy8Hd8iRGybYpsur31/tJEyYuQz7BMjB47mbPBuXaJQCFYk19hIEY9bZrmbwGZ6eJEFsTRCja1fGOYOG/WUWDnImkAn56o04YK8zVW/Boc6Bse1NwJNDPI2dw2Q4Xg44EO8YQM1q2Lsl6VigIAqS/Hc2IwKFWE929jOMf7L+SWAQnZGodhe2rt3D+NRWl1Lk6ZoFGWrhB7p6zNxdbOBkJ7HSqIfPUSeJQc9mQ63BLY6j4DCD2d8O7DPG/9Hhc/SZJny3TBsK2hoUvoOd2x3jrBffhTbwKbzzYVSBPlxaOPTuor5GZDFqf+9Wh3Kivr9ecZ3v+6tmBTmK48/4xrl9au6PsMb59fMHcBubyue3z4ZP/4X1S+BH8RsoDuafemZHkwAAAABJRU5ErkJggg==",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -4.758615628156218,
+    "cbMaxLog": -2.728627001202304,
+    "xlabel": "X position [cm]",
+    "ylabel": "Y position [cm]",
+    "title": "psdStart [psdStart.dat] PSD monitor\nI = 1.61683 Err = 0.00161683 N = 1000000.0\n X0=5.23E-03; dX=2.21E+00; Y0=-3.37E-03; dY=2.22E+00;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="psdStart.dat">Click for ascii data</a>
+</body>
+</html>

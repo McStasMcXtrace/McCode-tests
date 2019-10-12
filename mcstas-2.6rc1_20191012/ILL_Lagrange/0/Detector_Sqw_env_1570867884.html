@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+  <script src="./d3.v4.min.js"></script>
+  <script src="./plotfuncs.js"></script>
+</head>
+<body style="margin:0;overflow:hidden">
+<script>
+  var params = {
+    "w": 700,
+    "h": 480,
+    "xmin": 0.0,
+    "xmax": 10.0,
+    "ymin": -100.0,
+    "ymax": 100.0,
+    "img2dData": "iVBORw0KGgoAAAANSUhEUgAAABQAAABkCAYAAACGqxDMAAAA5klEQVR4nO3Y0Q2CMBSF4b9dQNjAEcoGOIFxA9wAJ5ANYANxAhzBDXQEN0AnqC8+QkMJxpicJn06t19ye59aA7VnwWWXxAQKFChQoECBAgUKFCjw/8B1GQ2aLzzN3JJeqOV8JngaOXhzkJczQDeSZM2s27BVZgYD3x0o6nYGWA0P2Zw97aaIB1mNJJc7HKM9bF0ehpPCccr3xE7bvkiGk/bK3myBaxRoep/41IR6y4E78JwE2jTtwxWJA4pJGIDt+l244vkAmsmggd5DGyhJPvsxFdRHkECBAgUKFChQoECBAgX+FnwD7hkr2mHNYTQAAAAASUVORK5CYII=",
+    "imgColorbar": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMin": 0.0,
+    "cbMax": 6.407540422,
+    "img2dDataLog": "iVBORw0KGgoAAAANSUhEUgAAABQAAABkCAYAAACGqxDMAAABCUlEQVR4nO3Y0U3DMBRG4XOjDpBukE4AbJANSjagE+BMAEyQMEFGYASyQcMGMEG9weUB9alxcapKCOn3U6QTfbmS82IbdM4VV3FNTKBAgQIFChQoUKBAgQL/Heh1ewEYQjLadvmprfAbmy9DgLZfDlLOB/8yeA8XgM18iM/gbWL6c2BMhJ2/wedij+I1EbbWMB2/tg/ZoHmJW+xOglctlGDTaTs7ITFRHiFOP49hwd9TjKnyAhPgXUu/YG9WyTJAXYHhsAfu+rwJYyJY02Gl46PhVf6Iq/saGBN100MNfGR7FGMKO65bWA+HfLB++OWNJzjEdTZouggSKFCgQIECBQoUKFCgwL8GvwERcTvjzMkHSwAAAABJRU5ErkJggg==",
+    "imgColorbarLog": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAEACAYAAAByPhyYAAAAYElEQVR4nM2SwQnAMAwDjy5gj9yRkwnUR6Cl2I+GQpyPMIeEjTAn6AAYYvf0iNcw9D5tiMfsVswW7JgwI8USGx6yVaynPtvlPpDiE7ak+4xNmf+wXrT3GwOSEmlJYavZBUOdMmveCNFfAAAAAElFTkSuQmCC",
+    "cbMinLog": -3.668147317255685,
+    "cbMaxLog": 0.8066913546137806,
+    "xlabel": "Momentum transfer Q [Angs-1]",
+    "ylabel": "Energy transfer w [meV]",
+    "title": "Detector_Sqw_env [Detector_Sqw_env_1570867884.U1_U2]  Intensity Momentum transfer Q [Angs-1] Energy transfer w [meV] Monitor (Square) per bin\nI = 55.817 Err = 6.32622 N = 353.0\n X0=1.87E+00; dX=1.71E+00; Y0=-6.31E-01; dY=5.94E+00;",
+    "autosize": true
+};
+  var plt = new Plot2D(params, d3.select("body").append("svg"), logscale=false);
+
+  plt.rgstrMouseClickPlot( () => { console.log("click"); } );
+  plt.rgstrMouseCtrlClickPlot( () => { console.log("ctrl click"); } );
+  plt.rgstrMouseRClickPlot( () => { console.log("right click"); } );
+</script>
+<p>
+<a href="Detector_Sqw_env_1570867884.U1_U2">Click for ascii data</a>
+</body>
+</html>
