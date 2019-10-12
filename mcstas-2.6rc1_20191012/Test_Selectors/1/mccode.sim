@@ -1,0 +1,48 @@
+McStas simulation description file for Test_Selectors.
+Date:    Sat Oct 12 09:53:41 2019
+Program: McStas 2.6rc1 - Oct. 12, 2019
+
+begin instrument: Test_Selectors
+  File: Test_Selectors/1/mccode
+  Source: Test_Selectors.instr
+  Parameters:  selector(int) lambda(double) phi(double) d_vs(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: Test_Selectors/1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.6rc1 - Oct. 12, 2019
+  Instrument: Test_Selectors.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570893962
+  Directory: Test_Selectors/1
+  Param: selector=2
+  Param: lambda=4
+  Param: phi=48.3
+  Param: d_vs=0.25
+end simulation
+
+begin data
+  Date: Sat Oct 12 09:53:42 2019 (1570866822)
+  type: array_1d(20)
+  Source: Test_Selectors (Test_Selectors.instr)
+  component: VS_Mon
+  position: 0 0 1.35
+  title: Wavelength [Angs] monitor
+  Ncount: 1000000
+  filename: VS_Mon_1570866821.L
+  statistics: X0=3.99924; dX=0.213361;
+  signal: Min=2.34667e-05; Max=0.00100279; Mean=0.000468317;
+  values: 0.00936633 2.14003e-05 191561
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 3.40022 4.59929
+  variables: L I I_err N
+end data

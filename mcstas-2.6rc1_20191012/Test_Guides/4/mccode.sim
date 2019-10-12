@@ -1,0 +1,69 @@
+McStas simulation description file for Test_Guides.
+Date:    Sat Oct 12 09:45:46 2019
+Program: McStas 2.6rc1 - Oct. 12, 2019
+
+begin instrument: Test_Guides
+  File: Test_Guides/4/mccode
+  Source: Test_Guides.instr
+  Parameters:  Guide(int)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: Test_Guides/4
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.6rc1 - Oct. 12, 2019
+  Instrument: Test_Guides.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570892921
+  Directory: Test_Guides/4
+  Param: Guide=5
+end simulation
+
+begin data
+  Date: Sat Oct 12 09:45:47 2019 (1570866347)
+  type: array_2d(20, 20)
+  Source: Test_Guides (Test_Guides.instr)
+  component: Monitor1_xt
+  position: 0 0 1
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Monitor1_xt_1570866346.x_y
+  statistics: X0=8.82486e-06; dX=0.0144152; Y0=-1.49995e-05; dY=0.0144126;
+  signal: Min=8.63887e-05; Max=9.95838e-05; Mean=9.35942e-05;
+  values: 0.0374377 3.74377e-05 1e+06
+  xvar: x
+  yvar: y
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.025 0.025 -0.025 0.025
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:45:47 2019 (1570866347)
+  type: array_2d(20, 20)
+  Source: Test_Guides (Test_Guides.instr)
+  component: Monitor2_xy
+  position: 0 0 3.1
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Monitor2_xy_1570866346.x_y
+  statistics: X0=2.21459e-05; dX=0.0191618; Y0=-5.31939e-05; dY=0.0191752;
+  signal: Min=7.45673e-06; Max=2.59616e-05; Mean=1.80263e-05;
+  values: 0.00721052 1.63946e-05 623719
+  xvar: x
+  yvar: y
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.035 0.035 -0.035 0.035
+  variables: I I_err N
+end data

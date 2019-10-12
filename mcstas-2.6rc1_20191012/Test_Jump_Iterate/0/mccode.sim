@@ -1,0 +1,139 @@
+McStas simulation description file for Test_Jump_Iterate.
+Date:    Sat Oct 12 09:42:17 2019
+Program: McStas 2.6rc1 - Oct. 12, 2019
+
+begin instrument: Test_Jump_Iterate
+  File: Test_Jump_Iterate/0/mccode
+  Source: Test_Jump_Iterate.instr
+  Parameters:  L(double) numel(double) R(double) width(double) m(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: Test_Jump_Iterate/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.6rc1 - Oct. 12, 2019
+  Instrument: Test_Jump_Iterate.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570892559
+  Directory: Test_Jump_Iterate/0
+  Param: L=60
+  Param: numel=30
+  Param: R=1500
+  Param: width=0.03
+  Param: m=2
+end simulation
+
+begin data
+  Date: Sat Oct 12 09:42:21 2019 (1570866141)
+  type: array_2d(100, 100)
+  Source: Test_Jump_Iterate (Test_Jump_Iterate.instr)
+  component: Mon_LambdaX_In
+  position: 0 0 0.5
+  title:  Intensity Position Wavelength Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Mon_LambdaX_In_1570866137.x_L
+  statistics: X0=3.58263e-06; dX=0.00865032; Y0=9.99479; dY=5.48301;
+  signal: Min=0; Max=0.00201074; Mean=0.0011065;
+  values: 11.065 0.0110689 1e+06
+  xvar: x
+  yvar: Wavelength
+  xlabel: x [m]
+  ylabel: Wavelength [Angs]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.02 0.02 0.5 19.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:42:21 2019 (1570866141)
+  type: array_2d(100, 100)
+  Source: Test_Jump_Iterate (Test_Jump_Iterate.instr)
+  component: Mon_LambdaDX_In
+  position: 0 0 0.5
+  title:  Intensity Divergence Wavelength Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Mon_LambdaDX_In_1570866137.hd_L
+  statistics: X0=-0.000797525; dX=1.11314; Y0=9.9872; dY=5.48322;
+  signal: Min=0.000344386; Max=0.00110486; Mean=0.000733369;
+  values: 7.33369 0.00901805 661796
+  xvar: Hor.
+  yvar: Wavelength
+  xlabel: Hor. Divergence [deg]
+  ylabel: Wavelength [Angs]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -2 2 0.5 19.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:42:21 2019 (1570866141)
+  type: array_2d(100, 100)
+  Source: Test_Jump_Iterate (Test_Jump_Iterate.instr)
+  component: CG_2_out
+  position: 0.00266867 0 12.501
+  title:  Intensity Divergence Wavelength Monitor (Square) per bin
+  Ncount: 1000000
+  filename: CG_2_out_1570866137.hd_L
+  statistics: X0=0.0064234; dX=1.00778; Y0=13.8503; dY=3.97363;
+  signal: Min=0; Max=0.00799801; Mean=0.00272958;
+  values: 27.2958 0.0163628 5.54051e+06
+  xvar: Hor.
+  yvar: Wavelength
+  xlabel: Hor. Divergence [deg]
+  ylabel: Wavelength [Angs]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -2 2 0.5 19.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:42:21 2019 (1570866141)
+  type: array_2d(100, 100)
+  Source: Test_Jump_Iterate (Test_Jump_Iterate.instr)
+  component: Mon_LambdaX_Out
+  position: 0.00280207 0 12.601
+  title:  Intensity Position Wavelength Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Mon_LambdaX_Out_1570866137.x_L
+  statistics: X0=8.94104e-05; dX=0.00957471; Y0=14.1551; dY=3.92915;
+  signal: Min=0; Max=0.0071231; Mean=8.73611e-05;
+  values: 0.873611 0.00276693 255759
+  xvar: x
+  yvar: Wavelength
+  xlabel: x [m]
+  ylabel: Wavelength [Angs]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.5 0.5 0.5 19.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:42:21 2019 (1570866141)
+  type: array_2d(100, 100)
+  Source: Test_Jump_Iterate (Test_Jump_Iterate.instr)
+  component: Mon_LambdaDX_Out
+  position: 0.00280207 0 12.601
+  title:  Intensity Divergence Wavelength Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Mon_LambdaDX_Out_1570866137.hd_L
+  statistics: X0=0.0138044; dX=0.972882; Y0=13.8615; dY=3.9723;
+  signal: Min=0; Max=0.000329838; Mean=7.9168e-05;
+  values: 0.79168 0.00267598 182026
+  xvar: Hor.
+  yvar: Wavelength
+  xlabel: Hor. Divergence [deg]
+  ylabel: Wavelength [Angs]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -2 2 0.5 19.5
+  variables: I I_err N
+end data

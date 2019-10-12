@@ -1,0 +1,110 @@
+McStas simulation description file for Test_Sources.
+Date:    Sat Oct 12 09:53:37 2019
+Program: McStas 2.6rc1 - Oct. 12, 2019
+
+begin instrument: Test_Sources
+  File: Test_Sources/5/mccode
+  Source: Test_Sources.instr
+  Parameters:  source(int) Lmin(double) Lmax(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: Test_Sources/5
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.6rc1 - Oct. 12, 2019
+  Instrument: Test_Sources.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570893944
+  Directory: Test_Sources/5
+  Param: source=6
+  Param: Lmin=1
+  Param: Lmax=11
+end simulation
+
+begin data
+  Date: Sat Oct 12 09:53:38 2019 (1570866818)
+  type: array_1d(40)
+  Source: Test_Sources (Test_Sources.instr)
+  component: m1
+  position: 0 0 1
+  title: Wavelength [Angs] monitor
+  Ncount: 1000000
+  filename: m1_1570866817.L
+  statistics: X0=3.41922; dX=2.056;
+  signal: Min=4.11386e+08; Max=2.34164e+10; Mean=6.04826e+09;
+  values: 2.4193e+11 3.39937e+08 999980
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 1.00002 10.9999
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:53:38 2019 (1570866818)
+  type: array_2d(40, 40)
+  Source: Test_Sources (Test_Sources.instr)
+  component: m2
+  position: 0 0 1
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: m2_1570866817.x_y
+  statistics: X0=-6.84906e-05; dX=0.0288432; Y0=-1.78609e-05; dY=0.0288257;
+  signal: Min=1.24604e+08; Max=1.79059e+08; Mean=1.51205e+08;
+  values: 2.41928e+11 3.39935e+08 999983
+  xvar: x
+  yvar: y
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.0499997 0.0499995 -0.0499992 0.05
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:53:38 2019 (1570866818)
+  type: array_2d(40, 40)
+  Source: Test_Sources (Test_Sources.instr)
+  component: m3
+  position: 0 0 1
+  title:  Intensity Divergence Divergence Monitor (Square) per bin
+  Ncount: 1000000
+  filename: m3_1570866817.hd_vd
+  statistics: X0=-0.00387376; dX=1.66078; Y0=-0.00104582; dY=1.66;
+  signal: Min=2.8329e+06; Max=2.14902e+08; Mean=1.51203e+08;
+  values: 2.41925e+11 3.39933e+08 999973
+  xvar: Hor.
+  yvar: Vert.
+  xlabel: Hor. Divergence [deg]
+  ylabel: Vert. Divergence [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -3.14397 3.1424 -3.13902 3.14518
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:53:38 2019 (1570866818)
+  type: array_1d(8000)
+  Source: Test_Sources (Test_Sources.instr)
+  component: sa1
+  position: 0 0 0
+  title: Adaptive source Wavelength distribution
+  Ncount: 1000000
+  statistics: 
+  signal: 
+  values: ºOÈGû©A°ÿ~[¢A⁄6wﬁªoøıîíí˙?[L¸Çy"Qø”ñ+ÀZè˙?
+  xvar: lambda
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Probability
+  xlimits: 1 11
+  variables: lambda I I_err N
+end data

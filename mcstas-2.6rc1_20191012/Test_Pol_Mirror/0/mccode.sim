@@ -1,0 +1,125 @@
+McStas simulation description file for Test_Pol_Mirror.
+Date:    Sat Oct 12 09:41:31 2019
+Program: McStas 2.6rc1 - Oct. 12, 2019
+
+begin instrument: Test_Pol_Mirror
+  File: Test_Pol_Mirror/0/mccode
+  Source: Test_Pol_Mirror.instr
+  Parameters:  mirrorOption(int)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: Test_Pol_Mirror/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.6rc1 - Oct. 12, 2019
+  Instrument: Test_Pol_Mirror.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570892448
+  Directory: Test_Pol_Mirror/0
+  Param: mirrorOption=1
+end simulation
+
+begin data
+  Date: Sat Oct 12 09:41:31 2019 (1570866091)
+  type: array_1d(30)
+  Source: Test_Pol_Mirror (Test_Pol_Mirror.instr)
+  component: lamStart
+  position: 0 0 0.5
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: lambdaStart.dat
+  statistics: X0=15.0131; dX=8.38248;
+  signal: Min=1.56151e-06; Max=3.17139e-06; Mean=3.03677e-06;
+  values: 9.11031e-05 9.11031e-08 1e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 30
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:41:31 2019 (1570866091)
+  type: array_1d(30)
+  Source: Test_Pol_Mirror (Test_Pol_Mirror.instr)
+  component: pollambdaMonitorReflecY
+  position: 0.0697565 0 1.99756
+  title: Pol-wavelength monitor
+  Ncount: 1000000
+  filename: pollambdaMonReflecY.data
+  statistics: X0=17; dX=7.5;
+  signal: Min=0; Max=0.818182; Mean=0.709091;
+  values: 21.2727 2.12727e-05 1e+06
+  xvar: Wavelength
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Mean Polarisation
+  xlimits: 0 30
+  variables: Wavelength I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:41:31 2019 (1570866091)
+  type: array_1d(30)
+  Source: Test_Pol_Mirror (Test_Pol_Mirror.instr)
+  component: pollambdaMonitorTransmitY
+  position: 0 0 2
+  title: Pol-wavelength monitor
+  Ncount: 1000000
+  filename: pollambdaMonTransY.data
+  statistics: X0=0; dX=0;
+  signal: Min=0; Max=0; Mean=0;
+  values: 0 0 0
+  xvar: Wavelength
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Mean Polarisation
+  xlimits: 0 30
+  variables: Wavelength I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:41:31 2019 (1570866091)
+  type: array_1d(30)
+  Source: Test_Pol_Mirror (Test_Pol_Mirror.instr)
+  component: lamReflec
+  position: 0.0697565 0 1.99756
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: lambdaReflec.dat
+  statistics: X0=19.9344; dX=5.62477;
+  signal: Min=0; Max=1.74031e-06; Mean=1.09203e-06;
+  values: 3.2761e-05 3.97219e-08 1e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 30
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:41:31 2019 (1570866091)
+  type: array_1d(30)
+  Source: Test_Pol_Mirror (Test_Pol_Mirror.instr)
+  component: lamTrans
+  position: 0 0 2
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: lambdaTrans.dat
+  statistics: X0=0; dX=0;
+  signal: Min=0; Max=0; Mean=0;
+  values: 0 0 0
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 30
+  variables: L I I_err N
+end data

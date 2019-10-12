@@ -1,0 +1,199 @@
+McStas simulation description file for HZB_NEAT.
+Date:    Sat Oct 12 09:49:40 2019
+Program: McStas 2.6rc1 - Oct. 12, 2019
+
+begin instrument: HZB_NEAT
+  File: HZB_NEAT/0/mccode
+  Source: HZB_NEAT.instr
+  Parameters:  lambda(double) dlambda(double) rpm(double) coh(string) inc(string)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: HZB_NEAT/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.6rc1 - Oct. 12, 2019
+  Instrument: HZB_NEAT.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570893394
+  Directory: HZB_NEAT/0
+  Param: lambda=6
+  Param: dlambda=0.05
+  Param: rpm=10000
+  Param: coh=Rb_liq_coh.sqw
+  Param: inc=Rb_liq_inc.sqw
+end simulation
+
+begin data
+  Date: Sat Oct 12 09:49:44 2019 (1570866584)
+  type: array_2d(20, 20)
+  Source: HZB_NEAT (HZB_NEAT.instr)
+  component: Guide_PSD
+  position: 0.217608 0 36.0007
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Guide_PSD_1570866580.y_x
+  statistics: X0=-0.000172052; dX=0.0158077; Y0=-0.000184147; dY=0.00862853;
+  signal: Min=129079; Max=279418; Mean=200757;
+  values: 8.03028e+07 503082 141741
+  xvar: y
+  yvar: x
+  xlabel: y [m]
+  ylabel: x [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.0275 0.0275 -0.015 0.015
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:49:44 2019 (1570866584)
+  type: array_1d(20)
+  Source: HZB_NEAT (HZB_NEAT.instr)
+  component: Guide_Lambda
+  position: 0.217609 0 36.0008
+  title: Wavelength [Angs] monitor
+  Ncount: 1000000
+  filename: Guide_Lambda_1570866580.L
+  statistics: X0=5.99975; dX=0.02881;
+  signal: Min=3.86073e+06; Max=4.1491e+06; Mean=4.01498e+06;
+  values: 8.02995e+07 503071 141732
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 5.95 6.05
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:49:44 2019 (1570866584)
+  type: array_2d(20, 20)
+  Source: HZB_NEAT (HZB_NEAT.instr)
+  component: Guide2_PSD
+  position: 0.370822 0 47.97
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Guide2_PSD_1570866580.x_y
+  statistics: X0=-3.5095e-05; dX=0.00431719; Y0=8.72841e-05; dY=0.0158908;
+  signal: Min=0; Max=31926.4; Mean=12718.4;
+  values: 5.08737e+06 32801.3 117871
+  xvar: x
+  yvar: y
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.015 0.015 -0.0275 0.0275
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:49:44 2019 (1570866584)
+  type: array_1d(20)
+  Source: HZB_NEAT (HZB_NEAT.instr)
+  component: Guide2_Lambda
+  position: 0.370823 0 47.9701
+  title: Wavelength [Angs] monitor
+  Ncount: 1000000
+  filename: Guide2_Lambda_1570866580.L
+  statistics: X0=5.99972; dX=0.0288116;
+  signal: Min=244275; Max=263369; Mean=254357;
+  values: 5.08714e+06 32800.5 117867
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 5.95 6.05
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:49:44 2019 (1570866584)
+  type: array_2d(20, 20)
+  Source: HZB_NEAT (HZB_NEAT.instr)
+  component: Guide2_dXY
+  position: 0.370825 0 47.9702
+  title:  Intensity Divergence Divergence Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Guide2_dXY_1570866580.hd_vd
+  statistics: X0=0.00237478; dX=0.694571; Y0=0.00159552; dY=0.399905;
+  signal: Min=0; Max=470162; Mean=12717.8;
+  values: 5.08714e+06 32800.5 117864
+  xvar: Hor.
+  yvar: Vert.
+  xlabel: Hor. Divergence [deg]
+  ylabel: Vert. Divergence [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -5 5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:49:44 2019 (1570866584)
+  type: array_1d(20)
+  Source: HZB_NEAT (HZB_NEAT.instr)
+  component: Guide_time
+  position: 0.370978 0 47.9822
+  title: TOF [s] monitor
+  Ncount: 1000000
+  filename: Guide_time_1570866580.t
+  statistics: X0=0.0181635; dX=4.33253e-05;
+  signal: Min=6978.39; Max=187236; Mean=110631;
+  values: 2.21262e+06 21640.7 51601
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.0180579 0.0182687
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:49:44 2019 (1570866584)
+  type: array_2d(300, 256)
+  Source: HZB_NEAT (HZB_NEAT.instr)
+  component: Ideal_Det
+  position: 0.400516 0 50.2897
+  title:  Intensity Angle Time_Of_Flight Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: Ideal_Det_1570866582.A_t
+  statistics: X0=91.1932; dX=24.2979; Y0=0.0251729; dY=0.000857287;
+  signal: Min=0; Max=4.18221; Mean=0.0811261;
+  values: 6230.48 53.5624 42915
+  xvar: Angle
+  yvar: TOF
+  xlabel: Angle [deg] (abs)
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 13 136 0.0228663 0.0282225
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:49:44 2019 (1570866584)
+  type: array_2d(640, 256)
+  Source: HZB_NEAT (HZB_NEAT.instr)
+  component: Detector
+  position: 0.400516 0 50.2897
+  title: PSD Detector
+  Ncount: 1000000
+  filename: NEAT.psd
+  statistics: X0=0.753425; dX=1.0259; Y0=0.0031227; dY=0.568058;
+  signal: Min=0; Max=1.55428; Mean=0.0178662;
+  values: 2927.2 36.7012 19992
+  xvar: X
+  yvar: Y
+  xlabel: X position [m]
+  ylabel: Y position [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -2.68344 2.68344 -1 1
+  variables: I I_err N
+end data

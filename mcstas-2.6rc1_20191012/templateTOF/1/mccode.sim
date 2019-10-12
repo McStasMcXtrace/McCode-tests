@@ -1,0 +1,147 @@
+McStas simulation description file for templateTOF.
+Date:    Sat Oct 12 09:51:08 2019
+Program: McStas 2.6rc1 - Oct. 12, 2019
+
+begin instrument: templateTOF
+  File: templateTOF/1/mccode
+  Source: templateTOF.instr
+  Parameters:  E0(double) dE(double) dt(double) coh(string) inc(string) thickness(double) yheight(double) radius(double) container(string) container_thickness(double) environment(string) environment_radius(double) environment_thickness(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: templateTOF/1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.6rc1 - Oct. 12, 2019
+  Instrument: templateTOF.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570893565
+  Directory: templateTOF/1
+  Param: E0=33
+  Param: dE=1.07
+  Param: dt=9.6e-06
+  Param: coh=Rb_liq_coh.sqw
+  Param: inc=Rb_liq_inc.sqw
+  Param: thickness=0.0001
+  Param: yheight=0.0168
+  Param: radius=0.005
+  Param: container=Nb.laz
+  Param: container_thickness=5e-05
+  Param: environment=Al.laz
+  Param: environment_radius=0.025
+  Param: environment_thickness=0.002
+end simulation
+
+begin data
+  Date: Sat Oct 12 09:51:11 2019 (1570866671)
+  type: array_2d(50, 150)
+  Source: templateTOF (templateTOF.instr)
+  component: M_total
+  position: 0 0 2.88
+  title:  Intensity Energy Angle Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: M_total_1570866669.E_th
+  statistics: X0=33.1462; dX=2.18682; Y0=98.9937; dY=46.7217;
+  signal: Min=0; Max=2.30929e-10; Mean=7.41157e-13;
+  values: 5.55868e-09 2.85512e-10 64409
+  xvar: Energy
+  yvar: Longitude
+  xlabel: Energy [meV]
+  ylabel: Longitude [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 16.5 66 5 175
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:51:11 2019 (1570866671)
+  type: array_2d(50, 150)
+  Source: templateTOF (templateTOF.instr)
+  component: M_single_coh
+  position: 0 0 2.88
+  title:  Intensity Energy Angle Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: M_single_coh_1570866669.E_th
+  statistics: X0=33.5592; dX=6.30058; Y0=92.161; dY=47.1334;
+  signal: Min=0; Max=6.18031e-12; Mean=7.90459e-14;
+  values: 5.92844e-10 5.58274e-12 47928
+  xvar: Energy
+  yvar: Longitude
+  xlabel: Energy [meV]
+  ylabel: Longitude [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 16.5 66 5 175
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:51:11 2019 (1570866671)
+  type: array_2d(50, 150)
+  Source: templateTOF (templateTOF.instr)
+  component: M_single_inc
+  position: 0 0 2.88
+  title:  Intensity Energy Angle Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: M_single_inc_1570866669.E_th
+  statistics: X0=33.3991; dX=6.10133; Y0=91.4533; dY=50.0894;
+  signal: Min=0; Max=4.50408e-13; Mean=6.79119e-15;
+  values: 5.09339e-11 1.69075e-12 4087
+  xvar: Energy
+  yvar: Longitude
+  xlabel: Energy [meV]
+  ylabel: Longitude [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 16.5 66 5 175
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:51:11 2019 (1570866671)
+  type: array_2d(50, 150)
+  Source: templateTOF (templateTOF.instr)
+  component: M_multi
+  position: 0 0 2.88
+  title:  Intensity Energy Angle Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: M_multi_1570866669.E_th
+  statistics: X0=33.8876; dX=8.3514; Y0=89.8069; dY=48.1614;
+  signal: Min=0; Max=2.81119e-14; Mean=1.99506e-16;
+  values: 1.4963e-12 4.52177e-14 11498
+  xvar: Energy
+  yvar: Longitude
+  xlabel: Energy [meV]
+  ylabel: Longitude [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 16.5 66 5 175
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:51:12 2019 (1570866672)
+  type: array_2d(50, 150)
+  Source: templateTOF (templateTOF.instr)
+  component: M_env_container
+  position: 0 0 2.88
+  title:  Intensity Energy Angle Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: M_env_container_1570866669.E_th
+  statistics: X0=33.0943; dX=0.48992; Y0=99.8855; dY=46.5649;
+  signal: Min=0; Max=2.30015e-10; Mean=6.55972e-13;
+  values: 4.91979e-09 2.85515e-10 1877
+  xvar: Energy
+  yvar: Longitude
+  xlabel: Energy [meV]
+  ylabel: Longitude [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 16.5 66 5 175
+  variables: I I_err N
+end data

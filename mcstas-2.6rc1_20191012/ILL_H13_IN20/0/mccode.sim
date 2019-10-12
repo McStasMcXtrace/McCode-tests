@@ -1,0 +1,169 @@
+McStas simulation description file for ILL_H13_IN20.
+Date:    Sat Oct 12 10:01:45 2019
+Program: McStas 2.6rc1 - Oct. 12, 2019
+
+begin instrument: ILL_H13_IN20
+  File: ILL_H13_IN20/0/mccode
+  Source: ILL_H13_IN20.instr
+  Parameters:  KF(double) KI(double) QM(double) EN(double) verbose(double) WM(double) HM(double) RMH(double) RMV(double) DM(double) NHM(double) NVM(double) WA(double) HA(double) RAH(double) RAV(double) DA(double) NHA(double) NVA(double) L1(double) ALF1(double) ALF2(double) ALF3(double) ALF4(double) BET1(double) BET2(double) BET3(double) BET4(double) EI(double) EF(double) QH(double) QK(double) QL(double) KFIX(double) FX(double) L2(double) L3(double) L4(double) SM(double) SS(double) SA(double) ETAM(double) ETAA(double) AS(double) BS(double) CS(double) AA(double) BB(double) CC(double) AX(double) AY(double) AZ(double) BX(double) BY(double) BZ(double) A1(double) A2(double) A3(double) A4(double) A5(double) A6(double) Sqw_coh(string) Sqw_inc(string) radius(double) thickness(double) height(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: ILL_H13_IN20/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.6rc1 - Oct. 12, 2019
+  Instrument: ILL_H13_IN20.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570894851
+  Directory: ILL_H13_IN20/0
+  Param: KF=3
+  Param: KI=0
+  Param: QM=1
+  Param: EN=0
+  Param: verbose=1
+  Param: WM=0.2
+  Param: HM=0.19
+  Param: RMH=-1
+  Param: RMV=-1
+  Param: DM=3.155
+  Param: NHM=15
+  Param: NVM=15
+  Param: WA=0.16
+  Param: HA=0.08
+  Param: RAH=-1
+  Param: RAV=-1
+  Param: DA=3.155
+  Param: NHA=15
+  Param: NVA=15
+  Param: L1=2.33
+  Param: ALF1=60
+  Param: ALF2=60
+  Param: ALF3=60
+  Param: ALF4=60
+  Param: BET1=120
+  Param: BET2=120
+  Param: BET3=120
+  Param: BET4=120
+  Param: EI=0
+  Param: EF=0
+  Param: QH=0
+  Param: QK=0
+  Param: QL=0
+  Param: KFIX=0
+  Param: FX=0
+  Param: L2=2.1
+  Param: L3=1.5
+  Param: L4=0.7
+  Param: SM=1
+  Param: SS=-1
+  Param: SA=1
+  Param: ETAM=30
+  Param: ETAA=30
+  Param: AS=6.28
+  Param: BS=6.28
+  Param: CS=6.28
+  Param: AA=90
+  Param: BB=90
+  Param: CC=90
+  Param: AX=1
+  Param: AY=0
+  Param: AZ=0
+  Param: BX=0
+  Param: BY=1
+  Param: BZ=0
+  Param: A1=0
+  Param: A2=0
+  Param: A3=0
+  Param: A4=0
+  Param: A5=0
+  Param: A6=0
+  Param: Sqw_coh=V.laz
+  Param: Sqw_inc=NULL
+  Param: radius=0.01
+  Param: thickness=0.005
+  Param: height=0.05
+end simulation
+
+begin data
+  Date: Sat Oct 12 10:01:47 2019 (1570867307)
+  type: array_1d(20)
+  Source: ILL_H13_IN20 (ILL_H13_IN20.instr)
+  component: D4_SC2_1D
+  position: 0.365283 0 2.7848
+  title: Wavelength [Angs] monitor
+  Ncount: 1000000
+  filename: D4_SC2_1D_1570867305.L
+  statistics: X0=2.09418; dX=0.0180626;
+  signal: Min=4.68248e+06; Max=5.75239e+06; Mean=5.22302e+06;
+  values: 1.0446e+08 190483 452089
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/cm2/bin]
+  xlimits: 2.06375 2.12661
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 10:01:47 2019 (1570867307)
+  type: array_0d
+  Source: ILL_H13_IN20 (ILL_H13_IN20.instr)
+  component: Sample_Cradle
+  position: 1.31502 0 3.96729
+  title:  Intensity Monitor (Square)
+  Ncount: 1000000
+  statistics: 
+  signal: 
+  values: 
+  xylimits: 0 0 0 0 0 0
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 10:01:47 2019 (1570867307)
+  type: array_2d(50, 50)
+  Source: ILL_H13_IN20 (ILL_H13_IN20.instr)
+  component: D7_SC3_1D
+  position: 1.31502 0 3.96729
+  title:  Intensity Angle Energy Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: D7_SC3_1D_1570867305.th_E
+  statistics: X0=16.8755; dX=27.6951; Y0=18.6567; dY=0.314334;
+  signal: Min=453.202; Max=2.41341e+06; Mean=190708;
+  values: 4.7677e+08 1.26053e+06 1.60665e+06
+  xvar: Longitude
+  yvar: Energy
+  xlabel: Longitude [deg]
+  ylabel: Energy [meV]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -179.988 179.986 18.0885 19.207
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 10:01:47 2019 (1570867307)
+  type: array_2d(20, 20)
+  Source: ILL_H13_IN20 (ILL_H13_IN20.instr)
+  component: He3H
+  position: 2.41366 0 5.74782
+  title: PSD monitor
+  Ncount: 1000000
+  filename: He3H.psd
+  statistics: X0=-0.0462272; dX=0.426862; Y0=-0.0302576; dY=0.545972;
+  signal: Min=0; Max=21.677; Mean=0.596829;
+  values: 238.732 7.89194 3434
+  xvar: X
+  yvar: Y
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -2.54 2.54 -4.285 4.285
+  variables: I I_err N
+end data

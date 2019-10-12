@@ -1,0 +1,103 @@
+McStas simulation description file for TAS1_Powder.
+Date:    Sat Oct 12 09:52:03 2019
+Program: McStas 2.6rc1 - Oct. 12, 2019
+
+begin instrument: TAS1_Powder
+  File: linup-7/0/mccode
+  Source: linup-7.instr
+  Parameters:  PHM(double) TTM(double) TT(double) TTA(double) C1(double) OMC1(double) C2(double) C3(double) OMA(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: linup-7/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.6rc1 - Oct. 12, 2019
+  Instrument: linup-7.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570893688
+  Directory: linup-7/0
+  Param: PHM=-37.077
+  Param: TTM=-74
+  Param: TT=33.52
+  Param: TTA=0
+  Param: C1=30
+  Param: OMC1=5.5
+  Param: C2=28
+  Param: C3=67
+  Param: OMA=-17.45
+end simulation
+
+begin data
+  Date: Sat Oct 12 09:52:04 2019 (1570866724)
+  type: array_0d
+  Source: TAS1_Powder (linup-7.instr)
+  component: mon
+  position: -1.23041 0 3.91282
+  title: Single monitor mon
+  Ncount: 1000000
+  statistics: 
+  signal: 
+  values: 
+  xylimits: 0 0 0 0 0 0
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:52:04 2019 (1570866724)
+  type: array_1d(35)
+  Source: TAS1_Powder (linup-7.instr)
+  component: emon1
+  position: -1.44189 0 3.97346
+  title: Energy monitor
+  Ncount: 1000000
+  filename: linup_7_1.vmon
+  statistics: X0=20.1468; dX=0.166993;
+  signal: Min=0; Max=7.78285e-05; Mean=2.49399e-05;
+  values: 0.000872895 6.02936e-06 25856
+  xvar: E
+  yvar: (I,I_err)
+  xlabel: Energy [meV]
+  ylabel: Intensity
+  xlimits: 19.25 20.75
+  variables: E I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:52:04 2019 (1570866724)
+  type: array_0d
+  Source: TAS1_Powder (linup-7.instr)
+  component: sng
+  position: -2.28339 0 4.90413
+  title: Single monitor sng
+  Ncount: 1000000
+  statistics: 
+  signal: 
+  values: 
+  xylimits: 0 0 0 0 0 0
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:52:04 2019 (1570866724)
+  type: array_1d(35)
+  Source: TAS1_Powder (linup-7.instr)
+  component: emon2
+  position: -2.28339 0 4.90413
+  title: Energy monitor
+  Ncount: 1000000
+  filename: linup_7_2.vmon
+  statistics: X0=20.1715; dX=0.155526;
+  signal: Min=0; Max=2.84084e-08; Mean=7.56488e-09;
+  values: 2.64771e-07 2.7331e-09 15349
+  xvar: E
+  yvar: (I,I_err)
+  xlabel: Energy [meV]
+  ylabel: Intensity
+  xlimits: 19.25 20.75
+  variables: E I I_err N
+end data

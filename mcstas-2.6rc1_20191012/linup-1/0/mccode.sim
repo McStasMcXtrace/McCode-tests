@@ -1,0 +1,62 @@
+McStas simulation description file for TAS1_C1.
+Date:    Sat Oct 12 09:48:13 2019
+Program: McStas 2.6rc1 - Oct. 12, 2019
+
+begin instrument: TAS1_C1
+  File: linup-1/0/mccode
+  Source: linup-1.instr
+  Parameters:  PHM(double) TTM(double) C1(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: linup-1/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.6rc1 - Oct. 12, 2019
+  Instrument: linup-1.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570893206
+  Directory: linup-1/0
+  Param: PHM=-37.077
+  Param: TTM=-74
+  Param: C1=30
+end simulation
+
+begin data
+  Date: Sat Oct 12 09:48:13 2019 (1570866493)
+  type: array_1d(35)
+  Source: TAS1_C1 (linup-1.instr)
+  component: emon1
+  position: -1.44189 0 3.97346
+  title: Energy monitor
+  Ncount: 1000000
+  filename: linup_1_1.emon
+  statistics: X0=20.1207; dX=0.168112;
+  signal: Min=0; Max=8.26617e-05; Mean=2.60724e-05;
+  values: 0.000912534 6.19518e-06 26614
+  xvar: E
+  yvar: (I,I_err)
+  xlabel: Energy [meV]
+  ylabel: Intensity
+  xlimits: 19.25 20.75
+  variables: E I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:48:13 2019 (1570866493)
+  type: array_0d
+  Source: TAS1_C1 (linup-1.instr)
+  component: sng
+  position: -1.5236 0 3.99689
+  title: Single monitor sng
+  Ncount: 1000000
+  statistics: 
+  signal: 
+  values: 
+  xylimits: 0 0 0 0 0 0
+  variables: I I_err N
+end data

@@ -1,0 +1,68 @@
+McStas simulation description file for Test_Collimator_Radial.
+Date:    Sat Oct 12 10:13:09 2019
+Program: McStas 2.6rc1 - Oct. 12, 2019
+
+begin instrument: Test_Collimator_Radial
+  File: Test_Collimator_Radial/0/mccode
+  Source: Test_Collimator_Radial.instr
+  Parameters:  Collimator(int) Powder(string)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: Test_Collimator_Radial/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.6rc1 - Oct. 12, 2019
+  Instrument: Test_Collimator_Radial.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570896476
+  Directory: Test_Collimator_Radial/0
+  Param: Collimator=1
+  Param: Powder=Na2Ca3Al2F14.laz
+end simulation
+
+begin data
+  Date: Sat Oct 12 10:13:09 2019 (1570867989)
+  type: array_2d(20, 20)
+  Source: Test_Collimator_Radial (Test_Collimator_Radial.instr)
+  component: Monitor1_xt
+  position: 0 0 1
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Monitor1_xt_1570867989.x_y
+  statistics: X0=-1.02868e-06; dX=0.00190932; Y0=-2.86844e-07; dY=0.00279466;
+  signal: Min=0; Max=3.1326e-06; Mean=7.49358e-08;
+  values: 2.99743e-05 2.99743e-08 1e+06
+  xvar: x
+  yvar: y
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.025 0.025 -0.025 0.025
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 10:13:09 2019 (1570867989)
+  type: array_1d(1280)
+  Source: Test_Collimator_Radial (Test_Collimator_Radial.instr)
+  component: BananaTheta
+  position: 0 0 1.1
+  title: Angle [deg] monitor
+  Ncount: 1000000
+  filename: BananaTheta_1570867989.A
+  statistics: X0=84.3952; dX=40.2092;
+  signal: Min=3.94123e-13; Max=5.89715e-11; Mean=1.2283e-11;
+  values: 1.57222e-08 5.97003e-11 235825
+  xvar: A
+  yvar: (I,I_err)
+  xlabel: Angle [deg]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 2 160
+  variables: A I I_err N
+end data

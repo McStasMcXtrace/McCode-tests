@@ -1,0 +1,53 @@
+# Format: McCode with text headers
+# URL: http://www.mccode.org
+# Creator: McStas 2.6rc1 - Oct. 12, 2019
+# Instrument: ILL_H22_VIVALDI.instr
+# Ncount: 1000000
+# Trace: no
+# Gravitation: no
+# Seed: 1570893446
+# Directory: ILL_H22_VIVALDI/0
+# Param: lambda=3
+# Param: dlambda=2.2
+# Param: crystal=YBaCuO.lau
+# Param: container=V.laz
+# Param: verbose=1
+# Param: m=2
+# Param: mip=2
+# Date: Sat Oct 12 09:50:26 2019 (1570866626)
+# type: array_1d(20)
+# Source: ILL_H22_VIVALDI (ILL_H22_VIVALDI.instr)
+# component: SALSA_Mono_Dx
+# position: -0.172785 0 102.92
+# title: Hor. Divergence [deg] monitor
+# Ncount: 1000000
+# filename: SALSA_Mono_Dx_1570866621.hd
+# statistics: X0=0.000553201; dX=0.190899;
+# signal: Min=0; Max=6.58041e+08; Mean=9.41277e+07;
+# values: 1.88255e+09 1.72064e+07 159497
+# xvar: hd
+# yvar: (I,I_err)
+# xlabel: Hor. Divergence [deg]
+# ylabel: Intensity [n/s/cm2/bin]
+# xlimits: -1.7793 1.74514
+# variables: hd I I_err N
+-1.691185825 0 0 153 
+-1.514963931 0 0 1184 
+-1.338742038 9.814726186e-218 0 1881 
+-1.162520145 1.143687192e-58 1.062679918e-58 2657 
+-0.9862982516 5.456841168 1.768410856 5226 
+-0.8100763584 302898.2334 12330.52462 8673 
+-0.6338544651 5663913.01 116456.5519 10485 
+-0.4576325719 41688103.73 605645.62 12732 
+-0.2814106786 202819044.5 3513729.547 15241 
+-0.1051887854 624223695.2 11081372.69 19664 
+0.07103310787 658040662.7 11501665.3 20352 
+0.2472550011 284095125.2 5250336.886 15762 
+0.4234768944 55731385.28 813810.1643 13202 
+0.5996987876 9341696.128 174788.1082 10535 
+0.7759206809 646072.9399 22057.58061 8856 
+0.9521425741 463.2470949 81.95566933 6009 
+1.128364467 1.48388299e-38 1.478687941e-38 3354 
+1.304586361 5.561376992e-177 0 2045 
+1.480808254 0 0 1268 
+1.657030147 0 0 218 

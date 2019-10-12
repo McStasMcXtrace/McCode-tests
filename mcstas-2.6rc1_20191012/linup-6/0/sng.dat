@@ -1,0 +1,31 @@
+# Format: McCode with text headers
+# URL: http://www.mccode.org
+# Creator: McStas 2.6rc1 - Oct. 12, 2019
+# Instrument: linup-6.instr
+# Ncount: 1000000
+# Trace: no
+# Gravitation: no
+# Seed: 1570894615
+# Directory: linup-6/0
+# Param: PHM=-37.077
+# Param: TTM=-74
+# Param: TT=33.52
+# Param: TTA=0
+# Param: C1=30
+# Param: OMC1=5.5
+# Param: C2=28
+# Param: C3=67
+# Param: OMA=-17.45
+# Date: Sat Oct 12 09:59:03 2019 (1570867143)
+# type: array_0d
+# Source: TAS1_Vana (linup-6.instr)
+# component: sng
+# position: -2.28381 0 4.90269
+# title: Single monitor sng
+# Ncount: 1000000
+# statistics: 
+# signal: 
+# values: 
+# xylimits: 0 0 0 0 0 0
+# variables: I I_err N
+0 0 0

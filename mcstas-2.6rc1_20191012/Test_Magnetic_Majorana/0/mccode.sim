@@ -1,0 +1,219 @@
+McStas simulation description file for Test_Magnetic_Majorana.
+Date:    Sat Oct 12 09:52:58 2019
+Program: McStas 2.6rc1 - Oct. 12, 2019
+
+begin instrument: Test_Magnetic_Majorana
+  File: Test_Magnetic_Majorana/0/mccode
+  Source: Test_Magnetic_Majorana.instr
+  Parameters:  Blarge(double) Bsmall(double) magnetLength(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: Test_Magnetic_Majorana/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.6rc1 - Oct. 12, 2019
+  Instrument: Test_Magnetic_Majorana.instr
+  Ncount: 10000
+  Trace: no
+  Gravitation: no
+  Seed: 1570893856
+  Directory: Test_Magnetic_Majorana/0
+  Param: Blarge=1
+  Param: Bsmall=0.003
+  Param: magnetLength=1
+end simulation
+
+begin data
+  Date: Sat Oct 12 09:52:58 2019 (1570866778)
+  type: array_2d(100, 21)
+  Source: Test_Magnetic_Majorana (Test_Magnetic_Majorana.instr)
+  component: pollambdaMonitor1x
+  position: 0 0 0.7
+  title: Pol-wavelength monitor
+  Ncount: 10000
+  filename: pollambdaMon1x.data
+  statistics: X0=15.052; dX=8.11952; Y0=0.952381; dY=2.78775e-08;
+  signal: Min=0; Max=1.16113e-08; Mean=4.18878e-10;
+  values: 8.79645e-07 8.79645e-09 10000
+  xvar: Wavelength
+  yvar: Polarisation
+  xlabel: Wavelength [AA]
+  ylabel: Polarisation projection
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 30 -1 1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:52:58 2019 (1570866778)
+  type: array_2d(100, 21)
+  Source: Test_Magnetic_Majorana (Test_Magnetic_Majorana.instr)
+  component: pollambdaMonitor1y
+  position: 0 0 0.75
+  title: Pol-wavelength monitor
+  Ncount: 10000
+  filename: pollambdaMon1y.data
+  statistics: X0=15.052; dX=8.11952; Y0=0; dY=0;
+  signal: Min=0; Max=1.16113e-08; Mean=4.18878e-10;
+  values: 8.79645e-07 8.79645e-09 10000
+  xvar: Wavelength
+  yvar: Polarisation
+  xlabel: Wavelength [AA]
+  ylabel: Polarisation projection
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 30 -1 1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:52:58 2019 (1570866778)
+  type: array_2d(100, 21)
+  Source: Test_Magnetic_Majorana (Test_Magnetic_Majorana.instr)
+  component: pollambdaMonitor1z
+  position: 0 0 0.8
+  title: Pol-wavelength monitor
+  Ncount: 10000
+  filename: pollambdaMon1z.data
+  statistics: X0=15.052; dX=8.11952; Y0=0; dY=0;
+  signal: Min=0; Max=1.16113e-08; Mean=4.18878e-10;
+  values: 8.79645e-07 8.79645e-09 10000
+  xvar: Wavelength
+  yvar: Polarisation
+  xlabel: Wavelength [AA]
+  ylabel: Polarisation projection
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 30 -1 1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:52:58 2019 (1570866778)
+  type: array_2d(100, 21)
+  Source: Test_Magnetic_Majorana (Test_Magnetic_Majorana.instr)
+  component: pollambdaMonitor2x
+  position: 0 0 2.1
+  title: Pol-wavelength monitor
+  Ncount: 10000
+  filename: pollambdaMon2x.data
+  statistics: X0=15.052; dX=8.11952; Y0=0.952381; dY=2.78775e-08;
+  signal: Min=0; Max=1.16113e-08; Mean=4.18878e-10;
+  values: 8.79645e-07 8.79645e-09 10000
+  xvar: Wavelength
+  yvar: Polarisation
+  xlabel: Wavelength [AA]
+  ylabel: Polarisation projection
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 30 -1 1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:52:58 2019 (1570866778)
+  type: array_2d(100, 21)
+  Source: Test_Magnetic_Majorana (Test_Magnetic_Majorana.instr)
+  component: pollambdaMonitor2y
+  position: 0 0 2.1
+  title: Pol-wavelength monitor
+  Ncount: 10000
+  filename: pollambdaMon2y.data
+  statistics: X0=15.052; dX=8.11952; Y0=0; dY=0;
+  signal: Min=0; Max=1.16113e-08; Mean=4.18878e-10;
+  values: 8.79645e-07 8.79645e-09 10000
+  xvar: Wavelength
+  yvar: Polarisation
+  xlabel: Wavelength [AA]
+  ylabel: Polarisation projection
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 30 -1 1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:52:58 2019 (1570866778)
+  type: array_2d(100, 21)
+  Source: Test_Magnetic_Majorana (Test_Magnetic_Majorana.instr)
+  component: pollambdaMonitor2z
+  position: 0 0 2.1
+  title: Pol-wavelength monitor
+  Ncount: 10000
+  filename: pollambdaMon2z.data
+  statistics: X0=15.052; dX=8.11952; Y0=0; dY=0;
+  signal: Min=0; Max=1.16113e-08; Mean=4.18878e-10;
+  values: 8.79645e-07 8.79645e-09 10000
+  xvar: Wavelength
+  yvar: Polarisation
+  xlabel: Wavelength [AA]
+  ylabel: Polarisation projection
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 30 -1 1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:52:58 2019 (1570866778)
+  type: array_1d(100)
+  Source: Test_Magnetic_Majorana (Test_Magnetic_Majorana.instr)
+  component: mpollambdaMonitor2x
+  position: 0 0 2.1
+  title: Pol-wavelength monitor
+  Ncount: 10000
+  filename: mpollambdaMon2x.data
+  statistics: X0=15; dX=8.14018;
+  signal: Min=0; Max=1; Mean=0.94;
+  values: 94 0.00940047 10000
+  xvar: Wavelength
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Mean Polarisation
+  xlimits: 0 30
+  variables: Wavelength I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:52:58 2019 (1570866778)
+  type: array_1d(100)
+  Source: Test_Magnetic_Majorana (Test_Magnetic_Majorana.instr)
+  component: mpollambdaMonitor2y
+  position: 0 0 2.1
+  title: Pol-wavelength monitor
+  Ncount: 10000
+  filename: mpollambdaMon2y.data
+  statistics: X0=0; dX=0;
+  signal: Min=0; Max=0; Mean=0;
+  values: 0 0 10000
+  xvar: Wavelength
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Mean Polarisation
+  xlimits: 0 30
+  variables: Wavelength I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:52:58 2019 (1570866778)
+  type: array_1d(100)
+  Source: Test_Magnetic_Majorana (Test_Magnetic_Majorana.instr)
+  component: mpollambdaMonitor2z
+  position: 0 0 2.1
+  title: Pol-wavelength monitor
+  Ncount: 10000
+  filename: mpollambdaMon2z.data
+  statistics: X0=0; dX=0;
+  signal: Min=0; Max=0; Mean=0;
+  values: 0 0 10000
+  xvar: Wavelength
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Mean Polarisation
+  xlimits: 0 30
+  variables: Wavelength I I_err N
+end data

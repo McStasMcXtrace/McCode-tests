@@ -1,0 +1,93 @@
+McStas simulation description file for SANS_KWS2_AnySample.
+Date:    Sat Oct 12 10:04:37 2019
+Program: McStas 2.6rc1 - Oct. 12, 2019
+
+begin instrument: SANS_KWS2_AnySample
+  File: FZJ_SANS_KWS2_AnySample/0/mccode
+  Source: FZJ_SANS_KWS2_AnySample.instr
+  Parameters:  lambda(double) dlambda(double) FLUX(double) NGblen(double) sample(int) Clen(double) Dlen(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: FZJ_SANS_KWS2_AnySample/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.6rc1 - Oct. 12, 2019
+  Instrument: FZJ_SANS_KWS2_AnySample.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570895176
+  Directory: FZJ_SANS_KWS2_AnySample/0
+  Param: lambda=7
+  Param: dlambda=0.7
+  Param: FLUX=1e+08
+  Param: NGblen=0.05
+  Param: sample=0
+  Param: Clen=10
+  Param: Dlen=10
+end simulation
+
+begin data
+  Date: Sat Oct 12 10:04:37 2019 (1570867477)
+  type: array_2d(128, 128)
+  Source: SANS_KWS2_AnySample (FZJ_SANS_KWS2_AnySample.instr)
+  component: detector
+  position: 0 0 60
+  title: PSD monitor
+  Ncount: 1000000
+  filename: PSD.dat
+  statistics: X0=0.0307354; dX=1.58559; Y0=0.0133521; dY=1.57384;
+  signal: Min=0; Max=39.7923; Mean=0.209923;
+  values: 3439.38 43.0448 6385
+  xvar: X
+  yvar: Y
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -30 30 -30 30
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 10:04:37 2019 (1570867477)
+  type: array_1d(500)
+  Source: SANS_KWS2_AnySample (FZJ_SANS_KWS2_AnySample.instr)
+  component: detector2
+  position: 0 0 60.01
+  title: PSD monitor radial sum
+  Ncount: 1000000
+  filename: PSDr.dat
+  statistics: X0=0.0208922; dX=0.00860203;
+  signal: Min=0; Max=110.087; Mean=6.87875;
+  values: 3439.38 43.0448 6385
+  xvar: r
+  yvar: (I,I_err)
+  xlabel: Radius [m]
+  ylabel: Intensity
+  xlimits: 0.00035 0.35035
+  variables: r I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 10:04:37 2019 (1570867477)
+  type: array_1d(500)
+  Source: SANS_KWS2_AnySample (FZJ_SANS_KWS2_AnySample.instr)
+  component: detector2
+  position: 0 0 60.01
+  title: PSD monitor radial average
+  Ncount: 1000000
+  filename: PSDr_av.dat
+  statistics: X0=0.0147513; dX=0.00940413;
+  signal: Min=0; Max=2.14221e+06; Mean=108600;
+  values: 5.43001e+07 1.28516e+06 6385
+  xvar: r
+  yvar: (I,I_err)
+  xlabel: Radius [m]
+  ylabel: Intensity/m^2
+  xlimits: 0.00035 0.35035
+  variables: r I I_err N
+end data

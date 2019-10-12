@@ -1,0 +1,92 @@
+# Format: McCode with text headers
+# URL: http://www.mccode.org
+# Creator: McStas 2.6rc1 - Oct. 12, 2019
+# Instrument: ILL_H25_IN22.instr
+# Ncount: 1000000
+# Trace: no
+# Gravitation: no
+# Seed: 1570893892
+# Directory: ILL_H25_IN22/0
+# Param: m=2
+# Param: KI=3.84
+# Param: QM=1
+# Param: EN=0
+# Param: verbose=1
+# Param: WM=0.15
+# Param: HM=0.12
+# Param: NHM=1
+# Param: NVM=9
+# Param: RMV=-1
+# Param: WA=0.2
+# Param: HA=0.1
+# Param: NHA=11
+# Param: NVA=3
+# Param: RAV=-1
+# Param: RAH=-1
+# Param: SM=-1
+# Param: SS=1
+# Param: SA=-1
+# Param: L1=10
+# Param: L2=1.7
+# Param: L3=1
+# Param: L4=0.8
+# Param: lambda=1.63625
+# Param: dlambda=0.0245437
+# Param: mip=2
+# Param: KF=3.84
+# Param: EI=30.5547
+# Param: EF=30.5547
+# Param: QH=0
+# Param: QK=0
+# Param: QL=0
+# Param: KFIX=0
+# Param: FX=0
+# Param: DM=3.3539
+# Param: DA=3.3539
+# Param: RMH=0
+# Param: ETAM=30
+# Param: ETAA=30
+# Param: ALF1=60
+# Param: ALF2=60
+# Param: ALF3=60
+# Param: ALF4=60
+# Param: BET1=120
+# Param: BET2=120
+# Param: BET3=120
+# Param: BET4=120
+# Param: AS=6.28
+# Param: BS=6.28
+# Param: CS=6.28
+# Param: AA=90
+# Param: BB=90
+# Param: CC=90
+# Param: AX=1
+# Param: AY=0
+# Param: AZ=0
+# Param: BX=0
+# Param: BY=1
+# Param: BZ=0
+# Param: A1=0
+# Param: A2=0
+# Param: A3=0
+# Param: A4=0
+# Param: A5=0
+# Param: A6=0
+# Param: Sqw_coh=V.laz
+# Param: Sqw_inc=NULL
+# Param: radius=0.01
+# Param: thickness=0.005
+# Param: height=0.05
+# Date: Sat Oct 12 09:53:28 2019 (1570866808)
+# type: array_0d
+# Source: ILL_H25_IN22 (ILL_H25_IN22.instr)
+# component: GuideOut_Phic
+# position: -0.239052 0.04 69.2324
+# title:  Intensity Monitor (Square)
+# Ncount: 1000000
+# statistics: 
+# signal: 
+# values: 
+# xylimits: 0 0 0 0 0 0
+# variables: I I_err N
+0 0 0

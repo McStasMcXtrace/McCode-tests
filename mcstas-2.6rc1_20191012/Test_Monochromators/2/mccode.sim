@@ -1,0 +1,114 @@
+McStas simulation description file for Test_Monochromators.
+Date:    Sat Oct 12 09:58:58 2019
+Program: McStas 2.6rc1 - Oct. 12, 2019
+
+begin instrument: Test_Monochromators
+  File: Test_Monochromators/2/mccode
+  Source: Test_Monochromators.instr
+  Parameters:  Mono(int) lambda(double) Moz(double) PG(double) powder(double) order(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: Test_Monochromators/2
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.6rc1 - Oct. 12, 2019
+  Instrument: Test_Monochromators.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570894604
+  Directory: Test_Monochromators/2
+  Param: Mono=3
+  Param: lambda=2
+  Param: Moz=40
+  Param: PG=0
+  Param: powder=0
+  Param: order=1
+end simulation
+
+begin data
+  Date: Sat Oct 12 09:58:59 2019 (1570867139)
+  type: array_1d(200)
+  Source: Test_Monochromators (Test_Monochromators.instr)
+  component: lamStart
+  position: 0 0 0.5
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: lambdaStart.dat
+  statistics: X0=1.9999; dX=0.230833;
+  signal: Min=0; Max=7.76921e-06; Mean=5.02538e-06;
+  values: 0.00100508 1.00508e-06 1e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 1.4 2.6
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:58:59 2019 (1570867139)
+  type: array_2d(90, 90)
+  Source: Test_Monochromators (Test_Monochromators.instr)
+  component: Sphere1
+  position: 0 0 1
+  title: 4PI PSD monitor
+  Ncount: 1000000
+  filename: sphere.dat
+  statistics: X0=-30.5344; dX=10.4656; Y0=0.999786; dY=0.847426;
+  signal: Min=0; Max=0.000613225; Mean=1.05655e-07;
+  values: 0.000855802 9.09747e-07 1e+06
+  xvar: Longitude
+  yvar: Lattitude
+  xlabel: Longitude [deg]
+  ylabel: Lattitude [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -180 180 -90 90
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:58:59 2019 (1570867139)
+  type: array_1d(200)
+  Source: Test_Monochromators (Test_Monochromators.instr)
+  component: lam1
+  position: 0.142299 0 1.20555
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: lambda1.dat
+  statistics: X0=1.99784; dX=0.0583698;
+  signal: Min=0; Max=3.58186e-06; Mean=4.47206e-07;
+  values: 8.94413e-05 2.39562e-07 237509
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 1.4 2.6
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:58:59 2019 (1570867139)
+  type: array_2d(20, 20)
+  Source: Test_Monochromators (Test_Monochromators.instr)
+  component: psd1
+  position: 0.284599 0 1.4111
+  title: PSD monitor
+  Ncount: 1000000
+  filename: psd1.dat
+  statistics: X0=-0.00470368; dX=0.915272; Y0=0.000985959; dY=0.914963;
+  signal: Min=0; Max=2.54212e-06; Mean=2.23603e-07;
+  values: 8.94413e-05 2.39562e-07 237509
+  xvar: X
+  yvar: Y
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -5 5
+  variables: I I_err N
+end data

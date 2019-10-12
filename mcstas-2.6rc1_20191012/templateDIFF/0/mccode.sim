@@ -1,0 +1,142 @@
+McStas simulation description file for templateDIFF.
+Date:    Sat Oct 12 09:41:25 2019
+Program: McStas 2.6rc1 - Oct. 12, 2019
+
+begin instrument: templateDIFF
+  File: templateDIFF/0/mccode
+  Source: templateDIFF.instr
+  Parameters:  lambda(double) DM(double) Powder(string) RV(double) L1(double) L2(double) L3(double) ALPHA1(double) ALPHA2(double) ALPHA3(double) ETA(double) verbose(double) THETA_M(double) SM(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: templateDIFF/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.6rc1 - Oct. 12, 2019
+  Instrument: templateDIFF.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570892422
+  Directory: templateDIFF/0
+  Param: lambda=1
+  Param: DM=3.355
+  Param: Powder=Na2Ca3Al2F14.laz
+  Param: RV=-1
+  Param: L1=17
+  Param: L2=3.2
+  Param: L3=1.471
+  Param: ALPHA1=5
+  Param: ALPHA2=60
+  Param: ALPHA3=5
+  Param: ETA=12
+  Param: verbose=1
+  Param: THETA_M=0
+  Param: SM=1
+end simulation
+
+begin data
+  Date: Sat Oct 12 09:41:29 2019 (1570866089)
+  type: array_2d(40, 40)
+  Source: templateDIFF (templateDIFF.instr)
+  component: Diff_Mono_XY
+  position: 0 0 16.9
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: Diff_Mono_XY_1570866085.x_y
+  statistics: X0=-9.16897e-06; dX=0.00430506; Y0=-2.75911e-05; dY=0.0429886;
+  signal: Min=172882; Max=509233; Mean=381289;
+  values: 6.10062e+08 1.32376e+06 282478
+  xvar: x
+  yvar: y
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.00759035 0.00759135 -0.0749785 0.0749795
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:41:29 2019 (1570866089)
+  type: array_1d(40)
+  Source: templateDIFF (templateDIFF.instr)
+  component: Diff_Mono_Lambda
+  position: 0 0 16.99
+  title: Wavelength [Angs] monitor
+  Ncount: 1000000
+  filename: Diff_Mono_Lambda_1570866085.L
+  statistics: X0=1.00001; dX=0.00576892;
+  signal: Min=1.47703e+07; Max=1.57335e+07; Mean=1.52509e+07;
+  values: 6.10035e+08 1.32374e+06 282469
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.990001 1.01
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:41:29 2019 (1570866089)
+  type: array_1d(40)
+  Source: templateDIFF (templateDIFF.instr)
+  component: Diff_Sample_Lambda
+  position: 0.928412 0 20.0101
+  title: Wavelength [Angs] monitor
+  Ncount: 1000000
+  filename: Diff_Sample_Lambda_1570866085.L
+  statistics: X0=1.00038; dX=0.00494697;
+  signal: Min=2.60646e+06; Max=8.71115e+06; Mean=6.24063e+06;
+  values: 2.49625e+08 260873 1.1831e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.990001 1.01
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:41:29 2019 (1570866089)
+  type: array_1d(340)
+  Source: templateDIFF (templateDIFF.instr)
+  component: Diff_BananaTheta
+  position: 0.943149 0 20.0579
+  title: Longitude [deg] monitor
+  Ncount: 1000000
+  filename: Diff_BananaTheta_1570866085.th
+  statistics: X0=65.4479; dX=38.6255;
+  signal: Min=19.9321; Max=2125.88; Mean=225.512;
+  values: 76674.2 405.904 345272
+  xvar: th
+  yvar: (I,I_err)
+  xlabel: Longitude [deg]
+  ylabel: Intensity [n/s/bin]
+  xlimits: -10 160
+  variables: th I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:41:29 2019 (1570866089)
+  type: array_2d(170, 25)
+  Source: templateDIFF (templateDIFF.instr)
+  component: Diff_BananaPSD
+  position: 0.943149 0 20.0579
+  title:  Intensity Angle Position Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: Diff_BananaPSD_1570866085.th_y
+  statistics: X0=65.2621; dX=38.8289; Y0=-0.000225749; dY=0.0854899;
+  signal: Min=1.15861; Max=362.091; Mean=35.7424;
+  values: 151905 573.738 683074
+  xvar: Longitude
+  yvar: y
+  xlabel: Longitude [deg]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -10 160 -0.15 0.15
+  variables: I I_err N
+end data

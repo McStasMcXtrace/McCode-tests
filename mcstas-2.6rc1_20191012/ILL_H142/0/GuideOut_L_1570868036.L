@@ -1,0 +1,51 @@
+# Format: McCode with text headers
+# URL: http://www.mccode.org
+# Creator: McStas 2.6rc1 - Oct. 12, 2019
+# Instrument: ILL_H142.instr
+# Ncount: 1000000
+# Trace: no
+# Gravitation: no
+# Seed: 1570896577
+# Directory: ILL_H142/0
+# Param: m=1
+# Param: lambda=10
+# Param: dlambda=9.9
+# Param: gH=0.12
+# Param: mip=1
+# Date: Sat Oct 12 10:14:02 2019 (1570868042)
+# type: array_1d(20)
+# Source: ILL_H142 (ILL_H142.instr)
+# component: GuideOut_L
+# position: -0.160159 -0.04 109.283
+# title: Wavelength [Angs] monitor
+# Ncount: 1000000
+# filename: GuideOut_L_1570868036.L
+# statistics: X0=6.94481; dX=3.30942;
+# signal: Min=0; Max=3.85e+08; Mean=1.17066e+08;
+# values: 2.34132e+09 2.61227e+07 172321
+# xvar: L
+# yvar: (I,I_err)
+# xlabel: Wavelength [Angs]
+# ylabel: Intensity [n/s/cm2/bin]
+# xlimits: 1 21
+# variables: L I I_err N
+1.5 151244.5703 57054.0642 547 
+2.5 82548797.49 7537384.561 1585 
+3.5 295251258.7 14311262.27 2879 
+4.5 384999524.3 14018545.04 4348 
+5.5 369336409.5 10889742.31 5842 
+6.5 299657033.3 7551785.93 7072 
+7.5 236459803.4 5165833.041 8423 
+8.5 172812732.9 3423940.97 9475 
+9.5 129235402.5 2326485.376 10129 
+10.5 92813333.35 1559689.059 10901 
+11.5 70763800.07 1100114.962 11056 
+12.5 54960625.51 790311.5461 11947 
+13.5 41919762.38 569292.1644 12309 
+14.5 31813147.4 412918.9182 12525 
+15.5 24727529.88 305890.6334 12757 
+16.5 18891853.6 226601.5549 12777 
+17.5 14751015.33 170904.2392 12894 
+18.5 11769273.04 131314.8214 13089 
+19.5 8458530.483 96806.57866 11766 
+20.5 0 0 0 

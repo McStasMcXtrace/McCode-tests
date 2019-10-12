@@ -1,0 +1,54 @@
+# Format: McCode with text headers
+# URL: http://www.mccode.org
+# Creator: McStas 2.6rc1 - Oct. 12, 2019
+# Instrument: ILL_IN13.instr
+# Ncount: 1000000
+# Trace: no
+# Gravitation: no
+# Seed: 1570895540
+# Directory: ILL_IN13/0
+# Param: RMV=-0
+# Param: RDV=4.6
+# Param: RDH=0
+# Param: TM=301
+# Param: LMD=1.8
+# Param: mos_ana=2
+# Param: CaF2mos=10
+# Param: gW=0.03
+# Date: Sat Oct 12 10:07:46 2019 (1570867666)
+# type: array_1d(20)
+# Source: ILL_IN13 (ILL_IN13.instr)
+# component: DetectorShape
+# position: -2.40587 0 2.23748
+# title: Longitude [deg] monitor
+# Ncount: 1000000
+# filename: DetectorShape_1570867662.th
+# statistics: X0=-89.7624; dX=9.12331;
+# signal: Min=0; Max=0.0499758; Mean=0.00730152;
+# values: 0.14603 0.00541463 890
+# xvar: th
+# yvar: (I,I_err)
+# xlabel: Longitude [deg]
+# ylabel: Intensity [n/s/bin]
+# xlimits: -240 -60
+# variables: th I I_err N
+-235.5 0 0 0 
+-226.5 0 0 0 
+-217.5 0 0 0 
+-208.5 0 0 0 
+-199.5 0 0 0 
+-190.5 0 0 0 
+-181.5 0 0 0 
+-172.5 0 0 0 
+-163.5 0 0 0 
+-154.5 0 0 0 
+-145.5 0 0 0 
+-136.5 0 0 0 
+-127.5 0 0 0 
+-118.5 0 0 0 
+-109.5 0.004403784028 0.0009566422248 26 
+-100.5 0.0350309149 0.002660154637 208 
+-91.5 0.04997576852 0.003163423701 309 
+-82.5 0.04120773142 0.00287628621 249 
+-73.5 0.01541218383 0.001752491571 98 
+-64.5 0 0 0 

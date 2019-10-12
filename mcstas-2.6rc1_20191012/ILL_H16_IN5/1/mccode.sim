@@ -1,0 +1,199 @@
+McStas simulation description file for ILL_H16_IN5.
+Date:    Sat Oct 12 10:12:03 2019
+Program: McStas 2.6rc1 - Oct. 12, 2019
+
+begin instrument: ILL_H16_IN5
+  File: ILL_H16_IN5/1/mccode
+  Source: ILL_H16_IN5.instr
+  Parameters:  lambda(double) dlambda(double) m(double) speed(double) ratio(double) housing(string) coh(string) inc(string) thickness(double) height(double) radius(double) order(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: ILL_H16_IN5/1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.6rc1 - Oct. 12, 2019
+  Instrument: ILL_H16_IN5.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570896157
+  Directory: ILL_H16_IN5/1
+  Param: lambda=4.5
+  Param: dlambda=0.09
+  Param: m=1
+  Param: speed=8500
+  Param: ratio=0.5
+  Param: housing=Fe.laz
+  Param: coh=Y3Fe5O12_YIG.laz
+  Param: inc=NULL
+  Param: thickness=0
+  Param: height=0.025
+  Param: radius=0.005
+  Param: order=0
+end simulation
+
+begin data
+  Date: Sat Oct 12 10:12:04 2019 (1570867924)
+  type: array_2d(20, 20)
+  Source: ILL_H16_IN5 (ILL_H16_IN5.instr)
+  component: GuideOut_xy
+  position: 0.138922 0 33.3108
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: GuideOut_xy_1570867923.x_y
+  statistics: X0=-0.000515771; dX=0.00861229; Y0=0.000261036; dY=0.0573153;
+  signal: Min=175692; Max=423346; Mean=288500;
+  values: 1.154e+08 654953 124552
+  xvar: x
+  yvar: y
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.015 0.015 -0.1 0.1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 10:12:04 2019 (1570867924)
+  type: array_2d(20, 20)
+  Source: ILL_H16_IN5 (ILL_H16_IN5.instr)
+  component: GuideOut_dxdy
+  position: 0.138922 0 33.3108
+  title:  Intensity Divergence Divergence Monitor (Square) per bin
+  Ncount: 1000000
+  filename: GuideOut_dxdy_1570867923.hd_vd
+  statistics: X0=0.0104402; dX=0.231782; Y0=-0.00222333; dY=0.265329;
+  signal: Min=7.59884e-108; Max=1.58856e+06; Mean=288500;
+  values: 1.154e+08 654953 124550
+  xvar: Hor.
+  yvar: Vert.
+  xlabel: Hor. Divergence [deg]
+  ylabel: Vert. Divergence [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.935338 0.933953 -0.93543 0.936149
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 10:12:04 2019 (1570867924)
+  type: array_0d
+  Source: ILL_H16_IN5 (ILL_H16_IN5.instr)
+  component: GuideOut_Phic
+  position: 0.138922 0 33.3108
+  title:  Intensity Monitor (Square)
+  Ncount: 1000000
+  statistics: 
+  signal: 
+  values: 
+  xylimits: 0 0 0 0 0 0
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 10:12:04 2019 (1570867924)
+  type: array_1d(20)
+  Source: ILL_H16_IN5 (ILL_H16_IN5.instr)
+  component: GuideOut_L
+  position: 0.138922 0 33.3108
+  title: Wavelength [Angs] monitor
+  Ncount: 1000000
+  filename: GuideOut_L_1570867923.L
+  statistics: X0=4.5; dX=0;
+  signal: Min=0; Max=1.154e+08; Mean=5.76999e+06;
+  values: 1.154e+08 654953 124551
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/cm2/bin]
+  xlimits: 1 21
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 10:12:04 2019 (1570867924)
+  type: array_1d(20)
+  Source: ILL_H16_IN5 (ILL_H16_IN5.instr)
+  component: Det_sample_t
+  position: 0.283102 0 47.7792
+  title: TOF [s] monitor
+  Ncount: 1000000
+  filename: Det_sample_t_1570867923.t
+  statistics: X0=0.0162314; dX=2.75974e-05;
+  signal: Min=93501.8; Max=3.42422e+06; Mean=1.6239e+06;
+  values: 3.24781e+07 871035 2518
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.0161581 0.0163032
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 10:12:04 2019 (1570867924)
+  type: array_2d(100, 100)
+  Source: ILL_H16_IN5 (ILL_H16_IN5.instr)
+  component: Det_ideal_ay
+  position: 0.285491 0 48.019
+  title:  Intensity Angle Position Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: Det_ideal_ay_1570867923.th_y
+  statistics: X0=45.543; dX=21.144; Y0=0.00100509; dY=0.827685;
+  signal: Min=0; Max=3727.65; Mean=120.302;
+  values: 1.20302e+06 16903.2 9133
+  xvar: Longitude
+  yvar: y
+  xlabel: Longitude [deg]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -73.3674 73.3676 -1.5 1.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 10:12:04 2019 (1570867924)
+  type: array_2d(384, 128)
+  Source: ILL_H16_IN5 (ILL_H16_IN5.instr)
+  component: Det_PSD
+  position: 0.285491 0 48.019
+  title: PSD Detector
+  Ncount: 1000000
+  filename: in5det.dat
+  statistics: X0=3.19448; dX=1.50428; Y0=-0.000982839; dY=0.841333;
+  signal: Min=0; Max=1439.15; Mean=23.7941;
+  values: 1.16953e+06 18395.1 7918
+  xvar: X
+  yvar: Y
+  xlabel: X position [m]
+  ylabel: Y position [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5.12201 5.12201 -1.5 1.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 10:12:04 2019 (1570867924)
+  type: array_1d(50)
+  Source: ILL_H16_IN5 (ILL_H16_IN5.instr)
+  component: in5_t
+  position: 0.285491 0 48.019
+  title: TOF [s] monitor
+  Ncount: 1000000
+  filename: in5_t_1570867923.t
+  statistics: X0=0.0211367; dX=0.000123048;
+  signal: Min=0; Max=1.69866e+06; Mean=45059.8;
+  values: 2.25299e+06 35835.8 19668
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.0164162 0.0305133
+  variables: t I I_err N
+end data

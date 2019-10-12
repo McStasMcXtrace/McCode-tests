@@ -1,0 +1,30 @@
+McStas simulation description file for templateSANS_MCPL.
+Date:    Sat Oct 12 09:59:13 2019
+Program: McStas 2.6rc1 - Oct. 12, 2019
+
+begin instrument: templateSANS_MCPL
+  File: templateSANS_MCPL/0/mccode
+  Source: templateSANS_MCPL.instr
+  Parameters:  lambda(double) dlambda(double) r(double) PHI(double) Delta_Rho(double) sigma_abs(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: templateSANS_MCPL/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.6rc1 - Oct. 12, 2019
+  Instrument: templateSANS_MCPL.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570894663
+  Directory: templateSANS_MCPL/0
+  Param: lambda=6
+  Param: dlambda=0.05
+  Param: r=100
+  Param: PHI=0.001
+  Param: Delta_Rho=0.6
+  Param: sigma_abs=0.5
+end simulation

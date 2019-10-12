@@ -1,0 +1,93 @@
+McStas simulation description file for Samples_Isotropic_Sqw.
+Date:    Sat Oct 12 10:05:43 2019
+Program: McStas 2.6rc1 - Oct. 12, 2019
+
+begin instrument: Samples_Isotropic_Sqw
+  File: Samples_Isotropic_Sqw/0/mccode
+  Source: Samples_Isotropic_Sqw.instr
+  Parameters:  lambda(double) sample_coh(string) sample_inc(string)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: Samples_Isotropic_Sqw/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.6rc1 - Oct. 12, 2019
+  Instrument: Samples_Isotropic_Sqw.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570895321
+  Directory: Samples_Isotropic_Sqw/0
+  Param: lambda=3.4
+  Param: sample_coh=Rb_liq_coh.sqw
+  Param: sample_inc=Rb_liq_inc.sqw
+end simulation
+
+begin data
+  Date: Sat Oct 12 10:05:47 2019 (1570867547)
+  type: array_2d(20, 20)
+  Source: Samples_Isotropic_Sqw (Samples_Isotropic_Sqw.instr)
+  component: PSD
+  position: 0 0 0
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: PSD_1570867543.x_y
+  statistics: X0=-1.05252e-06; dX=0.00500976; Y0=3.63958e-06; dY=0.00500512;
+  signal: Min=0; Max=6.37592e-08; Mean=4.74683e-08;
+  values: 1.89873e-05 1.89875e-08 999983
+  xvar: x
+  yvar: y
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.00999602 0.00999816 -0.00999312 0.00999792
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 10:05:47 2019 (1570867547)
+  type: array_2d(100, 100)
+  Source: Samples_Isotropic_Sqw (Samples_Isotropic_Sqw.instr)
+  component: M_theta_t
+  position: 0 0 1.5
+  title:  Intensity Time_Of_Flight Angle Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: M_theta_t_1570867544.t_A
+  statistics: X0=0.00234638; dX=0.000287278; Y0=99.9313; dY=45.3534;
+  signal: Min=0; Max=3.71287e-09; Mean=1.60217e-11;
+  values: 1.60217e-07 6.93039e-10 57526
+  xvar: TOF
+  yvar: Angle
+  xlabel: TOF [s]
+  ylabel: Angle [deg] (abs)
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0.00173381 0.0162288 0 180
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 10:05:47 2019 (1570867547)
+  type: array_2d(100, 100)
+  Source: Samples_Isotropic_Sqw (Samples_Isotropic_Sqw.instr)
+  component: M_aw
+  position: 0 0 1.5
+  title:  Intensity Angle Energy Monitor (Banana) [out] per bin
+  Ncount: 1000000
+  filename: M_aw_1570867544.A_E
+  statistics: X0=99.7971; dX=44.938; Y0=8.4646; dY=3.63471;
+  signal: Min=0; Max=3.93693e-09; Mean=3.19261e-11;
+  values: 3.19261e-07 9.7831e-10 114689
+  xvar: Angle
+  yvar: Energy
+  xlabel: Angle [deg] (abs)
+  ylabel: Energy [meV]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 180 0.0364234 42.6808
+  variables: I I_err N
+end data

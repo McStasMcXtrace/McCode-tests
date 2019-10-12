@@ -1,0 +1,253 @@
+McStas simulation description file for ILL_H22_D1B.
+Date:    Sat Oct 12 09:46:41 2019
+Program: McStas 2.6rc1 - Oct. 12, 2019
+
+begin instrument: ILL_H22_D1B
+  File: ILL_H22_D1B/0/mccode
+  Source: ILL_H22_D1B.instr
+  Parameters:  lambda(double) dlambda(double) DM(double) Powder(string) RV(double) L1(double) L2(double) L3(double) TRAS_X(double) TRAS_Z(double) TILT(double) THETA_M(double) R_pitch(double) R_ri(double) R_ro(double) R_h(double) R_ttmin(double) R_ttmax(double) R_present(double) verbose(double) Inc_Cryo(double) Trans_Cryo(double) Trans_Spl(double) Inc_Spl(double) m(double) mip(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: ILL_H22_D1B/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.6rc1 - Oct. 12, 2019
+  Instrument: ILL_H22_D1B.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570892984
+  Directory: ILL_H22_D1B/0
+  Param: lambda=2.52
+  Param: dlambda=0.03
+  Param: DM=0
+  Param: Powder=Na2Ca3Al2F14.laz
+  Param: RV=2.2
+  Param: L1=0.25
+  Param: L2=3
+  Param: L3=1.5
+  Param: TRAS_X=-0
+  Param: TRAS_Z=0
+  Param: TILT=0
+  Param: THETA_M=22.11
+  Param: R_pitch=0.42
+  Param: R_ri=0.324
+  Param: R_ro=0.419
+  Param: R_h=0.09
+  Param: R_ttmin=-130
+  Param: R_ttmax=-2
+  Param: R_present=1
+  Param: verbose=1
+  Param: Inc_Cryo=0.02
+  Param: Trans_Cryo=0.85
+  Param: Trans_Spl=0.2
+  Param: Inc_Spl=0.05
+  Param: m=2
+  Param: mip=2
+end simulation
+
+begin data
+  Date: Sat Oct 12 09:46:45 2019 (1570866405)
+  type: array_2d(20, 20)
+  Source: ILL_H22_D1B (ILL_H22_D1B.instr)
+  component: GuideOut_xy
+  position: -0.13977 0 92.585
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: GuideOut_xy_1570866401.x_y
+  statistics: X0=0.000265661; dX=0.00870434; Y0=-0.000167581; dY=0.0578183;
+  signal: Min=55769.5; Max=104077; Mean=81330.1;
+  values: 3.2532e+07 157095 158312
+  xvar: x
+  yvar: y
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.015 0.015 -0.1 0.1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:46:45 2019 (1570866405)
+  type: array_2d(20, 20)
+  Source: ILL_H22_D1B (ILL_H22_D1B.instr)
+  component: GuideOut_dxdy
+  position: -0.13977 0 92.585
+  title:  Intensity Divergence Divergence Monitor (Square) per bin
+  Ncount: 1000000
+  filename: GuideOut_dxdy_1570866401.hd_vd
+  statistics: X0=-0.00245899; dX=0.200947; Y0=0.000574687; dY=0.249371;
+  signal: Min=1.4822e-323; Max=554709; Mean=81330.1;
+  values: 3.2532e+07 157095 158309
+  xvar: Hor.
+  yvar: Vert.
+  xlabel: Hor. Divergence [deg]
+  ylabel: Vert. Divergence [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.873576 0.872927 -0.875597 0.875083
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:46:45 2019 (1570866405)
+  type: array_0d
+  Source: ILL_H22_D1B (ILL_H22_D1B.instr)
+  component: GuideOut_Phic
+  position: -0.13977 0 92.585
+  title:  Intensity Monitor (Square)
+  Ncount: 1000000
+  statistics: 
+  signal: 
+  values: 
+  xylimits: 0 0 0 0 0 0
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:46:45 2019 (1570866405)
+  type: array_1d(20)
+  Source: ILL_H22_D1B (ILL_H22_D1B.instr)
+  component: GuideOut_L
+  position: -0.13977 0 92.585
+  title: Wavelength [Angs] monitor
+  Ncount: 1000000
+  filename: GuideOut_L_1570866401.L
+  statistics: X0=2.5; dX=0;
+  signal: Min=0; Max=3.25315e+07; Mean=1.62657e+06;
+  values: 3.25315e+07 157094 158309
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/cm2/bin]
+  xlimits: 1 21
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:46:45 2019 (1570866405)
+  type: array_1d(20)
+  Source: ILL_H22_D1B (ILL_H22_D1B.instr)
+  component: D2B_Mono_Dx
+  position: -0.140569 0 92.8349
+  title: Hor. Divergence [deg] monitor
+  Ncount: 1000000
+  filename: D2B_Mono_Dx_1570866401.hd
+  statistics: X0=-0.002846; dX=0.19913;
+  signal: Min=1.2854e-268; Max=4.76082e+06; Mean=1.57732e+06;
+  values: 3.15465e+07 154923 147512
+  xvar: hd
+  yvar: (I,I_err)
+  xlabel: Hor. Divergence [deg]
+  ylabel: Intensity [n/s/cm2/bin]
+  xlimits: -0.873576 0.871858
+  variables: hd I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:46:45 2019 (1570866405)
+  type: array_2d(50, 50)
+  Source: ILL_H22_D1B (ILL_H22_D1B.instr)
+  component: D1B_monitor_shutter
+  position: 0.380773 0 93.3741
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: D1B_monitor_shutter_1570866401.x_y
+  statistics: X0=-0.000273043; dX=0.00696295; Y0=-5.29228e-05; dY=0.0340567;
+  signal: Min=0; Max=685502; Mean=138016;
+  values: 3.4504e+08 1.28578e+06 139053
+  xvar: x
+  yvar: y
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.015 0.015 -0.1 0.1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:46:45 2019 (1570866405)
+  type: array_1d(50)
+  Source: ILL_H22_D1B (ILL_H22_D1B.instr)
+  component: monitor_D1B
+  position: 1.58194 0 94.6164
+  title: Wavelength [Angs] monitor
+  Ncount: 1000000
+  filename: monitor_D1B_1570866401.L
+  statistics: X0=2.51973; dX=0.0162044;
+  signal: Min=1.52469e+06; Max=2.82701e+06; Mean=2.21598e+06;
+  values: 1.10799e+08 416837 130280
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 2.49 2.55
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:46:45 2019 (1570866405)
+  type: array_2d(50, 50)
+  Source: ILL_H22_D1B (ILL_H22_D1B.instr)
+  component: PSD_D1B
+  position: 1.58194 0 94.6164
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 1000000
+  filename: PSD_D1B_1570866401.x_y
+  statistics: X0=-0.000718362; dX=0.0115663; Y0=-9.06558e-05; dY=0.0185314;
+  signal: Min=0; Max=339726; Mean=44319.6;
+  values: 1.10799e+08 416837 130282
+  xvar: x
+  yvar: y
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.05 0.05 -0.05 0.05
+  variables: I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:46:45 2019 (1570866405)
+  type: array_1d(1280)
+  Source: ILL_H22_D1B (ILL_H22_D1B.instr)
+  component: D1B_BananaTheta
+  position: 1.9448 0 94.9916
+  title: Longitude [deg] monitor
+  Ncount: 1000000
+  filename: D1B_BananaTheta_1570866401.th
+  statistics: X0=-85.5729; dX=26.0973;
+  signal: Min=0; Max=79.4403; Mean=3.78854;
+  values: 4849.33 117.997 6828
+  xvar: th
+  yvar: (I,I_err)
+  xlabel: Longitude [deg]
+  ylabel: Intensity [n/s/bin]
+  xlimits: -130 -2
+  variables: th I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:46:45 2019 (1570866405)
+  type: array_1d(1280)
+  Source: ILL_H22_D1B (ILL_H22_D1B.instr)
+  component: D1B_BananaTheta_Sample
+  position: 1.9448 0 94.9916
+  title: Longitude [deg] monitor
+  Ncount: 1000000
+  filename: D1B_BananaTheta_Sample_1570866401.th
+  statistics: X0=-85.6886; dX=26.0601;
+  signal: Min=0; Max=79.4403; Mean=3.67032;
+  values: 4698.01 116.812 5841
+  xvar: th
+  yvar: (I,I_err)
+  xlabel: Longitude [deg]
+  ylabel: Intensity [n/s/bin]
+  xlimits: -130 -2
+  variables: th I I_err N
+end data

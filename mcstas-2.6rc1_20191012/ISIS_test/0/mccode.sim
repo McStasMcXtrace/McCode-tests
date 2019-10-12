@@ -1,0 +1,84 @@
+McStas simulation description file for ISIS_test.
+Date:    Sat Oct 12 09:50:40 2019
+Program: McStas 2.6rc1 - Oct. 12, 2019
+
+begin instrument: ISIS_test
+  File: ISIS_test/0/mccode
+  Source: ISIS_test.instr
+  Parameters: 
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: ISIS_test/0
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.6rc1 - Oct. 12, 2019
+  Instrument: ISIS_test.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1570893503
+  Directory: ISIS_test/0
+end simulation
+
+begin data
+  Date: Sat Oct 12 09:50:40 2019 (1570866640)
+  type: array_1d(1000)
+  Source: ISIS_test (ISIS_test.instr)
+  component: lam1
+  position: 0 0 0.02
+  title: Wavelength monitor
+  Ncount: 1000000
+  filename: lambdagr.dat
+  statistics: X0=1.9813; dX=1.89127;
+  signal: Min=1.46154e+06; Max=1.28122e+10; Mean=8.24518e+08;
+  values: 8.24518e+11 1.60292e+09 999998
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0.3 12
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:50:40 2019 (1570866640)
+  type: array_1d(1000)
+  Source: ISIS_test (ISIS_test.instr)
+  component: monL
+  position: 0 0 0.03
+  title: Wavelength [Angs] monitor
+  Ncount: 1000000
+  filename: LamND.dat
+  statistics: X0=1.9813; dX=1.89127;
+  signal: Min=1.46154e+06; Max=1.28122e+10; Mean=8.24518e+08;
+  values: 8.24518e+11 1.60292e+09 999998
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.3 12
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Sat Oct 12 09:50:40 2019 (1570866640)
+  type: array_1d(20)
+  Source: ISIS_test (ISIS_test.instr)
+  component: monT
+  position: 0 0 0.04
+  title: TOF [s] monitor
+  Ncount: 1000000
+  filename: timeND.dat
+  statistics: X0=0.000133669; dX=0.000116462;
+  signal: Min=0; Max=6.50436e+11; Mean=4.12184e+10;
+  values: 8.24368e+11 1.60244e+09 999984
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 5.40847e-06 0.00314753
+  variables: t I I_err N
+end data

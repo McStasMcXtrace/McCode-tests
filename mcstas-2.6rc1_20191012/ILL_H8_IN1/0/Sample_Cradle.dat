@@ -1,0 +1,88 @@
+# Format: McCode with text headers
+# URL: http://www.mccode.org
+# Creator: McStas 2.6rc1 - Oct. 12, 2019
+# Instrument: ILL_H8_IN1.instr
+# Ncount: 1000000
+# Trace: no
+# Gravitation: no
+# Seed: 1570895599
+# Directory: ILL_H8_IN1/0
+# Param: KF=10
+# Param: KI=10
+# Param: QM=1
+# Param: EN=0
+# Param: verbose=1
+# Param: WM=0.18
+# Param: HM=0.2
+# Param: RMH=-1
+# Param: RMV=-1
+# Param: DM=1.278
+# Param: NHM=15
+# Param: NVM=15
+# Param: WA=0.16
+# Param: HA=0.12
+# Param: RAH=-1
+# Param: RAV=-1
+# Param: DA=1.278
+# Param: NHA=15
+# Param: NVA=15
+# Param: L1=7
+# Param: ALF1=120
+# Param: ALF2=120
+# Param: ALF3=120
+# Param: ALF4=120
+# Param: BET1=120
+# Param: BET2=120
+# Param: BET3=120
+# Param: BET4=120
+# Param: EI=207.212
+# Param: EF=207.212
+# Param: QH=0
+# Param: QK=0
+# Param: QL=0
+# Param: KFIX=0
+# Param: FX=0
+# Param: L2=2.1
+# Param: L3=1.5
+# Param: L4=0.7
+# Param: SM=1
+# Param: SS=-1
+# Param: SA=1
+# Param: ETAM=30
+# Param: ETAA=30
+# Param: AS=6.28
+# Param: BS=6.28
+# Param: CS=6.28
+# Param: AA=90
+# Param: BB=90
+# Param: CC=90
+# Param: AX=1
+# Param: AY=0
+# Param: AZ=0
+# Param: BX=0
+# Param: BY=1
+# Param: BZ=0
+# Param: A1=0
+# Param: A2=0
+# Param: A3=0
+# Param: A4=0
+# Param: A5=0
+# Param: A6=0
+# Param: Sqw_coh=V.laz
+# Param: Sqw_inc=NULL
+# Param: radius=0.01
+# Param: thickness=0.005
+# Param: height=0.05
+# Date: Sat Oct 12 10:08:11 2019 (1570867691)
+# type: array_0d
+# Source: ILL_H8_IN1 (ILL_H8_IN1.instr)
+# component: Sample_Cradle
+# position: 1.00077 0 8.8462
+# title:  Intensity Monitor (Square)
+# Ncount: 1000000
+# statistics: 
+# signal: 
+# values: 
+# xylimits: 0 0 0 0 0 0
+# variables: I I_err N
+0 0 0
