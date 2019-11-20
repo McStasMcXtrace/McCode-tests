@@ -1,1 +1,0 @@
-../McCode/tools/other/test/McTest_compare.m
