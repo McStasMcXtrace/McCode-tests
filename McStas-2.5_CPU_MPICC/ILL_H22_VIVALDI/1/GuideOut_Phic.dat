@@ -1,0 +1,30 @@
+# Format: McCode with text headers
+# URL: http://www.mccode.org
+# Creator: McStas 2.5 - Nov. 19, 2019
+# Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_VIVALDI/ILL_H22_VIVALDI.instr
+# Ncount: 1000000
+# Trace: no
+# Gravitation: no
+# Seed: 1574229602
+# Directory: 1
+# Nodes: 10
+# Param: lambda=3
+# Param: dlambda=2.2
+# Param: crystal=YBaCuO.lau
+# Param: container=V.laz
+# Param: verbose=1
+# Param: m=2
+# Param: mip=2
+# Date: Wed Nov 20 01:02:51 2019 (1574208171)
+# type: array_0d
+# Source: ILL_H22_VIVALDI (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_VIVALDI/ILL_H22_VIVALDI.instr)
+# component: GuideOut_Phic
+# position: -0.13977 0 92.585
+# title:  Intensity Monitor (Square)
+# Ncount: 10000000
+# statistics: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ2.13645e+09 5.81607e+06 2.14362e+06
+# signal: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿYùÏ—¬ü¿döä¥Kü?‹¢O<·|ü¿H›‹\¹Šü?
+# values: 
+# xylimits: 0 0 0 0 0 0
+# variables: I I_err N
+0 0 0

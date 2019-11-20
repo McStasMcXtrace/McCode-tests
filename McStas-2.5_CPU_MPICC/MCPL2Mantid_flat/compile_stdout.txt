@@ -1,0 +1,54 @@
+      [1574207019.798512] [n-62-23-6:9242 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3373.88
+[1574207019.799925] [n-62-23-6:9242 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207019.799928] [n-62-23-6:9242 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207019.801901] [n-62-23-6:9242 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207019.801904] [n-62-23-6:9242 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+begin instrument: MCPL_filter_energy
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL2Mantid_flat/MCPL2Mantid_flat.instr
+  Parameters:  MCPLfile(string) sourceX(double) sourceY(double) sourceZ(double) sampleX(double) sampleY(double) sampleZ(double) detectorX(double) detectorY(double) detectorZ(double) detrotX(double) detrotY(double) detrotZ(double) xwidth(double) yheight(double) xbins(int) ybins(int)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+begin simulation: .
+  Format: McStas
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL2Mantid_flat/MCPL2Mantid_flat.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574216261
+  Directory: .
+  Param: MCPLfile=my.mcpl.gz
+  Param: sourceX=0
+  Param: sourceY=0
+  Param: sourceZ=-10
+  Param: sampleX=0
+  Param: sampleY=0
+  Param: sampleZ=0
+  Param: detectorX=0
+  Param: detectorY=0
+  Param: detectorZ=6
+  Param: detrotX=0
+  Param: detrotY=0
+  Param: detrotZ=0
+  Param: xwidth=0.6
+  Param: yheight=0.6
+  Param: xbins=128
+  Param: ybins=128
+end simulation
+info!
+INFO: No output directory specified (--dir)
+INFO: Using directory: "MCPL2Mantid_flat_20191120_004335"
+INFO: Regenerating c-file: MCPL2Mantid_flat.c
+CFLAGS= -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
+INFO: Recompiling: ./MCPL2Mantid_flat.out
+INFO: ===
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------

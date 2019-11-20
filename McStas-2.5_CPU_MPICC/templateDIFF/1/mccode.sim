@@ -1,0 +1,143 @@
+McStas simulation description file for templateDIFF.
+Date:    Wed Nov 20 01:25:45 2019
+Program: McStas 2.5 - Nov. 19, 2019
+
+begin instrument: templateDIFF
+  File: 1/mccode
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateDIFF/templateDIFF.instr
+  Parameters:  lambda(double) DM(double) Powder(string) RV(double) L1(double) L2(double) L3(double) ALPHA1(double) ALPHA2(double) ALPHA3(double) ETA(double) verbose(double) THETA_M(double) SM(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateDIFF/templateDIFF.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574213664
+  Directory: 1
+  Nodes: 10
+  Param: lambda=1
+  Param: DM=3.355
+  Param: Powder=Na2Ca3Al2F14.laz
+  Param: RV=-1
+  Param: L1=17
+  Param: L2=3.2
+  Param: L3=1.471
+  Param: ALPHA1=5
+  Param: ALPHA2=60
+  Param: ALPHA3=5
+  Param: ETA=12
+  Param: verbose=1
+  Param: THETA_M=0
+  Param: SM=1
+end simulation
+
+begin data
+  Date: Wed Nov 20 01:25:58 2019 (1574209558)
+  type: array_2d(40, 40)
+  Source: templateDIFF (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateDIFF/templateDIFF.instr)
+  component: Diff_Mono_XY
+  position: 0 0 16.9
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: Diff_Mono_XY_1574209545.x_y
+  statistics: X0=-4.68484e-06; dX=0.00430336; Y0=-4.17268e-05; dY=0.0429294;
+  signal: Min=205517; Max=431935; Mean=381988;
+  values: 6.1118e+08 419019 2.83103e+06
+  xvar: x
+  yvar: y
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.00759337 0.00757641 -0.0749669 0.0748797
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:25:58 2019 (1574209558)
+  type: array_1d(40)
+  Source: templateDIFF (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateDIFF/templateDIFF.instr)
+  component: Diff_Mono_Lambda
+  position: 0 0 16.99
+  title: Wavelength [Angs] monitor
+  Ncount: 10000000
+  filename: Diff_Mono_Lambda_1574209545.L
+  statistics: X0=1.00003; dX=0.00577346;
+  signal: Min=1.51115e+07; Max=1.54789e+07; Mean=1.52795e+07;
+  values: 6.11178e+08 419018 2.83109e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.99 1.01
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:25:58 2019 (1574209558)
+  type: array_1d(40)
+  Source: templateDIFF (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateDIFF/templateDIFF.instr)
+  component: Diff_Sample_Lambda
+  position: 0.928412 0 20.0101
+  title: Wavelength [Angs] monitor
+  Ncount: 10000000
+  filename: Diff_Sample_Lambda_1574209545.L
+  statistics: X0=1.0004; dX=0.00494971;
+  signal: Min=2.63848e+06; Max=8.69748e+06; Mean=6.26135e+06;
+  values: 2.50454e+08 82629.6 1.1883e+07
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.990002 1.01
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:25:58 2019 (1574209558)
+  type: array_1d(340)
+  Source: templateDIFF (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateDIFF/templateDIFF.instr)
+  component: Diff_BananaTheta
+  position: 0.943149 0 20.0579
+  title: Longitude [deg] monitor
+  Ncount: 10000000
+  filename: Diff_BananaTheta_1574209545.th
+  statistics: X0=65.1522; dX=38.7858;
+  signal: Min=23.1376; Max=2435.02; Mean=229.088;
+  values: 77889.8 131.73 3.47349e+06
+  xvar: th
+  yvar: (I,I_err)
+  xlabel: Longitude [deg]
+  ylabel: Intensity [n/s/bin]
+  xlimits: -10 160
+  variables: th I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:25:58 2019 (1574209558)
+  type: array_2d(170, 25)
+  Source: templateDIFF (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateDIFF/templateDIFF.instr)
+  component: Diff_BananaPSD
+  position: 0.943149 0 20.0579
+  title:  Intensity Angle Position Monitor (Banana) [out] per bin
+  Ncount: 10000000
+  filename: Diff_BananaPSD_1574209545.th_y
+  statistics: X0=65.059; dX=38.918; Y0=1.9094e-05; dY=0.0853773;
+  signal: Min=3.12465; Max=321.949; Mean=36.2599;
+  values: 154104 184.776 6.88115e+06
+  xvar: Longitude
+  yvar: y
+  xlabel: Longitude [deg]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -10 160 -0.15 0.15
+  variables: I I_err N
+end data

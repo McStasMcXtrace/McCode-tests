@@ -1,0 +1,142 @@
+McStas simulation description file for ILL_IN5_Mantid.
+Date:    Wed Nov 20 01:04:40 2019
+Program: McStas 2.5 - Nov. 19, 2019
+
+begin instrument: ILL_IN5_Mantid
+  File: 1/mccode
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr
+  Parameters:  lambda(double) dlambda(double) speed(double) ratio(double) housing(string) coh(string) inc(string) thickness(double) height(double) radius(double) order(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574230936
+  Directory: 1
+  Nodes: 10
+  Param: lambda=4.5
+  Param: dlambda=0.05
+  Param: speed=8500
+  Param: ratio=0.5
+  Param: housing=Fe.laz
+  Param: coh=Y3Fe5O12_YIG.laz
+  Param: inc=NULL
+  Param: thickness=0
+  Param: height=0.025
+  Param: radius=0.005
+  Param: order=0
+end simulation
+
+begin data
+  Date: Wed Nov 20 01:04:42 2019 (1574208282)
+  type: array_1d(20)
+  Source: ILL_IN5_Mantid (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr)
+  component: Det_sample_t
+  position: 0 0 17.0191
+  title: TOF [s] monitor
+  Ncount: 10000000
+  filename: Det_sample_t_1574208280.t
+  statistics: X0=0.0162315; dX=2.62031e-05;
+  signal: Min=94444.2; Max=3.81996e+06; Mean=1.90515e+06;
+  values: 3.8103e+07 201694 52536
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.0161624 0.0163004
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:04:42 2019 (1574208282)
+  type: array_2d(6, 18267)
+  Source: ILL_IN5_Mantid (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr)
+  component: nD_Mantid_0
+  position: 0 0 17.2589
+  title:  Intensity Angle Position Neutron_ID Pixel_ID Time_Of_Flight Monitor (Banana) [out]
+  Ncount: 10000000
+  filename: nD_Mantid_0_1574208280_list.p.th.y.n.id.t
+  statistics: X0=0; dX=0; Y0=0; dY=0;
+  signal: Min=10.858; Max=10.858; Mean=0;
+  values: 0 0 0
+  xvar: List
+  yvar: p
+  xlabel: List of neutron events
+  ylabel: p th y n id t 
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 1 18267 1 6
+  variables: p th y n id t 
+end data
+
+begin data
+  Date: Wed Nov 20 01:04:42 2019 (1574208282)
+  type: array_2d(100, 300)
+  Source: ILL_IN5_Mantid (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr)
+  component: Cp_0
+  position: 0 0 17.2589
+  title:  Intensity Angle Position Monitor (Banana) [out] per bin
+  Ncount: 10000000
+  filename: Cp_0_1574208280.th_y
+  statistics: X0=45.1944; dX=21.6346; Y0=-0.00121194; dY=0.818483;
+  signal: Min=0; Max=995.676; Mean=45.5488;
+  values: 1.36646e+06 3852.05 186764
+  xvar: Longitude
+  yvar: y
+  xlabel: Longitude [deg]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -73.3674 73.3676 -1.5 1.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:04:42 2019 (1574208282)
+  type: array_2d(384, 128)
+  Source: ILL_IN5_Mantid (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr)
+  component: Det_PSD
+  position: 0 0 17.2589
+  title: PSD Detector
+  Ncount: 10000000
+  filename: in5det.dat
+  statistics: X0=3.17528; dX=1.52794; Y0=-0.00186416; dY=0.829685;
+  signal: Min=0; Max=693.995; Mean=27.2389;
+  values: 1.33884e+06 4206.81 162423
+  xvar: X
+  yvar: Y
+  xlabel: X position [m]
+  ylabel: Y position [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5.12201 5.12201 -1.5 1.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:04:43 2019 (1574208283)
+  type: array_1d(50)
+  Source: ILL_IN5_Mantid (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr)
+  component: in5_t
+  position: 0 0 17.2589
+  title: TOF [s] monitor
+  Ncount: 10000000
+  filename: in5_t_1574208280.t
+  statistics: X0=0.0211666; dX=0.000131466;
+  signal: Min=0; Max=2.10625e+06; Mean=54587;
+  values: 2.72935e+06 8538.59 413820
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.0164499 0.0308719
+  variables: t I I_err N
+end data

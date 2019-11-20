@@ -1,0 +1,233 @@
+INFO: Using directory: "1"
+INFO: Using existing c-file: ./ILL_IN5_Mantid.c
+INFO: Using existing binary: ./ILL_IN5_Mantid.out
+INFO: ===
+INFO: Using system default number of mpirun -np processes
+[1574208280.778733] [n-62-23-6:22656:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3157.01
+[1574208280.780273] [n-62-23-6:22656:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208280.780289] [n-62-23-6:22656:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1574208280.781952] [n-62-23-6:22657:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3126.42
+[1574208280.782428] [n-62-23-6:22656:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208280.782443] [n-62-23-6:22656:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208280.783463] [n-62-23-6:22657:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208280.783479] [n-62-23-6:22657:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208280.785557] [n-62-23-6:22657:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208280.785572] [n-62-23-6:22657:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208280.789574] [n-62-23-6:22658:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3111.72
+[1574208280.791205] [n-62-23-6:22658:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208280.791221] [n-62-23-6:22658:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208280.793051] [n-62-23-6:22658:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208280.793068] [n-62-23-6:22658:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208280.793386] [n-62-23-6:22660:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3111.72
+[1574208280.794135] [n-62-23-6:22659:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3111.72
+[1574208280.794833] [n-62-23-6:22660:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208280.794849] [n-62-23-6:22660:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208280.794818] [n-62-23-6:22661:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3111.72
+[1574208280.795631] [n-62-23-6:22659:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208280.795647] [n-62-23-6:22659:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208280.796225] [n-62-23-6:22661:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208280.796241] [n-62-23-6:22661:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208280.796728] [n-62-23-6:22660:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208280.796743] [n-62-23-6:22660:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208280.797460] [n-62-23-6:22659:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208280.797475] [n-62-23-6:22659:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208280.798001] [n-62-23-6:22661:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208280.798015] [n-62-23-6:22661:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208280.817872] [n-62-23-3:21870:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3177.34
+[1574208280.817866] [n-62-23-3:21871:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3177.34
+[1574208280.817870] [n-62-23-3:21872:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3177.34
+[1574208280.817870] [n-62-23-3:21873:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3177.34
+[1574208280.822017] [n-62-23-3:21870:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208280.822017] [n-62-23-3:21871:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208280.822034] [n-62-23-3:21871:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208280.822018] [n-62-23-3:21872:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208280.822034] [n-62-23-3:21872:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208280.822017] [n-62-23-3:21873:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208280.822034] [n-62-23-3:21873:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208280.822098] [n-62-23-3:21870:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208280.824281] [n-62-23-3:21873:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208280.824297] [n-62-23-3:21873:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208280.824277] [n-62-23-3:21871:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208280.824290] [n-62-23-3:21871:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208280.824271] [n-62-23-3:21870:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208280.824295] [n-62-23-3:21870:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208280.824284] [n-62-23-3:21872:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208280.824297] [n-62-23-3:21872:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'ILL_IN5_Mantid' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+Instrument: ILL_IN5_Mantid (IN5 disk chopper time-of-flight spectrometer).
+  Wavelength lambda=4.5 [Angs]
+Instrument: ILL_IN5_Mantid (IN5 disk chopper time-of-flight spectrometer).
+Chopper 0: L=0.000000 [m] V=890.117919 [rad/s] Phase=0.000000 [mu-sec]           op-times(0.000000+n*0.003529)s +/- 0.000176
+  Wavelength lambda=4.5 [Angs]
+Chopper 1: L=5.308300 [m] V=890.117919 [rad/s] Phase=6038.204920 [mu-sec]           op-times(0.006038+n*0.003529)s +/- 0.000176
+Chopper 0: L=0.000000 [m] V=890.117919 [rad/s] Phase=0.000000 [mu-sec]           op-times(0.000000+n*0.003529)s +/- 0.000176
+Chopper 1: L=5.308300 [m] V=890.117919 [rad/s] Phase=6038.204920 [mu-sec]           op-times(0.006038+n*0.003529)s +/- 0.000176
+Chopper 2: L=5.458300 [m] V=890.117919 [rad/s] Phase=6208.830306 [mu-sec]           op-times(0.006209+n*0.003529)s +/- 0.000176
+Chopper 2: L=5.458300 [m] V=890.117919 [rad/s] Phase=6208.830306 [mu-sec]           op-times(0.006209+n*0.003529)s +/- 0.000176
+Chopper 3: L=12.428900 [m] V=445.058959 [rad/s] Phase=14137.905757 [mu-sec]           op-times(0.014138+n*0.007059)s +/- 0.000373
+Chopper 4: L=12.483900 [m] V=890.117919 [rad/s] Phase=14200.468398 [mu-sec]           op-times(0.014200+n*0.003529)s +/- 0.000186
+Chopper 5: L=13.253900 [m] V=890.117919 [rad/s] Phase=15076.345381 [mu-sec]           op-times(0.015076+n*0.003529)s +/- 0.000064
+Chopper 6: L=13.308900 [m] V=890.117919 [rad/s] Phase=15138.908023 [mu-sec]           op-times(0.015139+n*0.003529)s +/- 0.000064
+Chopper 3: L=12.428900 [m] V=445.058959 [rad/s] Phase=14137.905757 [mu-sec]           op-times(0.014138+n*0.007059)s +/- 0.000373
+Chopper 4: L=12.483900 [m] V=890.117919 [rad/s] Phase=14200.468398 [mu-sec]           op-times(0.014200+n*0.003529)s +/- 0.000186
+Chopper 5: L=13.253900 [m] V=890.117919 [rad/s] Phase=15076.345381 [mu-sec]           op-times(0.015076+n*0.003529)s +/- 0.000064
+Chopper 6: L=13.308900 [m] V=890.117919 [rad/s] Phase=15138.908023 [mu-sec]           op-times(0.015139+n*0.003529)s +/- 0.000064
+[ILL_IN5_Mantid] Initialize
+[ILL_IN5_Mantid] Initialize
+Instrument: ILL_IN5_Mantid (IN5 disk chopper time-of-flight spectrometer).
+  Wavelength lambda=4.5 [Angs]
+Chopper 0: L=0.000000 [m] V=890.117919 [rad/s] Phase=0.000000 [mu-sec]           op-times(0.000000+n*0.003529)s +/- 0.000176
+Chopper 1: L=5.308300 [m] V=890.117919 [rad/s] Phase=6038.204920 [mu-sec]           op-times(0.006038+n*0.003529)s +/- 0.000176
+Chopper 2: L=5.458300 [m] V=890.117919 [rad/s] Phase=6208.830306 [mu-sec]           op-times(0.006209+n*0.003529)s +/- 0.000176
+Chopper 3: L=12.428900 [m] V=445.058959 [rad/s] Phase=14137.905757 [mu-sec]           op-times(0.014138+n*0.007059)s +/- 0.000373
+Chopper 4: L=12.483900 [m] V=890.117919 [rad/s] Phase=14200.468398 [mu-sec]           op-times(0.014200+n*0.003529)s +/- 0.000186
+Chopper 5: L=13.253900 [m] V=890.117919 [rad/s] Phase=15076.345381 [mu-sec]           op-times(0.015076+n*0.003529)s +/- 0.000064
+Chopper 6: L=13.308900 [m] V=890.117919 [rad/s] Phase=15138.908023 [mu-sec]           op-times(0.015139+n*0.003529)s +/- 0.000064
+Instrument: ILL_IN5_Mantid (IN5 disk chopper time-of-flight spectrometer).
+  Wavelength lambda=4.5 [Angs]
+Chopper 0: L=0.000000 [m] V=890.117919 [rad/s] Phase=0.000000 [mu-sec]           op-times(0.000000+n*0.003529)s +/- 0.000176
+Chopper 1: L=5.308300 [m] V=890.117919 [rad/s] Phase=6038.204920 [mu-sec]           op-times(0.006038+n*0.003529)s +/- 0.000176
+Chopper 2: L=5.458300 [m] V=890.117919 [rad/s] Phase=6208.830306 [mu-sec]           op-times(0.006209+n*0.003529)s +/- 0.000176
+Chopper 3: L=12.428900 [m] V=445.058959 [rad/s] Phase=14137.905757 [mu-sec]           op-times(0.014138+n*0.007059)s +/- 0.000373
+Chopper 4: L=12.483900 [m] V=890.117919 [rad/s] Phase=14200.468398 [mu-sec]           op-times(0.014200+n*0.003529)s +/- 0.000186
+Chopper 5: L=13.253900 [m] V=890.117919 [rad/s] Phase=15076.345381 [mu-sec]           op-times(0.015076+n*0.003529)s +/- 0.000064
+Chopper 6: L=13.308900 [m] V=890.117919 [rad/s] Phase=15138.908023 [mu-sec]           op-times(0.015139+n*0.003529)s +/- 0.000064
+[ILL_IN5_Mantid] Initialize
+[ILL_IN5_Mantid] Initialize
+Instrument: ILL_IN5_Mantid (IN5 disk chopper time-of-flight spectrometer).
+  Wavelength lambda=4.5 [Angs]
+Chopper 0: L=0.000000 [m] V=890.117919 [rad/s] Phase=0.000000 [mu-sec]           op-times(0.000000+n*0.003529)s +/- 0.000176
+Chopper 1: L=5.308300 [m] V=890.117919 [rad/s] Phase=6038.204920 [mu-sec]           op-times(0.006038+n*0.003529)s +/- 0.000176
+Chopper 2: L=5.458300 [m] V=890.117919 [rad/s] Phase=6208.830306 [mu-sec]           op-times(0.006209+n*0.003529)s +/- 0.000176
+Chopper 3: L=12.428900 [m] V=445.058959 [rad/s] Phase=14137.905757 [mu-sec]           op-times(0.014138+n*0.007059)s +/- 0.000373
+Chopper 4: L=12.483900 [m] V=890.117919 [rad/s] Phase=14200.468398 [mu-sec]           op-times(0.014200+n*0.003529)s +/- 0.000186
+Chopper 5: L=13.253900 [m] V=890.117919 [rad/s] Phase=15076.345381 [mu-sec]           op-times(0.015076+n*0.003529)s +/- 0.000064
+Instrument: ILL_IN5_Mantid (IN5 disk chopper time-of-flight spectrometer).
+  Wavelength lambda=4.5 [Angs]
+Chopper 6: L=13.308900 [m] V=890.117919 [rad/s] Phase=15138.908023 [mu-sec]           op-times(0.015139+n*0.003529)s +/- 0.000064
+Chopper 0: L=0.000000 [m] V=890.117919 [rad/s] Phase=0.000000 [mu-sec]           op-times(0.000000+n*0.003529)s +/- 0.000176
+Chopper 1: L=5.308300 [m] V=890.117919 [rad/s] Phase=6038.204920 [mu-sec]           op-times(0.006038+n*0.003529)s +/- 0.000176
+Chopper 2: L=5.458300 [m] V=890.117919 [rad/s] Phase=6208.830306 [mu-sec]           op-times(0.006209+n*0.003529)s +/- 0.000176
+Chopper 3: L=12.428900 [m] V=445.058959 [rad/s] Phase=14137.905757 [mu-sec]           op-times(0.014138+n*0.007059)s +/- 0.000373
+Chopper 4: L=12.483900 [m] V=890.117919 [rad/s] Phase=14200.468398 [mu-sec]           op-times(0.014200+n*0.003529)s +/- 0.000186
+Chopper 5: L=13.253900 [m] V=890.117919 [rad/s] Phase=15076.345381 [mu-sec]           op-times(0.015076+n*0.003529)s +/- 0.000064
+Chopper 6: L=13.308900 [m] V=890.117919 [rad/s] Phase=15138.908023 [mu-sec]           op-times(0.015139+n*0.003529)s +/- 0.000064
+Instrument: ILL_IN5_Mantid (IN5 disk chopper time-of-flight spectrometer).
+  Wavelength lambda=4.5 [Angs]
+[ILL_IN5_Mantid] Initialize
+[ILL_IN5_Mantid] Initialize
+Chopper 0: L=0.000000 [m] V=890.117919 [rad/s] Phase=0.000000 [mu-sec]           op-times(0.000000+n*0.003529)s +/- 0.000176
+Chopper 1: L=5.308300 [m] V=890.117919 [rad/s] Phase=6038.204920 [mu-sec]           op-times(0.006038+n*0.003529)s +/- 0.000176
+Chopper 2: L=5.458300 [m] V=890.117919 [rad/s] Phase=6208.830306 [mu-sec]           op-times(0.006209+n*0.003529)s +/- 0.000176
+Chopper 3: L=12.428900 [m] V=445.058959 [rad/s] Phase=14137.905757 [mu-sec]           op-times(0.014138+n*0.007059)s +/- 0.000373
+Chopper 4: L=12.483900 [m] V=890.117919 [rad/s] Phase=14200.468398 [mu-sec]           op-times(0.014200+n*0.003529)s +/- 0.000186
+Chopper 5: L=13.253900 [m] V=890.117919 [rad/s] Phase=15076.345381 [mu-sec]           op-times(0.015076+n*0.003529)s +/- 0.000064
+Chopper 6: L=13.308900 [m] V=890.117919 [rad/s] Phase=15138.908023 [mu-sec]           op-times(0.015139+n*0.003529)s +/- 0.000064
+Instrument: ILL_IN5_Mantid (IN5 disk chopper time-of-flight spectrometer).
+  Wavelength lambda=4.5 [Angs]
+Chopper 0: L=0.000000 [m] V=890.117919 [rad/s] Phase=0.000000 [mu-sec]           op-times(0.000000+n*0.003529)s +/- 0.000176
+Chopper 1: L=5.308300 [m] V=890.117919 [rad/s] Phase=6038.204920 [mu-sec]           op-times(0.006038+n*0.003529)s +/- 0.000176
+Chopper 2: L=5.458300 [m] V=890.117919 [rad/s] Phase=6208.830306 [mu-sec]           op-times(0.006209+n*0.003529)s +/- 0.000176
+Chopper 3: L=12.428900 [m] V=445.058959 [rad/s] Phase=14137.905757 [mu-sec]           op-times(0.014138+n*0.007059)s +/- 0.000373
+Chopper 4: L=12.483900 [m] V=890.117919 [rad/s] Phase=14200.468398 [mu-sec]           op-times(0.014200+n*0.003529)s +/- 0.000186
+[ILL_IN5_Mantid] Initialize
+Chopper 5: L=13.253900 [m] V=890.117919 [rad/s] Phase=15076.345381 [mu-sec]           op-times(0.015076+n*0.003529)s +/- 0.000064
+Chopper 6: L=13.308900 [m] V=890.117919 [rad/s] Phase=15138.908023 [mu-sec]           op-times(0.015139+n*0.003529)s +/- 0.000064
+Instrument: ILL_IN5_Mantid (IN5 disk chopper time-of-flight spectrometer).
+  Wavelength lambda=4.5 [Angs]
+Chopper 0: L=0.000000 [m] V=890.117919 [rad/s] Phase=0.000000 [mu-sec]           op-times(0.000000+n*0.003529)s +/- 0.000176
+Chopper 1: L=5.308300 [m] V=890.117919 [rad/s] Phase=6038.204920 [mu-sec]           op-times(0.006038+n*0.003529)s +/- 0.000176
+Chopper 2: L=5.458300 [m] V=890.117919 [rad/s] Phase=6208.830306 [mu-sec]           op-times(0.006209+n*0.003529)s +/- 0.000176
+Chopper 3: L=12.428900 [m] V=445.058959 [rad/s] Phase=14137.905757 [mu-sec]           op-times(0.014138+n*0.007059)s +/- 0.000373
+Chopper 4: L=12.483900 [m] V=890.117919 [rad/s] Phase=14200.468398 [mu-sec]           op-times(0.014200+n*0.003529)s +/- 0.000186
+Chopper 5: L=13.253900 [m] V=890.117919 [rad/s] Phase=15076.345381 [mu-sec]           op-times(0.015076+n*0.003529)s +/- 0.000064
+Chopper 6: L=13.308900 [m] V=890.117919 [rad/s] Phase=15138.908023 [mu-sec]           op-times(0.015139+n*0.003529)s +/- 0.000064
+[ILL_IN5_Mantid] Initialize
+[ILL_IN5_Mantid] Initialize
+Instrument: ILL_IN5_Mantid (IN5 disk chopper time-of-flight spectrometer).
+  Wavelength lambda=4.5 [Angs]
+Chopper 0: L=0.000000 [m] V=890.117919 [rad/s] Phase=0.000000 [mu-sec]           op-times(0.000000+n*0.003529)s +/- 0.000176
+Chopper 1: L=5.308300 [m] V=890.117919 [rad/s] Phase=6038.204920 [mu-sec]           op-times(0.006038+n*0.003529)s +/- 0.000176
+Chopper 2: L=5.458300 [m] V=890.117919 [rad/s] Phase=6208.830306 [mu-sec]           op-times(0.006209+n*0.003529)s +/- 0.000176
+Chopper 3: L=12.428900 [m] V=445.058959 [rad/s] Phase=14137.905757 [mu-sec]           op-times(0.014138+n*0.007059)s +/- 0.000373
+Chopper 4: L=12.483900 [m] V=890.117919 [rad/s] Phase=14200.468398 [mu-sec]           op-times(0.014200+n*0.003529)s +/- 0.000186
+Chopper 5: L=13.253900 [m] V=890.117919 [rad/s] Phase=15076.345381 [mu-sec]           op-times(0.015076+n*0.003529)s +/- 0.000064
+Chopper 6: L=13.308900 [m] V=890.117919 [rad/s] Phase=15138.908023 [mu-sec]           op-times(0.015139+n*0.003529)s +/- 0.000064
+[ILL_IN5_Mantid] Initialize
+Source_gen: component sourceMantid (square 0.14 x 0.22)
+            focusing distance dist=2.55 area=0.038 x 0.2
+            spectra 4.450 to 4.550 AA (3.952 to 4.131 meV)
+            T1=216.8 K (2.093 AA), T2=33.9 K (5.292 AA), T3=16.7 K (7.539 AA)
+  Flux is dPhi/dlambda in [n/s/cm2].
+Monitor_nD: Det_sample_t is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+Isotropic_Sqw: sampleMantid: is a hollow cylinder: radius=0.015000 thickness=0.012500 height=0.060000 [J Comp Phys 228 (2009) 5251]
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Y3Fe5O12_YIG.laz' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Y3Fe5O12_YIG.laz' (Table_Read_Offset)
+Isotropic_sqw: Converting 594 powder lines from Y3Fe5O12_YIG.laz into S(q,w) data
+Isotropic_sqw: q range [0:11.7751], creating 1678 elements vector
+Isotropic_Sqw: sampleMantid: Generated Y3Fe5O12_YIG.laz coherent Sqw
+                   q=[0:11.7681 Angs-1] w=[0:0 meV] |S|=0.0250511 size=[1678x1] sigma=1036.16 [barns]
+               Mainly elastic scattering.
+Isotropic_Sqw: sampleMantid: Using Isotropic elastic incoherent scattering (sigma=19.672 [barns])
+Isotropic_Sqw: sampleMantid: Sample temperature not defined (T=0).
+Warning        Disabling detailed balance.
+Isotropic_Sqw: sampleMantid: Focusing can only apply for single
+               scattering. Setting to order=1.
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Fe.laz' (Table_Read_Offset)
+Table from file 'Fe.laz' (block 1) is 17 x 18 (x=1:5), constant step. interpolation: linear
+  '# TITLE *Iron-Fe-[IM3-M] Swanson, H.E.;Tatge, E.[1954] [Iron alpha phase];# ...'
+PowderN: hous: Reading 17 rows from Fe.laz
+PowderN: hous: Read 17 reflections from file 'Fe.laz'
+PowderN: hous: Vc=24.04 [Angs] sigma_abs=5.12 [barn] sigma_inc=0.8 [barn] reflections=Fe.laz
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Gas_tables/He3inHe.table' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Gas_tables/He3inCF4.table' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Gas_tables/He3inHe.table' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Gas_tables/He3inCF4.table' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Gas_tables/He3inHe.table' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Gas_tables/He3inCF4.table' (Table_Read_Offset)
+Monitor_nD: in5_t is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+
+Save [ILL_IN5_Mantid]
+Detector: Det_sample_t_I=3.8103e+07 Det_sample_t_ERR=201694 Det_sample_t_N=52536 "Det_sample_t_1574208280.t"
+Events:   "nD_Mantid_0_1574208280_list.p.th.y.n.id.t"
+
+Finally [ILL_IN5_Mantid: 1]. Time: 2 [s] 
+
+Finally [ILL_IN5_Mantid: 1]. Time: 2 [s] 
+
+Finally [ILL_IN5_Mantid: 1]. Time: 2 [s] 
+
+Finally [ILL_IN5_Mantid: 1]. Time: 2 [s] 
+
+Finally [ILL_IN5_Mantid: 1]. Time: 2 [s] 
+
+Finally [ILL_IN5_Mantid: 1]. Time: 2 [s] 
+
+Finally [ILL_IN5_Mantid: 1]. Time: 2 [s] 
+
+Finally [ILL_IN5_Mantid: 1]. Time: 2 [s] 
+Detector: Cp_0_I=1.36646e+06 Cp_0_ERR=3852.05 Cp_0_N=186764 "Cp_0_1574208280.th_y"
+Detector: Det_PSD_I=1.33884e+06 Det_PSD_ERR=4206.81 Det_PSD_N=162423 "in5det.dat"
+
+Finally [ILL_IN5_Mantid: 1]. Time: 3 [s] 
+Detector: in5_t_I=2.72935e+06 in5_t_ERR=8538.59 in5_t_N=413820 "in5_t_1574208280.t"
+
+Finally [ILL_IN5_Mantid: 1]. Time: 3 [s] 
+Isotropic_Sqw: sampleMantid: 306 neutron events (out of 460090) that should have
+               scattered were transmitted because scattering conditions
+WARNING        could not be satisfied after 100 tries.
+Isotropic_Sqw: sampleMantid: Scattering fraction=0.431838 of incoming intensity
+               Absorption fraction           =0.460448
+               Single   scattering intensity =4.18039e+06 (coh=3.94664e+06 inc=233748)
+               Multiple scattering intensity =0
+[n-62-23-6:22650] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-6:22650] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr in dataset 1

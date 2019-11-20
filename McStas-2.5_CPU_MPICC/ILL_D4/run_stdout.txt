@@ -1,0 +1,164 @@
+INFO: Using directory: "1"
+INFO: Using existing c-file: ./ILL_D4.c
+INFO: Using existing binary: ./ILL_D4.out
+INFO: ===
+INFO: Using system default number of mpirun -np processes
+[1574207987.841589] [n-62-23-6:19514:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3142.65
+[1574207987.841908] [n-62-23-6:19516:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3142.65
+[1574207987.842665] [n-62-23-6:19515:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3142.65
+[1574207987.843062] [n-62-23-6:19514:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207987.843078] [n-62-23-6:19514:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1574207987.843436] [n-62-23-6:19516:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207987.843451] [n-62-23-6:19516:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207987.844128] [n-62-23-6:19515:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207987.844145] [n-62-23-6:19515:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207987.844877] [n-62-23-6:19514:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207987.844892] [n-62-23-6:19514:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207987.845242] [n-62-23-6:19518:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3142.65
+[1574207987.845348] [n-62-23-6:19516:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207987.845363] [n-62-23-6:19516:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207987.845935] [n-62-23-6:19515:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207987.845950] [n-62-23-6:19515:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207987.846775] [n-62-23-6:19518:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207987.846792] [n-62-23-6:19518:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207987.846974] [n-62-23-6:19519:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3142.65
+[1574207987.847927] [n-62-23-6:19517:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3142.65
+[1574207987.848486] [n-62-23-6:19519:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207987.848503] [n-62-23-6:19519:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207987.848645] [n-62-23-6:19518:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207987.848660] [n-62-23-6:19518:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207987.849453] [n-62-23-6:19517:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207987.849470] [n-62-23-6:19517:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207987.850388] [n-62-23-6:19519:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207987.850403] [n-62-23-6:19519:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207987.851362] [n-62-23-6:19517:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207987.851376] [n-62-23-6:19517:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207987.958284] [n-62-23-3:19913:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3469.24
+[1574207987.958284] [n-62-23-3:19914:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3469.24
+[1574207987.958284] [n-62-23-3:19915:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3469.24
+[1574207987.958284] [n-62-23-3:19916:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3469.24
+[1574207987.962320] [n-62-23-3:19913:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207987.962321] [n-62-23-3:19914:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207987.962338] [n-62-23-3:19914:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207987.962321] [n-62-23-3:19915:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207987.962338] [n-62-23-3:19915:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207987.962386] [n-62-23-3:19913:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207987.962813] [n-62-23-3:19916:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207987.962830] [n-62-23-3:19916:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207987.964724] [n-62-23-3:19913:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207987.964787] [n-62-23-3:19916:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207987.964774] [n-62-23-3:19915:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207987.964790] [n-62-23-3:19915:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207987.964776] [n-62-23-3:19914:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207987.964790] [n-62-23-3:19914:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207987.964800] [n-62-23-3:19916:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207987.964908] [n-62-23-3:19913:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'ILL_D4' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_D4/ILL_D4.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+ILL_D4: Detailed DIF configuration
+ILL_D4: Detailed DIF configuration
+* Incoming beam: lambda=0.7 [Angs] EI=166.9 [meV]  KI=8.976 [Angs-1] Vi=5651.48 [m/s]
+* Monochromator:  DM=1.807 [Angs] RV=-0.7182 [m] curved, take-off A1=-11.17 [deg]
+* Incoming beam: lambda=0.7 [Angs] EI=166.9 [meV]  KI=8.976 [Angs-1] Vi=5651.48 [m/s]
+* Monochromator:  DM=1.807 [Angs] RV=-0.7182 [m] curved, take-off A1=-11.17 [deg]
+[ILL_D4] Initialize
+[ILL_D4] Initialize
+ILL_D4: Detailed DIF configuration
+* Incoming beam: lambda=0.7 [Angs] EI=166.9 [meV]  KI=8.976 [Angs-1] Vi=5651.48 [m/s]
+* Monochromator:  DM=1.807 [Angs] RV=-0.7182 [m] curved, take-off A1=-11.17 [deg]
+ILL_D4: Detailed DIF configuration
+* Incoming beam: lambda=0.7 [Angs] EI=166.9 [meV]  KI=8.976 [Angs-1] Vi=5651.48 [m/s]
+* Monochromator:  DM=1.807 [Angs] RV=-0.7182 [m] curved, take-off A1=-11.17 [deg]
+[ILL_D4] Initialize
+ILL_D4: Detailed DIF configuration
+* Incoming beam: lambda=0.7 [Angs] EI=166.9 [meV]  KI=8.976 [Angs-1] Vi=5651.48 [m/s]
+* Monochromator:  DM=1.807 [Angs] RV=-0.7182 [m] curved, take-off A1=-11.17 [deg]
+ILL_D4: Detailed DIF configuration
+* Incoming beam: lambda=0.7 [Angs] EI=166.9 [meV]  KI=8.976 [Angs-1] Vi=5651.48 [m/s]
+* Monochromator:  DM=1.807 [Angs] RV=-0.7182 [m] curved, take-off A1=-11.17 [deg]
+[ILL_D4] Initialize
+[ILL_D4] Initialize
+[ILL_D4] Initialize
+ILL_D4: Detailed DIF configuration
+* Incoming beam: lambda=0.7 [Angs] EI=166.9 [meV]  KI=8.976 [Angs-1] Vi=5651.48 [m/s]
+* Monochromator:  DM=1.807 [Angs] RV=-0.7182 [m] curved, take-off A1=-11.17 [deg]
+ILL_D4: Detailed DIF configuration
+* Incoming beam: lambda=0.7 [Angs] EI=166.9 [meV]  KI=8.976 [Angs-1] Vi=5651.48 [m/s]
+* Monochromator:  DM=1.807 [Angs] RV=-0.7182 [m] curved, take-off A1=-11.17 [deg]
+[ILL_D4] Initialize
+ILL_D4: Detailed DIF configuration
+* Incoming beam: lambda=0.7 [Angs] EI=166.9 [meV]  KI=8.976 [Angs-1] Vi=5651.48 [m/s]
+* Monochromator:  DM=1.807 [Angs] RV=-0.7182 [m] curved, take-off A1=-11.17 [deg]
+[ILL_D4] Initialize
+[ILL_D4] Initialize
+ILL_D4: Detailed DIF configuration
+* Incoming beam: lambda=0.7 [Angs] EI=166.9 [meV]  KI=8.976 [Angs-1] Vi=5651.48 [m/s]
+* Monochromator:  DM=1.807 [Angs] RV=-0.7182 [m] curved, take-off A1=-11.17 [deg]
+[ILL_D4] Initialize
+Isotropic_Sqw: Sample: is a cylinder: radius=0.004000 thickness=0.000000 height=0.040000 [J Comp Phys 228 (2009) 5251]
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/SiO2_liq.qSq' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/SiO2_liq.qSq' (Table_Read_Offset)
+Isotropic_Sqw: Sample: Computing scattering unit density V_rho=0.0220518 [AA^-3] from density=2.2 [g/cm^3] weight=60.08 [g/mol].
+Isotropic_sqw: Converting 2467 S(q) from SiO2_liq.qSq into S(q,w) data
+Isotropic_sqw: q range [0:49.971], creating 2467 elements vector
+Isotropic_Sqw: Sample: Generated SiO2_liq.qSq coherent Sqw
+                   q=[0:49.971 Angs-1] w=[0:0 meV] |S|=1.01457 size=[2499x1] sigma=10.6 [barns]
+               Mainly elastic scattering.
+Isotropic_Sqw: Sample: Using Isotropic elastic incoherent scattering (sigma=0.0056 [barns])
+Isotropic_Sqw: Sample: Sample temperature not defined (T=0).
+Warning        Disabling detailed balance.
+Isotropic_Sqw: Sample: Focusing can only apply for single
+               scattering. Setting to order=1.
+[n-62-23-6:19507] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-6:19507] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+
+Trace ETA 18 [s] % 58 
+Trace ETA 19 [s] % 56 
+Trace ETA 19 [s] % 56 
+Trace ETA 19 [s] % 56 
+Trace ETA 19 [s] % 56 
+Trace ETA 19 [s] % 57 
+Trace ETA 19 [s] % 57 
+Trace ETA 18 [s] % 58 
+Trace ETA 19 [s] % 56 
+Trace ETA 19 [s] % 55 60 60 60 60 60 60 60 60 60 60 70 70 70 70 70 70 70 70 70 70 80 80 80 80 80 80 80 80 80 80 90 90 90 90 90 90 90 90 90 90 
+Finally [ILL_D4: 1]. Time: 18 [s] 
+
+Finally [ILL_D4: 1]. Time: 19 [s] 
+
+Finally [ILL_D4: 1]. Time: 19 [s] 
+
+Finally [ILL_D4: 1]. Time: 19 [s] 
+
+Finally [ILL_D4: 1]. Time: 19 [s] 
+
+Finally [ILL_D4: 1]. Time: 19 [s] 
+
+Finally [ILL_D4: 1]. Time: 19 [s] 
+
+Save [ILL_D4]
+Detector: PSD_I=2.817e+09 PSD_ERR=2.29487e+06 PSD_N=1.50871e+06 "PSD1.dat"
+
+Finally [ILL_D4: 1]. Time: 19 [s] 
+Detector: Lmon1_I=1.01115e+10 Lmon1_ERR=4.34778e+06 Lmon1_N=5.41557e+06 "Lmon1.dat"
+Detector: Lmon2_I=4.31308e+09 Lmon2_ERR=897630 Lmon2_N=2.31113e+07 "Lmon2.dat"
+Detector: Sample_mon_I=1.84336e+08 Sample_mon_ERR=61689.4 Sample_mon_N=8.93373e+06 "Sample_mon_1574207988.x_y"
+Detector: BananaTheta_I=1.44801e+06 BananaTheta_ERR=1422.23 BananaTheta_N=1.90926e+06 "BananaTheta_1574207988.th"
+
+Finally [ILL_D4: 1]. Time: 19 [s] 
+Detector: BananaPSD_I=1.75026e+06 BananaPSD_ERR=1588.29 BananaPSD_N=2.25588e+06 "BananaPSD_1574207988.th_y"
+
+Finally [ILL_D4: 1]. Time: 19 [s] 
+Isotropic_Sqw: Sample: 7 neutron events (out of 4512416) that should have
+               scattered were transmitted because scattering conditions
+WARNING        could not be satisfied after 100 tries.
+Isotropic_Sqw: Sample: Scattering fraction=0.148639 of incoming intensity
+               Absorption fraction           =0.00609373
+               Single   scattering intensity =3.50224e+06 (coh=3.50033e+06 inc=1915.79)
+               Multiple scattering intensity =0
+INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_D4/ILL_D4.instr in dataset 1

@@ -1,0 +1,52 @@
+[1574207365.309470] [n-62-23-6:12293:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3369.60
+[1574207365.310782] [n-62-23-6:12293:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207365.310785] [n-62-23-6:12293:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207365.312651] [n-62-23-6:12293:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207365.312654] [n-62-23-6:12293:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+begin instrument: TestSANS
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr
+  Parameters:  DistSrcPin1(double) DistSrcPin2(double) DistPinSamp(double) DistSampDet(double) DetRadius(double) Lambda(double) DLambda(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+begin simulation: .
+  Format: McStas
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574219658
+  Directory: .
+  Param: DistSrcPin1=1
+  Param: DistSrcPin2=10
+  Param: DistPinSamp=1
+  Param: DistSampDet=10
+  Param: DetRadius=4
+  Param: Lambda=4.5
+  Param: DLambda=0.1
+end simulation
+info!
+INFO: No output directory specified (--dir)
+INFO: Using directory: "TestSANS_20191120_004923"
+INFO: Regenerating c-file: TestSANS.c
+Info:    'SANSLiposomes' is a contributed component.
+Info:    'SANSQMonitor' is a contributed component.
+Warning: Component QMonitor=SANSQMonitor(string RFilename) definition parameter
+         may be changed into a setting parameter to avoid
+         warnings at compile time.
+Warning: Component QMonitor=SANSQMonitor(string qFilename) definition parameter
+         may be changed into a setting parameter to avoid
+         warnings at compile time.
+CFLAGS=
+INFO: Recompiling: ./TestSANS.out
+INFO: ===
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------

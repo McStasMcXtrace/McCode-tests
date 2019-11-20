@@ -1,0 +1,125 @@
+INFO: Using directory: "1"
+INFO: Using existing c-file: ./templateSANS_MCPL.c
+INFO: Using existing binary: ./templateSANS_MCPL.out
+INFO: ===
+INFO: Using system default number of mpirun -np processes
+[1574209566.315768] [n-62-23-6:4423 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3195.12
+[1574209566.317358] [n-62-23-6:4423 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209566.317374] [n-62-23-6:4423 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1574209566.317900] [n-62-23-6:4424 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3195.12
+[1574209566.319190] [n-62-23-6:4423 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209566.319205] [n-62-23-6:4423 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209566.319263] [n-62-23-6:4424 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209566.319280] [n-62-23-6:4424 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209566.321136] [n-62-23-6:4424 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209566.321153] [n-62-23-6:4424 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209566.327414] [n-62-23-6:4427 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3195.12
+[1574209566.328735] [n-62-23-6:4427 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209566.328751] [n-62-23-6:4427 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209566.330545] [n-62-23-6:4427 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209566.330560] [n-62-23-6:4427 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209566.332184] [n-62-23-6:4425 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3195.12
+[1574209566.333735] [n-62-23-6:4425 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209566.333751] [n-62-23-6:4425 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209566.333931] [n-62-23-6:4426 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3195.12
+[1574209566.334464] [n-62-23-6:4428 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3195.12
+[1574209566.335234] [n-62-23-6:4426 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209566.335251] [n-62-23-6:4426 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209566.335508] [n-62-23-6:4425 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209566.335523] [n-62-23-6:4425 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209566.335754] [n-62-23-6:4428 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209566.335772] [n-62-23-6:4428 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209566.337026] [n-62-23-6:4426 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209566.337041] [n-62-23-6:4426 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209566.337522] [n-62-23-6:4428 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209566.337536] [n-62-23-6:4428 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209566.348049] [n-62-23-3:28225:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3166.41
+[1574209566.348049] [n-62-23-3:28226:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3166.41
+[1574209566.348052] [n-62-23-3:28227:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3166.41
+[1574209566.348050] [n-62-23-3:28228:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3166.41
+[1574209566.352299] [n-62-23-3:28225:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209566.352315] [n-62-23-3:28225:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209566.352300] [n-62-23-3:28226:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209566.352316] [n-62-23-3:28226:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209566.352300] [n-62-23-3:28227:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209566.352316] [n-62-23-3:28227:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209566.352299] [n-62-23-3:28228:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209566.352381] [n-62-23-3:28228:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209566.354509] [n-62-23-3:28227:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209566.354522] [n-62-23-3:28227:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209566.354511] [n-62-23-3:28225:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209566.354524] [n-62-23-3:28225:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209566.354517] [n-62-23-3:28226:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209566.354533] [n-62-23-3:28226:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209566.354508] [n-62-23-3:28228:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209566.354532] [n-62-23-3:28228:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'templateSANS_MCPL' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateSANS_MCPL/templateSANS_MCPL.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+[templateSANS_MCPL] Initialize
+Sans_spheres: sample: The target is not defined. Using direct beam (Z-axis).
+[templateSANS_MCPL] Initialize
+Sans_spheres: sample: The target is not defined. Using direct beam (Z-axis).
+[templateSANS_MCPL] Initialize
+Sans_spheres: sample: The target is not defined. Using direct beam (Z-axis).
+[templateSANS_MCPL] Initialize
+Sans_spheres: sample: The target is not defined. Using direct beam (Z-axis).
+[templateSANS_MCPL] Initialize
+Sans_spheres: sample: The target is not defined. Using direct beam (Z-axis).
+[templateSANS_MCPL] Initialize
+Sans_spheres: sample: The target is not defined. Using direct beam (Z-axis).
+[templateSANS_MCPL] Initialize
+Sans_spheres: sample: The target is not defined. Using direct beam (Z-axis).
+[templateSANS_MCPL] Initialize
+Sans_spheres: sample: The target is not defined. Using direct beam (Z-axis).
+[templateSANS_MCPL] Initialize
+Sans_spheres: sample: The target is not defined. Using direct beam (Z-axis).
+[templateSANS_MCPL] Initialize
+Sans_spheres: sample: The target is not defined. Using direct beam (Z-axis).
+
+Save [templateSANS_MCPL]
+
+Finally [templateSANS_MCPL: 1]. Time: 1 [s] 
+
+
+Finally [templateSANS_MCPL: 1]. Time: 1 [s] 
+Finally [templateSANS_MCPL: 1]. Time: 1 [s] 
+
+Finally [templateSANS_MCPL: 1]. Time: 1 [s] 
+
+Finally [templateSANS_MCPL: 1]. Time: 1 [s] 
+
+Finally [templateSANS_MCPL: 1]. Time: 1 [s] 
+
+Finally [templateSANS_MCPL: 1]. Time: 1 [s] 
+
+Finally [templateSANS_MCPL: 1]. Time: 1 [s] 
+
+Finally [templateSANS_MCPL: 1]. Time: 1 [s] 
+
+Finally [templateSANS_MCPL: 1]. Time: 1 [s] 
+MCPL: Attempting to compress file output.mcpl with gzip
+--------------------------------------------------------------------------
+A process has executed an operation involving a call to the
+"fork()" system call to create a child process.  Open MPI is currently
+operating in a condition that could result in memory corruption or
+other system errors; your job may hang, crash, or produce silent
+data corruption.  The use of fork() (or system() or other calls that
+create child processes) is strongly discouraged.
+
+The process that invoked fork was:
+
+  Local host:          [[4015,1],0] (PID 4423)
+
+If you are *absolutely sure* that your application will successfully
+and correctly survive a call to fork(), you may disable this warning
+by setting the mpi_warn_on_fork MCA parameter to 0.
+--------------------------------------------------------------------------
+[n-62-23-6:04416] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-6:04416] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+MCPL: Succesfully compressed file into output.mcpl.gz
+INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateSANS_MCPL/templateSANS_MCPL.instr in dataset 1

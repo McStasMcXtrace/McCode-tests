@@ -1,0 +1,165 @@
+INFO: Using directory: "1"
+INFO: Using existing c-file: ./Test_MCPL_input.c
+INFO: Using existing binary: ./Test_MCPL_input.out
+INFO: ===
+INFO: Using system default number of mpirun -np processes
+[1574208877.162541] [n-62-23-6:29185:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3210.50
+[1574208877.164276] [n-62-23-6:29185:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208877.164293] [n-62-23-6:29185:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1574208877.166169] [n-62-23-6:29185:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208877.166184] [n-62-23-6:29185:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208877.168838] [n-62-23-6:29189:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3157.18
+[1574208877.170177] [n-62-23-3:24969:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3307.23
+[1574208877.170177] [n-62-23-3:24970:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3307.23
+[1574208877.170177] [n-62-23-3:24971:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3307.23
+[1574208877.170177] [n-62-23-3:24972:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3307.23
+[1574208877.170171] [n-62-23-6:29190:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3157.18
+[1574208877.170257] [n-62-23-6:29189:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208877.170273] [n-62-23-6:29189:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208877.171914] [n-62-23-6:29190:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208877.171931] [n-62-23-6:29190:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208877.172134] [n-62-23-6:29189:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208877.172149] [n-62-23-6:29189:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208877.173786] [n-62-23-6:29190:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208877.173801] [n-62-23-6:29190:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208877.174201] [n-62-23-3:24969:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208877.174218] [n-62-23-3:24969:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208877.174201] [n-62-23-3:24970:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208877.174218] [n-62-23-3:24970:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208877.174201] [n-62-23-3:24971:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208877.174218] [n-62-23-3:24971:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208877.174201] [n-62-23-3:24972:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208877.174286] [n-62-23-3:24972:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208877.175618] [n-62-23-6:29186:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3157.18
+[1574208877.176267] [n-62-23-6:29187:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3157.18
+[1574208877.176450] [n-62-23-3:24971:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208877.176463] [n-62-23-3:24971:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208877.176447] [n-62-23-3:24969:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208877.176463] [n-62-23-3:24969:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208877.176453] [n-62-23-3:24970:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208877.176466] [n-62-23-3:24970:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208877.176454] [n-62-23-3:24972:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208877.176478] [n-62-23-3:24972:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208877.176783] [n-62-23-6:29188:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3157.18
+[1574208877.177067] [n-62-23-6:29186:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208877.177083] [n-62-23-6:29186:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208877.177693] [n-62-23-6:29187:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208877.177709] [n-62-23-6:29187:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208877.178207] [n-62-23-6:29188:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208877.178224] [n-62-23-6:29188:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208877.178935] [n-62-23-6:29186:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208877.178949] [n-62-23-6:29186:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208877.179570] [n-62-23-6:29187:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208877.179585] [n-62-23-6:29187:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208877.180247] [n-62-23-6:29188:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208877.180262] [n-62-23-6:29188:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'Test_MCPL_input' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_MCPL_input/Test_MCPL_input.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+Using the input file: /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl
+Using the input file: /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl
+[Test_MCPL_input] Initialize
+[Test_MCPL_input] Initialize
+Message(vin): MCPL file (/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl) produced with McStas 2.3rc12 Test_MCPL_output.
+Message(vin): MCPL file (/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl) contains 1000 particles.
+Initialize ncount is 10000
+Message(vin): MCPL file (/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl) produced with McStas 2.3rc12 Test_MCPL_output.
+Message(vin): MCPL file (/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl) contains 1000 particles.
+Initialize ncount is 10000
+Using the input file: /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl
+Using the input file: /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl
+Using the input file: /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl
+[Test_MCPL_input] Initialize
+[Test_MCPL_input] Initialize
+[Test_MCPL_input] Initialize
+Using the input file: /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl
+Using the input file: /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl
+Message(vin): MCPL file (/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl) produced with McStas 2.3rc12 Test_MCPL_output.
+Message(vin): MCPL file (/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl) contains 1000 particles.
+Initialize ncount is 10000
+[Test_MCPL_input] Initialize
+[Test_MCPL_input] Initialize
+Message(vin): MCPL file (/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl) produced with McStas 2.3rc12 Test_MCPL_output.
+Message(vin): MCPL file (/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl) contains 1000 particles.
+Initialize ncount is 10000
+Using the input file: /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl
+[Test_MCPL_input] Initialize
+Message(vin): MCPL file (/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl) produced with McStas 2.3rc12 Test_MCPL_output.
+Message(vin): MCPL file (/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl) contains 1000 particles.
+
+
+ Warning: You are using MCPL_input with a repeat_count of 1:
+ - Minimum neutron count requested is 1000 x 1 <= 1000 x 10 MPI nodes = 10000 neutrons total
+Initialize ncount is 10000
+MCPL_input verbose mode - outputting data on the 10 first read neutrons in MCPL units:
+Monitor_nD: m1 is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+Monitor_nD: m2 is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+Message(vin): MCPL file (/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl) produced with McStas 2.3rc12 Test_MCPL_output.
+Message(vin): MCPL file (/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl) produced with McStas 2.3rc12 Test_MCPL_output.
+Message(vin): MCPL file (/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl) contains 1000 particles.
+Initialize ncount is 10000
+Message(vin): MCPL file (/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl) produced with McStas 2.3rc12 Test_MCPL_output.
+Message(vin): MCPL file (/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl) contains 1000 particles.
+Initialize ncount is 10000
+Message(vin): MCPL file (/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl) contains 1000 particles.
+Initialize ncount is 10000
+Monitor_nD: m3 is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+Monitor_nD: m4 is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+id=1 pdg=2112	ekin=1.08317e-09 MeV	x=-0.477014 cm	y=-0.134133 cm	z=0 cm	ux=-0.0157156	uy=0.0203137	uz=0.99967	t=0.965926 ms	weight=4.17916e+07	polx=0	poly=0	polz=0
+id=2 pdg=2112	ekin=2.1229e-09 MeV	x=0.340445 cm	y=-0.240013 cm	z=0 cm	ux=0.0241563	uy=0.0222911	uz=0.99946	t=0.296989 ms	weight=1.36965e+08	polx=0	poly=0	polz=0
+id=3 pdg=2112	ekin=2.7277e-09 MeV	x=-0.315499 cm	y=0.0509962 cm	z=0 cm	ux=0.0109508	uy=0.00701601	uz=0.999915	t=0.381066 ms	weight=1.95868e+08	polx=0	poly=0	polz=0
+id=4 pdg=2112	ekin=7.1137e-10 MeV	x=-0.280542 cm	y=0.236746 cm	z=0 cm	ux=-0.0307322	uy=0.016651	uz=0.999389	t=0.0438261 ms	weight=1.75704e+07	polx=0	poly=0	polz=0
+id=5 pdg=2112	ekin=7.70002e-10 MeV	x=-0.025928 cm	y=0.0817373 cm	z=0 cm	ux=-0.0298162	uy=0.003234	uz=0.99955	t=0.45319 ms	weight=2.08062e+07	polx=0	poly=0	polz=0
+id=6 pdg=2112	ekin=1.05225e-08 MeV	x=-0.277066 cm	y=0.254674 cm	z=0 cm	ux=0.0278653	uy=0.020891	uz=0.999393	t=0.0363826 ms	weight=4.26331e+08	polx=0	poly=0	polz=0
+id=7 pdg=2112	ekin=2.55209e-08 MeV	x=0.298835 cm	y=0.217326 cm	z=0 cm	ux=-0.0304247	uy=0.0051656	uz=0.999524	t=0.731502 ms	weight=6.72029e+08	polx=0	poly=0	polz=0
+id=8 pdg=2112	ekin=1.64117e-09 MeV	x=0.189569 cm	y=-0.203579 cm	z=0 cm	ux=0.0311654	uy=-0.0242286	uz=0.999221	t=0.0739589 ms	weight=8.99979e+07	polx=0	poly=0	polz=0
+id=9 pdg=2112	ekin=2.14939e-09 MeV	x=0.0629534 cm	y=-0.238814 cm	z=0 cm	ux=-0.012252	uy=0.00323298	uz=0.99992	t=0.617501 ms	weight=1.39833e+08	polx=0	poly=0	polz=0
+id=10 pdg=2112	ekin=1.03175e-08 MeV	x=-0.145111 cm	y=-0.0295064 cm	z=0 cm	ux=-0.0037271	uy=-0.0474372	uz=0.998867	t=0.283205 ms	weight=4.25662e+08	polx=0	poly=0	polz=0
+Using the input file: /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl
+Using the input file: /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl
+[Test_MCPL_input] Initialize
+[Test_MCPL_input] Initialize
+Message(vin): MCPL file (/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl) produced with McStas 2.3rc12 Test_MCPL_output.
+Message(vin): MCPL file (/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl) contains 1000 particles.
+Initialize ncount is 10000
+Message(vin): MCPL file (/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl) produced with McStas 2.3rc12 Test_MCPL_output.
+Message(vin): MCPL file (/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../libs/mcpl/voutput.mcpl) contains 1000 particles.
+Initialize ncount is 10000
+
+Save [Test_MCPL_input]
+Detector: m1_I=2.35417e+11 m1_ERR=3.31029e+09 m1_N=10000 "m1_1574208877.L"
+Detector: m2_I=2.34847e+11 m2_ERR=3.30542e+09 m2_N=9990 "m2_1574208877.x_y"
+Detector: m3_I=2.35382e+11 m3_ERR=3.31025e+09 m3_N=10000 "m3_1574208877.t"
+Detector: m4_I=2.34812e+11 m4_ERR=3.30443e+09 m4_N=10000 "m4_1574208877.E"
+Events:   "m5_1574208877_list.p.n.U1.E.x.y.z.vx.vy.vz.t"
+
+Finally [Test_MCPL_input: 1]. Time: 0 [s] 
+
+Finally [Test_MCPL_input: 1]. Time: 0 [s] 
+
+Finally [Test_MCPL_input: 1]. Time: 0 [s] 
+
+
+Finally [Test_MCPL_input: 1]. Time: 0 [s] 
+
+Finally [Test_MCPL_input: 1]. Time: 0 [s] 
+Finally [Test_MCPL_input: 1]. Time: 0 [s] 
+
+Finally [Test_MCPL_input: 1]. Time: 0 [s] 
+
+Finally [Test_MCPL_input: 1]. Time: 0 [s] 
+
+Finally [Test_MCPL_input: 1]. Time: 0 [s] 
+
+Finally [Test_MCPL_input: 1]. Time: 0 [s] 
+[n-62-23-6:29175] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-6:29175] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_MCPL_input/Test_MCPL_input.instr in dataset 1

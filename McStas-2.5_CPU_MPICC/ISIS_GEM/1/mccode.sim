@@ -1,0 +1,51 @@
+McStas simulation description file for ISIS_GEM.
+Date:    Wed Nov 20 01:05:25 2019
+Program: McStas 2.5 - Nov. 19, 2019
+
+begin instrument: ISIS_GEM
+  File: 1/mccode
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr
+  Parameters:  l_min(double) l_max(double) dist(double) sample(string)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574231311
+  Directory: 1
+  Nodes: 10
+  Param: l_min=0.1
+  Param: l_max=4.2
+  Param: dist=1.3795
+  Param: sample=Y2O3.laz
+end simulation
+
+begin data
+  Date: Wed Nov 20 01:05:34 2019 (1574208334)
+  type: array_2d(40, 128)
+  Source: ISIS_GEM (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr)
+  component: monzns
+  position: 0 0 17
+  title:  Intensity Angle Time_Of_Flight Monitor (Banana) [out] per bin
+  Ncount: 10000000
+  filename: monzns_1574208325.A_t
+  statistics: X0=94.6137; dX=8.74608; Y0=0.0104934; dY=0.00357827;
+  signal: Min=0; Max=0.332199; Mean=0.0103162;
+  values: 52.8191 0.0635261 6.35944e+06
+  xvar: Angle
+  yvar: TOF
+  xlabel: Angle [deg]
+  ylabel: TOF [s]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 80 110 0.00046542 0.0195392
+  variables: I I_err N
+end data

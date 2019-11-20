@@ -1,0 +1,73 @@
+# Format: McCode with text headers
+# URL: http://www.mccode.org
+# Creator: McStas 2.5 - Nov. 19, 2019
+# Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr
+# Ncount: 1000000
+# Trace: no
+# Gravitation: no
+# Seed: 1574229485
+# Directory: 1
+# Nodes: 10
+# Param: lambda=2.52
+# Param: dlambda=0.03
+# Param: DM=3.34763
+# Param: Powder=Na2Ca3Al2F14.laz
+# Param: RV=2.2
+# Param: L1=0.25
+# Param: L2=3
+# Param: L3=1.5
+# Param: TRAS_X=-0
+# Param: TRAS_Z=0
+# Param: TILT=0
+# Param: THETA_M=22.11
+# Param: R_pitch=0.42
+# Param: R_ri=0.324
+# Param: R_ro=0.419
+# Param: R_h=0.09
+# Param: R_ttmin=-130
+# Param: R_ttmax=-2
+# Param: R_present=1
+# Param: verbose=1
+# Param: Inc_Cryo=0.02
+# Param: Trans_Cryo=0.85
+# Param: Trans_Spl=0.2
+# Param: Inc_Spl=0.05
+# Param: m=2
+# Param: mip=2
+# Date: Wed Nov 20 01:02:36 2019 (1574208156)
+# type: array_1d(20)
+# Source: ILL_H22_D1B (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr)
+# component: D2B_Mono_Dx
+# position: -0.140569 0 92.8349
+# title: Hor. Divergence [deg] monitor
+# Ncount: 10000000
+# filename: D2B_Mono_Dx_1574208144.hd
+# statistics: X0=-0.00113707; dX=0.199502;
+# signal: Min=8.41996e-266; Max=4.74054e+06; Mean=1.57476e+06;
+# values: 3.14952e+07 48936.2 1.47368e+06
+# xvar: hd
+# yvar: (I,I_err)
+# xlabel: Hor. Divergence [deg]
+# ylabel: Intensity [n/s/cm2/bin]
+# xlimits: -0.875042 0.873542
+# variables: hd I I_err N
+-0.8313275649 8.419960038e-266 0 56883 
+-0.7438983384 1.135183827e-152 3.603804841e-153 67744 
+-0.6564691118 1.384658101e-82 5.046433291e-83 69667 
+-0.5690398853 9.255037789e-20 2.995473529e-20 63876 
+-0.4816106587 7695.09637 112.5700608 68510 
+-0.3941814322 920430.9402 5088.519149 73758 
+-0.3067522056 2480053.345 12185.80399 75717 
+-0.2193229791 3651861.865 17320.33779 79089 
+-0.1318937526 3998227.067 18244.4184 85575 
+-0.04446452602 4692599.063 19751.00174 100371 
+0.04296470053 4740543.501 19855.9398 101570 
+0.1303939271 3997068.455 18231.91485 85778 
+0.2178231536 3625231.102 17253.06414 78877 
+0.3052523802 2455360.45 12126.66848 75124 
+0.3926816067 918051.7418 5099.838213 73599 
+0.4801108332 8059.799881 118.6108861 69402 
+0.5675400598 1.317810842e-19 2.734014124e-20 62623 
+0.6549692863 2.590188272e-79 1.247757067e-79 63691 
+0.7423985129 2.032778506e-150 1.337839397e-150 66094 
+0.8298277394 2.204844998e-264 0 55730 

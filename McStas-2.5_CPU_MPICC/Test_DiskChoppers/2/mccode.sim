@@ -1,0 +1,73 @@
+McStas simulation description file for Test_DiskChoppers.
+Date:    Wed Nov 20 01:08:27 2019
+Program: McStas 2.5 - Nov. 19, 2019
+
+begin instrument: Test_DiskChoppers
+  File: 2/mccode
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr
+  Parameters:  chopper(double) lambda(double) dlambda(double) deltay(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 2
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574234512
+  Directory: 2
+  Nodes: 10
+  Param: chopper=1
+  Param: lambda=10
+  Param: dlambda=9.9
+  Param: deltay=-0.19
+end simulation
+
+begin data
+  Date: Wed Nov 20 01:08:28 2019 (1574208508)
+  type: array_2d(128, 20)
+  Source: Test_DiskChoppers (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr)
+  component: Tofl
+  position: 0 0 10.001
+  title: TOF-wavelength monitor
+  Ncount: 10000000
+  filename: TOFlambda.dat
+  statistics: X0=512104; dX=271380; Y0=9.88524; dY=5.74477;
+  signal: Min=0; Max=8.23237e-06; Mean=1.08516e-06;
+  values: 0.002778 5.44982e-06 259836
+  xvar: Time-of-flight
+  yvar: Wavelength
+  xlabel: Time-of-flight [\gms]
+  ylabel: Wavelength [AA]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 1e+06 0.1 19.9
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:08:28 2019 (1574208508)
+  type: array_2d(90, 90)
+  Source: Test_DiskChoppers (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr)
+  component: psd_monitor
+  position: 0 0 10.002
+  title: PSD monitor
+  Ncount: 10000000
+  filename: PSD.dat
+  statistics: X0=0.00152496; dX=1.2998; Y0=-0.0168182; dY=3.45772;
+  signal: Min=0; Max=7.27003e-07; Mean=3.6563e-07;
+  values: 0.0029616 5.62703e-06 277009
+  xvar: X
+  yvar: Y
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -2.5 2.5 -6.5 6.5
+  variables: I I_err N
+end data

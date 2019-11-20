@@ -1,0 +1,131 @@
+INFO: Using directory: "1"
+INFO: Using existing c-file: ./templateLaue.c
+INFO: Using existing binary: ./templateLaue.out
+WARNING: Ignoring invalid parameter: "templateLaue"
+INFO: ===
+INFO: Using system default number of mpirun -np processes
+[1574209559.608842] [n-62-23-6:4261 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3171.19
+[1574209559.609810] [n-62-23-6:4260 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3158.03
+[1574209559.610576] [n-62-23-6:4261 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209559.610592] [n-62-23-6:4261 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1574209559.611308] [n-62-23-6:4260 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209559.611325] [n-62-23-6:4260 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209559.612580] [n-62-23-6:4261 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209559.612594] [n-62-23-6:4261 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209559.613174] [n-62-23-6:4260 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209559.613191] [n-62-23-6:4260 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209559.617387] [n-62-23-6:4262 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3105.74
+[1574209559.618783] [n-62-23-6:4262 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209559.618799] [n-62-23-6:4262 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209559.620566] [n-62-23-6:4264 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3105.74
+[1574209559.620675] [n-62-23-6:4262 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209559.620690] [n-62-23-6:4262 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209559.621291] [n-62-23-6:4263 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3112.40
+[1574209559.622047] [n-62-23-6:4264 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209559.622063] [n-62-23-6:4264 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209559.622690] [n-62-23-6:4263 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209559.622708] [n-62-23-6:4263 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209559.623210] [n-62-23-6:4265 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3112.40
+[1574209559.623931] [n-62-23-6:4264 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209559.623946] [n-62-23-6:4264 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209559.624555] [n-62-23-6:4265 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209559.624571] [n-62-23-6:4265 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209559.624557] [n-62-23-6:4263 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209559.624571] [n-62-23-6:4263 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209559.626363] [n-62-23-6:4265 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209559.626378] [n-62-23-6:4265 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209559.642680] [n-62-23-3:28129:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3173.24
+[1574209559.642680] [n-62-23-3:28130:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3173.24
+[1574209559.642680] [n-62-23-3:28131:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3173.24
+[1574209559.642680] [n-62-23-3:28132:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3173.24
+[1574209559.647536] [n-62-23-3:28129:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209559.647552] [n-62-23-3:28129:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209559.647538] [n-62-23-3:28130:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209559.647552] [n-62-23-3:28130:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209559.647536] [n-62-23-3:28131:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209559.647552] [n-62-23-3:28131:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209559.647535] [n-62-23-3:28132:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209559.647604] [n-62-23-3:28132:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209559.650095] [n-62-23-3:28131:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209559.650108] [n-62-23-3:28131:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209559.650096] [n-62-23-3:28129:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209559.650109] [n-62-23-3:28129:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209559.650086] [n-62-23-3:28130:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209559.650102] [n-62-23-3:28130:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209559.650093] [n-62-23-3:28132:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209559.650156] [n-62-23-3:28132:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'templateLaue' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateLaue/templateLaue.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+Instrument parameters for templateLaue (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateLaue/templateLaue.instr)
+[templateLaue] Initialize
+[templateLaue] Initialize
+Single_crystal: YBaCuO.lau structure a=[3.8186,0,0] b=[0,3.8843,0] c=[0,0,11.6777] V0=173.211
+Single_crystal: YBaCuO.lau structure a=[3.8186,0,0] b=[0,3.8843,0] c=[0,0,11.6777] V0=173.211
+Single_crystal: sample: Read 62 reflections from file 'YBaCuO.lau'
+Single_crystal: sample: Vc=173.211 [Angs] sigma_abs=14.82 [barn] sigma_inc=2.105 [barn] reflections=YBaCuO.lau
+Single_crystal: sample: Read 62 reflections from file 'YBaCuO.lau'
+Single_crystal: sample: Vc=173.211 [Angs] sigma_abs=14.82 [barn] sigma_inc=2.105 [barn] reflections=YBaCuO.lau
+[templateLaue] Initialize
+[templateLaue] Initialize
+Single_crystal: YBaCuO.lau structure a=[3.8186,0,0] b=[0,3.8843,0] c=[0,0,11.6777] V0=173.211
+Single_crystal: sample: Read 62 reflections from file 'YBaCuO.lau'
+Single_crystal: sample: Vc=173.211 [Angs] sigma_abs=14.82 [barn] sigma_inc=2.105 [barn] reflections=YBaCuO.lau
+Single_crystal: YBaCuO.lau structure a=[3.8186,0,0] b=[0,3.8843,0] c=[0,0,11.6777] V0=173.211
+Single_crystal: sample: Read 62 reflections from file 'YBaCuO.lau'
+Single_crystal: sample: Vc=173.211 [Angs] sigma_abs=14.82 [barn] sigma_inc=2.105 [barn] reflections=YBaCuO.lau
+[templateLaue] Initialize
+[templateLaue] Initialize
+[templateLaue] Initialize
+[templateLaue] Initialize
+[templateLaue] Initialize
+[templateLaue] Initialize
+Single_crystal: YBaCuO.lau structure a=[3.8186,0,0] b=[0,3.8843,0] c=[0,0,11.6777] V0=173.211
+Single_crystal: sample: Read 62 reflections from file 'YBaCuO.lau'
+Single_crystal: sample: Vc=173.211 [Angs] sigma_abs=14.82 [barn] sigma_inc=2.105 [barn] reflections=YBaCuO.lau
+Single_crystal: YBaCuO.lau structure a=[3.8186,0,0] b=[0,3.8843,0] c=[0,0,11.6777] V0=173.211
+Single_crystal: sample: Read 62 reflections from file 'YBaCuO.lau'
+Single_crystal: sample: Vc=173.211 [Angs] sigma_abs=14.82 [barn] sigma_inc=2.105 [barn] reflections=YBaCuO.lau
+Single_crystal: YBaCuO.lau structure a=[3.8186,0,0] b=[0,3.8843,0] c=[0,0,11.6777] V0=173.211
+Single_crystal: sample: Read 62 reflections from file 'YBaCuO.lau'
+Single_crystal: sample: Vc=173.211 [Angs] sigma_abs=14.82 [barn] sigma_inc=2.105 [barn] reflections=YBaCuO.lau
+Single_crystal: YBaCuO.lau structure a=[3.8186,0,0] b=[0,3.8843,0] c=[0,0,11.6777] V0=173.211
+Single_crystal: sample: Read 62 reflections from file 'YBaCuO.lau'
+Single_crystal: sample: Vc=173.211 [Angs] sigma_abs=14.82 [barn] sigma_inc=2.105 [barn] reflections=YBaCuO.lau
+Single_crystal: YBaCuO.lau structure a=[3.8186,0,0] b=[0,3.8843,0] c=[0,0,11.6777] V0=173.211
+Single_crystal: sample: Read 62 reflections from file 'YBaCuO.lau'
+Single_crystal: sample: Vc=173.211 [Angs] sigma_abs=14.82 [barn] sigma_inc=2.105 [barn] reflections=YBaCuO.lau
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/YBaCuO.lau' (Table_Read_Offset)
+Single_crystal: YBaCuO.lau structure a=[3.8186,0,0] b=[0,3.8843,0] c=[0,0,11.6777] V0=173.211
+Single_crystal: sample: Read 62 reflections from file 'YBaCuO.lau'
+Single_crystal: sample: Vc=173.211 [Angs] sigma_abs=14.82 [barn] sigma_inc=2.105 [barn] reflections=YBaCuO.lau
+
+Finally [templateLaue: 1]. Time: 3 [s] 
+
+Finally [templateLaue: 1]. Time: 3 [s] 
+
+Finally [templateLaue: 1]. Time: 3 [s] 
+
+Finally [templateLaue: 1]. Time: 3 [s] 
+
+Save [templateLaue]
+
+Finally [templateLaue: 1]. Time: 3 [s] 
+
+Finally [templateLaue: 1]. Time: 3 [s] 
+
+Finally [templateLaue: 1]. Time: 3 [s] 
+
+Finally [templateLaue: 1]. Time: 3 [s] 
+
+Finally [templateLaue: 1]. Time: 4 [s] 
+Detector: det_I=1.14472e+07 det_ERR=17316.8 det_N=9.46424e+06 "psd.dat"
+
+Finally [templateLaue: 1]. Time: 4 [s] 
+[n-62-23-6:04251] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-6:04251] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateLaue/templateLaue.instr in dataset 1

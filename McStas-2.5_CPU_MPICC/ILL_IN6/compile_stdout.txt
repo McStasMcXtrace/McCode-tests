@@ -1,0 +1,57 @@
+      [1574206862.874983] [n-62-23-6:7912 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3373.88
+[1574206862.876322] [n-62-23-6:7912 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574206862.876325] [n-62-23-6:7912 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574206862.878217] [n-62-23-6:7912 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574206862.878220] [n-62-23-6:7912 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+begin instrument: ILL_IN6
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN6/ILL_IN6.instr
+  Parameters:  lambda(double) dlambda(double) SPEED(double) M1(double) M2(double) M3(double) MONITOR(double) CHA_WIDTH(double) TOF_DELAY(double) TOF_CHA_RESOL(double) ELPEAK(double) RATIO(double) mFC(double) PHASE(double) Sqw_coh(string) Sqw_inc(string) radius(double) thickness(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+begin simulation: .
+  Format: McStas
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN6/ILL_IN6.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574214774
+  Directory: .
+  Param: lambda=4.14
+  Param: dlambda=0.075
+  Param: SPEED=-1
+  Param: M1=-1
+  Param: M2=-1
+  Param: M3=-1
+  Param: MONITOR=1
+  Param: CHA_WIDTH=-1
+  Param: TOF_DELAY=-1
+  Param: TOF_CHA_RESOL=128
+  Param: ELPEAK=-1
+  Param: RATIO=1
+  Param: mFC=0
+  Param: PHASE=-360
+  Param: Sqw_coh=Rb_liq_coh.sqw
+  Param: Sqw_inc=Rb_liq_inc.sqw
+  Param: radius=0.01
+  Param: thickness=0.005
+end simulation
+info!
+INFO: No output directory specified (--dir)
+INFO: Using directory: "ILL_IN6_20191120_004051"
+INFO: Regenerating c-file: ILL_IN6.c
+Info:    Defining SPLIT from Mono1=Monochromator_curved() to END in instrument ILL_IN6
+Info:    Defining SPLIT from Sample=Isotropic_Sqw() to END in instrument ILL_IN6
+CFLAGS=
+INFO: Recompiling: ./ILL_IN6.out
+INFO: ===
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------

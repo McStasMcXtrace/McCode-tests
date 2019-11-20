@@ -1,0 +1,47 @@
+McStas simulation description file for templateLaue.
+Date:    Wed Nov 20 01:25:59 2019
+Program: McStas 2.5 - Nov. 19, 2019
+
+begin instrument: templateLaue
+  File: 1/mccode
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateLaue/templateLaue.instr
+  Parameters: 
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateLaue/templateLaue.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574213819
+  Directory: 1
+  Nodes: 10
+end simulation
+
+begin data
+  Date: Wed Nov 20 01:26:02 2019 (1574209562)
+  type: array_2d(360, 180)
+  Source: templateLaue (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateLaue/templateLaue.instr)
+  component: det
+  position: 0 0 5.1
+  title: 4PI PSD monitor
+  Ncount: 10000000
+  filename: psd.dat
+  statistics: X0=-0.0553611; dX=85.8294; Y0=0.427127; dY=41.1776;
+  signal: Min=0.518088; Max=579428; Mean=176.655;
+  values: 1.14472e+07 17316.8 9.46424e+06
+  xvar: Longitude
+  yvar: Lattitude
+  xlabel: Longitude [deg]
+  ylabel: Lattitude [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -180 180 -90 90
+  variables: I I_err N
+end data

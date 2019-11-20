@@ -1,0 +1,216 @@
+McStas simulation description file for ILL_H22_D1A.
+Date:    Wed Nov 20 01:02:13 2019
+Program: McStas 2.5 - Nov. 19, 2019
+
+begin instrument: ILL_H22_D1A
+  File: 1/mccode
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1A/ILL_H22_D1A.instr
+  Parameters:  lambda(double) dlambda(double) DM(double) RV(double) powder(string) container(string) m(double) mip(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1A/ILL_H22_D1A.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574229360
+  Directory: 1
+  Nodes: 10
+  Param: lambda=1.911
+  Param: dlambda=0.03
+  Param: DM=0
+  Param: RV=-1
+  Param: powder=Na2Ca3Al2F14.laz
+  Param: container=V.laz
+  Param: m=2
+  Param: mip=2
+end simulation
+
+begin data
+  Date: Wed Nov 20 01:02:23 2019 (1574208143)
+  type: array_2d(20, 20)
+  Source: ILL_H22_D1A (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1A/ILL_H22_D1A.instr)
+  component: GuideOut_xy
+  position: -0.13977 0 92.585
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: GuideOut_xy_1574208133.x_y
+  statistics: X0=0.000214581; dX=0.00864777; Y0=-0.000110001; dY=0.0577586;
+  signal: Min=114612; Max=154207; Mean=135938;
+  values: 5.43754e+07 104848 952224
+  xvar: x
+  yvar: y
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.015 0.015 -0.1 0.1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:02:23 2019 (1574208143)
+  type: array_2d(20, 20)
+  Source: ILL_H22_D1A (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1A/ILL_H22_D1A.instr)
+  component: GuideOut_dxdy
+  position: -0.13977 0 92.585
+  title:  Intensity Divergence Divergence Monitor (Square) per bin
+  Ncount: 10000000
+  filename: GuideOut_dxdy_1574208133.hd_vd
+  statistics: X0=-0.00121424; dX=0.157815; Y0=0.000436872; dY=0.194623;
+  signal: Min=5.12078e-238; Max=796493; Mean=135940;
+  values: 5.4376e+07 104848 952214
+  xvar: Hor.
+  yvar: Vert.
+  xlabel: Hor. Divergence [deg]
+  ylabel: Vert. Divergence [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.664929 0.662914 -0.665615 0.665992
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:02:23 2019 (1574208143)
+  type: array_0d
+  Source: ILL_H22_D1A (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1A/ILL_H22_D1A.instr)
+  component: GuideOut_Phic
+  position: -0.13977 0 92.585
+  title:  Intensity Monitor (Square)
+  Ncount: 10000000
+  statistics: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ5.4376e+07 104848 952214
+  signal: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿXb ŸGå¿|`V4˜6å?7ø©Õ¶Lå¿k¬ 1ÏOå?
+  values: 
+  xylimits: 0 0 0 0 0 0
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:02:23 2019 (1574208143)
+  type: array_1d(20)
+  Source: ILL_H22_D1A (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1A/ILL_H22_D1A.instr)
+  component: GuideOut_L
+  position: -0.13977 0 92.585
+  title: Wavelength [Angs] monitor
+  Ncount: 10000000
+  filename: GuideOut_L_1574208133.L
+  statistics: X0=1.5; dX=2.10734e-08;
+  signal: Min=0; Max=5.43754e+07; Mean=2.71877e+06;
+  values: 5.43754e+07 104848 952224
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/cm2/bin]
+  xlimits: 1 21
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:02:23 2019 (1574208143)
+  type: array_1d(20)
+  Source: ILL_H22_D1A (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1A/ILL_H22_D1A.instr)
+  component: D1A_Mono_Dx
+  position: -0.141367 0 93.0849
+  title: Hor. Divergence [deg] monitor
+  Ncount: 10000000
+  filename: D1A_Mono_Dx_1574208133.hd
+  statistics: X0=-0.00158762; dX=0.155625;
+  signal: Min=2.16461e-199; Max=7.5671e+06; Mean=2.59308e+06;
+  values: 5.18617e+07 102619 853760
+  xvar: hd
+  yvar: (I,I_err)
+  xlabel: Hor. Divergence [deg]
+  ylabel: Intensity [n/s/cm2/bin]
+  xlimits: -0.664929 0.660956
+  variables: hd I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:02:23 2019 (1574208143)
+  type: array_1d(50)
+  Source: ILL_H22_D1A (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1A/ILL_H22_D1A.instr)
+  component: Lmon
+  position: -0.310977 0 92.979
+  title: Wavelength [Angs] monitor
+  Ncount: 10000000
+  filename: Lmon_1574208133.L
+  statistics: X0=1.91173; dX=0.0054101;
+  signal: Min=1.35835e-121; Max=8.35343e+06; Mean=2.09988e+06;
+  values: 1.04994e+08 356507 309734
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 1.88465 1.93938
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:02:23 2019 (1574208143)
+  type: array_2d(20, 20)
+  Source: ILL_H22_D1A (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1A/ILL_H22_D1A.instr)
+  component: PSDsample
+  position: -1.11662 0 92.4755
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: PSDsample_1574208133.x_y
+  statistics: X0=-0.00370233; dX=0.013099; Y0=2.31382e-05; dY=0.0091961;
+  signal: Min=0; Max=5.36639e+06; Mean=445607;
+  values: 1.78243e+08 464693 523141
+  xvar: x
+  yvar: y
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.05 0.05 -0.05 0.05
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:02:23 2019 (1574208143)
+  type: array_1d(380)
+  Source: ILL_H22_D1A (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1A/ILL_H22_D1A.instr)
+  component: BananaTheta
+  position: -1.20143 0 92.4225
+  title: Longitude [deg] monitor
+  Ncount: 10000000
+  filename: BananaTheta_1574208133.th
+  statistics: X0=89.2439; dX=37.9377;
+  signal: Min=4.61168; Max=6243.52; Mean=384.476;
+  values: 146101 1659.75 72782
+  xvar: th
+  yvar: (I,I_err)
+  xlabel: Longitude [deg]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 3 160
+  variables: th I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:02:23 2019 (1574208143)
+  type: array_2d(380, 25)
+  Source: ILL_H22_D1A (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1A/ILL_H22_D1A.instr)
+  component: BananaPSD
+  position: -1.20143 0 92.4225
+  title:  Intensity Angle Position Monitor (Banana) [out] per bin
+  Ncount: 10000000
+  filename: BananaPSD_1574208133.th_y
+  statistics: X0=88.1476; dX=38.7454; Y0=-0.000615178; dY=0.122764;
+  signal: Min=0; Max=1303.99; Mean=43.6234;
+  values: 414422 2842.23 203060
+  xvar: Longitude
+  yvar: y
+  xlabel: Longitude [deg]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 5 160 -0.25 0.25
+  variables: I I_err N
+end data

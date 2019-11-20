@@ -1,0 +1,19 @@
+INFO: No output directory specified (--dir)
+INFO: Using directory: "Test_Pol_Guide_mirror_20191120_005157"
+INFO: Regenerating c-file: Test_Pol_Guide_mirror.c
+Warning: Using DEFINITION parameter of component Pol_guide_mirror() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_mirror/Test_Pol_Guide_mirror.instr:79
+  rPar={ 0 , 0.0219 , 6.07 , 1 , 0.003 }
+Warning: Using DEFINITION parameter of component Pol_guide_mirror() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_mirror/Test_Pol_Guide_mirror.instr:79
+  rUpPar={ MIRRORREF , 0.0219 , 6.07 , 1 , 0.003 }
+Warning: Using DEFINITION parameter of component Pol_guide_mirror() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_mirror/Test_Pol_Guide_mirror.instr:79
+  rDownPar={ MIRRORREF , 0.0219 , 6.07 , 1 , 0.003 }
+CFLAGS=
+INFO: Recompiling: ./Test_Pol_Guide_mirror.out
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Pol_guide_mirror.comp:120:19: warning: ISO C99 requires whitespace after the macro name
+   if (Table_Read(rUpParPtr, rUpPar, 1) <= 0) {
+                   ^
+./Test_Pol_Guide_mirror.c: In function 'mcraytrace':
+./Test_Pol_Guide_mirror.c:10914:7: error: 'mirrorIn' undeclared (first use in this function)
+ /* 'POL_guide_mirror=Pol_guide_mirror()' component instance has conditional execution */
+       ^~~~~~~~
+./Test_Pol_Guide_mirror.c:10914:7: note: each undeclared identifier is reported only once for each function it appears in

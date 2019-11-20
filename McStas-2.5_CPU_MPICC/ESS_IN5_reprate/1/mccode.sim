@@ -1,0 +1,778 @@
+McStas simulation description file for ESS_IN5_reprate.
+Date:    Wed Nov 20 00:58:58 2019
+Program: McStas 2.5 - Nov. 19, 2019
+
+begin instrument: ESS_IN5_reprate
+  File: 1/mccode
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr
+  Parameters:  Lmin(double) Lmax(double) lambda0(double) Pulse_width(double) Num_pulses(double) GUI_start(double) FO1_DIST(double) L_ballistic_begin(double) L_ballistic_end(double) Length(double) SAMPLE_DIST(double) DETECTOR_DIST(double) GUI_h(double) GUI_w(double) GUI_GAP(double) H1(double) W1(double) H2(double) W2(double) H3(double) W3(double) H4(double) W4(double) H_chop(double) W_chop(double) H_end(double) W_end(double) ALPHA(double) M(double) F_slow1(double) F_slow2(double) F_fast1(double) F_fast2(double) N_fast(double) SLOW1_THETA(double) FO3(double) THETA_fast1(double) FAST_THETA(double) Gamma(double) Etun(double) V_HOLE(double) FRAC_QUASIEL(double) FRAC_TUNNEL(double) TT(double) RES_DE(double) port(double) cold(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574226575
+  Directory: 1
+  Nodes: 10
+  Param: Lmin=4.9
+  Param: Lmax=5.1
+  Param: lambda0=5
+  Param: Pulse_width=0.002
+  Param: Num_pulses=1
+  Param: GUI_start=2
+  Param: FO1_DIST=6
+  Param: L_ballistic_begin=19.5
+  Param: L_ballistic_end=17
+  Param: Length=100
+  Param: SAMPLE_DIST=1.2
+  Param: DETECTOR_DIST=4
+  Param: GUI_h=0.105
+  Param: GUI_w=0.1
+  Param: GUI_GAP=0.05
+  Param: H1=0.167
+  Param: W1=0.116
+  Param: H2=0.185
+  Param: W2=0.15
+  Param: H3=0.19
+  Param: W3=0.15
+  Param: H4=0.213
+  Param: W4=0.14
+  Param: H_chop=0.075
+  Param: W_chop=0.03
+  Param: H_end=0.042
+  Param: W_end=0.0215
+  Param: ALPHA=3.4
+  Param: M=3.5
+  Param: F_slow1=16.6667
+  Param: F_slow2=0
+  Param: F_fast1=0
+  Param: F_fast2=200
+  Param: N_fast=1
+  Param: SLOW1_THETA=120
+  Param: FO3=1
+  Param: THETA_fast1=180
+  Param: FAST_THETA=5
+  Param: Gamma=0
+  Param: Etun=1
+  Param: V_HOLE=0
+  Param: FRAC_QUASIEL=0
+  Param: FRAC_TUNNEL=0
+  Param: TT=50
+  Param: RES_DE=0.5
+  Param: port=30
+  Param: cold=0.95
+end simulation
+
+begin data
+  Date: Wed Nov 20 00:59:04 2019 (1574207944)
+  type: array_1d(1000)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: TOFmoderator_zoom
+  position: 0 0 1e-06
+  title: Time-of-flight monitor
+  Ncount: 10000000
+  filename: TOFmoderator_zoom.dat
+  statistics: X0=1306.2; dX=639.778;
+  signal: Min=0; Max=3.75409e+08; Mean=1.46652e+08;
+  values: 1.46652e+11 6.66016e+07 9.62757e+06
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: Time-of-flight [\gms]
+  ylabel: Intensity
+  xlimits: 0 5000
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:04 2019 (1574207944)
+  type: array_1d(1000)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: TOFmoderator
+  position: 0 0 1e-06
+  title: Time-of-flight monitor
+  Ncount: 10000000
+  filename: TOFmoderator.dat
+  statistics: X0=1305.56; dX=645.676;
+  signal: Min=0; Max=2.20744e+10; Mean=1.46653e+08;
+  values: 1.46653e+11 6.66021e+07 9.62759e+06
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: Time-of-flight [\gms]
+  ylabel: Intensity
+  xlimits: 0 300000
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:04 2019 (1574207944)
+  type: array_1d(1000)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: Lmon_guistart
+  position: 0 0 2
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: Lmon_guistart.dat
+  statistics: X0=4.99785; dX=0.0577245;
+  signal: Min=0; Max=4.76497e+09; Mean=1.46653e+08;
+  values: 1.46653e+11 6.66021e+07 9.62759e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 6.1
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:04 2019 (1574207944)
+  type: array_1d(2880)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: Lmon_normalize
+  position: 0 0 2
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: Lmon_guistart_normalize.dat
+  statistics: X0=4.99784; dX=0.0577748;
+  signal: Min=0; Max=5.06269e+09; Mean=4.76067e+07;
+  values: 1.37107e+11 6.44084e+07 8.99846e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 20
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:04 2019 (1574207944)
+  type: array_1d(200)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: Lmonslow1
+  position: 0 0 6
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: Lmonslow1.dat
+  statistics: X0=4.99805; dX=0.058684;
+  signal: Min=0; Max=8.9685e+09; Mean=2.83217e+08;
+  values: 5.66434e+10 3.94054e+07 4.65573e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 6.1
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:04 2019 (1574207944)
+  type: array_2d(90, 90)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: PSDslow1
+  position: 0 0 6
+  title: PSD monitor
+  Ncount: 10000000
+  filename: PSDslow1.dat
+  statistics: X0=0.00071495; dX=2.87497; Y0=-0.000855209; dY=4.78307;
+  signal: Min=0; Max=2.07448e+07; Mean=1.15897e+07;
+  values: 9.38765e+10 5.07129e+07 7.96667e+06
+  xvar: X
+  yvar: Y
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -12.5 12.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:04 2019 (1574207944)
+  type: array_2d(200, 200)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: TOFLmon1
+  position: 0 0 6
+  title: TOF-wavelength monitor
+  Ncount: 10000000
+  filename: TOFLmon1.dat
+  statistics: X0=8924.34; dX=765.658; Y0=4.99803; dY=0.0586834;
+  signal: Min=0; Max=4.58289e+09; Mean=1.17963e+06;
+  values: 4.71852e+10 3.5966e+07 3.85294e+06
+  xvar: Time-of-flight
+  yvar: Wavelength
+  xlabel: Time-of-flight [\gms]
+  ylabel: Wavelength [AA]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 300000 0 6.1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:04 2019 (1574207944)
+  type: array_1d(200)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: Lmon_afterslow1
+  position: 0 0 6
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: Lmon_afterslow1.dat
+  statistics: X0=4.99805; dX=0.058684;
+  signal: Min=0; Max=8.9685e+09; Mean=2.83217e+08;
+  values: 5.66434e+10 3.94054e+07 4.65573e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 6.1
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:04 2019 (1574207944)
+  type: array_2d(90, 90)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: PSD_afterslow1
+  position: 0 0 6
+  title: PSD monitor
+  Ncount: 10000000
+  filename: PSD_afterslow1.dat
+  statistics: X0=0.000714957; dX=2.87497; Y0=-0.000854684; dY=4.78307;
+  signal: Min=0; Max=2.07448e+07; Mean=1.15897e+07;
+  values: 9.38765e+10 5.07129e+07 7.96667e+06
+  xvar: X
+  yvar: Y
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -12.5 12.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:04 2019 (1574207944)
+  type: array_1d(200)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: Lmon_slow2
+  position: 0 0 50
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: Lmon_slow2.dat
+  statistics: X0=4.99824; dX=0.0586769;
+  signal: Min=0; Max=5.99102e+09; Mean=1.89714e+08;
+  values: 3.79428e+10 3.06357e+07 3.7968e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 6.1
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:04 2019 (1574207944)
+  type: array_2d(90, 90)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: PSD_afterslow2
+  position: 0 0 50.05
+  title: PSD monitor
+  Ncount: 10000000
+  filename: PSD_afterslow2.dat
+  statistics: X0=-0.000321461; dX=2.85587; Y0=-0.00216399; dY=5.48707;
+  signal: Min=0; Max=1.19536e+07; Mean=7.6859e+06;
+  values: 6.22558e+10 3.92745e+07 6.27803e+06
+  xvar: X
+  yvar: Y
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -12.5 12.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:04 2019 (1574207944)
+  type: array_1d(200)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: Lmon_afterslow2
+  position: 0 0 50.05
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: Lmon_afterslow2.dat
+  statistics: X0=4.99823; dX=0.0586772;
+  signal: Min=0; Max=5.99623e+09; Mean=1.8988e+08;
+  values: 3.7976e+10 3.06441e+07 3.80549e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 6.1
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:04 2019 (1574207944)
+  type: array_2d(200, 200)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: TOFL_afterslow2
+  position: 0 0 50.05
+  title: TOF-wavelength monitor
+  Ncount: 10000000
+  filename: TOFL_afterslow2.dat
+  statistics: X0=64549.9; dX=1073.67; Y0=4.99823; dY=0.0586699;
+  signal: Min=0; Max=3.57559e+09; Mean=793064;
+  values: 3.17226e+10 2.79977e+07 3.17371e+06
+  xvar: Time-of-flight
+  yvar: Wavelength
+  xlabel: Time-of-flight [\gms]
+  ylabel: Wavelength [AA]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 300000 0 6.1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:04 2019 (1574207944)
+  type: array_1d(200)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: Lmon_beforeballistic
+  position: 0 0 82.975
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: Lmon_before_ballistic.dat
+  statistics: X0=4.99827; dX=0.0586308;
+  signal: Min=0; Max=4.77438e+09; Mean=1.52006e+08;
+  values: 3.04013e+10 2.72137e+07 3.30224e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 6.1
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:04 2019 (1574207944)
+  type: array_2d(90, 90)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: PSD_beforeballistic
+  position: 0 0 82.975
+  title: PSD monitor
+  Ncount: 10000000
+  filename: PSD_beforeballistic.dat
+  statistics: X0=0.00349209; dX=2.88575; Y0=-0.00826151; dY=6.15146;
+  signal: Min=0; Max=1.02877e+07; Mean=7.40273e+06;
+  values: 5.99621e+10 3.82026e+07 6.52318e+06
+  xvar: X
+  yvar: Y
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -12.5 12.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:04 2019 (1574207944)
+  type: array_1d(200)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: Lmonfast2
+  position: 0 0 99.975
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: Lmonfast2.dat
+  statistics: X0=4.99875; dX=0.0587103;
+  signal: Min=0; Max=5.13178e+09; Mean=1.63861e+08;
+  values: 3.27722e+10 2.81866e+07 4.16766e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 6.1
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:04 2019 (1574207944)
+  type: array_1d(200)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: Lmonfast2_zoom
+  position: 0 0 99.975
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: Lmonfast2_zoom.dat
+  statistics: X0=4.99888; dX=0.0577372;
+  signal: Min=0; Max=3.43241e+08; Mean=1.63861e+08;
+  values: 3.27722e+10 2.81866e+07 4.16766e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 4.8 5.2
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:04 2019 (1574207944)
+  type: array_2d(200, 200)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: TOFLfast2
+  position: 0 0 99.975
+  title: TOF-wavelength monitor
+  Ncount: 10000000
+  filename: TOFLfast2.dat
+  statistics: X0=127644; dX=1649.1; Y0=4.99875; dY=0.0587103;
+  signal: Min=0; Max=3.46906e+09; Mean=819305;
+  values: 3.27722e+10 2.81866e+07 4.16766e+06
+  xvar: Time-of-flight
+  yvar: Wavelength
+  xlabel: Time-of-flight [\gms]
+  ylabel: Wavelength [AA]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 300000 0 6.1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:04 2019 (1574207944)
+  type: array_2d(200, 200)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: TOFLfast2zoom
+  position: 0 0 99.975
+  title: TOF-wavelength monitor
+  Ncount: 10000000
+  filename: TOFLfast2_zoom.dat
+  statistics: X0=127558; dX=576.991; Y0=4.99549; dY=0.0338177;
+  signal: Min=0; Max=2.49415e+06; Mean=323786;
+  values: 1.29514e+10 1.77587e+07 1.6485e+06
+  xvar: Time-of-flight
+  yvar: Wavelength
+  xlabel: Time-of-flight [\gms]
+  ylabel: Wavelength [AA]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 126559 128559 4.8 5.2
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:05 2019 (1574207945)
+  type: array_2d(90, 90)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: PSDfast2
+  position: 0 0 99.975
+  title: PSD monitor
+  Ncount: 10000000
+  filename: PSDfast2.dat
+  statistics: X0=-6.21888e-05; dX=0.869332; Y0=0.00252013; dY=2.16375;
+  signal: Min=0; Max=4.85856e+07; Mean=4.04595e+06;
+  values: 3.27722e+10 2.81866e+07 4.16766e+06
+  xvar: X
+  yvar: Y
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -12.5 12.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:05 2019 (1574207945)
+  type: array_1d(100)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: TOFfast2_zoom
+  position: 0 0 100.1
+  title: Time-of-flight monitor
+  Ncount: 10000000
+  filename: TOF_fast2.dat
+  statistics: X0=127563; dX=12.6455;
+  signal: Min=0; Max=690670; Mean=50314.8;
+  values: 5.03148e+06 337751 748
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: Time-of-flight [\gms]
+  ylabel: Intensity
+  xlimits: 127486 127886
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:05 2019 (1574207945)
+  type: array_1d(500)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: Lmon_afterfast2
+  position: 0 0 100.1
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: Lmon_afterfast2.dat
+  statistics: X0=4.99194; dX=0.0240284;
+  signal: Min=0; Max=872412; Mean=10063;
+  values: 5.03148e+06 337751 748
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 6.1
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:05 2019 (1574207945)
+  type: array_2d(200, 200)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: TOFL_afterfast2
+  position: 0 0 100.1
+  title: TOF-wavelength monitor
+  Ncount: 10000000
+  filename: TOF_afterfast2.dat
+  statistics: X0=128250; dX=0.00239208; Y0=4.9916; dY=0.0257523;
+  signal: Min=0; Max=2.01943e+06; Mean=125.787;
+  values: 5.03148e+06 337751 748
+  xvar: Time-of-flight
+  yvar: Wavelength
+  xlabel: Time-of-flight [\gms]
+  ylabel: Wavelength [AA]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 300000 0 6.1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:05 2019 (1574207945)
+  type: array_2d(200, 200)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: TOFL_afterfast2_zoom
+  position: 0 0 100.1
+  title: TOF-wavelength monitor
+  Ncount: 10000000
+  filename: TOFL_afterfast2_zoom.dat
+  statistics: X0=127563; dX=12.5028; Y0=4.99186; dY=0.0241746;
+  signal: Min=0; Max=113595; Mean=125.787;
+  values: 5.03148e+06 337751 748
+  xvar: Time-of-flight
+  yvar: Wavelength
+  xlabel: Time-of-flight [\gms]
+  ylabel: Wavelength [AA]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 126559 128559 4.8 5.2
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:05 2019 (1574207945)
+  type: array_2d(90, 90)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: PSD_afterfast2
+  position: 0 0 100.1
+  title: PSD monitor
+  Ncount: 10000000
+  filename: PSD_afterfast2.dat
+  statistics: X0=-1.51351; dX=0.208888; Y0=-2.69147; dY=0.894394;
+  signal: Min=0; Max=233843; Mean=621.17;
+  values: 5.03148e+06 337751 748
+  xvar: X
+  yvar: Y
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -12.5 12.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:05 2019 (1574207945)
+  type: array_1d(1000)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: Lmon_guideend
+  position: 0 0 101.125
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: Lmon_guideend.dat
+  statistics: X0=4.99227; dX=0.0245486;
+  signal: Min=0; Max=202977; Mean=1340.09;
+  values: 1.34009e+06 175065 156
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 6.1
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:05 2019 (1574207945)
+  type: array_2d(90, 90)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: PSDsample
+  position: 0 0 102.175
+  title: PSD monitor
+  Ncount: 10000000
+  filename: PSDsample.dat
+  statistics: X0=0.730764; dX=1.33122; Y0=2.30192; dY=1.6499;
+  signal: Min=0; Max=51901.5; Mean=165.443;
+  values: 1.34009e+06 175067 153
+  xvar: X
+  yvar: Y
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -12.5 12.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:05 2019 (1574207945)
+  type: array_1d(500)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: TOFsample_zoom
+  position: 0 0 102.175
+  title: Time-of-flight monitor
+  Ncount: 10000000
+  filename: TOF_sample.dat
+  statistics: X0=130176; dX=0;
+  signal: Min=0; Max=403995; Mean=807.99;
+  values: 403995 102977 25
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: Time-of-flight [\gms]
+  ylabel: Intensity
+  xlimits: 79075.9 179076
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:05 2019 (1574207945)
+  type: array_1d(400)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: Esample
+  position: 0 0 102.175
+  title: Energy monitor
+  Ncount: 10000000
+  filename: Esample.dat
+  statistics: X0=3.28098; dX=0.0271294;
+  signal: Min=0; Max=62276.1; Mean=1009.99;
+  values: 403995 102977 25
+  xvar: E
+  yvar: (I,I_err)
+  xlabel: Energy [meV]
+  ylabel: Intensity
+  xlimits: 2.77217 3.77217
+  variables: E I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:05 2019 (1574207945)
+  type: array_1d(100)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: Lmon_sample_zoom
+  position: 0 0 102.175
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: LMON_sample_zoom.dat
+  statistics: X0=4.9933; dX=0.0206674;
+  signal: Min=0; Max=88641.3; Mean=4039.95;
+  values: 403995 102977 25
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 4.9 5.1
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:05 2019 (1574207945)
+  type: array_1d(512)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: TOFdetector
+  position: 3.06418 0 103.771
+  title: Time-of-flight monitor
+  Ncount: 10000000
+  filename: TOF.dat
+  statistics: X0=0; dX=0;
+  signal: Min=0; Max=0; Mean=0;
+  values: 0 0 0
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: Time-of-flight [\gms]
+  ylabel: Intensity
+  xlimits: 0 200000
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:05 2019 (1574207945)
+  type: array_1d(100)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: TOFdetector_zoom
+  position: 3.06418 0 103.771
+  title: Time-of-flight monitor
+  Ncount: 10000000
+  filename: TOF_zoom.dat
+  statistics: X0=0; dX=0;
+  signal: Min=0; Max=0; Mean=0;
+  values: 0 0 0
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: Time-of-flight [\gms]
+  ylabel: Intensity
+  xlimits: 133131 135131
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:05 2019 (1574207945)
+  type: array_1d(400)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: Edetector
+  position: 3.06418 0 103.771
+  title: Energy monitor
+  Ncount: 10000000
+  filename: Edet.dat
+  statistics: X0=0; dX=0;
+  signal: Min=0; Max=0; Mean=0;
+  values: 0 0 0
+  xvar: E
+  yvar: (I,I_err)
+  xlabel: Energy [meV]
+  ylabel: Intensity
+  xlimits: 2.77217 3.77217
+  variables: E I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 00:59:05 2019 (1574207945)
+  type: array_1d(200)
+  Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+  component: TOF2Edetector
+  position: 3.06418 0 103.771
+  title: TOF-to-Energy monitor
+  Ncount: 10000000
+  filename: TOF2E.dat
+  statistics: X0=0; dX=0;
+  signal: Min=0; Max=0; Mean=0;
+  values: 0 0 0
+  xvar: E
+  yvar: (I,I_err)
+  xlabel: Energy [meV]
+  ylabel: Intensity
+  xlimits: 2.77217 3.77217
+  variables: E I I_err N
+end data

@@ -1,0 +1,64 @@
+McStas simulation description file for TAS1_C1_Tilt.
+Date:    Wed Nov 20 01:25:28 2019
+Program: McStas 2.5 - Nov. 19, 2019
+
+begin instrument: TAS1_C1_Tilt
+  File: 1/mccode
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-2/linup-2.instr
+  Parameters:  PHM(double) TTM(double) C1(double) OMC1(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-2/linup-2.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574213086
+  Directory: 1
+  Nodes: 10
+  Param: PHM=-37.077
+  Param: TTM=-74
+  Param: C1=30
+  Param: OMC1=5.5
+end simulation
+
+begin data
+  Date: Wed Nov 20 01:25:30 2019 (1574209530)
+  type: array_1d(35)
+  Source: TAS1_C1_Tilt (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-2/linup-2.instr)
+  component: emon1
+  position: -1.44189 0 3.97346
+  title: Energy monitor
+  Ncount: 10000000
+  filename: linup_2.emon
+  statistics: X0=20.1482; dX=0.167389;
+  signal: Min=0; Max=7.81429e-05; Mean=2.50589e-05;
+  values: 0.000877061 1.9121e-06 259446
+  xvar: E
+  yvar: (I,I_err)
+  xlabel: Energy [meV]
+  ylabel: Intensity
+  xlimits: 19.25 20.75
+  variables: E I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:25:30 2019 (1574209530)
+  type: array_0d
+  Source: TAS1_C1_Tilt (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-2/linup-2.instr)
+  component: sng
+  position: -1.5236 0 3.99689
+  title: Single monitor sng
+  Ncount: 10000000
+  statistics: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿX0=20.1482; dX=0.167389;
+  signal: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿMin=0; Max=7.81429e-05; Mean=2.50589e-05;
+  values: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ0.000877061 1.9121e-06 259446
+  xylimits: 0 0 0 0 0 0
+  variables: I I_err N
+end data

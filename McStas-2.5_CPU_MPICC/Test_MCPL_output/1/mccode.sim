@@ -1,0 +1,130 @@
+McStas simulation description file for Test_MCPL_output.
+Date:    Wed Nov 20 01:14:38 2019
+Program: McStas 2.5 - Nov. 19, 2019
+
+begin instrument: Test_MCPL_output
+  File: 1/mccode
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_MCPL_output/Test_MCPL_output.instr
+  Parameters:  merge(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_MCPL_output/Test_MCPL_output.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574238138
+  Directory: 1
+  Nodes: 10
+  Param: merge=0
+end simulation
+
+begin data
+  Date: Wed Nov 20 01:14:45 2019 (1574208885)
+  type: array_1d(40)
+  Source: Test_MCPL_output (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_MCPL_output/Test_MCPL_output.instr)
+  component: m1
+  position: 0 0 0
+  title: Wavelength [Angs] monitor
+  Ncount: 10000000
+  filename: m1_1574208878.L
+  statistics: X0=3.4167; dX=2.05551;
+  signal: Min=4.13111e+08; Max=2.35245e+10; Mean=6.05688e+09;
+  values: 2.42275e+11 1.07645e+08 9.99981e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 1.00008 10.9999
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:14:45 2019 (1574208885)
+  type: array_2d(40, 40)
+  Source: Test_MCPL_output (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_MCPL_output/Test_MCPL_output.instr)
+  component: m2
+  position: 0 0 0
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: m2_1574208878.x_y
+  statistics: X0=3.29567e-07; dX=0.00288699; Y0=-5.77943e-07; dY=0.00288635;
+  signal: Min=1.42568e+08; Max=1.61119e+08; Mean=1.51419e+08;
+  values: 2.4227e+11 1.07644e+08 9.99959e+06
+  xvar: x
+  yvar: y
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.0049999 0.00499975 -0.0049999 0.00499999
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:14:45 2019 (1574208885)
+  type: array_1d(40)
+  Source: Test_MCPL_output (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_MCPL_output/Test_MCPL_output.instr)
+  component: m3
+  position: 0 0 0
+  title: TOF [s] monitor
+  Ncount: 10000000
+  filename: m3_1574208878.t
+  statistics: X0=0.000500182; dX=0.000288609;
+  signal: Min=6.01345e+09; Max=6.10811e+09; Mean=6.05687e+09;
+  values: 2.42275e+11 1.07645e+08 9.99977e+06
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 4.52297e-09 0.000999994
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:14:45 2019 (1574208885)
+  type: array_1d(40)
+  Source: Test_MCPL_output (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_MCPL_output/Test_MCPL_output.instr)
+  component: m4
+  position: 0 0 0
+  title: Energy [meV] monitor
+  Ncount: 10000000
+  filename: m4_1574208878.E
+  statistics: X0=18.3075; dX=19.2059;
+  signal: Min=7.68027e+08; Max=3.73773e+10; Mean=6.05686e+09;
+  values: 2.42275e+11 1.07645e+08 9.99981e+06
+  xvar: E
+  yvar: (I,I_err)
+  xlabel: Energy [meV]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0.676077 81.7907
+  variables: E I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:14:45 2019 (1574208885)
+  type: array_2d(11, 1000000)
+  Source: Test_MCPL_output (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_MCPL_output/Test_MCPL_output.instr)
+  component: m5
+  position: 0 0 0
+  title:  Intensity Neutron_ID  Energy Position Position Position Velocity Velocity Velocity Time_Of_Flight Monitor (Square)
+  Ncount: 10000000
+  filename: m5_1574208878_list.p.n.U1.E.x.y.z.vx.vy.vz.t
+  statistics: X0=0; dX=0; Y0=0; dY=0;
+  signal: Min=6520.85; Max=6520.85; Mean=0;
+  values: 0 0 0
+  xvar: List
+  yvar: p
+  xlabel: List of neutron events
+  ylabel: p n U1 E x y z vx vy vz t 
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 1 1e+06 1 11
+  variables: p n U1 E x y z vx vy vz t 
+end data

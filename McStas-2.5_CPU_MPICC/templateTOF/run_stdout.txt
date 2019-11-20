@@ -1,0 +1,180 @@
+INFO: Using directory: "2"
+INFO: Using existing c-file: ./templateTOF.c
+INFO: Using existing binary: ./templateTOF.out
+INFO: ===
+INFO: Using system default number of mpirun -np processes
+[1574209649.248804] [n-62-23-6:5083 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3133.42
+[1574209649.249344] [n-62-23-6:5084 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3133.42
+[1574209649.250672] [n-62-23-6:5083 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209649.250689] [n-62-23-6:5083 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209649.250782] [n-62-23-6:5084 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209649.250798] [n-62-23-6:5084 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1574209649.252531] [n-62-23-6:5083 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209649.252547] [n-62-23-6:5083 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209649.252604] [n-62-23-6:5084 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209649.252619] [n-62-23-6:5084 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209649.256774] [n-62-23-6:5085 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3106.08
+[1574209649.258574] [n-62-23-6:5085 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209649.258591] [n-62-23-6:5085 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209649.260752] [n-62-23-6:5085 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209649.260769] [n-62-23-6:5085 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209649.261270] [n-62-23-6:5087 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.98
+[1574209649.261936] [n-62-23-6:5088 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.98
+[1574209649.262773] [n-62-23-6:5087 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209649.262789] [n-62-23-6:5087 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209649.263331] [n-62-23-6:5088 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209649.263348] [n-62-23-6:5088 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209649.263605] [n-62-23-6:5086 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.98
+[1574209649.264574] [n-62-23-6:5087 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209649.264588] [n-62-23-6:5087 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209649.265111] [n-62-23-6:5088 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209649.265126] [n-62-23-6:5088 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209649.265520] [n-62-23-6:5086 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209649.265537] [n-62-23-6:5086 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209649.267442] [n-62-23-6:5086 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209649.267457] [n-62-23-6:5086 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209649.287636] [n-62-23-3:28527:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3198.53
+[1574209649.287636] [n-62-23-3:28528:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3198.53
+[1574209649.287636] [n-62-23-3:28529:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3198.53
+[1574209649.287636] [n-62-23-3:28530:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3198.53
+[1574209649.291768] [n-62-23-3:28527:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209649.291785] [n-62-23-3:28527:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209649.291769] [n-62-23-3:28528:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209649.291769] [n-62-23-3:28530:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209649.291784] [n-62-23-3:28530:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209649.291839] [n-62-23-3:28528:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209649.292157] [n-62-23-3:28529:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209649.292174] [n-62-23-3:28529:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209649.293896] [n-62-23-3:28530:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209649.293920] [n-62-23-3:28530:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209649.293907] [n-62-23-3:28527:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209649.293922] [n-62-23-3:28527:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209649.293904] [n-62-23-3:28528:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209649.293917] [n-62-23-3:28528:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209649.294071] [n-62-23-3:28529:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209649.294086] [n-62-23-3:28529:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'templateTOF' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateTOF/templateTOF.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+templateTOF: lambda=1.57446 [Angs], k=3.9907 [Angs-1], v=2512.63 [m/s], E=33 [meV]. Time=[0.000373114 0.000497486 0.000746229]
+templateTOF: sample is Rb_liq_coh.sqw, with hollow cylindrical geometry.
+templateTOF: container is Nb.laz (outer cylinder)
+templateTOF: external environment is Al.laz
+templateTOF: lambda=1.57446 [Angs], k=3.9907 [Angs-1], v=2512.63 [m/s], E=33 [meV]. Time=[0.000373114 0.000497486 0.000746229]
+templateTOF: sample is Rb_liq_coh.sqw, with hollow cylindrical geometry.
+templateTOF: container is Nb.laz (outer cylinder)
+templateTOF: external environment is Al.laz
+[templateTOF] Initialize
+[templateTOF] Initialize
+templateTOF: lambda=1.57446 [Angs], k=3.9907 [Angs-1], v=2512.63 [m/s], E=33 [meV]. Time=[0.000373114 0.000497486 0.000746229]
+templateTOF: sample is Rb_liq_coh.sqw, with hollow cylindrical geometry.
+templateTOF: container is Nb.laz (outer cylinder)
+templateTOF: external environment is Al.laz
+templateTOF: lambda=1.57446 [Angs], k=3.9907 [Angs-1], v=2512.63 [m/s], E=33 [meV]. Time=[0.000373114 0.000497486 0.000746229]
+templateTOF: sample is Rb_liq_coh.sqw, with hollow cylindrical geometry.
+templateTOF: container is Nb.laz (outer cylinder)
+templateTOF: external environment is Al.laz
+[templateTOF] Initialize
+[templateTOF] Initialize
+templateTOF: lambda=1.57446 [Angs], k=3.9907 [Angs-1], v=2512.63 [m/s], E=33 [meV]. Time=[0.000373114 0.000497486 0.000746229]
+templateTOF: sample is Rb_liq_coh.sqw, with hollow cylindrical geometry.
+templateTOF: container is Nb.laz (outer cylinder)
+templateTOF: external environment is Al.laz
+templateTOF: lambda=1.57446 [Angs], k=3.9907 [Angs-1], v=2512.63 [m/s], E=33 [meV]. Time=[0.000373114 0.000497486 0.000746229]
+templateTOF: sample is Rb_liq_coh.sqw, with hollow cylindrical geometry.
+templateTOF: container is Nb.laz (outer cylinder)
+templateTOF: external environment is Al.laz
+templateTOF: lambda=1.57446 [Angs], k=3.9907 [Angs-1], v=2512.63 [m/s], E=33 [meV]. Time=[0.000373114 0.000497486 0.000746229]
+templateTOF: sample is Rb_liq_coh.sqw, with hollow cylindrical geometry.
+templateTOF: container is Nb.laz (outer cylinder)
+[templateTOF] Initialize
+templateTOF: external environment is Al.laz
+[templateTOF] Initialize
+[templateTOF] Initialize
+templateTOF: lambda=1.57446 [Angs], k=3.9907 [Angs-1], v=2512.63 [m/s], E=33 [meV]. Time=[0.000373114 0.000497486 0.000746229]
+templateTOF: sample is Rb_liq_coh.sqw, with hollow cylindrical geometry.
+templateTOF: container is Nb.laz (outer cylinder)
+templateTOF: external environment is Al.laz
+templateTOF: lambda=1.57446 [Angs], k=3.9907 [Angs-1], v=2512.63 [m/s], E=33 [meV]. Time=[0.000373114 0.000497486 0.000746229]
+templateTOF: sample is Rb_liq_coh.sqw, with hollow cylindrical geometry.
+templateTOF: container is Nb.laz (outer cylinder)
+templateTOF: external environment is Al.laz
+[templateTOF] Initialize
+[templateTOF] Initialize
+templateTOF: lambda=1.57446 [Angs], k=3.9907 [Angs-1], v=2512.63 [m/s], E=33 [meV]. Time=[0.000373114 0.000497486 0.000746229]
+templateTOF: sample is Rb_liq_coh.sqw, with hollow cylindrical geometry.
+templateTOF: container is Nb.laz (outer cylinder)
+templateTOF: external environment is Al.laz
+[templateTOF] Initialize
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Nb.laz' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Nb.laz' (Table_Read_Offset)
+Isotropic_Sqw: Sample_in: is a hollow cylinder: radius=0.005000 thickness=0.000100 height=0.016800 [J Comp Phys 228 (2009) 5251]
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Rb_liq_inc.sqw' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Rb_liq_inc.sqw' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Rb_liq_inc.sqw' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Rb_liq_inc.sqw' (Table_Read_Offset)
+Isotropic_Sqw: Sample_in: Temperature set to T=350 [K]
+Isotropic_Sqw: Sample_in: S(q,w) data from Rb_liq_inc.sqw (inc) assumed to be classical (symmetrised in energy).
+Isotropic_Sqw: Sample_in: Applying exp(hw/2kT) factor with T=350 [K] on Rb_liq_inc.sqw file (classical/symmetric) using 'Frommhold' quantum correction
+Isotropic_Sqw: Sample_in: Generated Rb_liq_inc.sqw incoherent Sqw
+                   q=[0.1:10 Angs-1] w=[0:101.849 meV] |S|=0.985192 size=[101x10185] sigma=0.5 [barns]
+                   normalization factor S(q,w)*0.492586 (auto) \int q^2 S(q) dq=676.701
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Rb_liq_coh.sqw' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Rb_liq_coh.sqw' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Rb_liq_coh.sqw' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Rb_liq_coh.sqw' (Table_Read_Offset)
+Isotropic_Sqw: Sample_in: Temperature set to T=350 [K]
+Isotropic_Sqw: Sample_in: S(q,w) data from Rb_liq_coh.sqw (coh) assumed to be classical (symmetrised in energy).
+Isotropic_Sqw: Sample_in: Applying exp(hw/2kT) factor with T=350 [K] on Rb_liq_coh.sqw file (classical/symmetric) using 'Frommhold' quantum correction
+Isotropic_Sqw: Sample_in: Generated Rb_liq_coh.sqw coherent Sqw
+                   q=[0.1:10 Angs-1] w=[0:101.849 meV] |S|=0.887933 size=[101x10185] sigma=6.32 [barns]
+                   normalization factor S(q,w)*0.477012 (auto) \int q^2 S(q) dq=698.369
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Nb.laz' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Nb.laz' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
+[n-62-23-6:05074] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-6:05074] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+
+Finally [templateTOF: 2]. Time: 5 [s] 
+
+Finally [templateTOF: 2]. Time: 5 [s] 
+
+Finally [templateTOF: 2]. Time: 4 [s] 
+
+Finally [templateTOF: 2]. Time: 5 [s] 
+
+Finally [templateTOF: 2]. Time: 4 [s] 
+
+Finally [templateTOF: 2]. Time: 4 [s] 
+
+Save [templateTOF]
+Detector: M_total_I=5.19876e-09 M_total_ERR=8.51583e-11 M_total_N=646106 "M_total_1574209653.E_th"
+
+Finally [templateTOF: 2]. Time: 5 [s] 
+
+Finally [templateTOF: 2]. Time: 5 [s] 
+Detector: M_single_coh_I=6.00481e-10 M_single_coh_ERR=1.8054e-12 M_single_coh_N=481998 "M_single_coh_1574209653.E_th"
+Detector: M_single_inc_I=4.94548e-11 M_single_inc_ERR=5.1685e-13 M_single_inc_N=39894 "M_single_inc_1574209653.E_th"
+Detector: M_multi_I=1.4855e-12 M_multi_ERR=2.09392e-14 M_multi_N=115631 "M_multi_1574209653.E_th"
+
+Finally [templateTOF: 2]. Time: 6 [s] 
+Detector: M_env_container_I=4.55508e-09 M_env_container_ERR=8.51397e-11 M_env_container_N=18700 "M_env_container_1574209653.E_th"
+
+Finally [templateTOF: 2]. Time: 5 [s] 
+Isotropic_Sqw: Sample_in: 20723 neutron events (out of 10677535) that should have
+               scattered were transmitted because scattering conditions
+WARNING        could not be satisfied after 100 tries.
+Isotropic_Sqw: Sample_in: 3 neutron events (out of 10656812) reached
+WARNING        unrealistic weight. The S(q,w) norm might be too high.
+Isotropic_Sqw: Sample_in: Scattering fraction=0.00246687 of incoming intensity
+               Absorption fraction           =0.0484724
+               Single   scattering intensity =9.069e-09 (coh=8.3922e-09 inc=6.76798e-10)
+               Multiple scattering intensity =2.02233e-11
+INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateTOF/templateTOF.instr in dataset 2

@@ -1,0 +1,252 @@
+McStas simulation description file for ILL_H53_IN14.
+Date:    Wed Nov 20 01:03:34 2019
+Program: McStas 2.5 - Nov. 19, 2019
+
+begin instrument: ILL_H53_IN14
+  File: 1/mccode
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr
+  Parameters:  KI(double) QM(double) EN(double) verbose(double) WM(double) HM(double) NHM(double) NVM(double) RMV(double) DM(double) WA(double) HA(double) NHA(double) NVA(double) RAV(double) RAH(double) DA(double) SM(double) SS(double) SA(double) L1(double) L2(double) L3(double) L4(double) KF(double) EI(double) EF(double) QH(double) QK(double) QL(double) KFIX(double) FX(double) RMH(double) ETAM(double) ETAA(double) ALF1(double) ALF2(double) ALF3(double) ALF4(double) BET1(double) BET2(double) BET3(double) BET4(double) AS(double) BS(double) CS(double) AA(double) BB(double) CC(double) AX(double) AY(double) AZ(double) BX(double) BY(double) BZ(double) A1(double) A2(double) A3(double) A4(double) A5(double) A6(double) Sqw_coh(string) Sqw_inc(string) radius(double) thickness(double) height(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574230213
+  Directory: 1
+  Nodes: 10
+  Param: KI=1.55
+  Param: QM=1
+  Param: EN=0
+  Param: verbose=1
+  Param: WM=0.15
+  Param: HM=0.12
+  Param: NHM=1
+  Param: NVM=9
+  Param: RMV=-1
+  Param: DM=3.355
+  Param: WA=0.2
+  Param: HA=0.1
+  Param: NHA=11
+  Param: NVA=1
+  Param: RAV=0
+  Param: RAH=-1
+  Param: DA=3.355
+  Param: SM=1
+  Param: SS=-1
+  Param: SA=1
+  Param: L1=7
+  Param: L2=2.12
+  Param: L3=1.37
+  Param: L4=0.7
+  Param: KF=0
+  Param: EI=0
+  Param: EF=0
+  Param: QH=0
+  Param: QK=0
+  Param: QL=0
+  Param: KFIX=0
+  Param: FX=0
+  Param: RMH=0
+  Param: ETAM=30
+  Param: ETAA=30
+  Param: ALF1=60
+  Param: ALF2=60
+  Param: ALF3=60
+  Param: ALF4=60
+  Param: BET1=120
+  Param: BET2=120
+  Param: BET3=120
+  Param: BET4=120
+  Param: AS=6.28
+  Param: BS=6.28
+  Param: CS=6.28
+  Param: AA=90
+  Param: BB=90
+  Param: CC=90
+  Param: AX=1
+  Param: AY=0
+  Param: AZ=0
+  Param: BX=0
+  Param: BY=1
+  Param: BZ=0
+  Param: A1=0
+  Param: A2=0
+  Param: A3=0
+  Param: A4=0
+  Param: A5=0
+  Param: A6=0
+  Param: Sqw_coh=V.laz
+  Param: Sqw_inc=NULL
+  Param: radius=0.01
+  Param: thickness=0.005
+  Param: height=0.05
+end simulation
+
+begin data
+  Date: Wed Nov 20 01:03:36 2019 (1574208216)
+  type: array_1d(60)
+  Source: ILL_H53_IN14 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr)
+  component: Mon_VS_L
+  position: 0 0 8.049
+  title: Wavelength [Angs] monitor
+  Ncount: 10000000
+  filename: mon_vs_l.dat
+  statistics: X0=4.10833; dX=0;
+  signal: Min=0; Max=4.08668e+08; Mean=6.81113e+06;
+  values: 4.08668e+08 1.10381e+06 297162
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/cm2/bin]
+  xlimits: 0 29
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:03:36 2019 (1574208216)
+  type: array_2d(40, 40)
+  Source: ILL_H53_IN14 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr)
+  component: Mon_VS_XY
+  position: 0 0 8.049
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: mon_vs_xy.dat
+  statistics: X0=-9.47136e-06; dX=0.0175611; Y0=1.59552e-05; dY=0.0362257;
+  signal: Min=305003; Max=903343; Mean=575635;
+  values: 9.21017e+08 2.48727e+06 297162
+  xvar: x
+  yvar: y
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.03 0.03 -0.06 0.06
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:03:36 2019 (1574208216)
+  type: array_1d(60)
+  Source: ILL_H53_IN14 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr)
+  component: Mon_VS1_L
+  position: 0 0 8.624
+  title: Wavelength [Angs] monitor
+  Ncount: 10000000
+  filename: Mon_VS1_L_1574208214.L
+  statistics: X0=4.10833; dX=0;
+  signal: Min=0; Max=3.71425e+08; Mean=6.19042e+06;
+  values: 3.71425e+08 1.04625e+06 285517
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/cm2/bin]
+  xlimits: 0 29
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:03:36 2019 (1574208216)
+  type: array_1d(60)
+  Source: ILL_H53_IN14 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr)
+  component: Mon_VS2_L
+  position: 0 0 9.15
+  title: Wavelength [Angs] monitor
+  Ncount: 10000000
+  filename: Mon_VS2_L_1574208214.L
+  statistics: X0=4.10833; dX=0;
+  signal: Min=0; Max=3.49131e+08; Mean=5.81885e+06;
+  values: 3.49131e+08 1.01222e+06 279662
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/cm2/bin]
+  xlimits: 0 29
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:03:36 2019 (1574208216)
+  type: array_1d(20)
+  Source: ILL_H53_IN14 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr)
+  component: D4_SC2_1D
+  position: 0.568076 0 19.3403
+  title: Wavelength [Angs] monitor
+  Ncount: 10000000
+  filename: D4_SC2_1D_1574208214.L
+  statistics: X0=4.05316; dX=0.0280139;
+  signal: Min=956578; Max=5.54194e+06; Mean=3.67921e+06;
+  values: 7.35843e+07 172325 442210
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/cm2/bin]
+  xlimits: 3.99287 4.11447
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:03:36 2019 (1574208216)
+  type: array_0d
+  Source: ILL_H53_IN14 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr)
+  component: Sample_Cradle
+  position: 2.04122 0 19.7535
+  title:  Intensity Monitor (Square)
+  Ncount: 10000000
+  statistics: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿX0=4.05316; dX=0.0280139;
+  signal: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿMin=956578; Max=5.54194e+06; Mean=3.67921e+06;
+  values: 
+  xylimits: 0 0 0 0 0 0
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:03:36 2019 (1574208216)
+  type: array_2d(50, 50)
+  Source: ILL_H53_IN14 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr)
+  component: D7_SC3_1D
+  position: 2.04122 0 19.7535
+  title:  Intensity Angle Energy Monitor (Banana) [out] per bin
+  Ncount: 10000000
+  filename: D7_SC3_1D_1574208214.th_E
+  statistics: X0=37.4925; dX=33.0922; Y0=4.97886; dY=0.0546185;
+  signal: Min=1.38242; Max=4.45845e+06; Mean=262265;
+  values: 6.55662e+08 1.13694e+06 3.25351e+06
+  xvar: Longitude
+  yvar: Energy
+  xlabel: Longitude [deg]
+  ylabel: Energy [meV]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -179.993 179.992 4.83251 5.13105
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:03:36 2019 (1574208216)
+  type: array_2d(20, 20)
+  Source: ILL_H53_IN14 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr)
+  component: He3H
+  position: 3.51324 0 20.6009
+  title: PSD monitor
+  Ncount: 10000000
+  filename: He3H.psd
+  statistics: X0=0.0194688; dX=0.527067; Y0=0.0112175; dY=2.05012;
+  signal: Min=0; Max=10.8653; Mean=1.16521;
+  values: 466.083 12.8568 6106
+  xvar: X
+  yvar: Y
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -2.54 2.54 -4.285 4.285
+  variables: I I_err N
+end data

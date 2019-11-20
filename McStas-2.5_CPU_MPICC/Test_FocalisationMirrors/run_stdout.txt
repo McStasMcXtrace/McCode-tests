@@ -1,0 +1,283 @@
+INFO: Using directory: "1"
+INFO: Using existing c-file: ./Test_FocalisationMirrors.c
+INFO: Using existing binary: ./Test_FocalisationMirrors.out
+INFO: ===
+INFO: Using system default number of mpirun -np processes
+[1574208631.802957] [n-62-23-6:26994:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3145.56
+[1574208631.803767] [n-62-23-6:26995:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3145.56
+[1574208631.804505] [n-62-23-6:26994:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208631.804521] [n-62-23-6:26994:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1574208631.805388] [n-62-23-6:26995:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208631.805405] [n-62-23-6:26995:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208631.806395] [n-62-23-6:26994:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208631.806410] [n-62-23-6:26994:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208631.807157] [n-62-23-6:26997:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3143.16
+[1574208631.807313] [n-62-23-6:26995:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208631.807328] [n-62-23-6:26995:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208631.808661] [n-62-23-6:26997:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208631.808678] [n-62-23-6:26997:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208631.810508] [n-62-23-6:26997:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208631.810526] [n-62-23-6:26997:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208631.817287] [n-62-23-6:26996:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3103.00
+[1574208631.818803] [n-62-23-6:26996:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208631.818821] [n-62-23-6:26996:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208631.819310] [n-62-23-6:26999:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.49
+[1574208631.820258] [n-62-23-6:26998:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.49
+[1574208631.820607] [n-62-23-6:26996:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208631.820622] [n-62-23-6:26996:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208631.821158] [n-62-23-6:26999:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208631.821174] [n-62-23-6:26999:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208631.821668] [n-62-23-6:26998:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208631.821685] [n-62-23-6:26998:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208631.823166] [n-62-23-6:26999:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208631.823181] [n-62-23-6:26999:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208631.823684] [n-62-23-6:26998:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208631.823699] [n-62-23-6:26998:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208631.829873] [n-62-23-3:23830:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3260.57
+[1574208631.829875] [n-62-23-3:23831:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3260.57
+[1574208631.829869] [n-62-23-3:23832:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3260.57
+[1574208631.829873] [n-62-23-3:23833:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3260.57
+[1574208631.833804] [n-62-23-3:23830:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208631.833820] [n-62-23-3:23830:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208631.833804] [n-62-23-3:23831:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208631.833820] [n-62-23-3:23831:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208631.833810] [n-62-23-3:23832:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208631.833824] [n-62-23-3:23832:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208631.833804] [n-62-23-3:23833:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208631.833881] [n-62-23-3:23833:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208631.835937] [n-62-23-3:23832:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208631.835950] [n-62-23-3:23832:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208631.835935] [n-62-23-3:23830:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208631.835950] [n-62-23-3:23830:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208631.835933] [n-62-23-3:23831:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208631.835949] [n-62-23-3:23831:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208631.835938] [n-62-23-3:23833:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208631.835962] [n-62-23-3:23833:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'Test_FocalisationMirrors' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+[Test_FocalisationMirrors] Initialize
+[Test_FocalisationMirrors] Initialize
+Mirror_Elliptic: mirelli: alpha=4.100660 alpha^2=16.815412 beta=0.073569 beta^2=0.005412
+Mirror_Elliptic: mirelli: alpha=4.100660 alpha^2=16.815412 beta=0.073569 beta^2=0.005412
+[Test_FocalisationMirrors] Initialize
+[Test_FocalisationMirrors] Initialize
+[Test_FocalisationMirrors] Initialize
+[Test_FocalisationMirrors] Initialize
+[Test_FocalisationMirrors] Initialize
+[Test_FocalisationMirrors] Initialize
+[Test_FocalisationMirrors] Initialize
+[Test_FocalisationMirrors] Initialize
+Mirror_Elliptic: mirelli: alpha=4.100660 alpha^2=16.815412 beta=0.073569 beta^2=0.005412
+Mirror_Elliptic: mirelli: alpha=4.100660 alpha^2=16.815412 beta=0.073569 beta^2=0.005412
+Mirror_Elliptic: mirelli: alpha=4.100660 alpha^2=16.815412 beta=0.073569 beta^2=0.005412
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/supermirror_m3.rfl' (Table_Read_Offset)
+Mirror_Elliptic: mirelli: alpha=4.100660 alpha^2=16.815412 beta=0.073569 beta^2=0.005412
+Mirror_Elliptic: mirelli: alpha=4.100660 alpha^2=16.815412 beta=0.073569 beta^2=0.005412
+Mirror_Elliptic: mirelli: alpha=4.100660 alpha^2=16.815412 beta=0.073569 beta^2=0.005412
+Mirror_Elliptic: mirelli: alpha=4.100660 alpha^2=16.815412 beta=0.073569 beta^2=0.005412
+Mirror_Elliptic: mirelli: alpha=4.100660 alpha^2=16.815412 beta=0.073569 beta^2=0.005412
+
+Finally [Test_FocalisationMirrors: 1]. Time: 1 [s] 
+Test_FocalisationMirrors: end of simulation
+T=0.002747 
+ X1B=0.962517 et Y1B=0.050409 
+ X1H=3.818909 et Y1H=0.100409 
+ a=4.100660 et b=0.073557 
+Mirror_Parabolic: mirpara: 4 lost neutrons for inadapted divergence
+	0 for vz <0 
+	0 B=0 
+ neutrons absorbed inside the component.
+ X2H=-2.603600 et X2B=-0.859381 
+ Y2H=0.068480 et Y2B=0.045058
+
+ Delta=0.237877
+ rayon1=0.000146
+ Zmin=4.678290
+ Zmax=6.422509
+ BS=0.001247
+ xF=3.818249
+
+Finally [Test_FocalisationMirrors: 1]. Time: 1 [s] 
+Test_FocalisationMirrors: end of simulation
+Mirror_Parabolic: mirpara: 1 lost neutrons for inadapted divergence
+	0 for vz <0 
+	0 B=0 
+ neutrons absorbed inside the component.
+T=0.002747 
+ X1B=0.962517 et Y1B=0.050409 
+ X1H=3.818909 et Y1H=0.100409 
+ a=4.100660 et b=0.073557 
+ X2H=-2.603600 et X2B=-0.859381 
+ Y2H=0.068480 et Y2B=0.045058
+
+ Delta=0.237877
+ rayon1=0.000146
+ Zmin=4.678290
+ Zmax=6.422509
+ BS=0.001247
+ xF=3.818249
+
+Finally [Test_FocalisationMirrors: 1]. Time: 1 [s] 
+Mirror_Parabolic: mirpara: 4 lost neutrons for inadapted divergence
+	0 for vz <0 
+	0 B=0 
+ neutrons absorbed inside the component.
+Test_FocalisationMirrors: end of simulation
+T=0.002747 
+ X1B=0.962517 et Y1B=0.050409 
+ X1H=3.818909 et Y1H=0.100409 
+ a=4.100660 et b=0.073557 
+ X2H=-2.603600 et X2B=-0.859381 
+ Y2H=0.068480 et Y2B=0.045058
+
+ Delta=0.237877
+ rayon1=0.000146
+ Zmin=4.678290
+ Zmax=6.422509
+ BS=0.001247
+ xF=3.818249
+
+Finally [Test_FocalisationMirrors: 1]. Time: 1 [s] 
+Test_FocalisationMirrors: end of simulation
+T=0.002747 
+Mirror_Parabolic: mirpara: 4 lost neutrons for inadapted divergence
+	0 for vz <0 
+	0 B=0 
+ neutrons absorbed inside the component.
+Warning: 1 events were removed in Component[4] filter=Slit()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+ X1B=0.962517 et Y1B=0.050409 
+ X1H=3.818909 et Y1H=0.100409 
+ a=4.100660 et b=0.073557 
+ X2H=-2.603600 et X2B=-0.859381 
+ Y2H=0.068480 et Y2B=0.045058
+
+ Delta=0.237877
+ rayon1=0.000146
+ Zmin=4.678290
+ Zmax=6.422509
+ BS=0.001247
+ xF=3.818249
+
+Finally [Test_FocalisationMirrors: 1]. Time: 1 [s] 
+Test_FocalisationMirrors: end of simulation
+T=0.002747 
+ X1B=0.962517 et Y1B=0.050409 
+ X1H=3.818909 et Y1H=0.100409 
+ a=4.100660 et b=0.073557 
+Mirror_Parabolic: mirpara: 3 lost neutrons for inadapted divergence
+	0 for vz <0 
+	0 B=0 
+ neutrons absorbed inside the component.
+Mirror_Parabolic: mirpara: 2 lost neutrons for inadapted divergence
+	0 for vz <0 
+	0 B=0 
+ neutrons absorbed inside the component.
+
+Finally [Test_FocalisationMirrors: 1]. Time: 1 [s] 
+Test_FocalisationMirrors: end of simulation
+ X2H=-2.603600 et X2B=-0.859381 
+ Y2H=0.068480 et Y2B=0.045058
+
+ Delta=0.237877
+ rayon1=0.000146
+ Zmin=4.678290
+ Zmax=6.422509
+T=0.002747 
+ X1B=0.962517 et Y1B=0.050409 
+ X1H=3.818909 et Y1H=0.100409 
+ a=4.100660 et b=0.073557 
+ X2H=-2.603600 et X2B=-0.859381 
+ Y2H=0.068480 et Y2B=0.045058
+
+ Delta=0.237877
+ BS=0.001247
+ xF=3.818249
+ rayon1=0.000146
+ Zmin=4.678290
+ Zmax=6.422509
+ BS=0.001247
+ xF=3.818249
+
+Finally [Test_FocalisationMirrors: 1]. Time: 1 [s] 
+Test_FocalisationMirrors: end of simulation
+T=0.002747 
+ X1B=0.962517 et Y1B=0.050409 
+ X1H=3.818909 et Y1H=0.100409 
+ a=4.100660 et b=0.073557 
+ X2H=-2.603600 et X2B=-0.859381 
+ Y2H=0.068480 et Y2B=0.045058
+
+ Delta=0.237877
+ rayon1=0.000146
+ Zmin=4.678290
+ Zmax=6.422509
+ BS=0.001247
+ xF=3.818249
+
+Save [Test_FocalisationMirrors]
+Detector: monPSD_I=2.51335e-16 monPSD_ERR=2.69693e-19 monPSD_N=868720 "det.txt"
+
+Finally [Test_FocalisationMirrors: 1]. Time: 1 [s] 
+Test_FocalisationMirrors: end of simulation
+
+Finally [Test_FocalisationMirrors: 1]. Time: 1 [s] 
+Test_FocalisationMirrors: end of simulation
+T=0.002747 
+ X1B=0.962517 et Y1B=0.050409 
+ X1H=3.818909 et Y1H=0.100409 
+Mirror_Parabolic: mirpara: 2 lost neutrons for inadapted divergence
+	0 for vz <0 
+	0 B=0 
+ neutrons absorbed inside the component.
+T=0.002747 
+ X1B=0.962517 et Y1B=0.050409 
+ X1H=3.818909 et Y1H=0.100409 
+ a=4.100660 et b=0.073557 
+ X2H=-2.603600 et X2B=-0.859381 
+ Y2H=0.068480 et Y2B=0.045058
+
+ Delta=0.237877
+ rayon1=0.000146
+ Zmin=4.678290
+ Zmax=6.422509
+ BS=0.001247
+ a=4.100660 et b=0.073557 
+ X2H=-2.603600 et X2B=-0.859381 
+ Y2H=0.068480 et Y2B=0.045058
+
+ Delta=0.237877
+ rayon1=0.000146
+ Zmin=4.678290
+ Zmax=6.422509
+ xF=3.818249
+ BS=0.001247
+ xF=3.818249
+
+Finally [Test_FocalisationMirrors: 1]. Time: 1 [s] 
+Test_FocalisationMirrors: end of simulation
+T=0.002747 
+ X1B=0.962517 et Y1B=0.050409 
+Mirror_Parabolic: mirpara: 5 lost neutrons for inadapted divergence
+	0 for vz <0 
+	0 B=0 
+ neutrons absorbed inside the component.
+ X1H=3.818909 et Y1H=0.100409 
+ a=4.100660 et b=0.073557 
+ X2H=-2.603600 et X2B=-0.859381 
+ Y2H=0.068480 et Y2B=0.045058
+
+ Delta=0.237877
+ rayon1=0.000146
+ Zmin=4.678290
+ Zmax=6.422509
+ BS=0.001247
+ xF=3.818249
+[n-62-23-6:26985] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-6:26985] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr in dataset 1

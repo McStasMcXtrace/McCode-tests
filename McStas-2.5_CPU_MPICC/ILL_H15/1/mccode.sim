@@ -1,0 +1,108 @@
+McStas simulation description file for ILL_H15.
+Date:    Wed Nov 20 01:01:16 2019
+Program: McStas 2.5 - Nov. 19, 2019
+
+begin instrument: ILL_H15
+  File: 1/mccode
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H15/ILL_H15.instr
+  Parameters:  m(double) lambda(double) dlambda(double) mip(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H15/ILL_H15.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574228492
+  Directory: 1
+  Nodes: 10
+  Param: m=1
+  Param: lambda=10
+  Param: dlambda=9.9
+  Param: mip=1
+end simulation
+
+begin data
+  Date: Wed Nov 20 01:01:32 2019 (1574208092)
+  type: array_2d(20, 20)
+  Source: ILL_H15 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H15/ILL_H15.instr)
+  component: GuideOut_xy
+  position: 0.357968 0 54.9614
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: GuideOut_xy_1574208076.x_y
+  statistics: X0=3.04184e-05; dX=0.00861664; Y0=-1.55479e-05; dY=0.057779;
+  signal: Min=6.54064e+06; Max=8.80445e+06; Mean=7.64988e+06;
+  values: 3.05995e+09 7.78958e+06 3.42037e+06
+  xvar: x
+  yvar: y
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.015 0.015 -0.1 0.1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:01:32 2019 (1574208092)
+  type: array_2d(20, 20)
+  Source: ILL_H15 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H15/ILL_H15.instr)
+  component: GuideOut_dxdy
+  position: 0.357968 0 54.9614
+  title:  Intensity Divergence Divergence Monitor (Square) per bin
+  Ncount: 10000000
+  filename: GuideOut_dxdy_1574208076.hd_vd
+  statistics: X0=0.036854; dX=0.385743; Y0=-0.0376291; dY=0.430357;
+  signal: Min=1.0009e-237; Max=3.70013e+08; Mean=7.64988e+06;
+  values: 3.05995e+09 7.78958e+06 3.42022e+06
+  xvar: Hor.
+  yvar: Vert.
+  xlabel: Hor. Divergence [deg]
+  ylabel: Vert. Divergence [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -2.50942 2.62253 -4.72085 4.65901
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:01:32 2019 (1574208092)
+  type: array_0d
+  Source: ILL_H15 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H15/ILL_H15.instr)
+  component: GuideOut_Phic
+  position: 0.357968 0 54.9614
+  title:  Intensity Monitor (Square)
+  Ncount: 10000000
+  statistics: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ3.05995e+09 7.78958e+06 3.42022e+06
+  signal: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ@g#ôLÀ#kç2ñú@²µÊÁ%âÀP/ºÒ¢@
+  values: 
+  xylimits: 0 0 0 0 0 0
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:01:32 2019 (1574208092)
+  type: array_1d(20)
+  Source: ILL_H15 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H15/ILL_H15.instr)
+  component: GuideOut_L
+  position: 0.357968 0 54.9614
+  title: Wavelength [Angs] monitor
+  Ncount: 10000000
+  filename: GuideOut_L_1574208076.L
+  statistics: X0=6.83418; dX=3.48001;
+  signal: Min=0; Max=4.81681e+08; Mean=1.52966e+08;
+  values: 3.05932e+09 7.7877e+06 3.41959e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [Angs]
+  ylabel: Intensity [n/s/cm2/bin]
+  xlimits: 1 21
+  variables: L I I_err N
+end data

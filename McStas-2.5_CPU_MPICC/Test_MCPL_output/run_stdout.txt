@@ -1,0 +1,148 @@
+INFO: Using directory: "1"
+INFO: Using existing c-file: ./Test_MCPL_output.c
+INFO: Using existing binary: ./Test_MCPL_output.out
+INFO: ===
+INFO: Using system default number of mpirun -np processes
+[1574208878.348795] [n-62-23-6:29261:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3124.71
+[1574208878.349863] [n-62-23-6:29260:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3124.71
+[1574208878.350211] [n-62-23-6:29261:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208878.350228] [n-62-23-6:29261:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1574208878.351338] [n-62-23-6:29260:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208878.351354] [n-62-23-6:29260:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208878.352105] [n-62-23-6:29261:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208878.352121] [n-62-23-6:29261:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208878.353130] [n-62-23-6:29260:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208878.353145] [n-62-23-6:29260:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208878.359808] [n-62-23-6:29262:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3103.51
+[1574208878.361185] [n-62-23-6:29262:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208878.361202] [n-62-23-6:29262:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208878.361493] [n-62-23-6:29264:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3103.51
+[1574208878.362894] [n-62-23-6:29264:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208878.362911] [n-62-23-6:29264:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208878.363028] [n-62-23-6:29262:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208878.363045] [n-62-23-6:29262:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208878.363453] [n-62-23-6:29263:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3103.51
+[1574208878.364396] [n-62-23-6:29265:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3103.51
+[1574208878.364862] [n-62-23-6:29264:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208878.364877] [n-62-23-6:29264:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208878.365321] [n-62-23-6:29263:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208878.365337] [n-62-23-6:29263:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208878.365869] [n-62-23-6:29265:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208878.365886] [n-62-23-6:29265:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208878.367328] [n-62-23-6:29263:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208878.367343] [n-62-23-6:29263:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208878.367794] [n-62-23-6:29265:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208878.367809] [n-62-23-6:29265:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208878.392289] [n-62-23-3:25014:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3174.10
+[1574208878.392289] [n-62-23-3:25015:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3174.10
+[1574208878.392289] [n-62-23-3:25016:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3174.10
+[1574208878.392289] [n-62-23-3:25017:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3174.10
+[1574208878.396407] [n-62-23-3:25014:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208878.396424] [n-62-23-3:25014:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208878.396407] [n-62-23-3:25015:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208878.396424] [n-62-23-3:25015:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208878.396407] [n-62-23-3:25016:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208878.396424] [n-62-23-3:25016:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208878.396407] [n-62-23-3:25017:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208878.396493] [n-62-23-3:25017:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208878.398615] [n-62-23-3:25016:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208878.398628] [n-62-23-3:25016:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208878.398610] [n-62-23-3:25014:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208878.398625] [n-62-23-3:25014:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208878.398620] [n-62-23-3:25015:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208878.398633] [n-62-23-3:25015:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208878.398619] [n-62-23-3:25017:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208878.398667] [n-62-23-3:25017:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'Test_MCPL_output' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_MCPL_output/Test_MCPL_output.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+[Test_MCPL_output] Initialize
+[Test_MCPL_output] Initialize
+[Test_MCPL_output] Initialize
+[Test_MCPL_output] Initialize
+[Test_MCPL_output] Initialize
+[Test_MCPL_output] Initialize
+[Test_MCPL_output] Initialize
+[Test_MCPL_output] Initialize
+[Test_MCPL_output] Initialize
+[Test_MCPL_output] Initialize
+MCPL_output verbose mode: after generating the mcpl-file it will be reread and a summary printed.
+Monitor_nD: m1 is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+Monitor_nD: m2 is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+Monitor_nD: m3 is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+Monitor_nD: m4 is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+
+Save [Test_MCPL_output]
+MCPL: Attempting to compress file voutput.node_9.mcpl with gzip
+--------------------------------------------------------------------------
+A process has executed an operation involving a call to the
+"fork()" system call to create a child process.  Open MPI is currently
+operating in a condition that could result in memory corruption or
+other system errors; your job may hang, crash, or produce silent
+data corruption.  The use of fork() (or system() or other calls that
+create child processes) is strongly discouraged.
+
+The process that invoked fork was:
+
+  Local host:          [[27821,1],9] (PID 25017)
+
+If you are *absolutely sure* that your application will successfully
+and correctly survive a call to fork(), you may disable this warning
+by setting the mpi_warn_on_fork MCA parameter to 0.
+--------------------------------------------------------------------------
+MCPL: Attempting to compress file voutput.node_7.mcpl with gzip
+MCPL: Attempting to compress file voutput.node_8.mcpl with gzip
+MCPL: Attempting to compress file voutput.node_6.mcpl with gzip
+MCPL: Attempting to compress file voutput.node_5.mcpl with gzip
+MCPL: Attempting to compress file voutput.node_3.mcpl with gzip
+MCPL: Attempting to compress file voutput.node_4.mcpl with gzip
+MCPL: Attempting to compress file voutput.node_0.mcpl with gzip
+MCPL: Attempting to compress file voutput.node_2.mcpl with gzip
+MCPL: Attempting to compress file voutput.node_1.mcpl with gzip
+[n-62-23-6:29250] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-6:29250] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-23-6:29250] 9 more processes have sent help message help-opal-runtime.txt / opal_init:warn-fork
+MCPL: Succesfully compressed file into voutput.node_7.mcpl.gz
+MCPL: Succesfully compressed file into voutput.node_6.mcpl.gz
+MCPL: Succesfully compressed file into voutput.node_8.mcpl.gz
+MCPL: Succesfully compressed file into voutput.node_9.mcpl.gz
+MCPL: Succesfully compressed file into voutput.node_5.mcpl.gz
+MCPL: Succesfully compressed file into voutput.node_1.mcpl.gz
+MCPL: Succesfully compressed file into voutput.node_3.mcpl.gz
+MCPL: Succesfully compressed file into voutput.node_2.mcpl.gz
+MCPL: Succesfully compressed file into voutput.node_0.mcpl.gz
+MCPL: Succesfully compressed file into voutput.node_4.mcpl.gz
+Detector: m1_I=2.42275e+11 m1_ERR=1.07645e+08 m1_N=9.99981e+06 "m1_1574208878.L"
+Detector: m2_I=2.4227e+11 m2_ERR=1.07644e+08 m2_N=9.99959e+06 "m2_1574208878.x_y"
+Detector: m3_I=2.42275e+11 m3_ERR=1.07645e+08 m3_N=9.99977e+06 "m3_1574208878.t"
+Detector: m4_I=2.42275e+11 m4_ERR=1.07645e+08 m4_N=9.99981e+06 "m4_1574208878.E"
+Events:   "m5_1574208878_list.p.n.U1.E.x.y.z.vx.vy.vz.t"
+
+Finally [Test_MCPL_output: 1]. Time: 1.08333 [min] 
+
+Finally [Test_MCPL_output: 1]. Time: 1.08333 [min] 
+
+Finally [Test_MCPL_output: 1]. Time: 1.08333 [min] 
+
+Finally [Test_MCPL_output: 1]. Time: 1.08333 [min] 
+
+Finally [Test_MCPL_output: 1]. Time: 1.08333 [min] 
+
+Finally [Test_MCPL_output: 1]. Time: 1.08333 [min] 
+
+Finally [Test_MCPL_output: 1]. Time: 1.08333 [min] 
+
+Finally [Test_MCPL_output: 1]. Time: 1.08333 [min] 
+
+Finally [Test_MCPL_output: 1]. Time: 1.08333 [min] 
+
+Finally [Test_MCPL_output: 1]. Time: 1.18333 [min] 
+INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_MCPL_output/Test_MCPL_output.instr in dataset 1

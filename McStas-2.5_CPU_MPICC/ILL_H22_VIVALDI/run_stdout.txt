@@ -1,0 +1,224 @@
+INFO: Using directory: "1"
+INFO: Using existing c-file: ./ILL_H22_VIVALDI.c
+INFO: Using existing binary: ./ILL_H22_VIVALDI.out
+INFO: ===
+INFO: Using system default number of mpirun -np processes
+[1574208157.246718] [n-62-23-6:21445:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3150.17
+[1574208157.248321] [n-62-23-6:21445:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208157.248338] [n-62-23-6:21445:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1574208157.249950] [n-62-23-6:21446:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3143.16
+[1574208157.250183] [n-62-23-6:21445:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208157.250197] [n-62-23-6:21445:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208157.251390] [n-62-23-6:21446:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208157.251407] [n-62-23-6:21446:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208157.252153] [n-62-23-6:21447:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3143.16
+[1574208157.253178] [n-62-23-6:21446:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208157.253193] [n-62-23-6:21446:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208157.253981] [n-62-23-6:21447:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208157.253997] [n-62-23-6:21447:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208157.256010] [n-62-23-6:21447:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208157.256024] [n-62-23-6:21447:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208157.259886] [n-62-23-6:21448:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3108.98
+[1574208157.261525] [n-62-23-6:21448:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208157.261542] [n-62-23-6:21448:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208157.261873] [n-62-23-6:21449:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.46
+[1574208157.263289] [n-62-23-6:21449:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208157.263305] [n-62-23-6:21449:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208157.263359] [n-62-23-6:21448:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208157.263373] [n-62-23-6:21448:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208157.263938] [n-62-23-6:21450:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.46
+[1574208157.265187] [n-62-23-6:21449:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208157.265202] [n-62-23-6:21449:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208157.265497] [n-62-23-6:21450:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208157.265514] [n-62-23-6:21450:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208157.267486] [n-62-23-6:21450:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208157.267501] [n-62-23-6:21450:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208157.297748] [n-62-23-3:20838:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3183.84
+[1574208157.297748] [n-62-23-3:20839:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3183.84
+[1574208157.297748] [n-62-23-3:20840:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3183.84
+[1574208157.297748] [n-62-23-3:20841:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3183.84
+[1574208157.301739] [n-62-23-3:20838:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208157.301755] [n-62-23-3:20838:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208157.301739] [n-62-23-3:20839:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208157.301755] [n-62-23-3:20839:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208157.301739] [n-62-23-3:20840:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208157.301739] [n-62-23-3:20841:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208157.301755] [n-62-23-3:20841:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208157.301818] [n-62-23-3:20840:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208157.303963] [n-62-23-3:20841:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208157.303976] [n-62-23-3:20841:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208157.303959] [n-62-23-3:20838:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208157.303971] [n-62-23-3:20838:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208157.303955] [n-62-23-3:20839:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208157.303970] [n-62-23-3:20839:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208157.303961] [n-62-23-3:20840:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208157.304022] [n-62-23-3:20840:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'ILL_H22_VIVALDI' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_VIVALDI/ILL_H22_VIVALDI.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+Instrument: ILL_H22_VIVALDI (H22@ILL thermal guide).
+Instrument: ILL_H22_VIVALDI (H22@ILL thermal guide).
+ILL_H22_VIVALDI: Detailed VIVALDI configuration
+* Incoming beam: lambda=0.8-5.2 [Angs]
+* Sample: 'YBaCuO.lau' in Al cryostat.
+ILL_H22_VIVALDI: Detailed VIVALDI configuration
+* Incoming beam: lambda=0.8-5.2 [Angs]
+* Sample: 'YBaCuO.lau' in Al cryostat.
+[ILL_H22_VIVALDI] Initialize
+[ILL_H22_VIVALDI] Initialize
+Single_crystal: YBaCuO.lau structure a=[3.8186,0,0] b=[0,3.8843,0] c=[0,0,11.6777] V0=173.211
+Single_crystal: YBaCuO.lau structure a=[3.8186,0,0] b=[0,3.8843,0] c=[0,0,11.6777] V0=173.211
+Single_crystal: Sample: Read 62 reflections from file 'YBaCuO.lau'
+Single_crystal: Sample: Vc=173.211 [Angs] sigma_abs=14.82 [barn] sigma_inc=2.105 [barn] reflections=YBaCuO.lau
+Single_crystal: Sample: Read 62 reflections from file 'YBaCuO.lau'
+Single_crystal: Sample: Vc=173.211 [Angs] sigma_abs=14.82 [barn] sigma_inc=2.105 [barn] reflections=YBaCuO.lau
+Instrument: ILL_H22_VIVALDI (H22@ILL thermal guide).
+ILL_H22_VIVALDI: Detailed VIVALDI configuration
+* Incoming beam: lambda=0.8-5.2 [Angs]
+* Sample: 'YBaCuO.lau' in Al cryostat.
+Instrument: ILL_H22_VIVALDI (H22@ILL thermal guide).
+ILL_H22_VIVALDI: Detailed VIVALDI configuration
+* Incoming beam: lambda=0.8-5.2 [Angs]
+* Sample: 'YBaCuO.lau' in Al cryostat.
+[ILL_H22_VIVALDI] Initialize
+[ILL_H22_VIVALDI] Initialize
+Single_crystal: YBaCuO.lau structure a=[3.8186,0,0] b=[0,3.8843,0] c=[0,0,11.6777] V0=173.211
+Single_crystal: Sample: Read 62 reflections from file 'YBaCuO.lau'
+Single_crystal: Sample: Vc=173.211 [Angs] sigma_abs=14.82 [barn] sigma_inc=2.105 [barn] reflections=YBaCuO.lau
+Instrument: ILL_H22_VIVALDI (H22@ILL thermal guide).
+ILL_H22_VIVALDI: Detailed VIVALDI configuration
+* Incoming beam: lambda=0.8-5.2 [Angs]
+* Sample: 'YBaCuO.lau' in Al cryostat.
+Instrument: ILL_H22_VIVALDI (H22@ILL thermal guide).
+ILL_H22_VIVALDI: Detailed VIVALDI configuration
+* Incoming beam: lambda=0.8-5.2 [Angs]
+* Sample: 'YBaCuO.lau' in Al cryostat.
+Instrument: ILL_H22_VIVALDI (H22@ILL thermal guide).
+ILL_H22_VIVALDI: Detailed VIVALDI configuration
+* Incoming beam: lambda=0.8-5.2 [Angs]
+* Sample: 'YBaCuO.lau' in Al cryostat.
+Instrument: ILL_H22_VIVALDI (H22@ILL thermal guide).
+ILL_H22_VIVALDI: Detailed VIVALDI configuration
+* Incoming beam: lambda=0.8-5.2 [Angs]
+* Sample: 'YBaCuO.lau' in Al cryostat.
+Instrument: ILL_H22_VIVALDI (H22@ILL thermal guide).
+ILL_H22_VIVALDI: Detailed VIVALDI configuration
+* Incoming beam: lambda=0.8-5.2 [Angs]
+* Sample: 'YBaCuO.lau' in Al cryostat.
+[ILL_H22_VIVALDI] Initialize
+[ILL_H22_VIVALDI] Initialize
+[ILL_H22_VIVALDI] Initialize
+[ILL_H22_VIVALDI] Initialize
+[ILL_H22_VIVALDI] Initialize
+Instrument: ILL_H22_VIVALDI (H22@ILL thermal guide).
+ILL_H22_VIVALDI: Detailed VIVALDI configuration
+* Incoming beam: lambda=0.8-5.2 [Angs]
+* Sample: 'YBaCuO.lau' in Al cryostat.
+[ILL_H22_VIVALDI] Initialize
+Source_gen: component Thermal (square 0.14 x 0.22)
+            focusing distance dist=3.18 area=0.038 x 0.2
+            spectra 0.800 to 5.200 AA (3.026 to 127.828 meV)
+            T1=683.7 K (1.178 AA), T2=257.7 K (1.919 AA), T3=16.7 K (7.539 AA)
+  Flux is dPhi/dlambda in [n/s/cm2].
+Single_crystal: YBaCuO.lau structure a=[3.8186,0,0] b=[0,3.8843,0] c=[0,0,11.6777] V0=173.211
+Single_crystal: Sample: Read 62 reflections from file 'YBaCuO.lau'
+Single_crystal: Sample: Vc=173.211 [Angs] sigma_abs=14.82 [barn] sigma_inc=2.105 [barn] reflections=YBaCuO.lau
+Monitor_nD: GuideOut_dxdy is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+Monitor_nD: D2B_Mono_Dx is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+Monitor_nD: SALSA_Mono_Dx is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+PowderN: Environment_in: Concentric mode - remember to include the 'opposite' copy of this component !
+WARNING  The equivalent, 'opposite' comp should have concentric=0
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
+Table from file 'Al.laz' (block 1) is 26 x 18 (x=1:8), constant step. interpolation: linear
+  '# TITLE *Aluminum-Al-[FM3-M] Miller, H.P.jr.;DuMond, J.W.M.[1942] at 298 K; ...'
+PowderN: Environment_in: Reading 26 rows from Al.laz
+PowderN: Environment_in: Read 26 reflections from file 'Al.laz'
+PowderN: Environment_in: Vc=66.4 [Angs] sigma_abs=0.924 [barn] sigma_inc=0.0328 [barn] reflections=Al.laz
+PowderN: Container_in: Concentric mode - remember to include the 'opposite' copy of this component !
+WARNING  The equivalent, 'opposite' comp should have concentric=0
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/V.laz' (Table_Read_Offset)
+Table from file 'V.laz' (block 1) is 21 x 18 (x=1:6), constant step. interpolation: linear
+  '# TITLE *-V-[IM3-M] James, W.J.;Straumanis, M.E.[1960];# CELL 3.024100 3.02 ...'
+PowderN: Container_in: Reading 21 rows from V.laz
+PowderN: Container_in: Read 21 reflections from file 'V.laz'
+PowderN: Container_in: Vc=27.66 [Angs] sigma_abs=10.16 [barn] sigma_inc=9.87 [barn] reflections=V.laz
+Single_crystal: YBaCuO.lau structure a=[3.8186,0,0] b=[0,3.8843,0] c=[0,0,11.6777] V0=173.211
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/YBaCuO.lau' (Table_Read_Offset)
+Single_crystal: YBaCuO.lau structure a=[3.8186,0,0] b=[0,3.8843,0] c=[0,0,11.6777] V0=173.211
+Single_crystal: YBaCuO.lau structure a=[3.8186,0,0] b=[0,3.8843,0] c=[0,0,11.6777] V0=173.211
+Single_crystal: YBaCuO.lau structure a=[3.8186,0,0] b=[0,3.8843,0] c=[0,0,11.6777] V0=173.211
+Single_crystal: Sample: Read 62 reflections from file 'YBaCuO.lau'
+Single_crystal: Sample: Vc=173.211 [Angs] sigma_abs=14.82 [barn] sigma_inc=2.105 [barn] reflections=YBaCuO.lau
+Single_crystal: YBaCuO.lau structure a=[3.8186,0,0] b=[0,3.8843,0] c=[0,0,11.6777] V0=173.211
+Single_crystal: Sample: Read 62 reflections from file 'YBaCuO.lau'
+Single_crystal: Sample: Vc=173.211 [Angs] sigma_abs=14.82 [barn] sigma_inc=2.105 [barn] reflections=YBaCuO.lau
+Single_crystal: Sample: Read 62 reflections from file 'YBaCuO.lau'
+Single_crystal: Sample: Vc=173.211 [Angs] sigma_abs=14.82 [barn] sigma_inc=2.105 [barn] reflections=YBaCuO.lau
+Single_crystal: YBaCuO.lau structure a=[3.8186,0,0] b=[0,3.8843,0] c=[0,0,11.6777] V0=173.211
+Single_crystal: Sample: Read 62 reflections from file 'YBaCuO.lau'
+Single_crystal: Sample: Vc=173.211 [Angs] sigma_abs=14.82 [barn] sigma_inc=2.105 [barn] reflections=YBaCuO.lau
+Single_crystal: Sample: Read 62 reflections from file 'YBaCuO.lau'
+Single_crystal: Sample: Vc=173.211 [Angs] sigma_abs=14.82 [barn] sigma_inc=2.105 [barn] reflections=YBaCuO.lau
+Single_crystal: Sample: Read 62 reflections from file 'YBaCuO.lau'
+Single_crystal: Sample: Vc=173.211 [Angs] sigma_abs=14.82 [barn] sigma_inc=2.105 [barn] reflections=YBaCuO.lau
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/V.laz' (Table_Read_Offset)
+Table from file 'V.laz' (block 1) is 21 x 18 (x=1:6), constant step. interpolation: linear
+  '# TITLE *-V-[IM3-M] James, W.J.;Straumanis, M.E.[1960];# CELL 3.024100 3.02 ...'
+PowderN: Container_out: Reading 21 rows from V.laz
+PowderN: Container_out: Read 21 reflections from file 'V.laz'
+PowderN: Container_out: Vc=27.66 [Angs] sigma_abs=10.16 [barn] sigma_inc=9.87 [barn] reflections=V.laz
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
+Table from file 'Al.laz' (block 1) is 26 x 18 (x=1:8), constant step. interpolation: linear
+  '# TITLE *Aluminum-Al-[FM3-M] Miller, H.P.jr.;DuMond, J.W.M.[1942] at 298 K; ...'
+PowderN: Environment_out: Reading 26 rows from Al.laz
+PowderN: Environment_out: Read 26 reflections from file 'Al.laz'
+PowderN: Environment_out: Vc=66.4 [Angs] sigma_abs=0.924 [barn] sigma_inc=0.0328 [barn] reflections=Al.laz
+[n-62-23-6:21436] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-6:21436] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+
+Trace ETA 14 [s] % 74 
+Trace ETA 14 [s] % 75 
+Trace ETA 14 [s] % 76 
+Trace ETA 14 [s] % 
+Trace ETA 14 [s] % 77 76 
+Trace ETA 14 [s] % 74 
+Trace ETA 14 [s] % 75 
+Trace ETA 14 [s] % 73 
+Trace ETA 14 [s] % 77 
+Trace ETA 14 [s] % 75 75 75 75 80 80 80 80 80 80 80 80 80 80 85 85 85 85 85 85 85 85 85 85 90 90 90 90 90 90 90 90 90 90 95 95 95 95 95 95 95 95 95 95 
+Finally [ILL_H22_VIVALDI: 1]. Time: 14 [s] 
+
+Finally [ILL_H22_VIVALDI: 1]. Time: 14 [s] 
+
+Finally [ILL_H22_VIVALDI: 1]. Time: 14 [s] 
+
+Finally [ILL_H22_VIVALDI: 1]. Time: 14 [s] 
+
+Finally [ILL_H22_VIVALDI: 1]. Time: 14 [s] 
+
+Finally [ILL_H22_VIVALDI: 1]. Time: 14 [s] 
+
+Finally [ILL_H22_VIVALDI: 1]. Time: 14 [s] 
+
+Save [ILL_H22_VIVALDI]
+Detector: GuideOut_xy_I=2.13645e+09 GuideOut_xy_ERR=5.81607e+06 GuideOut_xy_N=2.14367e+06 "GuideOut_xy_1574208157.x_y"
+
+Finally [ILL_H22_VIVALDI: 1]. Time: 14 [s] 
+Detector: GuideOut_dxdy_I=2.13645e+09 GuideOut_dxdy_ERR=5.81607e+06 GuideOut_dxdy_N=2.14362e+06 "GuideOut_dxdy_1574208157.hd_vd"
+Detector: GuideOut_Phic_I=0 GuideOut_Phic_ERR=0 GuideOut_Phic_N=0 "GuideOut_Phic"
+Detector: GuideOut_L_I=2.04455e+09 GuideOut_L_ERR=5.58415e+06 GuideOut_L_N=2.13278e+06 "GuideOut_L_1574208157.L"
+Detector: D2B_Mono_Dx_I=1.98818e+09 D2B_Mono_Dx_ERR=5.53379e+06 D2B_Mono_Dx_N=1.92898e+06 "D2B_Mono_Dx_1574208157.hd"
+Detector: SALSA_Mono_Dx_I=1.8438e+09 SALSA_Mono_Dx_ERR=5.37211e+06 SALSA_Mono_Dx_N=1.58848e+06 "SALSA_Mono_Dx_1574208157.hd"
+
+Finally [ILL_H22_VIVALDI: 1]. Time: 14 [s] 
+Detector: PSD_Vivaldi_I=2.68056e+08 PSD_Vivaldi_ERR=2.48429e+06 PSD_Vivaldi_N=278028 "PSD_Vivaldi_1574208157.th_y"
+
+Finally [ILL_H22_VIVALDI: 1]. Time: 14 [s] 
+INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_VIVALDI/ILL_H22_VIVALDI.instr in dataset 1

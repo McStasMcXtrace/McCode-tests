@@ -1,0 +1,45 @@
+[1574207885.740250] [n-62-23-6:17899:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3467.19
+[1574207885.741634] [n-62-23-6:17899:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207885.741638] [n-62-23-6:17899:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207885.743554] [n-62-23-6:17899:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207885.743557] [n-62-23-6:17899:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+begin instrument: templateSANS
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateSANS/templateSANS.instr
+  Parameters:  lambda(double) dlambda(double) r(double) PHI(double) Delta_Rho(double) sigma_abs(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+begin simulation: .
+  Format: McStas
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateSANS/templateSANS.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574225784
+  Directory: .
+  Param: lambda=6
+  Param: dlambda=0.05
+  Param: r=100
+  Param: PHI=0.001
+  Param: Delta_Rho=0.6
+  Param: sigma_abs=0.5
+end simulation
+info!
+INFO: No output directory specified (--dir)
+INFO: Using directory: "templateSANS_20191120_005803"
+INFO: Regenerating c-file: templateSANS.c
+Info:    'PSD_monitor_rad' is a contributed component.
+Info:    Defining SPLIT from sample=Sans_spheres() to END in instrument templateSANS
+CFLAGS=
+INFO: Recompiling: ./templateSANS.out
+INFO: ===
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------

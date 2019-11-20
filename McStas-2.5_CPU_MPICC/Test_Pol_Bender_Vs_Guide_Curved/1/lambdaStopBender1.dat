@@ -1,0 +1,49 @@
+# Format: McCode with text headers
+# URL: http://www.mccode.org
+# Creator: McStas 2.5 - Nov. 19, 2019
+# Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr
+# Ncount: 1000000
+# Trace: no
+# Gravitation: no
+# Seed: 1574241090
+# Directory: 1
+# Nodes: 10
+# Param: guideLength=10
+# Param: guideRadius=100
+# Date: Wed Nov 20 01:18:04 2019 (1574209084)
+# type: array_1d(20)
+# Source: Test_Pol_Bender_Vs_Guide_Curved (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr)
+# component: lamStopBender1
+# position: 0.504575 0 11.2331
+# title: Wavelength monitor
+# Ncount: 10000000
+# filename: lambdaStopBender1.dat
+# statistics: X0=8.65033; dX=0.619249;
+# signal: Min=0; Max=0.000772186; Mean=0.000103158;
+# values: 0.00206316 3.95769e-06 1.37516e+06
+# xvar: L
+# yvar: (I,I_err)
+# xlabel: Wavelength [AA]
+# ylabel: Intensity
+# xlimits: 0 10
+# variables: L I I_err N
+0.25 0 0 0 
+0.75 0 0 0 
+1.25 0 0 0 
+1.75 0 0 0 
+2.25 0 0 0 
+2.75 0 0 0 
+3.25 0 0 0 
+3.75 1.250060603e-22 2.101741424e-23 977 
+4.25 6.78454038e-18 7.58763649e-19 13692 
+4.75 5.102208879e-14 5.068779241e-15 45070 
+5.25 6.608399256e-11 4.736261688e-12 82091 
+5.75 2.445114715e-08 1.249047973e-09 107117 
+6.25 2.119426943e-06 5.28898371e-08 127860 
+6.75 2.340931602e-05 2.907163404e-07 142451 
+7.25 9.051844272e-05 6.99138919e-07 153855 
+7.75 0.0002119160044 1.170530537e-06 163603 
+8.25 0.0003836885855 1.661563687e-06 173517 
+8.75 0.0005792997856 2.126190196e-06 180570 
+9.25 0.0007721860254 2.536860332e-06 184357 
+9.75 0 0 0 

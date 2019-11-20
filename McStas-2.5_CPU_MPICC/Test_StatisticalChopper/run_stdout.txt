@@ -1,0 +1,254 @@
+INFO: Using directory: "1"
+INFO: Using existing c-file: ./Test_StatisticalChopper.c
+INFO: Using existing binary: ./Test_StatisticalChopper.out
+INFO: ===
+INFO: Using system default number of mpirun -np processes
+[1574209121.444773] [n-62-23-6:859  :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3148.80
+[1574209121.446772] [n-62-23-6:859  :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209121.446789] [n-62-23-6:859  :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1574209121.448135] [n-62-23-6:860  :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3148.80
+[1574209121.448665] [n-62-23-6:859  :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209121.448680] [n-62-23-6:859  :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209121.449723] [n-62-23-6:860  :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209121.449739] [n-62-23-6:860  :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209121.451630] [n-62-23-6:860  :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209121.451645] [n-62-23-6:860  :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209121.463213] [n-62-23-6:861  :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3103.69
+[1574209121.464677] [n-62-23-6:861  :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209121.464694] [n-62-23-6:861  :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209121.465180] [n-62-23-6:862  :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3103.34
+[1574209121.466499] [n-62-23-6:863  :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3103.34
+[1574209121.466538] [n-62-23-6:861  :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209121.466550] [n-62-23-6:861  :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209121.466764] [n-62-23-6:862  :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209121.466780] [n-62-23-6:862  :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209121.467269] [n-62-23-6:864  :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3103.34
+[1574209121.467883] [n-62-23-6:863  :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209121.467899] [n-62-23-6:863  :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209121.468614] [n-62-23-6:862  :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209121.468630] [n-62-23-6:862  :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209121.469209] [n-62-23-6:864  :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209121.469226] [n-62-23-6:864  :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209121.469772] [n-62-23-6:863  :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209121.469787] [n-62-23-6:863  :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209121.471253] [n-62-23-6:864  :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209121.471268] [n-62-23-6:864  :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209121.477440] [n-62-23-3:26679:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3289.62
+[1574209121.477437] [n-62-23-3:26680:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3289.62
+[1574209121.477437] [n-62-23-3:26681:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3289.62
+[1574209121.477442] [n-62-23-3:26682:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3289.62
+[1574209121.481825] [n-62-23-3:26679:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209121.481839] [n-62-23-3:26679:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209121.481828] [n-62-23-3:26680:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209121.481846] [n-62-23-3:26680:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209121.481818] [n-62-23-3:26681:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209121.481819] [n-62-23-3:26682:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209121.481834] [n-62-23-3:26682:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209121.481889] [n-62-23-3:26681:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209121.483976] [n-62-23-3:26682:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209121.483991] [n-62-23-3:26682:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209121.483984] [n-62-23-3:26679:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209121.483997] [n-62-23-3:26679:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209121.483986] [n-62-23-3:26680:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209121.483999] [n-62-23-3:26680:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209121.483989] [n-62-23-3:26681:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209121.484049] [n-62-23-3:26681:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'Test_StatisticalChopper' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+[Test_StatisticalChopper] Initialize
+[Test_StatisticalChopper] Initialize
+StatisticalChopper: chop1: frequency=349.882 [Hz] 20992.9 [rpm] time frame=0.0028581 [s] phase=0 [deg]
+                    height=0.5 [m], slits centered at radius=0.25 [m]
+StatisticalChopper: chop1: Sequence length=255 with 127 apertures; duty cycle c=0.496063 
+StatisticalChopper: chop1: frequency=349.882 [Hz] 20992.9 [rpm] time frame=0.0028581 [s] phase=0 [deg]
+                    height=0.5 [m], slits centered at radius=0.25 [m]
+StatisticalChopper: chop1: Sequence length=255 with 127 apertures; duty cycle c=0.496063 
+[Test_StatisticalChopper] Initialize
+[Test_StatisticalChopper] Initialize
+StatisticalChopper: chop1: frequency=349.882 [Hz] 20992.9 [rpm] time frame=0.0028581 [s] phase=0 [deg]
+                    height=0.5 [m], slits centered at radius=0.25 [m]
+StatisticalChopper: chop1: Sequence length=255 with 127 apertures; duty cycle c=0.496063 
+StatisticalChopper: chop1: frequency=349.882 [Hz] 20992.9 [rpm] time frame=0.0028581 [s] phase=0 [deg]
+                    height=0.5 [m], slits centered at radius=0.25 [m]
+StatisticalChopper: chop1: Sequence length=255 with 127 apertures; duty cycle c=0.496063 
+[Test_StatisticalChopper] Initialize
+[Test_StatisticalChopper] Initialize
+[Test_StatisticalChopper] Initialize
+[Test_StatisticalChopper] Initialize
+[Test_StatisticalChopper] Initialize
+StatisticalChopper: chop1: frequency=349.882 [Hz] 20992.9 [rpm] time frame=0.0028581 [s] phase=0 [deg]
+                    height=0.5 [m], slits centered at radius=0.25 [m]
+StatisticalChopper: chop1: frequency=349.882 [Hz] 20992.9 [rpm] time frame=0.0028581 [s] phase=0 [deg]
+                    height=0.5 [m], slits centered at radius=0.25 [m]
+StatisticalChopper: chop1: Sequence length=255 with 127 apertures; duty cycle c=0.496063 
+StatisticalChopper: chop1: Sequence length=255 with 127 apertures; duty cycle c=0.496063 
+StatisticalChopper: chop1: frequency=349.882 [Hz] 20992.9 [rpm] time frame=0.0028581 [s] phase=0 [deg]
+                    height=0.5 [m], slits centered at radius=0.25 [m]
+StatisticalChopper: chop1: Sequence length=255 with 127 apertures; duty cycle c=0.496063 
+StatisticalChopper: chop1: frequency=349.882 [Hz] 20992.9 [rpm] time frame=0.0028581 [s] phase=0 [deg]
+                    height=0.5 [m], slits centered at radius=0.25 [m]
+StatisticalChopper: chop1: Sequence length=255 with 127 apertures; duty cycle c=0.496063 
+StatisticalChopper: chop1: frequency=349.882 [Hz] 20992.9 [rpm] time frame=0.0028581 [s] phase=0 [deg]
+                    height=0.5 [m], slits centered at radius=0.25 [m]
+StatisticalChopper: chop1: Sequence length=255 with 127 apertures; duty cycle c=0.496063 
+[Test_StatisticalChopper] Initialize
+Monitor_nD: before_stat_chop is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+StatisticalChopper: chop1: frequency=349.882 [Hz] 20992.9 [rpm] time frame=0.0028581 [s] phase=0 [deg]
+                    height=0.5 [m], slits centered at radius=0.25 [m]
+StatisticalChopper: chop1: Sequence length=255 with 127 apertures; duty cycle c=0.496063 
+Monitor_nD: after_stat_chop is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+Isotropic_Sqw: Sample: is a box: width=0.005000 height=0.050000 depth=0.002000 
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Na2Ca3Al2F14.laz' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Na2Ca3Al2F14.laz' (Table_Read_Offset)
+Isotropic_sqw: Converting 841 powder lines from Na2Ca3Al2F14.laz into S(q,w) data
+Isotropic_sqw: q range [0:12.5538], creating 1310 elements vector
+Isotropic_Sqw: Sample: Generated Na2Ca3Al2F14.laz coherent Sqw
+                   q=[0:12.5442 Angs-1] w=[0:0 meV] |S|=0.0349521 size=[1310x1] sigma=283.56 [barns]
+               Mainly elastic scattering.
+Isotropic_Sqw: Sample: Using Isotropic elastic incoherent scattering (sigma=13.6704 [barns])
+Isotropic_Sqw: Sample: Sample temperature not defined (T=0).
+Warning        Disabling detailed balance.
+Isotropic_Sqw: Sample: Focusing can only apply for single
+               scattering. Setting to order=1.
+Monitor_nD: ChopMon2 is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+Monitor_nD: time_mon2 is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+[n-62-23-6:00838] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-6:00838] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+
+Finally [Test_StatisticalChopper: 1]. Time: 7 [s] 
+
+Finally [Test_StatisticalChopper: 1]. Time: 7 [s] 
+
+Finally [Test_StatisticalChopper: 1]. Time: 7 [s] 
+
+Finally [Test_StatisticalChopper: 1]. Time: 7 [s] 
+
+Finally [Test_StatisticalChopper: 1]. Time: 8 [s] 
+
+Finally [Test_StatisticalChopper: 1]. Time: 8 [s] 
+
+Save [Test_StatisticalChopper]
+Detector: before_stat_chop_I=2.34611e-08 before_stat_chop_ERR=7.41915e-12 before_stat_chop_N=9.99977e+06 "before_stat_chop_1574209121.t"
+Detector: after_stat_chop_I=1.16791e-08 after_stat_chop_ERR=5.23462e-12 after_stat_chop_N=4.97796e+06 "after_stat_chop_1574209121.t"
+
+Finally [Test_StatisticalChopper: 1]. Time: 8 [s] 
+
+Finally [Test_StatisticalChopper: 1]. Time: 8 [s] 
+Detector: ChopMon2_I=3.49917e-12 ChopMon2_ERR=5.89278e-16 ChopMon2_N=4.07256e+07 "ChopMon2_1574209121.t_y"
+[n-62-23-6:859] *** An error occurred in MPI_Reduce
+[n-62-23-6:859] *** reported by process [497614849,0]
+[n-62-23-6:859] *** on communicator Test_StatisticalChopper
+[n-62-23-6:859] *** MPI_ERR_TRUNCATE: message truncated
+[n-62-23-6:859] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[n-62-23-6:859] ***    and potentially your MPI job)
+[n-62-23-6:860] *** An error occurred in MPI_Reduce
+[n-62-23-6:860] *** reported by process [140029316366337,140028818751489]
+[n-62-23-6:860] *** on a NULL communicator
+[n-62-23-6:860] *** Unknown error
+[n-62-23-6:860] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[n-62-23-6:860] ***    and potentially your MPI job)
+
+# McStas 2.5 - Nov. 19, 2019: [pid 863] Signal 15 detected [proc 4] SIGTERM (Termination)
+# Simulation: Test_StatisticalChopper (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr) 
+# Breakpoint: time_mon2 (Save) 0.00 % (       0.0/ 1000000.0)
+# Date:      Wed Nov 20 01:18:49 2019
+# Started:   Wed Nov 20 01:18:41 2019
+# McStas 2.5 - Nov. 19, 2019: Finishing simulation (save results and exit)
+
+# McStas 2.5 - Nov. 19, 2019: [pid 861] Signal 15 detected [proc 2] SIGTERM (Termination)
+# Simulation: Test_StatisticalChopper (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr) 
+# Breakpoint: time_mon2 (Finally) 0.00 % (       0.0/ 1000000.0)
+# Date:      Wed Nov 20 01:18:49 2019
+# Started:   Wed Nov 20 01:18:41 2019
+# McStas 2.5 - Nov. 19, 2019: Finishing simulation (save results and exit)
+
+# McStas 2.5 - Nov. 19, 2019: [pid 861] Signal 11 detected [proc 2] SIGSEGV (Mem Error)
+# Simulation: Test_StatisticalChopper (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr) 
+# Breakpoint: before_stat_chop (Save) 0.00 % (       0.0/ 1000000.0)
+# Date:      Wed Nov 20 01:18:49 2019
+# Started:   Wed Nov 20 01:18:41 2019
+# McStas 2.5 - Nov. 19, 2019: Simulation stop (abort).
+# Last I/O Error: No such file or directory
+# Last I/O Error: No such file or directory
+
+# McStas 2.5 - Nov. 19, 2019: [pid 864] Signal 15 detected [proc 5] SIGTERM (Termination)
+# Simulation: Test_StatisticalChopper (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr) 
+# Breakpoint: time_mon2 (Finally) 0.00 % (       0.0/ 1000000.0)
+# Date:      Wed Nov 20 01:18:49 2019
+# Started:   Wed Nov 20 01:18:41 2019
+# McStas 2.5 - Nov. 19, 2019: Finishing simulation (save results and exit)
+
+# McStas 2.5 - Nov. 19, 2019: [pid 862] Signal 15 detected [proc 3] SIGTERM (Termination)
+# Simulation: Test_StatisticalChopper (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr) 
+# Breakpoint: time_mon2 (Finally) 0.00 % (       0.0/ 1000000.0)
+# Date:      Wed Nov 20 01:18:49 2019
+# Started:   Wed Nov 20 01:18:41 2019
+# McStas 2.5 - Nov. 19, 2019: Finishing simulation (save results and exit)
+
+# McStas 2.5 - Nov. 19, 2019: [pid 862] Signal 11 detected [proc 3] SIGSEGV (Mem Error)
+# Simulation: Test_StatisticalChopper (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr) 
+# Breakpoint: before_stat_chop (Save) 0.00 % (       0.0/ 1000000.0)
+# Date:      Wed Nov 20 01:18:49 2019
+# Started:   Wed Nov 20 01:18:41 2019
+# McStas 2.5 - Nov. 19, 2019: Simulation stop (abort).
+
+# McStas 2.5 - Nov. 19, 2019: [pid 860] Signal 15 detected [proc 1] SIGTERM (Termination)
+# Simulation: Test_StatisticalChopper (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr) 
+# Breakpoint: time_mon2 (Finally) 0.00 % (       0.0/ 1000000.0)
+# Date:      Wed Nov 20 01:18:49 2019
+# Started:   Wed Nov 20 01:18:41 2019
+# McStas 2.5 - Nov. 19, 2019: Finishing simulation (save results and exit)
+# Last I/O Error: No such file or directory
+
+# McStas 2.5 - Nov. 19, 2019: [pid 26680] Signal 15 detected [proc 7] SIGTERM (Termination)
+# Simulation: Test_StatisticalChopper (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr) 
+# Breakpoint: time_mon2 (Finally) 0.00 % (       0.0/ 1000000.0)
+# Date:      Wed Nov 20 01:18:50 2019
+# Started:   Wed Nov 20 01:18:41 2019
+# McStas 2.5 - Nov. 19, 2019: Finishing simulation (save results and exit)
+
+# McStas 2.5 - Nov. 19, 2019: [pid 26682] Signal 15 detected [proc 9] SIGTERM (Termination)
+# Simulation: Test_StatisticalChopper (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr) 
+# Breakpoint: time_mon2 (Finally) 0.00 % (       0.0/ 1000000.0)
+# Date:      Wed Nov 20 01:18:50 2019
+# Started:   Wed Nov 20 01:18:41 2019
+# McStas 2.5 - Nov. 19, 2019: Finishing simulation (save results and exit)
+
+# McStas 2.5 - Nov. 19, 2019: [pid 26682] Signal 11 detected [proc 9] SIGSEGV (Mem Error)
+# Simulation: Test_StatisticalChopper (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr) 
+# Breakpoint: before_stat_chop (Save) 0.00 % (       0.0/ 1000000.0)
+# Date:      Wed Nov 20 01:18:50 2019
+# Started:   Wed Nov 20 01:18:41 2019
+# McStas 2.5 - Nov. 19, 2019: Simulation stop (abort).
+
+# McStas 2.5 - Nov. 19, 2019: [pid 26681] Signal 15 detected [proc 8] SIGTERM (Termination)
+# Simulation: Test_StatisticalChopper (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr) 
+# Breakpoint: time_mon2 (Finally) 0.00 % (       0.0/ 1000000.0)
+# Date:      Wed Nov 20 01:18:50 2019
+# Started:   Wed Nov 20 01:18:41 2019
+# McStas 2.5 - Nov. 19, 2019: Finishing simulation (save results and exit)
+
+# McStas 2.5 - Nov. 19, 2019: [pid 26679] Signal 15 detected [proc 6] SIGTERM (Termination)
+# Simulation: Test_StatisticalChopper (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr) 
+# Breakpoint: time_mon2 (Finally) 0.00 % (       0.0/ 1000000.0)
+# Date:      Wed Nov 20 01:18:50 2019
+# Started:   Wed Nov 20 01:18:41 2019
+# McStas 2.5 - Nov. 19, 2019: Finishing simulation (save results and exit)
+
+# McStas 2.5 - Nov. 19, 2019: [pid 26679] Signal 11 detected [proc 6] SIGSEGV (Mem Error)
+# Simulation: Test_StatisticalChopper (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr) 
+# Breakpoint: before_stat_chop (Save) 0.00 % (       0.0/ 1000000.0)
+# Date:      Wed Nov 20 01:18:50 2019
+# Started:   Wed Nov 20 01:18:41 2019
+# McStas 2.5 - Nov. 19, 2019: Simulation stop (abort).
+# Last I/O Error: No such file or directory
+[n-62-23-6:00838] 3 more processes have sent help message help-mpi-errors.txt / mpi_errors_are_fatal unknown handle

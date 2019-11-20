@@ -1,0 +1,47 @@
+      [1574206930.562559] [n-62-23-6:8597 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3375.59
+[1574206930.563976] [n-62-23-6:8597 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574206930.563979] [n-62-23-6:8597 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574206930.565906] [n-62-23-6:8597 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574206930.565909] [n-62-23-6:8597 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+begin instrument: ISIS_Prisma2
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr
+  Parameters:  TT(double) PHA(double) PHA1(double) PHA2(double) PHA3(double) PHA4(double) PHA5(double) PHA6(double) PHA7(double) TTA(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+begin simulation: .
+  Format: McStas
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574215527
+  Directory: .
+  Param: TT=-30
+  Param: PHA=22
+  Param: PHA1=-3
+  Param: PHA2=-2
+  Param: PHA3=-1
+  Param: PHA4=0
+  Param: PHA5=1
+  Param: PHA6=2
+  Param: PHA7=3
+  Param: TTA=4
+end simulation
+info!
+INFO: No output directory specified (--dir)
+INFO: Using directory: "ISIS_Prisma2_20191120_004203"
+INFO: Regenerating c-file: ISIS_Prisma2.c
+CFLAGS=
+INFO: Recompiling: ./ISIS_Prisma2.out
+INFO: ===
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------

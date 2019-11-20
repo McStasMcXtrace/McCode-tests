@@ -1,0 +1,506 @@
+INFO: Using directory: "1"
+INFO: Using existing c-file: ./ISIS_HET.c
+INFO: Using existing binary: ./ISIS_HET.out
+INFO: ===
+INFO: Using system default number of mpirun -np processes
+[1574208335.288581] [n-62-23-6:23091:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3176.83
+[1574208335.290001] [n-62-23-6:23091:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208335.290017] [n-62-23-6:23091:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1574208335.291937] [n-62-23-6:23091:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208335.291952] [n-62-23-6:23091:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208335.296969] [n-62-23-6:23092:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3176.83
+[1574208335.298366] [n-62-23-6:23092:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208335.298382] [n-62-23-6:23092:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208335.300247] [n-62-23-6:23092:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208335.300262] [n-62-23-6:23092:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208335.303676] [n-62-23-6:23093:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3176.83
+[1574208335.305068] [n-62-23-6:23093:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208335.305084] [n-62-23-6:23093:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208335.306968] [n-62-23-6:23093:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208335.306983] [n-62-23-6:23093:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208335.308521] [n-62-23-6:23094:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3176.83
+[1574208335.309843] [n-62-23-6:23094:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208335.309859] [n-62-23-6:23094:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208335.311735] [n-62-23-6:23094:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208335.311750] [n-62-23-6:23094:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208335.311978] [n-62-23-6:23095:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3176.83
+[1574208335.313225] [n-62-23-6:23096:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3176.83
+[1574208335.313326] [n-62-23-6:23095:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208335.313342] [n-62-23-6:23095:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208335.314595] [n-62-23-6:23096:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208335.314612] [n-62-23-6:23096:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208335.315105] [n-62-23-6:23095:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208335.315119] [n-62-23-6:23095:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208335.316358] [n-62-23-6:23096:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208335.316372] [n-62-23-6:23096:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208335.333144] [n-62-23-3:22099:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3190.50
+[1574208335.333144] [n-62-23-3:22100:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3190.50
+[1574208335.333144] [n-62-23-3:22101:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3190.50
+[1574208335.333144] [n-62-23-3:22102:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3190.50
+[1574208335.337393] [n-62-23-3:22099:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208335.337393] [n-62-23-3:22100:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208335.337410] [n-62-23-3:22100:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208335.337392] [n-62-23-3:22101:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208335.337410] [n-62-23-3:22101:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208335.337392] [n-62-23-3:22102:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208335.337410] [n-62-23-3:22102:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208335.337549] [n-62-23-3:22099:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208335.339645] [n-62-23-3:22101:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208335.339659] [n-62-23-3:22101:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208335.339644] [n-62-23-3:22102:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208335.339669] [n-62-23-3:22102:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208335.339647] [n-62-23-3:22100:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208335.339659] [n-62-23-3:22100:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208335.339653] [n-62-23-3:22099:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208335.339671] [n-62-23-3:22099:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'ISIS_HET' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_HET/ISIS_HET.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+250mev chopper selected250mev chopper selected[ISIS_HET] Initialize
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == Water 
+[ISIS_HET] Initialize
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == Water 
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.water
+Energy == 443 470
+Energy == 443 470
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.water
+250mev chopper selected250mev chopper selected[ISIS_HET] Initialize
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+[ISIS_HET] Initialize
+****   Please check to see if your files are up-to-date           ****
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == Water 
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == Water 
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.water
+Energy == 443 470
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.water
+Energy == 443 470
+nEnergy == 3
+nEnergy == 3
+250mev chopper selected[ISIS_HET] Initialize
+250mev chopper selected**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+[ISIS_HET] Initialize
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == Water 
+250mev chopper selected**********************************************************************
+
+Face == Water 
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == Water 
+[ISIS_HET] Initialize
+250mev chopper selected250mev chopper selected[ISIS_HET] Initialize
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == Water 
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.water
+[ISIS_HET] Initialize
+Energy == 443 470
+250mev chopper selected**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == Water 
+[ISIS_HET] Initialize
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == Water 
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.water
+Energy == 443 470
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.water
+Energy == 443 470
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.water
+Energy == 443 470
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.water
+Energy == 443 470
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.water
+Energy == 443 470
+nEnergy == 3
+nEnergy == 3
+nEnergy == 3
+nEnergy == 3
+nEnergy == 3
+nEnergy == 3
+nEnergy == 3
+nEnergy == 3
+Viewport == 0.045 0.045 Moderator size == (0.074 * 0.074) m^2 
+Dist == 9.85 (metres) 
+Viewport Solid angle == 5.64398e-05 str
+Solid angle used == 0.00114291 str
+Viewport == 0.045 0.045 Moderator size == (0.074 * 0.074) m^2 
+Dist == 9.85 (metres) 
+Viewport Solid angle == 5.64398e-05 str
+Solid angle used == 0.00114291 str
+FermiChopper: FC: Frequency nu=600 [Hz] 36000 [rpm], time frame=0.00333333 [s] phase=0 [deg]
+FermiChopper: FC: Frequency nu=600 [Hz] 36000 [rpm], time frame=0.00333333 [s] phase=0 [deg]
+V_sample: target: The target is not defined. Using direct beam (Z-axis).
+V_sample: target: The target is not defined. Using direct beam (Z-axis).
+Totals:: 1.62358e-06 3 181 
+Totals:: 1.62358e-06 3 181 
+Viewport == 0.045 0.045 Moderator size == (0.074 * 0.074) m^2 
+Dist == 9.85 (metres) 
+Viewport Solid angle == 5.64398e-05 str
+Solid angle used == 0.00114291 str
+FermiChopper: FC: Frequency nu=600 [Hz] 36000 [rpm], time frame=0.00333333 [s] phase=0 [deg]
+V_sample: target: The target is not defined. Using direct beam (Z-axis).
+Totals:: 1.62358e-06 3 181 
+Viewport == 0.045 0.045 Moderator size == (0.074 * 0.074) m^2 
+Dist == 9.85 (metres) 
+Viewport Solid angle == 5.64398e-05 str
+Solid angle used == 0.00114291 str
+FermiChopper: FC: Frequency nu=600 [Hz] 36000 [rpm], time frame=0.00333333 [s] phase=0 [deg]
+V_sample: target: The target is not defined. Using direct beam (Z-axis).
+Totals:: 1.62358e-06 3 181 
+Viewport == 0.045 0.045 Moderator size == (0.074 * 0.074) m^2 
+Dist == 9.85 (metres) 
+Viewport Solid angle == 5.64398e-05 str
+Solid angle used == 0.00114291 str
+Viewport == 0.045 0.045 Moderator size == (0.074 * 0.074) m^2 
+Dist == 9.85 (metres) 
+Viewport Solid angle == 5.64398e-05 str
+Viewport == 0.045 0.045 Moderator size == (0.074 * 0.074) m^2 
+Solid angle used == 0.00114291 str
+Dist == 9.85 (metres) 
+Viewport Solid angle == 5.64398e-05 str
+Solid angle used == 0.00114291 str
+Viewport == 0.045 0.045 Moderator size == (0.074 * 0.074) m^2 
+Dist == 9.85 (metres) 
+Viewport Solid angle == 5.64398e-05 str
+Solid angle used == 0.00114291 str
+FermiChopper: FC: Frequency nu=600 [Hz] 36000 [rpm], time frame=0.00333333 [s] phase=0 [deg]
+FermiChopper: FC: Frequency nu=600 [Hz] 36000 [rpm], time frame=0.00333333 [s] phase=0 [deg]
+Viewport == 0.045 0.045 Moderator size == (0.074 * 0.074) m^2 
+Dist == 9.85 (metres) 
+Viewport Solid angle == 5.64398e-05 str
+Solid angle used == 0.00114291 str
+FermiChopper: FC: Frequency nu=600 [Hz] 36000 [rpm], time frame=0.00333333 [s] phase=0 [deg]
+Viewport == 0.045 0.045 Moderator size == (0.074 * 0.074) m^2 
+Dist == 9.85 (metres) 
+Viewport Solid angle == 5.64398e-05 str
+Solid angle used == 0.00114291 str
+FermiChopper: FC: Frequency nu=600 [Hz] 36000 [rpm], time frame=0.00333333 [s] phase=0 [deg]
+V_sample: target: The target is not defined. Using direct beam (Z-axis).
+V_sample: target: The target is not defined. Using direct beam (Z-axis).
+V_sample: target: The target is not defined. Using direct beam (Z-axis).
+Monitor_nD: monFC is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+FermiChopper: FC: Frequency nu=600 [Hz] 36000 [rpm], time frame=0.00333333 [s] phase=0 [deg]
+FermiChopper: FC: Frequency nu=600 [Hz] 36000 [rpm], time frame=0.00333333 [s] phase=0 [deg]
+V_sample: target: The target is not defined. Using direct beam (Z-axis).
+Monitor_nD: monT is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+V_sample: target: The target is not defined. Using direct beam (Z-axis).
+V_sample: target: The target is not defined. Using direct beam (Z-axis).
+Totals:: 1.62358e-06 3 181 
+Totals:: 1.62358e-06 3 181 
+Totals:: 1.62358e-06 3 181 
+Totals:: 1.62358e-06 3 181 
+Monitor_nD: cyl is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+Totals:: 1.62358e-06 3 181 
+Totals:: 1.62358e-06 3 181 
+FermiChopper: FC
+              Mean velocity     v     = 9342.58 [m/s]
+              Mean wavelength   lambda= 0.423441 [Angs]
+              Mean energy       omega = 456.236 [meV]
+              Mean arrival time t     = 0.00106898 [s]
+              Mean phase              = -127.943 [deg] (set automatically)
+FermiChopper: FC
+              Mean velocity     v     = 9342.6 [m/s]
+              Mean wavelength   lambda= 0.42344 [Angs]
+              Mean energy       omega = 456.238 [meV]
+              Mean arrival time t     = 0.00106898 [s]
+              Mean phase              = -127.945 [deg] (set automatically)
+              Slit pack divergence    = 17.4349 [deg] (full width)
+              Opening time      dt    = 0.00462475 [s]
+              Intensity reaching FC   = 220135 [n/s]
+              Slit pack divergence    = 17.4349 [deg] (full width)
+              Opening time      dt    = 0.00462475 [s]
+              Intensity reaching FC   = 220135 [n/s]
+              Intensity passing  FC   = 151474 [n/s]
+FermiChopper: FC: Lost events anaylsis
+              Already inside:            0
+              By Top/Bottom of cylinder: 0
+              At cylinder entrance:      50591
+              Hit cyl. entrance sides:   0
+              Can't prop. to slit pack:  0
+              At slit pack entrance:     11205
+              On absorbing slit coating: 190616
+              Exiting slit pack:         0
+              Too many iterations:       0
+              Prop. in wrong direction : 0
+              Mad neutron (no control):  0
+              At cylinder exit:          23276
+              Intensity passing  FC   = 151513 [n/s]
+FermiChopper: FC: Lost events anaylsis
+              Already inside:            0
+              By Top/Bottom of cylinder: 0
+              At cylinder entrance:      50374
+              Hit cyl. entrance sides:   0
+              Can't prop. to slit pack:  0
+              At slit pack entrance:     10980
+              On absorbing slit coating: 191125
+              Exiting slit pack:         0
+              Too many iterations:       0
+              Prop. in wrong direction : 0
+              Mad neutron (no control):  0
+              At cylinder exit:          23023
+
+Finally [ISIS_HET: 1]. Time: 3 [s] 
+
+Finally [ISIS_HET: 1]. Time: 3 [s] 
+FermiChopper: FC
+              Mean velocity     v     = 9342.47 [m/s]
+              Mean wavelength   lambda= 0.423446 [Angs]
+              Mean energy       omega = 456.225 [meV]
+              Mean arrival time t     = 0.001069 [s]
+              Mean phase              = -127.94 [deg] (set automatically)
+              Slit pack divergence    = 17.4349 [deg] (full width)
+              Opening time      dt    = 0.00462475 [s]
+              Intensity reaching FC   = 220135 [n/s]
+              Intensity passing  FC   = 151495 [n/s]
+FermiChopper: FC: Lost events anaylsis
+              Already inside:            0
+              By Top/Bottom of cylinder: 0
+              At cylinder entrance:      50533
+              Hit cyl. entrance sides:   0
+              Can't prop. to slit pack:  0
+              At slit pack entrance:     11205
+              On absorbing slit coating: 190784
+              Exiting slit pack:         0
+              Too many iterations:       0
+              Prop. in wrong direction : 0
+              Mad neutron (no control):  0
+              At cylinder exit:          23065
+
+Finally [ISIS_HET: 1]. Time: 3 [s] 
+FermiChopper: FC
+              Mean velocity     v     = 9342.69 [m/s]
+              Mean wavelength   lambda= 0.423436 [Angs]
+              Mean energy       omega = 456.246 [meV]
+              Mean arrival time t     = 0.00106897 [s]
+              Mean phase              = -127.947 [deg] (set automatically)
+              Slit pack divergence    = 17.4349 [deg] (full width)
+              Opening time      dt    = 0.00462475 [s]
+              Intensity reaching FC   = 220135 [n/s]
+              Intensity passing  FC   = 151659 [n/s]
+FermiChopper: FC: Lost events anaylsis
+              Already inside:            0
+              By Top/Bottom of cylinder: 0
+              At cylinder entrance:      50242
+              Hit cyl. entrance sides:   0
+              Can't prop. to slit pack:  0
+              At slit pack entrance:     10882
+              On absorbing slit coating: 190601
+              Exiting slit pack:         0
+              Too many iterations:       0
+              Prop. in wrong direction : 0
+              Mad neutron (no control):  0
+              At cylinder exit:          23078
+
+Finally [ISIS_HET: 1]. Time: 3 [s] 
+FermiChopper: FC
+              Mean velocity     v     = 9342.69 [m/s]
+              Mean wavelength   lambda= 0.423436 [Angs]
+              Mean energy       omega = 456.246 [meV]
+              Mean arrival time t     = 0.00106897 [s]
+              Mean phase              = -127.947 [deg] (set automatically)
+              Slit pack divergence    = 17.4349 [deg] (full width)
+              Opening time      dt    = 0.00462475 [s]
+              Intensity reaching FC   = 220135 [n/s]
+              Intensity passing  FC   = 151512 [n/s]
+FermiChopper: FC: Lost events anaylsis
+              Already inside:            0
+              By Top/Bottom of cylinder: 0
+              At cylinder entrance:      50526
+              Hit cyl. entrance sides:   0
+              Can't prop. to slit pack:  0
+              At slit pack entrance:     11069
+              On absorbing slit coating: 190698
+              Exiting slit pack:         0
+              Too many iterations:       0
+              Prop. in wrong direction : 0
+              Mad neutron (no control):  0
+              At cylinder exit:          23215
+
+Finally [ISIS_HET: 1]. Time: 3 [s] 
+FermiChopper: FC
+              Mean velocity     v     = 9342.6 [m/s]
+              Mean wavelength   lambda= 0.42344 [Angs]
+              Mean energy       omega = 456.238 [meV]
+              Mean arrival time t     = 0.00106898 [s]
+              Mean phase              = -127.943 [deg] (set automatically)
+              Slit pack divergence    = 17.4349 [deg] (full width)
+              Opening time      dt    = 0.00462475 [s]
+              Intensity reaching FC   = 220135 [n/s]
+              Intensity passing  FC   = 151667 [n/s]
+FermiChopper: FC: Lost events anaylsis
+              Already inside:            0
+              By Top/Bottom of cylinder: 0
+              At cylinder entrance:      50326
+              Hit cyl. entrance sides:   0
+              Can't prop. to slit pack:  0
+              At slit pack entrance:     11143
+              On absorbing slit coating: 190095
+              Exiting slit pack:         0
+              Too many iterations:       0
+              Prop. in wrong direction : 0
+              Mad neutron (no control):  0
+              At cylinder exit:          23201
+
+Finally [ISIS_HET: 1]. Time: 3 [s] 
+FermiChopper: FC
+              Mean velocity     v     = 9342.6 [m/s]
+FermiChopper: FC
+              Mean velocity     v     = 9342.56 [m/s]
+              Mean wavelength   lambda= 0.423442 [Angs]
+
+Save [ISIS_HET]
+              Mean wavelength   lambda= 0.42344 [Angs]
+              Mean energy       omega = 456.237 [meV]
+              Mean arrival time t     = 0.00106898 [s]
+              Mean phase              = -127.944 [deg] (set automatically)
+              Mean energy       omega = 456.234 [meV]
+              Mean arrival time t     = 0.00106899 [s]
+              Mean phase              = -127.942 [deg] (set automatically)
+              Slit pack divergence    = 17.4349 [deg] (full width)
+              Opening time      dt    = 0.00462475 [s]
+              Intensity reaching FC   = 220135 [n/s]
+              Intensity passing  FC   = 151457 [n/s]
+FermiChopper: FC: Lost events anaylsis
+              Already inside:            0
+              By Top/Bottom of cylinder: 0
+              At cylinder entrance:      50571
+              Hit cyl. entrance sides:   0
+              Can't prop. to slit pack:  0
+              Slit pack divergence    = 17.4349 [deg] (full width)
+              Opening time      dt    = 0.00462475 [s]
+              Intensity reaching FC   = 220135 [n/s]
+              Intensity passing  FC   = 151417 [n/s]
+FermiChopper: FC: Lost events anaylsis
+              Already inside:            0
+              By Top/Bottom of cylinder: 0
+              At cylinder entrance:      50620
+              Hit cyl. entrance sides:   0
+              Can't prop. to slit pack:  0
+              At slit pack entrance:     11184
+              At slit pack entrance:     11018
+              On absorbing slit coating: 190801
+              Exiting slit pack:         0
+              Too many iterations:       0
+              Prop. in wrong direction : 0
+              On absorbing slit coating: 190974
+              Exiting slit pack:         0
+              Too many iterations:       0
+              Prop. in wrong direction : 0
+Detector: monFC_I=2.20129e+06 monFC_ERR=696.118 monFC_N=9.9997e+06 "FC_mon2.dat"
+              Mad neutron (no control):  0
+              At cylinder exit:          23381
+              Mad neutron (no control):  0
+              At cylinder exit:          23182
+FermiChopper: FC
+              Mean velocity     v     = 9342.66 [m/s]
+              Mean wavelength   lambda= 0.423438 [Angs]
+              Mean energy       omega = 456.244 [meV]
+              Mean arrival time t     = 0.00106898 [s]
+              Mean phase              = -127.945 [deg] (set automatically)
+              Slit pack divergence    = 17.4349 [deg] (full width)
+              Opening time      dt    = 0.00462475 [s]
+              Intensity reaching FC   = 220135 [n/s]
+              Intensity passing  FC   = 151521 [n/s]
+FermiChopper: FC: Lost events anaylsis
+              Already inside:            0
+              By Top/Bottom of cylinder: 0
+              At cylinder entrance:      50458
+              Hit cyl. entrance sides:   0
+              Can't prop. to slit pack:  0
+              At slit pack entrance:     11063
+              On absorbing slit coating: 190639
+              Exiting slit pack:         0
+              Too many iterations:       0
+              Prop. in wrong direction : 0
+              Mad neutron (no control):  0
+              At cylinder exit:          23304
+FermiChopper: FC
+              Mean velocity     v     = 9342.64 [m/s]
+              Mean wavelength   lambda= 0.423438 [Angs]
+              Mean energy       omega = 456.242 [meV]
+              Mean arrival time t     = 0.00106898 [s]
+              Mean phase              = -127.945 [deg] (set automatically)
+              Slit pack divergence    = 17.4349 [deg] (full width)
+              Opening time      dt    = 0.00462475 [s]
+              Intensity reaching FC   = 220135 [n/s]
+              Intensity passing  FC   = 151612 [n/s]
+FermiChopper: FC: Lost events anaylsis
+              Already inside:            0
+              By Top/Bottom of cylinder: 0
+              At cylinder entrance:      50508
+              Hit cyl. entrance sides:   0
+              Can't prop. to slit pack:  0
+              At slit pack entrance:     11162
+              On absorbing slit coating: 189998
+              Exiting slit pack:         0
+              Too many iterations:       0
+              Prop. in wrong direction : 0
+              Mad neutron (no control):  0
+              At cylinder exit:          23360
+Detector: monT_I=1.46645e+06 monT_ERR=553.784 monT_N=7.01222e+06 "FC_mon.dat"
+
+Finally [ISIS_HET: 1]. Time: 3 [s] 
+
+Finally [ISIS_HET: 1]. Time: 3 [s] 
+Detector: cyl_I=192939 cyl_ERR=200.827 cyl_N=4.47054e+06 "det_out.dat"
+
+Finally [ISIS_HET: 1]. Time: 3 [s] 
+
+Finally [ISIS_HET: 1]. Time: 3 [s] 
+[n-62-23-6:23081] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-6:23081] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_HET/ISIS_HET.instr in dataset 1

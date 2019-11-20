@@ -1,0 +1,56 @@
+    [1574207245.322572] [n-62-23-6:11297:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3373.71
+[1574207245.323974] [n-62-23-6:11297:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207245.323978] [n-62-23-6:11297:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207245.325896] [n-62-23-6:11297:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207245.325899] [n-62-23-6:11297:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+begin instrument: SE_example2
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SE_example2/SE_example2.instr
+  Parameters:  POL_ANGLE(double) SAMPLE(double) Bguide(double) Bflip(double) dBz(double) Lam(double) dLam(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+begin simulation: .
+  Format: McStas
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SE_example2/SE_example2.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574218542
+  Directory: .
+  Param: POL_ANGLE=2
+  Param: SAMPLE=0
+  Param: Bguide=0.1
+  Param: Bflip=0.0003
+  Param: dBz=0
+  Param: Lam=8
+  Param: dLam=0.8
+end simulation
+info!
+INFO: No output directory specified (--dir)
+INFO: Using directory: "SE_example2_20191120_004719"
+INFO: Regenerating c-file: SE_example2.c
+Warning: Using DEFINITION parameter of component Pol_mirror() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SE_example2/SE_example2.instr:89
+  rUpPar={ 0.99 , 0.0485 , 0.9 , 1 , 0.0002 }
+Warning: Using DEFINITION parameter of component Pol_mirror() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SE_example2/SE_example2.instr:89
+  rDownPar={ 0.99 , 0.11 , 0.9 , 2 , 0.0185 }
+Warning: 'V_sample' is an obsolete component (not maintained).
+Warning: Using DEFINITION parameter of component Pol_mirror() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SE_example2/SE_example2.instr:221
+  rUpPar={ 0.99 , 0.0485 , 0.9 , 1 , 0.0002 }
+Warning: Using DEFINITION parameter of component Pol_mirror() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SE_example2/SE_example2.instr:221
+  rDownPar={ 0.99 , 0.11 , 0.9 , 2 , 0.0185 }
+CFLAGS=
+INFO: Recompiling: ./SE_example2.out
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Pol_mirror.comp:117:19: warning: ISO C99 requires whitespace after the macro name
+   if ((zwidth<=0) || (yheight <= 0)) {
+                   ^
+INFO: ===
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------

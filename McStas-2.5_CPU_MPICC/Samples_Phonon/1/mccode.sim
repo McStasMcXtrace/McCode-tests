@@ -1,0 +1,52 @@
+McStas simulation description file for Samples_Phonon.
+Date:    Wed Nov 20 01:07:22 2019
+Program: McStas 2.5 - Nov. 19, 2019
+
+begin instrument: Samples_Phonon
+  File: 1/mccode
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr
+  Parameters:  E(double) DE(double) HDIV(double) VDIV(double) TT(double) OM(double) C(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574233474
+  Directory: 1
+  Nodes: 10
+  Param: E=10
+  Param: DE=0
+  Param: HDIV=0.0001
+  Param: VDIV=0.0001
+  Param: TT=72.69
+  Param: OM=-43.3
+  Param: C=8
+end simulation
+
+begin data
+  Date: Wed Nov 20 01:08:15 2019 (1574208495)
+  type: array_1d(400)
+  Source: Samples_Phonon (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr)
+  component: mon1
+  position: 0.954709 0 1.29754
+  title: Energy monitor
+  Ncount: 10000000
+  filename: e.dat
+  statistics: X0=10.3478; dX=3.75205;
+  signal: Min=0; Max=9.12284e-23; Mean=4.50648e-25;
+  values: 1.80259e-22 6.16313e-26 1e+07
+  xvar: E
+  yvar: (I,I_err)
+  xlabel: Energy [meV]
+  ylabel: Intensity
+  xlimits: 0 40
+  variables: E I I_err N
+end data

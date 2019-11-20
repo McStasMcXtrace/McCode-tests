@@ -1,0 +1,106 @@
+      [1574205309.924171] [n-62-23-6:30500:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3383.62
+[1574205309.925646] [n-62-23-6:30500:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574205309.925649] [n-62-23-6:30500:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574205309.927572] [n-62-23-6:30500:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574205309.927575] [n-62-23-6:30500:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+begin instrument: ILL_H10_IN8
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H10_IN8/ILL_H10_IN8.instr
+  Parameters:  KF(double) KI(double) QM(double) EN(double) verbose(double) WM(double) HM(double) RMH(double) RMV(double) DM(double) NHM(double) NVM(double) WA(double) HA(double) RAH(double) RAV(double) DA(double) NHA(double) NVA(double) L1(double) ALF1(double) ALF2(double) ALF3(double) ALF4(double) BET1(double) BET2(double) BET3(double) BET4(double) EI(double) EF(double) QH(double) QK(double) QL(double) KFIX(double) FX(double) L2(double) L3(double) L4(double) SM(double) SS(double) SA(double) ETAM(double) ETAA(double) AS(double) BS(double) CS(double) AA(double) BB(double) CC(double) AX(double) AY(double) AZ(double) BX(double) BY(double) BZ(double) A1(double) A2(double) A3(double) A4(double) A5(double) A6(double) Sqw_coh(string) Sqw_inc(string) radius(double) thickness(double) height(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+begin simulation: .
+  Format: McStas
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H10_IN8/ILL_H10_IN8.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574235809
+  Directory: .
+  Param: KF=5
+  Param: KI=0
+  Param: QM=0.5
+  Param: EN=0
+  Param: verbose=1
+  Param: WM=0.233
+  Param: HM=0.197
+  Param: RMH=-1
+  Param: RMV=-1
+  Param: DM=1.807
+  Param: NHM=15
+  Param: NVM=15
+  Param: WA=0.16
+  Param: HA=0.08
+  Param: RAH=-1
+  Param: RAV=-1
+  Param: DA=2.087
+  Param: NHA=15
+  Param: NVA=15
+  Param: L1=2.3
+  Param: ALF1=60
+  Param: ALF2=60
+  Param: ALF3=60
+  Param: ALF4=60
+  Param: BET1=120
+  Param: BET2=120
+  Param: BET3=120
+  Param: BET4=120
+  Param: EI=0
+  Param: EF=0
+  Param: QH=0
+  Param: QK=0
+  Param: QL=0
+  Param: KFIX=0
+  Param: FX=0
+  Param: L2=2.1
+  Param: L3=1.5
+  Param: L4=0.7
+  Param: SM=1
+  Param: SS=-1
+  Param: SA=1
+  Param: ETAM=30
+  Param: ETAA=30
+  Param: AS=6.28
+  Param: BS=6.28
+  Param: CS=6.28
+  Param: AA=90
+  Param: BB=90
+  Param: CC=90
+  Param: AX=1
+  Param: AY=0
+  Param: AZ=0
+  Param: BX=0
+  Param: BY=1
+  Param: BZ=0
+  Param: A1=0
+  Param: A2=0
+  Param: A3=0
+  Param: A4=0
+  Param: A5=0
+  Param: A6=0
+  Param: Sqw_coh=NULL
+  Param: Sqw_inc=NULL
+  Param: radius=0.01
+  Param: thickness=0.005
+  Param: height=0.05
+end simulation
+info!
+INFO: No output directory specified (--dir)
+INFO: Using directory: "ILL_H10_IN8_20191120_001501"
+INFO: Regenerating c-file: ILL_H10_IN8.c
+Info:    Defining SPLIT from PG1Xtal=Monochromator_curved() to END in instrument ILL_H10_IN8
+Info:    Defining SPLIT from Sample_Cradle=Monitor_nD() to END in instrument ILL_H10_IN8
+Info:    Defining SPLIT from PG2Xtal=Monochromator_curved() to END in instrument ILL_H10_IN8
+CFLAGS=
+INFO: Recompiling: ./ILL_H10_IN8.out
+INFO: ===
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------

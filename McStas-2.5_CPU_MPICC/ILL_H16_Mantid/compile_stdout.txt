@@ -1,0 +1,40 @@
+      [1574205819.081313] [n-62-23-6:1288 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3369.78
+[1574205819.082565] [n-62-23-6:1288 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574205819.082569] [n-62-23-6:1288 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574205819.084419] [n-62-23-6:1288 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574205819.084422] [n-62-23-6:1288 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+begin instrument: ILL_H16_Mantid
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H16_Mantid/ILL_H16_Mantid.instr
+  Parameters:  lambda(double) dlambda(double) m(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+begin simulation: .
+  Format: McStas
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H16_Mantid/ILL_H16_Mantid.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574207107
+  Directory: .
+  Param: lambda=10
+  Param: dlambda=9.9
+  Param: m=1
+end simulation
+info!
+INFO: No output directory specified (--dir)
+INFO: Using directory: "ILL_H16_Mantid_20191120_002320"
+INFO: Regenerating c-file: ILL_H16_Mantid.c
+CFLAGS=
+INFO: Recompiling: ./ILL_H16_Mantid.out
+INFO: ===
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------

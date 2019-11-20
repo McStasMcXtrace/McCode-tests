@@ -1,0 +1,54 @@
+McStas simulation description file for Test_FocalisationMirrors.
+Date:    Wed Nov 20 01:10:31 2019
+Program: McStas 2.5 - Nov. 19, 2019
+
+begin instrument: Test_FocalisationMirrors
+  File: 1/mccode
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr
+  Parameters:  Qmin(double) G(double) H(double) F(double) DET(double) lambda(double) divergence(double) BeamWidth(double) TetaMin(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574235625
+  Directory: 1
+  Nodes: 10
+  Param: Qmin=0.0001
+  Param: G=1
+  Param: H=0.0001
+  Param: F=0.00066
+  Param: DET=8.2
+  Param: lambda=14
+  Param: divergence=0.1
+  Param: BeamWidth=0.05
+  Param: TetaMin=3
+end simulation
+
+begin data
+  Date: Wed Nov 20 01:10:32 2019 (1574208632)
+  type: array_1d(100)
+  Source: Test_FocalisationMirrors (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr)
+  component: monPSD
+  position: -0.0754088 0 12.1183
+  title: PSD monitor
+  Ncount: 10000000
+  filename: det.txt
+  statistics: X0=-3.28185e-05; dX=0.0443226;
+  signal: Min=0; Max=7.64232e-18; Mean=2.51335e-18;
+  values: 2.51335e-16 2.69693e-19 868720
+  xvar: X
+  yvar: (I,Ierr)
+  xlabel: X position [cm]
+  ylabel: Y
+  xlimits: -0.187046 0.187046
+  variables: X I I_err N
+end data

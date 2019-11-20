@@ -1,0 +1,126 @@
+McStas simulation description file for Test_Pol_Mirror.
+Date:    Wed Nov 20 01:18:12 2019
+Program: McStas 2.5 - Nov. 19, 2019
+
+begin instrument: Test_Pol_Mirror
+  File: 1/mccode
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Mirror/Test_Pol_Mirror.instr
+  Parameters:  mirrorOption(int)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Mirror/Test_Pol_Mirror.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574241333
+  Directory: 1
+  Nodes: 10
+  Param: mirrorOption=1
+end simulation
+
+begin data
+  Date: Wed Nov 20 01:18:13 2019 (1574209093)
+  type: array_1d(30)
+  Source: Test_Pol_Mirror (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Mirror/Test_Pol_Mirror.instr)
+  component: lamStart
+  position: 0 0 0.5
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: lambdaStart.dat
+  statistics: X0=14.9983; dX=8.38057;
+  signal: Min=1.56456e-06; Max=3.149e-06; Mean=3.03677e-06;
+  values: 9.11031e-05 2.88093e-08 1e+07
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 30
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:18:13 2019 (1574209093)
+  type: array_1d(30)
+  Source: Test_Pol_Mirror (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Mirror/Test_Pol_Mirror.instr)
+  component: pollambdaMonitorReflecY
+  position: 0.0697565 0 1.99756
+  title: Pol-wavelength monitor
+  Ncount: 10000000
+  filename: pollambdaMonReflecY.data
+  statistics: X0=17.0969; dX=7.44751;
+  signal: Min=0; Max=8.18182; Mean=7.03636;
+  values: 211.091 2.11091e-05 1e+07
+  xvar: Wavelength
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Mean Polarisation
+  xlimits: 0 30
+  variables: Wavelength I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:18:13 2019 (1574209093)
+  type: array_1d(30)
+  Source: Test_Pol_Mirror (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Mirror/Test_Pol_Mirror.instr)
+  component: pollambdaMonitorTransmitY
+  position: 0 0 2
+  title: Pol-wavelength monitor
+  Ncount: 10000000
+  filename: pollambdaMonTransY.data
+  statistics: X0=0; dX=0;
+  signal: Min=0; Max=0; Mean=0;
+  values: 0 0 0
+  xvar: Wavelength
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Mean Polarisation
+  xlimits: 0 30
+  variables: Wavelength I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:18:13 2019 (1574209093)
+  type: array_1d(30)
+  Source: Test_Pol_Mirror (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Mirror/Test_Pol_Mirror.instr)
+  component: lamReflec
+  position: 0.0697565 0 1.99756
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: lambdaReflec.dat
+  statistics: X0=19.9294; dX=5.6226;
+  signal: Min=0; Max=1.73082e-06; Mean=1.0906e-06;
+  values: 3.2718e-05 1.25526e-08 1e+07
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 30
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:18:13 2019 (1574209093)
+  type: array_1d(30)
+  Source: Test_Pol_Mirror (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Mirror/Test_Pol_Mirror.instr)
+  component: lamTrans
+  position: 0 0 2
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: lambdaTrans.dat
+  statistics: X0=0; dX=0;
+  signal: Min=0; Max=0; Mean=0;
+  values: 0 0 0
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 30
+  variables: L I I_err N
+end data

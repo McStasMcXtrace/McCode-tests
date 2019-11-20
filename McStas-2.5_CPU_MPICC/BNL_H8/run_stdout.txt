@@ -1,0 +1,156 @@
+INFO: Using directory: "1"
+INFO: Using existing c-file: ./BNL_H8.c
+INFO: Using existing binary: ./BNL_H8.out
+INFO: ===
+INFO: Using system default number of mpirun -np processes
+[1574207926.267151] [n-62-23-6:18394:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3173.93
+[1574207926.268698] [n-62-23-6:18394:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207926.268719] [n-62-23-6:18394:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1574207926.270546] [n-62-23-6:18394:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207926.270560] [n-62-23-6:18394:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207926.271315] [n-62-23-6:18395:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3173.93
+[1574207926.272751] [n-62-23-6:18395:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207926.272768] [n-62-23-6:18395:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207926.274692] [n-62-23-6:18395:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207926.274707] [n-62-23-6:18395:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207926.282040] [n-62-23-6:18397:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.15
+[1574207926.282653] [n-62-23-6:18396:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.15
+[1574207926.283702] [n-62-23-6:18399:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.15
+[1574207926.283779] [n-62-23-6:18397:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207926.283796] [n-62-23-6:18397:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207926.283987] [n-62-23-6:18396:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207926.284004] [n-62-23-6:18396:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207926.285125] [n-62-23-6:18399:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207926.285142] [n-62-23-6:18399:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207926.285764] [n-62-23-6:18398:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.15
+[1574207926.285764] [n-62-23-6:18397:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207926.285779] [n-62-23-6:18397:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207926.285908] [n-62-23-6:18396:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207926.285923] [n-62-23-6:18396:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207926.286916] [n-62-23-6:18399:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207926.286931] [n-62-23-6:18399:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207926.287154] [n-62-23-6:18398:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207926.287170] [n-62-23-6:18398:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207926.289082] [n-62-23-6:18398:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207926.289097] [n-62-23-6:18398:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207926.390631] [n-62-23-3:19264:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.61
+[1574207926.390631] [n-62-23-3:19265:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.61
+[1574207926.390627] [n-62-23-3:19266:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.61
+[1574207926.390634] [n-62-23-3:19267:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.61
+[1574207926.396317] [n-62-23-3:19264:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207926.396336] [n-62-23-3:19264:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207926.396317] [n-62-23-3:19265:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207926.396335] [n-62-23-3:19265:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207926.396317] [n-62-23-3:19266:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207926.396336] [n-62-23-3:19266:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207926.396742] [n-62-23-3:19267:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207926.396761] [n-62-23-3:19267:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207926.398738] [n-62-23-3:19264:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207926.398732] [n-62-23-3:19265:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207926.398749] [n-62-23-3:19265:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207926.398801] [n-62-23-3:19267:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207926.398822] [n-62-23-3:19267:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207926.398798] [n-62-23-3:19264:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207926.398835] [n-62-23-3:19266:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207926.398969] [n-62-23-3:19266:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'BNL_H8' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BNL_H8/BNL_H8.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+Instrument:     BNL_H8 on n-62-23-6.
+Monochromator : DM = 3.3539
+Instrument:     BNL_H8 on n-62-23-6.
+A1 = 20.60, A2 = 41.20 (deg)
+Ki = 2.662 Angs-1 Energy = 14.69 meV
+Velocity = 1676 m/s, lambda = 2.36 Angs
+Monochromator : DM = 3.3539
+A1 = 20.60, A2 = 41.20 (deg)
+Ki = 2.662 Angs-1 Energy = 14.69 meV
+Velocity = 1676 m/s, lambda = 2.36 Angs
+[BNL_H8] Initialize
+[BNL_H8] Initialize
+Instrument:     BNL_H8 on n-62-23-6.
+Monochromator : DM = 3.3539
+A1 = 20.60, A2 = 41.20 (deg)
+Ki = 2.662 Angs-1 Energy = 14.69 meV
+Velocity = 1676 m/s, lambda = 2.36 Angs
+[BNL_H8] Initialize
+Instrument:     BNL_H8 on n-62-23-3.
+Monochromator : DM = 3.3539
+A1 = 20.60, A2 = 41.20 (deg)
+Ki = 2.662 Angs-1 Energy = 14.69 meV
+Velocity = 1676 m/s, lambda = 2.36 Angs
+[BNL_H8] Initialize
+Instrument:     BNL_H8 on n-62-23-6.
+Monochromator : DM = 3.3539
+A1 = 20.60, A2 = 41.20 (deg)
+Ki = 2.662 Angs-1 Energy = 14.69 meV
+Velocity = 1676 m/s, lambda = 2.36 Angs
+Instrument:     BNL_H8 on n-62-23-3.
+Monochromator : DM = 3.3539
+A1 = 20.60, A2 = 41.20 (deg)
+Ki = 2.662 Angs-1 Energy = 14.69 meV
+Velocity = 1676 m/s, lambda = 2.36 Angs
+[BNL_H8] Initialize
+[BNL_H8] Initialize
+Instrument:     BNL_H8 on n-62-23-6.
+Monochromator : DM = 3.3539
+A1 = 20.60, A2 = 41.20 (deg)
+Instrument:     BNL_H8 on n-62-23-3.
+Monochromator : DM = 3.3539
+Ki = 2.662 Angs-1 Energy = 14.69 meV
+A1 = 20.60, A2 = 41.20 (deg)
+Ki = 2.662 Angs-1 Energy = 14.69 meV
+Velocity = 1676 m/s, lambda = 2.36 Angs
+Velocity = 1676 m/s, lambda = 2.36 Angs
+[BNL_H8] Initialize
+[BNL_H8] Initialize
+Instrument:     BNL_H8 on n-62-23-3.
+Monochromator : DM = 3.3539
+A1 = 20.60, A2 = 41.20 (deg)
+Ki = 2.662 Angs-1 Energy = 14.69 meV
+Velocity = 1676 m/s, lambda = 2.36 Angs
+[BNL_H8] Initialize
+Instrument:     BNL_H8 on n-62-23-6.
+Monochromator : DM = 3.3539
+A1 = 20.60, A2 = 41.20 (deg)
+Ki = 2.662 Angs-1 Energy = 14.69 meV
+Velocity = 1676 m/s, lambda = 2.36 Angs
+[BNL_H8] Initialize
+
+Finally [BNL_H8: 1]. Time: 3 [s] 
+
+Finally [BNL_H8: 1]. Time: 3 [s] 
+
+Finally [BNL_H8: 1]. Time: 3 [s] 
+
+Finally [BNL_H8: 1]. Time: 3 [s] 
+
+Finally [BNL_H8: 1]. Time: 3 [s] 
+
+Finally [BNL_H8: 1]. Time: 3 [s] 
+
+Finally [BNL_H8: 1]. Time: 3 [s] 
+
+Finally [BNL_H8: 1]. Time: 3 [s] 
+
+Save [BNL_H8]
+Detector: D0_Source_I=0.00316373 D0_Source_ERR=4.40718e-06 D0_Source_N=515320 "D0_Source.psd"
+Detector: D1_SC1_Out_I=0.0204025 D1_SC1_Out_ERR=1.11878e-05 D1_SC1_Out_N=3.34464e+06 "D1_SC1_Out.psd"
+Detector: D2_A4_I=0.0137456 D2_A4_ERR=9.18398e-06 D2_A4_N=2.2567e+06 "D2_A4.psd"
+Detector: D4_SC2_In_I=0.00154518 D4_SC2_In_ERR=9.73671e-07 D4_SC2_In_N=2.55542e+06 "D4_SC2_In.psd"
+Detector: D5_SC2_Out_I=0.00120822 D5_SC2_Out_ERR=8.60913e-07 D5_SC2_Out_N=2.01477e+06 "D5_SC2_Out.psd"
+Detector: D7_SC3_In_I=1.23875e-07 D7_SC3_In_ERR=7.09001e-11 D7_SC3_In_N=3.35302e+06 "D7_SC3_In.psd"
+Detector: D8_SC3_Out_I=2.38102e-08 D8_SC3_Out_ERR=3.12339e-11 D8_SC3_Out_N=638766 "D8_SC3_Out.psd"
+Detector: D10_SC4_In_I=1.23229e-09 D10_SC4_In_ERR=2.24896e-12 D10_SC4_In_N=329947 "D10_SC4_In.psd"
+
+Finally [BNL_H8: 1]. Time: 3 [s] 
+Detector: He3H_I=9.48784e-10 He3H_ERR=1.9731e-12 He3H_N=254060 "He3.psd"
+
+Finally [BNL_H8: 1]. Time: 3 [s] 
+[n-62-23-6:18388] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-6:18388] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BNL_H8/BNL_H8.instr in dataset 1

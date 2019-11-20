@@ -1,0 +1,248 @@
+INFO: Using directory: "1"
+INFO: Using existing c-file: ./ILL_H53_IN14.c
+INFO: Using existing binary: ./ILL_H53_IN14.out
+INFO: ===
+INFO: Using system default number of mpirun -np processes
+[1574208214.577253] [n-62-23-6:21999:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3170.17
+[1574208214.578873] [n-62-23-6:21999:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208214.578891] [n-62-23-6:21999:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1574208214.580762] [n-62-23-6:21999:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208214.580778] [n-62-23-6:21999:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208214.590581] [n-62-23-6:22000:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3139.75
+[1574208214.592105] [n-62-23-6:22000:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208214.592122] [n-62-23-6:22000:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208214.594352] [n-62-23-6:22000:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208214.594366] [n-62-23-6:22000:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208214.596134] [n-62-23-6:22001:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3139.75
+[1574208214.597123] [n-62-23-6:22002:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3139.75
+[1574208214.597647] [n-62-23-6:22001:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208214.597664] [n-62-23-6:22001:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208214.598255] [n-62-23-6:22003:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3139.75
+[1574208214.598515] [n-62-23-6:22002:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208214.598531] [n-62-23-6:22002:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208214.599376] [n-62-23-6:22004:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3139.75
+[1574208214.599516] [n-62-23-6:22001:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208214.599531] [n-62-23-6:22001:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208214.599651] [n-62-23-6:22003:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208214.599668] [n-62-23-6:22003:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208214.600317] [n-62-23-6:22002:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208214.600331] [n-62-23-6:22002:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208214.600941] [n-62-23-6:22004:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208214.600957] [n-62-23-6:22004:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208214.601524] [n-62-23-6:22003:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208214.601539] [n-62-23-6:22003:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208214.602848] [n-62-23-6:22004:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208214.602862] [n-62-23-6:22004:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208214.625714] [n-62-23-3:21531:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3176.32
+[1574208214.625714] [n-62-23-3:21532:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3176.32
+[1574208214.625717] [n-62-23-3:21533:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3176.32
+[1574208214.625709] [n-62-23-3:21534:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3176.32
+[1574208214.629810] [n-62-23-3:21531:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208214.629827] [n-62-23-3:21531:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208214.629819] [n-62-23-3:21532:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208214.629832] [n-62-23-3:21532:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208214.629816] [n-62-23-3:21534:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208214.629887] [n-62-23-3:21534:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208214.630196] [n-62-23-3:21533:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208214.630213] [n-62-23-3:21533:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208214.631960] [n-62-23-3:21532:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208214.631984] [n-62-23-3:21532:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208214.631969] [n-62-23-3:21534:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208214.631986] [n-62-23-3:21534:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208214.631979] [n-62-23-3:21531:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208214.631992] [n-62-23-3:21531:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208214.632135] [n-62-23-3:21533:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208214.632150] [n-62-23-3:21533:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'ILL_H53_IN14' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+ILL_H53_IN14: Detailed TAS configuration
+* Incoming beam: EI=4.978 [meV] KI=1.55 [Angs-1] Vi=975.915 [m/s]
+ILL_H53_IN14: Detailed TAS configuration
+* Outgoing beam: EF=4.978 [meV] KF=1.55 [Angs-1] Vf=975.915 [m/s]
+* Incoming beam: EI=4.978 [meV] KI=1.55 [Angs-1] Vi=975.915 [m/s]
+* Outgoing beam: EF=4.978 [meV] KF=1.55 [Angs-1] Vf=975.915 [m/s]
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=37.17 A2=74.33 A3=0 A4=-37.64 A5=37.17 A6=74.33 [deg]
+Monochromator: DM=3.355 [Angs] RMH=0 [m] RMV=1.966 [m] curved
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=37.17 A2=74.33 A3=0 A4=-37.64 A5=37.17 A6=74.33 [deg]
+Monochromator: DM=3.355 [Angs] RMH=0 [m] RMV=1.966 [m] curved
+Analyzer:      DA=3.355 [Angs] RAH=1.534 [m] RAV=0 [m] curved
+Sample:        Powder V.laz
+ILL_H53_IN14: Incoming wavelength lambda=4.05367 [Angs]
+Analyzer:      DA=3.355 [Angs] RAH=1.534 [m] RAV=0 [m] curved
+Sample:        Powder V.laz
+ILL_H53_IN14: Incoming wavelength lambda=4.05367 [Angs]
+Monitor_nD: Mon_VS_XY: Using capture flux weightening on 64000 bins.
+WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
+Monitor_nD: Mon_VS_XY: Using capture flux weightening on 64000 bins.
+WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
+ILL_H53_IN14: Detailed TAS configuration
+* Incoming beam: EI=4.978 [meV] KI=1.55 [Angs-1] Vi=975.915 [m/s]
+* Outgoing beam: EF=4.978 [meV] KF=1.55 [Angs-1] Vf=975.915 [m/s]
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=37.17 A2=74.33 A3=0 A4=-37.64 A5=37.17 A6=74.33 [deg]
+Monochromator: DM=3.355 [Angs] RMH=0 [m] RMV=1.966 [m] curved
+Analyzer:      DA=3.355 [Angs] RAH=1.534 [m] RAV=0 [m] curved
+Sample:        Powder V.laz
+ILL_H53_IN14: Incoming wavelength lambda=4.05367 [Angs]
+ILL_H53_IN14: Detailed TAS configuration
+* Incoming beam: EI=4.978 [meV] KI=1.55 [Angs-1] Vi=975.915 [m/s]
+* Outgoing beam: EF=4.978 [meV] KF=1.55 [Angs-1] Vf=975.915 [m/s]
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=37.17 A2=74.33 A3=0 A4=-37.64 A5=37.17 A6=74.33 [deg]
+Monochromator: DM=3.355 [Angs] RMH=0 [m] RMV=1.966 [m] curved
+Analyzer:      DA=3.355 [Angs] RAH=1.534 [m] RAV=0 [m] curved
+Sample:        Powder V.laz
+ILL_H53_IN14: Incoming wavelength lambda=4.05367 [Angs]
+ILL_H53_IN14: Detailed TAS configuration
+* Incoming beam: EI=4.978 [meV] KI=1.55 [Angs-1] Vi=975.915 [m/s]
+ILL_H53_IN14: Detailed TAS configuration
+* Outgoing beam: EF=4.978 [meV] KF=1.55 [Angs-1] Vf=975.915 [m/s]
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=37.17 A2=74.33 A3=0 A4=-37.64 A5=37.17 A6=74.33 [deg]
+Monochromator: DM=3.355 [Angs] RMH=0 [m] RMV=1.966 [m] curved
+Analyzer:      DA=3.355 [Angs] RAH=1.534 [m] RAV=0 [m] curved
+* Incoming beam: EI=4.978 [meV] KI=1.55 [Angs-1] Vi=975.915 [m/s]
+* Outgoing beam: EF=4.978 [meV] KF=1.55 [Angs-1] Vf=975.915 [m/s]
+Sample:        Powder V.laz
+ILL_H53_IN14: Incoming wavelength lambda=4.05367 [Angs]
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=37.17 A2=74.33 A3=0 A4=-37.64 A5=37.17 A6=74.33 [deg]
+Monitor_nD: Mon_VS_XY: Using capture flux weightening on 64000 bins.
+WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
+Monochromator: DM=3.355 [Angs] RMH=0 [m] RMV=1.966 [m] curved
+Analyzer:      DA=3.355 [Angs] RAH=1.534 [m] RAV=0 [m] curved
+Sample:        Powder V.laz
+ILL_H53_IN14: Incoming wavelength lambda=4.05367 [Angs]
+ILL_H53_IN14: Detailed TAS configuration
+* Incoming beam: EI=4.978 [meV] KI=1.55 [Angs-1] Vi=975.915 [m/s]
+* Outgoing beam: EF=4.978 [meV] KF=1.55 [Angs-1] Vf=975.915 [m/s]
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=37.17 A2=74.33 A3=0 A4=-37.64 A5=37.17 A6=74.33 [deg]
+Monochromator: DM=3.355 [Angs] RMH=0 [m] RMV=1.966 [m] curved
+Analyzer:      DA=3.355 [Angs] RAH=1.534 [m] RAV=0 [m] curved
+Sample:        Powder V.laz
+ILL_H53_IN14: Incoming wavelength lambda=4.05367 [Angs]
+Monitor_nD: Mon_VS_XY: Using capture flux weightening on 64000 bins.
+WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
+Monitor_nD: Mon_VS_XY: Using capture flux weightening on 64000 bins.
+WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
+Monitor_nD: Mon_VS_XY: Using capture flux weightening on 64000 bins.
+WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
+Monitor_nD: Mon_VS_XY: Using capture flux weightening on 64000 bins.
+WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
+ILL_H53_IN14: Detailed TAS configuration
+* Incoming beam: EI=4.978 [meV] KI=1.55 [Angs-1] Vi=975.915 [m/s]
+* Outgoing beam: EF=4.978 [meV] KF=1.55 [Angs-1] Vf=975.915 [m/s]
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=37.17 A2=74.33 A3=0 A4=-37.64 A5=37.17 A6=74.33 [deg]
+Monochromator: DM=3.355 [Angs] RMH=0 [m] RMV=1.966 [m] curved
+Analyzer:      DA=3.355 [Angs] RAH=1.534 [m] RAV=0 [m] curved
+Sample:        Powder V.laz
+ILL_H53_IN14: Incoming wavelength lambda=4.05367 [Angs]
+Source_gen: component HCS (square 0.1 x 0.1)
+            focusing distance dist=2.155 area=0.06 x 0.12
+            spectra 3.993 to 4.114 AA (4.833 to 5.131 meV)
+            T1=413.5 K (1.515 AA), T2=145.8 K (2.552 AA), T3=40.1 K (4.865 AA)
+  Flux is dPhi/dlambda in [n/s/cm2].
+Monitor_nD: Mon_VS_XY: Using capture flux weightening on 64000 bins.
+WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/HOPG.rfl' (Table_Read_Offset)
+Monitor_nD: D4_SC2_1D is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+Isotropic_Sqw: Sample: is a hollow cylinder: radius=0.010000 thickness=0.005000 height=0.050000 [J Comp Phys 228 (2009) 5251]
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/V.laz' (Table_Read_Offset)
+ILL_H53_IN14: Detailed TAS configuration
+* Incoming beam: EI=4.978 [meV] KI=1.55 [Angs-1] Vi=975.915 [m/s]
+* Outgoing beam: EF=4.978 [meV] KF=1.55 [Angs-1] Vf=975.915 [m/s]
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=37.17 A2=74.33 A3=0 A4=-37.64 A5=37.17 A6=74.33 [deg]
+Monochromator: DM=3.355 [Angs] RMH=0 [m] RMV=1.966 [m] curved
+Analyzer:      DA=3.355 [Angs] RAH=1.534 [m] RAV=0 [m] curved
+ILL_H53_IN14: Detailed TAS configuration
+* Incoming beam: EI=4.978 [meV] KI=1.55 [Angs-1] Vi=975.915 [m/s]
+Sample:        Powder V.laz
+* Outgoing beam: EF=4.978 [meV] KF=1.55 [Angs-1] Vf=975.915 [m/s]
+ILL_H53_IN14: Incoming wavelength lambda=4.05367 [Angs]
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=37.17 A2=74.33 A3=0 A4=-37.64 A5=37.17 A6=74.33 [deg]
+Monochromator: DM=3.355 [Angs] RMH=0 [m] RMV=1.966 [m] curved
+Analyzer:      DA=3.355 [Angs] RAH=1.534 [m] RAV=0 [m] curved
+Sample:        Powder V.laz
+ILL_H53_IN14: Incoming wavelength lambda=4.05367 [Angs]
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/V.laz' (Table_Read_Offset)
+Isotropic_sqw: Converting 21 powder lines from V.laz into S(q,w) data
+Isotropic_sqw: q range [0:12.4666], creating 106 elements vector
+Isotropic_Sqw: Sample: Generated V.laz coherent Sqw
+                   q=[0:12.349 Angs-1] w=[0:0 meV] |S|=0.827538 size=[106x1] sigma=0.0368 [barns]
+Monitor_nD: Mon_VS_XY: Using capture flux weightening on 64000 bins.
+WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
+               Mainly elastic scattering.
+Monitor_nD: Mon_VS_XY: Using capture flux weightening on 64000 bins.
+WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
+Isotropic_Sqw: Sample: Using Isotropic elastic incoherent scattering (sigma=9.87 [barns])
+Isotropic_Sqw: Sample: Sample temperature not defined (T=0).
+Warning        Disabling detailed balance.
+Monitor_nD: D7_SC3_1D is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+Warning: 60942 events were removed in Component[40] SC3=Collimator_linear()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+Warning: 58582 events were removed in Component[40] SC3=Collimator_linear()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+Warning: Number of events 5680 reaching SPLIT position Component[42] PG2Xtal=Monochromator_curved()
+         is probably too low. Increase Ncount.
+Warning: Number of events 5910 reaching SPLIT position Component[42] PG2Xtal=Monochromator_curved()
+         is probably too low. Increase Ncount.
+Warning: 60611 events were removed in Component[40] SC3=Collimator_linear()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+Warning: Number of events 5430 reaching SPLIT position Component[42] PG2Xtal=Monochromator_curved()
+         is probably too low. Increase Ncount.
+Warning: 58256 events were removed in Component[40] SC3=Collimator_linear()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+Warning: Number of events 5100 reaching SPLIT position Component[42] PG2Xtal=Monochromator_curved()
+         is probably too low. Increase Ncount.
+Warning: 56993 events were removed in Component[40] SC3=Collimator_linear()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+Warning: Number of events 5070 reaching SPLIT position Component[42] PG2Xtal=Monochromator_curved()
+         is probably too low. Increase Ncount.
+Warning: 59506 events were removed in Component[40] SC3=Collimator_linear()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+Warning: Number of events 5540 reaching SPLIT position Component[42] PG2Xtal=Monochromator_curved()
+         is probably too low. Increase Ncount.
+Warning: 59461 events were removed in Component[40] SC3=Collimator_linear()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+Warning: Number of events 5510 reaching SPLIT position Component[42] PG2Xtal=Monochromator_curved()
+         is probably too low. Increase Ncount.
+Detector: Mon_VS_L_I=4.08668e+08 Mon_VS_L_ERR=1.10381e+06 Mon_VS_L_N=297162 "mon_vs_l.dat"
+Warning: 60768 events were removed in Component[40] SC3=Collimator_linear()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+Warning: Number of events 5520 reaching SPLIT position Component[42] PG2Xtal=Monochromator_curved()
+         is probably too low. Increase Ncount.
+Detector: Mon_VS_XY_I=9.21017e+08 Mon_VS_XY_ERR=2.48727e+06 Mon_VS_XY_N=297162 "mon_vs_xy.dat"
+Detector: Mon_VS1_L_I=3.71425e+08 Mon_VS1_L_ERR=1.04625e+06 Mon_VS1_L_N=285517 "Mon_VS1_L_1574208214.L"
+Detector: Mon_VS2_L_I=3.49131e+08 Mon_VS2_L_ERR=1.01222e+06 Mon_VS2_L_N=279662 "Mon_VS2_L_1574208214.L"
+Detector: D4_SC2_1D_I=7.35843e+07 D4_SC2_1D_ERR=172325 D4_SC2_1D_N=442210 "D4_SC2_1D_1574208214.L"
+Detector: Sample_Cradle_I=0 Sample_Cradle_ERR=0 Sample_Cradle_N=0 "Sample_Cradle"
+Detector: D7_SC3_1D_I=6.55662e+08 D7_SC3_1D_ERR=1.13694e+06 D7_SC3_1D_N=3.25351e+06 "D7_SC3_1D_1574208214.th_E"
+Detector: He3H_I=466.083 He3H_ERR=12.8568 He3H_N=6106 "He3H.psd"
+Warning: 58744 events were removed in Component[40] SC3=Collimator_linear()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+Warning: Number of events 5210 reaching SPLIT position Component[42] PG2Xtal=Monochromator_curved()
+         is probably too low. Increase Ncount.
+Isotropic_Sqw: Sample: Scattering fraction=0.34868 of incoming intensity
+               Absorption fraction           =0.697897
+               Single   scattering intensity =3.88393e+06 (coh=12866.4 inc=3.87106e+06)
+               Multiple scattering intensity =0
+Warning: 61786 events were removed in Component[40] SC3=Collimator_linear()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+Warning: Number of events 6100 reaching SPLIT position Component[42] PG2Xtal=Monochromator_curved()
+         is probably too low. Increase Ncount.
+[n-62-23-6:21993] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-6:21993] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr in dataset 1

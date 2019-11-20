@@ -1,0 +1,90 @@
+[1574205072.468236] [n-62-23-6:28232:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3382.08
+[1574205072.469918] [n-62-23-6:28232:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574205072.469922] [n-62-23-6:28232:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574205072.472067] [n-62-23-6:28232:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574205072.472070] [n-62-23-6:28232:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+begin instrument: ESS_2001_bispectral
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr
+  Parameters:  man_lam(int) thermal(int) cold_Lam_min(double) cold_Lam_max(double) thermal_Lam_min(double) thermal_Lam_max(double) thermal_hotspot_fac(double) cold_hotspot_fac(double) use_full_guide_flag(int) guide_start(double) Length(double) focus_start_w(double) focus_end_w(double) smallaxis_w(double) focus_start_h(double) focus_end_h(double) smallaxis_h(double) maxdiv(double) coldperthermal(double) mirror_type(int) mirror_coating_type(int) mirror_offset(double) theta1(double) theta2(double) theta3(double) m_mirror(double) h_mirror(double) Pulse_width(double) frequency(double) gravity(double) substrate_thickness(double) coating_thickness(double) m1(double) m2(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+begin simulation: .
+  Format: McStas
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574233304
+  Directory: .
+  Param: man_lam=1
+  Param: thermal=2
+  Param: cold_Lam_min=0.1
+  Param: cold_Lam_max=10
+  Param: thermal_Lam_min=0.1
+  Param: thermal_Lam_max=10
+  Param: thermal_hotspot_fac=1
+  Param: cold_hotspot_fac=1
+  Param: use_full_guide_flag=0
+  Param: guide_start=2
+  Param: Length=150
+  Param: focus_start_w=-1.262
+  Param: focus_end_w=150.319
+  Param: smallaxis_w=0.255
+  Param: focus_start_h=-2.1415
+  Param: focus_end_h=150.078
+  Param: smallaxis_h=0.3847
+  Param: maxdiv=2
+  Param: coldperthermal=30
+  Param: mirror_type=2
+  Param: mirror_coating_type=1
+  Param: mirror_offset=0
+  Param: theta1=1.25
+  Param: theta2=1.25
+  Param: theta3=1.25
+  Param: m_mirror=5
+  Param: h_mirror=0.15
+  Param: Pulse_width=0.00286
+  Param: frequency=14
+  Param: gravity=-9.81
+  Param: substrate_thickness=0.0005
+  Param: coating_thickness=1e-05
+  Param: m1=5
+  Param: m2=4
+end simulation
+info!
+INFO: No output directory specified (--dir)
+INFO: Using directory: "ESS_2001_bispectral_20191120_001107"
+INFO: Regenerating c-file: ESS_2001_bispectral.c
+Warning: 'ESS_moderator_long_2001' is an obsolete component (not maintained).
+Info:    'Mirror_Curved_Bispectral' is a contributed component.
+Info:    'Mirror_Elliptic_Bispectral' is a contributed component.
+Warning: Component mirror_full_center=Mirror_Curved_Bispectral(string reflect) definition parameter
+         may be changed into a setting parameter to avoid
+         warnings at compile time.
+Warning: Component guide_right=Mirror_Elliptic_Bispectral(string reflect) definition parameter
+         may be changed into a setting parameter to avoid
+         warnings at compile time.
+Warning: Component guide_bottom=Mirror_Elliptic_Bispectral(string reflect) definition parameter
+         may be changed into a setting parameter to avoid
+         warnings at compile time.
+Warning: Component guide_top=Mirror_Elliptic_Bispectral(string reflect) definition parameter
+         may be changed into a setting parameter to avoid
+         warnings at compile time.
+Warning: Component guide_Left=Mirror_Elliptic_Bispectral(string reflect) definition parameter
+         may be changed into a setting parameter to avoid
+         warnings at compile time.
+Info:    Defining conditional JUMP from ArmMidThree to ArmMidOne
+CFLAGS=
+INFO: Recompiling: ./ESS_2001_bispectral.out
+INFO: ===
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------

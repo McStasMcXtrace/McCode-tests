@@ -1,0 +1,48 @@
+[1574207482.626989] [n-62-23-6:13444:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3387.72
+[1574207482.628297] [n-62-23-6:13444:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207482.628301] [n-62-23-6:13444:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207482.630133] [n-62-23-6:13444:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207482.630136] [n-62-23-6:13444:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+begin instrument: Test_Magnon_bcc_TAS
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_TAS/Test_Magnon_bcc_TAS.instr
+  Parameters:  hw(double) Ef(double) A3offset(double) A3auto(double) aa(double) qh(double) highres(double) sample_J(double) TT(double) FerroMagnet(double) Verbose(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+begin simulation: .
+  Format: McStas
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_TAS/Test_Magnon_bcc_TAS.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574220926
+  Directory: .
+  Param: hw=0.5
+  Param: Ef=5
+  Param: A3offset=0
+  Param: A3auto=1
+  Param: aa=4.5
+  Param: qh=1.1
+  Param: highres=0
+  Param: sample_J=0.2
+  Param: TT=300
+  Param: FerroMagnet=0
+  Param: Verbose=0
+end simulation
+info!
+INFO: No output directory specified (--dir)
+INFO: Using directory: "Test_Magnon_bcc_TAS_20191120_005119"
+INFO: Regenerating c-file: Test_Magnon_bcc_TAS.c
+CFLAGS=
+INFO: Recompiling: ./Test_Magnon_bcc_TAS.out
+INFO: ===
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------

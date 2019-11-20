@@ -1,0 +1,310 @@
+INFO: Using directory: "1"
+INFO: Using existing c-file: ./ILL_IN4.c
+INFO: Using existing binary: ./ILL_IN4.out
+INFO: ===
+INFO: Using system default number of mpirun -np processes
+[1574208251.852866] [n-62-23-6:22359:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3141.28
+[1574208251.854490] [n-62-23-6:22359:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208251.854507] [n-62-23-6:22359:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208251.854859] [n-62-23-6:22360:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3141.28
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1574208251.856276] [n-62-23-6:22360:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208251.856292] [n-62-23-6:22360:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208251.856397] [n-62-23-6:22359:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208251.856412] [n-62-23-6:22359:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208251.858056] [n-62-23-6:22360:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208251.858070] [n-62-23-6:22360:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208251.866575] [n-62-23-6:22363:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3144.70
+[1574208251.867987] [n-62-23-6:22363:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208251.868004] [n-62-23-6:22363:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208251.868863] [n-62-23-6:22364:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3144.70
+[1574208251.869877] [n-62-23-6:22363:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208251.869891] [n-62-23-6:22363:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208251.870355] [n-62-23-6:22364:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208251.870371] [n-62-23-6:22364:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208251.871403] [n-62-23-6:22361:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3144.70
+[1574208251.871923] [n-62-23-6:22362:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3144.70
+[1574208251.872182] [n-62-23-6:22364:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208251.872196] [n-62-23-6:22364:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208251.873042] [n-62-23-6:22361:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208251.873059] [n-62-23-6:22361:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208251.873426] [n-62-23-6:22362:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208251.873443] [n-62-23-6:22362:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208251.875086] [n-62-23-6:22361:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208251.875101] [n-62-23-6:22361:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208251.875612] [n-62-23-6:22362:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208251.875626] [n-62-23-6:22362:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208251.905922] [n-62-23-3:21747:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3348.75
+[1574208251.905920] [n-62-23-3:21748:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3348.75
+[1574208251.905920] [n-62-23-3:21749:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3348.75
+[1574208251.905920] [n-62-23-3:21750:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3348.75
+[1574208251.910114] [n-62-23-3:21749:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208251.910132] [n-62-23-3:21749:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208251.910502] [n-62-23-3:21747:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208251.910520] [n-62-23-3:21747:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208251.910540] [n-62-23-3:21748:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208251.910554] [n-62-23-3:21748:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208251.910631] [n-62-23-3:21750:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208251.910648] [n-62-23-3:21750:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208251.912176] [n-62-23-3:21749:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208251.912192] [n-62-23-3:21749:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208251.912500] [n-62-23-3:21748:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208251.912516] [n-62-23-3:21748:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208251.912805] [n-62-23-3:21750:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208251.912821] [n-62-23-3:21750:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208251.912811] [n-62-23-3:21747:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208251.912896] [n-62-23-3:21747:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'ILL_IN4' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+ILL_IN4: WARNING: The choppers are NOT in closed position phase12=-22.5 [deg].
+ILL_IN4: WARNING: The choppers are NOT in closed position phase12=-22.5 [deg].
+[ILL_IN4] Initialize
+[ILL_IN4] Initialize
+ILL_IN4: WARNING: The choppers are NOT in closed position phase12=-22.5 [deg].
+ILL_IN4: WARNING: The choppers are NOT in closed position phase12=-22.5 [deg].
+ILL_IN4: WARNING: The choppers are NOT in closed position phase12=-22.5 [deg].
+ILL_IN4: WARNING: The choppers are NOT in closed position phase12=-22.5 [deg].
+ILL_IN4: WARNING: The choppers are NOT in closed position phase12=-22.5 [deg].
+ILL_IN4: WARNING: The choppers are NOT in closed position phase12=-22.5 [deg].
+[ILL_IN4] Initialize
+ILL_IN4: WARNING: The choppers are NOT in closed position phase12=-22.5 [deg].
+[ILL_IN4] Initialize
+[ILL_IN4] Initialize
+ILL_IN4: Thermal ToF spectrometer
+  Divergence at the lead shutter: dX    =2.2026 [deg]
+  Take-off at monochromator:      A1    =-20.964 [deg] ; DM=1.677 [Angs]
+  Incident energy:                Ei    =56.8085 [meV] ; Ki=5.23599 [Angs-1]
+  Incident velocity:              Vi    =3296.7 [m/s]
+  Source-Mono distance:           LRM   =10.2086 [m]
+  Virtual Source-Mono distance:   d0    =3.52555 [m]
+  Mono-Sample distance:           LMS   =1.94553 [m] (d1)
+  Curvature at monochromator:     RMH   =-7.00816 [m] ; RMV=-1.9 [m]
+  Fermi Chopper Frequency:        nu    =335.376 [Hz] ; rpm=20122.6 [rpm]
+  BC2 phase wrt BC1:              PhiBC2=-22.5 [deg] L12=2.45746 [m] delay t12=0.000745432 [s] (BCTR)
+  FC phase wrt BC1:               PhiFC =-196.999 [deg] L1F=5.37909 [m] delay t1F=0.00163166 [s]
+Distances: in [m]
+[H12] 6.1 [BC1] 0.583 [VS] 1.87446 [BC2] 1.65109 [PG] 1.27053 [FC] 0.675 [Spl] 2 [Det]
+[ILL_IN4] Initialize
+[ILL_IN4] Initialize
+[ILL_IN4] Initialize
+[ILL_IN4] Initialize
+Warning: Read_Table :Dirac2D.sqw  Data has 343812 values that should be 345 x 812
+Warning: Read_Table :Dirac2D.sqw  Data has 188241 values that should be 189 x 241
+Warning: Read_Table :Dirac2D.sqw  Data has 188241 values that should be 189 x 241
+Warning: Read_Table :Dirac2D.sqw  Data has 188241 values that should be 189 x 241
+Warning: Read_Table :Dirac2D.sqw  Data has 188241 values that should be 189 x 241
+Warning: Read_Table :Dirac2D.sqw  Data has 356093 values that should be 357 x 93
+Warning: Read_Table :Dirac2D.sqw  Data has 73691 values that should be 76 x 503
+Warning: Read_Table :Dirac2D.sqw  Data has 65504 values that should be 66 x 597
+Warning: Read_Table :Dirac2D.sqw  Data has 12282 values that should be 13 x 785
+Warning: Read_Table :Dirac2D.sqw  Data has 32751 values that should be 35 x 348
+Warning: Read_Table :Dirac2D.sqw  Data has 28657 values that should be 31 x 442
+Warning: Read_Table :Dirac2D.sqw  Data has 4094 values that should be 5 x 536
+Warning: Read_Table :Dirac2D.sqw  Data has 32752 values that should be 35 x 288
+Warning: Read_Table :Dirac2D.sqw  Data has 45034 values that should be 46 x 382
+Warning: Read_Table :Dirac2D.sqw  Data has 180134 values that should be 181 x 375
+Warning: Read_Table :Dirac2D.sqw  Data has 180134 values that should be 181 x 375
+Warning: Read_Table :Dirac2D.sqw  Data has 180134 values that should be 181 x 375
+Warning: Read_Table :Dirac2D.sqw  Data has 180134 values that should be 181 x 375
+Warning: Read_Table :Dirac2D.sqw  Data has 28658 values that should be 30 x 946
+Warning: Read_Table :Dirac2D.sqw  Data has 28657 values that should be 32 x 39
+Warning: Read_Table :Dirac2D.sqw  Data has 24564 values that should be 26 x 603
+Warning: Read_Table :Dirac2D.sqw  Data has 32751 values that should be 36 x 697
+Warning: Read_Table :Dirac2D.sqw  Data has 24564 values that should be 27 x 261
+Warning: Read_Table :Dirac2D.sqw  Data has 32752 values that should be 34 x 355
+Warning: Read_Table :Dirac2D.sqw  Data has 32751 values that should be 36 x 12
+Warning: Read_Table :Dirac2D.sqw  Data has 32751 values that should be 34 x 106
+Warning: Read_Table :Dirac2D.sqw  Data has 24564 values that should be 25 x 576
+Warning: Read_Table :Dirac2D.sqw  Data has 24564 values that should be 25 x 670
+Warning: Read_Table :Dirac2D.sqw  Data has 45034 values that should be 48 x 704
+Warning: Read_Table :Dirac2D.sqw  Data has 49128 values that should be 51 x 704
+Warning: Read_Table :Dirac2D.sqw  Data has 221074 values that should be 222 x 449
+Warning: Read_Table :Dirac2D.sqw  Data has 221074 values that should be 222 x 449
+Warning: Read_Table :Dirac2D.sqw  Data has 221074 values that should be 222 x 449
+Warning: Read_Table :Dirac2D.sqw  Data has 221074 values that should be 222 x 449
+Warning: Read_Table :Dirac2D.sqw  Data has 32751 values that should be 36 x 455
+Warning: Read_Table :Dirac2D.sqw  Data has 36845 values that should be 38 x 549
+Warning: Read_Table :Dirac2D.sqw  Data has 24564 values that should be 27 x 19
+Warning: Read_Table :Dirac2D.sqw  Data has 32752 values that should be 35 x 771
+Warning: Read_Table :Dirac2D.sqw  Data has 781865 values that should be 782 x 865
+Warning: Read_Table :Dirac2D.sqw  Data has 24563 values that should be 26 x 334
+Warning: Read_Table :Dirac2D.sqw  Data has 802334 values that should be 803 x 334
+Warning: Read_Table :Dirac2D.sqw  Data has 20470 values that should be 21 x 804
+Warning: Read_Table :Dirac2D.sqw  Data has 135100 values that should be 136 x 549
+Warning: Read_Table :Dirac2D.sqw  Data has 135100 values that should be 136 x 549
+Warning: Read_Table :Dirac2D.sqw  Data has 135100 values that should be 136 x 549
+Warning: Read_Table :Dirac2D.sqw  Data has 135100 values that should be 136 x 549
+Warning: Read_Table :Dirac2D.sqw  Data has 20470 values that should be 22 x 274
+Warning: Read_Table :Dirac2D.sqw  Data has 28658 values that should be 30 x 932
+Warning: Read_Table :Dirac2D.sqw  Data has 106442 values that should be 108 x 307
+Warning: Read_Table :Dirac2D.sqw  Data has 24563 values that should be 26 x 495
+Warning: Read_Table :Dirac2D.sqw  Data has 98255 values that should be 99 x 589
+Warning: Read_Table :Dirac2D.sqw  Data has 20470 values that should be 23 x 59
+Warning: Read_Table :Dirac2D.sqw  Data has 36846 values that should be 38 x 153
+Warning: Read_Table :Dirac2D.sqw  Data has 32752 values that should be 34 x 247
+Warning: Read_Table :Dirac2D.sqw  Data has 122819 values that should be 124 x 368
+Warning: Read_Table :Dirac2D.sqw  Data has 122819 values that should be 124 x 368
+Warning: Read_Table :Dirac2D.sqw  Data has 122819 values that should be 124 x 368
+Warning: Read_Table :Dirac2D.sqw  Data has 122819 values that should be 124 x 368
+Warning: Read_Table :Dirac2D.sqw  Data has 16376 values that should be 17 x 435
+Warning: Read_Table :Dirac2D.sqw  Data has 32752 values that should be 35 x 905
+Warning: Read_Table :Dirac2D.sqw  Data has 40939 values that should be 43 x 186
+Warning: Read_Table :Dirac2D.sqw  Data has 36845 values that should be 38 x 280
+Warning: Read_Table :Dirac2D.sqw  Data has 20469 values that should be 23 x 374
+Warning: Read_Table :Dirac2D.sqw  Data has 24564 values that should be 26 x 750
+Warning: Read_Table :Dirac2D.sqw  Data has 21626 values that should be 23 x 1000
+
+Generate 100 Dirac peaks on (q,w) grid.
+ILL_IN4: WARNING: The choppers are NOT in closed position phase12=-22.5 [deg].
+Warning: Read_Table :Dirac2D.sqw  Data has 25720 values that should be 26 x 1000
+Warning: Read_Table :Dirac2D.sqw  Data has 5250 values that should be 6 x 1000
+[ILL_IN4] Initialize
+Source_gen: component Thermal (square 0.1 x 0.1)
+            focusing distance dist=5.2 area=0.1 x 0.1
+            spectra 1.100 to 1.300 AA (48.408 to 67.612 meV)
+            T1=683.7 K (1.178 AA), T2=257.7 K (1.919 AA), T3=16.7 K (7.539 AA)
+  Flux is dPhi/dlambda in [n/s/cm2].
+Source_gen: component Thermal2 (square 0.1 x 0.1)
+            focusing distance dist=5.2 area=0.1 x 0.1
+            spectra 0.500 to 0.700 AA (166.959 to 327.240 meV)
+            T1=683.7 K (1.178 AA), T2=257.7 K (1.919 AA), T3=16.7 K (7.539 AA)
+  Flux is dPhi/dlambda in [n/s/cm2].
+Source_gen: component Thermal3 (square 0.1 x 0.1)
+            focusing distance dist=5.2 area=0.1 x 0.1
+            spectra 0.300 to 0.500 AA (327.240 to 909.000 meV)
+            T1=683.7 K (1.178 AA), T2=257.7 K (1.919 AA), T3=16.7 K (7.539 AA)
+  Flux is dPhi/dlambda in [n/s/cm2].
+Source_gen: component Thermal4 (square 0.1 x 0.1)
+            focusing distance dist=5.2 area=0.1 x 0.1
+            spectra 0.200 to 0.400 AA (511.312 to 2045.250 meV)
+            T1=683.7 K (1.178 AA), T2=257.7 K (1.919 AA), T3=16.7 K (7.539 AA)
+  Flux is dPhi/dlambda in [n/s/cm2].
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al2O3_sapphire.trm' (Table_Read_Offset)
+Warning: Read_Table :Dirac2D.sqw  Data has 98255 values that should be 99 x 623
+Warning: Read_Table :Dirac2D.sqw  Data has 98255 values that should be 99 x 623
+Warning: Read_Table :Dirac2D.sqw  Data has 98255 values that should be 99 x 623
+Warning: Read_Table :Dirac2D.sqw  Data has 98255 values that should be 99 x 623
+Monitor_nD: BC2_t is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+Monitor_nD: BC2_t_post is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+Monitor_nD: Cradle_t is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+Warning: Read_Table :Dirac2D.sqw  Data has 54377 values that should be 55 x 1000
+Warning: Read_Table :Dirac2D.sqw  Data has 54377 values that should be 55 x 1000
+Warning: Read_Table :Dirac2D.sqw  Data has 54377 values that should be 55 x 1000
+Warning: Read_Table :Dirac2D.sqw  Data has 54377 values that should be 55 x 1000
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/HOPG.rfl' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/HOPG.trm' (Table_Read_Offset)
+Monitor_nD: Mono_t is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+Monitor_nD: FC_Pos is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+Monitor_nD: sample_tof is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+Monitor_nD: sample_qxy is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/V.laz' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/V.laz' (Table_Read_Offset)
+Isotropic_Sqw: SampleS: is a box: width=0.050000 height=0.050000 depth=0.001000 
+Opening input file 'Dirac2D.sqw' (Table_Read_Offset)
+Opening input file 'Dirac2D.sqw' (Table_Read_Offset)
+Opening input file 'Dirac2D.sqw' (Table_Read_Offset)
+Opening input file 'Dirac2D.sqw' (Table_Read_Offset)
+Isotropic_Sqw: SampleS: Computing scattering unit density V_rho=0.602214 [AA^-3] from density=1 [g/cm^3] weight=1 [g/mol].
+Isotropic_Sqw: SampleS: S(q,w) data from Dirac2D.sqw (coh) assumed to be classical (symmetrised in energy).
+Isotropic_Sqw: SampleS: Generated Dirac2D.sqw coherent Sqw
+                   q=[0:15.6923 Angs-1] w=[0:283.758 meV] |S|=0.284838 size=[1000x1999] sigma=1 [barns]
+                   normalization factor S(q,w)*21.4141 (auto) \int q^2 S(q) dq=59.5952
+Isotropic_Sqw: SampleS: Sample temperature not defined (T=0).
+Warning        Disabling detailed balance.
+Incoherent: SampleV: The target is not defined. Using direct beam (Z-axis).
+Incoherent: SampleV: Vc=13.827 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn]
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/V.laz' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/V.laz' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
+[n-62-23-6:22353] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-6:22353] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+
+Save [ILL_IN4]
+Detector: Obt1_I=1.11556e+11 Obt1_ERR=3.98123e+07 Obt1_N=7.85375e+06 "Obt1_1574208252.x_y"
+Detector: Obt1_lambda_I=1.11532e+11 Obt1_lambda_ERR=3.98079e+07 Obt1_lambda_N=7.85203e+06 "Obt1_lambda_1574208252.L"
+Detector: Win1_I=8.74011e+10 Win1_ERR=3.11906e+07 Win1_N=7.85375e+06 "Win1_1574208252.x_y"
+Detector: Win1_lambda_I=5.62532e+10 Win1_lambda_ERR=2.50234e+07 Win1_lambda_N=5.05467e+06 "Win1_lambda_1574208252.L"
+Detector: BC2_t_I=1.69199e+10 BC2_t_ERR=9.70453e+06 BC2_t_N=3.04045e+06 "BC2_t_1574208252.t"
+Detector: BC2_t_post_I=1.5374e+10 BC2_t_post_ERR=9.2509e+06 BC2_t_post_N=2.76247e+06 "BC2_t_post_1574208252.t"
+Detector: Cradle_I=1.54736e+10 Cradle_ERR=9.2808e+06 Cradle_N=2.78036e+06 "Cradle_1574208252.x_y"
+Detector: Cradle_lambda_I=1.54736e+10 Cradle_lambda_ERR=9.2808e+06 Cradle_lambda_N=2.78036e+06 "Cradle_lambda_1574208252.L"
+Detector: Cradle_t_I=1.54732e+10 Cradle_t_ERR=9.2807e+06 Cradle_t_N=2.7803e+06 "Cradle_t_1574208252.t"
+Detector: Mono_xy_I=1.54736e+10 Mono_xy_ERR=9.2808e+06 Mono_xy_N=2.78036e+06 "Mono_xy_1574208252.x_y"
+Detector: Mono_t_I=9.8406e+08 Mono_t_ERR=740795 Mono_t_N=1.76484e+06 "Mono_t_1574208252.t"
+Detector: FC_Pos_I=5.15601e+08 FC_Pos_ERR=537694 FC_Pos_N=919532 "FC_Pos_1574208252.t"
+Detector: sample_flux_I=4.38208e+06 sample_flux_ERR=4831.6 sample_flux_N=822600 "sample_flux_1574208252.x_y"
+
+Finally [ILL_IN4: 1]. Time: 5 [s] 
+Warning: Number of events 79000 reaching SPLIT position Component[29] sample_flux=Monitor_nD()
+         is probably too low. Increase Ncount.
+Detector: sample_tof_I=9.05774e+06 sample_tof_ERR=9823.39 sample_tof_N=850210 "sample_tof_1574208252.x_t"
+Detector: sample_lambda_I=9.06833e+06 sample_lambda_ERR=9829.16 sample_lambda_N=851200 "sample_lambda_1574208252.L"
+Detector: sample_w_I=9.06833e+06 sample_w_ERR=9829.16 sample_w_N=851200 "sample_w_1574208252.E"
+
+Finally [ILL_IN4: 1]. Time: 5 [s] 
+Warning: Number of events 84000 reaching SPLIT position Component[29] sample_flux=Monitor_nD()
+         is probably too low. Increase Ncount.
+
+Finally [ILL_IN4: 1]. Time: 5 [s] 
+Warning: Number of events 96400 reaching SPLIT position Component[29] sample_flux=Monitor_nD()
+         is probably too low. Increase Ncount.
+
+Finally [ILL_IN4: 1]. Time: 5 [s] 
+Warning: Number of events 90000 reaching SPLIT position Component[29] sample_flux=Monitor_nD()
+         is probably too low. Increase Ncount.
+Detector: sample_qxy_I=9.0494e+06 sample_qxy_ERR=9818.97 sample_qxy_N=849410 "sample_qxy_1574208252.kx_ky"
+Detector: Detector_I=5.35839e+06 Detector_ERR=17746.7 Detector_N=660510 "Detector_1574208254.th_y"
+
+Finally [ILL_IN4: 1]. Time: 5 [s] 
+Warning: Number of events 82100 reaching SPLIT position Component[29] sample_flux=Monitor_nD()
+         is probably too low. Increase Ncount.
+
+Finally [ILL_IN4: 1]. Time: 5 [s] 
+Warning: Number of events 86200 reaching SPLIT position Component[29] sample_flux=Monitor_nD()
+         is probably too low. Increase Ncount.
+Detector: Detector_sample_I=34845.5 Detector_sample_ERR=90.8455 Detector_sample_N=392250 "Detector_sample_1574208254.th_y"
+Detector: Detector_env_I=52848.3 Detector_env_ERR=892.425 Detector_env_N=41675 "Detector_env_1574208254.th_y"
+
+Finally [ILL_IN4: 1]. Time: 6 [s] 
+Warning: Number of events 89400 reaching SPLIT position Component[29] sample_flux=Monitor_nD()
+         is probably too low. Increase Ncount.
+
+Finally [ILL_IN4: 1]. Time: 6 [s] 
+Warning: Number of events 80000 reaching SPLIT position Component[29] sample_flux=Monitor_nD()
+         is probably too low. Increase Ncount.
+Detector: Detector_Sqw_I=51614.9 Detector_Sqw_ERR=120.261 Detector_Sqw_N=261142 "Detector_Sqw_1574208254.U1_U2"
+Detector: Detector_qe_I=45734.2 Detector_qe_ERR=111.938 Detector_qe_N=230466 "Detector_qe_1574208254.A_E"
+Detector: Detector_SqwV_I=8718.59 Detector_SqwV_ERR=19.0569 Detector_SqwV_N=295230 "Detector_SqwV_1574208254.U1_U2"
+
+Finally [ILL_IN4: 1]. Time: 22 [s] 
+Warning: Number of events 74400 reaching SPLIT position Component[29] sample_flux=Monitor_nD()
+         is probably too low. Increase Ncount.
+Detector: Detector_qeV_I=8708.59 Detector_qeV_ERR=19.0538 Detector_qeV_N=294014 "Detector_qeV_1574208254.A_E"
+
+Finally [ILL_IN4: 1]. Time: 23 [s] 
+Warning: Number of events 89700 reaching SPLIT position Component[29] sample_flux=Monitor_nD()
+         is probably too low. Increase Ncount.
+Isotropic_Sqw: SampleS: 164607 neutron events (out of 434683) that should have
+               scattered were transmitted because scattering conditions
+WARNING        could not be satisfied after 100 tries.
+Isotropic_Sqw: SampleS: 13 neutron events (out of 270076) reached
+WARNING        unrealistic weight. The S(q,w) norm might be too high.
+Isotropic_Sqw: SampleS: Scattering fraction=0.0408274 of incoming intensity
+               Absorption fraction           =0
+               Single   scattering intensity =56050 (coh=56050 inc=0)
+               Multiple scattering intensity =0
+INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr in dataset 1

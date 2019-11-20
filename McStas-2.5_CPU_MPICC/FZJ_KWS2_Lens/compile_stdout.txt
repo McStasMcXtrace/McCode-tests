@@ -1,0 +1,46 @@
+[1574205223.853004] [n-62-23-6:29729:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3376.95
+[1574205223.854441] [n-62-23-6:29729:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574205223.854445] [n-62-23-6:29729:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574205223.856402] [n-62-23-6:29729:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574205223.856405] [n-62-23-6:29729:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+begin instrument: FZJ_KWS2_Lens
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr
+  Parameters:  lambda(double) dlambda(double) FLUX(double) NGblen(double) Cblen(double) Clen(double) Dlen(double) Rlense(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+begin simulation: .
+  Format: McStas
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574234952
+  Directory: .
+  Param: lambda=20.15
+  Param: dlambda=2.015
+  Param: FLUX=1e+08
+  Param: NGblen=0.03
+  Param: Cblen=0.005
+  Param: Clen=20
+  Param: Dlen=20
+  Param: Rlense=0.025
+end simulation
+info!
+INFO: No output directory specified (--dir)
+INFO: Using directory: "FZJ_KWS2_Lens_20191120_001340"
+INFO: Regenerating c-file: FZJ_KWS2_Lens.c
+Info:    'Lens_simple' is a contributed component.
+CFLAGS=
+INFO: Recompiling: ./FZJ_KWS2_Lens.out
+INFO: ===
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------

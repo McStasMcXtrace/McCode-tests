@@ -1,0 +1,33 @@
+# Format: McCode with text headers
+# URL: http://www.mccode.org
+# Creator: McStas 2.5 - Nov. 19, 2019
+# Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr
+# Ncount: 1000000
+# Trace: no
+# Gravitation: no
+# Seed: 1574231536
+# Directory: 1
+# Nodes: 10
+# Param: TT=-30
+# Param: PHA=22
+# Param: PHA1=-3
+# Param: PHA2=-2
+# Param: PHA3=-1
+# Param: PHA4=0
+# Param: PHA5=1
+# Param: PHA6=2
+# Param: PHA7=3
+# Param: TTA=4
+# Date: Wed Nov 20 01:05:41 2019 (1574208341)
+# type: array_0d
+# Source: ISIS_Prisma2 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr)
+# component: mon9
+# position: -0.382058 0 9.72604
+# title: Single monitor mon9
+# Ncount: 10000000
+# statistics: 
+# signal: 
+# values: 
+# xylimits: 0 0 0 0 0 0
+# variables: I I_err N
+0 0 0

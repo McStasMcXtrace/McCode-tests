@@ -1,0 +1,48 @@
+McStas simulation description file for Samples_vanadium.
+Date:    Wed Nov 20 01:08:16 2019
+Program: McStas 2.5 - Nov. 19, 2019
+
+begin instrument: Samples_vanadium
+  File: 1/mccode
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr
+  Parameters:  ROT(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574234098
+  Directory: 1
+  Nodes: 10
+  Param: ROT=0
+end simulation
+
+begin data
+  Date: Wed Nov 20 01:08:17 2019 (1574208497)
+  type: array_2d(101, 51)
+  Source: Samples_vanadium (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr)
+  component: PSD_4pi
+  position: 0 0 1
+  title: 4PI PSD monitor
+  Ncount: 10000000
+  filename: vanadium.psd
+  statistics: X0=0.0330292; dX=105.768; Y0=1.75981; dY=38.9928;
+  signal: Min=6.89943e-11; Max=2.7559e-08; Mean=1.5469e-08;
+  values: 7.96809e-05 3.29136e-08 9.0999e+06
+  xvar: Longitude
+  yvar: Lattitude
+  xlabel: Longitude [deg]
+  ylabel: Lattitude [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -180 180 -90 90
+  variables: I I_err N
+end data

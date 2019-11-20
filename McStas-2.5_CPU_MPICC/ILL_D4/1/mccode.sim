@@ -1,0 +1,159 @@
+McStas simulation description file for ILL_D4.
+Date:    Wed Nov 20 00:59:48 2019
+Program: McStas 2.5 - Nov. 19, 2019
+
+begin instrument: ILL_D4
+  File: 1/mccode
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_D4/ILL_D4.instr
+  Parameters:  lambda(double) DM(double) sample(string) RV(double) L1(double) L2(double) L3(double) verbose(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_D4/ILL_D4.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574227502
+  Directory: 1
+  Nodes: 10
+  Param: lambda=0.7
+  Param: DM=1.807
+  Param: sample=SiO2_liq.qSq
+  Param: RV=-1
+  Param: L1=6.4
+  Param: L2=2.61
+  Param: L3=1.148
+  Param: verbose=1
+end simulation
+
+begin data
+  Date: Wed Nov 20 01:00:07 2019 (1574208007)
+  type: array_2d(20, 20)
+  Source: ILL_D4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_D4/ILL_D4.instr)
+  component: PSD
+  position: 0 0 5.9
+  title: PSD monitor
+  Ncount: 10000000
+  filename: PSD1.dat
+  statistics: X0=-0.000874932; dX=0.860183; Y0=-0.000525136; dY=0.864799;
+  signal: Min=6.41155e+06; Max=7.41163e+06; Mean=7.04251e+06;
+  values: 2.817e+09 2.29487e+06 1.50871e+06
+  xvar: X
+  yvar: Y
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -1.5 1.5 -1.5 1.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:00:07 2019 (1574208007)
+  type: array_1d(50)
+  Source: ILL_D4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_D4/ILL_D4.instr)
+  component: Lmon1
+  position: 0 0 5.91
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: Lmon1.dat
+  statistics: X0=0.699566; dX=0.0121069;
+  signal: Min=0; Max=3.5739e+08; Mean=2.0223e+08;
+  values: 1.01115e+10 4.34778e+06 5.41557e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0.665 0.735
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:00:07 2019 (1574208007)
+  type: array_1d(50)
+  Source: ILL_D4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_D4/ILL_D4.instr)
+  component: Lmon2
+  position: -0.0760093 0 6.58499
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: Lmon2.dat
+  statistics: X0=0.699766; dX=0.0108825;
+  signal: Min=0; Max=1.82341e+08; Mean=8.62617e+07;
+  values: 4.31308e+09 897630 2.31113e+07
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0.665 0.735
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:00:07 2019 (1574208007)
+  type: array_2d(10, 10)
+  Source: ILL_D4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_D4/ILL_D4.instr)
+  component: Sample_mon
+  position: -0.972919 0 8.76792
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: Sample_mon_1574207988.x_y
+  statistics: X0=0.000574709; dX=0.00839708; Y0=-5.04219e-06; dY=0.00861167;
+  signal: Min=1.47963e+06; Max=2.0009e+06; Mean=1.84336e+06;
+  values: 1.84336e+08 61689.4 8.93373e+06
+  xvar: x
+  yvar: y
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.015 0.015 -0.015 0.015
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:00:07 2019 (1574208007)
+  type: array_1d(360)
+  Source: ILL_D4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_D4/ILL_D4.instr)
+  component: BananaTheta
+  position: -0.991921 0 8.81417
+  title: Longitude [deg] monitor
+  Ncount: 10000000
+  filename: BananaTheta_1574207988.th
+  statistics: X0=93.5754; dX=48.9948;
+  signal: Min=574.233; Max=6821.28; Mean=4022.24;
+  values: 1.44801e+06 1422.23 1.90926e+06
+  xvar: th
+  yvar: (I,I_err)
+  xlabel: Longitude [deg]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 0 180
+  variables: th I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:00:07 2019 (1574208007)
+  type: array_2d(360, 50)
+  Source: ILL_D4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_D4/ILL_D4.instr)
+  component: BananaPSD
+  position: -0.991921 0 8.81417
+  title:  Intensity Angle Position Monitor (Banana) [out] per bin
+  Ncount: 10000000
+  filename: BananaPSD_1574207988.th_y
+  statistics: X0=93.1604; dX=50.1998; Y0=1.64605e-05; dY=0.0359421;
+  signal: Min=0; Max=939.592; Mean=97.2366;
+  values: 1.75026e+06 1588.29 2.25588e+06
+  xvar: Longitude
+  yvar: y
+  xlabel: Longitude [deg]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 180 -0.25 0.25
+  variables: I I_err N
+end data

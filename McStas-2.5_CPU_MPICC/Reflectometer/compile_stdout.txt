@@ -1,0 +1,109 @@
+INFO: No output directory specified (--dir)
+INFO: Using directory: "Reflectometer_20191120_004626"
+INFO: Regenerating c-file: Reflectometer.c
+Warning: 'ESS_moderator_long' is an obsolete component (not maintained).
+
+Unmatched actual parameter size for component ESS_moderator_long() at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Reflectometer/Reflectometer.instr:210. Please change its name to a valid one:
+  Definition parameters: 
+  Setting parameters: width_c yheight Lmin Lmax dist focus_xw focus_yh nu T tau tau1 tau2 d n cold_frac n2 chi2 I0 I2 target_index cyl_radius branch1 branch2 branch_tail n_pulses width_t T_t tau_t tau1_t tau2_t chi2_t I0_t I2_t branch1_t branch2_t src_2012 tfocus_dist tfocus_time tfocus_width beamport_angle 
+Unassigned SETTING parameter l for component Elliptic_guide_gravity() at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Reflectometer/Reflectometer.instr:279. Please set its value.
+
+Unmatched actual parameter L for component Elliptic_guide_gravity() at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Reflectometer/Reflectometer.instr:279. Please change its name to a valid one:
+  Definition parameters: mvaluesright mvaluesleft mvaluestop mvaluesbottom seglength 
+  Setting parameters: l xwidth yheight linxw loutxw linyh loutyh majorAxisxw minorAxisxw majorAxisyh minorAxisyh majorAxisoffsetxw majorAxisoffsetyh dimensionsAt option R0 Qc alpha m W alpharight mright alphaleft mleft alphatop mtop alphabottom mbottom verbose enableGravity curvature 
+Info:    'L' parameter name used in instrument matches
+         component Elliptic_guide_gravity parameter 'mvaluesright' from library but
+         may be misspelled. Check component instance.
+
+Unmatched actual parameter Linh for component Elliptic_guide_gravity() at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Reflectometer/Reflectometer.instr:279. Please change its name to a valid one:
+  Definition parameters: mvaluesright mvaluesleft mvaluestop mvaluesbottom seglength 
+  Setting parameters: l xwidth yheight linxw loutxw linyh loutyh majorAxisxw minorAxisxw majorAxisyh minorAxisyh majorAxisoffsetxw majorAxisoffsetyh dimensionsAt option R0 Qc alpha m W alpharight mright alphaleft mleft alphatop mtop alphabottom mbottom verbose enableGravity curvature 
+Info:    'Linh' parameter name used in instrument matches
+         component Elliptic_guide_gravity parameter 'l' from library but
+         may be misspelled. Check component instance.
+
+Unmatched actual parameter Louth for component Elliptic_guide_gravity() at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Reflectometer/Reflectometer.instr:279. Please change its name to a valid one:
+  Definition parameters: mvaluesright mvaluesleft mvaluestop mvaluesbottom seglength 
+  Setting parameters: l xwidth yheight linxw loutxw linyh loutyh majorAxisxw minorAxisxw majorAxisyh minorAxisyh majorAxisoffsetxw majorAxisoffsetyh dimensionsAt option R0 Qc alpha m W alpharight mright alphaleft mleft alphatop mtop alphabottom mbottom verbose enableGravity curvature 
+Info:    'Louth' parameter name used in instrument matches
+         component Elliptic_guide_gravity parameter 'l' from library but
+         may be misspelled. Check component instance.
+
+Unmatched actual parameter Linv for component Elliptic_guide_gravity() at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Reflectometer/Reflectometer.instr:279. Please change its name to a valid one:
+  Definition parameters: mvaluesright mvaluesleft mvaluestop mvaluesbottom seglength 
+  Setting parameters: l xwidth yheight linxw loutxw linyh loutyh majorAxisxw minorAxisxw majorAxisyh minorAxisyh majorAxisoffsetxw majorAxisoffsetyh dimensionsAt option R0 Qc alpha m W alpharight mright alphaleft mleft alphatop mtop alphabottom mbottom verbose enableGravity curvature 
+Info:    'Linv' parameter name used in instrument matches
+         component Elliptic_guide_gravity parameter 'l' from library but
+         may be misspelled. Check component instance.
+
+Unmatched actual parameter Loutv for component Elliptic_guide_gravity() at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Reflectometer/Reflectometer.instr:279. Please change its name to a valid one:
+  Definition parameters: mvaluesright mvaluesleft mvaluestop mvaluesbottom seglength 
+  Setting parameters: l xwidth yheight linxw loutxw linyh loutyh majorAxisxw minorAxisxw majorAxisyh minorAxisyh majorAxisoffsetxw majorAxisoffsetyh dimensionsAt option R0 Qc alpha m W alpharight mright alphaleft mleft alphatop mtop alphabottom mbottom verbose enableGravity curvature 
+Info:    'Loutv' parameter name used in instrument matches
+         component Elliptic_guide_gravity parameter 'l' from library but
+         may be misspelled. Check component instance.
+
+Unmatched actual parameter widthOfEllipsev for component Elliptic_guide_gravity() at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Reflectometer/Reflectometer.instr:279. Please change its name to a valid one:
+  Definition parameters: mvaluesright mvaluesleft mvaluestop mvaluesbottom seglength 
+  Setting parameters: l xwidth yheight linxw loutxw linyh loutyh majorAxisxw minorAxisxw majorAxisyh minorAxisyh majorAxisoffsetxw majorAxisoffsetyh dimensionsAt option R0 Qc alpha m W alpharight mright alphaleft mleft alphatop mtop alphabottom mbottom verbose enableGravity curvature 
+Info:    'widthOfEllipsev' parameter name used in instrument matches
+         component Elliptic_guide_gravity parameter 'l' from library but
+         may be misspelled. Check component instance.
+
+Unmatched actual parameter widthOfEllipseh for component Elliptic_guide_gravity() at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Reflectometer/Reflectometer.instr:279. Please change its name to a valid one:
+  Definition parameters: mvaluesright mvaluesleft mvaluestop mvaluesbottom seglength 
+  Setting parameters: l xwidth yheight linxw loutxw linyh loutyh majorAxisxw minorAxisxw majorAxisyh minorAxisyh majorAxisoffsetxw majorAxisoffsetyh dimensionsAt option R0 Qc alpha m W alpharight mright alphaleft mleft alphatop mtop alphabottom mbottom verbose enableGravity curvature 
+Info:    'widthOfEllipseh' parameter name used in instrument matches
+         component Elliptic_guide_gravity parameter 'l' from library but
+         may be misspelled. Check component instance.
+Unassigned SETTING parameter l for component Elliptic_guide_gravity() at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Reflectometer/Reflectometer.instr:302. Please set its value.
+
+Unmatched actual parameter L for component Elliptic_guide_gravity() at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Reflectometer/Reflectometer.instr:302. Please change its name to a valid one:
+  Definition parameters: mvaluesright mvaluesleft mvaluestop mvaluesbottom seglength 
+  Setting parameters: l xwidth yheight linxw loutxw linyh loutyh majorAxisxw minorAxisxw majorAxisyh minorAxisyh majorAxisoffsetxw majorAxisoffsetyh dimensionsAt option R0 Qc alpha m W alpharight mright alphaleft mleft alphatop mtop alphabottom mbottom verbose enableGravity curvature 
+Info:    'L' parameter name used in instrument matches
+         component Elliptic_guide_gravity parameter 'mvaluesright' from library but
+         may be misspelled. Check component instance.
+
+Unmatched actual parameter Linh for component Elliptic_guide_gravity() at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Reflectometer/Reflectometer.instr:302. Please change its name to a valid one:
+  Definition parameters: mvaluesright mvaluesleft mvaluestop mvaluesbottom seglength 
+  Setting parameters: l xwidth yheight linxw loutxw linyh loutyh majorAxisxw minorAxisxw majorAxisyh minorAxisyh majorAxisoffsetxw majorAxisoffsetyh dimensionsAt option R0 Qc alpha m W alpharight mright alphaleft mleft alphatop mtop alphabottom mbottom verbose enableGravity curvature 
+Info:    'Linh' parameter name used in instrument matches
+         component Elliptic_guide_gravity parameter 'l' from library but
+         may be misspelled. Check component instance.
+
+Unmatched actual parameter Louth for component Elliptic_guide_gravity() at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Reflectometer/Reflectometer.instr:302. Please change its name to a valid one:
+  Definition parameters: mvaluesright mvaluesleft mvaluestop mvaluesbottom seglength 
+  Setting parameters: l xwidth yheight linxw loutxw linyh loutyh majorAxisxw minorAxisxw majorAxisyh minorAxisyh majorAxisoffsetxw majorAxisoffsetyh dimensionsAt option R0 Qc alpha m W alpharight mright alphaleft mleft alphatop mtop alphabottom mbottom verbose enableGravity curvature 
+Info:    'Louth' parameter name used in instrument matches
+         component Elliptic_guide_gravity parameter 'l' from library but
+         may be misspelled. Check component instance.
+
+Unmatched actual parameter Linv for component Elliptic_guide_gravity() at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Reflectometer/Reflectometer.instr:302. Please change its name to a valid one:
+  Definition parameters: mvaluesright mvaluesleft mvaluestop mvaluesbottom seglength 
+  Setting parameters: l xwidth yheight linxw loutxw linyh loutyh majorAxisxw minorAxisxw majorAxisyh minorAxisyh majorAxisoffsetxw majorAxisoffsetyh dimensionsAt option R0 Qc alpha m W alpharight mright alphaleft mleft alphatop mtop alphabottom mbottom verbose enableGravity curvature 
+Info:    'Linv' parameter name used in instrument matches
+         component Elliptic_guide_gravity parameter 'l' from library but
+         may be misspelled. Check component instance.
+
+Unmatched actual parameter Loutv for component Elliptic_guide_gravity() at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Reflectometer/Reflectometer.instr:302. Please change its name to a valid one:
+  Definition parameters: mvaluesright mvaluesleft mvaluestop mvaluesbottom seglength 
+  Setting parameters: l xwidth yheight linxw loutxw linyh loutyh majorAxisxw minorAxisxw majorAxisyh minorAxisyh majorAxisoffsetxw majorAxisoffsetyh dimensionsAt option R0 Qc alpha m W alpharight mright alphaleft mleft alphatop mtop alphabottom mbottom verbose enableGravity curvature 
+Info:    'Loutv' parameter name used in instrument matches
+         component Elliptic_guide_gravity parameter 'l' from library but
+         may be misspelled. Check component instance.
+
+Unmatched actual parameter widthOfEllipsev for component Elliptic_guide_gravity() at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Reflectometer/Reflectometer.instr:302. Please change its name to a valid one:
+  Definition parameters: mvaluesright mvaluesleft mvaluestop mvaluesbottom seglength 
+  Setting parameters: l xwidth yheight linxw loutxw linyh loutyh majorAxisxw minorAxisxw majorAxisyh minorAxisyh majorAxisoffsetxw majorAxisoffsetyh dimensionsAt option R0 Qc alpha m W alpharight mright alphaleft mleft alphatop mtop alphabottom mbottom verbose enableGravity curvature 
+Info:    'widthOfEllipsev' parameter name used in instrument matches
+         component Elliptic_guide_gravity parameter 'l' from library but
+         may be misspelled. Check component instance.
+
+Unmatched actual parameter widthOfEllipseh for component Elliptic_guide_gravity() at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Reflectometer/Reflectometer.instr:302. Please change its name to a valid one:
+  Definition parameters: mvaluesright mvaluesleft mvaluestop mvaluesbottom seglength 
+  Setting parameters: l xwidth yheight linxw loutxw linyh loutyh majorAxisxw minorAxisxw majorAxisyh minorAxisyh majorAxisoffsetxw majorAxisoffsetyh dimensionsAt option R0 Qc alpha m W alpharight mright alphaleft mleft alphatop mtop alphabottom mbottom verbose enableGravity curvature 
+Info:    'widthOfEllipseh' parameter name used in instrument matches
+         component Elliptic_guide_gravity parameter 'l' from library but
+         may be misspelled. Check component instance.
+McStas: 17 Errors encountered during parse of /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Reflectometer/Reflectometer.instr.

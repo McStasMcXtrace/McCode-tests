@@ -1,0 +1,259 @@
+INFO: Using directory: "1"
+INFO: Using existing c-file: ./ISIS_GEM.c
+INFO: Using existing binary: ./ISIS_GEM.out
+INFO: ===
+INFO: Using system default number of mpirun -np processes
+[1574208325.065478] [n-62-23-6:22986:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3145.39
+[1574208325.067379] [n-62-23-6:22986:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208325.067397] [n-62-23-6:22986:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1574208325.069394] [n-62-23-6:22986:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208325.069408] [n-62-23-6:22986:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208325.073693] [n-62-23-6:22987:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3135.30
+[1574208325.075502] [n-62-23-6:22987:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208325.075518] [n-62-23-6:22987:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208325.077038] [n-62-23-6:22988:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3113.77
+[1574208325.077507] [n-62-23-6:22987:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208325.077522] [n-62-23-6:22987:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208325.079405] [n-62-23-6:22988:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208325.079422] [n-62-23-6:22988:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208325.081391] [n-62-23-6:22988:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208325.081410] [n-62-23-6:22988:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208325.084653] [n-62-23-6:22991:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.15
+[1574208325.085574] [n-62-23-6:22989:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.15
+[1574208325.086542] [n-62-23-6:22991:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208325.086557] [n-62-23-6:22991:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208325.086526] [n-62-23-6:22990:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.15
+[1574208325.086931] [n-62-23-6:22989:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208325.086947] [n-62-23-6:22989:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208325.087973] [n-62-23-6:22990:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208325.087989] [n-62-23-6:22990:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208325.088589] [n-62-23-6:22991:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208325.088604] [n-62-23-6:22991:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208325.088813] [n-62-23-6:22989:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208325.088829] [n-62-23-6:22989:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208325.089743] [n-62-23-6:22990:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208325.089758] [n-62-23-6:22990:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208325.111652] [n-62-23-3:22035:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3250.83
+[1574208325.111652] [n-62-23-3:22036:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3250.83
+[1574208325.111652] [n-62-23-3:22037:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3250.83
+[1574208325.111652] [n-62-23-3:22038:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3250.83
+[1574208325.116827] [n-62-23-3:22035:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208325.116827] [n-62-23-3:22036:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208325.116842] [n-62-23-3:22036:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208325.116827] [n-62-23-3:22037:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208325.116843] [n-62-23-3:22037:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208325.116827] [n-62-23-3:22038:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208325.116843] [n-62-23-3:22038:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208325.116893] [n-62-23-3:22035:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208325.119249] [n-62-23-3:22037:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208325.119261] [n-62-23-3:22037:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208325.119246] [n-62-23-3:22038:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208325.119252] [n-62-23-3:22036:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208325.119265] [n-62-23-3:22036:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208325.119249] [n-62-23-3:22035:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208325.119263] [n-62-23-3:22035:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208325.119316] [n-62-23-3:22038:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'ISIS_GEM' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+[ISIS_GEM] Initialize
+[ISIS_GEM] Initialize
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == gem 
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == gem 
+Energy == 4.63713 8179.9
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.gem
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.gem
+Energy == 4.63713 8179.9
+[ISIS_GEM] Initialize
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == gem 
+[ISIS_GEM] Initialize
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == gem 
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.gem
+Energy == 4.63713 8179.9
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.gem
+Energy == 4.63713 8179.9
+nEnergy == 103
+nEnergy == 103
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == gem 
+[ISIS_GEM] Initialize
+[ISIS_GEM] Initialize
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == gem 
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == gem 
+[ISIS_GEM] Initialize
+[ISIS_GEM] Initialize
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == gem 
+[ISIS_GEM] Initialize
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == gem 
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.gem
+Energy == 4.63713 8179.9
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.gem
+Energy == 4.63713 8179.9
+[ISIS_GEM] Initialize
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == gem 
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.gem
+Energy == 4.63713 8179.9
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.gem
+Energy == 4.63713 8179.9
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.gem
+Energy == 4.63713 8179.9
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.gem
+Energy == 4.63713 8179.9
+nEnergy == 103
+nEnergy == 103
+nEnergy == 103
+nEnergy == 103
+nEnergy == 103
+nEnergy == 103
+nEnergy == 103
+nEnergy == 103
+Viewport == 0.008 0.04 Moderator size == (0.09 * 0.084) m^2 
+Dist == 17 (metres) 
+Viewport Solid angle == 2.6159e-05 str
+Solid angle used == 8.37089e-05 str
+Viewport == 0.008 0.04 Moderator size == (0.09 * 0.084) m^2 
+Dist == 17 (metres) 
+Viewport Solid angle == 2.6159e-05 str
+Solid angle used == 8.37089e-05 str
+Totals:: 0.000148369 103 181 
+Totals:: 0.000148369 103 181 
+Viewport == 0.008 0.04 Moderator size == (0.09 * 0.084) m^2 
+Dist == 17 (metres) 
+Viewport Solid angle == 2.6159e-05 str
+Solid angle used == 8.37089e-05 str
+Viewport == 0.008 0.04 Moderator size == (0.09 * 0.084) m^2 
+Dist == 17 (metres) 
+Viewport Solid angle == 2.6159e-05 str
+Solid angle used == 8.37089e-05 str
+Viewport == 0.008 0.04 Moderator size == (0.09 * 0.084) m^2 
+Totals:: 0.000148369 103 181 
+Dist == 17 (metres) 
+Viewport == 0.008 0.04 Moderator size == (0.09 * 0.084) m^2 
+Dist == 17 (metres) 
+Viewport Solid angle == 2.6159e-05 str
+Solid angle used == 8.37089e-05 str
+Viewport Solid angle == 2.6159e-05 str
+Solid angle used == 8.37089e-05 str
+Viewport == 0.008 0.04 Moderator size == (0.09 * 0.084) m^2 
+Dist == 17 (metres) 
+Viewport Solid angle == 2.6159e-05 str
+Solid angle used == 8.37089e-05 str
+Viewport == 0.008 0.04 Moderator size == (0.09 * 0.084) m^2 
+Dist == 17 (metres) 
+Viewport Solid angle == 2.6159e-05 str
+Solid angle used == 8.37089e-05 str
+Viewport == 0.008 0.04 Moderator size == (0.09 * 0.084) m^2 
+Dist == 17 (metres) 
+Viewport Solid angle == 2.6159e-05 str
+Solid angle used == 8.37089e-05 str
+Viewport == 0.008 0.04 Moderator size == (0.09 * 0.084) m^2 
+Dist == 17 (metres) 
+Viewport Solid angle == 2.6159e-05 str
+Solid angle used == 8.37089e-05 str
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Y2O3.laz' (Table_Read_Offset)
+Totals:: 0.000148369 103 181 
+Totals:: 0.000148369 103 181 
+Totals:: 0.000148369 103 181 
+Totals:: 0.000148369 103 181 
+Totals:: 0.000148369 103 181 
+Table from file 'Y2O3.laz' (block 1) is 871 x 18 (x=2:21), constant step. interpolation: linear
+  '# TITLE *-Y2O3-[IA3-] Baldinozzi, G.;Berar, J.F.;Calvarin, G.[1998];# CELL  ...'
+PowderN: Sample: Reading 871 rows from Y2O3.laz
+PowderN: Sample: Read 871 reflections from file 'Y2O3.laz'
+PowderN: Sample: Vc=1192.3 [Angs] sigma_abs=40.96 [barn] sigma_inc=4.832 [barn] reflections=Y2O3.laz
+Totals:: 0.000148369 103 181 
+Monitor_nD: monzns is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+Totals:: 0.000148369 103 181 
+[n-62-23-6:22979] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-6:22979] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+
+Finally [ISIS_GEM: 1]. Time: 8 [s] 
+
+Finally [ISIS_GEM: 1]. Time: 8 [s] 
+
+Finally [ISIS_GEM: 1]. Time: 8 [s] 
+
+Finally [ISIS_GEM: 1]. Time: 8 [s] 
+
+Finally [ISIS_GEM: 1]. Time: 8 [s] 
+
+Finally [ISIS_GEM: 1]. Time: 8 [s] 
+
+Finally [ISIS_GEM: 1]. Time: 8 [s] 
+
+Save [ISIS_GEM]
+
+Finally [ISIS_GEM: 1]. Time: 9 [s] 
+
+Finally [ISIS_GEM: 1]. Time: 9 [s] 
+Detector: monzns_I=52.8191 monzns_ERR=0.0635261 monzns_N=6.35944e+06 "monzns_1574208325.A_t"
+
+Finally [ISIS_GEM: 1]. Time: 9 [s] 
+PowderN: Sample: Info: you may highly improve the computation efficiency by using
+    SPLIT 630 COMPONENT Sample=PowderN(...)
+  in the instrument description /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr.
+INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr in dataset 1

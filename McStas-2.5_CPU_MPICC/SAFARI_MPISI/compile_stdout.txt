@@ -1,0 +1,70 @@
+  [1574207203.276535] [n-62-23-6:10931:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3374.56
+[1574207203.278381] [n-62-23-6:10931:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207203.278385] [n-62-23-6:10931:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207203.280483] [n-62-23-6:10931:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207203.280486] [n-62-23-6:10931:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+begin instrument: SAFARI_MPISI
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_MPISI/SAFARI_MPISI.instr
+  Parameters:  source_lam_min(double) source_lam_max(double) hi_res(double) mono_Si_type(double) mono_mosh(double) mono_mosv(double) mono_dx(double) mono_dy(double) mono_dz(double) mono_takeoff(double) mono_dtilt(double) mono_Rh(double) port_takeoff(double) chamber_window_rad(double) inc_slit_rot(double) inc_slit_dx(double) inc_slit_to_cor(double) inc_slit_width(double) inc_slit_height(double) inc_slit_sep(double) mono_to_cor(double) sample_dx(double) sample_dy(double) sample_dz(double) sample_dom(double) det_takeoff(double) cor_to_det(double) diff_slit_dx(double) diff_slit_to_cor(double) diff_slit_width(double) diff_slit_height(double) full_instrument(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+begin simulation: .
+  Format: McStas
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_MPISI/SAFARI_MPISI.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574218134
+  Directory: .
+  Param: source_lam_min=0.5
+  Param: source_lam_max=2
+  Param: hi_res=0
+  Param: mono_Si_type=311
+  Param: mono_mosh=30
+  Param: mono_mosv=30
+  Param: mono_dx=0
+  Param: mono_dy=0
+  Param: mono_dz=0
+  Param: mono_takeoff=-83.5
+  Param: mono_dtilt=0
+  Param: mono_Rh=3.572
+  Param: port_takeoff=-83.5
+  Param: chamber_window_rad=0.05534
+  Param: inc_slit_rot=0
+  Param: inc_slit_dx=0
+  Param: inc_slit_to_cor=0.005
+  Param: inc_slit_width=0.005
+  Param: inc_slit_height=0.02
+  Param: inc_slit_sep=-1
+  Param: mono_to_cor=2.5
+  Param: sample_dx=0
+  Param: sample_dy=0
+  Param: sample_dz=0
+  Param: sample_dom=0
+  Param: det_takeoff=90
+  Param: cor_to_det=1.148
+  Param: diff_slit_dx=0
+  Param: diff_slit_to_cor=0.005
+  Param: diff_slit_width=0.005
+  Param: diff_slit_height=0.02
+  Param: full_instrument=1
+end simulation
+info!
+INFO: No output directory specified (--dir)
+INFO: Using directory: "SAFARI_MPISI_20191120_004627"
+INFO: Regenerating c-file: SAFARI_MPISI.c
+Info:    Defining SPLIT from Sample=PowderN() to END in instrument SAFARI_MPISI
+CFLAGS=
+INFO: Recompiling: ./SAFARI_MPISI.out
+INFO: ===
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------

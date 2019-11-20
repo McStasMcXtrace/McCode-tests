@@ -1,0 +1,50 @@
+[1574207551.885776] [n-62-23-6:14333:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3362.60
+[1574207551.887172] [n-62-23-6:14333:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207551.887176] [n-62-23-6:14333:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574207551.889126] [n-62-23-6:14333:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574207551.889129] [n-62-23-6:14333:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+begin instrument: Test_Sample_nxs_diffraction
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr
+  Parameters:  lambda1(double) lambda2(double) sample_detector_distance(double) moderator_pinhole_distance(double) pinhole_sample_distance(double) sample_x(double) sample_file(string) moderator_face(string)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+begin simulation: .
+  Format: McStas
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574221884
+  Directory: .
+  Param: lambda1=1.5
+  Param: lambda2=1.51
+  Param: sample_detector_distance=0.1
+  Param: moderator_pinhole_distance=30
+  Param: pinhole_sample_distance=0.05
+  Param: sample_x=0
+  Param: sample_file=Cu.nxs
+  Param: moderator_face=water
+end simulation
+info!
+INFO: No output directory specified (--dir)
+INFO: Using directory: "Test_Sample_nxs_diffraction_20191120_005228"
+INFO: Regenerating c-file: Test_Sample_nxs_diffraction.c
+Info:    'ISIS_moderator' is a contributed component.
+Info:    'Sample_nxs' is a contributed component.
+Warning: Component moderator=ISIS_moderator(string Face) definition parameter
+         may be changed into a setting parameter to avoid
+         warnings at compile time.
+CFLAGS= -I@MCCODE_LIB@/libs/libnxs/ @MCCODE_LIB@/libs/libnxs/libnxs.a
+INFO: Recompiling: ./Test_Sample_nxs_diffraction.out
+INFO: ===
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------

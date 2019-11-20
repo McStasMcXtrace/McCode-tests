@@ -1,0 +1,48 @@
+McStas simulation description file for Samples_Incoherent_off.
+Date:    Wed Nov 20 01:06:45 2019
+Program: McStas 2.5 - Nov. 19, 2019
+
+begin instrument: Samples_Incoherent_off
+  File: 1/mccode
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr
+  Parameters:  geometry(string)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574233010
+  Directory: 1
+  Nodes: 10
+  Param: geometry=socket.off
+end simulation
+
+begin data
+  Date: Wed Nov 20 01:07:10 2019 (1574208430)
+  type: array_2d(300, 300)
+  Source: Samples_Incoherent_off (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr)
+  component: monitor
+  position: 0 0 2
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: monitor_1574208405.x_y
+  statistics: X0=6.56001e-05; dX=0.0630614; Y0=1.38414e-05; dY=0.0580635;
+  signal: Min=2.01032e-11; Max=1.97453e-05; Mean=1.64586e-07;
+  values: 0.0148127 9.89054e-06 9.44671e+06
+  xvar: x
+  yvar: y
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.5 0.5 -0.5 0.5
+  variables: I I_err N
+end data

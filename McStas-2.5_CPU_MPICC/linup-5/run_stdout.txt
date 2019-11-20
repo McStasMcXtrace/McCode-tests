@@ -1,0 +1,121 @@
+INFO: Using directory: "1"
+INFO: Using existing c-file: ./linup-5.c
+INFO: Using existing binary: ./linup-5.out
+INFO: ===
+INFO: Using system default number of mpirun -np processes
+[1574209535.935708] [n-62-23-6:3787 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3229.81
+[1574209535.937260] [n-62-23-6:3787 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209535.937277] [n-62-23-6:3787 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1574209535.939183] [n-62-23-6:3787 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209535.939198] [n-62-23-6:3787 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209535.943832] [n-62-23-6:3788 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3128.98
+[1574209535.945197] [n-62-23-6:3788 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209535.945215] [n-62-23-6:3788 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209535.945310] [n-62-23-6:3789 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3110.52
+[1574209535.947049] [n-62-23-6:3789 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209535.947065] [n-62-23-6:3789 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209535.947304] [n-62-23-6:3788 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209535.947318] [n-62-23-6:3788 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209535.948881] [n-62-23-6:3789 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209535.948896] [n-62-23-6:3789 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209535.950645] [n-62-23-6:3791 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3105.91
+[1574209535.952020] [n-62-23-6:3791 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209535.952036] [n-62-23-6:3791 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209535.952926] [n-62-23-6:3793 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3105.91
+[1574209535.953799] [n-62-23-6:3791 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209535.953813] [n-62-23-6:3791 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209535.954345] [n-62-23-6:3793 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209535.954362] [n-62-23-6:3793 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209535.954572] [n-62-23-6:3790 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3105.91
+[1574209535.955972] [n-62-23-6:3790 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209535.955988] [n-62-23-6:3790 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209535.956175] [n-62-23-6:3793 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209535.956190] [n-62-23-6:3793 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209535.957830] [n-62-23-6:3790 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209535.957845] [n-62-23-6:3790 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209535.978949] [n-62-23-3:27885:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3187.08
+[1574209535.978946] [n-62-23-3:27886:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3187.08
+[1574209535.978946] [n-62-23-3:27887:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3187.08
+[1574209535.978942] [n-62-23-3:27888:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3187.08
+[1574209535.982863] [n-62-23-3:27885:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209535.982879] [n-62-23-3:27885:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209535.982863] [n-62-23-3:27886:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209535.982863] [n-62-23-3:27887:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209535.982879] [n-62-23-3:27887:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209535.982863] [n-62-23-3:27888:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209535.982879] [n-62-23-3:27888:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209535.982930] [n-62-23-3:27886:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209535.985058] [n-62-23-3:27887:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209535.985076] [n-62-23-3:27887:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209535.985067] [n-62-23-3:27885:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209535.985080] [n-62-23-3:27885:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209535.985044] [n-62-23-3:27888:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209535.985060] [n-62-23-3:27888:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209535.985051] [n-62-23-3:27886:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209535.985073] [n-62-23-3:27886:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'TAS1_Diff_Powder' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-5/linup-5.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+[TAS1_Diff_Powder] Initialize
+[TAS1_Diff_Powder] Initialize
+[TAS1_Diff_Powder] Initialize
+[TAS1_Diff_Powder] Initialize
+[TAS1_Diff_Powder] Initialize
+[TAS1_Diff_Powder] Initialize
+[TAS1_Diff_Powder] Initialize
+[TAS1_Diff_Powder] Initialize
+[TAS1_Diff_Powder] Initialize
+[TAS1_Diff_Powder] Initialize
+<E> : 20.149 meV , E-width : 0.168284 meV 
+<E> : 20.172 meV , E-width : 0.15803 meV 
+
+Finally [TAS1_Diff_Powder: 1]. Time: 1 [s] 
+<E> : 20.1491 meV , E-width : 0.168078 meV 
+<E> : 20.1496 meV , E-width : 0.167142 meV 
+<E> : 20.1512 meV , E-width : 0.168752 meV 
+<E> : 20.1719 meV , E-width : 0.155454 meV 
+
+Finally [TAS1_Diff_Powder: 1]. Time: 1 [s] 
+<E> : 20.1749 meV , E-width : 0.155017 meV 
+
+<E> : 20.1696 meV , E-width : 0.155373 meV 
+
+Finally [TAS1_Diff_Powder: 1]. Time: 1 [s] 
+Finally [TAS1_Diff_Powder: 1]. Time: 1 [s] 
+<E> : 20.1481 meV , E-width : 0.168646 meV 
+<E> : 20.1694 meV , E-width : 0.15613 meV 
+
+Finally [TAS1_Diff_Powder: 1]. Time: 1 [s] 
+<E> : 20.1515 meV , E-width : 0.167081 meV 
+<E> : 20.149 meV , E-width : 0.169213 meV 
+<E> : 20.1737 meV , E-width : 0.155843 meV 
+
+<E> : 20.1725 meV , E-width : 0.15339 meV 
+
+Finally [TAS1_Diff_Powder: 1]. Time: 1 [s] 
+Finally [TAS1_Diff_Powder: 1]. Time: 1 [s] 
+
+Save [TAS1_Diff_Powder]
+Detector: mon_I=-nan mon_ERR=-nan mon_N=-nan "mon"
+<E> : 20.1518 meV , E-width : 0.169356 meV 
+<E> : 20.1755 meV , E-width : 0.154649 meV 
+
+Finally [TAS1_Diff_Powder: 1]. Time: 1 [s] 
+<E> : 20.1491 meV , E-width : 0.169301 meV 
+Detector: emon1_I=0.000640647 emon1_ERR=1.63311e-06 emon1_N=189792 "linup_5_1.vmon"
+<E> : 20.1481 meV , E-width : 0.167989 meV 
+Detector: sng_I=-nan sng_ERR=-nan sng_N=-nan "sng"
+<E> : 20.1683 meV , E-width : 0.15774 meV 
+
+Finally [TAS1_Diff_Powder: 1]. Time: 1 [s] 
+Detector: emon2_I=4.8821e-07 emon2_ERR=1.18569e-09 emon2_N=262832 "linup_5_2.vmon"
+<E> : 20.1704 meV , E-width : 0.154008 meV 
+
+Finally [TAS1_Diff_Powder: 1]. Time: 1 [s] 
+[n-62-23-6:03777] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-6:03777] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-5/linup-5.instr in dataset 1

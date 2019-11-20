@@ -1,0 +1,217 @@
+McStas simulation description file for Test_Magnetic_Userdefined.
+Date:    Wed Nov 20 01:16:49 2019
+Program: McStas 2.5 - Nov. 19, 2019
+
+begin instrument: Test_Magnetic_Userdefined
+  File: 1/mccode
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Userdefined/Test_Magnetic_Userdefined.instr
+  Parameters: 
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Userdefined/Test_Magnetic_Userdefined.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574239985
+  Directory: 1
+  Nodes: 10
+end simulation
+
+begin data
+  Date: Wed Nov 20 01:16:50 2019 (1574209010)
+  type: array_2d(100, 21)
+  Source: Test_Magnetic_Userdefined (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Userdefined/Test_Magnetic_Userdefined.instr)
+  component: pollambdaMonitor1x
+  position: 0 0 0.7
+  title: Pol-wavelength monitor
+  Ncount: 10000000
+  filename: pollambdaMon1x.data
+  statistics: X0=5.00083; dX=2.82854; Y0=0.952381; dY=0;
+  signal: Min=0; Max=0.00315724; Mean=0.000146106;
+  values: 0.306823 9.70262e-05 1e+07
+  xvar: Wavelength
+  yvar: Polarisation
+  xlabel: Wavelength [AA]
+  ylabel: Polarisation projection
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 10 -1 1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:16:50 2019 (1574209010)
+  type: array_2d(100, 21)
+  Source: Test_Magnetic_Userdefined (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Userdefined/Test_Magnetic_Userdefined.instr)
+  component: pollambdaMonitor1y
+  position: 0 0 0.75
+  title: Pol-wavelength monitor
+  Ncount: 10000000
+  filename: pollambdaMon1y.data
+  statistics: X0=5.00083; dX=2.82854; Y0=0; dY=0;
+  signal: Min=0; Max=0.00315724; Mean=0.000146106;
+  values: 0.306823 9.70262e-05 1e+07
+  xvar: Wavelength
+  yvar: Polarisation
+  xlabel: Wavelength [AA]
+  ylabel: Polarisation projection
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 10 -1 1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:16:50 2019 (1574209010)
+  type: array_2d(100, 21)
+  Source: Test_Magnetic_Userdefined (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Userdefined/Test_Magnetic_Userdefined.instr)
+  component: pollambdaMonitor1z
+  position: 0 0 0.8
+  title: Pol-wavelength monitor
+  Ncount: 10000000
+  filename: pollambdaMon1z.data
+  statistics: X0=5.00083; dX=2.82854; Y0=0; dY=0;
+  signal: Min=0; Max=0.00315724; Mean=0.000146106;
+  values: 0.306823 9.70262e-05 1e+07
+  xvar: Wavelength
+  yvar: Polarisation
+  xlabel: Wavelength [AA]
+  ylabel: Polarisation projection
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 10 -1 1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:16:50 2019 (1574209010)
+  type: array_2d(100, 21)
+  Source: Test_Magnetic_Userdefined (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Userdefined/Test_Magnetic_Userdefined.instr)
+  component: pollambdaMonitor2x
+  position: 0 0 1.3
+  title: Pol-wavelength monitor
+  Ncount: 10000000
+  filename: pollambdaMon2x.data
+  statistics: X0=5.00106; dX=2.82836; Y0=0.952381; dY=0;
+  signal: Min=0; Max=0.0018753; Mean=8.64073e-05;
+  values: 0.181455 7.46677e-05 5.90574e+06
+  xvar: Wavelength
+  yvar: Polarisation
+  xlabel: Wavelength [AA]
+  ylabel: Polarisation projection
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 10 -1 1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:16:50 2019 (1574209010)
+  type: array_2d(100, 21)
+  Source: Test_Magnetic_Userdefined (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Userdefined/Test_Magnetic_Userdefined.instr)
+  component: pollambdaMonitor2y
+  position: 0 0 1.4
+  title: Pol-wavelength monitor
+  Ncount: 10000000
+  filename: pollambdaMon2y.data
+  statistics: X0=5.0006; dX=2.82811; Y0=0; dY=0;
+  signal: Min=0; Max=0.0016187; Mean=7.46564e-05;
+  values: 0.156779 6.94147e-05 5.10118e+06
+  xvar: Wavelength
+  yvar: Polarisation
+  xlabel: Wavelength [AA]
+  ylabel: Polarisation projection
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 10 -1 1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:16:50 2019 (1574209010)
+  type: array_2d(100, 21)
+  Source: Test_Magnetic_Userdefined (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Userdefined/Test_Magnetic_Userdefined.instr)
+  component: pollambdaMonitor2z
+  position: 0 0 1.5
+  title: Pol-wavelength monitor
+  Ncount: 10000000
+  filename: pollambdaMon2z.data
+  statistics: X0=5.00034; dX=2.82811; Y0=0; dY=0;
+  signal: Min=0; Max=0.00140987; Mean=6.50475e-05;
+  values: 0.1366 6.4801e-05 4.44361e+06
+  xvar: Wavelength
+  yvar: Polarisation
+  xlabel: Wavelength [AA]
+  ylabel: Polarisation projection
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 0 10 -1 1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:16:50 2019 (1574209010)
+  type: array_1d(100)
+  Source: Test_Magnetic_Userdefined (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Userdefined/Test_Magnetic_Userdefined.instr)
+  component: mpollambdaMonitor2x
+  position: 0 0 1.6
+  title: Pol-wavelength monitor
+  Ncount: 10000000
+  filename: mpollambdaMon2x.data
+  statistics: X0=5; dX=2.82887;
+  signal: Min=0; Max=10; Mean=9.8;
+  values: 980 0.000250975 3.90477e+06
+  xvar: Wavelength
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Mean Polarisation
+  xlimits: 0 10
+  variables: Wavelength I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:16:50 2019 (1574209010)
+  type: array_1d(100)
+  Source: Test_Magnetic_Userdefined (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Userdefined/Test_Magnetic_Userdefined.instr)
+  component: mpollambdaMonitor2y
+  position: 0 0 1.7
+  title: Pol-wavelength monitor
+  Ncount: 10000000
+  filename: mpollambdaMon2y.data
+  statistics: X0=0; dX=0;
+  signal: Min=0; Max=0; Mean=0;
+  values: 0 0 3.45899e+06
+  xvar: Wavelength
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Mean Polarisation
+  xlimits: 0 10
+  variables: Wavelength I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:16:50 2019 (1574209010)
+  type: array_1d(100)
+  Source: Test_Magnetic_Userdefined (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Userdefined/Test_Magnetic_Userdefined.instr)
+  component: mpollambdaMonitor2z
+  position: 0 0 1.8
+  title: Pol-wavelength monitor
+  Ncount: 10000000
+  filename: mpollambdaMon2z.data
+  statistics: X0=0; dX=0;
+  signal: Min=0; Max=0; Mean=0;
+  values: 0 0 3.0854e+06
+  xvar: Wavelength
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Mean Polarisation
+  xlimits: 0 10
+  variables: Wavelength I I_err N
+end data

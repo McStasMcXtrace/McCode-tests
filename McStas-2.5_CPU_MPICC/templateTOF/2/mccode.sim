@@ -1,0 +1,148 @@
+McStas simulation description file for templateTOF.
+Date:    Wed Nov 20 01:27:29 2019
+Program: McStas 2.5 - Nov. 19, 2019
+
+begin instrument: templateTOF
+  File: 2/mccode
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateTOF/templateTOF.instr
+  Parameters:  E0(double) dE(double) dt(double) coh(string) inc(string) thickness(double) yheight(double) radius(double) container(string) container_thickness(double) environment(string) environment_radius(double) environment_thickness(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 2
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateTOF/templateTOF.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574214732
+  Directory: 2
+  Nodes: 10
+  Param: E0=33
+  Param: dE=1.07
+  Param: dt=9.6e-06
+  Param: coh=Rb_liq_coh.sqw
+  Param: inc=Rb_liq_inc.sqw
+  Param: thickness=0.0001
+  Param: yheight=0.0168
+  Param: radius=0.005
+  Param: container=Nb.laz
+  Param: container_thickness=5e-05
+  Param: environment=Al.laz
+  Param: environment_radius=0.025
+  Param: environment_thickness=0.002
+end simulation
+
+begin data
+  Date: Wed Nov 20 01:27:38 2019 (1574209658)
+  type: array_2d(50, 150)
+  Source: templateTOF (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateTOF/templateTOF.instr)
+  component: M_total
+  position: 0 0 2.88
+  title:  Intensity Energy Angle Monitor (Banana) [out] per bin
+  Ncount: 10000000
+  filename: M_total_1574209653.E_th
+  statistics: X0=33.1309; dX=2.29005; Y0=95.4949; dY=47.0374;
+  signal: Min=0; Max=2.87532e-10; Mean=6.93168e-13;
+  values: 5.19876e-09 8.51583e-11 646106
+  xvar: Energy
+  yvar: Longitude
+  xlabel: Energy [meV]
+  ylabel: Longitude [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 16.5 66 5 175
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:27:38 2019 (1574209658)
+  type: array_2d(50, 150)
+  Source: templateTOF (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateTOF/templateTOF.instr)
+  component: M_single_coh
+  position: 0 0 2.88
+  title:  Intensity Energy Angle Monitor (Banana) [out] per bin
+  Ncount: 10000000
+  filename: M_single_coh_1574209653.E_th
+  statistics: X0=33.6569; dX=6.36148; Y0=92.332; dY=47.0659;
+  signal: Min=0; Max=5.78821e-12; Mean=8.00642e-14;
+  values: 6.00481e-10 1.8054e-12 481998
+  xvar: Energy
+  yvar: Longitude
+  xlabel: Energy [meV]
+  ylabel: Longitude [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 16.5 66 5 175
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:27:38 2019 (1574209658)
+  type: array_2d(50, 150)
+  Source: templateTOF (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateTOF/templateTOF.instr)
+  component: M_single_inc
+  position: 0 0 2.88
+  title:  Intensity Energy Angle Monitor (Banana) [out] per bin
+  Ncount: 10000000
+  filename: M_single_inc_1574209653.E_th
+  statistics: X0=33.5882; dX=6.16391; Y0=88.5533; dY=49.191;
+  signal: Min=0; Max=3.01865e-13; Mean=6.59397e-15;
+  values: 4.94548e-11 5.1685e-13 39894
+  xvar: Energy
+  yvar: Longitude
+  xlabel: Energy [meV]
+  ylabel: Longitude [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 16.5 66 5 175
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:27:38 2019 (1574209658)
+  type: array_2d(50, 150)
+  Source: templateTOF (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateTOF/templateTOF.instr)
+  component: M_multi
+  position: 0 0 2.88
+  title:  Intensity Energy Angle Monitor (Banana) [out] per bin
+  Ncount: 10000000
+  filename: M_multi_1574209653.E_th
+  statistics: X0=34.3588; dX=8.49604; Y0=89.8215; dY=48.5716;
+  signal: Min=0; Max=8.42464e-15; Mean=1.98066e-16;
+  values: 1.4855e-12 2.09392e-14 115631
+  xvar: Energy
+  yvar: Longitude
+  xlabel: Energy [meV]
+  ylabel: Longitude [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 16.5 66 5 175
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:27:38 2019 (1574209658)
+  type: array_2d(50, 150)
+  Source: templateTOF (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateTOF/templateTOF.instr)
+  component: M_env_container
+  position: 0 0 2.88
+  title:  Intensity Energy Angle Monitor (Banana) [out] per bin
+  Ncount: 10000000
+  filename: M_env_container_1574209653.E_th
+  statistics: X0=33.0565; dX=0.483265; Y0=95.9803; dY=46.9912;
+  signal: Min=0; Max=2.86432e-10; Mean=6.07344e-13;
+  values: 4.55508e-09 8.51397e-11 18700
+  xvar: Energy
+  yvar: Longitude
+  xlabel: Energy [meV]
+  ylabel: Longitude [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: 16.5 66 5 175
+  variables: I I_err N
+end data

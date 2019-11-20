@@ -1,0 +1,217 @@
+INFO: Using directory: "1"
+INFO: Using existing c-file: ./ILL_H512_D22.c
+INFO: Using existing binary: ./ILL_H512_D22.out
+INFO: ===
+INFO: Using system default number of mpirun -np processes
+[1574208200.154462] [n-62-23-6:21831:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3169.65
+[1574208200.156007] [n-62-23-6:21831:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208200.156023] [n-62-23-6:21831:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1574208200.157887] [n-62-23-6:21831:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208200.157901] [n-62-23-6:21831:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208200.163678] [n-62-23-6:21832:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3169.65
+[1574208200.165087] [n-62-23-6:21832:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208200.165104] [n-62-23-6:21832:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208200.166878] [n-62-23-6:21832:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208200.166893] [n-62-23-6:21832:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208200.175168] [n-62-23-6:21833:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3169.65
+[1574208200.176388] [n-62-23-6:21834:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3169.65
+[1574208200.177326] [n-62-23-6:21833:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208200.177343] [n-62-23-6:21833:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208200.177831] [n-62-23-6:21834:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208200.177846] [n-62-23-6:21834:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208200.179278] [n-62-23-6:21833:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208200.179293] [n-62-23-6:21833:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208200.179308] [n-62-23-6:21836:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3169.65
+[1574208200.179573] [n-62-23-6:21835:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3169.65
+[1574208200.179648] [n-62-23-6:21834:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208200.179663] [n-62-23-6:21834:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208200.180934] [n-62-23-6:21836:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208200.180950] [n-62-23-6:21836:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208200.181150] [n-62-23-6:21835:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208200.181167] [n-62-23-6:21835:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208200.182853] [n-62-23-6:21836:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208200.182867] [n-62-23-6:21836:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208200.183070] [n-62-23-6:21835:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208200.183085] [n-62-23-6:21835:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208200.213652] [n-62-23-3:21329:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3175.80
+[1574208200.213654] [n-62-23-3:21330:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3175.80
+[1574208200.213652] [n-62-23-3:21331:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3175.80
+[1574208200.213652] [n-62-23-3:21332:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3175.80
+[1574208200.217965] [n-62-23-3:21329:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208200.217982] [n-62-23-3:21329:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208200.217965] [n-62-23-3:21331:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208200.217982] [n-62-23-3:21331:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208200.218357] [n-62-23-3:21332:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208200.218374] [n-62-23-3:21332:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208200.218410] [n-62-23-3:21330:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208200.218427] [n-62-23-3:21330:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208200.220180] [n-62-23-3:21331:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208200.220193] [n-62-23-3:21331:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208200.220176] [n-62-23-3:21329:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208200.220248] [n-62-23-3:21329:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208200.220448] [n-62-23-3:21332:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208200.220498] [n-62-23-3:21332:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208200.220582] [n-62-23-3:21330:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208200.220599] [n-62-23-3:21330:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'ILL_H512_D22' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H512_D22/ILL_H512_D22.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+ILL_H512_D22: D22:  nu=28307.4 [rpm] lambda=4.5 [Angs] sample=H2O_liq.qSq
+ILL_H512_D22: D22:  nu=28307.4 [rpm] lambda=4.5 [Angs] sample=H2O_liq.qSq
+[ILL_H512_D22] Initialize
+[ILL_H512_D22] Initialize
+ILL_H512_D22: D22:  nu=28307.4 [rpm] lambda=4.5 [Angs] sample=H2O_liq.qSq
+ILL_H512_D22: D22:  nu=28307.4 [rpm] lambda=4.5 [Angs] sample=H2O_liq.qSq
+ILL_H512_D22: D22:  nu=28307.4 [rpm] lambda=4.5 [Angs] sample=H2O_liq.qSq
+ILL_H512_D22: D22:  nu=28307.4 [rpm] lambda=4.5 [Angs] sample=H2O_liq.qSq
+ILL_H512_D22: D22:  nu=28307.4 [rpm] lambda=4.5 [Angs] sample=H2O_liq.qSq
+ILL_H512_D22: D22:  nu=28307.4 [rpm] lambda=4.5 [Angs] sample=H2O_liq.qSq
+ILL_H512_D22: D22:  nu=28307.4 [rpm] lambda=4.5 [Angs] sample=H2O_liq.qSq
+[ILL_H512_D22] Initialize
+ILL_H512_D22: D22:  nu=28307.4 [rpm] lambda=4.5 [Angs] sample=H2O_liq.qSq
+[ILL_H512_D22] Initialize
+[ILL_H512_D22] Initialize
+[ILL_H512_D22] Initialize
+[ILL_H512_D22] Initialize
+[ILL_H512_D22] Initialize
+[ILL_H512_D22] Initialize
+[ILL_H512_D22] Initialize
+Source_gen: component HCS (square 0.1 x 0.1)
+            focusing distance dist=2.155 area=0.123 x 0.12
+            spectra 4.050 to 4.950 AA (3.339 to 4.988 meV)
+            T1=40.1 K (4.865 AA), T2=145.8 K (2.552 AA), T3=413.5 K (1.515 AA)
+  Flux is dPhi/dlambda in [n/s/cm2].
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
+Table from file 'Al.laz' (block 1) is 26 x 18 (x=1:8), constant step. interpolation: linear
+  '# TITLE *Aluminum-Al-[FM3-M] Miller, H.P.jr.;DuMond, J.W.M.[1942] at 298 K; ...'
+PowderN: HCS_Al: Reading 26 rows from Al.laz
+PowderN: HCS_Al: Read 26 reflections from file 'Al.laz'
+PowderN: HCS_Al: Vc=66.4 [Angs] sigma_abs=0.924 [barn] sigma_inc=0.0328 [barn] reflections=Al.laz
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
+Table from file 'Al.laz' (block 1) is 26 x 18 (x=1:8), constant step. interpolation: linear
+  '# TITLE *Aluminum-Al-[FM3-M] Miller, H.P.jr.;DuMond, J.W.M.[1942] at 298 K; ...'
+PowderN: HCS_Al_4: Reading 26 rows from Al.laz
+PowderN: HCS_Al_4: Read 26 reflections from file 'Al.laz'
+PowderN: HCS_Al_4: Vc=66.4 [Angs] sigma_abs=0.924 [barn] sigma_inc=0.0328 [barn] reflections=Al.laz
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
+Table from file 'Al.laz' (block 1) is 26 x 18 (x=1:8), constant step. interpolation: linear
+  '# TITLE *Aluminum-Al-[FM3-M] Miller, H.P.jr.;DuMond, J.W.M.[1942] at 298 K; ...'
+PowderN: HCS_Al_5: Reading 26 rows from Al.laz
+PowderN: HCS_Al_5: Read 26 reflections from file 'Al.laz'
+PowderN: HCS_Al_5: Vc=66.4 [Angs] sigma_abs=0.924 [barn] sigma_inc=0.0328 [barn] reflections=Al.laz
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
+Table from file 'Al.laz' (block 1) is 26 x 18 (x=1:8), constant step. interpolation: linear
+  '# TITLE *Aluminum-Al-[FM3-M] Miller, H.P.jr.;DuMond, J.W.M.[1942] at 298 K; ...'
+PowderN: HCS_Al_6: Reading 26 rows from Al.laz
+PowderN: HCS_Al_6: Read 26 reflections from file 'Al.laz'
+PowderN: HCS_Al_6: Vc=66.4 [Angs] sigma_abs=0.924 [barn] sigma_inc=0.0328 [barn] reflections=Al.laz
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
+Table from file 'Al.laz' (block 1) is 26 x 18 (x=1:8), constant step. interpolation: linear
+  '# TITLE *Aluminum-Al-[FM3-M] Miller, H.P.jr.;DuMond, J.W.M.[1942] at 298 K; ...'
+PowderN: HCS_Al_7: Reading 26 rows from Al.laz
+PowderN: HCS_Al_7: Read 26 reflections from file 'Al.laz'
+PowderN: HCS_Al_7: Vc=66.4 [Angs] sigma_abs=0.924 [barn] sigma_inc=0.0328 [barn] reflections=Al.laz
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
+Table from file 'Al.laz' (block 1) is 26 x 18 (x=1:8), constant step. interpolation: linear
+  '# TITLE *Aluminum-Al-[FM3-M] Miller, H.P.jr.;DuMond, J.W.M.[1942] at 298 K; ...'
+PowderN: HCS_Al_15: Reading 26 rows from Al.laz
+PowderN: HCS_Al_15: Read 26 reflections from file 'Al.laz'
+PowderN: HCS_Al_15: Vc=66.4 [Angs] sigma_abs=0.924 [barn] sigma_inc=0.0328 [barn] reflections=Al.laz
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
+Table from file 'Al.laz' (block 1) is 26 x 18 (x=1:8), constant step. interpolation: linear
+  '# TITLE *Aluminum-Al-[FM3-M] Miller, H.P.jr.;DuMond, J.W.M.[1942] at 298 K; ...'
+PowderN: HCS_Al_17: Reading 26 rows from Al.laz
+PowderN: HCS_Al_17: Read 26 reflections from file 'Al.laz'
+PowderN: HCS_Al_17: Vc=66.4 [Angs] sigma_abs=0.924 [barn] sigma_inc=0.0328 [barn] reflections=Al.laz
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
+Table from file 'Al.laz' (block 1) is 26 x 18 (x=1:8), constant step. interpolation: linear
+  '# TITLE *Aluminum-Al-[FM3-M] Miller, H.P.jr.;DuMond, J.W.M.[1942] at 298 K; ...'
+PowderN: HCS_Al_H51: Reading 26 rows from Al.laz
+PowderN: HCS_Al_H51: Read 26 reflections from file 'Al.laz'
+PowderN: HCS_Al_H51: Vc=66.4 [Angs] sigma_abs=0.924 [barn] sigma_inc=0.0328 [barn] reflections=Al.laz
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
+Table from file 'Al.laz' (block 1) is 26 x 18 (x=1:8), constant step. interpolation: linear
+  '# TITLE *Aluminum-Al-[FM3-M] Miller, H.P.jr.;DuMond, J.W.M.[1942] at 298 K; ...'
+PowderN: HCS_Al_H512: Reading 26 rows from Al.laz
+PowderN: HCS_Al_H512: Read 26 reflections from file 'Al.laz'
+PowderN: HCS_Al_H512: Vc=66.4 [Angs] sigma_abs=0.924 [barn] sigma_inc=0.0328 [barn] reflections=Al.laz
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
+Table from file 'Al.laz' (block 1) is 26 x 18 (x=1:8), constant step. interpolation: linear
+  '# TITLE *Aluminum-Al-[FM3-M] Miller, H.P.jr.;DuMond, J.W.M.[1942] at 298 K; ...'
+PowderN: HCS_Al_45: Reading 26 rows from Al.laz
+PowderN: HCS_Al_45: Read 26 reflections from file 'Al.laz'
+PowderN: HCS_Al_45: Vc=66.4 [Angs] sigma_abs=0.924 [barn] sigma_inc=0.0328 [barn] reflections=Al.laz
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
+Table from file 'Al.laz' (block 1) is 26 x 18 (x=1:8), constant step. interpolation: linear
+  '# TITLE *Aluminum-Al-[FM3-M] Miller, H.P.jr.;DuMond, J.W.M.[1942] at 298 K; ...'
+PowderN: HCS_Al_50: Reading 26 rows from Al.laz
+PowderN: HCS_Al_50: Read 26 reflections from file 'Al.laz'
+PowderN: HCS_Al_50: Vc=66.4 [Angs] sigma_abs=0.924 [barn] sigma_inc=0.0328 [barn] reflections=Al.laz
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
+Table from file 'Al.laz' (block 1) is 26 x 18 (x=1:8), constant step. interpolation: linear
+  '# TITLE *Aluminum-Al-[FM3-M] Miller, H.P.jr.;DuMond, J.W.M.[1942] at 298 K; ...'
+PowderN: HCS_Al_52: Reading 26 rows from Al.laz
+PowderN: HCS_Al_52: Read 26 reflections from file 'Al.laz'
+PowderN: HCS_Al_52: Vc=66.4 [Angs] sigma_abs=0.924 [barn] sigma_inc=0.0328 [barn] reflections=Al.laz
+Isotropic_Sqw: H51_D22_Sample: is a cylinder: radius=0.005000 thickness=0.000000 height=0.050000 [J Comp Phys 228 (2009) 5251]
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/H2O_liq.qSq' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/H2O_liq.qSq' (Table_Read_Offset)
+Isotropic_Sqw: H51_D22_Sample: Computing scattering unit density V_rho=0.0332279 [AA^-3] from density=0.994 [g/cm^3] weight=18.015 [g/mol].
+Isotropic_sqw: Converting 150 S(q) from H2O_liq.qSq into S(q,w) data
+Isotropic_sqw: q range [0:14.8], creating 150 elements vector
+Isotropic_Sqw: H51_D22_Sample: Temperature set to T=293 [K]
+Isotropic_Sqw: H51_D22_Sample: Applying exp(hw/2kT) factor with T=293 [K] on H2O_liq.qSq file (classical/symmetric) using 'Frommhold' quantum correction
+Isotropic_Sqw: H51_D22_Sample: Generated H2O_liq.qSq coherent Sqw
+                   q=[0:14.8 Angs-1] w=[0:0 meV] |S|=1.49025 size=[152x1] sigma=7.751 [barns]
+               Mainly elastic scattering.
+Isotropic_Sqw: H51_D22_Sample: Using Isotropic elastic incoherent scattering (sigma=160.521 [barns])
+Isotropic_Sqw: H51_D22_Sample: Focusing can only apply for single
+               scattering. Setting to order=1.
+
+Finally [ILL_H512_D22: 1]. Time: 3 [s] 
+
+Finally [ILL_H512_D22: 1]. Time: 3 [s] 
+
+Finally [ILL_H512_D22: 1]. Time: 3 [s] 
+
+Finally [ILL_H512_D22: 1]. Time: 3 [s] 
+
+Finally [ILL_H512_D22: 1]. Time: 3 [s] 
+
+Finally [ILL_H512_D22: 1]. Time: 3 [s] 
+
+Finally [ILL_H512_D22: 1]. Time: 3 [s] 
+
+Save [ILL_H512_D22]
+Detector: H5_I=6.10375e+12 H5_ERR=2.24016e+09 H5_N=7.67485e+06 "H5_1574208200.x_y"
+
+Finally [ILL_H512_D22: 1]. Time: 3 [s] 
+Detector: H51_origin_I=1.00233e+12 H51_origin_ERR=9.08176e+08 H51_origin_N=1.25651e+06 "H51_origin_1574208200.hd_vd"
+Detector: H51_Obt_Out_I=1.15486e+11 H51_Obt_Out_ERR=3.02096e+08 H51_Obt_Out_N=545668 "H51_Obt_Out_1574208200.x_y"
+Detector: H51_S2_Out_I=8.89827e+10 H51_S2_Out_ERR=2.78037e+08 H51_S2_Out_N=464752 "H51_S2_Out_1574208200.x_y"
+Detector: H51_split_2_I=4.12881e+10 H51_split_2_ERR=1.89626e+08 H51_split_2_N=213118 "H51_split_2_1574208200.x_y"
+Detector: H51_split_1_I=4.08964e+10 H51_split_1_ERR=1.88714e+08 H51_split_1_N=212708 "H51_split_1_1574208200.x_y"
+Detector: H512_VTE_I=2.9573e+10 H512_VTE_ERR=1.64569e+08 H512_VTE_N=195229 "H512_VTE_1574208200.x_y"
+Detector: D22_PreV_I=2.42352e+10 D22_PreV_ERR=1.59564e+08 D22_PreV_N=139650 "D22_PreV_1574208200.x_y"
+Detector: H51_D22_Sample_Div_I=2.2146e+09 H51_D22_Sample_Div_ERR=3.89542e+07 H51_D22_Sample_Div_N=11748 "H51_D22_Sample_Div_1574208200.hd_vd"
+Detector: H51_D22_Sample_XY_I=2.2146e+09 H51_D22_Sample_XY_ERR=3.89542e+07 H51_D22_Sample_XY_N=11748 "H51_D22_Sample_XY_1574208200.x_y"
+Detector: H51_D22_Sample_L_I=2.2146e+09 H51_D22_Sample_L_ERR=3.89542e+07 H51_D22_Sample_L_N=11748 "H51_D22_Sample_L_1574208200.L"
+
+Detector: D22_Detector_I=1.903e+07 D22_Detector_ERR=569724 D22_Detector_N=4221 "D22_Detector_1574208200.x_y"
+Finally [ILL_H512_D22: 1]. Time: 3 [s] 
+
+Finally [ILL_H512_D22: 1]. Time: 3 [s] 
+Isotropic_Sqw: H51_D22_Sample: 87 neutron events (out of 57211) that should have
+               scattered were transmitted because scattering conditions
+WARNING        could not be satisfied after 100 tries.
+Isotropic_Sqw: H51_D22_Sample: Scattering fraction=0.971953 of incoming intensity
+               Absorption fraction           =0.00978502
+               Single   scattering intensity =2.50482e+08 (coh=1.13974e+07 inc=2.39085e+08)
+               Multiple scattering intensity =0
+[n-62-23-6:21824] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-6:21824] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H512_D22/ILL_H512_D22.instr in dataset 1

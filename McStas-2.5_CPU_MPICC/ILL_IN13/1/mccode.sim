@@ -1,0 +1,267 @@
+McStas simulation description file for ILL_IN13.
+Date:    Wed Nov 20 01:04:01 2019
+Program: McStas 2.5 - Nov. 19, 2019
+
+begin instrument: ILL_IN13
+  File: 1/mccode
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN13/ILL_IN13.instr
+  Parameters:  RMV(double) RDV(double) RDH(double) TM(double) LMD(double) mos_ana(double) CaF2mos(double) gW(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN13/ILL_IN13.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574230481
+  Directory: 1
+  Nodes: 10
+  Param: RMV=0
+  Param: RDV=4.6
+  Param: RDH=0
+  Param: TM=301
+  Param: LMD=1.8
+  Param: mos_ana=2
+  Param: CaF2mos=10
+  Param: gW=0.03
+end simulation
+
+begin data
+  Date: Wed Nov 20 01:04:10 2019 (1574208250)
+  type: array_2d(100, 100)
+  Source: ILL_IN13 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN13/ILL_IN13.instr)
+  component: CaF2_incoming
+  position: 0 0 4
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: CaF2_incoming_1574208241.x_y
+  statistics: X0=8.09262e-07; dX=0.0136763; Y0=1.91686e-06; dY=0.0456149;
+  signal: Min=0; Max=858.697; Mean=681.915;
+  values: 6.81915e+06 2156.43 1e+07
+  xvar: x
+  yvar: y
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.025 0.025 -0.085 0.085
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:04:10 2019 (1574208250)
+  type: array_2d(100, 100)
+  Source: ILL_IN13 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN13/ILL_IN13.instr)
+  component: CaF2_transmitted
+  position: 0 0 4.3
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: CaF2_transmitted_1574208241.x_y
+  statistics: X0=2.11238e-05; dX=0.0142773; Y0=-3.77828e-06; dY=0.0480195;
+  signal: Min=235.183; Max=742.007; Mean=632.818;
+  values: 6.32818e+06 656.925 9.27974e+07
+  xvar: x
+  yvar: y
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.025 0.025 -0.085 0.085
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:04:10 2019 (1574208250)
+  type: array_2d(90, 90)
+  Source: ILL_IN13 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN13/ILL_IN13.instr)
+  component: Defl_XY
+  position: -0.106124 0 2.20313
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: Defl_XY.psd
+  statistics: X0=-0.00127489; dX=0.0200601; Y0=9.93889e-06; dY=0.0573002;
+  signal: Min=3.991; Max=11.1115; Mean=7.47004;
+  values: 60507.3 20.2436 8.93673e+06
+  xvar: x
+  yvar: y
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.035 0.035 -0.1 0.1
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:04:10 2019 (1574208250)
+  type: array_1d(500)
+  Source: ILL_IN13 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN13/ILL_IN13.instr)
+  component: Defl_lambda
+  position: -0.106124 0 2.20313
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: Defl_lambda.lam
+  statistics: X0=2.223; dX=0;
+  signal: Min=0; Max=60507.3; Mean=121.015;
+  values: 60507.3 20.2436 8.93673e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 3
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:04:10 2019 (1574208250)
+  type: array_2d(100, 100)
+  Source: ILL_IN13 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN13/ILL_IN13.instr)
+  component: SamposPSD
+  position: -2.40587 0 2.23748
+  title: PSD monitor
+  Ncount: 10000000
+  filename: SamposPSD.psd
+  statistics: X0=-0.0309298; dX=0.733146; Y0=-0.00144263; dY=1.19179;
+  signal: Min=0; Max=7.64599; Mean=0.58784;
+  values: 5878.4 1.99493 8.68563e+06
+  xvar: X
+  yvar: Y
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -5 5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:04:10 2019 (1574208250)
+  type: array_1d(100)
+  Source: ILL_IN13 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN13/ILL_IN13.instr)
+  component: SamposEnergy
+  position: -2.40587 0 2.23748
+  title: Energy [meV] monitor
+  Ncount: 10000000
+  filename: SamposEnergy_1574208241.E
+  statistics: X0=16.569; dX=0.00232938;
+  signal: Min=0; Max=396.849; Mean=58.784;
+  values: 5878.4 1.99493 8.68563e+06
+  xvar: E
+  yvar: (I,I_err)
+  xlabel: Energy [meV]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 16.5482 16.5882
+  variables: E I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:04:10 2019 (1574208250)
+  type: array_2d(20, 20)
+  Source: ILL_IN13 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN13/ILL_IN13.instr)
+  component: SamposPSDcm2
+  position: -2.40587 0 2.23748
+  title:  Intensity Position Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: SamposPSDcm2_1574208241.x_y
+  statistics: X0=-7.83946e-05; dX=0.00284005; Y0=4.94781e-06; dY=0.00287635;
+  signal: Min=1.21282; Max=2.15459; Mean=1.67684;
+  values: 670.738 0.673943 990800
+  xvar: x
+  yvar: y
+  xlabel: x [m]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.005 0.005 -0.005 0.005
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:04:10 2019 (1574208250)
+  type: array_2d(180, 180)
+  Source: ILL_IN13 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN13/ILL_IN13.instr)
+  component: PSD_scattered
+  position: -2.40587 0 2.23748
+  title:  Intensity Angle Position Monitor (Sphere) [out] per bin
+  Ncount: 10000000
+  filename: PSD_scattered_1574208241.th_y
+  statistics: X0=32.1625; dX=50.9126; Y0=0.00010405; dY=0.098092;
+  signal: Min=4.148e-05; Max=0.000737099; Mean=0.000313735;
+  values: 10.165 0.0142341 616155
+  xvar: Longitude
+  yvar: y
+  xlabel: Longitude [deg]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -60 120 -0.17 0.17
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:04:10 2019 (1574208250)
+  type: array_2d(100, 100)
+  Source: ILL_IN13 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN13/ILL_IN13.instr)
+  component: Detector
+  position: -2.4096 0 1.98751
+  title:  Intensity Angle [deg] Position Monitor (Square) per bin
+  Ncount: 10000000
+  filename: Detector_1574208241.U1_y
+  statistics: X0=30.4334; dX=52.2078; Y0=0.00183469; dY=0.0677833;
+  signal: Min=0; Max=9.87618e-05; Mean=1.01675e-05;
+  values: 0.101675 0.00142105 6159
+  xvar: Angle
+  yvar: y
+  xlabel: Angle [deg]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -60 120 -0.125 0.125
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:04:10 2019 (1574208250)
+  type: array_1d(100)
+  Source: ILL_IN13 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN13/ILL_IN13.instr)
+  component: DetectorEnergy
+  position: -2.4096 0 1.98751
+  title: Energy [meV] monitor
+  Ncount: 10000000
+  filename: DetectorEnergy_1574208241.E
+  statistics: X0=16.5688; dX=0.00252714;
+  signal: Min=0; Max=0.00642785; Mean=0.00101675;
+  values: 0.101675 0.00142105 6159
+  xvar: E
+  yvar: (I,I_err)
+  xlabel: Energy [meV]
+  ylabel: Intensity [n/s/bin]
+  xlimits: 16.5482 16.5882
+  variables: E I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:04:10 2019 (1574208250)
+  type: array_1d(20)
+  Source: ILL_IN13 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN13/ILL_IN13.instr)
+  component: DetectorShape
+  position: -2.40587 0 2.23748
+  title: Longitude [deg] monitor
+  Ncount: 10000000
+  filename: DetectorShape_1574208241.th
+  statistics: X0=-89.8838; dX=9.72305;
+  signal: Min=0; Max=0.0437325; Mean=0.006935;
+  values: 0.1387 0.00166421 8348
+  xvar: th
+  yvar: (I,I_err)
+  xlabel: Longitude [deg]
+  ylabel: Intensity [n/s/bin]
+  xlimits: -240 -60
+  variables: th I I_err N
+end data

@@ -1,0 +1,51 @@
+# Format: McCode with text headers
+# URL: http://www.mccode.org
+# Creator: McStas 2.5 - Nov. 19, 2019
+# Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H15/ILL_H15.instr
+# Ncount: 1000000
+# Trace: no
+# Gravitation: no
+# Seed: 1574228492
+# Directory: 1
+# Nodes: 10
+# Param: m=1
+# Param: lambda=10
+# Param: dlambda=9.9
+# Param: mip=1
+# Date: Wed Nov 20 01:01:32 2019 (1574208092)
+# type: array_1d(20)
+# Source: ILL_H15 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H15/ILL_H15.instr)
+# component: GuideOut_L
+# position: 0.357968 0 54.9614
+# title: Wavelength [Angs] monitor
+# Ncount: 10000000
+# filename: GuideOut_L_1574208076.L
+# statistics: X0=6.83418; dX=3.48001;
+# signal: Min=0; Max=4.81681e+08; Mean=1.52966e+08;
+# values: 3.05932e+09 7.7877e+06 3.41959e+06
+# xvar: L
+# yvar: (I,I_err)
+# xlabel: Wavelength [Angs]
+# ylabel: Intensity [n/s/cm2/bin]
+# xlimits: 1 21
+# variables: L I I_err N
+1.5 42707161.06 1815497.675 10964 
+2.5 174740274 2803247.517 29925 
+3.5 391347833.2 4093687.578 54387 
+4.5 481681435.3 3915597.668 80919 
+5.5 439996074.6 2987650.751 110517 
+6.5 366203882.9 2121710.674 139177 
+7.5 283659915.1 1445068.02 165014 
+8.5 216047161.3 985721.8226 185047 
+9.5 164177422.6 679294.5335 202327 
+10.5 122889063.9 469999.2631 216599 
+11.5 93652295.99 332628.685 227261 
+12.5 70758342.71 237004.0125 235705 
+13.5 55731986.07 174668.8294 244495 
+14.5 43403395.67 129140.3612 250396 
+15.5 34185983.44 96946.42212 253120 
+16.5 27100142.45 73590.3693 256785 
+17.5 21380042.45 56160.20664 259676 
+18.5 17097167.16 43433.76795 261044 
+19.5 12556373.55 32589.6392 236236 
+20.5 0 0 0 

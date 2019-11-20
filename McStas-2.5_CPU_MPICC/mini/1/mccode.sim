@@ -1,0 +1,48 @@
+McStas simulation description file for Minimal.
+Date:    Wed Nov 20 01:25:43 2019
+Program: McStas 2.5 - Nov. 19, 2019
+
+begin instrument: Minimal
+  File: 1/mccode
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/mini/mini.instr
+  Parameters:  dummy(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/mini/mini.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574213588
+  Directory: 1
+  Nodes: 10
+  Param: dummy=0
+end simulation
+
+begin data
+  Date: Wed Nov 20 01:25:44 2019 (1574209544)
+  type: array_2d(128, 128)
+  Source: Minimal (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/mini/mini.instr)
+  component: detector
+  position: 0 0 9.01
+  title: PSD monitor
+  Ncount: 10000000
+  filename: PSD.dat
+  statistics: X0=-0.0005891; dX=1.03497; Y0=0.000122684; dY=1.03688;
+  signal: Min=0; Max=0.704688; Mean=0.0211316;
+  values: 346.22 0.219865 2.47965e+06
+  xvar: X
+  yvar: Y
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -10 10 -10 10
+  variables: I I_err N
+end data

@@ -1,0 +1,103 @@
+INFO: Using directory: "4"
+INFO: Using existing c-file: ./Test_Guides_Curved.c
+INFO: Using existing binary: ./Test_Guides_Curved.out
+INFO: ===
+INFO: Using system default number of mpirun -np processes
+[1574208866.146802] [n-62-23-6:28994:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3123.51
+[1574208866.148236] [n-62-23-6:28994:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208866.148253] [n-62-23-6:28994:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1574208866.150137] [n-62-23-6:28994:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208866.150151] [n-62-23-6:28994:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208866.157804] [n-62-23-6:28995:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3140.60
+[1574208866.159255] [n-62-23-6:28995:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208866.159272] [n-62-23-6:28995:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208866.161118] [n-62-23-6:28995:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208866.161135] [n-62-23-6:28995:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208866.171825] [n-62-23-6:28997:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.15
+[1574208866.172703] [n-62-23-6:28996:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.15
+[1574208866.173200] [n-62-23-6:28997:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208866.173216] [n-62-23-6:28997:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208866.174202] [n-62-23-6:28996:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208866.174219] [n-62-23-6:28996:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208866.174421] [n-62-23-6:28998:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.15
+[1574208866.175154] [n-62-23-6:28997:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208866.175168] [n-62-23-6:28997:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208866.175606] [n-62-23-6:28999:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.15
+[1574208866.175754] [n-62-23-6:28998:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208866.175770] [n-62-23-6:28998:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208866.176102] [n-62-23-6:28996:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208866.176117] [n-62-23-6:28996:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208866.177013] [n-62-23-6:28999:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208866.177029] [n-62-23-6:28999:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208866.177632] [n-62-23-6:28998:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208866.177647] [n-62-23-6:28998:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208866.178856] [n-62-23-6:28999:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208866.178871] [n-62-23-6:28999:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208866.200068] [n-62-23-3:24619:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3177.00
+[1574208866.200065] [n-62-23-3:24627:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3177.00
+[1574208866.200065] [n-62-23-3:24636:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3177.00
+[1574208866.200065] [n-62-23-3:24639:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3177.00
+[1574208866.204049] [n-62-23-3:24619:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208866.204049] [n-62-23-3:24636:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208866.204066] [n-62-23-3:24636:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208866.204053] [n-62-23-3:24639:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208866.204067] [n-62-23-3:24639:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208866.204172] [n-62-23-3:24619:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208866.204443] [n-62-23-3:24627:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208866.204460] [n-62-23-3:24627:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208866.206396] [n-62-23-3:24636:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208866.206399] [n-62-23-3:24619:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208866.206413] [n-62-23-3:24619:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208866.206402] [n-62-23-3:24639:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208866.206416] [n-62-23-3:24639:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208866.206467] [n-62-23-3:24627:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208866.206485] [n-62-23-3:24627:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208866.206447] [n-62-23-3:24636:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'Test_Guides_Curved' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+[Test_Guides_Curved] Initialize
+[Test_Guides_Curved] Initialize
+[Test_Guides_Curved] Initialize
+[Test_Guides_Curved] Initialize
+[Test_Guides_Curved] Initialize
+[Test_Guides_Curved] Initialize
+[Test_Guides_Curved] Initialize
+[Test_Guides_Curved] Initialize
+[Test_Guides_Curved] Initialize
+[Test_Guides_Curved] Initialize
+
+Finally [Test_Guides_Curved: 4]. Time: 1 [s] 
+
+Finally [Test_Guides_Curved: 4]. Time: 1 [s] 
+
+Finally [Test_Guides_Curved: 4]. Time: 1 [s] 
+
+Finally [Test_Guides_Curved: 4]. Time: 1 [s] 
+
+Finally [Test_Guides_Curved: 4]. Time: 1 [s] 
+
+Finally [Test_Guides_Curved: 4]. Time: 1 [s] 
+
+Finally [Test_Guides_Curved: 4]. Time: 1 [s] 
+
+Save [Test_Guides_Curved]
+Detector: Monitor1_xt_I=0.0374376 Monitor1_xt_ERR=1.18388e-05 Monitor1_xt_N=1e+07 "Monitor1_xt_1574208866.x_y"
+
+Finally [Test_Guides_Curved: 4]. Time: 1 [s] 
+Detector: Monitor2_xy1_I=0 Monitor2_xy1_ERR=0 Monitor2_xy1_N=0 "Monitor2_xy1_1574208866.x_y"
+Detector: Monitor2_xy2_I=0 Monitor2_xy2_ERR=0 Monitor2_xy2_N=0 "Monitor2_xy2_1574208866.x_y"
+Detector: Monitor2_xy3_I=0 Monitor2_xy3_ERR=0 Monitor2_xy3_N=0 "Monitor2_xy3_1574208866.x_y"
+Detector: Monitor2_xy4_I=0.00168594 Monitor2_xy4_ERR=1.95139e-06 Monitor2_xy4_N=2.39808e+06 "Monitor2_xy4_1574208866.x_y"
+
+Finally [Test_Guides_Curved: 4]. Time: 1 [s] 
+Detector: dummy_I=0 dummy_ERR=0 dummy_N=0 "junk.dat"
+
+Finally [Test_Guides_Curved: 4]. Time: 1 [s] 
+[n-62-23-6:28987] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-6:28987] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr in dataset 4

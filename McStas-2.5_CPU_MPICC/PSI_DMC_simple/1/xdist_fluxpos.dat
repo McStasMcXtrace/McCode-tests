@@ -1,0 +1,47 @@
+# Format: McCode with text headers
+# URL: http://www.mccode.org
+# Creator: McStas 2.5 - Nov. 19, 2019
+# Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_DMC_simple/PSI_DMC_simple.instr
+# Ncount: 1000000
+# Trace: no
+# Gravitation: no
+# Seed: 1574231805
+# Directory: 1
+# Nodes: 10
+# Param: lambda=2.5666
+# Param: R=0.87
+# Param: R_curve=0.87
+# Param: filename=Na2Ca3Al2F14.laz
+# Param: D_PHI=6
+# Param: SHIFT=0
+# Param: PACK=0.7
+# Param: Dw=0.8
+# Param: BARNS=1
+# Date: Wed Nov 20 01:05:49 2019 (1574208349)
+# type: array_1d(11)
+# Source: PSI_DMC (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_DMC_simple/PSI_DMC_simple.instr)
+# component: xdist_flux_pos
+# position: 0 0 47.8657
+# title: Linear PSD monitor
+# Ncount: 10000000
+# filename: xdist_fluxpos.dat
+# statistics: X0=-2.96662e-05; dX=0.00573214;
+# signal: Min=3.10961e+06; Max=3.27708e+06; Mean=3.23124e+06;
+# values: 3.55436e+07 89628.1 782224
+# xvar: x
+# yvar: (I,I_err)
+# xlabel: x-Position [m]
+# ylabel: Intensity
+# xlimits: -0.01 0.01
+# variables: x I I_err N
+-0.009090909091 3250576.302 27166.33996 70125 
+-0.007272727273 3232598.184 27093.66532 70929 
+-0.005454545455 3226296.432 27088.80436 70735 
+-0.003636363636 3246364.292 27161.24785 70632 
+-0.001818181818 3250323.677 27141.55765 70612 
+0 3217329.394 26966.88694 70797 
+0.001818181818 3263430.055 27168.39054 71123 
+0.003636363636 3248713.176 27044.67339 71594 
+0.005454545455 3277081.232 27169.23668 72234 
+0.007272727273 3221284.369 26895.82526 72079 
+0.009090909091 3109606.768 26357.2446 71364 

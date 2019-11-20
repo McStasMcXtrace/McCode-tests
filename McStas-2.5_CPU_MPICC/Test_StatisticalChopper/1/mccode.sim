@@ -1,0 +1,87 @@
+McStas simulation description file for Test_StatisticalChopper.
+Date:    Wed Nov 20 01:18:41 2019
+Program: McStas 2.5 - Nov. 19, 2019
+
+begin instrument: Test_StatisticalChopper
+  File: 1/mccode
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr
+  Parameters:  lambda(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574209980
+  Directory: 1
+  Nodes: 10
+  Param: lambda=1
+end simulation
+
+begin data
+  Date: Wed Nov 20 01:18:49 2019 (1574209129)
+  type: array_1d(1000)
+  Source: Test_StatisticalChopper (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr)
+  component: before_stat_chop
+  position: 0 0 0.001
+  title: TOF [s] monitor
+  Ncount: 10000000
+  filename: before_stat_chop_1574209121.t
+  statistics: X0=2.52972e-07; dX=0.00164958;
+  signal: Min=2.26967e-11; Max=2.43908e-11; Mean=2.34611e-11;
+  values: 2.34611e-08 7.41915e-12 9.99977e+06
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: -0.00285797 0.002858
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:18:49 2019 (1574209129)
+  type: array_1d(1001)
+  Source: Test_StatisticalChopper (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr)
+  component: after_stat_chop
+  position: 0 0 1.011
+  title: TOF [s] monitor
+  Ncount: 10000000
+  filename: after_stat_chop_1574209121.t
+  statistics: X0=0.000166861; dX=0.00164925;
+  signal: Min=0; Max=2.40483e-11; Mean=1.16675e-11;
+  values: 1.16791e-08 5.23462e-12 4.97796e+06
+  xvar: t
+  yvar: (I,I_err)
+  xlabel: TOF [s]
+  ylabel: Intensity [n/s/bin]
+  xlimits: -0.00260274 0.00311343
+  variables: t I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:18:49 2019 (1574209129)
+  type: array_2d(500, 100)
+  Source: Test_StatisticalChopper (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr)
+  component: ChopMon2
+  position: 0 0 1.211
+  title:  Intensity Time_Of_Flight Position Monitor (Banana) [out] per bin
+  Ncount: 10000000
+  filename: ChopMon2_1574209121.t_y
+  statistics: X0=0.000723107; dX=0.00164936; Y0=-7.8952e-06; dY=0.0285586;
+  signal: Min=0; Max=1.85424e-16; Mean=6.99833e-17;
+  values: 3.49917e-12 5.89278e-16 4.07256e+07
+  xvar: TOF
+  yvar: y
+  xlabel: TOF [s]
+  ylabel: y [m]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.00204694 0.00367011 -0.055 0.055
+  variables: I I_err N

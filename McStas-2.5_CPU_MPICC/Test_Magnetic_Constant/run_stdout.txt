@@ -1,0 +1,136 @@
+INFO: Using directory: "1"
+INFO: Using existing c-file: ./Test_Magnetic_Constant.c
+INFO: Using existing binary: ./Test_Magnetic_Constant.out
+INFO: ===
+INFO: Using system default number of mpirun -np processes
+[1574208950.754916] [n-62-23-6:29968:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3162.13
+[1574208950.756641] [n-62-23-6:29968:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208950.756658] [n-62-23-6:29968:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1574208950.758613] [n-62-23-6:29968:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208950.758628] [n-62-23-6:29968:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208950.764616] [n-62-23-6:29964:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3139.06
+[1574208950.766048] [n-62-23-6:29964:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208950.766063] [n-62-23-6:29964:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208950.766129] [n-62-23-6:29967:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3139.06
+[1574208950.767549] [n-62-23-6:29967:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208950.767565] [n-62-23-6:29967:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208950.767874] [n-62-23-6:29964:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208950.767889] [n-62-23-6:29964:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208950.769400] [n-62-23-6:29967:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208950.769415] [n-62-23-6:29967:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208950.769983] [n-62-23-6:29963:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3119.24
+[1574208950.770073] [n-62-23-6:29965:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3119.24
+[1574208950.770950] [n-62-23-6:29966:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3119.24
+[1574208950.771591] [n-62-23-6:29965:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208950.771607] [n-62-23-6:29965:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208950.771876] [n-62-23-6:29963:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208950.771892] [n-62-23-6:29963:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208950.772561] [n-62-23-6:29966:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208950.772577] [n-62-23-6:29966:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208950.773549] [n-62-23-6:29965:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208950.773563] [n-62-23-6:29965:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208950.773786] [n-62-23-6:29963:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208950.773801] [n-62-23-6:29963:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208950.774330] [n-62-23-6:29966:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208950.774345] [n-62-23-6:29966:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208950.779972] [n-62-23-3:25132:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3239.04
+[1574208950.779972] [n-62-23-3:25133:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3239.04
+[1574208950.779972] [n-62-23-3:25134:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3239.04
+[1574208950.779972] [n-62-23-3:25135:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3239.04
+[1574208950.784433] [n-62-23-3:25132:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208950.784451] [n-62-23-3:25132:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208950.784838] [n-62-23-3:25134:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208950.784856] [n-62-23-3:25134:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208950.784876] [n-62-23-3:25135:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208950.784893] [n-62-23-3:25135:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208950.784976] [n-62-23-3:25133:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208950.784993] [n-62-23-3:25133:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208950.786618] [n-62-23-3:25132:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208950.786664] [n-62-23-3:25132:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208950.786841] [n-62-23-3:25134:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208950.786856] [n-62-23-3:25134:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208950.786876] [n-62-23-3:25135:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208950.786892] [n-62-23-3:25135:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574208950.787053] [n-62-23-3:25133:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574208950.787181] [n-62-23-3:25133:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'Test_Magnetic_Constant' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Constant/Test_Magnetic_Constant.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+By should be -0.000068 T, to be able to rotate a 5.000000 AA neutron
+ 180.000000 degrees over a length of 0.200000 m
+By should be -0.000068 T, to be able to rotate a 5.000000 AA neutron
+ 180.000000 degrees over a length of 0.200000 m
+[Test_Magnetic_Constant] Initialize
+INFO: Set_pol(polSetter): Setting polarization to (1.000000, 0.000000, 0.000000)
+[Test_Magnetic_Constant] Initialize
+INFO: Set_pol(polSetter): Setting polarization to (1.000000, 0.000000, 0.000000)
+By should be -0.000068 T, to be able to rotate a 5.000000 AA neutron
+ 180.000000 degrees over a length of 0.200000 m
+[Test_Magnetic_Constant] Initialize
+INFO: Set_pol(polSetter): Setting polarization to (1.000000, 0.000000, 0.000000)
+By should be -0.000068 T, to be able to rotate a 5.000000 AA neutron
+ 180.000000 degrees over a length of 0.200000 m
+[Test_Magnetic_Constant] Initialize
+INFO: Set_pol(polSetter): Setting polarization to (1.000000, 0.000000, 0.000000)
+By should be -0.000068 T, to be able to rotate a 5.000000 AA neutron
+ 180.000000 degrees over a length of 0.200000 m
+By should be -0.000068 T, to be able to rotate a 5.000000 AA neutron
+ 180.000000 degrees over a length of 0.200000 m
+[Test_Magnetic_Constant] Initialize
+INFO: Set_pol(polSetter): Setting polarization to (1.000000, 0.000000, 0.000000)
+[Test_Magnetic_Constant] Initialize
+INFO: Set_pol(polSetter): Setting polarization to (1.000000, 0.000000, 0.000000)
+By should be -0.000068 T, to be able to rotate a 5.000000 AA neutron
+ 180.000000 degrees over a length of 0.200000 m
+By should be -0.000068 T, to be able to rotate a 5.000000 AA neutron
+ 180.000000 degrees over a length of 0.200000 m
+[Test_Magnetic_Constant] Initialize
+INFO: Set_pol(polSetter): Setting polarization to (1.000000, 0.000000, 0.000000)
+[Test_Magnetic_Constant] Initialize
+INFO: Set_pol(polSetter): Setting polarization to (1.000000, 0.000000, 0.000000)
+By should be -0.000068 T, to be able to rotate a 5.000000 AA neutron
+ 180.000000 degrees over a length of 0.200000 m
+By should be -0.000068 T, to be able to rotate a 5.000000 AA neutron
+ 180.000000 degrees over a length of 0.200000 m
+[Test_Magnetic_Constant] Initialize
+INFO: Set_pol(polSetter): Setting polarization to (1.000000, 0.000000, 0.000000)
+[Test_Magnetic_Constant] Initialize
+INFO: Set_pol(polSetter): Setting polarization to (1.000000, 0.000000, 0.000000)
+
+Finally [Test_Magnetic_Constant: 1]. Time: 2 [s] 
+
+Finally [Test_Magnetic_Constant: 1]. Time: 2 [s] 
+
+Finally [Test_Magnetic_Constant: 1]. Time: 2 [s] 
+
+Finally [Test_Magnetic_Constant: 1]. Time: 2 [s] 
+
+Finally [Test_Magnetic_Constant: 1]. Time: 2 [s] 
+
+Finally [Test_Magnetic_Constant: 1]. Time: 2 [s] 
+
+Finally [Test_Magnetic_Constant: 1]. Time: 2 [s] 
+
+Save [Test_Magnetic_Constant]
+Detector: pollambdaMonitor1x_I=0.0768973 pollambdaMonitor1x_ERR=2.43171e-05 pollambdaMonitor1x_N=1e+07 "pollambdaMon1x.data"
+
+Finally [Test_Magnetic_Constant: 1]. Time: 2 [s] 
+Detector: pollambdaMonitor1y_I=0.0768973 pollambdaMonitor1y_ERR=2.43171e-05 pollambdaMonitor1y_N=1e+07 "pollambdaMon1y.data"
+Detector: pollambdaMonitor1z_I=0.0768973 pollambdaMonitor1z_ERR=2.43171e-05 pollambdaMonitor1z_N=1e+07 "pollambdaMon1z.data"
+Detector: pollambdaMonitor2x_I=0.0768973 pollambdaMonitor2x_ERR=2.43171e-05 pollambdaMonitor2x_N=1e+07 "pollambdaMon2x.data"
+Detector: pollambdaMonitor2y_I=0.0768973 pollambdaMonitor2y_ERR=2.43171e-05 pollambdaMonitor2y_N=1e+07 "pollambdaMon2y.data"
+
+Finally [Test_Magnetic_Constant: 1]. Time: 2 [s] 
+Detector: pollambdaMonitor2z_I=0.0768973 pollambdaMonitor2z_ERR=2.43171e-05 pollambdaMonitor2z_N=1e+07 "pollambdaMon2z.data"
+Detector: mpollambdaMonitor2x_I=980 mpollambdaMonitor2x_ERR=9.8e-05 mpollambdaMonitor2x_N=1e+07 "mpollambdaMon2x.data"
+Detector: mpollambdaMonitor2y_I=0 mpollambdaMonitor2y_ERR=0 mpollambdaMonitor2y_N=1e+07 "mpollambdaMon2y.data"
+Detector: mpollambdaMonitor2z_I=0 mpollambdaMonitor2z_ERR=0 mpollambdaMonitor2z_N=1e+07 "mpollambdaMon2z.data"
+
+Finally [Test_Magnetic_Constant: 1]. Time: 2 [s] 
+[n-62-23-6:29956] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-6:29956] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Constant/Test_Magnetic_Constant.instr in dataset 1

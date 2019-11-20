@@ -1,0 +1,195 @@
+McStas simulation description file for Test_Pol_Bender_Vs_Guide_Curved.
+Date:    Wed Nov 20 01:18:02 2019
+Program: McStas 2.5 - Nov. 19, 2019
+
+begin instrument: Test_Pol_Bender_Vs_Guide_Curved
+  File: 1/mccode
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr
+  Parameters:  guideLength(double) guideRadius(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574241090
+  Directory: 1
+  Nodes: 10
+  Param: guideLength=10
+  Param: guideRadius=100
+end simulation
+
+begin data
+  Date: Wed Nov 20 01:18:04 2019 (1574209084)
+  type: array_1d(20)
+  Source: Test_Pol_Bender_Vs_Guide_Curved (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr)
+  component: lamStart
+  position: 0 0 0.1
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: lambdaStart.dat
+  statistics: X0=5.00057; dX=2.59333;
+  signal: Min=0; Max=0.00699714; Mean=0.00627346;
+  values: 0.125469 3.96768e-05 1e+07
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 10
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:18:04 2019 (1574209084)
+  type: array_2d(40, 40)
+  Source: Test_Pol_Bender_Vs_Guide_Curved (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr)
+  component: psdStart
+  position: 0 0 0.15
+  title: PSD monitor
+  Ncount: 10000000
+  filename: psdStart.dat
+  statistics: X0=0.000185121; dX=0.529238; Y0=5.51689e-05; dY=0.529118;
+  signal: Min=0; Max=0.00324998; Mean=7.84182e-05;
+  values: 0.125469 3.96768e-05 1e+07
+  xvar: X
+  yvar: Y
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -5 5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:18:04 2019 (1574209084)
+  type: array_1d(20)
+  Source: Test_Pol_Bender_Vs_Guide_Curved (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr)
+  component: lamStopBender1
+  position: 0.504575 0 11.2331
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: lambdaStopBender1.dat
+  statistics: X0=8.65033; dX=0.619249;
+  signal: Min=0; Max=0.000772186; Mean=0.000103158;
+  values: 0.00206316 3.95769e-06 1.37516e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 10
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:18:04 2019 (1574209084)
+  type: array_2d(40, 40)
+  Source: Test_Pol_Bender_Vs_Guide_Curved (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr)
+  component: psdBender1
+  position: 0.504575 0 11.2331
+  title: PSD monitor
+  Ncount: 10000000
+  filename: psdBender1.dat
+  statistics: X0=-1.51592; dX=1.21001; Y0=-0.00705544; dY=2.31537;
+  signal: Min=0; Max=8.40039e-06; Mean=1.28948e-06;
+  values: 0.00206316 3.95769e-06 1.37516e+06
+  xvar: X
+  yvar: Y
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -5 5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:18:04 2019 (1574209084)
+  type: array_1d(20)
+  Source: Test_Pol_Bender_Vs_Guide_Curved (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr)
+  component: lamStopBender2
+  position: -0.504575 0 11.2331
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: lambdaStopBender2.dat
+  statistics: X0=8.65033; dX=0.618697;
+  signal: Min=0; Max=0.000767356; Mean=0.000102595;
+  values: 0.0020519 3.94582e-06 1.37321e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 10
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:18:04 2019 (1574209084)
+  type: array_2d(40, 40)
+  Source: Test_Pol_Bender_Vs_Guide_Curved (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr)
+  component: psdBender2
+  position: -0.504575 0 11.2331
+  title: PSD monitor
+  Ncount: 10000000
+  filename: psdBender2.dat
+  statistics: X0=1.51819; dX=1.20871; Y0=-0.00304985; dY=2.31484;
+  signal: Min=0; Max=8.25562e-06; Mean=1.28244e-06;
+  values: 0.0020519 3.94582e-06 1.37321e+06
+  xvar: X
+  yvar: Y
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -5 5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:18:04 2019 (1574209084)
+  type: array_1d(20)
+  Source: Test_Pol_Bender_Vs_Guide_Curved (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr)
+  component: lamStopGuide
+  position: 0.504575 0 11.2331
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: lambdaStopGuide.dat
+  statistics: X0=8.65499; dX=0.615354;
+  signal: Min=0; Max=0.000829585; Mean=0.000110337;
+  values: 0.00220674 4.26078e-06 3.33421e+06
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: 0 10
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Wed Nov 20 01:18:04 2019 (1574209084)
+  type: array_2d(40, 40)
+  Source: Test_Pol_Bender_Vs_Guide_Curved (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr)
+  component: psdGuide
+  position: 0.504575 0 11.2331
+  title: PSD monitor
+  Ncount: 10000000
+  filename: psdGuide.dat
+  statistics: X0=-1.52266; dX=1.20729; Y0=-0.000865369; dY=2.31239;
+  signal: Min=0; Max=8.7623e-06; Mean=1.37919e-06;
+  values: 0.0022067 4.26074e-06 3.33402e+06
+  xvar: X
+  yvar: Y
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -5 5 -5 5
+  variables: I I_err N
+end data

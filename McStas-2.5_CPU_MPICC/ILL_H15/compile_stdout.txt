@@ -1,0 +1,46 @@
+      [1574205596.032860] [n-62-23-6:32544:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3372.85
+[1574205596.034277] [n-62-23-6:32544:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574205596.034280] [n-62-23-6:32544:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574205596.036249] [n-62-23-6:32544:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574205596.036253] [n-62-23-6:32544:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+begin instrument: ILL_H15
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H15/ILL_H15.instr
+  Parameters:  m(double) lambda(double) dlambda(double) mip(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+begin simulation: .
+  Format: McStas
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Nov. 19, 2019
+  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H15/ILL_H15.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1574238140
+  Directory: .
+  Param: m=1
+  Param: lambda=10
+  Param: dlambda=9.9
+  Param: mip=1
+end simulation
+info!
+INFO: No output directory specified (--dir)
+INFO: Using directory: "ILL_H15_20191120_001917"
+INFO: Regenerating c-file: ILL_H15.c
+Info:    'Al_window' is a contributed component.
+CFLAGS=
+INFO: Recompiling: ./ILL_H15.out
+./ILL_H15.c: In function 'mcraytrace':
+./ILL_H15.c:31987:6: note: variable tracking size limit exceeded with -fvar-tracking-assignments, retrying without
+ 
+      ^         
+INFO: ===
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------

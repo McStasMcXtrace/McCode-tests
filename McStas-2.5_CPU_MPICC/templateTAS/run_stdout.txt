@@ -1,0 +1,231 @@
+INFO: Using directory: "2"
+INFO: Using existing c-file: ./templateTAS.c
+INFO: Using existing binary: ./templateTAS.out
+INFO: ===
+INFO: Using system default number of mpirun -np processes
+[1574209607.623729] [n-62-23-6:4822 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3119.41
+[1574209607.623729] [n-62-23-6:4823 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3119.41
+[1574209607.625456] [n-62-23-6:4823 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209607.625472] [n-62-23-6:4823 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1574209607.625844] [n-62-23-6:4822 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209607.625858] [n-62-23-6:4822 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209607.627278] [n-62-23-6:4823 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209607.627292] [n-62-23-6:4823 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209607.627758] [n-62-23-6:4822 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209607.627773] [n-62-23-6:4822 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209607.632383] [n-62-23-6:4824 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3104.37
+[1574209607.633874] [n-62-23-6:4824 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209607.633890] [n-62-23-6:4824 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209607.634963] [n-62-23-6:4825 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.12
+[1574209607.635706] [n-62-23-6:4824 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209607.635726] [n-62-23-6:4824 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209607.636739] [n-62-23-6:4825 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209607.636755] [n-62-23-6:4825 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209607.637956] [n-62-23-6:4827 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.12
+[1574209607.638709] [n-62-23-6:4825 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209607.638731] [n-62-23-6:4825 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209607.639094] [n-62-23-6:4826 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.15
+[1574209607.639320] [n-62-23-6:4827 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209607.639336] [n-62-23-6:4827 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209607.640469] [n-62-23-6:4826 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209607.640484] [n-62-23-6:4826 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209607.641239] [n-62-23-6:4827 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209607.641253] [n-62-23-6:4827 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209607.642347] [n-62-23-6:4826 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209607.642361] [n-62-23-6:4826 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209607.658489] [n-62-23-3:28398:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3183.50
+[1574209607.658494] [n-62-23-3:28399:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3183.50
+[1574209607.658491] [n-62-23-3:28400:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3183.50
+[1574209607.658492] [n-62-23-3:28401:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3183.50
+[1574209607.662643] [n-62-23-3:28399:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209607.662643] [n-62-23-3:28400:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209607.662660] [n-62-23-3:28400:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209607.662643] [n-62-23-3:28401:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209607.662660] [n-62-23-3:28401:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209607.662787] [n-62-23-3:28399:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209607.663031] [n-62-23-3:28398:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209607.663048] [n-62-23-3:28398:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209607.664897] [n-62-23-3:28399:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209607.664900] [n-62-23-3:28400:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209607.664913] [n-62-23-3:28400:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209607.664902] [n-62-23-3:28401:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209607.664915] [n-62-23-3:28401:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209607.664954] [n-62-23-3:28399:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1574209607.664970] [n-62-23-3:28398:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1574209607.665085] [n-62-23-3:28398:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'templateTAS' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateTAS/templateTAS.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+templateTAS: Detailed TAS configuration
+* Incoming beam: EI=14.68 [meV] KI=2.662 [Angs-1] Vi=1676.05 [m/s]
+templateTAS: Detailed TAS configuration
+* Incoming beam: EI=14.68 [meV] KI=2.662 [Angs-1] Vi=1676.05 [m/s]
+* Outgoing beam: EF=14.68 [meV] KF=2.662 [Angs-1] Vf=1676.05 [m/s]
+* Outgoing beam: EF=14.68 [meV] KF=2.662 [Angs-1] Vf=1676.05 [m/s]
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=20.6 A2=41.2 A3=0 A4=-21.65 A5=20.6 A6=41.2 [deg]
+Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=1.198 [m] curved
+Angles: A1=20.6 A2=41.2 A3=0 A4=-21.65 A5=20.6 A6=41.2 [deg]
+Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=1.198 [m] curved
+Analyzer:      DA=3.354 [Angs] RAH=2.713 [m] RAV=0 [m] curved
+Sample:        Powder V.laz
+Analyzer:      DA=3.354 [Angs] RAH=2.713 [m] RAV=0 [m] curved
+Sample:        Powder V.laz
+[templateTAS] Initialize
+[templateTAS] Initialize
+templateTAS: Detailed TAS configuration
+* Incoming beam: EI=14.68 [meV] KI=2.662 [Angs-1] Vi=1676.05 [m/s]
+* Outgoing beam: EF=14.68 [meV] KF=2.662 [Angs-1] Vf=1676.05 [m/s]
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=20.6 A2=41.2 A3=0 A4=-21.65 A5=20.6 A6=41.2 [deg]
+Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=1.198 [m] curved
+Analyzer:      DA=3.354 [Angs] RAH=2.713 [m] RAV=0 [m] curved
+Sample:        Powder V.laz
+templateTAS: Detailed TAS configuration
+* Incoming beam: EI=14.68 [meV] KI=2.662 [Angs-1] Vi=1676.05 [m/s]
+* Outgoing beam: EF=14.68 [meV] KF=2.662 [Angs-1] Vf=1676.05 [m/s]
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=20.6 A2=41.2 A3=0 A4=-21.65 A5=20.6 A6=41.2 [deg]
+Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=1.198 [m] curved
+Analyzer:      DA=3.354 [Angs] RAH=2.713 [m] RAV=0 [m] curved
+Sample:        Powder V.laz
+[templateTAS] Initialize
+[templateTAS] Initialize
+templateTAS: Detailed TAS configuration
+* Incoming beam: EI=14.68 [meV] KI=2.662 [Angs-1] Vi=1676.05 [m/s]
+* Outgoing beam: EF=14.68 [meV] KF=2.662 [Angs-1] Vf=1676.05 [m/s]
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=20.6 A2=41.2 A3=0 A4=-21.65 A5=20.6 A6=41.2 [deg]
+Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=1.198 [m] curved
+Analyzer:      DA=3.354 [Angs] RAH=2.713 [m] RAV=0 [m] curved
+Sample:        Powder V.laz
+templateTAS: Detailed TAS configuration
+* Incoming beam: EI=14.68 [meV] KI=2.662 [Angs-1] Vi=1676.05 [m/s]
+* Outgoing beam: EF=14.68 [meV] KF=2.662 [Angs-1] Vf=1676.05 [m/s]
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=20.6 A2=41.2 A3=0 A4=-21.65 A5=20.6 A6=41.2 [deg]
+Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=1.198 [m] curved
+Analyzer:      DA=3.354 [Angs] RAH=2.713 [m] RAV=0 [m] curved
+Sample:        Powder V.laz
+[templateTAS] Initialize
+[templateTAS] Initialize
+templateTAS: Detailed TAS configuration
+* Incoming beam: EI=14.68 [meV] KI=2.662 [Angs-1] Vi=1676.05 [m/s]
+* Outgoing beam: EF=14.68 [meV] KF=2.662 [Angs-1] Vf=1676.05 [m/s]
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=20.6 A2=41.2 A3=0 A4=-21.65 A5=20.6 A6=41.2 [deg]
+Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=1.198 [m] curved
+Analyzer:      DA=3.354 [Angs] RAH=2.713 [m] RAV=0 [m] curved
+Sample:        Powder V.laz
+[templateTAS] Initialize
+templateTAS: Detailed TAS configuration
+* Incoming beam: EI=14.68 [meV] KI=2.662 [Angs-1] Vi=1676.05 [m/s]
+* Outgoing beam: EF=14.68 [meV] KF=2.662 [Angs-1] Vf=1676.05 [m/s]
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=20.6 A2=41.2 A3=0 A4=-21.65 A5=20.6 A6=41.2 [deg]
+Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=1.198 [m] curved
+Analyzer:      DA=3.354 [Angs] RAH=2.713 [m] RAV=0 [m] curved
+Sample:        Powder V.laz
+[templateTAS] Initialize
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/HOPG.rfl' (Table_Read_Offset)
+Monitor_nD: D4_SC2_1D is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+Isotropic_Sqw: Sample: is a hollow cylinder: radius=0.010000 thickness=0.005000 height=0.050000 [J Comp Phys 228 (2009) 5251]
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/V.laz' (Table_Read_Offset)
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/V.laz' (Table_Read_Offset)
+Isotropic_sqw: Converting 21 powder lines from V.laz into S(q,w) data
+Isotropic_sqw: q range [0:12.4666], creating 106 elements vector
+Isotropic_Sqw: Sample: Generated V.laz coherent Sqw
+                   q=[0:12.349 Angs-1] w=[0:0 meV] |S|=0.827538 size=[106x1] sigma=0.0368 [barns]
+               Mainly elastic scattering.
+Isotropic_Sqw: Sample: Using Isotropic elastic incoherent scattering (sigma=9.87 [barns])
+Isotropic_Sqw: Sample: Sample temperature not defined (T=0).
+Warning        Disabling detailed balance.
+templateTAS: Detailed TAS configuration
+* Incoming beam: EI=14.68 [meV] KI=2.662 [Angs-1] Vi=1676.05 [m/s]
+* Outgoing beam: EF=14.68 [meV] KF=2.662 [Angs-1] Vf=1676.05 [m/s]
+Monitor_nD: D7_SC3_1D is using automatic limits option 'auto' together with MPI.
+WARNING     this may create incorrect distributions (but integrated flux will be right).
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=20.6 A2=41.2 A3=0 A4=-21.65 A5=20.6 A6=41.2 [deg]
+Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=1.198 [m] curved
+Analyzer:      DA=3.354 [Angs] RAH=2.713 [m] RAV=0 [m] curved
+Sample:        Powder V.laz
+templateTAS: Detailed TAS configuration
+* Incoming beam: EI=14.68 [meV] KI=2.662 [Angs-1] Vi=1676.05 [m/s]
+* Outgoing beam: EF=14.68 [meV] KF=2.662 [Angs-1] Vf=1676.05 [m/s]
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=20.6 A2=41.2 A3=0 A4=-21.65 A5=20.6 A6=41.2 [deg]
+Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=1.198 [m] curved
+Analyzer:      DA=3.354 [Angs] RAH=2.713 [m] RAV=0 [m] curved
+Sample:        Powder V.laz
+[templateTAS] Initialize
+[templateTAS] Initialize
+[n-62-23-6:04816] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-6:04816] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+
+Trace ETA 27 [s] % 39 
+Trace ETA 27 [s] % 39 
+Trace ETA 27 [s] % 40 
+Trace ETA 27 [s] % 40 
+Trace ETA 27 [s] % 40 
+Trace ETA 28 [s] % 38 
+Trace ETA 26 [s] % 41 
+Trace ETA 27 [s] % 40 
+Trace ETA 27 [s] % 40 
+Trace ETA 26 [s] % 40 40 40 40 50 50 50 50 50 50 50 50 50 50 60 60 60 60 60 60 60 60 60 60 70 70 70 70 70 70 70 70 70 70 80 80 80 80 80 80 80 80 80 80 90 90 90 90 90 90 90 90 90 90 
+Finally [templateTAS: 2]. Time: 26 [s] 
+Warning: 4.834e+06 events were removed in Component[14] SC3=Collimator_linear()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+
+
+Finally [templateTAS: 2]. Time: 26 [s] 
+Finally [templateTAS: 2]. Time: 26 [s] 
+Warning: 4.84202e+06 events were removed in Component[14] SC3=Collimator_linear()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+Warning: 4.8467e+06 events were removed in Component[14] SC3=Collimator_linear()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+
+Finally [templateTAS: 2]. Time: 26 [s] 
+Warning: 4.82917e+06 events were removed in Component[14] SC3=Collimator_linear()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+
+Finally [templateTAS: 2]. Time: 26 [s] 
+Warning: 4.83915e+06 events were removed in Component[14] SC3=Collimator_linear()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+
+Finally [templateTAS: 2]. Time: 26 [s] 
+Warning: 4.83943e+06 events were removed in Component[14] SC3=Collimator_linear()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+
+Finally [templateTAS: 2]. Time: 27 [s] 
+Warning: 4.81522e+06 events were removed in Component[14] SC3=Collimator_linear()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+
+Save [templateTAS]
+Detector: D4_SC2_1D_I=1.87468e+07 D4_SC2_1D_ERR=3937.86 D4_SC2_1D_N=2.36055e+07 "D4_SC2_1D_1574209607.L"
+
+Finally [templateTAS: 2]. Time: 27 [s] 
+Warning: 4.83375e+06 events were removed in Component[14] SC3=Collimator_linear()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+Detector: Sample_Cradle_I=-nan Sample_Cradle_ERR=-nan Sample_Cradle_N=-nan "Sample_Cradle"
+Detector: D7_SC3_1D_I=2.56996e+08 D7_SC3_1D_ERR=43751.7 D7_SC3_1D_N=1.98062e+08 "D7_SC3_1D_1574209607.th_E"
+
+Finally [templateTAS: 2]. Time: 27 [s] 
+Detector: He3H_I=259.696 He3H_ERR=0.518489 He3H_N=549771 "He3H.psd"
+Warning: 4.84581e+06 events were removed in Component[14] SC3=Collimator_linear()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+
+Finally [templateTAS: 2]. Time: 27 [s] 
+Isotropic_Sqw: Sample: Scattering fraction=0.347318 of incoming intensity
+               Absorption fraction           =0.573733
+               Single   scattering intensity =2.13487e+06 (coh=6643.66 inc=2.12823e+06)
+               Multiple scattering intensity =0
+Warning: 4.81661e+06 events were removed in Component[14] SC3=Collimator_linear()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateTAS/templateTAS.instr in dataset 2
