@@ -1,11 +1,11 @@
-[1574207850.250819] [n-62-23-6:17247:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3350.46
-[1574207850.252203] [n-62-23-6:17247:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207850.252207] [n-62-23-6:17247:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207850.254128] [n-62-23-6:17247:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207850.254130] [n-62-23-6:17247:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1575393402.777951] [hpclogin2:13697:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 2900.12
+[1575393402.779621] [hpclogin2:13697:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1575393402.779626] [hpclogin2:13697:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1575393402.781667] [hpclogin2:13697:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1575393402.781671] [hpclogin2:13697:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 begin instrument: TAS1_Vana
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-6/linup-6.instr
+  Creator: McStas 2.5 - Dec. 03, 2019
+  Source: /zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-6/linup-6.instr
   Parameters:  PHM(double) TTM(double) TT(double) TTA(double) C1(double) OMC1(double) C2(double) C3(double) OMA(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-6/linup-6.instr
+  Creator: McStas 2.5 - Dec. 03, 2019
+  Instrument: /zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-6/linup-6.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1574225097
+  Seed: 1575407099
   Directory: .
   Param: PHM=-37.077
   Param: TTM=-74
@@ -33,13 +33,15 @@ begin simulation: .
 end simulation
 info!
 INFO: No output directory specified (--dir)
-INFO: Using directory: "linup-6_20191120_005724"
+INFO: Using directory: "linup-6_20191203_181635"
 INFO: Regenerating c-file: linup-6.c
 Warning: 'V_sample' is an obsolete component (not maintained).
 Info:    Defining SPLIT from sample=V_sample() to END in instrument TAS1_Vana
 CFLAGS=
 INFO: Recompiling: ./linup-6.out
 INFO: ===
+[hpclogin2:13698] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[hpclogin2:13698] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
 Initialization of MXM library failed.
 

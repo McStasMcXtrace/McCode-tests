@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr (TAS1_Powder)
- * Date:       Wed Nov 20 00:57:30 2019
+ * Instrument: /zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr (TAS1_Powder)
+ * Date:       Tue Dec  3 18:16:43 2019
  * File:       ./linup-7.c
  * Compile:    cc -o TAS1_Powder.out ./linup-7.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Dec. 03, 2019"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Dec. 03, 2019"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Dec. 03, 2019"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "TAS1_Powder";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -5416,7 +5416,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define C2 mcipC2
 #define C3 mcipC3
 #define OMA mcipOMA
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 48 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
 /* Mosaicity used on monochromator and analysator */
 double tas1_mono_mosaic = 45; /* Measurements indicate its really 45' */
 double tas1_ana_mosaic = 45;  /* Measurements indicate its really 45' */
@@ -6854,7 +6854,7 @@ void mcinit(void) {
 #define C2 mcipC2
 #define C3 mcipC3
 #define OMA mcipOMA
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 64 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
 {
   double d = 0.0125;    /* 12.5 mm between slab centers. */
   double phi = 0.5443;    /* Rotation between adjacent slabs. */
@@ -6896,13 +6896,13 @@ void mcinit(void) {
     /* Component a1. */
   /* Setting parameters for component a1. */
   SIG_MESSAGE("a1 (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 39 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   if("NULL") strncpy(mcca1_profile, "NULL" ? "NULL" : "", 16384); else mcca1_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 39 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mcca1_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 39 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mcca1_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 39 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mcca1_minutes = 0;
 #line 6907 "./linup-7.c"
 
@@ -6914,11 +6914,11 @@ void mcinit(void) {
 #line 6914 "./linup-7.c"
   rot_copy(mcrotra1, mcrotaa1);
   mcposaa1 = coords_set(
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 82 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 82 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 82 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0);
 #line 6923 "./linup-7.c"
   mctc1 = coords_neg(mcposaa1);
@@ -6931,52 +6931,52 @@ void mcinit(void) {
     /* Component source. */
   /* Setting parameters for component source. */
   SIG_MESSAGE("source (Init:SetPar)");
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 85 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsource_radius = 0.060;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 52 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsource_yheight = 0;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 52 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsource_xwidth = 0;
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 86 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsource_dist = 3.288;
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 87 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsource_focus_xw = 0.042;
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 87 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsource_focus_yh = 0.082;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 88 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsource_E0 = 20;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 89 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsource_dE = 0.82;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 54 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsource_lambda0 = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 54 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsource_dlambda = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 55 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsource_flux = 1;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 55 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsource_gauss = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 55 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsource_target_index = + 1;
 #line 6960 "./linup-7.c"
 
   SIG_MESSAGE("source (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 91 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 91 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 91 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD);
 #line 6970 "./linup-7.c"
   rot_mul(mctr1, mcrotaa1, mcrotasource);
   rot_transpose(mcrotaa1, mctr1);
   rot_mul(mcrotasource, mctr1, mcrotrsource);
   mctc1 = coords_set(
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 91 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 91 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 91 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0);
 #line 6981 "./linup-7.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -6992,40 +6992,40 @@ void mcinit(void) {
     /* Component slit1. */
   /* Setting parameters for component slit1. */
   SIG_MESSAGE("slit1 (Init:SetPar)");
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 94 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslit1_xmin = -0.020;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 94 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslit1_xmax = 0.065;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 95 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslit1_ymin = -0.075;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 95 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslit1_ymax = 0.075;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslit1_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslit1_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslit1_yheight = 0;
 #line 7009 "./linup-7.c"
 
   SIG_MESSAGE("slit1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 96 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 96 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 96 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD);
 #line 7019 "./linup-7.c"
   rot_mul(mctr1, mcrotaa1, mcrotaslit1);
   rot_transpose(mcrotasource, mctr1);
   rot_mul(mcrotaslit1, mctr1, mcrotrslit1);
   mctc1 = coords_set(
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 96 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 96 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 96 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     1.1215);
 #line 7030 "./linup-7.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -7041,40 +7041,40 @@ void mcinit(void) {
     /* Component slit2. */
   /* Setting parameters for component slit2. */
   SIG_MESSAGE("slit2 (Init:SetPar)");
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 99 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslit2_xmin = -0.020;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 99 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslit2_xmax = 0.020;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 100 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslit2_ymin = -0.040;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 100 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslit2_ymax = 0.040;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslit2_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslit2_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslit2_yheight = 0;
 #line 7058 "./linup-7.c"
 
   SIG_MESSAGE("slit2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 101 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 101 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 101 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD);
 #line 7068 "./linup-7.c"
   rot_mul(mctr1, mcrotaa1, mcrotaslit2);
   rot_transpose(mcrotaslit1, mctr1);
   rot_mul(mcrotaslit2, mctr1, mcrotrslit2);
   mctc1 = coords_set(
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 101 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 101 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 101 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     1.900);
 #line 7079 "./linup-7.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -7090,40 +7090,40 @@ void mcinit(void) {
     /* Component slit3. */
   /* Setting parameters for component slit3. */
   SIG_MESSAGE("slit3 (Init:SetPar)");
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 104 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslit3_xmin = -0.021;
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 104 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslit3_xmax = 0.021;
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 105 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslit3_ymin = -0.041;
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 105 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslit3_ymax = 0.041;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslit3_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslit3_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslit3_yheight = 0;
 #line 7107 "./linup-7.c"
 
   SIG_MESSAGE("slit3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 106 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 106 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 106 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD);
 #line 7117 "./linup-7.c"
   rot_mul(mctr1, mcrotaa1, mcrotaslit3);
   rot_transpose(mcrotaslit2, mctr1);
   rot_mul(mcrotaslit3, mctr1, mcrotrslit3);
   mctc1 = coords_set(
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 106 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 106 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 106 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     3.288);
 #line 7128 "./linup-7.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -7142,22 +7142,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("focus_mono (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 109 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 109 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (mcipPHM)*DEG2RAD,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 109 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD);
 #line 7151 "./linup-7.c"
   rot_mul(mctr1, mcrotaa1, mcrotafocus_mono);
   rot_transpose(mcrotaslit3, mctr1);
   rot_mul(mcrotafocus_mono, mctr1, mcrotrfocus_mono);
   mctc1 = coords_set(
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 109 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 109 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 109 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     3.56);
 #line 7162 "./linup-7.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -7173,48 +7173,48 @@ void mcinit(void) {
     /* Component m0. */
   /* Setting parameters for component m0. */
   SIG_MESSAGE("m0 (Init:SetPar)");
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 112 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm0_zmin = -0.0375;
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 112 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm0_zmax = 0.0375;
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 112 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm0_ymin = -0.006;
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 112 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm0_ymax = 0.006;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 65 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm0_zwidth = 0;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 65 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm0_yheight = 0;
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 113 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm0_mosaich = tas1_mono_mosaic;
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 113 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm0_mosaicv = tas1_mono_mosaic;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 114 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm0_r0 = tas1_mono_r0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 114 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm0_Q = tas1_mono_q;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 66 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm0_DM = 0;
 #line 7198 "./linup-7.c"
 
   SIG_MESSAGE("m0 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 116 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 116 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 116 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (mrot0)*DEG2RAD);
 #line 7208 "./linup-7.c"
   rot_mul(mctr1, mcrotafocus_mono, mcrotam0);
   rot_transpose(mcrotafocus_mono, mctr1);
   rot_mul(mcrotam0, mctr1, mcrotrm0);
   mctc1 = coords_set(
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 115 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 115 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     mpos0,
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 115 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0);
 #line 7219 "./linup-7.c"
   rot_transpose(mcrotafocus_mono, mctr1);
@@ -7230,48 +7230,48 @@ void mcinit(void) {
     /* Component m1. */
   /* Setting parameters for component m1. */
   SIG_MESSAGE("m1 (Init:SetPar)");
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 119 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm1_zmin = -0.0375;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 119 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm1_zmax = 0.0375;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 119 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm1_ymin = -0.006;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 119 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm1_ymax = 0.006;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 65 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm1_zwidth = 0;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 65 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm1_yheight = 0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 120 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm1_mosaich = tas1_mono_mosaic;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 120 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm1_mosaicv = tas1_mono_mosaic;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 121 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm1_r0 = tas1_mono_r0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 121 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm1_Q = tas1_mono_q;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 66 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm1_DM = 0;
 #line 7255 "./linup-7.c"
 
   SIG_MESSAGE("m1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 123 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 123 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 123 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (mrot1)*DEG2RAD);
 #line 7265 "./linup-7.c"
   rot_mul(mctr1, mcrotafocus_mono, mcrotam1);
   rot_transpose(mcrotam0, mctr1);
   rot_mul(mcrotam1, mctr1, mcrotrm1);
   mctc1 = coords_set(
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 122 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 122 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     mpos1,
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 122 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0);
 #line 7276 "./linup-7.c"
   rot_transpose(mcrotafocus_mono, mctr1);
@@ -7287,48 +7287,48 @@ void mcinit(void) {
     /* Component m2. */
   /* Setting parameters for component m2. */
   SIG_MESSAGE("m2 (Init:SetPar)");
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 126 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm2_zmin = -0.0375;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 126 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm2_zmax = 0.0375;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 126 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm2_ymin = -0.006;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 126 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm2_ymax = 0.006;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 65 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm2_zwidth = 0;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 65 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm2_yheight = 0;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 127 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm2_mosaich = tas1_mono_mosaic;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 127 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm2_mosaicv = tas1_mono_mosaic;
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 128 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm2_r0 = tas1_mono_r0;
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 128 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm2_Q = tas1_mono_q;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 66 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm2_DM = 0;
 #line 7312 "./linup-7.c"
 
   SIG_MESSAGE("m2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 130 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 130 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 130 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (mrot2)*DEG2RAD);
 #line 7322 "./linup-7.c"
   rot_mul(mctr1, mcrotafocus_mono, mcrotam2);
   rot_transpose(mcrotam1, mctr1);
   rot_mul(mcrotam2, mctr1, mcrotrm2);
   mctc1 = coords_set(
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 129 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 129 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     mpos2,
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 129 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0);
 #line 7333 "./linup-7.c"
   rot_transpose(mcrotafocus_mono, mctr1);
@@ -7344,48 +7344,48 @@ void mcinit(void) {
     /* Component m3. */
   /* Setting parameters for component m3. */
   SIG_MESSAGE("m3 (Init:SetPar)");
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 133 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm3_zmin = -0.0375;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 133 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm3_zmax = 0.0375;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 133 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm3_ymin = -0.006;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 133 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm3_ymax = 0.006;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 65 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm3_zwidth = 0;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 65 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm3_yheight = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 134 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm3_mosaich = tas1_mono_mosaic;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 134 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm3_mosaicv = tas1_mono_mosaic;
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 135 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm3_r0 = tas1_mono_r0;
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 135 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm3_Q = tas1_mono_q;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 66 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm3_DM = 0;
 #line 7369 "./linup-7.c"
 
   SIG_MESSAGE("m3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 137 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 137 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 137 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (mrot3)*DEG2RAD);
 #line 7379 "./linup-7.c"
   rot_mul(mctr1, mcrotafocus_mono, mcrotam3);
   rot_transpose(mcrotam2, mctr1);
   rot_mul(mcrotam3, mctr1, mcrotrm3);
   mctc1 = coords_set(
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 136 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 136 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     mpos3,
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 136 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0);
 #line 7390 "./linup-7.c"
   rot_transpose(mcrotafocus_mono, mctr1);
@@ -7401,48 +7401,48 @@ void mcinit(void) {
     /* Component m4. */
   /* Setting parameters for component m4. */
   SIG_MESSAGE("m4 (Init:SetPar)");
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 140 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm4_zmin = -0.0375;
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 140 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm4_zmax = 0.0375;
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 140 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm4_ymin = -0.006;
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 140 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm4_ymax = 0.006;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 65 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm4_zwidth = 0;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 65 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm4_yheight = 0;
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 141 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm4_mosaich = tas1_mono_mosaic;
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 141 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm4_mosaicv = tas1_mono_mosaic;
-#line 142 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 142 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm4_r0 = tas1_mono_r0;
-#line 142 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 142 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm4_Q = tas1_mono_q;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 66 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm4_DM = 0;
 #line 7426 "./linup-7.c"
 
   SIG_MESSAGE("m4 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 144 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 144 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 144 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (mrot4)*DEG2RAD);
 #line 7436 "./linup-7.c"
   rot_mul(mctr1, mcrotafocus_mono, mcrotam4);
   rot_transpose(mcrotam3, mctr1);
   rot_mul(mcrotam4, mctr1, mcrotrm4);
   mctc1 = coords_set(
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 143 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 143 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     mpos4,
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 143 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0);
 #line 7447 "./linup-7.c"
   rot_transpose(mcrotafocus_mono, mctr1);
@@ -7458,48 +7458,48 @@ void mcinit(void) {
     /* Component m5. */
   /* Setting parameters for component m5. */
   SIG_MESSAGE("m5 (Init:SetPar)");
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 147 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm5_zmin = -0.0375;
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 147 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm5_zmax = 0.0375;
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 147 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm5_ymin = -0.006;
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 147 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm5_ymax = 0.006;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 65 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm5_zwidth = 0;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 65 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm5_yheight = 0;
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 148 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm5_mosaich = tas1_mono_mosaic;
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 148 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm5_mosaicv = tas1_mono_mosaic;
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 149 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm5_r0 = tas1_mono_r0;
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 149 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm5_Q = tas1_mono_q;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 66 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm5_DM = 0;
 #line 7483 "./linup-7.c"
 
   SIG_MESSAGE("m5 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 151 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 151 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 151 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (mrot5)*DEG2RAD);
 #line 7493 "./linup-7.c"
   rot_mul(mctr1, mcrotafocus_mono, mcrotam5);
   rot_transpose(mcrotam4, mctr1);
   rot_mul(mcrotam5, mctr1, mcrotrm5);
   mctc1 = coords_set(
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 150 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 150 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     mpos5,
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 150 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0);
 #line 7504 "./linup-7.c"
   rot_transpose(mcrotafocus_mono, mctr1);
@@ -7515,48 +7515,48 @@ void mcinit(void) {
     /* Component m6. */
   /* Setting parameters for component m6. */
   SIG_MESSAGE("m6 (Init:SetPar)");
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 154 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm6_zmin = -0.0375;
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 154 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm6_zmax = 0.0375;
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 154 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm6_ymin = -0.006;
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 154 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm6_ymax = 0.006;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 65 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm6_zwidth = 0;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 65 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm6_yheight = 0;
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 155 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm6_mosaich = tas1_mono_mosaic;
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 155 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm6_mosaicv = tas1_mono_mosaic;
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 156 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm6_r0 = tas1_mono_r0;
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 156 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm6_Q = tas1_mono_q;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 66 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm6_DM = 0;
 #line 7540 "./linup-7.c"
 
   SIG_MESSAGE("m6 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 158 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 158 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 158 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 158 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 158 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 158 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (mrot6)*DEG2RAD);
 #line 7550 "./linup-7.c"
   rot_mul(mctr1, mcrotafocus_mono, mcrotam6);
   rot_transpose(mcrotam5, mctr1);
   rot_mul(mcrotam6, mctr1, mcrotrm6);
   mctc1 = coords_set(
-#line 157 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 157 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 157 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 157 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     mpos6,
-#line 157 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 157 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0);
 #line 7561 "./linup-7.c"
   rot_transpose(mcrotafocus_mono, mctr1);
@@ -7572,48 +7572,48 @@ void mcinit(void) {
     /* Component m7. */
   /* Setting parameters for component m7. */
   SIG_MESSAGE("m7 (Init:SetPar)");
-#line 161 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 161 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm7_zmin = -0.0375;
-#line 161 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 161 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm7_zmax = 0.0375;
-#line 161 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 161 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm7_ymin = -0.006;
-#line 161 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 161 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm7_ymax = 0.006;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 65 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm7_zwidth = 0;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 65 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm7_yheight = 0;
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 162 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm7_mosaich = tas1_mono_mosaic;
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 162 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm7_mosaicv = tas1_mono_mosaic;
-#line 163 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 163 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm7_r0 = tas1_mono_r0;
-#line 163 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 163 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm7_Q = tas1_mono_q;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 66 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccm7_DM = 0;
 #line 7597 "./linup-7.c"
 
   SIG_MESSAGE("m7 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 165 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 165 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 165 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (mrot7)*DEG2RAD);
 #line 7607 "./linup-7.c"
   rot_mul(mctr1, mcrotafocus_mono, mcrotam7);
   rot_transpose(mcrotam6, mctr1);
   rot_mul(mcrotam7, mctr1, mcrotrm7);
   mctc1 = coords_set(
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 164 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 164 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     mpos7,
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 164 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0);
 #line 7618 "./linup-7.c"
   rot_transpose(mcrotafocus_mono, mctr1);
@@ -7632,22 +7632,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("a2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 168 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 168 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (mcipTTM)*DEG2RAD,
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 168 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD);
 #line 7641 "./linup-7.c"
   rot_mul(mctr1, mcrotaa1, mcrotaa2);
   rot_transpose(mcrotam7, mctr1);
   rot_mul(mcrotaa2, mctr1, mcrotra2);
   mctc1 = coords_set(
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 168 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 168 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 168 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0);
 #line 7652 "./linup-7.c"
   rot_transpose(mcrotafocus_mono, mctr1);
@@ -7663,40 +7663,40 @@ void mcinit(void) {
     /* Component slitMS1. */
   /* Setting parameters for component slitMS1. */
   SIG_MESSAGE("slitMS1 (Init:SetPar)");
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 171 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS1_xmin = -0.0105;
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 171 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS1_xmax = 0.0105;
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 171 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS1_ymin = -0.035;
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 171 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS1_ymax = 0.035;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS1_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS1_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS1_yheight = 0;
 #line 7680 "./linup-7.c"
 
   SIG_MESSAGE("slitMS1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 172 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 172 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 172 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD);
 #line 7690 "./linup-7.c"
   rot_mul(mctr1, mcrotaa2, mcrotaslitMS1);
   rot_transpose(mcrotaa2, mctr1);
   rot_mul(mcrotaslitMS1, mctr1, mcrotrslitMS1);
   mctc1 = coords_set(
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 172 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 172 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 172 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0.565);
 #line 7701 "./linup-7.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -7712,40 +7712,40 @@ void mcinit(void) {
     /* Component slitMS2. */
   /* Setting parameters for component slitMS2. */
   SIG_MESSAGE("slitMS2 (Init:SetPar)");
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 175 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS2_xmin = -0.0105;
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 175 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS2_xmax = 0.0105;
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 175 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS2_ymin = -0.035;
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 175 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS2_ymax = 0.035;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS2_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS2_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS2_yheight = 0;
 #line 7729 "./linup-7.c"
 
   SIG_MESSAGE("slitMS2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 176 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 176 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 176 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD);
 #line 7739 "./linup-7.c"
   rot_mul(mctr1, mcrotaa2, mcrotaslitMS2);
   rot_transpose(mcrotaslitMS1, mctr1);
   rot_mul(mcrotaslitMS2, mctr1, mcrotrslitMS2);
   mctc1 = coords_set(
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 176 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 176 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 176 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0.855);
 #line 7750 "./linup-7.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -7761,46 +7761,46 @@ void mcinit(void) {
     /* Component c1. */
   /* Setting parameters for component c1. */
   SIG_MESSAGE("c1 (Init:SetPar)");
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 179 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc1_xmin = -0.02;
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 179 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc1_xmax = 0.02;
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 179 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc1_ymin = -0.0375;
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 179 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc1_ymax = 0.0375;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc1_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc1_yheight = 0;
-#line 180 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 180 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc1_length = 0.250;
-#line 180 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 180 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc1_divergence = mcipC1;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc1_transmission = 1;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc1_divergenceV = 0;
 #line 7784 "./linup-7.c"
 
   SIG_MESSAGE("c1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 181 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 181 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 181 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 181 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (OMC1_d)*DEG2RAD,
-#line 181 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 181 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD);
 #line 7794 "./linup-7.c"
   rot_mul(mctr1, mcrotaa2, mcrotac1);
   rot_transpose(mcrotaslitMS2, mctr1);
   rot_mul(mcrotac1, mctr1, mcrotrc1);
   mctc1 = coords_set(
-#line 181 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 181 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 181 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 181 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 181 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 181 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0.87);
 #line 7805 "./linup-7.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -7816,40 +7816,40 @@ void mcinit(void) {
     /* Component slitMS3. */
   /* Setting parameters for component slitMS3. */
   SIG_MESSAGE("slitMS3 (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS3_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS3_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS3_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS3_ymax = 0;
-#line 183 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 183 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS3_radius = 0.025;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS3_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS3_yheight = 0;
 #line 7833 "./linup-7.c"
 
   SIG_MESSAGE("slitMS3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 184 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 184 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 184 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD);
 #line 7843 "./linup-7.c"
   rot_mul(mctr1, mcrotaa2, mcrotaslitMS3);
   rot_transpose(mcrotac1, mctr1);
   rot_mul(mcrotaslitMS3, mctr1, mcrotrslitMS3);
   mctc1 = coords_set(
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 184 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 184 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 184 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     1.130);
 #line 7854 "./linup-7.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -7865,40 +7865,40 @@ void mcinit(void) {
     /* Component slitMS4. */
   /* Setting parameters for component slitMS4. */
   SIG_MESSAGE("slitMS4 (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS4_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS4_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS4_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS4_ymax = 0;
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 186 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS4_radius = 0.025;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS4_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS4_yheight = 0;
 #line 7882 "./linup-7.c"
 
   SIG_MESSAGE("slitMS4 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 187 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 187 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 187 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 187 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 187 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 187 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD);
 #line 7892 "./linup-7.c"
   rot_mul(mctr1, mcrotaa2, mcrotaslitMS4);
   rot_transpose(mcrotaslitMS3, mctr1);
   rot_mul(mcrotaslitMS4, mctr1, mcrotrslitMS4);
   mctc1 = coords_set(
-#line 187 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 187 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 187 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 187 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 187 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 187 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     1.180);
 #line 7903 "./linup-7.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -7914,40 +7914,40 @@ void mcinit(void) {
     /* Component slitMS5. */
   /* Setting parameters for component slitMS5. */
   SIG_MESSAGE("slitMS5 (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS5_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS5_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS5_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS5_ymax = 0;
-#line 189 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 189 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS5_radius = 0.0275;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS5_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccslitMS5_yheight = 0;
 #line 7931 "./linup-7.c"
 
   SIG_MESSAGE("slitMS5 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 190 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 190 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 190 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD);
 #line 7941 "./linup-7.c"
   rot_mul(mctr1, mcrotaa2, mcrotaslitMS5);
   rot_transpose(mcrotaslitMS4, mctr1);
   rot_mul(mcrotaslitMS5, mctr1, mcrotrslitMS5);
   mctc1 = coords_set(
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 190 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 190 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 190 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     1.230);
 #line 7952 "./linup-7.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -7963,40 +7963,40 @@ void mcinit(void) {
     /* Component mon. */
   /* Setting parameters for component mon. */
   SIG_MESSAGE("mon (Init:SetPar)");
-#line 193 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 193 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccmon_xmin = -0.025;
-#line 193 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 193 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccmon_xmax = 0.025;
-#line 193 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 193 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccmon_ymin = -0.0375;
-#line 193 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 193 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccmon_ymax = 0.0375;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccmon_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccmon_yheight = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccmon_restore_neutron = 0;
 #line 7980 "./linup-7.c"
 
   SIG_MESSAGE("mon (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 194 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 194 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 194 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 194 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 194 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 194 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD);
 #line 7990 "./linup-7.c"
   rot_mul(mctr1, mcrotaa2, mcrotamon);
   rot_transpose(mcrotaslitMS5, mctr1);
   rot_mul(mcrotamon, mctr1, mcrotrmon);
   mctc1 = coords_set(
-#line 194 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 194 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 194 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 194 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 194 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 194 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     1.280);
 #line 8001 "./linup-7.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -8012,48 +8012,48 @@ void mcinit(void) {
     /* Component emon1. */
   /* Setting parameters for component emon1. */
   SIG_MESSAGE("emon1 (Init:SetPar)");
-#line 199 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 199 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   if("linup_7_1.vmon") strncpy(mccemon1_filename, "linup_7_1.vmon" ? "linup_7_1.vmon" : "", 16384); else mccemon1_filename[0]='\0';
-#line 197 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 197 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccemon1_xmin = -0.01;
-#line 197 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 197 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccemon1_xmax = 0.01;
-#line 197 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 197 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccemon1_ymin = -0.1;
-#line 197 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 197 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccemon1_ymax = 0.1;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 54 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccemon1_xwidth = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 54 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccemon1_yheight = 0;
-#line 198 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 198 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccemon1_Emin = 19.25;
-#line 198 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 198 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccemon1_Emax = 20.75;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 54 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccemon1_restore_neutron = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 54 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccemon1_nowritefile = 0;
 #line 8037 "./linup-7.c"
 
   SIG_MESSAGE("emon1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 200 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 200 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 200 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 200 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 200 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 200 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD);
 #line 8047 "./linup-7.c"
   rot_mul(mctr1, mcrotaa2, mcrotaemon1);
   rot_transpose(mcrotamon, mctr1);
   rot_mul(mcrotaemon1, mctr1, mcrotremon1);
   mctc1 = coords_set(
-#line 200 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 200 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 200 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 200 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 200 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 200 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     1.5);
 #line 8058 "./linup-7.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -8069,52 +8069,52 @@ void mcinit(void) {
     /* Component sample. */
   /* Setting parameters for component sample. */
   SIG_MESSAGE("sample (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 203 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsample_radius = 0.007;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 204 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsample_yheight = 0.015;
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 67 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsample_xwidth = 0;
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 67 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsample_zdepth = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 205 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsample_q = 1.8049;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 68 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsample_d = 0;
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 206 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsample_d_phi = 4;
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 207 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsample_pack = 1;
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 207 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsample_j = 6;
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 207 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsample_DW = 1;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 208 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsample_F2 = 56.8;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 209 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsample_Vc = 85.0054;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 209 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsample_sigma_abs = 0.463;
 #line 8098 "./linup-7.c"
 
   SIG_MESSAGE("sample (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 210 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 210 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 210 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD);
 #line 8108 "./linup-7.c"
   rot_mul(mctr1, mcrotaa2, mcrotasample);
   rot_transpose(mcrotaemon1, mctr1);
   rot_mul(mcrotasample, mctr1, mcrotrsample);
   mctc1 = coords_set(
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 210 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 210 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 210 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     1.565);
 #line 8119 "./linup-7.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -8133,22 +8133,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("a3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 213 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 213 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (mcipTT)*DEG2RAD,
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 213 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD);
 #line 8142 "./linup-7.c"
   rot_mul(mctr1, mcrotaa2, mcrotaa3);
   rot_transpose(mcrotasample, mctr1);
   rot_mul(mcrotaa3, mctr1, mcrotra3);
   mctc1 = coords_set(
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 213 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 213 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 213 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0);
 #line 8153 "./linup-7.c"
   rot_transpose(mcrotasample, mctr1);
@@ -8164,46 +8164,46 @@ void mcinit(void) {
     /* Component c2. */
   /* Setting parameters for component c2. */
   SIG_MESSAGE("c2 (Init:SetPar)");
-#line 216 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 216 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc2_xmin = -0.02;
-#line 216 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 216 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc2_xmax = 0.02;
-#line 216 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 216 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc2_ymin = -0.0315;
-#line 216 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 216 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc2_ymax = 0.0315;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc2_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc2_yheight = 0;
-#line 217 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 217 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc2_length = 0.300;
-#line 217 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 217 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc2_divergence = mcipC2;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc2_transmission = 1;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc2_divergenceV = 0;
 #line 8187 "./linup-7.c"
 
   SIG_MESSAGE("c2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 218 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 218 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 218 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 218 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 218 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 218 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD);
 #line 8197 "./linup-7.c"
   rot_mul(mctr1, mcrotaa3, mcrotac2);
   rot_transpose(mcrotaa3, mctr1);
   rot_mul(mcrotac2, mctr1, mcrotrc2);
   mctc1 = coords_set(
-#line 218 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 218 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 218 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 218 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 218 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 218 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0.370);
 #line 8208 "./linup-7.c"
   rot_transpose(mcrotaa3, mctr1);
@@ -8219,48 +8219,48 @@ void mcinit(void) {
     /* Component ana. */
   /* Setting parameters for component ana. */
   SIG_MESSAGE("ana (Init:SetPar)");
-#line 221 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 221 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccana_zmin = -0.0375;
-#line 221 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 221 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccana_zmax = 0.0375;
-#line 222 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 222 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccana_ymin = -0.024;
-#line 222 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 222 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccana_ymax = 0.024;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 65 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccana_zwidth = 0;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 65 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccana_yheight = 0;
-#line 223 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 223 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccana_mosaich = tas1_ana_mosaic;
-#line 223 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 223 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccana_mosaicv = tas1_ana_mosaic;
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 224 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccana_r0 = tas1_ana_r0;
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 224 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccana_Q = tas1_ana_q;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 66 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccana_DM = 0;
 #line 8244 "./linup-7.c"
 
   SIG_MESSAGE("ana (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 225 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 225 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 225 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 225 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (mcipOMA)*DEG2RAD,
-#line 225 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 225 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD);
 #line 8254 "./linup-7.c"
   rot_mul(mctr1, mcrotaa3, mcrotaana);
   rot_transpose(mcrotac2, mctr1);
   rot_mul(mcrotaana, mctr1, mcrotrana);
   mctc1 = coords_set(
-#line 225 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 225 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 225 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 225 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 225 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 225 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0.770);
 #line 8265 "./linup-7.c"
   rot_transpose(mcrotaa3, mctr1);
@@ -8279,22 +8279,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("a4 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 228 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 228 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 228 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 228 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (mcipTTA)*DEG2RAD,
-#line 228 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 228 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD);
 #line 8288 "./linup-7.c"
   rot_mul(mctr1, mcrotaa3, mcrotaa4);
   rot_transpose(mcrotaana, mctr1);
   rot_mul(mcrotaa4, mctr1, mcrotra4);
   mctc1 = coords_set(
-#line 228 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 228 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 228 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 228 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 228 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 228 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0);
 #line 8299 "./linup-7.c"
   rot_transpose(mcrotaana, mctr1);
@@ -8310,46 +8310,46 @@ void mcinit(void) {
     /* Component c3. */
   /* Setting parameters for component c3. */
   SIG_MESSAGE("c3 (Init:SetPar)");
-#line 231 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 231 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc3_xmin = -0.02;
-#line 231 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 231 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc3_xmax = 0.02;
-#line 231 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 231 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc3_ymin = -0.05;
-#line 231 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 231 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc3_ymax = 0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc3_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc3_yheight = 0;
-#line 232 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 232 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc3_length = 0.270;
-#line 232 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 232 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc3_divergence = mcipC3;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc3_transmission = 1;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccc3_divergenceV = 0;
 #line 8333 "./linup-7.c"
 
   SIG_MESSAGE("c3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 233 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 233 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 233 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 233 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 233 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 233 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD);
 #line 8343 "./linup-7.c"
   rot_mul(mctr1, mcrotaa4, mcrotac3);
   rot_transpose(mcrotaa4, mctr1);
   rot_mul(mcrotac3, mctr1, mcrotrc3);
   mctc1 = coords_set(
-#line 233 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 233 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 233 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 233 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 233 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 233 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0.104);
 #line 8354 "./linup-7.c"
   rot_transpose(mcrotaa4, mctr1);
@@ -8365,40 +8365,40 @@ void mcinit(void) {
     /* Component sng. */
   /* Setting parameters for component sng. */
   SIG_MESSAGE("sng (Init:SetPar)");
-#line 236 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 236 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsng_xmin = -0.01;
-#line 236 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 236 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsng_xmax = 0.01;
-#line 236 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 236 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsng_ymin = -0.045;
-#line 236 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 236 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsng_ymax = 0.045;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsng_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsng_yheight = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 46 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccsng_restore_neutron = 0;
 #line 8382 "./linup-7.c"
 
   SIG_MESSAGE("sng (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 237 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 237 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 237 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 237 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 237 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 237 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD);
 #line 8392 "./linup-7.c"
   rot_mul(mctr1, mcrotaa4, mcrotasng);
   rot_transpose(mcrotac3, mctr1);
   rot_mul(mcrotasng, mctr1, mcrotrsng);
   mctc1 = coords_set(
-#line 237 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 237 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 237 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 237 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 237 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 237 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0.43);
 #line 8403 "./linup-7.c"
   rot_transpose(mcrotaa4, mctr1);
@@ -8414,48 +8414,48 @@ void mcinit(void) {
     /* Component emon2. */
   /* Setting parameters for component emon2. */
   SIG_MESSAGE("emon2 (Init:SetPar)");
-#line 242 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 242 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   if("linup_7_2.vmon") strncpy(mccemon2_filename, "linup_7_2.vmon" ? "linup_7_2.vmon" : "", 16384); else mccemon2_filename[0]='\0';
-#line 240 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 240 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccemon2_xmin = -0.0125;
-#line 240 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 240 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccemon2_xmax = 0.0125;
-#line 240 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 240 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccemon2_ymin = -0.05;
-#line 240 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 240 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccemon2_ymax = 0.05;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 54 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccemon2_xwidth = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 54 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccemon2_yheight = 0;
-#line 241 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 241 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccemon2_Emin = 19.25;
-#line 241 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 241 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccemon2_Emax = 20.75;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 54 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccemon2_restore_neutron = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 54 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
   mccemon2_nowritefile = 0;
 #line 8439 "./linup-7.c"
 
   SIG_MESSAGE("emon2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 243 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 243 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 243 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 243 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD,
-#line 243 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 243 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     (0)*DEG2RAD);
 #line 8449 "./linup-7.c"
   rot_mul(mctr1, mcrotaa4, mcrotaemon2);
   rot_transpose(mcrotasng, mctr1);
   rot_mul(mcrotaemon2, mctr1, mcrotremon2);
   mctc1 = coords_set(
-#line 243 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 243 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 243 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 243 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0,
-#line 243 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
+#line 243 "/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-7/linup-7.instr"
     0.430001);
 #line 8460 "./linup-7.c"
   rot_transpose(mcrotaa4, mctr1);

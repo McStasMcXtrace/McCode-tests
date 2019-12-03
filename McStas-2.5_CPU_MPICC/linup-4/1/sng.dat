@@ -1,11 +1,11 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Nov. 19, 2019
-# Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-4/linup-4.instr
+# Creator: McStas 2.5 - Dec. 03, 2019
+# Instrument: /zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-4/linup-4.instr
 # Ncount: 1000000
 # Trace: no
 # Gravitation: no
-# Seed: 1574213241
+# Seed: 1575407562
 # Directory: 1
 # Nodes: 10
 # Param: PHM=-37.077
@@ -16,16 +16,16 @@
 # Param: OMC1=5.5
 # Param: C2=28
 # Param: C3=67
-# Date: Wed Nov 20 01:25:34 2019 (1574209534)
+# Date: Tue Dec  3 18:16:59 2019 (1575393419)
 # type: array_0d
-# Source: TAS1_Diff_Vana (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/linup-4/linup-4.instr)
+# Source: TAS1_Diff_Vana (/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-4/linup-4.instr)
 # component: sng
 # position: -2.28381 0 4.90269
 # title: Single monitor sng
 # Ncount: 10000000
-# statistics: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ8.23866e-08 9.31426e-11 1.05806e+06
-# signal: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
-# values: 
+# statistics: None
+# signal: None
+# values: 1.98019e-09 1.1691e-11 52434
 # xylimits: 0 0 0 0 0 0
 # variables: I I_err N
-0 0 0
+1.98019e-09 1.1691e-11 52434
