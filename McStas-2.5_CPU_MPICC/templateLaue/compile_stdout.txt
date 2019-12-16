@@ -1,12 +1,12 @@
-[1574207874.306864] [n-62-23-6:17663:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3375.76
-[1574207874.308318] [n-62-23-6:17663:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207874.308321] [n-62-23-6:17663:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207874.310327] [n-62-23-6:17663:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207874.310331] [n-62-23-6:17663:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1576504618.297192] [n-62-27-19:17403:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 2352.22
+[1576504618.301025] [n-62-27-19:17403:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1576504618.301032] [n-62-27-19:17403:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1576504618.304109] [n-62-27-19:17403:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1576504618.304114] [n-62-27-19:17403:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 begin instrument: templateLaue
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateLaue/templateLaue.instr
-  Parameters: 
+  Creator: McStas 2.5 - Dec. 16, 2019
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateLaue/templateLaue.instr
+  Parameters:  reflections(string)
   Trace_enabled: yes
   Default_main: yes
   Embedded_runtime: yes
@@ -14,17 +14,18 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateLaue/templateLaue.instr
+  Creator: McStas 2.5 - Dec. 16, 2019
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateLaue/templateLaue.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1574225537
+  Seed: 1576522021
   Directory: .
+  Param: reflections=leucine.lau
 end simulation
 info!
 INFO: No output directory specified (--dir)
-INFO: Using directory: "templateLaue_20191120_005751"
+INFO: Using directory: "templateLaue_20191216_145654"
 INFO: Regenerating c-file: templateLaue.c
 CFLAGS=
 INFO: Recompiling: ./templateLaue.out

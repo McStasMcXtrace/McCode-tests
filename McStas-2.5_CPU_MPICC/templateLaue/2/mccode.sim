@@ -1,9 +1,9 @@
 McStas simulation description file for templateLaue.
-Date:    Mon Dec 16 14:57:00 2019
+Date:    Mon Dec 16 14:57:03 2019
 Program: McStas 2.5 - Dec. 16, 2019
 
 begin instrument: templateLaue
-  File: 1/mccode
+  File: 2/mccode
   Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateLaue/templateLaue.instr
   Parameters:  reflections(string)
   Trace_enabled: yes
@@ -11,7 +11,7 @@ begin instrument: templateLaue
   Embedded_runtime: yes
 end instrument
 
-begin simulation: 1
+begin simulation: 2
   Format: McCode with text headers
   URL: http://www.mccode.org
   Creator: McStas 2.5 - Dec. 16, 2019
@@ -19,14 +19,14 @@ begin simulation: 1
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1576522074
-  Directory: 1
+  Seed: 1576522142
+  Directory: 2
   Nodes: 10
-  Param: reflections=YBaCuO.lau
+  Param: reflections=leucine.lau
 end simulation
 
 begin data
-  Date: Mon Dec 16 14:57:02 2019 (1576504622)
+  Date: Mon Dec 16 14:57:05 2019 (1576504625)
   type: array_2d(360, 180)
   Source: templateLaue (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateLaue/templateLaue.instr)
   component: det
@@ -34,9 +34,9 @@ begin data
   title: 4PI PSD monitor
   Ncount: 10000000
   filename: psd.dat
-  statistics: X0=-0.0198251; dX=90.0039; Y0=0.463585; dY=45.8159;
-  signal: Min=0.515633; Max=653945; Mean=201.088;
-  values: 1.30305e+07 18946.7 9.46495e+06
+  statistics: X0=-0.109344; dX=104.192; Y0=0.489598; dY=39.2805;
+  signal: Min=0; Max=213308; Mean=7180.27;
+  values: 4.65282e+08 151298 9.464e+06
   xvar: Longitude
   yvar: Lattitude
   xlabel: Longitude [deg]
