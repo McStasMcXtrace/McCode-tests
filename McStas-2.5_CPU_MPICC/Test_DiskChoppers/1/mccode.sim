@@ -1,10 +1,10 @@
 McStas simulation description file for Test_DiskChoppers.
-Date:    Wed Nov 20 01:08:25 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:36:35 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: Test_DiskChoppers
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr
   Parameters:  chopper(double) lambda(double) dlambda(double) deltay(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574234435
+  Seed: 1582682347
   Directory: 1
   Nodes: 10
   Param: chopper=0
@@ -29,17 +29,17 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:08:26 2019 (1574208506)
+  Date: Tue Feb 25 21:36:37 2020 (1582662997)
   type: array_2d(128, 20)
-  Source: Test_DiskChoppers (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr)
+  Source: Test_DiskChoppers (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr)
   component: Tofl
   position: 0 0 10.001
   title: TOF-wavelength monitor
   Ncount: 10000000
   filename: TOFlambda.dat
-  statistics: X0=512643; dX=271533; Y0=9.9013; dY=5.74111;
-  signal: Min=0; Max=8.25371e-06; Mean=1.08236e-06;
-  values: 0.00277085 5.4428e-06 259167
+  statistics: X0=511959; dX=271514; Y0=9.88417; dY=5.73991;
+  signal: Min=0; Max=8.10406e-06; Mean=1.0841e-06;
+  values: 0.00277529 5.44717e-06 259583
   xvar: Time-of-flight
   yvar: Wavelength
   xlabel: Time-of-flight [\gms]
@@ -51,17 +51,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:08:26 2019 (1574208506)
+  Date: Tue Feb 25 21:36:37 2020 (1582662997)
   type: array_2d(90, 90)
-  Source: Test_DiskChoppers (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr)
+  Source: Test_DiskChoppers (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr)
   component: psd_monitor
   position: 0 0 10.002
   title: PSD monitor
   Ncount: 10000000
   filename: PSD.dat
-  statistics: X0=0.0035406; dX=1.29915; Y0=-0.0210124; dY=3.4541;
-  signal: Min=0; Max=7.37693e-07; Mean=3.64844e-07;
-  values: 0.00295524 5.62099e-06 276414
+  statistics: X0=0.0002317; dX=1.29776; Y0=-0.0131142; dY=3.45463;
+  signal: Min=0; Max=6.94937e-07; Mean=3.64978e-07;
+  values: 0.00295632 5.62202e-06 276515
   xvar: X
   yvar: Y
   xlabel: X position [cm]

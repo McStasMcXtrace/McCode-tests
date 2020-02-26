@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr (SNS_test)
- * Date:       Wed Nov 20 00:48:49 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr (SNS_test)
+ * Date:       Tue Feb 25 21:03:18 2020
  * File:       ./SNS_analytic_test.c
  * Compile:    cc -o SNS_test.out ./SNS_analytic_test.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "SNS_test";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -10703,33 +10703,33 @@ void mcinit(void) {
     /* Component mod. */
   /* Setting parameters for component mod. */
   SIG_MESSAGE("mod (Init:SetPar)");
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccmod_xwidth = 0.1;
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccmod_yheight = 0.12;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccmod_dist = 1;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccmod_focus_xw = 0.10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccmod_focus_yh = 0.24;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccmod_Emin = 1.0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccmod_Emax = 10.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccmod_tinmin = 0.0;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccmod_tinmax = 2000.0;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccmod_sample_E = 0;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccmod_sample_t = 0;
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccmod_proton_T = 0.0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccmod_p_power = 2.0;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccmod_n_pulses = 1.0;
 #line 10734 "./SNS_analytic_test.c"
 
@@ -10741,11 +10741,11 @@ void mcinit(void) {
 #line 10741 "./SNS_analytic_test.c"
   rot_copy(mcrotrmod, mcrotamod);
   mcposamod = coords_set(
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
     0,
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
     0,
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
     0);
 #line 10750 "./SNS_analytic_test.c"
   mctc1 = coords_neg(mcposamod);
@@ -10758,29 +10758,29 @@ void mcinit(void) {
     /* Component dett. */
   /* Setting parameters for component dett. */
   SIG_MESSAGE("dett (Init:SetPar)");
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   if("tout.det") strncpy(mccdett_filename, "tout.det" ? "tout.det" : "", 16384); else mccdett_filename[0]='\0';
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdett_xmin = -.025;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdett_xmax = .025;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdett_ymin = -.06;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdett_ymax = .06;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdett_xwidth = 0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdett_yheight = 0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdett_tmin = 0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdett_tmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdett_dt = 10;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdett_restore_neutron = 0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdett_nowritefile = 0;
 #line 10785 "./SNS_analytic_test.c"
 
@@ -10794,11 +10794,11 @@ void mcinit(void) {
   rot_transpose(mcrotamod, mctr1);
   rot_mul(mcrotadett, mctr1, mcrotrdett);
   mctc1 = coords_set(
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
     0,
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
     0,
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
     1);
 #line 10803 "./SNS_analytic_test.c"
   rot_transpose(mcrotamod, mctr1);
@@ -10814,47 +10814,47 @@ void mcinit(void) {
     /* Component det. */
   /* Setting parameters for component det. */
   SIG_MESSAGE("det (Init:SetPar)");
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdet_xwidth = 1;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdet_yheight = 1;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdet_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdet_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdet_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdet_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdet_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdet_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdet_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdet_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdet_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdet_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdet_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdet_radius = 0;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   if(" square x bins 100 limits=[-0.05 0.05]; y bins 100 limits=[-0.12 0.12]") strncpy(mccdet_options, " square x bins 100 limits=[-0.05 0.05]; y bins 100 limits=[-0.12 0.12]" ? " square x bins 100 limits=[-0.05 0.05]; y bins 100 limits=[-0.12 0.12]" : "", 16384); else mccdet_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   if("NULL") strncpy(mccdet_filename, "NULL" ? "NULL" : "", 16384); else mccdet_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   if("NULL") strncpy(mccdet_geometry, "NULL" ? "NULL" : "", 16384); else mccdet_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   if("NULL") strncpy(mccdet_username1, "NULL" ? "NULL" : "", 16384); else mccdet_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   if("NULL") strncpy(mccdet_username2, "NULL" ? "NULL" : "", 16384); else mccdet_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   if("NULL") strncpy(mccdet_username3, "NULL" ? "NULL" : "", 16384); else mccdet_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
   mccdet_nowritefile = 0;
 #line 10859 "./SNS_analytic_test.c"
 
@@ -10868,11 +10868,11 @@ void mcinit(void) {
   rot_transpose(mcrotadett, mctr1);
   rot_mul(mcrotadet, mctr1, mcrotrdet);
   mctc1 = coords_set(
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
     0,
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
     0,
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SNS_analytic_test/SNS_analytic_test.instr"
     1.0000000000001);
 #line 10877 "./SNS_analytic_test.c"
   rot_transpose(mcrotamod, mctr1);

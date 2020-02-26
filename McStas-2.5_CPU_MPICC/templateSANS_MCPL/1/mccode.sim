@@ -1,10 +1,10 @@
 McStas simulation description file for templateSANS_MCPL.
-Date:    Wed Nov 20 01:26:06 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 22:19:29 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: templateSANS_MCPL
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateSANS_MCPL/templateSANS_MCPL.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateSANS_MCPL/templateSANS_MCPL.instr
   Parameters:  lambda(double) dlambda(double) r(double) PHI(double) Delta_Rho(double) sigma_abs(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateSANS_MCPL/templateSANS_MCPL.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateSANS_MCPL/templateSANS_MCPL.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574213989
+  Seed: 1582695000
   Directory: 1
   Nodes: 10
   Param: lambda=6

@@ -2,64 +2,56 @@ INFO: Using directory: "2"
 INFO: Using existing c-file: ./Test_Monitor_Sqw.c
 INFO: Using existing binary: ./Test_Monitor_Sqw.out
 INFO: ===
-INFO: Using system default number of mpirun -np processes
-[1574209040.311408] [n-62-23-6:31300:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3131.37
-[1574209040.312867] [n-62-23-6:31300:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209040.312885] [n-62-23-6:31300:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-23-14:23908] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:23908] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:23908] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582664302.747949] [n-62-23-14:23914:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664302.747988] [n-62-23-14:23914:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 --------------------------------------------------------------------------
 Initialization of MXM library failed.
 
   Error: Input/output error
 
 --------------------------------------------------------------------------
-[1574209040.314833] [n-62-23-6:31300:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209040.314848] [n-62-23-6:31300:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209040.316564] [n-62-23-6:31301:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3129.32
-[1574209040.318336] [n-62-23-6:31301:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209040.318353] [n-62-23-6:31301:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209040.320168] [n-62-23-6:31301:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209040.320183] [n-62-23-6:31301:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209040.327571] [n-62-23-6:31302:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3108.47
-[1574209040.329014] [n-62-23-6:31302:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209040.329030] [n-62-23-6:31302:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209040.330921] [n-62-23-6:31302:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209040.330937] [n-62-23-6:31302:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209040.332061] [n-62-23-6:31303:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3103.00
-[1574209040.333085] [n-62-23-6:31304:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3103.00
-[1574209040.333492] [n-62-23-6:31303:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209040.333508] [n-62-23-6:31303:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209040.333600] [n-62-23-6:31305:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3103.00
-[1574209040.334909] [n-62-23-6:31304:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209040.334925] [n-62-23-6:31304:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209040.335276] [n-62-23-6:31303:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209040.335291] [n-62-23-6:31303:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209040.335420] [n-62-23-6:31305:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209040.335436] [n-62-23-6:31305:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209040.336820] [n-62-23-6:31304:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209040.336835] [n-62-23-6:31304:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209040.337322] [n-62-23-6:31305:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209040.337337] [n-62-23-6:31305:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209040.353240] [n-62-23-3:25486:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3167.09
-[1574209040.353240] [n-62-23-3:25487:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3167.09
-[1574209040.353240] [n-62-23-3:25488:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3167.09
-[1574209040.353244] [n-62-23-3:25489:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3167.09
-[1574209040.357973] [n-62-23-3:25488:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209040.357991] [n-62-23-3:25488:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209040.357973] [n-62-23-3:25489:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209040.357990] [n-62-23-3:25489:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209040.358406] [n-62-23-3:25486:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209040.358423] [n-62-23-3:25486:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209040.358429] [n-62-23-3:25487:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209040.358444] [n-62-23-3:25487:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209040.360216] [n-62-23-3:25489:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209040.360234] [n-62-23-3:25489:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209040.360214] [n-62-23-3:25488:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209040.360268] [n-62-23-3:25488:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209040.360529] [n-62-23-3:25486:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209040.360543] [n-62-23-3:25486:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209040.360552] [n-62-23-3:25487:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209040.360566] [n-62-23-3:25487:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'Test_Monitor_Sqw' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+[1582664302.750594] [n-62-23-14:23914:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664302.750613] [n-62-23-14:23914:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664302.759756] [n-62-23-14:23915:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664302.759788] [n-62-23-14:23915:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664302.760081] [n-62-23-14:23916:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664302.760170] [n-62-23-14:23916:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664302.760796] [n-62-23-14:23918:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664302.760828] [n-62-23-14:23918:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664302.762732] [n-62-23-14:23916:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664302.762748] [n-62-23-14:23916:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664302.762930] [n-62-23-14:23915:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664302.762946] [n-62-23-14:23915:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664302.763163] [n-62-23-14:23918:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664302.763899] [n-62-23-14:23918:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664302.768306] [n-62-23-14:23917:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664302.768340] [n-62-23-14:23917:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664302.771002] [n-62-23-14:23917:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664302.771020] [n-62-23-14:23917:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664302.775587] [n-62-23-14:23921:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664302.775707] [n-62-23-14:23921:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664302.775900] [n-62-23-14:23919:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664302.775929] [n-62-23-14:23919:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664302.778001] [n-62-23-14:23919:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664302.778016] [n-62-23-14:23919:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664302.778095] [n-62-23-14:23921:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664302.778112] [n-62-23-14:23921:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664302.779552] [n-62-23-14:23922:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664302.779603] [n-62-23-14:23922:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664302.780768] [n-62-23-14:23920:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664302.780799] [n-62-23-14:23920:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664302.782634] [n-62-23-14:23922:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664302.782650] [n-62-23-14:23922:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664302.783178] [n-62-23-14:23920:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664302.783204] [n-62-23-14:23920:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664302.788606] [n-62-23-14:23923:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664302.788641] [n-62-23-14:23923:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664302.790658] [n-62-23-14:23923:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664302.790675] [n-62-23-14:23923:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'Test_Monitor_Sqw' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
 Test_Monitor_Sqw: lambda=1.6 [Angs], k=3.92699 [Angs-1], v=2472.52 [m/s], E=31.9548 [meV]. Time=[0.00121334 0.00161778 0.00242667]
 Test_Monitor_Sqw: sample is Rb_liq_coh.sqw, with hollow cylindrical geometry.
 Test_Monitor_Sqw: detector is cylindrical with radius=4 [m] height=3 [m] and 468 tubes [1 inch]
@@ -75,11 +67,11 @@ Test_Monitor_Sqw: external environment is Al.laz
 Test_Monitor_Sqw: lambda=1.6 [Angs], k=3.92699 [Angs-1], v=2472.52 [m/s], E=31.9548 [meV]. Time=[0.00121334 0.00161778 0.00242667]
 Test_Monitor_Sqw: sample is Rb_liq_coh.sqw, with hollow cylindrical geometry.
 Test_Monitor_Sqw: detector is cylindrical with radius=4 [m] height=3 [m] and 468 tubes [1 inch]
-Test_Monitor_Sqw: container is Al.laz (outer cylinder)
-Test_Monitor_Sqw: external environment is Al.laz
 Test_Monitor_Sqw: lambda=1.6 [Angs], k=3.92699 [Angs-1], v=2472.52 [m/s], E=31.9548 [meV]. Time=[0.00121334 0.00161778 0.00242667]
 Test_Monitor_Sqw: sample is Rb_liq_coh.sqw, with hollow cylindrical geometry.
 Test_Monitor_Sqw: detector is cylindrical with radius=4 [m] height=3 [m] and 468 tubes [1 inch]
+Test_Monitor_Sqw: container is Al.laz (outer cylinder)
+Test_Monitor_Sqw: external environment is Al.laz
 Test_Monitor_Sqw: container is Al.laz (outer cylinder)
 Test_Monitor_Sqw: external environment is Al.laz
 Test_Monitor_Sqw: lambda=1.6 [Angs], k=3.92699 [Angs-1], v=2472.52 [m/s], E=31.9548 [meV]. Time=[0.00121334 0.00161778 0.00242667]
@@ -88,11 +80,7 @@ Test_Monitor_Sqw: sample is Rb_liq_coh.sqw, with hollow cylindrical geometry.
 Test_Monitor_Sqw: detector is cylindrical with radius=4 [m] height=3 [m] and 468 tubes [1 inch]
 Test_Monitor_Sqw: container is Al.laz (outer cylinder)
 Test_Monitor_Sqw: external environment is Al.laz
-Test_Monitor_Sqw: lambda=1.6 [Angs], k=3.92699 [Angs-1], v=2472.52 [m/s], E=31.9548 [meV]. Time=[0.00121334 0.00161778 0.00242667]
-Test_Monitor_Sqw: sample is Rb_liq_coh.sqw, with hollow cylindrical geometry.
-Test_Monitor_Sqw: detector is cylindrical with radius=4 [m] height=3 [m] and 468 tubes [1 inch]
-Test_Monitor_Sqw: container is Al.laz (outer cylinder)
-Test_Monitor_Sqw: external environment is Al.laz
+[Test_Monitor_Sqw] Initialize
 Test_Monitor_Sqw: lambda=1.6 [Angs], k=3.92699 [Angs-1], v=2472.52 [m/s], E=31.9548 [meV]. Time=[0.00121334 0.00161778 0.00242667]
 Test_Monitor_Sqw: sample is Rb_liq_coh.sqw, with hollow cylindrical geometry.
 Test_Monitor_Sqw: detector is cylindrical with radius=4 [m] height=3 [m] and 468 tubes [1 inch]
@@ -103,19 +91,23 @@ Test_Monitor_Sqw: lambda=1.6 [Angs], k=3.92699 [Angs-1], v=2472.52 [m/s], E=31.9
 Test_Monitor_Sqw: sample is Rb_liq_coh.sqw, with hollow cylindrical geometry.
 Test_Monitor_Sqw: detector is cylindrical with radius=4 [m] height=3 [m] and 468 tubes [1 inch]
 Test_Monitor_Sqw: container is Al.laz (outer cylinder)
+[Test_Monitor_Sqw] Initialize
 Test_Monitor_Sqw: external environment is Al.laz
 Test_Monitor_Sqw: lambda=1.6 [Angs], k=3.92699 [Angs-1], v=2472.52 [m/s], E=31.9548 [meV]. Time=[0.00121334 0.00161778 0.00242667]
 Test_Monitor_Sqw: sample is Rb_liq_coh.sqw, with hollow cylindrical geometry.
-[Test_Monitor_Sqw] Initialize
+Test_Monitor_Sqw: lambda=1.6 [Angs], k=3.92699 [Angs-1], v=2472.52 [m/s], E=31.9548 [meV]. Time=[0.00121334 0.00161778 0.00242667]
 Test_Monitor_Sqw: detector is cylindrical with radius=4 [m] height=3 [m] and 468 tubes [1 inch]
 Test_Monitor_Sqw: container is Al.laz (outer cylinder)
 Test_Monitor_Sqw: external environment is Al.laz
 Test_Monitor_Sqw: lambda=1.6 [Angs], k=3.92699 [Angs-1], v=2472.52 [m/s], E=31.9548 [meV]. Time=[0.00121334 0.00161778 0.00242667]
 Test_Monitor_Sqw: sample is Rb_liq_coh.sqw, with hollow cylindrical geometry.
+Test_Monitor_Sqw: sample is Rb_liq_coh.sqw, with hollow cylindrical geometry.
 Test_Monitor_Sqw: detector is cylindrical with radius=4 [m] height=3 [m] and 468 tubes [1 inch]
 Test_Monitor_Sqw: container is Al.laz (outer cylinder)
 Test_Monitor_Sqw: external environment is Al.laz
-[Test_Monitor_Sqw] Initialize
+Test_Monitor_Sqw: detector is cylindrical with radius=4 [m] height=3 [m] and 468 tubes [1 inch]
+Test_Monitor_Sqw: container is Al.laz (outer cylinder)
+Test_Monitor_Sqw: external environment is Al.laz
 [Test_Monitor_Sqw] Initialize
 [Test_Monitor_Sqw] Initialize
 [Test_Monitor_Sqw] Initialize
@@ -135,6 +127,8 @@ Isotropic_Sqw: Sample_in: Applying exp(hw/2kT) factor with T=350 [K] on Rb_liq_i
 Isotropic_Sqw: Sample_in: Generated Rb_liq_inc.sqw incoherent Sqw
                    q=[0.1:10 Angs-1] w=[0:101.849 meV] |S|=0.985192 size=[101x10185] sigma=0.5 [barns]
                    normalization factor S(q,w)*0.492586 (auto) \int q^2 S(q) dq=676.701
+[n-62-23-14:23908] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-14:23908] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Rb_liq_coh.sqw' (Table_Read_Offset)
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Rb_liq_coh.sqw' (Table_Read_Offset)
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Rb_liq_coh.sqw' (Table_Read_Offset)
@@ -149,59 +143,64 @@ Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mc
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
-[n-62-23-6:31291] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-6:31291] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
 
-Finally [Test_Monitor_Sqw: 2]. Time: 7 [s] 
+Trace ETA 16 [s] % 64 65 
+Trace ETA 18 [s] % 58 60 70 65 
 
-Finally [Test_Monitor_Sqw: 2]. Time: 7 [s] 
+Trace ETA 18 [s] % 60 
+
+Trace ETA 16 [s] % 68 
+
+
+Trace ETA 17 [s] % 64 Trace ETA 17 [s] % 63 Trace ETA 19 [s] % 55 
+Trace ETA 15 [s] % 69 Trace ETA 17 [s] % 61 Trace ETA 16 [s] % 66 70 65 70 65 65 70 65 70 60 70 75 70 75 75 70 75 70 75 65 80 75 80 75 80 75 75 80 80 85 70 80 85 85 80 80 80 85 85 75 90 90 85 85 90 85 90 85 90 80 95 90 95 90 95 95 90 90 95 85 95 95 95 95 90 
+Finally [Test_Monitor_Sqw: 2]. Time: 17 [s] 
+95 
+Finally [Test_Monitor_Sqw: 2]. Time: 18 [s] 
+
+Finally [Test_Monitor_Sqw: 2]. Time: 18 [s] 
+
+Finally [Test_Monitor_Sqw: 2]. Time: 19 [s] 
 
 Save [Test_Monitor_Sqw]
-Detector: SampleIn_I=1.14062e-06 SampleIn_ERR=3.61122e-10 SampleIn_N=9.97794e+06 "SampleIn_1574209040.x_y"
 
-Finally [Test_Monitor_Sqw: 2]. Time: 6 [s] 
+Finally [Test_Monitor_Sqw: 2]. Time: 18 [s] 
+Detector: SampleIn_I=1.14061e-06 SampleIn_ERR=3.61118e-10 SampleIn_N=9.97788e+06 "SampleIn_1582664302.x_y"
 
-Finally [Test_Monitor_Sqw: 2]. Time: 6 [s] 
+Finally [Test_Monitor_Sqw: 2]. Time: 18 [s] 
+Detector: Detector_nM_I=1.3239e-08 Detector_nM_ERR=2.51348e-11 Detector_nM_N=3.27339e+06 "Detector_nM_1582664312.U1_U2"
 
-Finally [Test_Monitor_Sqw: 2]. Time: 6 [s] 
+Finally [Test_Monitor_Sqw: 2]. Time: 18 [s] 
+Detector: Detector_nM_coh_I=7.3577e-09 Detector_nM_coh_ERR=6.54273e-12 Detector_nM_coh_N=2.09604e+06 "Detector_nM_coh_1582664312.U1_U2"
+Detector: Detector_nM_inc_I=6.11808e-10 Detector_nM_inc_ERR=1.88675e-12 Detector_nM_inc_N=172707 "Detector_nM_inc_1582664312.U1_U2"
+Detector: Detector_nM_multi_I=1.21053e-10 Detector_nM_multi_ERR=2.95515e-13 Detector_nM_multi_N=537739 "Detector_nM_multi_1582664312.U1_U2"
 
-Finally [Test_Monitor_Sqw: 2]. Time: 6 [s] 
-Detector: Detector_nM_I=1.32208e-08 Detector_nM_ERR=2.50241e-11 Detector_nM_N=3.27256e+06 "Detector_nM_1574209044.U1_U2"
+Finally [Test_Monitor_Sqw: 2]. Time: 20 [s] 
+Detector: Detector_nM_env_I=5.23005e-09 Detector_nM_env_ERR=2.41939e-11 Detector_nM_env_N=1.13788e+06 "Detector_nM_env_1582664312.U1_U2"
+Detector: M_total_I=5.89174e-09 M_total_ERR=1.63156e-11 M_total_N=1.4925e+06 "M_total_1582664312.A_t"
+Detector: M_single_coh_I=3.38085e-09 M_single_coh_ERR=4.43584e-12 M_single_coh_N=966903 "M_single_coh_1582664312.A_t"
+Detector: M_single_inc_I=2.93091e-10 M_single_inc_ERR=1.30797e-12 M_single_inc_N=82162 "M_single_inc_1582664312.A_t"
+Detector: M_multi_I=5.68464e-11 M_multi_ERR=2.0235e-13 M_multi_N=251636 "M_multi_1582664312.A_t"
 
-Finally [Test_Monitor_Sqw: 2]. Time: 9 [s] 
-
-Finally [Test_Monitor_Sqw: 2]. Time: 8 [s] 
-Detector: Detector_nM_coh_I=7.35991e-09 Detector_nM_coh_ERR=6.54428e-12 Detector_nM_coh_N=2.09688e+06 "Detector_nM_coh_1574209044.U1_U2"
-Detector: Detector_nM_inc_I=6.07902e-10 Detector_nM_inc_ERR=1.87924e-12 Detector_nM_inc_N=172056 "Detector_nM_inc_1574209044.U1_U2"
-Detector: Detector_nM_multi_I=1.20944e-10 Detector_nM_multi_ERR=2.95144e-13 Detector_nM_multi_N=537572 "Detector_nM_multi_1574209044.U1_U2"
-Detector: Detector_nM_env_I=5.21353e-09 Detector_nM_env_ERR=2.4079e-11 Detector_nM_env_N=1.13779e+06 "Detector_nM_env_1574209044.U1_U2"
-Detector: M_total_I=5.88603e-09 M_total_ERR=1.63111e-11 M_total_N=1.49219e+06 "M_total_1574209044.A_t"
-Detector: M_single_coh_I=3.37647e-09 M_single_coh_ERR=4.43121e-12 M_single_coh_N=966653 "M_single_coh_1574209044.A_t"
-Detector: M_single_inc_I=2.90976e-10 M_single_inc_ERR=1.29704e-12 M_single_inc_N=82092 "M_single_inc_1574209044.A_t"
-Detector: M_multi_I=5.67563e-11 M_multi_ERR=2.03026e-13 M_multi_N=252130 "M_multi_1574209044.A_t"
-
-Finally [Test_Monitor_Sqw: 2]. Time: 22 [s] 
-Detector: M_env_container_I=2.20014e-09 M_env_container_ERR=1.56433e-11 M_env_container_N=507146 "M_env_container_1574209044.A_t"
+Finally [Test_Monitor_Sqw: 2]. Time: 20 [s] 
+Detector: M_env_container_I=2.1993e-09 M_env_container_ERR=1.56458e-11 M_env_container_N=506192 "M_env_container_1582664312.A_t"
 
 Finally [Test_Monitor_Sqw: 2]. Time: 21 [s] 
-Isotropic_Sqw: Environment_in: 4017 neutron events (out of 1013596) reached
+Isotropic_Sqw: Environment_in: 4101 neutron events (out of 1013647) reached
 WARNING        unrealistic weight. The S(q,w) norm might be too high.
-Isotropic_Sqw: Container_in: 3 neutron events (out of 911758) reached
+Isotropic_Sqw: Container_in: 3 neutron events (out of 912672) reached
 WARNING        unrealistic weight. The S(q,w) norm might be too high.
-Isotropic_Sqw: Sample_in: 25668 neutron events (out of 9927438) that should have
+Isotropic_Sqw: Sample_in: 25826 neutron events (out of 9930716) that should have
                scattered were transmitted because scattering conditions
 WARNING        could not be satisfied after 100 tries.
-Isotropic_Sqw: Sample_in: 447 neutron events (out of 9901770) reached
+Isotropic_Sqw: Sample_in: 482 neutron events (out of 9904890) reached
 WARNING        unrealistic weight. The S(q,w) norm might be too high.
-Isotropic_Sqw: Sample_in: Scattering fraction=0.0209413 of incoming intensity
-               Absorption fraction           =0.0492317
-               Single   scattering intensity =2.32994e-08 (coh=2.1566e-08 inc=1.73345e-09)
-               Multiple scattering intensity =3.46565e-10
-Isotropic_Sqw: Container_out: 1 neutron events (out of 914545) that should have
-               scattered were transmitted because scattering conditions
-WARNING        could not be satisfied after 100 tries.
-Isotropic_Sqw: Container_out: 11 neutron events (out of 914544) reached
+Isotropic_Sqw: Sample_in: Scattering fraction=0.0209483 of incoming intensity
+               Absorption fraction           =0.0492318
+               Single   scattering intensity =2.32959e-08 (coh=2.15589e-08 inc=1.73698e-09)
+               Multiple scattering intensity =3.46818e-10
+Isotropic_Sqw: Container_out: 12 neutron events (out of 915472) reached
 WARNING        unrealistic weight. The S(q,w) norm might be too high.
-Isotropic_Sqw: Environment_out: 6175 neutron events (out of 1005953) reached
+Isotropic_Sqw: Environment_out: 6215 neutron events (out of 1002828) reached
 WARNING        unrealistic weight. The S(q,w) norm might be too high.
-INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr in dataset 2
+INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr in dataset 2

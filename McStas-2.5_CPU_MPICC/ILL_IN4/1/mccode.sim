@@ -1,10 +1,10 @@
 McStas simulation description file for ILL_IN4.
-Date:    Wed Nov 20 01:04:12 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:27:34 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: ILL_IN4
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr
   Parameters:  lambda(double) dlambda(double) DM(double) ETAM(double) RMH(double) ratio(double) dE(double) Sapphire_present(double) sample_coh(string) sample_inc(string) order(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574230610
+  Seed: 1582678265
   Directory: 1
   Nodes: 10
   Param: lambda=1.2
@@ -36,17 +36,17 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:04:19 2019 (1574208259)
+  Date: Tue Feb 25 21:27:54 2020 (1582662474)
   type: array_2d(100, 100)
-  Source: ILL_IN4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
+  Source: ILL_IN4 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
   component: Obt1
   position: 0 0 5.2
   title:  Intensity Position Position Monitor (Disk) per bin
   Ncount: 10000000
-  filename: Obt1_1574208252.x_y
-  statistics: X0=-7.946e-06; dX=0.0249966; Y0=-1.62778e-05; dY=0.0250074;
-  signal: Min=0; Max=1.58437e+07; Mean=1.11556e+07;
-  values: 1.11556e+11 3.98123e+07 7.85375e+06
+  filename: Obt1_1582662454.x_y
+  statistics: X0=-3.22066e-06; dX=0.0249978; Y0=-5.43374e-06; dY=0.0249931;
+  signal: Min=0; Max=1.58751e+07; Mean=1.11531e+07;
+  values: 1.11531e+11 3.98078e+07 7.852e+06
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -58,17 +58,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:19 2019 (1574208259)
+  Date: Tue Feb 25 21:27:54 2020 (1582662474)
   type: array_1d(100)
-  Source: ILL_IN4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
+  Source: ILL_IN4 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
   component: Obt1_lambda
   position: 0 0 5.21
   title: Wavelength [Angs] monitor
   Ncount: 10000000
-  filename: Obt1_lambda_1574208252.L
-  statistics: X0=1.19904; dX=0.0589487;
-  signal: Min=0; Max=1.92241e+10; Mean=1.11532e+09;
-  values: 1.11532e+11 3.98079e+07 7.85203e+06
+  filename: Obt1_lambda_1582662454.L
+  statistics: X0=1.19905; dX=0.0589477;
+  signal: Min=0; Max=1.92336e+10; Mean=1.11507e+09;
+  values: 1.11507e+11 3.98035e+07 7.8503e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
@@ -78,17 +78,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:19 2019 (1574208259)
+  Date: Tue Feb 25 21:27:54 2020 (1582662474)
   type: array_2d(100, 100)
-  Source: ILL_IN4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
+  Source: ILL_IN4 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
   component: Win1
   position: 0 0 5.6
   title:  Intensity Position Position Monitor (Disk) per bin
   Ncount: 10000000
-  filename: Win1_1574208252.x_y
-  statistics: X0=-8.09218e-06; dX=0.0269882; Y0=-1.86162e-05; dY=0.0269996;
-  signal: Min=0; Max=1.52493e+07; Mean=8.74011e+06;
-  values: 8.74011e+10 3.11906e+07 7.85375e+06
+  filename: Win1_1582662454.x_y
+  statistics: X0=-4.21568e-06; dX=0.0269885; Y0=-5.41541e-06; dY=0.0269848;
+  signal: Min=0; Max=1.52332e+07; Mean=8.73821e+06;
+  values: 8.73821e+10 3.11873e+07 7.852e+06
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -100,17 +100,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:19 2019 (1574208259)
+  Date: Tue Feb 25 21:27:54 2020 (1582662474)
   type: array_1d(100)
-  Source: ILL_IN4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
+  Source: ILL_IN4 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
   component: Win1_lambda
   position: 0 0 5.61
   title: Wavelength [Angs] monitor
   Ncount: 10000000
-  filename: Win1_lambda_1574208252.L
+  filename: Win1_lambda_1582662454.L
   statistics: X0=1.20061; dX=0.0589521;
-  signal: Min=0; Max=9.67959e+09; Mean=5.62532e+08;
-  values: 5.62532e+10 2.50234e+07 5.05467e+06
+  signal: Min=0; Max=9.66763e+09; Mean=5.62473e+08;
+  values: 5.62473e+10 2.50221e+07 5.05411e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
@@ -120,57 +120,57 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:19 2019 (1574208259)
+  Date: Tue Feb 25 21:27:54 2020 (1582662474)
   type: array_1d(100)
-  Source: ILL_IN4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
+  Source: ILL_IN4 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
   component: BC2_t
   position: 0 0 8.54746
   title: TOF [s] monitor
   Ncount: 10000000
-  filename: BC2_t_1574208252.t
-  statistics: X0=0.000747543; dX=0.000248939;
-  signal: Min=224448; Max=3.25832e+08; Mean=1.69199e+08;
-  values: 1.69199e+10 9.70453e+06 3.04045e+06
+  filename: BC2_t_1582662454.t
+  statistics: X0=0.000753806; dX=0.000248301;
+  signal: Min=252620; Max=3.23007e+08; Mean=1.69206e+08;
+  values: 1.69206e+10 9.70471e+06 3.04058e+06
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 3.8521e-05 0.00145721
+  xlimits: 5.2377e-05 0.00145566
   variables: t I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:19 2019 (1574208259)
+  Date: Tue Feb 25 21:27:54 2020 (1582662474)
   type: array_1d(100)
-  Source: ILL_IN4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
+  Source: ILL_IN4 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
   component: BC2_t_post
   position: 0 0 8.56746
   title: TOF [s] monitor
   Ncount: 10000000
-  filename: BC2_t_post_1574208252.t
-  statistics: X0=0.000748954; dX=0.000236641;
-  signal: Min=331268; Max=3.04454e+08; Mean=1.5374e+08;
-  values: 1.5374e+10 9.2509e+06 2.76247e+06
+  filename: BC2_t_post_1582662454.t
+  statistics: X0=0.000756435; dX=0.000233308;
+  signal: Min=224528; Max=3.08306e+08; Mean=1.53704e+08;
+  values: 1.53704e+10 9.2498e+06 2.76182e+06
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 8.58982e-05 0.00141048
+  xlimits: 9.66404e-05 0.00141449
   variables: t I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:19 2019 (1574208259)
+  Date: Tue Feb 25 21:27:54 2020 (1582662474)
   type: array_2d(50, 50)
-  Source: ILL_IN4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
+  Source: ILL_IN4 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
   component: Cradle
   position: 0 0 10.2086
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: Cradle_1574208252.x_y
-  statistics: X0=-7.90501e-06; dX=0.0242743; Y0=0.000403779; dY=0.0411695;
-  signal: Min=0; Max=3.5032e+07; Mean=6.18943e+06;
-  values: 1.54736e+10 9.2808e+06 2.78036e+06
+  filename: Cradle_1582662454.x_y
+  statistics: X0=2.12753e-05; dX=0.024283; Y0=0.000444822; dY=0.041195;
+  signal: Min=0; Max=3.48835e+07; Mean=6.18828e+06;
+  values: 1.54707e+10 9.27993e+06 2.77985e+06
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -182,17 +182,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:19 2019 (1574208259)
+  Date: Tue Feb 25 21:27:54 2020 (1582662474)
   type: array_1d(100)
-  Source: ILL_IN4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
+  Source: ILL_IN4 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
   component: Cradle_lambda
   position: 0 0 10.2186
   title: Wavelength [Angs] monitor
   Ncount: 10000000
-  filename: Cradle_lambda_1574208252.L
-  statistics: X0=1.20065; dX=0.0587348;
-  signal: Min=0; Max=2.68039e+09; Mean=1.54736e+08;
-  values: 1.54736e+10 9.2808e+06 2.78036e+06
+  filename: Cradle_lambda_1582662454.L
+  statistics: X0=1.20063; dX=0.0587335;
+  signal: Min=0; Max=2.67873e+09; Mean=1.54707e+08;
+  values: 1.54707e+10 9.27993e+06 2.77985e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
@@ -202,37 +202,37 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:19 2019 (1574208259)
+  Date: Tue Feb 25 21:27:54 2020 (1582662474)
   type: array_1d(100)
-  Source: ILL_IN4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
+  Source: ILL_IN4 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
   component: Cradle_t
   position: 0 0 10.2086
   title: TOF [s] monitor
   Ncount: 10000000
-  filename: Cradle_t_1574208252.t
-  statistics: X0=0.00124509; dX=0.000238169;
-  signal: Min=280441; Max=3.21607e+08; Mean=1.54732e+08;
-  values: 1.54732e+10 9.2807e+06 2.7803e+06
+  filename: Cradle_t_1582662454.t
+  statistics: X0=0.00125398; dX=0.000236344;
+  signal: Min=190678; Max=3.23395e+08; Mean=1.54705e+08;
+  values: 1.54705e+10 9.27988e+06 2.77982e+06
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.000557186 0.00193662
+  xlimits: 0.000564699 0.00194217
   variables: t I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:19 2019 (1574208259)
+  Date: Tue Feb 25 21:27:54 2020 (1582662474)
   type: array_2d(50, 50)
-  Source: ILL_IN4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
+  Source: ILL_IN4 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
   component: Mono_xy
   position: 0 0 10.2086
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: Mono_xy_1574208252.x_y
-  statistics: X0=1.97581e-05; dX=0.0259818; Y0=0.000404238; dY=0.0411586;
-  signal: Min=0; Max=2.32343e+07; Mean=6.18943e+06;
-  values: 1.54736e+10 9.2808e+06 2.78036e+06
+  filename: Mono_xy_1582662454.x_y
+  statistics: X0=4.84327e-05; dX=0.0259891; Y0=0.000443617; dY=0.041184;
+  signal: Min=0; Max=2.32535e+07; Mean=6.18828e+06;
+  values: 1.54707e+10 9.27993e+06 2.77985e+06
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -244,57 +244,57 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:19 2019 (1574208259)
+  Date: Tue Feb 25 21:27:54 2020 (1582662474)
   type: array_1d(100)
-  Source: ILL_IN4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
+  Source: ILL_IN4 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
   component: Mono_t
   position: 0 0 10.2086
   title: TOF [s] monitor
   Ncount: 10000000
-  filename: Mono_t_1574208252.t
-  statistics: X0=0.00135113; dX=0.000213271;
-  signal: Min=73577.1; Max=1.6191e+07; Mean=9.8406e+06;
-  values: 9.8406e+08 740795 1.76484e+06
+  filename: Mono_t_1582662454.t
+  statistics: X0=0.00135106; dX=0.000218278;
+  signal: Min=78600.7; Max=1.62326e+07; Mean=9.87335e+06;
+  values: 9.87335e+08 742031 1.7707e+06
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.000837748 0.00192736
+  xlimits: 0.000821582 0.00193746
   variables: t I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:19 2019 (1574208259)
+  Date: Tue Feb 25 21:27:54 2020 (1582662474)
   type: array_1d(100)
-  Source: ILL_IN4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
+  Source: ILL_IN4 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
   component: FC_Pos
   position: -0.848967 0 11.1538
   title: TOF [s] monitor
   Ncount: 10000000
-  filename: FC_Pos_1574208252.t
-  statistics: X0=0.00164173; dX=0.00022551;
-  signal: Min=33228.7; Max=9.35853e+06; Mean=5.15601e+06;
-  values: 5.15601e+08 537694 919532
+  filename: FC_Pos_1582662454.t
+  statistics: X0=0.00163312; dX=0.000230985;
+  signal: Min=26712.1; Max=9.40545e+06; Mean=5.15992e+06;
+  values: 5.15992e+08 537885 920273
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.00103541 0.00224405
+  xlimits: 0.0010184 0.00225599
   variables: t I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:19 2019 (1574208259)
+  Date: Tue Feb 25 21:27:54 2020 (1582662474)
   type: array_2d(60, 60)
-  Source: ILL_IN4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
+  Source: ILL_IN4 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
   component: sample_flux
   position: -1.3 0 11.656
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: sample_flux_1574208252.x_y
-  statistics: X0=0.000202768; dX=0.0132024; Y0=0.000244761; dY=0.0139345;
-  signal: Min=0; Max=7477.17; Mean=1217.24;
-  values: 4.38208e+06 4831.6 822600
+  filename: sample_flux_1582662454.x_y
+  statistics: X0=0.000348851; dX=0.0133694; Y0=-8.39695e-05; dY=0.0138014;
+  signal: Min=0; Max=6948.47; Mean=1232.65;
+  values: 4.43754e+06 4862.1 833000
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -306,39 +306,39 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:19 2019 (1574208259)
+  Date: Tue Feb 25 21:27:54 2020 (1582662474)
   type: array_2d(100, 100)
-  Source: ILL_IN4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
+  Source: ILL_IN4 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
   component: sample_tof
   position: -1.3 0 11.656
   title:  Intensity Position Time_Of_Flight Monitor (Square) per bin
   Ncount: 10000000
-  filename: sample_tof_1574208252.x_t
-  statistics: X0=3.42372e-05; dX=0.013871; Y0=0.00183555; dY=1.27939e-05;
-  signal: Min=0; Max=23519.5; Mean=905.774;
-  values: 9.05774e+06 9823.39 850210
+  filename: sample_tof_1582662454.x_t
+  statistics: X0=0.000134713; dX=0.014081; Y0=0.00183632; dY=1.37189e-05;
+  signal: Min=0; Max=31984.6; Mean=921.553;
+  values: 9.21553e+06 9908.66 865010
   xvar: x
   yvar: TOF
   xlabel: x [m]
   ylabel: TOF [s]
   zvar: I
   zlabel: Signal per bin
-  xylimits: -0.05 0.05 0.0018073 0.00186667
+  xylimits: -0.05 0.05 0.00180634 0.00187075
   variables: I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:19 2019 (1574208259)
+  Date: Tue Feb 25 21:27:55 2020 (1582662475)
   type: array_1d(300)
-  Source: ILL_IN4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
+  Source: ILL_IN4 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
   component: sample_lambda
   position: -1.3 0 11.656
   title: Wavelength [Angs] monitor
   Ncount: 10000000
-  filename: sample_lambda_1574208252.L
-  statistics: X0=1.20056; dX=0.0243408;
-  signal: Min=0; Max=1.56308e+06; Mean=30227.8;
-  values: 9.06833e+06 9829.16 851200
+  filename: sample_lambda_1582662454.L
+  statistics: X0=1.20068; dX=0.0244382;
+  signal: Min=0; Max=1.43552e+06; Mean=30753.8;
+  values: 9.22613e+06 9914.37 866000
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
@@ -348,17 +348,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:19 2019 (1574208259)
+  Date: Tue Feb 25 21:27:55 2020 (1582662475)
   type: array_1d(100)
-  Source: ILL_IN4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
+  Source: ILL_IN4 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
   component: sample_w
   position: -1.3 0 11.656
   title: Energy [meV] monitor
   Ncount: 10000000
-  filename: sample_w_1574208252.E
-  statistics: X0=56.8334; dX=2.29626;
-  signal: Min=0; Max=1.59183e+06; Mean=90683.3;
-  values: 9.06833e+06 9829.16 851200
+  filename: sample_w_1582662454.E
+  statistics: X0=56.8165; dX=2.30859;
+  signal: Min=0; Max=1.45687e+06; Mean=92261.3;
+  values: 9.22613e+06 9914.37 866000
   xvar: E
   yvar: (I,I_err)
   xlabel: Energy [meV]
@@ -368,39 +368,39 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:19 2019 (1574208259)
+  Date: Tue Feb 25 21:27:55 2020 (1582662475)
   type: array_2d(100, 100)
-  Source: ILL_IN4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
+  Source: ILL_IN4 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
   component: sample_qxy
   position: -1.3 0 11.656
   title:  Intensity Wavevector Wavevector Monitor (Square) per bin
   Ncount: 10000000
-  filename: sample_qxy_1574208252.kx_ky
-  statistics: X0=0.00594442; dX=0.088257; Y0=-0.00086609; dY=0.0580974;
-  signal: Min=0; Max=11695.7; Mean=904.94;
-  values: 9.0494e+06 9818.97 849410
+  filename: sample_qxy_1582662454.kx_ky
+  statistics: X0=-0.00167245; dX=0.0877704; Y0=0.00399307; dY=0.0618574;
+  signal: Min=0; Max=10652.8; Mean=920.509;
+  values: 9.20509e+06 9903.15 864010
   xvar: kx
   yvar: ky
   xlabel: kx [Angs-1]
   ylabel: ky [Angs-1]
   zvar: I
   zlabel: Signal per bin
-  xylimits: -0.183951 0.186884 -0.168188 0.161637
+  xylimits: -0.195189 0.176364 -0.167837 0.177252
   variables: I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:19 2019 (1574208259)
+  Date: Tue Feb 25 21:27:55 2020 (1582662475)
   type: array_2d(300, 100)
-  Source: ILL_IN4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
+  Source: ILL_IN4 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
   component: Detector
   position: -1.3 0 11.656
   title:  Intensity Angle Position Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: Detector_1574208254.th_y
-  statistics: X0=0.863723; dX=8.85875; Y0=0.000439049; dY=0.073245;
-  signal: Min=0; Max=169942; Mean=178.613;
-  values: 5.35839e+06 17746.7 660510
+  filename: Detector_1582662460.th_y
+  statistics: X0=0.785773; dX=8.48441; Y0=0.000121161; dY=0.0692642;
+  signal: Min=0; Max=170781; Mean=184.576;
+  values: 5.53729e+06 18001.3 668880
   xvar: Longitude
   yvar: y
   xlabel: Longitude [deg]
@@ -412,17 +412,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:19 2019 (1574208259)
+  Date: Tue Feb 25 21:27:55 2020 (1582662475)
   type: array_2d(300, 100)
-  Source: ILL_IN4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
+  Source: ILL_IN4 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
   component: Detector_sample
   position: -1.3 0 11.656
   title:  Intensity Angle Position Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: Detector_sample_1574208254.th_y
-  statistics: X0=49.2873; dX=40.6164; Y0=-0.000486094; dY=0.540477;
-  signal: Min=0; Max=5.98382; Mean=1.16152;
-  values: 34845.5 90.8455 392250
+  filename: Detector_sample_1582662460.th_y
+  statistics: X0=54.4672; dX=40.7028; Y0=-0.00111166; dY=0.542331;
+  signal: Min=0; Max=7.85212; Mean=0.830411;
+  values: 24912.3 59.9639 386336
   xvar: Longitude
   yvar: y
   xlabel: Longitude [deg]
@@ -434,17 +434,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:19 2019 (1574208259)
+  Date: Tue Feb 25 21:27:55 2020 (1582662475)
   type: array_2d(300, 100)
-  Source: ILL_IN4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
+  Source: ILL_IN4 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
   component: Detector_env
   position: -1.3 0 11.656
   title:  Intensity Angle Position Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: Detector_env_1574208254.th_y
-  statistics: X0=59.8036; dX=41.4571; Y0=-0.00566999; dY=0.54767;
-  signal: Min=0; Max=91.3338; Mean=1.76161;
-  values: 52848.3 892.425 41675
+  filename: Detector_env_1582662460.th_y
+  statistics: X0=59.0148; dX=41.616; Y0=-0.00113249; dY=0.546867;
+  signal: Min=0; Max=86.0221; Mean=1.79932;
+  values: 53979.5 907.306 41121
   xvar: Longitude
   yvar: y
   xlabel: Longitude [deg]
@@ -456,17 +456,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:20 2019 (1574208260)
+  Date: Tue Feb 25 21:27:55 2020 (1582662475)
   type: array_2d(1000, 1000)
-  Source: ILL_IN4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
+  Source: ILL_IN4 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
   component: Detector_Sqw
   position: -1.3 0 11.656
   title:  Intensity Momentum transfer Q [Angs-1] Energy transfer w [meV] Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: Detector_Sqw_1574208254.U1_U2
-  statistics: X0=4.89938; dX=5.09317; Y0=60.2296; dY=62.2671;
-  signal: Min=0; Max=527.706; Mean=0.0516149;
-  values: 51614.9 120.261 261142
+  filename: Detector_Sqw_1582662460.U1_U2
+  statistics: X0=5.90396; dX=6.20564; Y0=124.408; dY=76.7598;
+  signal: Min=0; Max=2509.94; Mean=0.0357692;
+  values: 35769.2 82.8626 261817
   xvar: Momentum
   yvar: Energy
   xlabel: Momentum transfer Q [Angs-1]
@@ -478,17 +478,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:27 2019 (1574208267)
+  Date: Tue Feb 25 21:27:56 2020 (1582662476)
   type: array_2d(500, 500)
-  Source: ILL_IN4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
+  Source: ILL_IN4 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
   component: Detector_qe
   position: -1.3 0 11.656
   title:  Intensity Angle Energy Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: Detector_qe_1574208254.A_E
-  statistics: X0=-0.339535; dX=75.7371; Y0=110.471; dY=54.0538;
-  signal: Min=0; Max=13.1454; Mean=0.182937;
-  values: 45734.2 111.938 230466
+  filename: Detector_qe_1582662460.A_E
+  statistics: X0=-2.06057; dX=86.1767; Y0=137.649; dY=58.8064;
+  signal: Min=0; Max=22.7947; Mean=0.0823077;
+  values: 20576.9 60.7509 156203
   xvar: Angle
   yvar: Energy
   xlabel: Angle [deg]
@@ -500,17 +500,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:29 2019 (1574208269)
+  Date: Tue Feb 25 21:27:56 2020 (1582662476)
   type: array_2d(1000, 1000)
-  Source: ILL_IN4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
+  Source: ILL_IN4 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
   component: Detector_SqwV
   position: -1.3 0 11.656
   title:  Intensity Momentum transfer Q [Angs-1] Energy transfer w [meV] Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: Detector_SqwV_1574208254.U1_U2
-  statistics: X0=6.27872; dX=3.53474; Y0=1.85507; dY=1.77046;
-  signal: Min=0; Max=107.097; Mean=0.00871859;
-  values: 8718.59 19.0569 295230
+  filename: Detector_SqwV_1582662460.U1_U2
+  statistics: X0=6.28863; dX=3.52678; Y0=1.8567; dY=1.74897;
+  signal: Min=0; Max=104.801; Mean=0.00870881;
+  values: 8708.81 18.9767 295214
   xvar: Momentum
   yvar: Energy
   xlabel: Momentum transfer Q [Angs-1]
@@ -522,17 +522,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:35 2019 (1574208275)
+  Date: Tue Feb 25 21:27:57 2020 (1582662477)
   type: array_2d(500, 500)
-  Source: ILL_IN4 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
+  Source: ILL_IN4 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr)
   component: Detector_qeV
   position: -1.3 0 11.656
   title:  Intensity Angle Energy Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: Detector_qeV_1574208254.A_E
-  statistics: X0=45.0401; dX=44.4722; Y0=56.8325; dY=1.7628;
-  signal: Min=0; Max=6.12936; Mean=0.0348344;
-  values: 8708.59 19.0538 294014
+  filename: Detector_qeV_1582662460.A_E
+  statistics: X0=45.1674; dX=44.426; Y0=56.7987; dY=1.74489;
+  signal: Min=0; Max=5.34925; Mean=0.0347974;
+  values: 8699.34 18.9739 294035
   xvar: Angle
   yvar: Energy
   xlabel: Angle [deg]

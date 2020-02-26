@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr (FZJ_BenchmarkSfin2)
- * Date:       Wed Nov 20 00:13:33 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr (FZJ_BenchmarkSfin2)
+ * Date:       Tue Feb 25 20:25:19 2020
  * File:       ./FZJ_BenchmarkSfin2.c
  * Compile:    cc -o FZJ_BenchmarkSfin2.out ./FZJ_BenchmarkSfin2.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "FZJ_BenchmarkSfin2";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -11840,11 +11840,11 @@ void mcinit(void) {
 #line 11840 "./FZJ_BenchmarkSfin2.c"
   rot_copy(mcrotrorigin, mcrotaorigin);
   mcposaorigin = coords_set(
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0);
 #line 11849 "./FZJ_BenchmarkSfin2.c"
   mctc1 = coords_neg(mcposaorigin);
@@ -11857,85 +11857,85 @@ void mcinit(void) {
     /* Component source. */
   /* Setting parameters for component source. */
   SIG_MESSAGE("source (Init:SetPar)");
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_width_c = 0.12;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_yheight = 0.07;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_Lmin = mciplbdmin;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_Lmax = mciplbdmax;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_dist = 2.0;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_focus_xw = mcipNGbend;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_focus_yh = mcipNGblen;
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_nu = 14;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_T = 50;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_tau = 287e-6;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_tau1 = 0;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_tau2 = 20e-6;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_d = 2.857e-3;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_n = 20;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_cold_frac = 1.0;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_n2 = 5;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_chi2 = 0.9;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_I0 = 8.21e11;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_I2 = 3.29e11;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_target_index = 0;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_cyl_radius = 0.0;
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_branch1 = 1;
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_branch2 = 0.5;
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_branch_tail = 0.14350;
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_n_pulses = 1;
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_width_t = 0.12;
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_T_t = 325;
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_tau_t = 80e-6;
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_tau1_t = 400e-6;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_tau2_t = 12e-6;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_chi2_t = 2.5;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_I0_t = 13.5e11;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_I2_t = 27.6e10;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_branch1_t = 0.5;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_branch2_t = 0.5;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_src_2012 = 1;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_tfocus_dist = 0.1;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_tfocus_time = 0.0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_tfocus_width = 0.0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsource_beamport_angle = 30;
 #line 11940 "./FZJ_BenchmarkSfin2.c"
 
@@ -11949,11 +11949,11 @@ void mcinit(void) {
   rot_transpose(mcrotaorigin, mctr1);
   rot_mul(mcrotasource, mctr1, mcrotrsource);
   mctc1 = coords_set(
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0);
 #line 11958 "./FZJ_BenchmarkSfin2.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -11969,15 +11969,15 @@ void mcinit(void) {
     /* Component rspin. */
   /* Setting parameters for component rspin. */
   SIG_MESSAGE("rspin (Init:SetPar)");
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccrspin_px = 0;
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccrspin_py = 0;
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccrspin_pz = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccrspin_randomOn = 1;
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccrspin_normalize = 0;
 #line 11982 "./FZJ_BenchmarkSfin2.c"
 
@@ -11991,11 +11991,11 @@ void mcinit(void) {
   rot_transpose(mcrotasource, mctr1);
   rot_mul(mcrotarspin, mctr1, mcrotrrspin);
   mctc1 = coords_set(
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     2.0001);
 #line 12000 "./FZJ_BenchmarkSfin2.c"
   rot_transpose(mcrotasource, mctr1);
@@ -12011,13 +12011,13 @@ void mcinit(void) {
     /* Component pbar. */
   /* Setting parameters for component pbar. */
   SIG_MESSAGE("pbar (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   if("NULL") strncpy(mccpbar_profile, "NULL" ? "NULL" : "", 16384); else mccpbar_profile[0]='\0';
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpbar_percent = 2;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpbar_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpbar_minutes = 0;
 #line 12022 "./FZJ_BenchmarkSfin2.c"
 
@@ -12031,11 +12031,11 @@ void mcinit(void) {
   rot_transpose(mcrotarspin, mctr1);
   rot_mul(mcrotapbar, mctr1, mcrotrpbar);
   mctc1 = coords_set(
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     2.0002);
 #line 12040 "./FZJ_BenchmarkSfin2.c"
   rot_transpose(mcrotasource, mctr1);
@@ -12051,70 +12051,70 @@ void mcinit(void) {
     /* Component Bender1. */
   /* Setting parameters for component Bender1. */
   SIG_MESSAGE("Bender1 (Init:SetPar)");
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender1_w = mcipNGbend;
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender1_h = mcipNGblen;
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender1_r = mcipbendR;
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender1_Win = mcipbendL / mcipbendR;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender1_k = 1;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender1_d = 0.001;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender1_l = 0;
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender1_R0a = 0.99;
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender1_Qca = 0.02174;
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender1_alphaa = 6.07;
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender1_ma = mcipbendM;
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender1_Wa = 0.003;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender1_R0i = 0.99;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender1_Qci = 0.02174;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender1_alphai = 6.07;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender1_mi = mcipbendiM;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender1_Wi = 0.003;
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender1_R0s = 0.99;
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender1_Qcs = 0.02174;
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender1_alphas = 6.07;
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender1_ms = mcipdfltM;
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender1_Ws = 0.003;
 #line 12098 "./FZJ_BenchmarkSfin2.c"
 
   SIG_MESSAGE("Bender1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (90)*DEG2RAD);
 #line 12108 "./FZJ_BenchmarkSfin2.c"
   rot_mul(mctr1, mcrotasource, mcrotaBender1);
   rot_transpose(mcrotapbar, mctr1);
   rot_mul(mcrotaBender1, mctr1, mcrotrBender1);
   mctc1 = coords_set(
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     2.0003);
 #line 12119 "./FZJ_BenchmarkSfin2.c"
   rot_transpose(mcrotasource, mctr1);
@@ -12130,70 +12130,70 @@ void mcinit(void) {
     /* Component Bender2. */
   /* Setting parameters for component Bender2. */
   SIG_MESSAGE("Bender2 (Init:SetPar)");
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender2_w = mcipNGbend;
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender2_h = mcipNGblen;
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender2_r = mcipbendR;
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender2_Win = mcipbendL / mcipbendR;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender2_k = 1;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender2_d = 0.001;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender2_l = 0;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender2_R0a = 0.99;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender2_Qca = 0.02174;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender2_alphaa = 6.07;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender2_ma = mcipbendM;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender2_Wa = 0.003;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender2_R0i = 0.99;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender2_Qci = 0.02174;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender2_alphai = 6.07;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender2_mi = mcipbendiM;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender2_Wi = 0.003;
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender2_R0s = 0.99;
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender2_Qcs = 0.02174;
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender2_alphas = 6.07;
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender2_ms = mcipdfltM;
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccBender2_Ws = 0.003;
 #line 12177 "./FZJ_BenchmarkSfin2.c"
 
   SIG_MESSAGE("Bender2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (-90)*DEG2RAD);
 #line 12187 "./FZJ_BenchmarkSfin2.c"
   rot_mul(mctr1, mcrotasource, mcrotaBender2);
   rot_transpose(mcrotaBender1, mctr1);
   rot_mul(mcrotaBender2, mctr1, mcrotrBender2);
   mctc1 = coords_set(
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     mcipbendL + 0.0001);
 #line 12198 "./FZJ_BenchmarkSfin2.c"
   rot_transpose(mcrotaBender1, mctr1);
@@ -12209,68 +12209,68 @@ void mcinit(void) {
     /* Component Monitor. */
   /* Setting parameters for component Monitor. */
   SIG_MESSAGE("Monitor (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccMonitor_xwidth = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccMonitor_yheight = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccMonitor_zdepth = 0;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccMonitor_xmin = -.5 * mcipNGblen;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccMonitor_xmax = 0.5 * mcipNGblen;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccMonitor_ymin = -.5 * mcipNGblen;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccMonitor_ymax = 0.5 * mcipNGblen;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccMonitor_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccMonitor_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccMonitor_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccMonitor_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccMonitor_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccMonitor_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccMonitor_radius = 0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   if("vdiv bins=100 limits[-0.6 0.6]; lambda bins=30 limits[1.0 20.0]") strncpy(mccMonitor_options, "vdiv bins=100 limits[-0.6 0.6]; lambda bins=30 limits[1.0 20.0]" ? "vdiv bins=100 limits[-0.6 0.6]; lambda bins=30 limits[1.0 20.0]" : "", 16384); else mccMonitor_options[0]='\0';
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   if("Divergence.dip") strncpy(mccMonitor_filename, "Divergence.dip" ? "Divergence.dip" : "", 16384); else mccMonitor_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   if("NULL") strncpy(mccMonitor_geometry, "NULL" ? "NULL" : "", 16384); else mccMonitor_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   if("NULL") strncpy(mccMonitor_username1, "NULL" ? "NULL" : "", 16384); else mccMonitor_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   if("NULL") strncpy(mccMonitor_username2, "NULL" ? "NULL" : "", 16384); else mccMonitor_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   if("NULL") strncpy(mccMonitor_username3, "NULL" ? "NULL" : "", 16384); else mccMonitor_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccMonitor_nowritefile = 0;
 #line 12254 "./FZJ_BenchmarkSfin2.c"
 
   SIG_MESSAGE("Monitor (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (-.70)*DEG2RAD,
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD);
 #line 12264 "./FZJ_BenchmarkSfin2.c"
   rot_mul(mctr1, mcrotasource, mcrotaMonitor);
   rot_transpose(mcrotaBender2, mctr1);
   rot_mul(mcrotaMonitor, mctr1, mcrotrMonitor);
   mctc1 = coords_set(
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     mcipbendL + 0.0005);
 #line 12275 "./FZJ_BenchmarkSfin2.c"
   rot_transpose(mcrotaBender2, mctr1);
@@ -12286,48 +12286,48 @@ void mcinit(void) {
     /* Component vorpl. */
   /* Setting parameters for component vorpl. */
   SIG_MESSAGE("vorpl (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   if(0) strncpy(mccvorpl_reflect, 0 ? 0 : "", 16384); else mccvorpl_reflect[0]='\0';
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccvorpl_w1 = mcipNGblen;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccvorpl_h1 = mcipNGblen;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccvorpl_w2 = mcipNGblen;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccvorpl_h2 = mcipNGblen;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccvorpl_l = mcipvorPl;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccvorpl_R0 = 0.99;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccvorpl_Qc = 0.02174;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccvorpl_alpha = 6.07;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccvorpl_m = mcipdfltM;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccvorpl_W = 0.003;
 #line 12311 "./FZJ_BenchmarkSfin2.c"
 
   SIG_MESSAGE("vorpl (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (-.70)*DEG2RAD,
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD);
 #line 12321 "./FZJ_BenchmarkSfin2.c"
   rot_mul(mctr1, mcrotasource, mcrotavorpl);
   rot_transpose(mcrotaMonitor, mctr1);
   rot_mul(mcrotavorpl, mctr1, mcrotrvorpl);
   mctc1 = coords_set(
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     mcipbendL + 0.001);
 #line 12332 "./FZJ_BenchmarkSfin2.c"
   rot_transpose(mcrotaBender2, mctr1);
@@ -12343,48 +12343,48 @@ void mcinit(void) {
     /* Component passNL. */
   /* Setting parameters for component passNL. */
   SIG_MESSAGE("passNL (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   if(0) strncpy(mccpassNL_reflect, 0 ? 0 : "", 16384); else mccpassNL_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpassNL_w1 = mcipNGblen;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpassNL_h1 = mcipNGblen;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpassNL_w2 = mcipNGblen;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpassNL_h2 = mcipNGblen;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpassNL_l = mcipPolTot - mcipvorPl + 0.0003;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpassNL_R0 = 0.99;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpassNL_Qc = 0.02174;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpassNL_alpha = 6.07;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpassNL_m = mcipdfltM;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpassNL_W = 0.003;
 #line 12368 "./FZJ_BenchmarkSfin2.c"
 
   SIG_MESSAGE("passNL (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD);
 #line 12378 "./FZJ_BenchmarkSfin2.c"
   rot_mul(mctr1, mcrotavorpl, mcrotapassNL);
   rot_transpose(mcrotavorpl, mctr1);
   rot_mul(mcrotapassNL, mctr1, mcrotrpassNL);
   mctc1 = coords_set(
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     mcipvorPl + 0.0001);
 #line 12389 "./FZJ_BenchmarkSfin2.c"
   rot_transpose(mcrotavorpl, mctr1);
@@ -12400,34 +12400,34 @@ void mcinit(void) {
     /* Component cav1. */
   /* Setting parameters for component cav1. */
   SIG_MESSAGE("cav1 (Init:SetPar)");
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mcccav1_xw = 0.05;
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mcccav1_yw = 0.05;
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mcccav1_xc = mcipcnum;
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mcccav1_yc = 1;
 #line 12411 "./FZJ_BenchmarkSfin2.c"
 
   SIG_MESSAGE("cav1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (mcipROT)*DEG2RAD);
 #line 12421 "./FZJ_BenchmarkSfin2.c"
   rot_mul(mctr1, mcrotavorpl, mcrotacav1);
   rot_transpose(mcrotapassNL, mctr1);
   rot_mul(mcrotacav1, mctr1, mcrotrcav1);
   mctc1 = coords_set(
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     mcipvorPl + 0.0001);
 #line 12432 "./FZJ_BenchmarkSfin2.c"
   rot_transpose(mcrotavorpl, mctr1);
@@ -12443,80 +12443,80 @@ void mcinit(void) {
     /* Component polzr. */
   /* Setting parameters for component polzr. */
   SIG_MESSAGE("polzr (Init:SetPar)");
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_w1 = 0.05 / mcipcnum;
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_h1 = 0.05;
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_w2 = 0.05 / mcipcnum;
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_h2 = 0.05;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_l = mcipPolLen;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_waferD = 0.0003;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_Si_i = 0.25;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_Si_a = 0.215;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_FeD = 2.16e-6;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_R0 = 0.99;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_Qc = 0.02174;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_alpha = 4.25;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_W = 0.003;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_R0_up = 0.99;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_Qc_up = 0.0055;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_alpha_up = 6.2;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_W_up = 0.002;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_R0_down = 0.99;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_Qc_down = 0.02174;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_alpha_down = 3.4;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_W_down = 0.004;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_mleft = mcipdfltM;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_mright = mcipdfltM;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_mtop = mcipMin;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_mbottom = mcipMin;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_mup = 2.2;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccpolzr_mdown = mcipMDOWN;
 #line 12500 "./FZJ_BenchmarkSfin2.c"
 
   SIG_MESSAGE("polzr (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD);
 #line 12510 "./FZJ_BenchmarkSfin2.c"
   rot_mul(mctr1, mcrotacav1, mcrotapolzr);
   rot_transpose(mcrotacav1, mctr1);
   rot_mul(mcrotapolzr, mctr1, mcrotrpolzr);
   mctc1 = coords_set(
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0.0001);
 #line 12521 "./FZJ_BenchmarkSfin2.c"
   rot_transpose(mcrotacav1, mctr1);
@@ -12532,30 +12532,30 @@ void mcinit(void) {
     /* Component cav2. */
   /* Setting parameters for component cav2. */
   SIG_MESSAGE("cav2 (Init:SetPar)");
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mcccav2_xw = 0.05;
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mcccav2_yw = 0.05;
 #line 12539 "./FZJ_BenchmarkSfin2.c"
 
   SIG_MESSAGE("cav2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD);
 #line 12549 "./FZJ_BenchmarkSfin2.c"
   rot_mul(mctr1, mcrotacav1, mcrotacav2);
   rot_transpose(mcrotapolzr, mctr1);
   rot_mul(mcrotacav2, mctr1, mcrotrcav2);
   mctc1 = coords_set(
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     mcipPolLen + 0.0001);
 #line 12560 "./FZJ_BenchmarkSfin2.c"
   rot_transpose(mcrotapolzr, mctr1);
@@ -12571,48 +12571,48 @@ void mcinit(void) {
     /* Component guide1. */
   /* Setting parameters for component guide1. */
   SIG_MESSAGE("guide1 (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   if(0) strncpy(mccguide1_reflect, 0 ? 0 : "", 16384); else mccguide1_reflect[0]='\0';
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccguide1_w1 = mcipNGblen;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccguide1_h1 = mcipNGblen;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccguide1_w2 = mcipNGblen;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccguide1_h2 = mcipNGblen;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccguide1_l = mcipPolTot - mcipPolLen - mcipvorPl;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccguide1_R0 = 0.99;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccguide1_Qc = 0.02174;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccguide1_alpha = 6.07;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccguide1_m = mcipdfltM;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccguide1_W = 0.003;
 #line 12596 "./FZJ_BenchmarkSfin2.c"
 
   SIG_MESSAGE("guide1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD);
 #line 12606 "./FZJ_BenchmarkSfin2.c"
   rot_mul(mctr1, mcrotavorpl, mcrotaguide1);
   rot_transpose(mcrotacav2, mctr1);
   rot_mul(mcrotaguide1, mctr1, mcrotrguide1);
   mctc1 = coords_set(
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0.0001);
 #line 12617 "./FZJ_BenchmarkSfin2.c"
   rot_transpose(mcrotacav2, mctr1);
@@ -12628,48 +12628,48 @@ void mcinit(void) {
     /* Component guide2. */
   /* Setting parameters for component guide2. */
   SIG_MESSAGE("guide2 (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   if(0) strncpy(mccguide2_reflect, 0 ? 0 : "", 16384); else mccguide2_reflect[0]='\0';
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccguide2_w1 = mcipNGblen;
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccguide2_h1 = mcipNGblen;
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccguide2_w2 = mcipNGblen;
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccguide2_h2 = mcipNGblen;
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccguide2_l = 20.001 - mcipClen;
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccguide2_R0 = 0.99;
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccguide2_Qc = 0.02174;
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccguide2_alpha = 6.07;
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccguide2_m = mcipdfltM;
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccguide2_W = 0.003;
 #line 12653 "./FZJ_BenchmarkSfin2.c"
 
   SIG_MESSAGE("guide2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD);
 #line 12663 "./FZJ_BenchmarkSfin2.c"
   rot_mul(mctr1, mcrotavorpl, mcrotaguide2);
   rot_transpose(mcrotaguide1, mctr1);
   rot_mul(mcrotaguide2, mctr1, mcrotrguide2);
   mctc1 = coords_set(
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     mcipPolTot + 0.0007);
 #line 12674 "./FZJ_BenchmarkSfin2.c"
   rot_transpose(mcrotavorpl, mctr1);
@@ -12685,40 +12685,40 @@ void mcinit(void) {
     /* Component smpap. */
   /* Setting parameters for component smpap. */
   SIG_MESSAGE("smpap (Init:SetPar)");
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsmpap_xmin = -0.5 * mcipSampD;
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsmpap_xmax = 0.5 * mcipSampD;
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsmpap_ymin = -0.5 * mcipSampD;
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsmpap_ymax = 0.5 * mcipSampD;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsmpap_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsmpap_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsmpap_yheight = 0;
 #line 12702 "./FZJ_BenchmarkSfin2.c"
 
   SIG_MESSAGE("smpap (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD);
 #line 12712 "./FZJ_BenchmarkSfin2.c"
   rot_mul(mctr1, mcrotavorpl, mcrotasmpap);
   rot_transpose(mcrotaguide2, mctr1);
   rot_mul(mcrotasmpap, mctr1, mcrotrsmpap);
   mctc1 = coords_set(
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     20.0020);
 #line 12723 "./FZJ_BenchmarkSfin2.c"
   rot_transpose(mcrotaguide2, mctr1);
@@ -12737,22 +12737,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("repeat (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD);
 #line 12746 "./FZJ_BenchmarkSfin2.c"
   rot_mul(mctr1, mcrotavorpl, mcrotarepeat);
   rot_transpose(mcrotasmpap, mctr1);
   rot_mul(mcrotarepeat, mctr1, mcrotrrepeat);
   mctc1 = coords_set(
-#line 161 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 161 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 161 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 161 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 161 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 161 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     20.00367);
 #line 12757 "./FZJ_BenchmarkSfin2.c"
   rot_transpose(mcrotaguide2, mctr1);
@@ -12768,42 +12768,42 @@ void mcinit(void) {
     /* Component sample. */
   /* Setting parameters for component sample. */
   SIG_MESSAGE("sample (Init:SetPar)");
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 164 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsample_xwidth = 2.0 * mcipSampD;
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 164 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsample_yheight = 2.0 * mcipSampD;
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 164 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsample_zthick = 0.001;
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 164 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsample_model = mcipmodnum;
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 164 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsample_dsdw_inc = mcipincs;
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 164 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsample_sc_aim = 0.90;
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 164 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsample_sans_aim = 0.95;
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 164 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccsample_singlesp = mcipsglscatt;
 #line 12787 "./FZJ_BenchmarkSfin2.c"
 
   SIG_MESSAGE("sample (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD);
 #line 12797 "./FZJ_BenchmarkSfin2.c"
   rot_mul(mctr1, mcrotavorpl, mcrotasample);
   rot_transpose(mcrotarepeat, mctr1);
   rot_mul(mcrotasample, mctr1, mcrotrsample);
   mctc1 = coords_set(
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     20.0040);
 #line 12808 "./FZJ_BenchmarkSfin2.c"
   rot_transpose(mcrotaguide2, mctr1);
@@ -12819,82 +12819,82 @@ void mcinit(void) {
     /* Component det. */
   /* Setting parameters for component det. */
   SIG_MESSAGE("det (Init:SetPar)");
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_plength = 0.003163;
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_ssdist = 22.0124 + 2.0 * mcipbendL + mcipPolTot;
-#line 169 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_coldis = mcipClen;
-#line 169 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_Sthckn = 0.1;
-#line 170 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 170 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_ds1 = 1.0;
-#line 170 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 170 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_xw1 = 0.0;
-#line 170 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 170 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_yh1 = 0.0;
-#line 170 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 170 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_hl1 = 0.0;
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_ds2 = mcipClen * .125;
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_xw2 = 1.0;
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_yh2 = 1.0;
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_hl2 = 0.2;
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 172 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_ds3 = mcipClen;
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 172 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_xw3 = 1.0;
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 172 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_yh3 = 1.0;
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 172 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_hl3 = 0.05;
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_vx3 = 0.0;
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_tmin = 0.0025;
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_tmax = 0.3;
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_Nx = 128.0;
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_Ny = 128.0;
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_Nt = 800.0;
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 175 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_qmin = 0.0002;
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 175 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_qmax = 2.5;
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_rstneu = 9.9999;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_centol = 0.1;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_inttol = 0.0001;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
   mccdet_qcal = 1.0;
 #line 12878 "./FZJ_BenchmarkSfin2.c"
 
   SIG_MESSAGE("det (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 178 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 178 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 178 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 178 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD,
-#line 178 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 178 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     (0)*DEG2RAD);
 #line 12888 "./FZJ_BenchmarkSfin2.c"
   rot_mul(mctr1, mcrotavorpl, mcrotadet);
   rot_transpose(mcrotasample, mctr1);
   rot_mul(mcrotadet, mctr1, mcrotrdet);
   mctc1 = coords_set(
-#line 177 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 177 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 177 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 177 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     0,
-#line 177 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
+#line 177 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr"
     20.0100);
 #line 12899 "./FZJ_BenchmarkSfin2.c"
   rot_transpose(mcrotaguide2, mctr1);

@@ -1,11 +1,35 @@
-      [1574205220.593276] [n-62-23-6:29684:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3465.99
-[1574205220.594589] [n-62-23-6:29684:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574205220.594593] [n-62-23-6:29684:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574205220.596410] [n-62-23-6:29684:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574205220.596413] [n-62-23-6:29684:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: No output directory specified (--dir)
+INFO: Using directory: "FZJ_BenchmarkSfin2_20200225_202519"
+INFO: Regenerating c-file: FZJ_BenchmarkSfin2.c
+Warning: 'ESS_moderator_long' is an obsolete component (not maintained).
+Info:    'CavitiesIn' is a contributed component.
+Info:    'Transmission_polarisatorABSnT' is a contributed component.
+Info:    'CavitiesOut' is a contributed component.
+Info:    'SANS_benchmark2' is a contributed component.
+Info:    'TOFSANSdet' is a contributed component.
+Warning: Component det=TOFSANSdet(string fname) definition parameter
+         may be changed into a setting parameter to avoid
+         warnings at compile time.
+Info:    Defining SPLIT from repeat=Arm() to END in instrument FZJ_BenchmarkSfin2
+CFLAGS=
+      INFO: Recompiling: ./FZJ_BenchmarkSfin2.out
+INFO: ===
+[n-62-23-14:32601] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:32601] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582658726.828790] [n-62-23-14:32600:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3379.52
+[1582658726.830370] [n-62-23-14:32600:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582658726.830374] [n-62-23-14:32600:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1582658726.833359] [n-62-23-14:32600:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582658726.833362] [n-62-23-14:32600:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 begin instrument: FZJ_BenchmarkSfin2
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr
   Parameters:  lbdmin(double) lbdmax(double) NGbend(double) NGblen(double) Clen(double) SampD(double) bendL(double) bendR(double) bendM(double) bendiM(double) dfltM(double) vorPl(double) PolLen(double) PolTot(double) MDOWN(double) Min(double) cnum(double) ROT(double) modnum(double) sglscatt(double) incs(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +38,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_BenchmarkSfin2/FZJ_BenchmarkSfin2.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1574234904
+  Seed: 1582691326
   Directory: .
   Param: lbdmin=2
   Param: lbdmax=8.5
@@ -44,25 +68,3 @@ begin simulation: .
   Param: incs=0.0005
 end simulation
 info!
-INFO: No output directory specified (--dir)
-INFO: Using directory: "FZJ_BenchmarkSfin2_20191120_001333"
-INFO: Regenerating c-file: FZJ_BenchmarkSfin2.c
-Warning: 'ESS_moderator_long' is an obsolete component (not maintained).
-Info:    'CavitiesIn' is a contributed component.
-Info:    'Transmission_polarisatorABSnT' is a contributed component.
-Info:    'CavitiesOut' is a contributed component.
-Info:    'SANS_benchmark2' is a contributed component.
-Info:    'TOFSANSdet' is a contributed component.
-Warning: Component det=TOFSANSdet(string fname) definition parameter
-         may be changed into a setting parameter to avoid
-         warnings at compile time.
-Info:    Defining SPLIT from repeat=Arm() to END in instrument FZJ_BenchmarkSfin2
-CFLAGS=
-INFO: Recompiling: ./FZJ_BenchmarkSfin2.out
-INFO: ===
---------------------------------------------------------------------------
-Initialization of MXM library failed.
-
-  Error: Input/output error
-
---------------------------------------------------------------------------

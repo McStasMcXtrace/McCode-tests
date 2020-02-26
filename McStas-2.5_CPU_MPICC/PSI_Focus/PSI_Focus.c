@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr (PSI_Focus)
- * Date:       Wed Nov 20 00:44:31 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr (PSI_Focus)
+ * Date:       Tue Feb 25 20:59:51 2020
  * File:       ./PSI_Focus.c
  * Compile:    cc -o PSI_Focus.out ./PSI_Focus.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "PSI_Focus";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -10246,7 +10246,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define lambda mciplambda
 #define chopp_ratio mcipchopp_ratio
 #define DET mcipDET
-#line 31 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 31 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
  double lambda;
  double chopp_ratio;
  double DET;
@@ -13124,7 +13124,7 @@ void mcinit(void) {
 #define lambda mciplambda
 #define chopp_ratio mcipchopp_ratio
 #define DET mcipDET
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
 {
 
  /* setting theta and 2Theta */
@@ -13170,13 +13170,13 @@ void mcinit(void) {
     /* Component a1. */
   /* Setting parameters for component a1. */
   SIG_MESSAGE("a1 (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mcca1_profile, "NULL" ? "NULL" : "", 16384); else mcca1_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcca1_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcca1_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcca1_minutes = 0;
 #line 13181 "./PSI_Focus.c"
 
@@ -13188,11 +13188,11 @@ void mcinit(void) {
 #line 13188 "./PSI_Focus.c"
   rot_copy(mcrotra1, mcrotaa1);
   mcposaa1 = coords_set(
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0);
 #line 13197 "./PSI_Focus.c"
   mctc1 = coords_neg(mcposaa1);
@@ -13205,86 +13205,86 @@ void mcinit(void) {
     /* Component csource. */
   /* Setting parameters for component csource. */
   SIG_MESSAGE("csource (Init:SetPar)");
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mcccsource_flux_file, "NULL" ? "NULL" : "", 16384); else mcccsource_flux_file[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mcccsource_xdiv_file, "NULL" ? "NULL" : "", 16384); else mcccsource_xdiv_file[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mcccsource_ydiv_file, "NULL" ? "NULL" : "", 16384); else mcccsource_ydiv_file[0]='\0';
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_radius = 0.0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_dist = 1.77;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_focus_xw = 0.05;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_focus_yh = 0.12;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_focus_aw = 0;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_focus_ah = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_E0 = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_dE = 0;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_lambda0 = 3.4;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_dlambda = dL;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_I1 = 8.5E11;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_yheight = 0.135;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_xwidth = 0.08;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_verbose = 0;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_T1 = 296.16;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_flux_file_perAA = 0;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_flux_file_log = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_Lmin = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_Lmax = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_Emin = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_Emax = 0;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_T2 = 40.68;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_I2 = 5.2E11;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_T3 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_I3 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_zdepth = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcccsource_target_index = + 1;
 #line 13268 "./PSI_Focus.c"
 
   SIG_MESSAGE("csource (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD);
 #line 13278 "./PSI_Focus.c"
   rot_mul(mctr1, mcrotaa1, mcrotacsource);
   rot_transpose(mcrotaa1, mctr1);
   rot_mul(mcrotacsource, mctr1, mcrotrcsource);
   mctc1 = coords_set(
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0);
 #line 13289 "./PSI_Focus.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -13300,48 +13300,48 @@ void mcinit(void) {
     /* Component guide1. */
   /* Setting parameters for component guide1. */
   SIG_MESSAGE("guide1 (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if(0) strncpy(mccguide1_reflect, 0 ? 0 : "", 16384); else mccguide1_reflect[0]='\0';
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide1_w1 = 0.05;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide1_h1 = 0.12;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide1_w2 = 0.05;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide1_h2 = 0.12;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide1_l = 4.66;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide1_R0 = 0.995;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide1_Qc = 0.0217;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide1_alpha = 5.76;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide1_m = 2.0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide1_W = 0.0033;
 #line 13325 "./PSI_Focus.c"
 
   SIG_MESSAGE("guide1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD);
 #line 13335 "./PSI_Focus.c"
   rot_mul(mctr1, mcrotaa1, mcrotaguide1);
   rot_transpose(mcrotacsource, mctr1);
   rot_mul(mcrotaguide1, mctr1, mcrotrguide1);
   mctc1 = coords_set(
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     1.5);
 #line 13346 "./PSI_Focus.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -13357,70 +13357,70 @@ void mcinit(void) {
     /* Component guide2. */
   /* Setting parameters for component guide2. */
   SIG_MESSAGE("guide2 (Init:SetPar)");
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide2_w = 0.05;
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide2_h = 0.12;
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide2_r = 1445;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide2_Win = 0.04;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide2_k = 1;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide2_d = 0.001;
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide2_l = 24.5;
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide2_R0a = 0.995;
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide2_Qca = 0.0217;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide2_alphaa = 5.76;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide2_ma = 2;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide2_Wa = 0.0033;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide2_R0i = 0.995;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide2_Qci = 0.0217;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide2_alphai = 5.76;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide2_mi = 2;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide2_Wi = 0.0033;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide2_R0s = 0.995;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide2_Qcs = 0.0217;
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide2_alphas = 5.76;
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide2_ms = 2;
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide2_Ws = 0.0033;
 #line 13404 "./PSI_Focus.c"
 
   SIG_MESSAGE("guide2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD);
 #line 13414 "./PSI_Focus.c"
   rot_mul(mctr1, mcrotaa1, mcrotaguide2);
   rot_transpose(mcrotaguide1, mctr1);
   rot_mul(mcrotaguide2, mctr1, mcrotrguide2);
   mctc1 = coords_set(
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     6.16);
 #line 13425 "./PSI_Focus.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -13436,48 +13436,48 @@ void mcinit(void) {
     /* Component bunker. */
   /* Setting parameters for component bunker. */
   SIG_MESSAGE("bunker (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if(0) strncpy(mccbunker_reflect, 0 ? 0 : "", 16384); else mccbunker_reflect[0]='\0';
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccbunker_w1 = 0.05;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccbunker_h1 = .12;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccbunker_w2 = 0.05;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccbunker_h2 = .12;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccbunker_l = 3.0;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccbunker_R0 = 0.995;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccbunker_Qc = 0.0217;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccbunker_alpha = 5.76;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccbunker_m = 2.0;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccbunker_W = 0.0033;
 #line 13461 "./PSI_Focus.c"
 
   SIG_MESSAGE("bunker (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD);
 #line 13471 "./PSI_Focus.c"
   rot_mul(mctr1, mcrotaa1, mcrotabunker);
   rot_transpose(mcrotaguide2, mctr1);
   rot_mul(mcrotabunker, mctr1, mcrotrbunker);
   mctc1 = coords_set(
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     30.66);
 #line 13482 "./PSI_Focus.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -13493,48 +13493,48 @@ void mcinit(void) {
     /* Component guide3. */
   /* Setting parameters for component guide3. */
   SIG_MESSAGE("guide3 (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if(0) strncpy(mccguide3_reflect, 0 ? 0 : "", 16384); else mccguide3_reflect[0]='\0';
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide3_w1 = 0.05;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide3_h1 = .12;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide3_w2 = 0.05;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide3_h2 = .12;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide3_l = 32.95;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide3_R0 = 0.995;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide3_Qc = 0.0217;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide3_alpha = 5.76;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide3_m = 2.0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccguide3_W = 0.0033;
 #line 13518 "./PSI_Focus.c"
 
   SIG_MESSAGE("guide3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD);
 #line 13528 "./PSI_Focus.c"
   rot_mul(mctr1, mcrotaa1, mcrotaguide3);
   rot_transpose(mcrotabunker, mctr1);
   rot_mul(mcrotaguide3, mctr1, mcrotrguide3);
   mctc1 = coords_set(
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     33.66);
 #line 13539 "./PSI_Focus.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -13550,48 +13550,48 @@ void mcinit(void) {
     /* Component lambdaGuideExit. */
   /* Setting parameters for component lambdaGuideExit. */
   SIG_MESSAGE("lambdaGuideExit (Init:SetPar)");
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("lambdaguide.dat") strncpy(mcclambdaGuideExit_filename, "lambdaguide.dat" ? "lambdaguide.dat" : "", 16384); else mcclambdaGuideExit_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcclambdaGuideExit_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcclambdaGuideExit_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcclambdaGuideExit_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcclambdaGuideExit_ymax = 0.05;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcclambdaGuideExit_xwidth = 0.05;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcclambdaGuideExit_yheight = 0.12;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcclambdaGuideExit_Lmin = LMIN;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcclambdaGuideExit_Lmax = LMAX;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcclambdaGuideExit_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcclambdaGuideExit_nowritefile = 0;
 #line 13575 "./PSI_Focus.c"
 
   SIG_MESSAGE("lambdaGuideExit (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD);
 #line 13585 "./PSI_Focus.c"
   rot_mul(mctr1, mcrotaa1, mcrotalambdaGuideExit);
   rot_transpose(mcrotaguide3, mctr1);
   rot_mul(mcrotalambdaGuideExit, mctr1, mcrotrlambdaGuideExit);
   mctc1 = coords_set(
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     66.611);
 #line 13596 "./PSI_Focus.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -13607,54 +13607,54 @@ void mcinit(void) {
     /* Component DivMonGuideExit. */
   /* Setting parameters for component DivMonGuideExit. */
   SIG_MESSAGE("DivMonGuideExit (Init:SetPar)");
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("divguide.dat") strncpy(mccDivMonGuideExit_filename, "divguide.dat" ? "divguide.dat" : "", 16384); else mccDivMonGuideExit_filename[0]='\0';
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonGuideExit_xmin = -0.05;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonGuideExit_xmax = 0.05;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonGuideExit_ymin = -0.05;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonGuideExit_ymax = 0.05;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonGuideExit_xwidth = 0.05;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonGuideExit_yheight = 0.12;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonGuideExit_maxdiv_h = 2;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonGuideExit_maxdiv_v = 2;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonGuideExit_restore_neutron = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonGuideExit_nx = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonGuideExit_ny = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonGuideExit_nz = 1;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonGuideExit_nowritefile = 0;
 #line 13638 "./PSI_Focus.c"
 
   SIG_MESSAGE("DivMonGuideExit (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD);
 #line 13648 "./PSI_Focus.c"
   rot_mul(mctr1, mcrotaa1, mcrotaDivMonGuideExit);
   rot_transpose(mcrotalambdaGuideExit, mctr1);
   rot_mul(mcrotaDivMonGuideExit, mctr1, mcrotrDivMonGuideExit);
   mctc1 = coords_set(
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     66.612);
 #line 13659 "./PSI_Focus.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -13670,46 +13670,46 @@ void mcinit(void) {
     /* Component PSDGuideExit. */
   /* Setting parameters for component PSDGuideExit. */
   SIG_MESSAGE("PSDGuideExit (Init:SetPar)");
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDGuideExit_nx = 60;
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDGuideExit_ny = 60;
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("psdguide.dat") strncpy(mccPSDGuideExit_filename, "psdguide.dat" ? "psdguide.dat" : "", 16384); else mccPSDGuideExit_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDGuideExit_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDGuideExit_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDGuideExit_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDGuideExit_ymax = 0.05;
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDGuideExit_xwidth = 0.05;
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDGuideExit_yheight = 0.12;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDGuideExit_restore_neutron = 0;
 #line 13693 "./PSI_Focus.c"
 
   SIG_MESSAGE("PSDGuideExit (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD);
 #line 13703 "./PSI_Focus.c"
   rot_mul(mctr1, mcrotaa1, mcrotaPSDGuideExit);
   rot_transpose(mcrotaDivMonGuideExit, mctr1);
   rot_mul(mcrotaPSDGuideExit, mctr1, mcrotrPSDGuideExit);
   mctc1 = coords_set(
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     66.613);
 #line 13714 "./PSI_Focus.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -13725,66 +13725,66 @@ void mcinit(void) {
     /* Component FOCUSguide. */
   /* Setting parameters for component FOCUSguide. */
   SIG_MESSAGE("FOCUSguide (Init:SetPar)");
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFOCUSguide_w1 = 0.05;
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFOCUSguide_h1 = 0.12;
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFOCUSguide_w2 = 0.05;
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFOCUSguide_h2 = 0.095;
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFOCUSguide_l = 2.95;
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFOCUSguide_R0 = 0.995;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFOCUSguide_Qc = 0;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFOCUSguide_alpha = 0;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFOCUSguide_m = 0;
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFOCUSguide_nslit = 1;
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFOCUSguide_d = 0.002;
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFOCUSguide_Qcx = 0.0217;
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFOCUSguide_Qcy = 0.0217;
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFOCUSguide_alphax = 5.76;
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFOCUSguide_alphay = 5.64;
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFOCUSguide_W = 0.0033;
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFOCUSguide_mx = 2.4;
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFOCUSguide_my = 3;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFOCUSguide_nu = 0;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFOCUSguide_phase = 0;
 #line 13768 "./PSI_Focus.c"
 
   SIG_MESSAGE("FOCUSguide (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD);
 #line 13778 "./PSI_Focus.c"
   rot_mul(mctr1, mcrotaa1, mcrotaFOCUSguide);
   rot_transpose(mcrotaPSDGuideExit, mctr1);
   rot_mul(mcrotaFOCUSguide, mctr1, mcrotrFOCUSguide);
   mctc1 = coords_set(
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     66.67);
 #line 13789 "./PSI_Focus.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -13800,31 +13800,31 @@ void mcinit(void) {
     /* Component FirstChopper. */
   /* Setting parameters for component FirstChopper. */
   SIG_MESSAGE("FirstChopper (Init:SetPar)");
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFirstChopper_theta_0 = 0;
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFirstChopper_radius = 0.70;
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFirstChopper_yheight = 0.70;
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFirstChopper_nu = DISC_SPEED / 2 / PI;
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFirstChopper_nslit = 2;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFirstChopper_jitter = 0;
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFirstChopper_delay = FO_PHA;
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFirstChopper_isfirst = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFirstChopper_n_pulse = 1;
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFirstChopper_abs_out = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFirstChopper_phase = 0;
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFirstChopper_xwidth = 0.07;
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFirstChopper_verbose = 1;
 #line 13829 "./PSI_Focus.c"
 
@@ -13838,11 +13838,11 @@ void mcinit(void) {
   rot_transpose(mcrotaFOCUSguide, mctr1);
   rot_mul(mcrotaFirstChopper, mctr1, mcrotrFirstChopper);
   mctc1 = coords_set(
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     69.674);
 #line 13847 "./PSI_Focus.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -13858,47 +13858,47 @@ void mcinit(void) {
     /* Component DISCTOF. */
   /* Setting parameters for component DISCTOF. */
   SIG_MESSAGE("DISCTOF (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDISCTOF_xwidth = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDISCTOF_yheight = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDISCTOF_zdepth = 0;
-#line 159 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 159 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDISCTOF_xmin = -0.05;
-#line 160 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 160 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDISCTOF_xmax = 0.05;
-#line 160 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 160 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDISCTOF_ymin = -0.1;
-#line 160 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 160 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDISCTOF_ymax = 0.1;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDISCTOF_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDISCTOF_zmax = 0;
-#line 159 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 159 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDISCTOF_bins = 30;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDISCTOF_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDISCTOF_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDISCTOF_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDISCTOF_radius = 0;
-#line 160 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 160 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("auto, time") strncpy(mccDISCTOF_options, "auto, time" ? "auto, time" : "", 16384); else mccDISCTOF_options[0]='\0';
-#line 159 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 159 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("DISC_TOF.dat") strncpy(mccDISCTOF_filename, "DISC_TOF.dat" ? "DISC_TOF.dat" : "", 16384); else mccDISCTOF_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccDISCTOF_geometry, "NULL" ? "NULL" : "", 16384); else mccDISCTOF_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccDISCTOF_username1, "NULL" ? "NULL" : "", 16384); else mccDISCTOF_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccDISCTOF_username2, "NULL" ? "NULL" : "", 16384); else mccDISCTOF_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccDISCTOF_username3, "NULL" ? "NULL" : "", 16384); else mccDISCTOF_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDISCTOF_nowritefile = 0;
 #line 13903 "./PSI_Focus.c"
 
@@ -13912,11 +13912,11 @@ void mcinit(void) {
   rot_transpose(mcrotaFirstChopper, mctr1);
   rot_mul(mcrotaDISCTOF, mctr1, mcrotrDISCTOF);
   mctc1 = coords_set(
-#line 161 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 161 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 161 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 161 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 161 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 161 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     69.718);
 #line 13921 "./PSI_Focus.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -13932,46 +13932,46 @@ void mcinit(void) {
     /* Component PSDmon1Chopper. */
   /* Setting parameters for component PSDmon1Chopper. */
   SIG_MESSAGE("PSDmon1Chopper (Init:SetPar)");
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDmon1Chopper_nx = 60;
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDmon1Chopper_ny = 60;
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("psdchopper.dat") strncpy(mccPSDmon1Chopper_filename, "psdchopper.dat" ? "psdchopper.dat" : "", 16384); else mccPSDmon1Chopper_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDmon1Chopper_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDmon1Chopper_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDmon1Chopper_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDmon1Chopper_ymax = 0.05;
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 164 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDmon1Chopper_xwidth = 0.1;
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 164 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDmon1Chopper_yheight = 0.2;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDmon1Chopper_restore_neutron = 0;
 #line 13955 "./PSI_Focus.c"
 
   SIG_MESSAGE("PSDmon1Chopper (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD);
 #line 13965 "./PSI_Focus.c"
   rot_mul(mctr1, mcrotaa1, mcrotaPSDmon1Chopper);
   rot_transpose(mcrotaDISCTOF, mctr1);
   rot_mul(mcrotaPSDmon1Chopper, mctr1, mcrotrPSDmon1Chopper);
   mctc1 = coords_set(
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     69.719);
 #line 13976 "./PSI_Focus.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -13987,19 +13987,19 @@ void mcinit(void) {
     /* Component VacuumTube1entry. */
   /* Setting parameters for component VacuumTube1entry. */
   SIG_MESSAGE("VacuumTube1entry (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube1entry_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube1entry_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube1entry_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube1entry_ymax = 0;
-#line 182 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 182 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube1entry_radius = 0.085;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube1entry_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube1entry_yheight = 0;
 #line 14004 "./PSI_Focus.c"
 
@@ -14013,11 +14013,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPSDmon1Chopper, mctr1);
   rot_mul(mcrotaVacuumTube1entry, mctr1, mcrotrVacuumTube1entry);
   mctc1 = coords_set(
-#line 183 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 183 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 183 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 183 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 183 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 183 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     70.072);
 #line 14022 "./PSI_Focus.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -14033,19 +14033,19 @@ void mcinit(void) {
     /* Component VacuumTube1exit. */
   /* Setting parameters for component VacuumTube1exit. */
   SIG_MESSAGE("VacuumTube1exit (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube1exit_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube1exit_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube1exit_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube1exit_ymax = 0;
-#line 185 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 185 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube1exit_radius = 0.085;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube1exit_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube1exit_yheight = 0;
 #line 14050 "./PSI_Focus.c"
 
@@ -14059,11 +14059,11 @@ void mcinit(void) {
   rot_transpose(mcrotaVacuumTube1entry, mctr1);
   rot_mul(mcrotaVacuumTube1exit, mctr1, mcrotrVacuumTube1exit);
   mctc1 = coords_set(
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     70.607);
 #line 14068 "./PSI_Focus.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -14079,19 +14079,19 @@ void mcinit(void) {
     /* Component VacuumTube2entry. */
   /* Setting parameters for component VacuumTube2entry. */
   SIG_MESSAGE("VacuumTube2entry (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube2entry_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube2entry_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube2entry_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube2entry_ymax = 0;
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube2entry_radius = 0.1;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube2entry_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube2entry_yheight = 0;
 #line 14096 "./PSI_Focus.c"
 
@@ -14105,11 +14105,11 @@ void mcinit(void) {
   rot_transpose(mcrotaVacuumTube1exit, mctr1);
   rot_mul(mcrotaVacuumTube2entry, mctr1, mcrotrVacuumTube2entry);
   mctc1 = coords_set(
-#line 191 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 191 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 191 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 191 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 191 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 191 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     70.607);
 #line 14114 "./PSI_Focus.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -14125,19 +14125,19 @@ void mcinit(void) {
     /* Component VacuumTube2exit. */
   /* Setting parameters for component VacuumTube2exit. */
   SIG_MESSAGE("VacuumTube2exit (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube2exit_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube2exit_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube2exit_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube2exit_ymax = 0;
-#line 193 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 193 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube2exit_radius = 0.1;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube2exit_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube2exit_yheight = 0;
 #line 14142 "./PSI_Focus.c"
 
@@ -14151,11 +14151,11 @@ void mcinit(void) {
   rot_transpose(mcrotaVacuumTube2entry, mctr1);
   rot_mul(mcrotaVacuumTube2exit, mctr1, mcrotrVacuumTube2exit);
   mctc1 = coords_set(
-#line 194 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 194 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 194 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 194 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 194 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 194 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     71.402);
 #line 14160 "./PSI_Focus.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -14171,19 +14171,19 @@ void mcinit(void) {
     /* Component VacuumTube3entry. */
   /* Setting parameters for component VacuumTube3entry. */
   SIG_MESSAGE("VacuumTube3entry (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube3entry_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube3entry_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube3entry_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube3entry_ymax = 0;
-#line 198 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 198 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube3entry_radius = 0.1335;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube3entry_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube3entry_yheight = 0;
 #line 14188 "./PSI_Focus.c"
 
@@ -14197,11 +14197,11 @@ void mcinit(void) {
   rot_transpose(mcrotaVacuumTube2exit, mctr1);
   rot_mul(mcrotaVacuumTube3entry, mctr1, mcrotrVacuumTube3entry);
   mctc1 = coords_set(
-#line 199 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 199 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 199 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 199 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 199 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 199 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     71.402);
 #line 14206 "./PSI_Focus.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -14217,19 +14217,19 @@ void mcinit(void) {
     /* Component VacuumTube3exit. */
   /* Setting parameters for component VacuumTube3exit. */
   SIG_MESSAGE("VacuumTube3exit (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube3exit_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube3exit_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube3exit_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube3exit_ymax = 0;
-#line 201 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 201 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube3exit_radius = 0.1335;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube3exit_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccVacuumTube3exit_yheight = 0;
 #line 14234 "./PSI_Focus.c"
 
@@ -14243,11 +14243,11 @@ void mcinit(void) {
   rot_transpose(mcrotaVacuumTube3entry, mctr1);
   rot_mul(mcrotaVacuumTube3exit, mctr1, mcrotrVacuumTube3exit);
   mctc1 = coords_set(
-#line 202 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 202 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 202 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 202 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 202 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 202 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     72.007);
 #line 14252 "./PSI_Focus.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -14263,46 +14263,46 @@ void mcinit(void) {
     /* Component PSDmonMono. */
   /* Setting parameters for component PSDmonMono. */
   SIG_MESSAGE("PSDmonMono (Init:SetPar)");
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDmonMono_nx = 60;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDmonMono_ny = 60;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("psdmono.dat") strncpy(mccPSDmonMono_filename, "psdmono.dat" ? "psdmono.dat" : "", 16384); else mccPSDmonMono_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDmonMono_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDmonMono_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDmonMono_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDmonMono_ymax = 0.05;
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDmonMono_xwidth = 0.1;
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDmonMono_yheight = 0.2;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSDmonMono_restore_neutron = 0;
 #line 14286 "./PSI_Focus.c"
 
   SIG_MESSAGE("PSDmonMono (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD);
 #line 14296 "./PSI_Focus.c"
   rot_mul(mctr1, mcrotaa1, mcrotaPSDmonMono);
   rot_transpose(mcrotaVacuumTube3exit, mctr1);
   rot_mul(mcrotaPSDmonMono, mctr1, mcrotrPSDmonMono);
   mctc1 = coords_set(
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     72.4);
 #line 14307 "./PSI_Focus.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -14318,47 +14318,47 @@ void mcinit(void) {
     /* Component MONOTOF. */
   /* Setting parameters for component MONOTOF. */
   SIG_MESSAGE("MONOTOF (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccMONOTOF_xwidth = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccMONOTOF_yheight = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccMONOTOF_zdepth = 0;
-#line 212 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 212 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccMONOTOF_xmin = -0.05;
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 213 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccMONOTOF_xmax = 0.05;
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 213 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccMONOTOF_ymin = -0.1;
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 213 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccMONOTOF_ymax = 0.1;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccMONOTOF_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccMONOTOF_zmax = 0;
-#line 212 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 212 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccMONOTOF_bins = 30;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccMONOTOF_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccMONOTOF_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccMONOTOF_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccMONOTOF_radius = 0;
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 213 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("auto, time") strncpy(mccMONOTOF_options, "auto, time" ? "auto, time" : "", 16384); else mccMONOTOF_options[0]='\0';
-#line 212 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 212 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("MONO_TOF.dat") strncpy(mccMONOTOF_filename, "MONO_TOF.dat" ? "MONO_TOF.dat" : "", 16384); else mccMONOTOF_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccMONOTOF_geometry, "NULL" ? "NULL" : "", 16384); else mccMONOTOF_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccMONOTOF_username1, "NULL" ? "NULL" : "", 16384); else mccMONOTOF_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccMONOTOF_username2, "NULL" ? "NULL" : "", 16384); else mccMONOTOF_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccMONOTOF_username3, "NULL" ? "NULL" : "", 16384); else mccMONOTOF_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccMONOTOF_nowritefile = 0;
 #line 14363 "./PSI_Focus.c"
 
@@ -14372,11 +14372,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPSDmonMono, mctr1);
   rot_mul(mcrotaMONOTOF, mctr1, mcrotrMONOTOF);
   mctc1 = coords_set(
-#line 214 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 214 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 214 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 214 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 214 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 214 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     72.41);
 #line 14381 "./PSI_Focus.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -14392,54 +14392,54 @@ void mcinit(void) {
     /* Component DivMonMono. */
   /* Setting parameters for component DivMonMono. */
   SIG_MESSAGE("DivMonMono (Init:SetPar)");
-#line 217 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 217 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("divmono.dat") strncpy(mccDivMonMono_filename, "divmono.dat" ? "divmono.dat" : "", 16384); else mccDivMonMono_filename[0]='\0';
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonMono_xmin = -0.05;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonMono_xmax = 0.05;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonMono_ymin = -0.05;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonMono_ymax = 0.05;
-#line 218 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 218 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonMono_xwidth = 0.1;
-#line 218 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 218 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonMono_yheight = 0.2;
-#line 219 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 219 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonMono_maxdiv_h = 3;
-#line 219 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 219 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonMono_maxdiv_v = 3;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonMono_restore_neutron = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonMono_nx = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonMono_ny = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonMono_nz = 1;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonMono_nowritefile = 0;
 #line 14423 "./PSI_Focus.c"
 
   SIG_MESSAGE("DivMonMono (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 220 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 220 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 220 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 220 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 220 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 220 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD);
 #line 14433 "./PSI_Focus.c"
   rot_mul(mctr1, mcrotaa1, mcrotaDivMonMono);
   rot_transpose(mcrotaMONOTOF, mctr1);
   rot_mul(mcrotaDivMonMono, mctr1, mcrotrDivMonMono);
   mctc1 = coords_set(
-#line 220 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 220 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 220 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 220 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 220 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 220 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     72.42);
 #line 14444 "./PSI_Focus.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -14458,22 +14458,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("focus_mono (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 224 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 224 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (PHM)*DEG2RAD,
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 224 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD);
 #line 14467 "./PSI_Focus.c"
   rot_mul(mctr1, mcrotaa1, mcrotafocus_mono);
   rot_transpose(mcrotaDivMonMono, mctr1);
   rot_mul(mcrotafocus_mono, mctr1, mcrotrfocus_mono);
   mctc1 = coords_set(
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 224 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 224 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 224 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     72.617);
 #line 14478 "./PSI_Focus.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -14489,39 +14489,39 @@ void mcinit(void) {
     /* Component mono. */
   /* Setting parameters for component mono. */
   SIG_MESSAGE("mono (Init:SetPar)");
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if(0) strncpy(mccmono_reflect, 0 ? 0 : "", 16384); else mccmono_reflect[0]='\0';
-#line 229 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 229 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccmono_zwidth = 0.019;
-#line 229 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 229 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccmono_yheight = 0.025;
-#line 229 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 229 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccmono_gap = 0.001;
-#line 230 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 230 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccmono_NH = 9;
-#line 230 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 230 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccmono_NV = 7;
-#line 231 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 231 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccmono_mosaich = 48;
-#line 231 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 231 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccmono_mosaicv = 48;
-#line 232 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 232 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccmono_r0 = 0.99;
-#line 233 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 233 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccmono_Q = 1.873;
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccmono_RV = RV_2;
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccmono_RH = RH_2;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccmono_DM = 0;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccmono_mosaic = 0;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccmono_width = 0;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccmono_height = 0;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccmono_verbose = 0;
 #line 14526 "./PSI_Focus.c"
 
@@ -14535,11 +14535,11 @@ void mcinit(void) {
   rot_transpose(mcrotafocus_mono, mctr1);
   rot_mul(mcrotamono, mctr1, mcrotrmono);
   mctc1 = coords_set(
-#line 235 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 235 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 235 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 235 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 235 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 235 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0);
 #line 14544 "./PSI_Focus.c"
   rot_transpose(mcrotafocus_mono, mctr1);
@@ -14558,22 +14558,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("a2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (TTM)*DEG2RAD,
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD);
 #line 14567 "./PSI_Focus.c"
   rot_mul(mctr1, mcrotaa1, mcrotaa2);
   rot_transpose(mcrotamono, mctr1);
   rot_mul(mcrotaa2, mctr1, mcrotra2);
   mctc1 = coords_set(
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0);
 #line 14578 "./PSI_Focus.c"
   rot_transpose(mcrotafocus_mono, mctr1);
@@ -14589,47 +14589,47 @@ void mcinit(void) {
     /* Component FERMITOF_before. */
   /* Setting parameters for component FERMITOF_before. */
   SIG_MESSAGE("FERMITOF_before (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF_before_xwidth = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF_before_yheight = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF_before_zdepth = 0;
-#line 241 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 241 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF_before_xmin = -0.05;
-#line 242 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 242 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF_before_xmax = 0.05;
-#line 242 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 242 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF_before_ymin = -0.1;
-#line 242 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 242 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF_before_ymax = 0.1;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF_before_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF_before_zmax = 0;
-#line 241 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 241 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF_before_bins = 30;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF_before_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF_before_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF_before_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF_before_radius = 0;
-#line 242 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 242 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("auto, time") strncpy(mccFERMITOF_before_options, "auto, time" ? "auto, time" : "", 16384); else mccFERMITOF_before_options[0]='\0';
-#line 241 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 241 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("FERMI_TOF_before.dat") strncpy(mccFERMITOF_before_filename, "FERMI_TOF_before.dat" ? "FERMI_TOF_before.dat" : "", 16384); else mccFERMITOF_before_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccFERMITOF_before_geometry, "NULL" ? "NULL" : "", 16384); else mccFERMITOF_before_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccFERMITOF_before_username1, "NULL" ? "NULL" : "", 16384); else mccFERMITOF_before_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccFERMITOF_before_username2, "NULL" ? "NULL" : "", 16384); else mccFERMITOF_before_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccFERMITOF_before_username3, "NULL" ? "NULL" : "", 16384); else mccFERMITOF_before_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF_before_nowritefile = 0;
 #line 14634 "./PSI_Focus.c"
 
@@ -14643,11 +14643,11 @@ void mcinit(void) {
   rot_transpose(mcrotaa2, mctr1);
   rot_mul(mcrotaFERMITOF_before, mctr1, mcrotrFERMITOF_before);
   mctc1 = coords_set(
-#line 243 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 243 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 243 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 243 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 243 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 243 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0.9);
 #line 14652 "./PSI_Focus.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -14663,27 +14663,27 @@ void mcinit(void) {
     /* Component lambdaFermi. */
   /* Setting parameters for component lambdaFermi. */
   SIG_MESSAGE("lambdaFermi (Init:SetPar)");
-#line 248 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 248 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("lambdafermi.dat") strncpy(mcclambdaFermi_filename, "lambdafermi.dat" ? "lambdafermi.dat" : "", 16384); else mcclambdaFermi_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcclambdaFermi_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcclambdaFermi_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcclambdaFermi_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcclambdaFermi_ymax = 0.05;
-#line 246 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 246 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcclambdaFermi_xwidth = 0.1;
-#line 246 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 246 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcclambdaFermi_yheight = 0.2;
-#line 247 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 247 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcclambdaFermi_Lmin = LMIN;
-#line 247 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 247 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcclambdaFermi_Lmax = LMAX;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcclambdaFermi_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mcclambdaFermi_nowritefile = 0;
 #line 14688 "./PSI_Focus.c"
 
@@ -14697,11 +14697,11 @@ void mcinit(void) {
   rot_transpose(mcrotaFERMITOF_before, mctr1);
   rot_mul(mcrotalambdaFermi, mctr1, mcrotrlambdaFermi);
   mctc1 = coords_set(
-#line 249 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 249 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 249 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 249 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 249 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 249 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0.901);
 #line 14706 "./PSI_Focus.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -14717,48 +14717,48 @@ void mcinit(void) {
     /* Component EMON_Fermi. */
   /* Setting parameters for component EMON_Fermi. */
   SIG_MESSAGE("EMON_Fermi (Init:SetPar)");
-#line 254 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 254 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("emon_fermi.dat") strncpy(mccEMON_Fermi_filename, "emon_fermi.dat" ? "emon_fermi.dat" : "", 16384); else mccEMON_Fermi_filename[0]='\0';
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_Fermi_xmin = -0.05;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_Fermi_xmax = 0.05;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_Fermi_ymin = -0.05;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_Fermi_ymax = 0.05;
-#line 252 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 252 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_Fermi_xwidth = 0.06;
-#line 252 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 252 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_Fermi_yheight = 0.1;
-#line 253 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 253 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_Fermi_Emin = EMIN;
-#line 253 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 253 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_Fermi_Emax = EMAX;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_Fermi_restore_neutron = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_Fermi_nowritefile = 0;
 #line 14742 "./PSI_Focus.c"
 
   SIG_MESSAGE("EMON_Fermi (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 255 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 255 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 255 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 255 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 255 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 255 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD);
 #line 14752 "./PSI_Focus.c"
   rot_mul(mctr1, mcrotaa2, mcrotaEMON_Fermi);
   rot_transpose(mcrotalambdaFermi, mctr1);
   rot_mul(mcrotaEMON_Fermi, mctr1, mcrotrEMON_Fermi);
   mctc1 = coords_set(
-#line 255 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 255 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 255 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 255 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 255 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 255 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0.9397);
 #line 14763 "./PSI_Focus.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -14774,33 +14774,33 @@ void mcinit(void) {
     /* Component DivMonfermi1. */
   /* Setting parameters for component DivMonfermi1. */
   SIG_MESSAGE("DivMonfermi1 (Init:SetPar)");
-#line 258 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 258 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("divfermi1.dat") strncpy(mccDivMonfermi1_filename, "divfermi1.dat" ? "divfermi1.dat" : "", 16384); else mccDivMonfermi1_filename[0]='\0';
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi1_xmin = -0.05;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi1_xmax = 0.05;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi1_ymin = -0.05;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi1_ymax = 0.05;
-#line 259 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 259 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi1_xwidth = 0.06;
-#line 259 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 259 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi1_yheight = 0.1;
-#line 260 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 260 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi1_maxdiv_h = 2;
-#line 260 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 260 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi1_maxdiv_v = 2;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi1_restore_neutron = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi1_nx = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi1_ny = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi1_nz = 1;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi1_nowritefile = 0;
 #line 14805 "./PSI_Focus.c"
 
@@ -14814,11 +14814,11 @@ void mcinit(void) {
   rot_transpose(mcrotaEMON_Fermi, mctr1);
   rot_mul(mcrotaDivMonfermi1, mctr1, mcrotrDivMonfermi1);
   mctc1 = coords_set(
-#line 261 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 261 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 261 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 261 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 261 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 261 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0.9398);
 #line 14823 "./PSI_Focus.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -14834,46 +14834,46 @@ void mcinit(void) {
     /* Component PSD_Fermi1. */
   /* Setting parameters for component PSD_Fermi1. */
   SIG_MESSAGE("PSD_Fermi1 (Init:SetPar)");
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_Fermi1_nx = 30;
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_Fermi1_ny = 30;
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("psdfermi1.dat") strncpy(mccPSD_Fermi1_filename, "psdfermi1.dat" ? "psdfermi1.dat" : "", 16384); else mccPSD_Fermi1_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_Fermi1_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_Fermi1_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_Fermi1_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_Fermi1_ymax = 0.05;
-#line 264 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 264 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_Fermi1_xwidth = 0.06;
-#line 264 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 264 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_Fermi1_yheight = 0.11;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_Fermi1_restore_neutron = 0;
 #line 14857 "./PSI_Focus.c"
 
   SIG_MESSAGE("PSD_Fermi1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 266 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 266 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 266 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 266 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 266 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 266 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD);
 #line 14867 "./PSI_Focus.c"
   rot_mul(mctr1, mcrotaa2, mcrotaPSD_Fermi1);
   rot_transpose(mcrotaDivMonfermi1, mctr1);
   rot_mul(mcrotaPSD_Fermi1, mctr1, mcrotrPSD_Fermi1);
   mctc1 = coords_set(
-#line 266 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 266 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 266 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 266 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 266 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 266 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0.9399);
 #line 14878 "./PSI_Focus.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -14889,41 +14889,41 @@ void mcinit(void) {
     /* Component FoChopper. */
   /* Setting parameters for component FoChopper. */
   SIG_MESSAGE("FoChopper (Init:SetPar)");
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoChopper_phase = 0;
-#line 269 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 269 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoChopper_radius = 0.06;
-#line 269 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 269 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoChopper_nu = - FERMI_SPEED;
-#line 270 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 270 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoChopper_w = 0.0005;
-#line 270 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 270 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoChopper_nslit = 120;
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoChopper_R0 = 0;
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoChopper_Qc = 0;
-#line 270 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 270 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoChopper_alpha = 0;
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoChopper_m = 0;
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoChopper_W = 0.0001;
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoChopper_length = 0.012;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoChopper_eff = 0.95;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoChopper_zero_time = 0;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoChopper_xwidth = 0;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoChopper_verbose = 0;
-#line 269 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 269 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoChopper_yheight = 0.11;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoChopper_curvature = 0;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoChopper_delay = 0;
 #line 14928 "./PSI_Focus.c"
 
@@ -14937,11 +14937,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPSD_Fermi1, mctr1);
   rot_mul(mcrotaFoChopper, mctr1, mcrotrFoChopper);
   mctc1 = coords_set(
-#line 272 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 272 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 272 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 272 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 272 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 272 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     1.002);
 #line 14946 "./PSI_Focus.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -14957,46 +14957,46 @@ void mcinit(void) {
     /* Component PSD_Fermi2. */
   /* Setting parameters for component PSD_Fermi2. */
   SIG_MESSAGE("PSD_Fermi2 (Init:SetPar)");
-#line 276 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 276 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_Fermi2_nx = 30;
-#line 276 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 276 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_Fermi2_ny = 30;
-#line 276 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 276 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("psdfermi2.dat") strncpy(mccPSD_Fermi2_filename, "psdfermi2.dat" ? "psdfermi2.dat" : "", 16384); else mccPSD_Fermi2_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_Fermi2_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_Fermi2_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_Fermi2_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_Fermi2_ymax = 0.05;
-#line 275 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 275 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_Fermi2_xwidth = 0.06;
-#line 275 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 275 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_Fermi2_yheight = 0.11;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_Fermi2_restore_neutron = 0;
 #line 14980 "./PSI_Focus.c"
 
   SIG_MESSAGE("PSD_Fermi2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 277 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 277 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 277 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 277 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 277 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 277 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD);
 #line 14990 "./PSI_Focus.c"
   rot_mul(mctr1, mcrotaa2, mcrotaPSD_Fermi2);
   rot_transpose(mcrotaFoChopper, mctr1);
   rot_mul(mcrotaPSD_Fermi2, mctr1, mcrotrPSD_Fermi2);
   mctc1 = coords_set(
-#line 277 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 277 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 277 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 277 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 277 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 277 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     1.063);
 #line 15001 "./PSI_Focus.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -15012,33 +15012,33 @@ void mcinit(void) {
     /* Component DivMonfermi2. */
   /* Setting parameters for component DivMonfermi2. */
   SIG_MESSAGE("DivMonfermi2 (Init:SetPar)");
-#line 280 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 280 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("divfermi2.dat") strncpy(mccDivMonfermi2_filename, "divfermi2.dat" ? "divfermi2.dat" : "", 16384); else mccDivMonfermi2_filename[0]='\0';
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi2_xmin = -0.05;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi2_xmax = 0.05;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi2_ymin = -0.05;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi2_ymax = 0.05;
-#line 281 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 281 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi2_xwidth = 0.06;
-#line 281 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 281 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi2_yheight = 0.1;
-#line 282 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 282 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi2_maxdiv_h = 2;
-#line 282 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 282 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi2_maxdiv_v = 2;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi2_restore_neutron = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi2_nx = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi2_ny = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi2_nz = 1;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMonfermi2_nowritefile = 0;
 #line 15043 "./PSI_Focus.c"
 
@@ -15052,11 +15052,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPSD_Fermi2, mctr1);
   rot_mul(mcrotaDivMonfermi2, mctr1, mcrotrDivMonfermi2);
   mctc1 = coords_set(
-#line 283 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 283 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 283 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 283 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 283 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 283 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     1.064);
 #line 15061 "./PSI_Focus.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -15072,47 +15072,47 @@ void mcinit(void) {
     /* Component FERMITOF1. */
   /* Setting parameters for component FERMITOF1. */
   SIG_MESSAGE("FERMITOF1 (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF1_xwidth = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF1_yheight = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF1_zdepth = 0;
-#line 286 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 286 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF1_xmin = -0.05;
-#line 287 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 287 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF1_xmax = 0.05;
-#line 287 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 287 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF1_ymin = -0.1;
-#line 287 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 287 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF1_ymax = 0.1;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF1_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF1_zmax = 0;
-#line 286 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 286 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF1_bins = 30;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF1_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF1_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF1_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF1_radius = 0;
-#line 287 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 287 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("auto, time") strncpy(mccFERMITOF1_options, "auto, time" ? "auto, time" : "", 16384); else mccFERMITOF1_options[0]='\0';
-#line 286 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 286 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("FERMI_TOF1.dat.dat") strncpy(mccFERMITOF1_filename, "FERMI_TOF1.dat.dat" ? "FERMI_TOF1.dat.dat" : "", 16384); else mccFERMITOF1_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccFERMITOF1_geometry, "NULL" ? "NULL" : "", 16384); else mccFERMITOF1_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccFERMITOF1_username1, "NULL" ? "NULL" : "", 16384); else mccFERMITOF1_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccFERMITOF1_username2, "NULL" ? "NULL" : "", 16384); else mccFERMITOF1_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccFERMITOF1_username3, "NULL" ? "NULL" : "", 16384); else mccFERMITOF1_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF1_nowritefile = 0;
 #line 15117 "./PSI_Focus.c"
 
@@ -15126,11 +15126,11 @@ void mcinit(void) {
   rot_transpose(mcrotaDivMonfermi2, mctr1);
   rot_mul(mcrotaFERMITOF1, mctr1, mcrotrFERMITOF1);
   mctc1 = coords_set(
-#line 288 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 288 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 288 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 288 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 288 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 288 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     1.154);
 #line 15135 "./PSI_Focus.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -15146,19 +15146,19 @@ void mcinit(void) {
     /* Component SAMPLE_SLIT. */
   /* Setting parameters for component SAMPLE_SLIT. */
   SIG_MESSAGE("SAMPLE_SLIT (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSAMPLE_SLIT_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSAMPLE_SLIT_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSAMPLE_SLIT_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSAMPLE_SLIT_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSAMPLE_SLIT_radius = 0;
-#line 291 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 291 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSAMPLE_SLIT_xwidth = 0.02;
-#line 291 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 291 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSAMPLE_SLIT_yheight = 0.06;
 #line 15163 "./PSI_Focus.c"
 
@@ -15172,11 +15172,11 @@ void mcinit(void) {
   rot_transpose(mcrotaFERMITOF1, mctr1);
   rot_mul(mcrotaSAMPLE_SLIT, mctr1, mcrotrSAMPLE_SLIT);
   mctc1 = coords_set(
-#line 292 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 292 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 292 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 292 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 292 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 292 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     1.155);
 #line 15181 "./PSI_Focus.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -15192,47 +15192,47 @@ void mcinit(void) {
     /* Component FERMITOF2. */
   /* Setting parameters for component FERMITOF2. */
   SIG_MESSAGE("FERMITOF2 (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF2_xwidth = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF2_yheight = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF2_zdepth = 0;
-#line 295 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 295 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF2_xmin = -0.05;
-#line 296 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 296 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF2_xmax = 0.05;
-#line 296 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 296 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF2_ymin = -0.1;
-#line 296 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 296 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF2_ymax = 0.1;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF2_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF2_zmax = 0;
-#line 295 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 295 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF2_bins = 30;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF2_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF2_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF2_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF2_radius = 0;
-#line 296 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 296 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("auto, time") strncpy(mccFERMITOF2_options, "auto, time" ? "auto, time" : "", 16384); else mccFERMITOF2_options[0]='\0';
-#line 295 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 295 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("FERMI_TOF2.dat.dat") strncpy(mccFERMITOF2_filename, "FERMI_TOF2.dat.dat" ? "FERMI_TOF2.dat.dat" : "", 16384); else mccFERMITOF2_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccFERMITOF2_geometry, "NULL" ? "NULL" : "", 16384); else mccFERMITOF2_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccFERMITOF2_username1, "NULL" ? "NULL" : "", 16384); else mccFERMITOF2_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccFERMITOF2_username2, "NULL" ? "NULL" : "", 16384); else mccFERMITOF2_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccFERMITOF2_username3, "NULL" ? "NULL" : "", 16384); else mccFERMITOF2_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFERMITOF2_nowritefile = 0;
 #line 15237 "./PSI_Focus.c"
 
@@ -15246,11 +15246,11 @@ void mcinit(void) {
   rot_transpose(mcrotaSAMPLE_SLIT, mctr1);
   rot_mul(mcrotaFERMITOF2, mctr1, mcrotrFERMITOF2);
   mctc1 = coords_set(
-#line 297 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 297 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 297 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 297 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 297 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 297 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     1.2);
 #line 15255 "./PSI_Focus.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -15266,46 +15266,46 @@ void mcinit(void) {
     /* Component PSD_SAMPLE. */
   /* Setting parameters for component PSD_SAMPLE. */
   SIG_MESSAGE("PSD_SAMPLE (Init:SetPar)");
-#line 301 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 301 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_SAMPLE_nx = 30;
-#line 301 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 301 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_SAMPLE_ny = 30;
-#line 301 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 301 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("psdsample.dat") strncpy(mccPSD_SAMPLE_filename, "psdsample.dat" ? "psdsample.dat" : "", 16384); else mccPSD_SAMPLE_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_SAMPLE_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_SAMPLE_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_SAMPLE_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_SAMPLE_ymax = 0.05;
-#line 300 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 300 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_SAMPLE_xwidth = 0.02;
-#line 300 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 300 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_SAMPLE_yheight = 0.1;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccPSD_SAMPLE_restore_neutron = 0;
 #line 15289 "./PSI_Focus.c"
 
   SIG_MESSAGE("PSD_SAMPLE (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 302 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 302 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 302 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 302 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 302 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 302 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD);
 #line 15299 "./PSI_Focus.c"
   rot_mul(mctr1, mcrotaa2, mcrotaPSD_SAMPLE);
   rot_transpose(mcrotaFERMITOF2, mctr1);
   rot_mul(mcrotaPSD_SAMPLE, mctr1, mcrotrPSD_SAMPLE);
   mctc1 = coords_set(
-#line 302 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 302 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 302 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 302 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 302 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 302 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     1.45);
 #line 15310 "./PSI_Focus.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -15321,54 +15321,54 @@ void mcinit(void) {
     /* Component DivMon_Sample. */
   /* Setting parameters for component DivMon_Sample. */
   SIG_MESSAGE("DivMon_Sample (Init:SetPar)");
-#line 305 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 305 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("div2.dat") strncpy(mccDivMon_Sample_filename, "div2.dat" ? "div2.dat" : "", 16384); else mccDivMon_Sample_filename[0]='\0';
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMon_Sample_xmin = -0.05;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMon_Sample_xmax = 0.05;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMon_Sample_ymin = -0.05;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMon_Sample_ymax = 0.05;
-#line 306 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 306 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMon_Sample_xwidth = 0.01;
-#line 306 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 306 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMon_Sample_yheight = 0.06;
-#line 307 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 307 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMon_Sample_maxdiv_h = 3;
-#line 307 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 307 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMon_Sample_maxdiv_v = 3;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMon_Sample_restore_neutron = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMon_Sample_nx = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMon_Sample_ny = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMon_Sample_nz = 1;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccDivMon_Sample_nowritefile = 0;
 #line 15352 "./PSI_Focus.c"
 
   SIG_MESSAGE("DivMon_Sample (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD);
 #line 15362 "./PSI_Focus.c"
   rot_mul(mctr1, mcrotaa2, mcrotaDivMon_Sample);
   rot_transpose(mcrotaPSD_SAMPLE, mctr1);
   rot_mul(mcrotaDivMon_Sample, mctr1, mcrotrDivMon_Sample);
   mctc1 = coords_set(
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     1.451);
 #line 15373 "./PSI_Focus.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -15384,48 +15384,48 @@ void mcinit(void) {
     /* Component EMON_SAMPLE. */
   /* Setting parameters for component EMON_SAMPLE. */
   SIG_MESSAGE("EMON_SAMPLE (Init:SetPar)");
-#line 313 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 313 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("emon_sample.dat") strncpy(mccEMON_SAMPLE_filename, "emon_sample.dat" ? "emon_sample.dat" : "", 16384); else mccEMON_SAMPLE_filename[0]='\0';
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_SAMPLE_xmin = -0.05;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_SAMPLE_xmax = 0.05;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_SAMPLE_ymin = -0.05;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_SAMPLE_ymax = 0.05;
-#line 311 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 311 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_SAMPLE_xwidth = 0.01;
-#line 311 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 311 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_SAMPLE_yheight = 0.06;
-#line 312 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 312 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_SAMPLE_Emin = EMIN;
-#line 312 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 312 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_SAMPLE_Emax = EMAX;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_SAMPLE_restore_neutron = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_SAMPLE_nowritefile = 0;
 #line 15409 "./PSI_Focus.c"
 
   SIG_MESSAGE("EMON_SAMPLE (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 314 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 314 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 314 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 314 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 314 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 314 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD);
 #line 15419 "./PSI_Focus.c"
   rot_mul(mctr1, mcrotaa2, mcrotaEMON_SAMPLE);
   rot_transpose(mcrotaDivMon_Sample, mctr1);
   rot_mul(mcrotaEMON_SAMPLE, mctr1, mcrotrEMON_SAMPLE);
   mctc1 = coords_set(
-#line 314 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 314 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 314 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 314 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 314 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 314 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     1.452);
 #line 15430 "./PSI_Focus.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -15452,11 +15452,11 @@ void mcinit(void) {
   rot_transpose(mcrotaEMON_SAMPLE, mctr1);
   rot_mul(mcrotaa3, mctr1, mcrotra3);
   mctc1 = coords_set(
-#line 319 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 319 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 319 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 319 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 319 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 319 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     1.5);
 #line 15461 "./PSI_Focus.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -15472,65 +15472,65 @@ void mcinit(void) {
     /* Component Sample. */
   /* Setting parameters for component Sample. */
   SIG_MESSAGE("Sample (Init:SetPar)");
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_radius = 0.008;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_thickness = 0;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_zdepth = 0;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_Vc = 13.827;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_sigma_abs = 5.08;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_sigma_inc = 5.08;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_radius_i = 0;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_radius_o = 0;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_h = 0;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_focus_r = 0;
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_pack = 1;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_frac = 1;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_f_QE = 0;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_gamma = 0;
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_target_x = 0;
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_target_y = 0;
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_target_z = 0;
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_focus_xw = 0.336;
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_focus_yh = 0.4;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_focus_aw = 0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_focus_ah = 0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_xwidth = 0;
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_yheight = 0.055;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_zthick = 0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_rad_sphere = 0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_sig_a = 0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_sig_i = 0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_V0 = 0;
-#line 323 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 323 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_target_index = + 3;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccSample_multiples = 1;
 #line 15535 "./PSI_Focus.c"
 
@@ -15544,11 +15544,11 @@ void mcinit(void) {
   rot_transpose(mcrotaa3, mctr1);
   rot_mul(mcrotaSample, mctr1, mcrotrSample);
   mctc1 = coords_set(
-#line 324 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 324 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 324 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 324 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 324 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 324 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0);
 #line 15553 "./PSI_Focus.c"
   rot_transpose(mcrotaa3, mctr1);
@@ -15564,47 +15564,47 @@ void mcinit(void) {
     /* Component TOF_Det. */
   /* Setting parameters for component TOF_Det. */
   SIG_MESSAGE("TOF_Det (Init:SetPar)");
-#line 327 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 327 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccTOF_Det_xwidth = 1.5;
-#line 327 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 327 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccTOF_Det_yheight = 0.2;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccTOF_Det_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccTOF_Det_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccTOF_Det_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccTOF_Det_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccTOF_Det_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccTOF_Det_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccTOF_Det_zmax = 0;
-#line 329 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 329 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccTOF_Det_bins = 100;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccTOF_Det_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccTOF_Det_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccTOF_Det_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccTOF_Det_radius = 0;
-#line 328 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 328 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("auto time, abs angle limits=[10 180], banana, parallel") strncpy(mccTOF_Det_options, "auto time, abs angle limits=[10 180], banana, parallel" ? "auto time, abs angle limits=[10 180], banana, parallel" : "", 16384); else mccTOF_Det_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccTOF_Det_filename, "NULL" ? "NULL" : "", 16384); else mccTOF_Det_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccTOF_Det_geometry, "NULL" ? "NULL" : "", 16384); else mccTOF_Det_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccTOF_Det_username1, "NULL" ? "NULL" : "", 16384); else mccTOF_Det_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccTOF_Det_username2, "NULL" ? "NULL" : "", 16384); else mccTOF_Det_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccTOF_Det_username3, "NULL" ? "NULL" : "", 16384); else mccTOF_Det_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccTOF_Det_nowritefile = 0;
 #line 15609 "./PSI_Focus.c"
 
@@ -15618,11 +15618,11 @@ void mcinit(void) {
   rot_transpose(mcrotaSample, mctr1);
   rot_mul(mcrotaTOF_Det, mctr1, mcrotrTOF_Det);
   mctc1 = coords_set(
-#line 330 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 330 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 330 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 330 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 330 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 330 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0);
 #line 15627 "./PSI_Focus.c"
   rot_transpose(mcrotaSample, mctr1);
@@ -15638,68 +15638,68 @@ void mcinit(void) {
     /* Component FoDet. */
   /* Setting parameters for component FoDet. */
   SIG_MESSAGE("FoDet (Init:SetPar)");
-#line 333 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 333 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoDet_xwidth = 0.336;
-#line 333 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 333 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoDet_yheight = 0.4;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoDet_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoDet_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoDet_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoDet_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoDet_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoDet_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoDet_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoDet_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoDet_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoDet_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoDet_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoDet_radius = 0;
-#line 334 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 334 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("t auto file=TofDet.dat") strncpy(mccFoDet_options, "t auto file=TofDet.dat" ? "t auto file=TofDet.dat" : "", 16384); else mccFoDet_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccFoDet_filename, "NULL" ? "NULL" : "", 16384); else mccFoDet_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccFoDet_geometry, "NULL" ? "NULL" : "", 16384); else mccFoDet_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccFoDet_username1, "NULL" ? "NULL" : "", 16384); else mccFoDet_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccFoDet_username2, "NULL" ? "NULL" : "", 16384); else mccFoDet_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("NULL") strncpy(mccFoDet_username3, "NULL" ? "NULL" : "", 16384); else mccFoDet_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccFoDet_nowritefile = 0;
 #line 15683 "./PSI_Focus.c"
 
   SIG_MESSAGE("FoDet (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 335 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 335 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 335 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 335 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (mcipDET)*DEG2RAD,
-#line 335 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 335 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD);
 #line 15693 "./PSI_Focus.c"
   rot_mul(mctr1, mcrotaa3, mcrotaFoDet);
   rot_transpose(mcrotaTOF_Det, mctr1);
   rot_mul(mcrotaFoDet, mctr1, mcrotrFoDet);
   mctc1 = coords_set(
-#line 335 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 335 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 335 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 335 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 335 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 335 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     2.5);
 #line 15704 "./PSI_Focus.c"
   rot_transpose(mcrotaa3, mctr1);
@@ -15715,48 +15715,48 @@ void mcinit(void) {
     /* Component EMON_DET. */
   /* Setting parameters for component EMON_DET. */
   SIG_MESSAGE("EMON_DET (Init:SetPar)");
-#line 339 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 339 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   if("emon_det.dat") strncpy(mccEMON_DET_filename, "emon_det.dat" ? "emon_det.dat" : "", 16384); else mccEMON_DET_filename[0]='\0';
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_DET_xmin = -0.05;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_DET_xmax = 0.05;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_DET_ymin = -0.05;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_DET_ymax = 0.05;
-#line 338 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 338 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_DET_xwidth = 0.4;
-#line 338 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 338 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_DET_yheight = 0.4;
-#line 339 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 339 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_DET_Emin = EMIN;
-#line 339 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 339 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_DET_Emax = EMAX;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_DET_restore_neutron = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
   mccEMON_DET_nowritefile = 0;
 #line 15740 "./PSI_Focus.c"
 
   SIG_MESSAGE("EMON_DET (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 340 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 340 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD,
-#line 340 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 340 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (mcipDET)*DEG2RAD,
-#line 340 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 340 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     (0)*DEG2RAD);
 #line 15750 "./PSI_Focus.c"
   rot_mul(mctr1, mcrotaa3, mcrotaEMON_DET);
   rot_transpose(mcrotaFoDet, mctr1);
   rot_mul(mcrotaEMON_DET, mctr1, mcrotrEMON_DET);
   mctc1 = coords_set(
-#line 340 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 340 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 340 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 340 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     0,
-#line 340 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
+#line 340 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr"
     2.501);
 #line 15761 "./PSI_Focus.c"
   rot_transpose(mcrotaa3, mctr1);

@@ -1,10 +1,10 @@
 McStas simulation description file for Test_Monitor_Sqw.
-Date:    Wed Nov 20 01:16:51 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:57:38 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: Test_Monitor_Sqw
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr
   Parameters:  beam_wavelength_Angs(double) beam_resolution_meV(double) sample_coh(string) sample_inc(string) sample_thickness_m(double) sample_height_m(double) sample_radius_m(double) container(string) container_thickness_m(double) environment(string) environment_radius_m(double) environment_thickness_m(double) detector_height_m(double) sample_detector_distance_m(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574240064
+  Seed: 1582688019
   Directory: 1
   Nodes: 10
   Param: beam_wavelength_Angs=4.1
@@ -39,17 +39,17 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:17:06 2019 (1574209026)
+  Date: Tue Feb 25 21:58:18 2020 (1582664298)
   type: array_2d(100, 100)
-  Source: Test_Monitor_Sqw (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr)
+  Source: Test_Monitor_Sqw (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr)
   component: SampleIn
   position: 0 0 6.965
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: SampleIn_1574209011.x_y
-  statistics: X0=-7.79618e-07; dX=0.00286645; Y0=-5.02973e-07; dY=0.00861674;
-  signal: Min=2.28478e-12; Max=5.28791e-12; Mean=4.62762e-12;
-  values: 4.62762e-08 1.4651e-11 9.97851e+06
+  filename: SampleIn_1582664258.x_y
+  statistics: X0=8.765e-08; dX=0.00286609; Y0=-2.18146e-06; dY=0.0086171;
+  signal: Min=2.14749e-12; Max=5.27042e-12; Mean=4.6274e-12;
+  values: 4.6274e-08 1.46506e-11 9.9781e+06
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -61,17 +61,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:17:06 2019 (1574209026)
+  Date: Tue Feb 25 21:58:19 2020 (1582664299)
   type: array_2d(468, 468)
-  Source: Test_Monitor_Sqw (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr)
+  Source: Test_Monitor_Sqw (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr)
   component: Detector_nM
   position: 0 0 7
   title:  Intensity Momentum transfer Q [Angs-1] Energy transfer w [meV] Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: Detector_nM_1574209015.U1_U2
-  statistics: X0=1.34782; dX=1.41004; Y0=0.505816; dY=1.97802;
-  signal: Min=0; Max=1.2567e-10; Mean=3.50095e-15;
-  values: 7.66791e-10 1.70049e-12 3.50174e+06
+  filename: Detector_nM_1582664268.U1_U2
+  statistics: X0=1.35516; dX=1.41141; Y0=0.50621; dY=1.97838;
+  signal: Min=0; Max=1.2502e-10; Mean=3.51716e-15;
+  values: 7.70343e-10 1.71109e-12 3.50016e+06
   xvar: Momentum
   yvar: Energy
   xlabel: Momentum transfer Q [Angs-1]
@@ -83,17 +83,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:17:07 2019 (1574209027)
+  Date: Tue Feb 25 21:58:19 2020 (1582664299)
   type: array_2d(468, 468)
-  Source: Test_Monitor_Sqw (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr)
+  Source: Test_Monitor_Sqw (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr)
   component: Detector_nM_coh
   position: 0 0 7
   title:  Intensity Momentum transfer Q [Angs-1] Energy transfer w [meV] Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: Detector_nM_coh_1574209015.U1_U2
-  statistics: X0=1.21603; dX=1.3326; Y0=1.34546; dY=3.0382;
-  signal: Min=0; Max=3.25191e-12; Mean=1.1842e-15;
-  values: 2.59369e-10 2.3984e-13 1.86038e+06
+  filename: Detector_nM_coh_1582664268.U1_U2
+  statistics: X0=1.21848; dX=1.33391; Y0=1.35183; dY=3.04405;
+  signal: Min=0; Max=3.24116e-12; Mean=1.18437e-15;
+  values: 2.59405e-10 2.39853e-13 1.85934e+06
   xvar: Momentum
   yvar: Energy
   xlabel: Momentum transfer Q [Angs-1]
@@ -105,17 +105,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:17:08 2019 (1574209028)
+  Date: Tue Feb 25 21:58:19 2020 (1582664299)
   type: array_2d(468, 468)
-  Source: Test_Monitor_Sqw (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr)
+  Source: Test_Monitor_Sqw (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr)
   component: Detector_nM_inc
   position: 0 0 7
   title:  Intensity Momentum transfer Q [Angs-1] Energy transfer w [meV] Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: Detector_nM_inc_1574209015.U1_U2
-  statistics: X0=1.02199; dX=1.25638; Y0=1.09954; dY=2.78766;
-  signal: Min=0; Max=7.74778e-13; Mean=1.15429e-16;
-  values: 2.52816e-11 7.4883e-14 177517
+  filename: Detector_nM_inc_1582664268.U1_U2
+  statistics: X0=1.0272; dX=1.25902; Y0=1.11235; dY=2.79459;
+  signal: Min=0; Max=7.74684e-13; Mean=1.15467e-16;
+  values: 2.529e-11 7.48774e-14 177465
   xvar: Momentum
   yvar: Energy
   xlabel: Momentum transfer Q [Angs-1]
@@ -127,17 +127,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:17:10 2019 (1574209030)
+  Date: Tue Feb 25 21:58:20 2020 (1582664300)
   type: array_2d(468, 468)
-  Source: Test_Monitor_Sqw (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr)
+  Source: Test_Monitor_Sqw (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr)
   component: Detector_nM_multi
   position: 0 0 7
   title:  Intensity Momentum transfer Q [Angs-1] Energy transfer w [meV] Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: Detector_nM_multi_1574209015.U1_U2
-  statistics: X0=1.10105; dX=1.30837; Y0=2.50153; dY=4.13308;
-  signal: Min=0; Max=2.50996e-14; Mean=2.05084e-17;
-  values: 4.49183e-12 1.07594e-14 514324
+  filename: Detector_nM_multi_1582664268.U1_U2
+  statistics: X0=1.10185; dX=1.31046; Y0=2.51541; dY=4.13374;
+  signal: Min=0; Max=2.39346e-14; Mean=2.05054e-17;
+  values: 4.49118e-12 1.07392e-14 514177
   xvar: Momentum
   yvar: Energy
   xlabel: Momentum transfer Q [Angs-1]
@@ -149,17 +149,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:17:11 2019 (1574209031)
+  Date: Tue Feb 25 21:58:20 2020 (1582664300)
   type: array_2d(468, 468)
-  Source: Test_Monitor_Sqw (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr)
+  Source: Test_Monitor_Sqw (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr)
   component: Detector_nM_env
   position: 0 0 7
   title:  Intensity Momentum transfer Q [Angs-1] Energy transfer w [meV] Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: Detector_nM_env_1574209015.U1_U2
-  statistics: X0=1.4364; dX=1.44956; Y0=0.0106593; dY=0.259379;
-  signal: Min=0; Max=1.20538e-10; Mean=2.19679e-15;
-  values: 4.8115e-10 1.68181e-12 1.47911e+06
+  filename: Detector_nM_env_1582664268.U1_U2
+  statistics: X0=1.44579; dX=1.4502; Y0=0.0106697; dY=0.259607;
+  signal: Min=0; Max=1.20113e-10; Mean=2.2128e-15;
+  values: 4.84656e-10 1.69254e-12 1.47735e+06
   xvar: Momentum
   yvar: Energy
   xlabel: Momentum transfer Q [Angs-1]
@@ -171,17 +171,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:17:12 2019 (1574209032)
+  Date: Tue Feb 25 21:58:20 2020 (1582664300)
   type: array_2d(468, 468)
-  Source: Test_Monitor_Sqw (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr)
+  Source: Test_Monitor_Sqw (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr)
   component: M_total
   position: 0 0 7
   title:  Intensity Angle Time_Of_Flight Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: M_total_1574209015.A_t
-  statistics: X0=94.1605; dX=35.4863; Y0=0.00403502; dY=0.000638692;
-  signal: Min=0; Max=1.50699e-12; Mean=8.44914e-16;
-  values: 1.85057e-10 6.87835e-13 1.2249e+06
+  filename: M_total_1582664268.A_t
+  statistics: X0=94.2875; dX=35.5805; Y0=0.0040345; dY=0.00063825;
+  signal: Min=0; Max=1.38786e-12; Mean=8.49987e-16;
+  values: 1.86168e-10 6.97324e-13 1.22446e+06
   xvar: Angle
   yvar: TOF
   xlabel: Angle [deg]
@@ -193,17 +193,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:17:14 2019 (1574209034)
+  Date: Tue Feb 25 21:58:20 2020 (1582664300)
   type: array_2d(468, 468)
-  Source: Test_Monitor_Sqw (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr)
+  Source: Test_Monitor_Sqw (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr)
   component: M_single_coh
   position: 0 0 7
   title:  Intensity Angle Time_Of_Flight Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: M_single_coh_1574209015.A_t
-  statistics: X0=85.4164; dX=33.4902; Y0=0.00394871; dY=0.000827279;
-  signal: Min=0; Max=4.20368e-14; Mean=4.37672e-16;
-  values: 9.58608e-11 1.4579e-13 718767
+  filename: M_single_coh_1582664268.A_t
+  statistics: X0=85.44; dX=33.5127; Y0=0.00394673; dY=0.000828889;
+  signal: Min=0; Max=4.08324e-14; Mean=4.37747e-16;
+  values: 9.5877e-11 1.45697e-13 718650
   xvar: Angle
   yvar: TOF
   xlabel: Angle [deg]
@@ -215,17 +215,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:17:15 2019 (1574209035)
+  Date: Tue Feb 25 21:58:21 2020 (1582664301)
   type: array_2d(468, 468)
-  Source: Test_Monitor_Sqw (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr)
+  Source: Test_Monitor_Sqw (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr)
   component: M_single_inc
   position: 0 0 7
   title:  Intensity Angle Time_Of_Flight Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: M_single_inc_1574209015.A_t
-  statistics: X0=54.2176; dX=49.1209; Y0=0.00403782; dY=0.000684742;
-  signal: Min=0; Max=6.35437e-15; Mean=5.51926e-17;
-  values: 1.20885e-11 5.17889e-14 83231
+  filename: M_single_inc_1582664268.A_t
+  statistics: X0=54.402; dX=49.0762; Y0=0.00403428; dY=0.000687859;
+  signal: Min=0; Max=6.64392e-15; Mean=5.51714e-17;
+  values: 1.20839e-11 5.17684e-14 83348
   xvar: Angle
   yvar: TOF
   xlabel: Angle [deg]
@@ -237,17 +237,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:17:16 2019 (1574209036)
+  Date: Tue Feb 25 21:58:21 2020 (1582664301)
   type: array_2d(468, 468)
-  Source: Test_Monitor_Sqw (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr)
+  Source: Test_Monitor_Sqw (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr)
   component: M_multi
   position: 0 0 7
   title:  Intensity Angle Time_Of_Flight Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: M_multi_1574209015.A_t
-  statistics: X0=55.8087; dX=49.1722; Y0=0.00378515; dY=0.00103518;
-  signal: Min=0; Max=3.90644e-16; Mean=9.47205e-18;
-  values: 2.07461e-12 7.31879e-15 235087
+  filename: M_multi_1582664268.A_t
+  statistics: X0=55.496; dX=49.2714; Y0=0.00377554; dY=0.00102879;
+  signal: Min=0; Max=4.62861e-16; Mean=9.44669e-18;
+  values: 2.06905e-12 7.28083e-15 235050
   xvar: Angle
   yvar: TOF
   xlabel: Angle [deg]
@@ -259,17 +259,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:17:18 2019 (1574209038)
+  Date: Tue Feb 25 21:58:21 2020 (1582664301)
   type: array_2d(468, 468)
-  Source: Test_Monitor_Sqw (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr)
+  Source: Test_Monitor_Sqw (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monitor_Sqw/Test_Monitor_Sqw.instr)
   component: M_env_container
   position: 0 0 7
   title:  Intensity Angle Time_Of_Flight Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: M_env_container_1574209015.A_t
-  statistics: X0=111.688; dX=23.9762; Y0=0.00414501; dY=0.000106064;
-  signal: Min=0; Max=1.50414e-12; Mean=3.49845e-16;
-  values: 7.66245e-11 6.702e-13 428008
+  filename: M_env_container_1582664268.A_t
+  statistics: X0=111.695; dX=24.4372; Y0=0.00414544; dY=0.000105321;
+  signal: Min=0; Max=1.38308e-12; Mean=3.5484e-16;
+  values: 7.77184e-11 6.79956e-13 427013
   xvar: Angle
   yvar: TOF
   xlabel: Angle [deg]

@@ -1,11 +1,37 @@
-[1574207238.929275] [n-62-23-6:11222:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3390.45
-[1574207238.930508] [n-62-23-6:11222:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207238.930511] [n-62-23-6:11222:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207238.932351] [n-62-23-6:11222:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207238.932354] [n-62-23-6:11222:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: No output directory specified (--dir)
+INFO: Using directory: "SE_example_20200225_210137"
+INFO: Regenerating c-file: SE_example.c
+Warning: Using DEFINITION parameter of component Pol_mirror() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SE_example/SE_example.instr:89
+  rUpPar={ 0.99 , 0.0485 , 0.9 , 1 , 0.0002 }
+Warning: Using DEFINITION parameter of component Pol_mirror() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SE_example/SE_example.instr:89
+  rDownPar={ 0.99 , 0.11 , 0.9 , 2 , 0.0185 }
+Warning: 'V_sample' is an obsolete component (not maintained).
+Warning: Using DEFINITION parameter of component Pol_mirror() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SE_example/SE_example.instr:247
+  rUpPar={ 0.99 , 0.0485 , 0.9 , 1 , 0.0002 }
+Warning: Using DEFINITION parameter of component Pol_mirror() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SE_example/SE_example.instr:247
+  rDownPar={ 0.99 , 0.11 , 0.9 , 2 , 0.0185 }
+CFLAGS=
+INFO: Recompiling: ./SE_example.out
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Pol_mirror.comp:121:19: warning: ISO C99 requires whitespace after the macro name
+   if ((zwidth<=0) || (yheight <= 0)) {
+                   ^
+INFO: ===
+[n-62-23-14:06299] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:06299] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582660908.865409] [n-62-23-14:6298 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3367.55
+[1582660908.867061] [n-62-23-14:6298 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582660908.867065] [n-62-23-14:6298 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1582660908.869798] [n-62-23-14:6298 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582660908.869801] [n-62-23-14:6298 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 begin instrument: SE_example
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SE_example/SE_example.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SE_example/SE_example.instr
   Parameters:  POL_ANGLE(double) SAMPLE(double) Bguide(double) Bflip(double) dBz(double) Lam(double) dLam(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +40,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SE_example/SE_example.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SE_example/SE_example.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1574218460
+  Seed: 1582667206
   Directory: .
   Param: POL_ANGLE=2
   Param: SAMPLE=0
@@ -30,27 +56,3 @@ begin simulation: .
   Param: dLam=0.8
 end simulation
 info!
-INFO: No output directory specified (--dir)
-INFO: Using directory: "SE_example_20191120_004707"
-INFO: Regenerating c-file: SE_example.c
-Warning: Using DEFINITION parameter of component Pol_mirror() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SE_example/SE_example.instr:89
-  rUpPar={ 0.99 , 0.0485 , 0.9 , 1 , 0.0002 }
-Warning: Using DEFINITION parameter of component Pol_mirror() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SE_example/SE_example.instr:89
-  rDownPar={ 0.99 , 0.11 , 0.9 , 2 , 0.0185 }
-Warning: 'V_sample' is an obsolete component (not maintained).
-Warning: Using DEFINITION parameter of component Pol_mirror() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SE_example/SE_example.instr:247
-  rUpPar={ 0.99 , 0.0485 , 0.9 , 1 , 0.0002 }
-Warning: Using DEFINITION parameter of component Pol_mirror() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SE_example/SE_example.instr:247
-  rDownPar={ 0.99 , 0.11 , 0.9 , 2 , 0.0185 }
-CFLAGS=
-INFO: Recompiling: ./SE_example.out
-/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Pol_mirror.comp:117:19: warning: ISO C99 requires whitespace after the macro name
-   if ((zwidth<=0) || (yheight <= 0)) {
-                   ^
-INFO: ===
---------------------------------------------------------------------------
-Initialization of MXM library failed.
-
-  Error: Input/output error
-
---------------------------------------------------------------------------

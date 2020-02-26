@@ -1,11 +1,25 @@
-[1574207050.307561] [n-62-23-6:9648 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3394.04
-[1574207050.308868] [n-62-23-6:9648 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207050.308872] [n-62-23-6:9648 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207050.310792] [n-62-23-6:9648 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207050.310794] [n-62-23-6:9648 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: No output directory specified (--dir)
+INFO: Using directory: "McStas_Single_crystal_20200225_205926"
+INFO: Regenerating c-file: McStas_Single_crystal.c
+CFLAGS= -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
+INFO: Recompiling: ./McStas_Single_crystal.out
+INFO: ===
+[n-62-23-14:05513] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:05513] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582660770.022089] [n-62-23-14:5512 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3275.44
+[1582660770.023838] [n-62-23-14:5512 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582660770.023842] [n-62-23-14:5512 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1582660770.026370] [n-62-23-14:5512 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582660770.026374] [n-62-23-14:5512 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 begin instrument: McStas_Single_crystal
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr
   Parameters:  reflections(string) geometry(string) radius(double) xwidth(double) yheight(double) zdepth(double) delta_d_d(double) mosaic(double) mosaic_a(double) mosaic_b(double) mosaic_c(double) barns(double) order(double) rot_x(double) rot_y(double) rot_z(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +28,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1574216698
+  Seed: 1582666282
   Directory: .
   Param: reflections=Al.lau
   Param: geometry=NULL
@@ -39,15 +53,3 @@ begin simulation: .
   Param: rot_z=0
 end simulation
 info!
-INFO: No output directory specified (--dir)
-INFO: Using directory: "McStas_Single_crystal_20191120_004407"
-INFO: Regenerating c-file: McStas_Single_crystal.c
-CFLAGS= -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
-INFO: Recompiling: ./McStas_Single_crystal.out
-INFO: ===
---------------------------------------------------------------------------
-Initialization of MXM library failed.
-
-  Error: Input/output error
-
---------------------------------------------------------------------------

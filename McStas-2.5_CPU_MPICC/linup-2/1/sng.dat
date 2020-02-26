@@ -1,27 +1,27 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Dec. 03, 2019
-# Instrument: /zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-2/linup-2.instr
+# Creator: McStas 2.5 - Feb. 24, 2020
+# Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/linup-2/linup-2.instr
 # Ncount: 1000000
 # Trace: no
 # Gravitation: no
-# Seed: 1575407316
+# Seed: 1582693489
 # Directory: 1
 # Nodes: 10
 # Param: PHM=-37.077
 # Param: TTM=-74
 # Param: C1=30
 # Param: OMC1=5.5
-# Date: Tue Dec  3 18:16:54 2019 (1575393414)
+# Date: Tue Feb 25 22:18:05 2020 (1582665485)
 # type: array_0d
-# Source: TAS1_C1_Tilt (/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-2/linup-2.instr)
+# Source: TAS1_C1_Tilt (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/linup-2/linup-2.instr)
 # component: sng
 # position: -1.5236 0 3.99689
 # title: Single monitor sng
 # Ncount: 10000000
 # statistics: None
 # signal: None
-# values: 0.000404565 1.29187e-06 120800
+# values: 0.000406661 1.2963e-06 121238
 # xylimits: 0 0 0 0 0 0
 # variables: I I_err N
-0.000404565 1.29187e-06 120800
+0.000406661 1.2963e-06 121238

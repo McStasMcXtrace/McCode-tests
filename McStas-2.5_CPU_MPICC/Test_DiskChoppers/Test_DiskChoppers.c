@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr (Test_DiskChoppers)
- * Date:       Wed Nov 20 00:49:31 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr (Test_DiskChoppers)
+ * Date:       Tue Feb 25 21:04:07 2020
  * File:       ./Test_DiskChoppers.c
  * Compile:    cc -o Test_DiskChoppers.out ./Test_DiskChoppers.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Test_DiskChoppers";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -7564,13 +7564,13 @@ void mcinit(void) {
     /* Component origin. */
   /* Setting parameters for component origin. */
   SIG_MESSAGE("origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   if("NULL") strncpy(mccorigin_profile, "NULL" ? "NULL" : "", 16384); else mccorigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccorigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccorigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccorigin_minutes = 0;
 #line 7575 "./Test_DiskChoppers.c"
 
@@ -7582,11 +7582,11 @@ void mcinit(void) {
 #line 7582 "./Test_DiskChoppers.c"
   rot_copy(mcrotrorigin, mcrotaorigin);
   mcposaorigin = coords_set(
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     0,
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     0,
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     0);
 #line 7591 "./Test_DiskChoppers.c"
   mctc1 = coords_neg(mcposaorigin);
@@ -7599,86 +7599,86 @@ void mcinit(void) {
     /* Component source_gen. */
   /* Setting parameters for component source_gen. */
   SIG_MESSAGE("source_gen (Init:SetPar)");
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   if("NULL") strncpy(mccsource_gen_flux_file, "NULL" ? "NULL" : "", 16384); else mccsource_gen_flux_file[0]='\0';
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   if("NULL") strncpy(mccsource_gen_xdiv_file, "NULL" ? "NULL" : "", 16384); else mccsource_gen_xdiv_file[0]='\0';
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   if("NULL") strncpy(mccsource_gen_ydiv_file, "NULL" ? "NULL" : "", 16384); else mccsource_gen_ydiv_file[0]='\0';
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_radius = 0.0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_dist = 10;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_focus_xw = 0.045;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_focus_yh = 0.12;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_focus_aw = 0;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_focus_ah = 0;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_E0 = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_dE = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_lambda0 = mciplambda;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_dlambda = mcipdlambda;
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_I1 = 1;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_yheight = 0.1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_xwidth = 0.1;
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_verbose = 0;
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_T1 = 0;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_flux_file_perAA = 0;
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_flux_file_log = 0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_Lmin = 0;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_Lmax = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_Emin = 0;
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_Emax = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_T2 = 0;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_I2 = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_T3 = 0;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_I3 = 0;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_zdepth = 0;
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccsource_gen_target_index = + 1;
 #line 7662 "./Test_DiskChoppers.c"
 
   SIG_MESSAGE("source_gen (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     (0)*DEG2RAD,
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     (0)*DEG2RAD,
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     (0)*DEG2RAD);
 #line 7672 "./Test_DiskChoppers.c"
   rot_mul(mctr1, mcrotaorigin, mcrotasource_gen);
   rot_transpose(mcrotaorigin, mctr1);
   rot_mul(mcrotasource_gen, mctr1, mcrotrsource_gen);
   mctc1 = coords_set(
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     0,
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     0,
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     0);
 #line 7683 "./Test_DiskChoppers.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -7694,31 +7694,31 @@ void mcinit(void) {
     /* Component diskchopper0. */
   /* Setting parameters for component diskchopper0. */
   SIG_MESSAGE("diskchopper0 (Init:SetPar)");
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper0_theta_0 = 5;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper0_radius = 0.25;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper0_yheight = 0.12;
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper0_nu = 10;
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper0_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper0_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper0_delay = 0;
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper0_isfirst = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper0_n_pulse = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper0_abs_out = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper0_phase = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper0_xwidth = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper0_verbose = 0;
 #line 7723 "./Test_DiskChoppers.c"
 
@@ -7732,11 +7732,11 @@ void mcinit(void) {
   rot_transpose(mcrotasource_gen, mctr1);
   rot_mul(mcrotadiskchopper0, mctr1, mcrotrdiskchopper0);
   mctc1 = coords_set(
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     0,
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     0,
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     10);
 #line 7741 "./Test_DiskChoppers.c"
   rot_transpose(mcrotasource_gen, mctr1);
@@ -7752,31 +7752,31 @@ void mcinit(void) {
     /* Component diskchopper1. */
   /* Setting parameters for component diskchopper1. */
   SIG_MESSAGE("diskchopper1 (Init:SetPar)");
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper1_theta_0 = 5;
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper1_radius = 0.25;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper1_yheight = 0.12;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper1_nu = 10;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper1_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper1_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper1_delay = 0;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper1_isfirst = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper1_n_pulse = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper1_abs_out = 1;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper1_phase = 45;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper1_xwidth = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccdiskchopper1_verbose = 0;
 #line 7781 "./Test_DiskChoppers.c"
 
@@ -7790,11 +7790,11 @@ void mcinit(void) {
   rot_transpose(mcrotadiskchopper0, mctr1);
   rot_mul(mcrotadiskchopper1, mctr1, mcrotrdiskchopper1);
   mctc1 = coords_set(
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     0,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     0,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     0);
 #line 7799 "./Test_DiskChoppers.c"
   rot_transpose(mcrotadiskchopper0, mctr1);
@@ -7821,11 +7821,11 @@ void mcinit(void) {
   rot_transpose(mcrotadiskchopper1, mctr1);
   rot_mul(mcrotadiskArm, mctr1, mcrotrdiskArm);
   mctc1 = coords_set(
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     0,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     0,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     0);
 #line 7830 "./Test_DiskChoppers.c"
   rot_transpose(mcrotadiskchopper1, mctr1);
@@ -7841,35 +7841,35 @@ void mcinit(void) {
     /* Component multi. */
   /* Setting parameters for component multi. */
   SIG_MESSAGE("multi (Init:SetPar)");
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   if("0 45") strncpy(mccmulti_slit_center, "0 45" ? "0 45" : "", 16384); else mccmulti_slit_center[0]='\0';
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   if("5 5") strncpy(mccmulti_slit_width, "5 5" ? "5 5" : "", 16384); else mccmulti_slit_width[0]='\0';
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccmulti_nslits = 2;
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccmulti_delta_y = mcipdeltay;
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccmulti_nu = 10;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccmulti_nrev = 0;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccmulti_ratio = 1;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccmulti_jitter = 0;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccmulti_delay = 0;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccmulti_isfirst = 0;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccmulti_phase = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccmulti_radius = 0.25;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccmulti_equal = 0;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccmulti_abs_out = 1;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccmulti_verbose = 0;
 #line 7874 "./Test_DiskChoppers.c"
 
@@ -7882,11 +7882,11 @@ void mcinit(void) {
   rot_transpose(mcrotadiskArm, mctr1);
   rot_mul(mcrotamulti, mctr1, mcrotrmulti);
   mcposamulti = coords_set(
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     0,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     0,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     10);
 #line 7891 "./Test_DiskChoppers.c"
   mctc1 = coords_sub(mcposadiskArm, mcposamulti);
@@ -7899,27 +7899,27 @@ void mcinit(void) {
     /* Component Tofl. */
   /* Setting parameters for component Tofl. */
   SIG_MESSAGE("Tofl (Init:SetPar)");
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   if("TOFlambda") strncpy(mccTofl_filename, "TOFlambda" ? "TOFlambda" : "", 16384); else mccTofl_filename[0]='\0';
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccTofl_xmin = -0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccTofl_xmax = 0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccTofl_ymin = -0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccTofl_ymax = 0.05;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccTofl_xwidth = 0.05;
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccTofl_yheight = 0.13;
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccTofl_Lmin = mciplambda - mcipdlambda;
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccTofl_Lmax = mciplambda + mcipdlambda;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccTofl_restore_neutron = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccTofl_nowritefile = 0;
 #line 7924 "./Test_DiskChoppers.c"
 
@@ -7933,11 +7933,11 @@ void mcinit(void) {
   rot_transpose(mcrotamulti, mctr1);
   rot_mul(mcrotaTofl, mctr1, mcrotrTofl);
   mctc1 = coords_set(
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     0,
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     0,
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     0.001);
 #line 7942 "./Test_DiskChoppers.c"
   rot_transpose(mcrotamulti, mctr1);
@@ -7953,25 +7953,25 @@ void mcinit(void) {
     /* Component psd_monitor. */
   /* Setting parameters for component psd_monitor. */
   SIG_MESSAGE("psd_monitor (Init:SetPar)");
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccpsd_monitor_nx = 90;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccpsd_monitor_ny = 90;
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   if("PSD") strncpy(mccpsd_monitor_filename, "PSD" ? "PSD" : "", 16384); else mccpsd_monitor_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccpsd_monitor_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccpsd_monitor_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccpsd_monitor_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccpsd_monitor_ymax = 0.05;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccpsd_monitor_xwidth = 0.05;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccpsd_monitor_yheight = 0.13;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   mccpsd_monitor_restore_neutron = 0;
 #line 7976 "./Test_DiskChoppers.c"
 
@@ -7985,11 +7985,11 @@ void mcinit(void) {
   rot_transpose(mcrotaTofl, mctr1);
   rot_mul(mcrotapsd_monitor, mctr1, mcrotrpsd_monitor);
   mctc1 = coords_set(
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     0,
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     0,
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
     0.001);
 #line 7994 "./Test_DiskChoppers.c"
   rot_transpose(mcrotaTofl, mctr1);
@@ -9382,7 +9382,7 @@ int target_index = mccsource_gen_target_index;
 #line 9382 "./Test_DiskChoppers.c"
 /* 'source_gen=Source_gen()' component instance extend code */
     SIG_MESSAGE("source_gen (Trace:Extend)");
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   t=rand01();
 #line 9387 "./Test_DiskChoppers.c"
 }   /* End of source_gen=Source_gen() SETTING parameter declarations. */
@@ -9874,7 +9874,7 @@ if (( mcipchopper == 1 ))
     SIG_MESSAGE("diskArm (Trace:Extend)");
 if (( mcipchopper == 1 )) {
 
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr"
   if (mcipchopper==1) SCATTER;
 #line 9869 "./Test_DiskChoppers.c"
 }

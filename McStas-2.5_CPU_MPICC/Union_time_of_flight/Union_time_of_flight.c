@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr (Union_time_of_flight)
- * Date:       Wed Nov 20 00:56:25 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr (Union_time_of_flight)
+ * Date:       Tue Feb 25 21:11:35 2020
  * File:       ./Union_time_of_flight.c
  * Compile:    cc -o Union_time_of_flight.out ./Union_time_of_flight.c  -I@MCCODE_LIB@/share/
  * CFLAGS= -I@MCCODE_LIB@/share/
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Union_time_of_flight";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -8587,7 +8587,7 @@ void initialize_cylinder_geometry_from_main_component(struct geometry_struct *cy
 struct pointer_to_1d_coords_list cylinder_shell_points(struct geometry_struct *geometry,int max_number_of_points) {
   // Function that returns a number (less than max) of points on the geometry surface
   // If used, remember to free the space allocated.
-  int points_per_circle = floor(max_number_of_points/2);
+  int points_per_circle = floor(max_number_of_points/2.0);
   
   struct pointer_to_1d_coords_list cylinder_shell_array;
   cylinder_shell_array.elements = malloc(2*points_per_circle*sizeof(Coords));
@@ -15586,17 +15586,17 @@ void mcinit(void) {
     /* Component Al_incoherent. */
   /* Setting parameters for component Al_incoherent. */
   SIG_MESSAGE("Al_incoherent (Init:SetPar)");
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_incoherent_sigma = 4 * 0.0082;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_incoherent_f_QE = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_incoherent_gamma = 0;
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_incoherent_packing_factor = 1;
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_incoherent_unit_cell_volume = 66.4;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_incoherent_interact_fraction = -1;
 #line 15601 "./Union_time_of_flight.c"
 
@@ -15608,11 +15608,11 @@ void mcinit(void) {
 #line 15608 "./Union_time_of_flight.c"
   rot_copy(mcrotrAl_incoherent, mcrotaAl_incoherent);
   mcposaAl_incoherent = coords_set(
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 15617 "./Union_time_of_flight.c"
   mctc1 = coords_neg(mcposaAl_incoherent);
@@ -15625,29 +15625,29 @@ void mcinit(void) {
     /* Component Al_powder. */
   /* Setting parameters for component Al_powder. */
   SIG_MESSAGE("Al_powder (Init:SetPar)");
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Al.laz") strncpy(mccAl_powder_reflections, "Al.laz" ? "Al.laz" : "", 16384); else mccAl_powder_reflections[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_powder_packing_factor = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_powder_Vc = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_powder_delta_d_d = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_powder_DW = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_powder_nb_atoms = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_powder_d_phi = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_powder_density = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_powder_weight = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_powder_barns = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_powder_Strain = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_powder_interact_fraction = -1;
 #line 15652 "./Union_time_of_flight.c"
 
@@ -15660,11 +15660,11 @@ void mcinit(void) {
   rot_transpose(mcrotaAl_incoherent, mctr1);
   rot_mul(mcrotaAl_powder, mctr1, mcrotrAl_powder);
   mcposaAl_powder = coords_set(
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 15669 "./Union_time_of_flight.c"
   mctc1 = coords_sub(mcposaAl_incoherent, mcposaAl_powder);
@@ -15677,11 +15677,11 @@ void mcinit(void) {
     /* Component Al. */
   /* Setting parameters for component Al. */
   SIG_MESSAGE("Al (Init:SetPar)");
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("NULL") strncpy(mccAl_process_string, "NULL" ? "NULL" : "", 16384); else mccAl_process_string[0]='\0';
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_my_absorption = 100 * 4 * 0.231 / 66.4;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_absorber = 0;
 #line 15686 "./Union_time_of_flight.c"
 
@@ -15694,11 +15694,11 @@ void mcinit(void) {
   rot_transpose(mcrotaAl_powder, mctr1);
   rot_mul(mcrotaAl, mctr1, mcrotrAl);
   mcposaAl = coords_set(
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 15703 "./Union_time_of_flight.c"
   mctc1 = coords_sub(mcposaAl_powder, mcposaAl);
@@ -15711,17 +15711,17 @@ void mcinit(void) {
     /* Component Na2Ca3Al2F14_incoherent. */
   /* Setting parameters for component Na2Ca3Al2F14_incoherent. */
   SIG_MESSAGE("Na2Ca3Al2F14_incoherent (Init:SetPar)");
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccNa2Ca3Al2F14_incoherent_sigma = 4 * 3.4176;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccNa2Ca3Al2F14_incoherent_f_QE = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccNa2Ca3Al2F14_incoherent_gamma = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccNa2Ca3Al2F14_incoherent_packing_factor = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccNa2Ca3Al2F14_incoherent_unit_cell_volume = 1079.1;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccNa2Ca3Al2F14_incoherent_interact_fraction = -1;
 #line 15726 "./Union_time_of_flight.c"
 
@@ -15734,11 +15734,11 @@ void mcinit(void) {
   rot_transpose(mcrotaAl, mctr1);
   rot_mul(mcrotaNa2Ca3Al2F14_incoherent, mctr1, mcrotrNa2Ca3Al2F14_incoherent);
   mcposaNa2Ca3Al2F14_incoherent = coords_set(
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 15743 "./Union_time_of_flight.c"
   mctc1 = coords_sub(mcposaAl, mcposaNa2Ca3Al2F14_incoherent);
@@ -15751,29 +15751,29 @@ void mcinit(void) {
     /* Component Na2Ca3Al2F14_powder. */
   /* Setting parameters for component Na2Ca3Al2F14_powder. */
   SIG_MESSAGE("Na2Ca3Al2F14_powder (Init:SetPar)");
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Na2Ca3Al2F14.laz") strncpy(mccNa2Ca3Al2F14_powder_reflections, "Na2Ca3Al2F14.laz" ? "Na2Ca3Al2F14.laz" : "", 16384); else mccNa2Ca3Al2F14_powder_reflections[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccNa2Ca3Al2F14_powder_packing_factor = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccNa2Ca3Al2F14_powder_Vc = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccNa2Ca3Al2F14_powder_delta_d_d = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccNa2Ca3Al2F14_powder_DW = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccNa2Ca3Al2F14_powder_nb_atoms = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccNa2Ca3Al2F14_powder_d_phi = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccNa2Ca3Al2F14_powder_density = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccNa2Ca3Al2F14_powder_weight = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccNa2Ca3Al2F14_powder_barns = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccNa2Ca3Al2F14_powder_Strain = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccNa2Ca3Al2F14_powder_interact_fraction = -1;
 #line 15778 "./Union_time_of_flight.c"
 
@@ -15786,11 +15786,11 @@ void mcinit(void) {
   rot_transpose(mcrotaNa2Ca3Al2F14_incoherent, mctr1);
   rot_mul(mcrotaNa2Ca3Al2F14_powder, mctr1, mcrotrNa2Ca3Al2F14_powder);
   mcposaNa2Ca3Al2F14_powder = coords_set(
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 15795 "./Union_time_of_flight.c"
   mctc1 = coords_sub(mcposaNa2Ca3Al2F14_incoherent, mcposaNa2Ca3Al2F14_powder);
@@ -15803,11 +15803,11 @@ void mcinit(void) {
     /* Component Na2Ca3Al2F14. */
   /* Setting parameters for component Na2Ca3Al2F14. */
   SIG_MESSAGE("Na2Ca3Al2F14 (Init:SetPar)");
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("NULL") strncpy(mccNa2Ca3Al2F14_process_string, "NULL" ? "NULL" : "", 16384); else mccNa2Ca3Al2F14_process_string[0]='\0';
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccNa2Ca3Al2F14_my_absorption = 100 * 4 * 2.9464 / 1079.1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccNa2Ca3Al2F14_absorber = 0;
 #line 15812 "./Union_time_of_flight.c"
 
@@ -15820,11 +15820,11 @@ void mcinit(void) {
   rot_transpose(mcrotaNa2Ca3Al2F14_powder, mctr1);
   rot_mul(mcrotaNa2Ca3Al2F14, mctr1, mcrotrNa2Ca3Al2F14);
   mcposaNa2Ca3Al2F14 = coords_set(
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 15829 "./Union_time_of_flight.c"
   mctc1 = coords_sub(mcposaNa2Ca3Al2F14_powder, mcposaNa2Ca3Al2F14);
@@ -15837,13 +15837,13 @@ void mcinit(void) {
     /* Component a1. */
   /* Setting parameters for component a1. */
   SIG_MESSAGE("a1 (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("NULL") strncpy(mcca1_profile, "NULL" ? "NULL" : "", 16384); else mcca1_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcca1_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcca1_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcca1_minutes = 0;
 #line 15848 "./Union_time_of_flight.c"
 
@@ -15856,11 +15856,11 @@ void mcinit(void) {
   rot_transpose(mcrotaNa2Ca3Al2F14, mctr1);
   rot_mul(mcrotaa1, mctr1, mcrotra1);
   mcposaa1 = coords_set(
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 15865 "./Union_time_of_flight.c"
   mctc1 = coords_sub(mcposaNa2Ca3Al2F14, mcposaa1);
@@ -15873,46 +15873,46 @@ void mcinit(void) {
     /* Component source. */
   /* Setting parameters for component source. */
   SIG_MESSAGE("source (Init:SetPar)");
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsource_xwidth = 0.01;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsource_yheight = 0.01;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsource_focus_aw = 0.05;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsource_focus_ah = 0.05;
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsource_E0 = 5;
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsource_dE = 0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsource_lambda0 = 0.0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsource_dlambda = 0.0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsource_gauss = 0;
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsource_flux = 1E9;
 #line 15896 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("source (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 15906 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotaa1, mcrotasource);
   rot_transpose(mcrotaa1, mctr1);
   rot_mul(mcrotasource, mctr1, mcrotrsource);
   mctc1 = coords_set(
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 15917 "./Union_time_of_flight.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -15931,22 +15931,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("beam_center (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 15940 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotaa1, mcrotabeam_center);
   rot_transpose(mcrotasource, mctr1);
   rot_mul(mcrotabeam_center, mctr1, mcrotrbeam_center);
   mctc1 = coords_set(
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     3);
 #line 15951 "./Union_time_of_flight.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -15965,22 +15965,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("target (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 15974 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotabeam_center, mcrotatarget);
   rot_transpose(mcrotabeam_center, mctr1);
   rot_mul(mcrotatarget, mctr1, mcrotrtarget);
   mctc1 = coords_set(
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 15985 "./Union_time_of_flight.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -15999,22 +15999,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("drum_center (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 16008 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotabeam_center, mcrotadrum_center);
   rot_transpose(mcrotatarget, mctr1);
   rot_mul(mcrotadrum_center, mctr1, mcrotrdrum_center);
   mctc1 = coords_set(
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.603,
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 16019 "./Union_time_of_flight.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -16033,22 +16033,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("beam_center_arm (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (180)*DEG2RAD,
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (50)*DEG2RAD,
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 16042 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotatarget, mcrotabeam_center_arm);
   rot_transpose(mcrotadrum_center, mctr1);
   rot_mul(mcrotabeam_center_arm, mctr1, mcrotrbeam_center_arm);
   mctc1 = coords_set(
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.3,
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.0);
 #line 16053 "./Union_time_of_flight.c"
   rot_transpose(mcrotatarget, mctr1);
@@ -16064,62 +16064,62 @@ void mcinit(void) {
     /* Component sample. */
   /* Setting parameters for component sample. */
   SIG_MESSAGE("sample (Init:SetPar)");
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Na2Ca3Al2F14") strncpy(mccsample_material_string, "Na2Ca3Al2F14" ? "Na2Ca3Al2F14" : "", 16384); else mccsample_material_string[0]='\0';
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_priority = 120;
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_radius = 0.005;
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_yheight = 0.0265;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_mask_string, 0 ? 0 : "", 16384); else mccsample_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_mask_setting, 0 ? 0 : "", 16384); else mccsample_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_number_of_activations = 1;
 #line 16103 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("sample (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (-85)*DEG2RAD,
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 16113 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotabeam_center_arm, mcrotasample);
   rot_transpose(mcrotabeam_center_arm, mctr1);
   rot_mul(mcrotasample, mctr1, mcrotrsample);
   mctc1 = coords_set(
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.3,
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 16124 "./Union_time_of_flight.c"
   rot_transpose(mcrotabeam_center_arm, mctr1);
@@ -16135,62 +16135,62 @@ void mcinit(void) {
     /* Component Al_ring1. */
   /* Setting parameters for component Al_ring1. */
   SIG_MESSAGE("Al_ring1 (Init:SetPar)");
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Al") strncpy(mccAl_ring1_material_string, "Al" ? "Al" : "", 16384); else mccAl_ring1_material_string[0]='\0';
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_priority = 111;
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_radius = 0.008;
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_yheight = 0.001;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccAl_ring1_mask_string, 0 ? 0 : "", 16384); else mccAl_ring1_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccAl_ring1_mask_setting, 0 ? 0 : "", 16384); else mccAl_ring1_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_number_of_activations = 1;
 #line 16174 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("Al_ring1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (-6)*DEG2RAD,
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 16184 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotasample, mcrotaAl_ring1);
   rot_transpose(mcrotasample, mctr1);
   rot_mul(mcrotaAl_ring1, mctr1, mcrotrAl_ring1);
   mctc1 = coords_set(
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.009,
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     -0.002);
 #line 16195 "./Union_time_of_flight.c"
   rot_transpose(mcrotasample, mctr1);
@@ -16206,62 +16206,62 @@ void mcinit(void) {
     /* Component Al_ring1_vacuum. */
   /* Setting parameters for component Al_ring1_vacuum. */
   SIG_MESSAGE("Al_ring1_vacuum (Init:SetPar)");
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Vacuum") strncpy(mccAl_ring1_vacuum_material_string, "Vacuum" ? "Vacuum" : "", 16384); else mccAl_ring1_vacuum_material_string[0]='\0';
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_vacuum_priority = 112;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_vacuum_radius = 0.007;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_vacuum_yheight = 0.0011;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_vacuum_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_vacuum_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_vacuum_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_vacuum_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_vacuum_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_vacuum_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_vacuum_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_vacuum_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_vacuum_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_vacuum_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_vacuum_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccAl_ring1_vacuum_mask_string, 0 ? 0 : "", 16384); else mccAl_ring1_vacuum_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccAl_ring1_vacuum_mask_setting, 0 ? 0 : "", 16384); else mccAl_ring1_vacuum_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring1_vacuum_number_of_activations = 1;
 #line 16245 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("Al_ring1_vacuum (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (-6)*DEG2RAD,
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 16255 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotasample, mcrotaAl_ring1_vacuum);
   rot_transpose(mcrotaAl_ring1, mctr1);
   rot_mul(mcrotaAl_ring1_vacuum, mctr1, mcrotrAl_ring1_vacuum);
   mctc1 = coords_set(
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.009,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     -0.002);
 #line 16266 "./Union_time_of_flight.c"
   rot_transpose(mcrotasample, mctr1);
@@ -16277,62 +16277,62 @@ void mcinit(void) {
     /* Component Al_ring2. */
   /* Setting parameters for component Al_ring2. */
   SIG_MESSAGE("Al_ring2 (Init:SetPar)");
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Al") strncpy(mccAl_ring2_material_string, "Al" ? "Al" : "", 16384); else mccAl_ring2_material_string[0]='\0';
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_priority = 113;
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_radius = 0.008;
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_yheight = 0.001;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccAl_ring2_mask_string, 0 ? 0 : "", 16384); else mccAl_ring2_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccAl_ring2_mask_setting, 0 ? 0 : "", 16384); else mccAl_ring2_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_number_of_activations = 1;
 #line 16316 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("Al_ring2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (10)*DEG2RAD,
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 16326 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotasample, mcrotaAl_ring2);
   rot_transpose(mcrotaAl_ring1_vacuum, mctr1);
   rot_mul(mcrotaAl_ring2, mctr1, mcrotrAl_ring2);
   mctc1 = coords_set(
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.005,
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     -0.002);
 #line 16337 "./Union_time_of_flight.c"
   rot_transpose(mcrotasample, mctr1);
@@ -16348,62 +16348,62 @@ void mcinit(void) {
     /* Component Al_ring2_vacuum. */
   /* Setting parameters for component Al_ring2_vacuum. */
   SIG_MESSAGE("Al_ring2_vacuum (Init:SetPar)");
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Vacuum") strncpy(mccAl_ring2_vacuum_material_string, "Vacuum" ? "Vacuum" : "", 16384); else mccAl_ring2_vacuum_material_string[0]='\0';
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_vacuum_priority = 114;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_vacuum_radius = 0.007;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_vacuum_yheight = 0.0011;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_vacuum_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_vacuum_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_vacuum_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_vacuum_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_vacuum_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_vacuum_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_vacuum_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_vacuum_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_vacuum_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_vacuum_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_vacuum_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccAl_ring2_vacuum_mask_string, 0 ? 0 : "", 16384); else mccAl_ring2_vacuum_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccAl_ring2_vacuum_mask_setting, 0 ? 0 : "", 16384); else mccAl_ring2_vacuum_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring2_vacuum_number_of_activations = 1;
 #line 16387 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("Al_ring2_vacuum (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (10)*DEG2RAD,
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 16397 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotasample, mcrotaAl_ring2_vacuum);
   rot_transpose(mcrotaAl_ring2, mctr1);
   rot_mul(mcrotaAl_ring2_vacuum, mctr1, mcrotrAl_ring2_vacuum);
   mctc1 = coords_set(
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.005,
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     -0.002);
 #line 16408 "./Union_time_of_flight.c"
   rot_transpose(mcrotasample, mctr1);
@@ -16419,62 +16419,62 @@ void mcinit(void) {
     /* Component Al_ring3. */
   /* Setting parameters for component Al_ring3. */
   SIG_MESSAGE("Al_ring3 (Init:SetPar)");
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Al") strncpy(mccAl_ring3_material_string, "Al" ? "Al" : "", 16384); else mccAl_ring3_material_string[0]='\0';
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_priority = 115;
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_radius = 0.008;
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_yheight = 0.001;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccAl_ring3_mask_string, 0 ? 0 : "", 16384); else mccAl_ring3_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccAl_ring3_mask_setting, 0 ? 0 : "", 16384); else mccAl_ring3_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_number_of_activations = 1;
 #line 16458 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("Al_ring3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (-7)*DEG2RAD,
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 16468 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotasample, mcrotaAl_ring3);
   rot_transpose(mcrotaAl_ring2_vacuum, mctr1);
   rot_mul(mcrotaAl_ring3, mctr1, mcrotrAl_ring3);
   mctc1 = coords_set(
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.001,
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     -0.002);
 #line 16479 "./Union_time_of_flight.c"
   rot_transpose(mcrotasample, mctr1);
@@ -16490,62 +16490,62 @@ void mcinit(void) {
     /* Component Al_ring3_vacuum. */
   /* Setting parameters for component Al_ring3_vacuum. */
   SIG_MESSAGE("Al_ring3_vacuum (Init:SetPar)");
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Vacuum") strncpy(mccAl_ring3_vacuum_material_string, "Vacuum" ? "Vacuum" : "", 16384); else mccAl_ring3_vacuum_material_string[0]='\0';
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_vacuum_priority = 116;
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_vacuum_radius = 0.007;
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_vacuum_yheight = 0.0011;
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_vacuum_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_vacuum_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_vacuum_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_vacuum_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_vacuum_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_vacuum_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_vacuum_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_vacuum_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_vacuum_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_vacuum_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_vacuum_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccAl_ring3_vacuum_mask_string, 0 ? 0 : "", 16384); else mccAl_ring3_vacuum_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccAl_ring3_vacuum_mask_setting, 0 ? 0 : "", 16384); else mccAl_ring3_vacuum_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring3_vacuum_number_of_activations = 1;
 #line 16529 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("Al_ring3_vacuum (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (-7)*DEG2RAD,
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 16539 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotasample, mcrotaAl_ring3_vacuum);
   rot_transpose(mcrotaAl_ring3, mctr1);
   rot_mul(mcrotaAl_ring3_vacuum, mctr1, mcrotrAl_ring3_vacuum);
   mctc1 = coords_set(
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.001,
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     -0.002);
 #line 16550 "./Union_time_of_flight.c"
   rot_transpose(mcrotasample, mctr1);
@@ -16561,62 +16561,62 @@ void mcinit(void) {
     /* Component Al_ring4. */
   /* Setting parameters for component Al_ring4. */
   SIG_MESSAGE("Al_ring4 (Init:SetPar)");
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Al") strncpy(mccAl_ring4_material_string, "Al" ? "Al" : "", 16384); else mccAl_ring4_material_string[0]='\0';
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_priority = 117;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_radius = 0.0075;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_yheight = 0.001;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccAl_ring4_mask_string, 0 ? 0 : "", 16384); else mccAl_ring4_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccAl_ring4_mask_setting, 0 ? 0 : "", 16384); else mccAl_ring4_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_number_of_activations = 1;
 #line 16600 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("Al_ring4 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (30)*DEG2RAD,
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 16610 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotasample, mcrotaAl_ring4);
   rot_transpose(mcrotaAl_ring3_vacuum, mctr1);
   rot_mul(mcrotaAl_ring4, mctr1, mcrotrAl_ring4);
   mctc1 = coords_set(
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     -0.0061,
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     -0.0035);
 #line 16621 "./Union_time_of_flight.c"
   rot_transpose(mcrotasample, mctr1);
@@ -16632,62 +16632,62 @@ void mcinit(void) {
     /* Component Al_ring4_vacuum. */
   /* Setting parameters for component Al_ring4_vacuum. */
   SIG_MESSAGE("Al_ring4_vacuum (Init:SetPar)");
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Vacuum") strncpy(mccAl_ring4_vacuum_material_string, "Vacuum" ? "Vacuum" : "", 16384); else mccAl_ring4_vacuum_material_string[0]='\0';
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_vacuum_priority = 118;
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_vacuum_radius = 0.0065;
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_vacuum_yheight = 0.0011;
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_vacuum_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_vacuum_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_vacuum_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_vacuum_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_vacuum_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_vacuum_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_vacuum_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_vacuum_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_vacuum_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_vacuum_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_vacuum_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccAl_ring4_vacuum_mask_string, 0 ? 0 : "", 16384); else mccAl_ring4_vacuum_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccAl_ring4_vacuum_mask_setting, 0 ? 0 : "", 16384); else mccAl_ring4_vacuum_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccAl_ring4_vacuum_number_of_activations = 1;
 #line 16671 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("Al_ring4_vacuum (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (30)*DEG2RAD,
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 16681 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotasample, mcrotaAl_ring4_vacuum);
   rot_transpose(mcrotaAl_ring4, mctr1);
   rot_mul(mcrotaAl_ring4_vacuum, mctr1, mcrotrAl_ring4_vacuum);
   mctc1 = coords_set(
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     -0.0061,
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     -0.0035);
 #line 16692 "./Union_time_of_flight.c"
   rot_transpose(mcrotasample, mctr1);
@@ -16703,68 +16703,68 @@ void mcinit(void) {
     /* Component sample_box_cut. */
   /* Setting parameters for component sample_box_cut. */
   SIG_MESSAGE("sample_box_cut (Init:SetPar)");
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Vacuum") strncpy(mccsample_box_cut_material_string, "Vacuum" ? "Vacuum" : "", 16384); else mccsample_box_cut_material_string[0]='\0';
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_box_cut_priority = 120.5;
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_box_cut_xwidth = 0.0101;
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_box_cut_yheight = 0.006;
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_box_cut_zdepth = 0.006;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_box_cut_xwidth2 = -1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_box_cut_yheight2 = -1;
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_box_cut_visualize = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_box_cut_target_index = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_box_cut_target_x = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_box_cut_target_y = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_box_cut_target_z = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_box_cut_focus_aw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_box_cut_focus_ah = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_box_cut_focus_xw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_box_cut_focus_xh = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_box_cut_focus_r = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_box_cut_p_interact = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_box_cut_mask_string, 0 ? 0 : "", 16384); else mccsample_box_cut_mask_string[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_box_cut_mask_setting, 0 ? 0 : "", 16384); else mccsample_box_cut_mask_setting[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_box_cut_number_of_activations = 1;
 #line 16748 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("sample_box_cut (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 16758 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotasample, mcrotasample_box_cut);
   rot_transpose(mcrotaAl_ring4_vacuum, mctr1);
   rot_mul(mcrotasample_box_cut, mctr1, mcrotrsample_box_cut);
   mctc1 = coords_set(
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     -0.027 * 0.5 + 0.0029,
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.0025);
 #line 16769 "./Union_time_of_flight.c"
   rot_transpose(mcrotasample, mctr1);
@@ -16780,68 +16780,68 @@ void mcinit(void) {
     /* Component al_in_box_cut. */
   /* Setting parameters for component al_in_box_cut. */
   SIG_MESSAGE("al_in_box_cut (Init:SetPar)");
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Al") strncpy(mccal_in_box_cut_material_string, "Al" ? "Al" : "", 16384); else mccal_in_box_cut_material_string[0]='\0';
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccal_in_box_cut_priority = 120.7;
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccal_in_box_cut_xwidth = 0.01;
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccal_in_box_cut_yheight = 0.001;
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccal_in_box_cut_zdepth = 0.001;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccal_in_box_cut_xwidth2 = -1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccal_in_box_cut_yheight2 = -1;
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccal_in_box_cut_visualize = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccal_in_box_cut_target_index = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccal_in_box_cut_target_x = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccal_in_box_cut_target_y = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccal_in_box_cut_target_z = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccal_in_box_cut_focus_aw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccal_in_box_cut_focus_ah = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccal_in_box_cut_focus_xw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccal_in_box_cut_focus_xh = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccal_in_box_cut_focus_r = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccal_in_box_cut_p_interact = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccal_in_box_cut_mask_string, 0 ? 0 : "", 16384); else mccal_in_box_cut_mask_string[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccal_in_box_cut_mask_setting, 0 ? 0 : "", 16384); else mccal_in_box_cut_mask_setting[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccal_in_box_cut_number_of_activations = 1;
 #line 16825 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("al_in_box_cut (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (30)*DEG2RAD,
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 16835 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotasample_box_cut, mcrotaal_in_box_cut);
   rot_transpose(mcrotasample_box_cut, mctr1);
   rot_mul(mcrotaal_in_box_cut, mctr1, mcrotral_in_box_cut);
   mctc1 = coords_set(
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.0019,
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     -0.0019);
 #line 16846 "./Union_time_of_flight.c"
   rot_transpose(mcrotasample_box_cut, mctr1);
@@ -16857,68 +16857,68 @@ void mcinit(void) {
     /* Component sample_holder_under_sample. */
   /* Setting parameters for component sample_holder_under_sample. */
   SIG_MESSAGE("sample_holder_under_sample (Init:SetPar)");
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Al") strncpy(mccsample_holder_under_sample_material_string, "Al" ? "Al" : "", 16384); else mccsample_holder_under_sample_material_string[0]='\0';
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_under_sample_priority = 121;
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_under_sample_xwidth = 0.01;
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_under_sample_yheight = 0.025;
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_under_sample_zdepth = 0.002;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_under_sample_xwidth2 = -1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_under_sample_yheight2 = -1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_under_sample_visualize = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_under_sample_target_index = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_under_sample_target_x = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_under_sample_target_y = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_under_sample_target_z = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_under_sample_focus_aw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_under_sample_focus_ah = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_under_sample_focus_xw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_under_sample_focus_xh = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_under_sample_focus_r = 0;
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_under_sample_p_interact = 0.3;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_holder_under_sample_mask_string, 0 ? 0 : "", 16384); else mccsample_holder_under_sample_mask_string[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_holder_under_sample_mask_setting, 0 ? 0 : "", 16384); else mccsample_holder_under_sample_mask_setting[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_under_sample_number_of_activations = 1;
 #line 16902 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("sample_holder_under_sample (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 16912 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotasample, mcrotasample_holder_under_sample);
   rot_transpose(mcrotaal_in_box_cut, mctr1);
   rot_mul(mcrotasample_holder_under_sample, mctr1, mcrotrsample_holder_under_sample);
   mctc1 = coords_set(
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     -0.005 -0.0011);
 #line 16923 "./Union_time_of_flight.c"
   rot_transpose(mcrotasample, mctr1);
@@ -16937,22 +16937,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("long_piece_center_arm (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 159 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 159 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 159 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 159 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 159 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 159 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 16946 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotabeam_center_arm, mcrotalong_piece_center_arm);
   rot_transpose(mcrotasample_holder_under_sample, mctr1);
   rot_mul(mcrotalong_piece_center_arm, mctr1, mcrotrlong_piece_center_arm);
   mctc1 = coords_set(
-#line 158 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 158 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 158 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 158 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     -0.0225,
-#line 158 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 158 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 16957 "./Union_time_of_flight.c"
   rot_transpose(mcrotabeam_center_arm, mctr1);
@@ -16968,68 +16968,68 @@ void mcinit(void) {
     /* Component sample_holder_long_piece. */
   /* Setting parameters for component sample_holder_long_piece. */
   SIG_MESSAGE("sample_holder_long_piece (Init:SetPar)");
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Al") strncpy(mccsample_holder_long_piece_material_string, "Al" ? "Al" : "", 16384); else mccsample_holder_long_piece_material_string[0]='\0';
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_long_piece_priority = 122;
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_long_piece_xwidth = 0.0099;
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_long_piece_yheight = 0.03;
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_long_piece_zdepth = 0.002;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_long_piece_xwidth2 = -1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_long_piece_yheight2 = -1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_long_piece_visualize = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_long_piece_target_index = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_long_piece_target_x = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_long_piece_target_y = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_long_piece_target_z = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_long_piece_focus_aw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_long_piece_focus_ah = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_long_piece_focus_xw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_long_piece_focus_xh = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_long_piece_focus_r = 0;
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_long_piece_p_interact = 0.3;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_holder_long_piece_mask_string, 0 ? 0 : "", 16384); else mccsample_holder_long_piece_mask_string[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_holder_long_piece_mask_setting, 0 ? 0 : "", 16384); else mccsample_holder_long_piece_mask_setting[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_holder_long_piece_number_of_activations = 1;
 #line 17013 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("sample_holder_long_piece (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 164 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 164 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 164 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 17023 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotalong_piece_center_arm, mcrotasample_holder_long_piece);
   rot_transpose(mcrotalong_piece_center_arm, mctr1);
   rot_mul(mcrotasample_holder_long_piece, mctr1, mcrotrsample_holder_long_piece);
   mctc1 = coords_set(
-#line 163 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 163 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 163 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 163 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.3,
-#line 163 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 163 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.025 * 0.5);
 #line 17034 "./Union_time_of_flight.c"
   rot_transpose(mcrotalong_piece_center_arm, mctr1);
@@ -17048,22 +17048,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("bottom_horizontal_piece_center_arm (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 17057 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotabeam_center_arm, mcrotabottom_horizontal_piece_center_arm);
   rot_transpose(mcrotasample_holder_long_piece, mctr1);
   rot_mul(mcrotabottom_horizontal_piece_center_arm, mctr1, mcrotrbottom_horizontal_piece_center_arm);
   mctc1 = coords_set(
-#line 167 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 167 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     -0.0255 -0.022 + 0.01,
-#line 167 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 17068 "./Union_time_of_flight.c"
   rot_transpose(mcrotabeam_center_arm, mctr1);
@@ -17079,68 +17079,68 @@ void mcinit(void) {
     /* Component bottom_horizontal_piece. */
   /* Setting parameters for component bottom_horizontal_piece. */
   SIG_MESSAGE("bottom_horizontal_piece (Init:SetPar)");
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Al") strncpy(mccbottom_horizontal_piece_material_string, "Al" ? "Al" : "", 16384); else mccbottom_horizontal_piece_material_string[0]='\0';
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_horizontal_piece_priority = 123;
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_horizontal_piece_xwidth = 0.01;
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_horizontal_piece_yheight = 0.002;
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_horizontal_piece_zdepth = 0.025 * 0.5;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_horizontal_piece_xwidth2 = -1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_horizontal_piece_yheight2 = -1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_horizontal_piece_visualize = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_horizontal_piece_target_index = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_horizontal_piece_target_x = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_horizontal_piece_target_y = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_horizontal_piece_target_z = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_horizontal_piece_focus_aw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_horizontal_piece_focus_ah = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_horizontal_piece_focus_xw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_horizontal_piece_focus_xh = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_horizontal_piece_focus_r = 0;
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_horizontal_piece_p_interact = 0.3;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccbottom_horizontal_piece_mask_string, 0 ? 0 : "", 16384); else mccbottom_horizontal_piece_mask_string[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccbottom_horizontal_piece_mask_setting, 0 ? 0 : "", 16384); else mccbottom_horizontal_piece_mask_setting[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_horizontal_piece_number_of_activations = 1;
 #line 17124 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("bottom_horizontal_piece (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (-10)*DEG2RAD,
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 17134 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotabottom_horizontal_piece_center_arm, mcrotabottom_horizontal_piece);
   rot_transpose(mcrotabottom_horizontal_piece_center_arm, mctr1);
   rot_mul(mcrotabottom_horizontal_piece, mctr1, mcrotrbottom_horizontal_piece);
   mctc1 = coords_set(
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 172 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 172 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.3,
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 172 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.025 * 0.25);
 #line 17145 "./Union_time_of_flight.c"
   rot_transpose(mcrotabottom_horizontal_piece_center_arm, mctr1);
@@ -17159,22 +17159,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("cylinder_top_center_arm (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 177 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 177 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 177 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 177 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 177 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 177 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 17168 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotabottom_horizontal_piece_center_arm, mcrotacylinder_top_center_arm);
   rot_transpose(mcrotabottom_horizontal_piece, mctr1);
   rot_mul(mcrotacylinder_top_center_arm, mctr1, mcrotrcylinder_top_center_arm);
   mctc1 = coords_set(
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     -0.01,
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 17179 "./Union_time_of_flight.c"
   rot_transpose(mcrotabottom_horizontal_piece_center_arm, mctr1);
@@ -17190,68 +17190,68 @@ void mcinit(void) {
     /* Component bottom_vertical_piece. */
   /* Setting parameters for component bottom_vertical_piece. */
   SIG_MESSAGE("bottom_vertical_piece (Init:SetPar)");
-#line 180 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 180 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Al") strncpy(mccbottom_vertical_piece_material_string, "Al" ? "Al" : "", 16384); else mccbottom_vertical_piece_material_string[0]='\0';
-#line 180 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 180 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_vertical_piece_priority = 124;
-#line 180 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 180 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_vertical_piece_xwidth = 0.0099;
-#line 180 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 180 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_vertical_piece_yheight = 0.025;
-#line 180 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 180 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_vertical_piece_zdepth = 0.002;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_vertical_piece_xwidth2 = -1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_vertical_piece_yheight2 = -1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_vertical_piece_visualize = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_vertical_piece_target_index = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_vertical_piece_target_x = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_vertical_piece_target_y = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_vertical_piece_target_z = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_vertical_piece_focus_aw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_vertical_piece_focus_ah = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_vertical_piece_focus_xw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_vertical_piece_focus_xh = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_vertical_piece_focus_r = 0;
-#line 180 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 180 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_vertical_piece_p_interact = 0.3;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccbottom_vertical_piece_mask_string, 0 ? 0 : "", 16384); else mccbottom_vertical_piece_mask_string[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccbottom_vertical_piece_mask_setting, 0 ? 0 : "", 16384); else mccbottom_vertical_piece_mask_setting[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbottom_vertical_piece_number_of_activations = 1;
 #line 17235 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("bottom_vertical_piece (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 182 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 182 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 182 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 182 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 182 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 182 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 17245 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotacylinder_top_center_arm, mcrotabottom_vertical_piece);
   rot_transpose(mcrotacylinder_top_center_arm, mctr1);
   rot_mul(mcrotabottom_vertical_piece, mctr1, mcrotrbottom_vertical_piece);
   mctc1 = coords_set(
-#line 181 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 181 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 181 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 181 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.3 -0.0025,
-#line 181 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 181 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 17256 "./Union_time_of_flight.c"
   rot_transpose(mcrotacylinder_top_center_arm, mctr1);
@@ -17267,62 +17267,62 @@ void mcinit(void) {
     /* Component cylinder_holder. */
   /* Setting parameters for component cylinder_holder. */
   SIG_MESSAGE("cylinder_holder (Init:SetPar)");
-#line 185 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 185 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Al") strncpy(mcccylinder_holder_material_string, "Al" ? "Al" : "", 16384); else mcccylinder_holder_material_string[0]='\0';
-#line 185 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 185 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_priority = 115.5;
-#line 185 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 185 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_radius = 0.01;
-#line 185 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 185 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_yheight = 0.05;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mcccylinder_holder_mask_string, 0 ? 0 : "", 16384); else mcccylinder_holder_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mcccylinder_holder_mask_setting, 0 ? 0 : "", 16384); else mcccylinder_holder_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_number_of_activations = 1;
 #line 17306 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("cylinder_holder (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 187 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 187 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 187 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 187 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 187 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 187 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 17316 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotacylinder_top_center_arm, mcrotacylinder_holder);
   rot_transpose(mcrotabottom_vertical_piece, mctr1);
   rot_mul(mcrotacylinder_holder, mctr1, mcrotrcylinder_holder);
   mctc1 = coords_set(
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.3 -0.025,
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 17327 "./Union_time_of_flight.c"
   rot_transpose(mcrotacylinder_top_center_arm, mctr1);
@@ -17338,68 +17338,68 @@ void mcinit(void) {
     /* Component cylinder_holder_cutout. */
   /* Setting parameters for component cylinder_holder_cutout. */
   SIG_MESSAGE("cylinder_holder_cutout (Init:SetPar)");
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Al") strncpy(mcccylinder_holder_cutout_material_string, "Al" ? "Al" : "", 16384); else mcccylinder_holder_cutout_material_string[0]='\0';
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_cutout_priority = 116.5;
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_cutout_xwidth = 0.0201;
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_cutout_yheight = 0.02;
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_cutout_zdepth = 0.0025;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_cutout_xwidth2 = -1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_cutout_yheight2 = -1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_cutout_visualize = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_cutout_target_index = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_cutout_target_x = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_cutout_target_y = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_cutout_target_z = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_cutout_focus_aw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_cutout_focus_ah = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_cutout_focus_xw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_cutout_focus_xh = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_cutout_focus_r = 0;
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_cutout_p_interact = 0.3;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mcccylinder_holder_cutout_mask_string, 0 ? 0 : "", 16384); else mcccylinder_holder_cutout_mask_string[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mcccylinder_holder_cutout_mask_setting, 0 ? 0 : "", 16384); else mcccylinder_holder_cutout_mask_setting[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_cutout_number_of_activations = 1;
 #line 17383 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("cylinder_holder_cutout (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 192 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 192 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 192 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 192 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 192 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 192 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 17393 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotacylinder_top_center_arm, mcrotacylinder_holder_cutout);
   rot_transpose(mcrotacylinder_holder, mctr1);
   rot_mul(mcrotacylinder_holder_cutout, mctr1, mcrotrcylinder_holder_cutout);
   mctc1 = coords_set(
-#line 191 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 191 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 191 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 191 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.3 -0.0098,
-#line 191 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 191 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 17404 "./Union_time_of_flight.c"
   rot_transpose(mcrotacylinder_top_center_arm, mctr1);
@@ -17415,62 +17415,62 @@ void mcinit(void) {
     /* Component screw_head. */
   /* Setting parameters for component screw_head. */
   SIG_MESSAGE("screw_head (Init:SetPar)");
-#line 195 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 195 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Al") strncpy(mccscrew_head_material_string, "Al" ? "Al" : "", 16384); else mccscrew_head_material_string[0]='\0';
-#line 195 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 195 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccscrew_head_priority = 117.5;
-#line 195 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 195 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccscrew_head_radius = 0.003;
-#line 195 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 195 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccscrew_head_yheight = 0.004;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccscrew_head_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccscrew_head_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccscrew_head_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccscrew_head_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccscrew_head_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccscrew_head_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccscrew_head_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccscrew_head_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccscrew_head_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccscrew_head_focus_r = 0;
-#line 195 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 195 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccscrew_head_p_interact = 0.3;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccscrew_head_mask_string, 0 ? 0 : "", 16384); else mccscrew_head_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccscrew_head_mask_setting, 0 ? 0 : "", 16384); else mccscrew_head_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccscrew_head_number_of_activations = 1;
 #line 17454 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("screw_head (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 197 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 197 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (90)*DEG2RAD,
-#line 197 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 197 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 197 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 197 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 17464 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotacylinder_top_center_arm, mcrotascrew_head);
   rot_transpose(mcrotacylinder_holder_cutout, mctr1);
   rot_mul(mcrotascrew_head, mctr1, mcrotrscrew_head);
   mctc1 = coords_set(
-#line 196 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 196 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 196 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 196 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.3 -0.006,
-#line 196 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 196 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     -0.0121);
 #line 17475 "./Union_time_of_flight.c"
   rot_transpose(mcrotacylinder_top_center_arm, mctr1);
@@ -17489,22 +17489,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("cylinder_bottom_center_arm (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 201 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 201 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 201 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 201 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 201 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 201 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 17498 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotacylinder_top_center_arm, mcrotacylinder_bottom_center_arm);
   rot_transpose(mcrotascrew_head, mctr1);
   rot_mul(mcrotacylinder_bottom_center_arm, mctr1, mcrotrcylinder_bottom_center_arm);
   mctc1 = coords_set(
-#line 200 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 200 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 200 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 200 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     -0.05,
-#line 200 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 200 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 17509 "./Union_time_of_flight.c"
   rot_transpose(mcrotacylinder_top_center_arm, mctr1);
@@ -17520,62 +17520,62 @@ void mcinit(void) {
     /* Component cylinder_holder_base. */
   /* Setting parameters for component cylinder_holder_base. */
   SIG_MESSAGE("cylinder_holder_base (Init:SetPar)");
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Al") strncpy(mcccylinder_holder_base_material_string, "Al" ? "Al" : "", 16384); else mcccylinder_holder_base_material_string[0]='\0';
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_base_priority = 118.5;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_base_radius = 0.018;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_base_yheight = 0.002;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_base_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_base_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_base_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_base_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_base_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_base_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_base_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_base_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_base_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_base_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_base_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mcccylinder_holder_base_mask_string, 0 ? 0 : "", 16384); else mcccylinder_holder_base_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mcccylinder_holder_base_mask_setting, 0 ? 0 : "", 16384); else mcccylinder_holder_base_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccylinder_holder_base_number_of_activations = 1;
 #line 17559 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("cylinder_holder_base (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 17569 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotacylinder_bottom_center_arm, mcrotacylinder_holder_base);
   rot_transpose(mcrotacylinder_bottom_center_arm, mctr1);
   rot_mul(mcrotacylinder_holder_base, mctr1, mcrotrcylinder_holder_base);
   mctc1 = coords_set(
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.3 -0.0011,
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 17580 "./Union_time_of_flight.c"
   rot_transpose(mcrotacylinder_bottom_center_arm, mctr1);
@@ -17594,22 +17594,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("sample_rod_bottom_arm (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (85)*DEG2RAD,
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 17603 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotatarget, mcrotasample_rod_bottom_arm);
   rot_transpose(mcrotacylinder_holder_base, mctr1);
   rot_mul(mcrotasample_rod_bottom_arm, mctr1, mcrotrsample_rod_bottom_arm);
   mctc1 = coords_set(
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.1 + mcipstick_displacement,
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 17614 "./Union_time_of_flight.c"
   rot_transpose(mcrotatarget, mctr1);
@@ -17625,62 +17625,62 @@ void mcinit(void) {
     /* Component cryostat_mountin_plate. */
   /* Setting parameters for component cryostat_mountin_plate. */
   SIG_MESSAGE("cryostat_mountin_plate (Init:SetPar)");
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 213 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Al") strncpy(mcccryostat_mountin_plate_material_string, "Al" ? "Al" : "", 16384); else mcccryostat_mountin_plate_material_string[0]='\0';
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 213 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_mountin_plate_priority = 7;
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 213 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_mountin_plate_radius = 0.215;
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 213 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_mountin_plate_yheight = 0.01;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_mountin_plate_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_mountin_plate_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_mountin_plate_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_mountin_plate_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_mountin_plate_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_mountin_plate_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_mountin_plate_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_mountin_plate_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_mountin_plate_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_mountin_plate_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_mountin_plate_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mcccryostat_mountin_plate_mask_string, 0 ? 0 : "", 16384); else mcccryostat_mountin_plate_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mcccryostat_mountin_plate_mask_setting, 0 ? 0 : "", 16384); else mcccryostat_mountin_plate_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_mountin_plate_number_of_activations = 1;
 #line 17664 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("cryostat_mountin_plate (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 215 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 215 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 215 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 215 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 215 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 215 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 17674 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotatarget, mcrotacryostat_mountin_plate);
   rot_transpose(mcrotasample_rod_bottom_arm, mctr1);
   rot_mul(mcrotacryostat_mountin_plate, mctr1, mcrotrcryostat_mountin_plate);
   mctc1 = coords_set(
-#line 214 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 214 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 214 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 214 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     -0.147,
-#line 214 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 214 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 17685 "./Union_time_of_flight.c"
   rot_transpose(mcrotatarget, mctr1);
@@ -17696,62 +17696,62 @@ void mcinit(void) {
     /* Component cryostat_drum_walls. */
   /* Setting parameters for component cryostat_drum_walls. */
   SIG_MESSAGE("cryostat_drum_walls (Init:SetPar)");
-#line 218 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 218 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Al") strncpy(mcccryostat_drum_walls_material_string, "Al" ? "Al" : "", 16384); else mcccryostat_drum_walls_material_string[0]='\0';
-#line 218 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 218 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_walls_priority = 8;
-#line 218 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 218 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_walls_radius = 0.1975;
-#line 218 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 218 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_walls_yheight = 0.800;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_walls_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_walls_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_walls_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_walls_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_walls_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_walls_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_walls_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_walls_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_walls_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_walls_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_walls_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mcccryostat_drum_walls_mask_string, 0 ? 0 : "", 16384); else mcccryostat_drum_walls_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mcccryostat_drum_walls_mask_setting, 0 ? 0 : "", 16384); else mcccryostat_drum_walls_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_walls_number_of_activations = 1;
 #line 17735 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("cryostat_drum_walls (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 220 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 220 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 220 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 220 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 220 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 220 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 17745 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotadrum_center, mcrotacryostat_drum_walls);
   rot_transpose(mcrotacryostat_mountin_plate, mctr1);
   rot_mul(mcrotacryostat_drum_walls, mctr1, mcrotrcryostat_drum_walls);
   mctc1 = coords_set(
-#line 219 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 219 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 219 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 219 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 219 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 219 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 17756 "./Union_time_of_flight.c"
   rot_transpose(mcrotadrum_center, mctr1);
@@ -17767,62 +17767,62 @@ void mcinit(void) {
     /* Component cryostat_drum_vacuum. */
   /* Setting parameters for component cryostat_drum_vacuum. */
   SIG_MESSAGE("cryostat_drum_vacuum (Init:SetPar)");
-#line 223 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 223 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Vacuum") strncpy(mcccryostat_drum_vacuum_material_string, "Vacuum" ? "Vacuum" : "", 16384); else mcccryostat_drum_vacuum_material_string[0]='\0';
-#line 223 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 223 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_vacuum_priority = 9;
-#line 223 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 223 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_vacuum_radius = 0.19;
-#line 223 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 223 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_vacuum_yheight = 0.790;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_vacuum_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_vacuum_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_vacuum_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_vacuum_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_vacuum_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_vacuum_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_vacuum_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_vacuum_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_vacuum_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_vacuum_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_vacuum_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mcccryostat_drum_vacuum_mask_string, 0 ? 0 : "", 16384); else mcccryostat_drum_vacuum_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mcccryostat_drum_vacuum_mask_setting, 0 ? 0 : "", 16384); else mcccryostat_drum_vacuum_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcccryostat_drum_vacuum_number_of_activations = 1;
 #line 17806 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("cryostat_drum_vacuum (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 225 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 225 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 225 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 225 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 225 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 225 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 17816 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotadrum_center, mcrotacryostat_drum_vacuum);
   rot_transpose(mcrotacryostat_drum_walls, mctr1);
   rot_mul(mcrotacryostat_drum_vacuum, mctr1, mcrotrcryostat_drum_vacuum);
   mctc1 = coords_set(
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 224 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 224 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 224 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 17827 "./Union_time_of_flight.c"
   rot_transpose(mcrotadrum_center, mctr1);
@@ -17838,62 +17838,62 @@ void mcinit(void) {
     /* Component outer_cryostat_wall. */
   /* Setting parameters for component outer_cryostat_wall. */
   SIG_MESSAGE("outer_cryostat_wall (Init:SetPar)");
-#line 228 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 228 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Al") strncpy(mccouter_cryostat_wall_material_string, "Al" ? "Al" : "", 16384); else mccouter_cryostat_wall_material_string[0]='\0';
-#line 228 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 228 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_wall_priority = 10;
-#line 228 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 228 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_wall_radius = 0.180;
-#line 228 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 228 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_wall_yheight = 0.355;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_wall_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_wall_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_wall_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_wall_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_wall_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_wall_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_wall_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_wall_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_wall_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_wall_focus_r = 0;
-#line 228 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 228 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_wall_p_interact = 0.20;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccouter_cryostat_wall_mask_string, 0 ? 0 : "", 16384); else mccouter_cryostat_wall_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccouter_cryostat_wall_mask_setting, 0 ? 0 : "", 16384); else mccouter_cryostat_wall_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_wall_number_of_activations = 1;
 #line 17877 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("outer_cryostat_wall (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 230 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 230 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 230 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 230 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 230 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 230 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 17887 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotatarget, mcrotaouter_cryostat_wall);
   rot_transpose(mcrotacryostat_drum_vacuum, mctr1);
   rot_mul(mcrotaouter_cryostat_wall, mctr1, mcrotrouter_cryostat_wall);
   mctc1 = coords_set(
-#line 229 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 229 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 229 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 229 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.032,
-#line 229 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 229 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 17898 "./Union_time_of_flight.c"
   rot_transpose(mcrotatarget, mctr1);
@@ -17909,62 +17909,62 @@ void mcinit(void) {
     /* Component outer_cryostat_vacuum. */
   /* Setting parameters for component outer_cryostat_vacuum. */
   SIG_MESSAGE("outer_cryostat_vacuum (Init:SetPar)");
-#line 233 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 233 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Vacuum") strncpy(mccouter_cryostat_vacuum_material_string, "Vacuum" ? "Vacuum" : "", 16384); else mccouter_cryostat_vacuum_material_string[0]='\0';
-#line 233 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 233 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_vacuum_priority = 11;
-#line 233 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 233 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_vacuum_radius = 0.178;
-#line 233 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 233 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_vacuum_yheight = 0.355;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_vacuum_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_vacuum_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_vacuum_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_vacuum_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_vacuum_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_vacuum_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_vacuum_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_vacuum_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_vacuum_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_vacuum_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_vacuum_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccouter_cryostat_vacuum_mask_string, 0 ? 0 : "", 16384); else mccouter_cryostat_vacuum_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccouter_cryostat_vacuum_mask_setting, 0 ? 0 : "", 16384); else mccouter_cryostat_vacuum_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccouter_cryostat_vacuum_number_of_activations = 1;
 #line 17948 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("outer_cryostat_vacuum (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 235 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 235 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 235 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 235 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 235 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 235 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 17958 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotatarget, mcrotaouter_cryostat_vacuum);
   rot_transpose(mcrotaouter_cryostat_wall, mctr1);
   rot_mul(mcrotaouter_cryostat_vacuum, mctr1, mcrotrouter_cryostat_vacuum);
   mctc1 = coords_set(
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.037,
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 17969 "./Union_time_of_flight.c"
   rot_transpose(mcrotatarget, mctr1);
@@ -17980,62 +17980,62 @@ void mcinit(void) {
     /* Component sample_rod. */
   /* Setting parameters for component sample_rod. */
   SIG_MESSAGE("sample_rod (Init:SetPar)");
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Al") strncpy(mccsample_rod_material_string, "Al" ? "Al" : "", 16384); else mccsample_rod_material_string[0]='\0';
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_priority = 25;
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_radius = 0.0075;
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_yheight = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_rod_mask_string, 0 ? 0 : "", 16384); else mccsample_rod_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_rod_mask_setting, 0 ? 0 : "", 16384); else mccsample_rod_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_number_of_activations = 1;
 #line 18019 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("sample_rod (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 240 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 240 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 240 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 240 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 240 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 240 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 18029 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotasample_rod_bottom_arm, mcrotasample_rod);
   rot_transpose(mcrotaouter_cryostat_vacuum, mctr1);
   rot_mul(mcrotasample_rod, mctr1, mcrotrsample_rod);
   mctc1 = coords_set(
-#line 239 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 239 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 239 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 239 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.5,
-#line 239 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 239 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 18040 "./Union_time_of_flight.c"
   rot_transpose(mcrotasample_rod_bottom_arm, mctr1);
@@ -18051,62 +18051,62 @@ void mcinit(void) {
     /* Component sample_rod_collar_1. */
   /* Setting parameters for component sample_rod_collar_1. */
   SIG_MESSAGE("sample_rod_collar_1 (Init:SetPar)");
-#line 243 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 243 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Al") strncpy(mccsample_rod_collar_1_material_string, "Al" ? "Al" : "", 16384); else mccsample_rod_collar_1_material_string[0]='\0';
-#line 243 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 243 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_priority = 17;
-#line 243 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 243 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_radius = 0.034;
-#line 243 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 243 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_yheight = 0.02;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_rod_collar_1_mask_string, 0 ? 0 : "", 16384); else mccsample_rod_collar_1_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_rod_collar_1_mask_setting, 0 ? 0 : "", 16384); else mccsample_rod_collar_1_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_number_of_activations = 1;
 #line 18090 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("sample_rod_collar_1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 245 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 245 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 245 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 245 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 245 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 245 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 18100 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotasample_rod_bottom_arm, mcrotasample_rod_collar_1);
   rot_transpose(mcrotasample_rod, mctr1);
   rot_mul(mcrotasample_rod_collar_1, mctr1, mcrotrsample_rod_collar_1);
   mctc1 = coords_set(
-#line 244 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 244 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 244 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 244 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.048,
-#line 244 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 244 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 18111 "./Union_time_of_flight.c"
   rot_transpose(mcrotasample_rod_bottom_arm, mctr1);
@@ -18122,62 +18122,62 @@ void mcinit(void) {
     /* Component sample_rod_collar_2. */
   /* Setting parameters for component sample_rod_collar_2. */
   SIG_MESSAGE("sample_rod_collar_2 (Init:SetPar)");
-#line 248 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 248 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Al") strncpy(mccsample_rod_collar_2_material_string, "Al" ? "Al" : "", 16384); else mccsample_rod_collar_2_material_string[0]='\0';
-#line 248 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 248 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_priority = 18;
-#line 248 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 248 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_radius = 0.034;
-#line 248 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 248 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_yheight = 0.02;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_rod_collar_2_mask_string, 0 ? 0 : "", 16384); else mccsample_rod_collar_2_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_rod_collar_2_mask_setting, 0 ? 0 : "", 16384); else mccsample_rod_collar_2_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_number_of_activations = 1;
 #line 18161 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("sample_rod_collar_2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 250 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 250 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 250 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 250 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 250 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 250 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 18171 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotasample_rod_bottom_arm, mcrotasample_rod_collar_2);
   rot_transpose(mcrotasample_rod_collar_1, mctr1);
   rot_mul(mcrotasample_rod_collar_2, mctr1, mcrotrsample_rod_collar_2);
   mctc1 = coords_set(
-#line 249 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 249 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 249 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 249 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.14,
-#line 249 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 249 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 18182 "./Union_time_of_flight.c"
   rot_transpose(mcrotasample_rod_bottom_arm, mctr1);
@@ -18193,62 +18193,62 @@ void mcinit(void) {
     /* Component sample_rod_collar_3. */
   /* Setting parameters for component sample_rod_collar_3. */
   SIG_MESSAGE("sample_rod_collar_3 (Init:SetPar)");
-#line 253 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 253 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Al") strncpy(mccsample_rod_collar_3_material_string, "Al" ? "Al" : "", 16384); else mccsample_rod_collar_3_material_string[0]='\0';
-#line 253 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 253 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_priority = 19;
-#line 253 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 253 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_radius = 0.034;
-#line 253 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 253 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_yheight = 0.02;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_rod_collar_3_mask_string, 0 ? 0 : "", 16384); else mccsample_rod_collar_3_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_rod_collar_3_mask_setting, 0 ? 0 : "", 16384); else mccsample_rod_collar_3_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_number_of_activations = 1;
 #line 18232 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("sample_rod_collar_3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 255 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 255 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 255 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 255 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 255 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 255 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 18242 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotasample_rod_bottom_arm, mcrotasample_rod_collar_3);
   rot_transpose(mcrotasample_rod_collar_2, mctr1);
   rot_mul(mcrotasample_rod_collar_3, mctr1, mcrotrsample_rod_collar_3);
   mctc1 = coords_set(
-#line 254 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 254 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 254 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 254 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.34,
-#line 254 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 254 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 18253 "./Union_time_of_flight.c"
   rot_transpose(mcrotasample_rod_bottom_arm, mctr1);
@@ -18264,62 +18264,62 @@ void mcinit(void) {
     /* Component sample_rod_collar_4. */
   /* Setting parameters for component sample_rod_collar_4. */
   SIG_MESSAGE("sample_rod_collar_4 (Init:SetPar)");
-#line 258 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 258 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Al") strncpy(mccsample_rod_collar_4_material_string, "Al" ? "Al" : "", 16384); else mccsample_rod_collar_4_material_string[0]='\0';
-#line 258 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 258 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_priority = 20;
-#line 258 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 258 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_radius = 0.034;
-#line 258 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 258 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_yheight = 0.02;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_rod_collar_4_mask_string, 0 ? 0 : "", 16384); else mccsample_rod_collar_4_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_rod_collar_4_mask_setting, 0 ? 0 : "", 16384); else mccsample_rod_collar_4_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_number_of_activations = 1;
 #line 18303 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("sample_rod_collar_4 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 260 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 260 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 260 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 260 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 260 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 260 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 18313 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotasample_rod_bottom_arm, mcrotasample_rod_collar_4);
   rot_transpose(mcrotasample_rod_collar_3, mctr1);
   rot_mul(mcrotasample_rod_collar_4, mctr1, mcrotrsample_rod_collar_4);
   mctc1 = coords_set(
-#line 259 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 259 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 259 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 259 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.635,
-#line 259 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 259 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 18324 "./Union_time_of_flight.c"
   rot_transpose(mcrotasample_rod_bottom_arm, mctr1);
@@ -18335,62 +18335,62 @@ void mcinit(void) {
     /* Component sample_rod_collar_1_vacuum. */
   /* Setting parameters for component sample_rod_collar_1_vacuum. */
   SIG_MESSAGE("sample_rod_collar_1_vacuum (Init:SetPar)");
-#line 263 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 263 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Vacuum") strncpy(mccsample_rod_collar_1_vacuum_material_string, "Vacuum" ? "Vacuum" : "", 16384); else mccsample_rod_collar_1_vacuum_material_string[0]='\0';
-#line 263 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 263 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_vacuum_priority = 21;
-#line 263 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 263 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_vacuum_radius = 0.03;
-#line 263 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 263 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_vacuum_yheight = 0.016;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_vacuum_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_vacuum_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_vacuum_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_vacuum_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_vacuum_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_vacuum_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_vacuum_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_vacuum_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_vacuum_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_vacuum_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_vacuum_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_rod_collar_1_vacuum_mask_string, 0 ? 0 : "", 16384); else mccsample_rod_collar_1_vacuum_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_rod_collar_1_vacuum_mask_setting, 0 ? 0 : "", 16384); else mccsample_rod_collar_1_vacuum_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_1_vacuum_number_of_activations = 1;
 #line 18374 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("sample_rod_collar_1_vacuum (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 18384 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotasample_rod_bottom_arm, mcrotasample_rod_collar_1_vacuum);
   rot_transpose(mcrotasample_rod_collar_4, mctr1);
   rot_mul(mcrotasample_rod_collar_1_vacuum, mctr1, mcrotrsample_rod_collar_1_vacuum);
   mctc1 = coords_set(
-#line 264 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 264 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 264 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 264 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.048 -0.005,
-#line 264 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 264 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 18395 "./Union_time_of_flight.c"
   rot_transpose(mcrotasample_rod_bottom_arm, mctr1);
@@ -18406,62 +18406,62 @@ void mcinit(void) {
     /* Component sample_rod_collar_2_vacuum. */
   /* Setting parameters for component sample_rod_collar_2_vacuum. */
   SIG_MESSAGE("sample_rod_collar_2_vacuum (Init:SetPar)");
-#line 268 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 268 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Vacuum") strncpy(mccsample_rod_collar_2_vacuum_material_string, "Vacuum" ? "Vacuum" : "", 16384); else mccsample_rod_collar_2_vacuum_material_string[0]='\0';
-#line 268 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 268 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_vacuum_priority = 22;
-#line 268 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 268 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_vacuum_radius = 0.03;
-#line 268 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 268 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_vacuum_yheight = 0.016;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_vacuum_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_vacuum_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_vacuum_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_vacuum_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_vacuum_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_vacuum_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_vacuum_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_vacuum_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_vacuum_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_vacuum_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_vacuum_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_rod_collar_2_vacuum_mask_string, 0 ? 0 : "", 16384); else mccsample_rod_collar_2_vacuum_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_rod_collar_2_vacuum_mask_setting, 0 ? 0 : "", 16384); else mccsample_rod_collar_2_vacuum_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_2_vacuum_number_of_activations = 1;
 #line 18445 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("sample_rod_collar_2_vacuum (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 270 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 270 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 270 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 270 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 270 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 270 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 18455 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotasample_rod_bottom_arm, mcrotasample_rod_collar_2_vacuum);
   rot_transpose(mcrotasample_rod_collar_1_vacuum, mctr1);
   rot_mul(mcrotasample_rod_collar_2_vacuum, mctr1, mcrotrsample_rod_collar_2_vacuum);
   mctc1 = coords_set(
-#line 269 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 269 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 269 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 269 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.14 -0.005,
-#line 269 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 269 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 18466 "./Union_time_of_flight.c"
   rot_transpose(mcrotasample_rod_bottom_arm, mctr1);
@@ -18477,62 +18477,62 @@ void mcinit(void) {
     /* Component sample_rod_collar_3_vacuum. */
   /* Setting parameters for component sample_rod_collar_3_vacuum. */
   SIG_MESSAGE("sample_rod_collar_3_vacuum (Init:SetPar)");
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Vacuum") strncpy(mccsample_rod_collar_3_vacuum_material_string, "Vacuum" ? "Vacuum" : "", 16384); else mccsample_rod_collar_3_vacuum_material_string[0]='\0';
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_vacuum_priority = 23;
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_vacuum_radius = 0.03;
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_vacuum_yheight = 0.016;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_vacuum_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_vacuum_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_vacuum_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_vacuum_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_vacuum_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_vacuum_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_vacuum_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_vacuum_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_vacuum_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_vacuum_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_vacuum_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_rod_collar_3_vacuum_mask_string, 0 ? 0 : "", 16384); else mccsample_rod_collar_3_vacuum_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_rod_collar_3_vacuum_mask_setting, 0 ? 0 : "", 16384); else mccsample_rod_collar_3_vacuum_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_3_vacuum_number_of_activations = 1;
 #line 18516 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("sample_rod_collar_3_vacuum (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 275 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 275 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 275 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 275 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 275 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 275 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 18526 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotasample_rod_bottom_arm, mcrotasample_rod_collar_3_vacuum);
   rot_transpose(mcrotasample_rod_collar_2_vacuum, mctr1);
   rot_mul(mcrotasample_rod_collar_3_vacuum, mctr1, mcrotrsample_rod_collar_3_vacuum);
   mctc1 = coords_set(
-#line 274 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 274 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 274 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 274 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.34 -0.005,
-#line 274 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 274 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 18537 "./Union_time_of_flight.c"
   rot_transpose(mcrotasample_rod_bottom_arm, mctr1);
@@ -18548,62 +18548,62 @@ void mcinit(void) {
     /* Component sample_rod_collar_4_vacuum. */
   /* Setting parameters for component sample_rod_collar_4_vacuum. */
   SIG_MESSAGE("sample_rod_collar_4_vacuum (Init:SetPar)");
-#line 278 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 278 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Vacuum") strncpy(mccsample_rod_collar_4_vacuum_material_string, "Vacuum" ? "Vacuum" : "", 16384); else mccsample_rod_collar_4_vacuum_material_string[0]='\0';
-#line 278 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 278 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_vacuum_priority = 24;
-#line 278 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 278 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_vacuum_radius = 0.03;
-#line 278 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 278 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_vacuum_yheight = 0.016;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_vacuum_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_vacuum_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_vacuum_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_vacuum_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_vacuum_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_vacuum_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_vacuum_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_vacuum_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_vacuum_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_vacuum_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_vacuum_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_rod_collar_4_vacuum_mask_string, 0 ? 0 : "", 16384); else mccsample_rod_collar_4_vacuum_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_rod_collar_4_vacuum_mask_setting, 0 ? 0 : "", 16384); else mccsample_rod_collar_4_vacuum_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_rod_collar_4_vacuum_number_of_activations = 1;
 #line 18587 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("sample_rod_collar_4_vacuum (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 280 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 280 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 280 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 280 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 280 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 280 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 18597 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotasample_rod_bottom_arm, mcrotasample_rod_collar_4_vacuum);
   rot_transpose(mcrotasample_rod_collar_3_vacuum, mctr1);
   rot_mul(mcrotasample_rod_collar_4_vacuum, mctr1, mcrotrsample_rod_collar_4_vacuum);
   mctc1 = coords_set(
-#line 279 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 279 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 279 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 279 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.635 -0.005,
-#line 279 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 279 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 18608 "./Union_time_of_flight.c"
   rot_transpose(mcrotasample_rod_bottom_arm, mctr1);
@@ -18619,62 +18619,62 @@ void mcinit(void) {
     /* Component inner_cryostat_wall. */
   /* Setting parameters for component inner_cryostat_wall. */
   SIG_MESSAGE("inner_cryostat_wall (Init:SetPar)");
-#line 283 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 283 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Al") strncpy(mccinner_cryostat_wall_material_string, "Al" ? "Al" : "", 16384); else mccinner_cryostat_wall_material_string[0]='\0';
-#line 283 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 283 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_wall_priority = 12;
-#line 283 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 283 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_wall_radius = 0.052;
-#line 283 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 283 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_wall_yheight = 0.16;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_wall_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_wall_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_wall_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_wall_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_wall_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_wall_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_wall_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_wall_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_wall_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_wall_focus_r = 0;
-#line 283 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 283 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_wall_p_interact = 0.20;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccinner_cryostat_wall_mask_string, 0 ? 0 : "", 16384); else mccinner_cryostat_wall_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccinner_cryostat_wall_mask_setting, 0 ? 0 : "", 16384); else mccinner_cryostat_wall_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_wall_number_of_activations = 1;
 #line 18658 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("inner_cryostat_wall (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 285 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 285 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 285 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 285 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 285 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 285 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 18668 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotatarget, mcrotainner_cryostat_wall);
   rot_transpose(mcrotasample_rod_collar_4_vacuum, mctr1);
   rot_mul(mcrotainner_cryostat_wall, mctr1, mcrotrinner_cryostat_wall);
   mctc1 = coords_set(
-#line 284 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 284 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 284 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 284 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.01,
-#line 284 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 284 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 18679 "./Union_time_of_flight.c"
   rot_transpose(mcrotatarget, mctr1);
@@ -18690,62 +18690,62 @@ void mcinit(void) {
     /* Component inner_cryostat_vacuum. */
   /* Setting parameters for component inner_cryostat_vacuum. */
   SIG_MESSAGE("inner_cryostat_vacuum (Init:SetPar)");
-#line 288 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 288 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Vacuum") strncpy(mccinner_cryostat_vacuum_material_string, "Vacuum" ? "Vacuum" : "", 16384); else mccinner_cryostat_vacuum_material_string[0]='\0';
-#line 288 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 288 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_vacuum_priority = 13;
-#line 288 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 288 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_vacuum_radius = 0.05;
-#line 288 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 288 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_vacuum_yheight = 0.15;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_vacuum_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_vacuum_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_vacuum_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_vacuum_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_vacuum_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_vacuum_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_vacuum_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_vacuum_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_vacuum_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_vacuum_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_vacuum_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccinner_cryostat_vacuum_mask_string, 0 ? 0 : "", 16384); else mccinner_cryostat_vacuum_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccinner_cryostat_vacuum_mask_setting, 0 ? 0 : "", 16384); else mccinner_cryostat_vacuum_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccinner_cryostat_vacuum_number_of_activations = 1;
 #line 18729 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("inner_cryostat_vacuum (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 290 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 290 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 290 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 290 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 290 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 290 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 18739 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotatarget, mcrotainner_cryostat_vacuum);
   rot_transpose(mcrotainner_cryostat_wall, mctr1);
   rot_mul(mcrotainner_cryostat_vacuum, mctr1, mcrotrinner_cryostat_vacuum);
   mctc1 = coords_set(
-#line 289 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 289 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 289 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 289 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.01,
-#line 289 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 289 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 18750 "./Union_time_of_flight.c"
   rot_transpose(mcrotatarget, mctr1);
@@ -18761,62 +18761,62 @@ void mcinit(void) {
     /* Component sample_stick_walls. */
   /* Setting parameters for component sample_stick_walls. */
   SIG_MESSAGE("sample_stick_walls (Init:SetPar)");
-#line 293 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 293 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Al") strncpy(mccsample_stick_walls_material_string, "Al" ? "Al" : "", 16384); else mccsample_stick_walls_material_string[0]='\0';
-#line 293 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 293 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_walls_priority = 14;
-#line 293 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 293 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_walls_radius = 0.04;
-#line 293 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 293 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_walls_yheight = 0.935;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_walls_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_walls_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_walls_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_walls_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_walls_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_walls_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_walls_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_walls_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_walls_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_walls_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_walls_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_stick_walls_mask_string, 0 ? 0 : "", 16384); else mccsample_stick_walls_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_stick_walls_mask_setting, 0 ? 0 : "", 16384); else mccsample_stick_walls_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_walls_number_of_activations = 1;
 #line 18800 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("sample_stick_walls (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 295 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 295 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 295 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 295 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 295 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 295 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 18810 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotatarget, mcrotasample_stick_walls);
   rot_transpose(mcrotainner_cryostat_vacuum, mctr1);
   rot_mul(mcrotasample_stick_walls, mctr1, mcrotrsample_stick_walls);
   mctc1 = coords_set(
-#line 294 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 294 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 294 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 294 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.555,
-#line 294 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 294 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 18821 "./Union_time_of_flight.c"
   rot_transpose(mcrotatarget, mctr1);
@@ -18832,62 +18832,62 @@ void mcinit(void) {
     /* Component sample_stick_vacuum. */
   /* Setting parameters for component sample_stick_vacuum. */
   SIG_MESSAGE("sample_stick_vacuum (Init:SetPar)");
-#line 298 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 298 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Vacuum") strncpy(mccsample_stick_vacuum_material_string, "Vacuum" ? "Vacuum" : "", 16384); else mccsample_stick_vacuum_material_string[0]='\0';
-#line 298 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 298 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_vacuum_priority = 15;
-#line 298 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 298 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_vacuum_radius = 0.035;
-#line 298 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 298 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_vacuum_yheight = 0.94;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_vacuum_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_vacuum_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_vacuum_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_vacuum_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_vacuum_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_vacuum_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_vacuum_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_vacuum_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_vacuum_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_vacuum_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_vacuum_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_stick_vacuum_mask_string, 0 ? 0 : "", 16384); else mccsample_stick_vacuum_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if(0) strncpy(mccsample_stick_vacuum_mask_setting, 0 ? 0 : "", 16384); else mccsample_stick_vacuum_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccsample_stick_vacuum_number_of_activations = 1;
 #line 18871 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("sample_stick_vacuum (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 300 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 300 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 300 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 300 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 300 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 300 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 18881 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotatarget, mcrotasample_stick_vacuum);
   rot_transpose(mcrotasample_stick_walls, mctr1);
   rot_mul(mcrotasample_stick_vacuum, mctr1, mcrotrsample_stick_vacuum);
   mctc1 = coords_set(
-#line 299 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 299 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 299 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 299 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.55,
-#line 299 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 299 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 18892 "./Union_time_of_flight.c"
   rot_transpose(mcrotatarget, mctr1);
@@ -18903,34 +18903,34 @@ void mcinit(void) {
     /* Component test_sample. */
   /* Setting parameters for component test_sample. */
   SIG_MESSAGE("test_sample (Init:SetPar)");
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcctest_sample_allow_inside_start = 0;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcctest_sample_history_limit = 300000;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcctest_sample_enable_conditionals = 1;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mcctest_sample_inherit_number_of_scattering_events = 0;
 #line 18914 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("test_sample (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 305 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 305 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 305 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 305 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 305 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 305 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 18924 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotabeam_center, mcrotatest_sample);
   rot_transpose(mcrotasample_stick_vacuum, mctr1);
   rot_mul(mcrotatest_sample, mctr1, mcrotrtest_sample);
   mctc1 = coords_set(
-#line 304 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 304 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 304 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 304 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 304 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 304 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 18935 "./Union_time_of_flight.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -18946,68 +18946,68 @@ void mcinit(void) {
     /* Component banana_detector_tof. */
   /* Setting parameters for component banana_detector_tof. */
   SIG_MESSAGE("banana_detector_tof (Init:SetPar)");
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbanana_detector_tof_xwidth = 1;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbanana_detector_tof_yheight = 0.2;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbanana_detector_tof_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbanana_detector_tof_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbanana_detector_tof_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbanana_detector_tof_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbanana_detector_tof_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbanana_detector_tof_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbanana_detector_tof_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbanana_detector_tof_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbanana_detector_tof_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbanana_detector_tof_max = 1e40;
-#line 310 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 310 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbanana_detector_tof_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbanana_detector_tof_radius = 0;
-#line 310 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 310 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("banana, theta limits=[-120,120] bins=481, t limits=[3E-3 6E-3] bins=2000") strncpy(mccbanana_detector_tof_options, "banana, theta limits=[-120,120] bins=481, t limits=[3E-3 6E-3] bins=2000" ? "banana, theta limits=[-120,120] bins=481, t limits=[3E-3 6E-3] bins=2000" : "", 16384); else mccbanana_detector_tof_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("NULL") strncpy(mccbanana_detector_tof_filename, "NULL" ? "NULL" : "", 16384); else mccbanana_detector_tof_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("NULL") strncpy(mccbanana_detector_tof_geometry, "NULL" ? "NULL" : "", 16384); else mccbanana_detector_tof_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("NULL") strncpy(mccbanana_detector_tof_username1, "NULL" ? "NULL" : "", 16384); else mccbanana_detector_tof_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("NULL") strncpy(mccbanana_detector_tof_username2, "NULL" ? "NULL" : "", 16384); else mccbanana_detector_tof_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("NULL") strncpy(mccbanana_detector_tof_username3, "NULL" ? "NULL" : "", 16384); else mccbanana_detector_tof_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccbanana_detector_tof_nowritefile = 0;
 #line 18991 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("banana_detector_tof (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 312 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 312 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 312 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 312 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 312 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 312 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 19001 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotabeam_center, mcrotabanana_detector_tof);
   rot_transpose(mcrotatest_sample, mctr1);
   rot_mul(mcrotabanana_detector_tof, mctr1, mcrotrbanana_detector_tof);
   mctc1 = coords_set(
-#line 311 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 311 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 311 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 311 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 311 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 311 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 19012 "./Union_time_of_flight.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -19023,34 +19023,34 @@ void mcinit(void) {
     /* Component m4pi. */
   /* Setting parameters for component m4pi. */
   SIG_MESSAGE("m4pi (Init:SetPar)");
-#line 314 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 314 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Events.dat") strncpy(mccm4pi_filename, "Events.dat" ? "Events.dat" : "", 16384); else mccm4pi_filename[0]='\0';
-#line 314 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 314 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccm4pi_radius = 1;
-#line 314 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 314 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccm4pi_restore_neutron = 1;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccm4pi_nowritefile = 0;
 #line 19034 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("m4pi (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 316 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 316 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 316 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 316 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 316 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 316 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 19044 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotabeam_center, mcrotam4pi);
   rot_transpose(mcrotabanana_detector_tof, mctr1);
   rot_mul(mcrotam4pi, mctr1, mcrotrm4pi);
   mctc1 = coords_set(
-#line 315 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 315 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 315 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 315 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 315 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 315 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 19055 "./Union_time_of_flight.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -19066,34 +19066,34 @@ void mcinit(void) {
     /* Component m4pi_three_samples. */
   /* Setting parameters for component m4pi_three_samples. */
   SIG_MESSAGE("m4pi_three_samples (Init:SetPar)");
-#line 318 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 318 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("Events.dat") strncpy(mccm4pi_three_samples_filename, "Events.dat" ? "Events.dat" : "", 16384); else mccm4pi_three_samples_filename[0]='\0';
-#line 318 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 318 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccm4pi_three_samples_radius = 1;
-#line 318 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 318 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccm4pi_three_samples_restore_neutron = 1;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccm4pi_three_samples_nowritefile = 0;
 #line 19077 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("m4pi_three_samples (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 320 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 320 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 320 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 320 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 320 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 320 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 19087 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotabeam_center, mcrotam4pi_three_samples);
   rot_transpose(mcrotam4pi, mctr1);
   rot_mul(mcrotam4pi_three_samples, mctr1, mcrotrm4pi_three_samples);
   mctc1 = coords_set(
-#line 319 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 319 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 319 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 319 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 319 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 319 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 19098 "./Union_time_of_flight.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -19109,68 +19109,68 @@ void mcinit(void) {
     /* Component Banana_monitor. */
   /* Setting parameters for component Banana_monitor. */
   SIG_MESSAGE("Banana_monitor (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccBanana_monitor_xwidth = 0;
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccBanana_monitor_yheight = 0.1;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccBanana_monitor_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccBanana_monitor_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccBanana_monitor_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccBanana_monitor_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccBanana_monitor_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccBanana_monitor_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccBanana_monitor_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccBanana_monitor_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccBanana_monitor_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccBanana_monitor_max = 1e40;
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccBanana_monitor_restore_neutron = 1;
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccBanana_monitor_radius = 1;
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("banana, theta limits=[20,170], bins=500") strncpy(mccBanana_monitor_options, "banana, theta limits=[20,170], bins=500" ? "banana, theta limits=[20,170], bins=500" : "", 16384); else mccBanana_monitor_options[0]='\0';
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("banana.dat") strncpy(mccBanana_monitor_filename, "banana.dat" ? "banana.dat" : "", 16384); else mccBanana_monitor_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("NULL") strncpy(mccBanana_monitor_geometry, "NULL" ? "NULL" : "", 16384); else mccBanana_monitor_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("NULL") strncpy(mccBanana_monitor_username1, "NULL" ? "NULL" : "", 16384); else mccBanana_monitor_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("NULL") strncpy(mccBanana_monitor_username2, "NULL" ? "NULL" : "", 16384); else mccBanana_monitor_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("NULL") strncpy(mccBanana_monitor_username3, "NULL" ? "NULL" : "", 16384); else mccBanana_monitor_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccBanana_monitor_nowritefile = 0;
 #line 19154 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("Banana_monitor (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 324 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 324 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 324 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 324 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 324 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 324 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 19164 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotabeam_center, mcrotaBanana_monitor);
   rot_transpose(mcrotam4pi_three_samples, mctr1);
   rot_mul(mcrotaBanana_monitor, mctr1, mcrotrBanana_monitor);
   mctc1 = coords_set(
-#line 323 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 323 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 323 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 323 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 323 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 323 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0);
 #line 19175 "./Union_time_of_flight.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -19186,46 +19186,46 @@ void mcinit(void) {
     /* Component detector. */
   /* Setting parameters for component detector. */
   SIG_MESSAGE("detector (Init:SetPar)");
-#line 326 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 326 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccdetector_nx = 200;
-#line 326 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 326 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccdetector_ny = 200;
-#line 326 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 326 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   if("PSD.dat") strncpy(mccdetector_filename, "PSD.dat" ? "PSD.dat" : "", 16384); else mccdetector_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccdetector_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccdetector_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccdetector_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccdetector_ymax = 0.05;
-#line 326 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 326 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccdetector_xwidth = 0.1;
-#line 326 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 326 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccdetector_yheight = 0.08;
-#line 326 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 326 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
   mccdetector_restore_neutron = 1;
 #line 19209 "./Union_time_of_flight.c"
 
   SIG_MESSAGE("detector (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 328 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 328 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 328 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 328 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD,
-#line 328 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 328 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     (0)*DEG2RAD);
 #line 19219 "./Union_time_of_flight.c"
   rot_mul(mctr1, mcrotabeam_center, mcrotadetector);
   rot_transpose(mcrotaBanana_monitor, mctr1);
   rot_mul(mcrotadetector, mctr1, mcrotrdetector);
   mctc1 = coords_set(
-#line 327 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 327 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 327 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 327 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0,
-#line 327 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
+#line 327 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_time_of_flight/Union_time_of_flight.instr"
     0.4);
 #line 19230 "./Union_time_of_flight.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -28521,7 +28521,7 @@ add_element_to_geometry_list(&global_geometry_list,global_geometry_element);
           printf("Volume.name         [%d]: %s \n",iterate,global_geometry_list.elements[iterate].Volume->name);
           if (global_geometry_list.elements[iterate].Volume->geometry.is_mask_volume == 0) {
           printf("Volume.p_physics.is_vacuum           [%d]: %d \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->is_vacuum);
-          printf("Volume.p_physics.my_absoprtion       [%d]: %f \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->my_a);
+          printf("Volume.p_physics.my_absorption       [%d]: %f \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->my_a);
           printf("Volume.p_physics.number of processes [%d]: %d \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->number_of_processes);
           }
           printf("Volume.geometry.shape                [%d]: %s \n",iterate,global_geometry_list.elements[iterate].Volume->geometry.shape);

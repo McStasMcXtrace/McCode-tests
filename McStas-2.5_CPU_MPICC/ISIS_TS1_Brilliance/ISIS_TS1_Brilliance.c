@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr (ISIS_TS1_Brilliance)
- * Date:       Wed Nov 20 00:43:20 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr (ISIS_TS1_Brilliance)
+ * Date:       Tue Feb 25 20:58:39 2020
  * File:       ./ISIS_TS1_Brilliance.c
  * Compile:    cc -o ISIS_TS1_Brilliance.out ./ISIS_TS1_Brilliance.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "ISIS_TS1_Brilliance";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -6119,7 +6119,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define mccompcurindex 0
 #define mcposaISIS_TS1_Brilliance coords_set(0,0,0)
 #define modfile mcipmodfile
-#line 34 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 34 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   double lambdamin,lambdamax;
 #line 6124 "./ISIS_TS1_Brilliance.c"
 #undef modfile
@@ -6432,7 +6432,7 @@ void mcinit(void) {
 #define mccompcurindex 0
 #define mcposaISIS_TS1_Brilliance coords_set(0,0,0)
 #define modfile mcipmodfile
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
 {
   lambdamin=0.5;
   lambdamax=20;
@@ -6456,13 +6456,13 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccOrigin_minutes = 0;
 #line 6467 "./ISIS_TS1_Brilliance.c"
 
@@ -6474,11 +6474,11 @@ void mcinit(void) {
 #line 6474 "./ISIS_TS1_Brilliance.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
     0,
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
     0,
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
     0);
 #line 6483 "./ISIS_TS1_Brilliance.c"
   mctc1 = coords_neg(mcposaOrigin);
@@ -6491,31 +6491,31 @@ void mcinit(void) {
     /* Component Source. */
   /* Setting parameters for component Source. */
   SIG_MESSAGE("Source (Init:SetPar)");
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccSource_Emin = - lambdamin;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccSource_Emax = - lambdamax;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccSource_dist = 1.0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccSource_focus_xw = 0.01;
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccSource_focus_yh = 0.01;
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccSource_xwidth = 0.01;
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccSource_yheight = 0.01;
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccSource_CAngle = 0.0;
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccSource_SAC = 1;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccSource_Lmin = 0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccSource_Lmax = 0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccSource_target_index = + 1;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccSource_verbose = 0;
 #line 6520 "./ISIS_TS1_Brilliance.c"
 
@@ -6529,11 +6529,11 @@ void mcinit(void) {
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotaSource, mctr1, mcrotrSource);
   mctc1 = coords_set(
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
     0,
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
     0,
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
     0);
 #line 6538 "./ISIS_TS1_Brilliance.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -6549,31 +6549,31 @@ void mcinit(void) {
     /* Component Brillmon. */
   /* Setting parameters for component Brillmon. */
   SIG_MESSAGE("Brillmon (Init:SetPar)");
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccBrillmon_lambda_0 = lambdamin;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccBrillmon_lambda_1 = lambdamax;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccBrillmon_restore_neutron = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccBrillmon_Freq = 40.0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccBrillmon_tofcuts = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccBrillmon_toflambda = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccBrillmon_xwidth = 0.01;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccBrillmon_yheight = 0.01;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccBrillmon_source_dist = 1;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   if("brill") strncpy(mccBrillmon_filename, "brill" ? "brill" : "", 16384); else mccBrillmon_filename[0]='\0';
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccBrillmon_t_0 = 0;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccBrillmon_t_1 = 600;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
   mccBrillmon_nowritefile = 0;
 #line 6578 "./ISIS_TS1_Brilliance.c"
 
@@ -6587,11 +6587,11 @@ void mcinit(void) {
   rot_transpose(mcrotaSource, mctr1);
   rot_mul(mcrotaBrillmon, mctr1, mcrotrBrillmon);
   mctc1 = coords_set(
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
     0,
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
     0,
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr"
     0.0000001);
 #line 6596 "./ISIS_TS1_Brilliance.c"
   rot_transpose(mcrotaSource, mctr1);

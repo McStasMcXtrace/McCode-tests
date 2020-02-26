@@ -1,10 +1,10 @@
 McStas simulation description file for Test_Sources.
-Date:    Wed Nov 20 01:18:36 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 22:00:24 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: Test_Sources
   File: 7/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sources/Test_Sources.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sources/Test_Sources.instr
   Parameters:  source(int) Lmin(double) Lmax(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 7
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sources/Test_Sources.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sources/Test_Sources.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574209792
+  Seed: 1582690703
   Directory: 7
   Nodes: 10
   Param: source=7
@@ -28,80 +28,80 @@ begin simulation: 7
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:18:37 2019 (1574209117)
+  Date: Tue Feb 25 22:00:27 2020 (1582664427)
   type: array_1d(40)
-  Source: Test_Sources (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sources/Test_Sources.instr)
+  Source: Test_Sources (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sources/Test_Sources.instr)
   component: m1
   position: 0 0 1
   title: Wavelength [Angs] monitor
   Ncount: 10000000
-  filename: m1_1574209116.L
-  statistics: X0=3.6663; dX=1.70923;
-  signal: Min=2.84391e+08; Max=2.10422e+10; Mean=5.58724e+09;
-  values: 2.23489e+11 1.33253e+08 9.99981e+06
+  filename: m1_1582664424.L
+  statistics: X0=3.66643; dX=1.70902;
+  signal: Min=2.83905e+08; Max=2.10589e+10; Mean=5.59048e+09;
+  values: 2.23619e+11 1.33319e+08 9.99988e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
   ylabel: Intensity [n/s/bin]
-  xlimits: 1.00001 10.9998
+  xlimits: 1.00011 11
   variables: L I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:18:37 2019 (1574209117)
+  Date: Tue Feb 25 22:00:27 2020 (1582664427)
   type: array_2d(40, 40)
-  Source: Test_Sources (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sources/Test_Sources.instr)
+  Source: Test_Sources (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sources/Test_Sources.instr)
   component: m2
   position: 0 0 1
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: m2_1574209116.x_y
-  statistics: X0=2.11838e-05; dX=0.0285799; Y0=2.21343e-06; dY=0.0285673;
-  signal: Min=1.28678e+08; Max=1.50233e+08; Mean=1.39676e+08;
-  values: 2.23481e+11 1.3325e+08 9.99956e+06
+  filename: m2_1582664424.x_y
+  statistics: X0=9.00656e-06; dX=0.028576; Y0=-3.23498e-05; dY=0.028578;
+  signal: Min=1.28995e+08; Max=1.51614e+08; Mean=1.39758e+08;
+  values: 2.23613e+11 1.33317e+08 9.99964e+06
   xvar: x
   yvar: y
   xlabel: x [m]
   ylabel: y [m]
   zvar: I
   zlabel: Signal per bin
-  xylimits: -0.0496111 0.0496024 -0.0495598 0.0495838
+  xylimits: -0.0495886 0.0496018 -0.0496032 0.0495939
   variables: I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:18:37 2019 (1574209117)
+  Date: Tue Feb 25 22:00:27 2020 (1582664427)
   type: array_2d(40, 40)
-  Source: Test_Sources (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sources/Test_Sources.instr)
+  Source: Test_Sources (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sources/Test_Sources.instr)
   component: m3
   position: 0 0 1
   title:  Intensity Divergence Divergence Monitor (Square) per bin
   Ncount: 10000000
-  filename: m3_1574209116.hd_vd
-  statistics: X0=0.00212083; dX=1.66037; Y0=-0.002842; dY=1.65942;
-  signal: Min=3.77925e+06; Max=1.80916e+08; Mean=1.39677e+08;
-  values: 2.23484e+11 1.33251e+08 9.99967e+06
+  filename: m3_1582664424.hd_vd
+  statistics: X0=-0.00186619; dX=1.6614; Y0=-0.00301072; dY=1.66117;
+  signal: Min=3.16545e+06; Max=1.786e+08; Mean=1.39758e+08;
+  values: 2.23613e+11 1.33317e+08 9.99964e+06
   xvar: Hor.
   yvar: Vert.
   xlabel: Hor. Divergence [deg]
   ylabel: Vert. Divergence [deg]
   zvar: I
   zlabel: Signal per bin
-  xylimits: -3.12917 3.13056 -3.141 3.13699
+  xylimits: -3.13185 3.12893 -3.14322 3.1412
   variables: I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:18:37 2019 (1574209117)
+  Date: Tue Feb 25 22:00:27 2020 (1582664427)
   type: array_1d(8000)
-  Source: Test_Sources (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sources/Test_Sources.instr)
+  Source: Test_Sources (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sources/Test_Sources.instr)
   component: sa1
   position: 0 0 0
   title: Adaptive source Wavelength distribution
   Ncount: 10000000
-  statistics: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿX0=2.11838e-05; dX=0.0285799; Y0=2.21343e-06; dY=0.0285673;
-  signal: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿMin=1.28678e+08; Max=1.50233e+08; Mean=1.39676e+08;
-  values: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ2.23481e+11 1.3325e+08 9.99956e+06
+  statistics: X0=6; dX=2.88675;
+  signal: Min=0.000125; Max=0.000125; Mean=0.000125;
+  values: 1 0.000125008 8000
   xvar: lambda
   yvar: (I,I_err)
   xlabel: Wavelength [AA]

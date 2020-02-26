@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr (Test_Fermi)
- * Date:       Wed Nov 20 00:49:34 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr (Test_Fermi)
+ * Date:       Tue Feb 25 21:04:10 2020
  * File:       ./Test_Fermi.c
  * Compile:    cc -o Test_Fermi.out ./Test_Fermi.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Test_Fermi";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -13150,7 +13150,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define d_SF mcipd_SF
 #define d_FD mcipd_FD
 #define phase mcipphase
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   double time_to_arrival;
   double time_window_width;
 #line 13156 "./Test_Fermi.c"
@@ -14804,7 +14804,7 @@ void mcinit(void) {
 #define d_SF mcipd_SF
 #define d_FD mcipd_FD
 #define phase mcipphase
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
 {
   printf("\n%s: ", NAME_CURRENT_COMP);
   switch (Fermi) {
@@ -14866,13 +14866,13 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccOrigin_minutes = 0;
 #line 14877 "./Test_Fermi.c"
 
@@ -14884,11 +14884,11 @@ void mcinit(void) {
 #line 14884 "./Test_Fermi.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0,
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0,
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0);
 #line 14893 "./Test_Fermi.c"
   mctc1 = coords_neg(mcposaOrigin);
@@ -14901,65 +14901,65 @@ void mcinit(void) {
     /* Component Source. */
   /* Setting parameters for component Source. */
   SIG_MESSAGE("Source (Init:SetPar)");
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   if("NULL") strncpy(mccSource_flux_file, "NULL" ? "NULL" : "", 16384); else mccSource_flux_file[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   if("NULL") strncpy(mccSource_xdiv_file, "NULL" ? "NULL" : "", 16384); else mccSource_xdiv_file[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   if("NULL") strncpy(mccSource_ydiv_file, "NULL" ? "NULL" : "", 16384); else mccSource_ydiv_file[0]='\0';
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_radius = 0.0;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_dist = 0;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_focus_xw = mcipwidth_FC;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_focus_yh = mcipheight_FC;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_focus_aw = 0;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_focus_ah = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_E0 = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_dE = 0;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_lambda0 = mciplambda;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_dlambda = 0.3;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_I1 = 1;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_yheight = mcipheight_FC;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_xwidth = mcipwidth_FC;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_verbose = 0;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_T1 = 0;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_flux_file_perAA = 0;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_flux_file_log = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_Lmin = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_Lmax = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_Emin = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_Emax = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_T2 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_I2 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_T3 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_I3 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_zdepth = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccSource_target_index = + 1;
 #line 14964 "./Test_Fermi.c"
 
@@ -14973,11 +14973,11 @@ void mcinit(void) {
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotaSource, mctr1, mcrotrSource);
   mctc1 = coords_set(
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0,
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0,
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0);
 #line 14982 "./Test_Fermi.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -14993,47 +14993,47 @@ void mcinit(void) {
     /* Component Monitor1_xt. */
   /* Setting parameters for component Monitor1_xt. */
   SIG_MESSAGE("Monitor1_xt (Init:SetPar)");
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor1_xt_xwidth = mcipwidth_FC;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor1_xt_yheight = mcipheight_FC;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor1_xt_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor1_xt_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor1_xt_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor1_xt_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor1_xt_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor1_xt_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor1_xt_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor1_xt_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor1_xt_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor1_xt_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor1_xt_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor1_xt_radius = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   if("multiple x y time, all auto") strncpy(mccMonitor1_xt_options, "multiple x y time, all auto" ? "multiple x y time, all auto" : "", 16384); else mccMonitor1_xt_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   if("NULL") strncpy(mccMonitor1_xt_filename, "NULL" ? "NULL" : "", 16384); else mccMonitor1_xt_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   if("NULL") strncpy(mccMonitor1_xt_geometry, "NULL" ? "NULL" : "", 16384); else mccMonitor1_xt_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   if("NULL") strncpy(mccMonitor1_xt_username1, "NULL" ? "NULL" : "", 16384); else mccMonitor1_xt_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   if("NULL") strncpy(mccMonitor1_xt_username2, "NULL" ? "NULL" : "", 16384); else mccMonitor1_xt_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   if("NULL") strncpy(mccMonitor1_xt_username3, "NULL" ? "NULL" : "", 16384); else mccMonitor1_xt_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor1_xt_nowritefile = 0;
 #line 15038 "./Test_Fermi.c"
 
@@ -15047,11 +15047,11 @@ void mcinit(void) {
   rot_transpose(mcrotaSource, mctr1);
   rot_mul(mcrotaMonitor1_xt, mctr1, mcrotrMonitor1_xt);
   mctc1 = coords_set(
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0,
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0,
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     mcipd_SF -0.1);
 #line 15056 "./Test_Fermi.c"
   rot_transpose(mcrotaSource, mctr1);
@@ -15078,11 +15078,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMonitor1_xt, mctr1);
   rot_mul(mcrotaFC_Position, mctr1, mcrotrFC_Position);
   mctc1 = coords_set(
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0,
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0,
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0.1);
 #line 15087 "./Test_Fermi.c"
   rot_transpose(mcrotaMonitor1_xt, mctr1);
@@ -15098,73 +15098,73 @@ void mcinit(void) {
     /* Component FC_GuideG. */
   /* Setting parameters for component FC_GuideG. */
   SIG_MESSAGE("FC_GuideG (Init:SetPar)");
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_w1 = mcipwidth_FC;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_h1 = mcipheight_FC;
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_w2 = 0;
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_h2 = 0;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_l = mciplength_FC;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_R0 = 0.0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_Qc = 0.0218;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_alpha = 4.38;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_m = 1.0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_W = 0.003;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_nslit = mcipNslit_FC;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_d = 0;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_mleft = -1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_mright = -1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_mtop = -1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_mbottom = -1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_nhslit = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_G = 0;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_aleft = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_aright = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_atop = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_abottom = -1;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_wavy = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_wavy_z = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_wavy_tb = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_wavy_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_chamfers = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_chamfers_z = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_chamfers_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_chamfers_tb = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_nelements = 1;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_nu = mcipFC_Hz;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideG_phase = mcipphase;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   if("NULL") strncpy(mccFC_GuideG_reflect, "NULL" ? "NULL" : "", 16384); else mccFC_GuideG_reflect[0]='\0';
 #line 15169 "./Test_Fermi.c"
 
@@ -15178,11 +15178,11 @@ void mcinit(void) {
   rot_transpose(mcrotaFC_Position, mctr1);
   rot_mul(mcrotaFC_GuideG, mctr1, mcrotrFC_GuideG);
   mctc1 = coords_set(
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0,
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0,
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     - mciplength_FC / 2.0);
 #line 15187 "./Test_Fermi.c"
   rot_transpose(mcrotaFC_Position, mctr1);
@@ -15198,45 +15198,45 @@ void mcinit(void) {
     /* Component FC_GuideC. */
   /* Setting parameters for component FC_GuideC. */
   SIG_MESSAGE("FC_GuideC (Init:SetPar)");
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideC_w1 = mcipwidth_FC;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideC_h1 = mcipheight_FC;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideC_w2 = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideC_h2 = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideC_l = mciplength_FC;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideC_R0 = 0.0;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideC_Qc = 0;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideC_alpha = 0;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideC_m = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideC_nslit = mcipNslit_FC;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideC_d = 0;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideC_Qcx = 0.0218;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideC_Qcy = 0.0218;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideC_alphax = 4.38;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideC_alphay = 4.38;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideC_W = 0.003;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideC_mx = 1;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideC_my = 1;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideC_nu = mcipFC_Hz;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_GuideC_phase = mcipphase;
 #line 15241 "./Test_Fermi.c"
 
@@ -15250,11 +15250,11 @@ void mcinit(void) {
   rot_transpose(mcrotaFC_GuideG, mctr1);
   rot_mul(mcrotaFC_GuideC, mctr1, mcrotrFC_GuideC);
   mctc1 = coords_set(
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0,
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0,
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     - mciplength_FC / 2.0);
 #line 15259 "./Test_Fermi.c"
   rot_transpose(mcrotaFC_Position, mctr1);
@@ -15270,41 +15270,41 @@ void mcinit(void) {
     /* Component FC_McStas. */
   /* Setting parameters for component FC_McStas. */
   SIG_MESSAGE("FC_McStas (Init:SetPar)");
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_McStas_phase = mcipphase;
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_McStas_radius = 0.1;
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_McStas_nu = mcipFC_Hz;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_McStas_w = 0.00022475;
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_McStas_nslit = mcipNslit_FC;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_McStas_R0 = 0.0;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_McStas_Qc = 0.02176;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_McStas_alpha = 2.33;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_McStas_m = 0.0;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_McStas_W = 2e-3;
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_McStas_length = mciplength_FC;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_McStas_eff = 0.95;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_McStas_zero_time = 0;
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_McStas_xwidth = mcipwidth_FC;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_McStas_verbose = 1;
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_McStas_yheight = mcipheight_FC;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_McStas_curvature = 0;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_McStas_delay = 0;
 #line 15309 "./Test_Fermi.c"
 
@@ -15318,11 +15318,11 @@ void mcinit(void) {
   rot_transpose(mcrotaFC_GuideC, mctr1);
   rot_mul(mcrotaFC_McStas, mctr1, mcrotrFC_McStas);
   mctc1 = coords_set(
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0,
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0,
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0);
 #line 15327 "./Test_Fermi.c"
   rot_transpose(mcrotaFC_Position, mctr1);
@@ -15338,37 +15338,37 @@ void mcinit(void) {
     /* Component FC_ILL. */
   /* Setting parameters for component FC_ILL. */
   SIG_MESSAGE("FC_ILL (Init:SetPar)");
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_ILL_phase = mcipphase;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_ILL_radius = 0.1;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_ILL_nu = mcipFC_Hz;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_ILL_yheight = mcipheight_FC;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_ILL_w = 0.00022475;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_ILL_nslit = mcipNslit_FC;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_ILL_R0 = 0.0;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_ILL_Qc = 0.02176;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_ILL_alpha = 2.33;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_ILL_m = 0.0;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_ILL_W = 2e-3;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_ILL_length = mciplength_FC;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_ILL_eff = 0.95;
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_ILL_zero_time = 0;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_ILL_xwidth = mcipwidth_FC;
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_ILL_verbose = 0;
 #line 15373 "./Test_Fermi.c"
 
@@ -15382,11 +15382,11 @@ void mcinit(void) {
   rot_transpose(mcrotaFC_McStas, mctr1);
   rot_mul(mcrotaFC_ILL, mctr1, mcrotrFC_ILL);
   mctc1 = coords_set(
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0,
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0,
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0);
 #line 15391 "./Test_Fermi.c"
   rot_transpose(mcrotaFC_Position, mctr1);
@@ -15412,11 +15412,11 @@ void mcinit(void) {
   rot_transpose(mcrotaFC_ILL, mctr1);
   rot_mul(mcrotaFake_Origin, mctr1, mcrotrFake_Origin);
   mcposaFake_Origin = coords_set(
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0,
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0,
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0);
 #line 15421 "./Test_Fermi.c"
   mctc1 = coords_sub(mcposaFC_ILL, mcposaFake_Origin);
@@ -15429,31 +15429,31 @@ void mcinit(void) {
     /* Component FC_Vitess. */
   /* Setting parameters for component FC_Vitess. */
   SIG_MESSAGE("FC_Vitess (Init:SetPar)");
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   if("FC_geom_str.dat") strncpy(mccFC_Vitess_sGeomFileName, "FC_geom_str.dat" ? "FC_geom_str.dat" : "", 16384); else mccFC_Vitess_sGeomFileName[0]='\0';
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_Vitess_GeomOption = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_Vitess_zerotime = 0;
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_Vitess_Nchannels = mcipNslit_FC;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_Vitess_Ngates = 4;
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_Vitess_freq = mcipFC_Hz;
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_Vitess_height = mcipheight_FC;
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_Vitess_width = mcipwidth_FC;
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_Vitess_depth = mciplength_FC;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_Vitess_r_curv = 0.5;
-#line 142 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 142 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_Vitess_diameter = 0.1;
-#line 142 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 142 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_Vitess_Phase = mcipphase;
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccFC_Vitess_wallwidth = 0;
 #line 15458 "./Test_Fermi.c"
 
@@ -15467,11 +15467,11 @@ void mcinit(void) {
   rot_transpose(mcrotaFake_Origin, mctr1);
   rot_mul(mcrotaFC_Vitess, mctr1, mcrotrFC_Vitess);
   mctc1 = coords_set(
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0,
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0,
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     mcipd_SF);
 #line 15476 "./Test_Fermi.c"
   rot_transpose(mcrotaFake_Origin, mctr1);
@@ -15487,47 +15487,47 @@ void mcinit(void) {
     /* Component Monitor2_xt. */
   /* Setting parameters for component Monitor2_xt. */
   SIG_MESSAGE("Monitor2_xt (Init:SetPar)");
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor2_xt_xwidth = mcipwidth_FC;
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor2_xt_yheight = mcipheight_FC;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor2_xt_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor2_xt_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor2_xt_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor2_xt_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor2_xt_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor2_xt_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor2_xt_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor2_xt_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor2_xt_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor2_xt_max = 1e40;
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor2_xt_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor2_xt_radius = 0;
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   if("multiple x y time, all auto") strncpy(mccMonitor2_xt_options, "multiple x y time, all auto" ? "multiple x y time, all auto" : "", 16384); else mccMonitor2_xt_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   if("NULL") strncpy(mccMonitor2_xt_filename, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xt_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   if("NULL") strncpy(mccMonitor2_xt_geometry, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xt_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   if("NULL") strncpy(mccMonitor2_xt_username1, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xt_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   if("NULL") strncpy(mccMonitor2_xt_username2, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xt_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   if("NULL") strncpy(mccMonitor2_xt_username3, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xt_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   mccMonitor2_xt_nowritefile = 0;
 #line 15532 "./Test_Fermi.c"
 
@@ -15541,11 +15541,11 @@ void mcinit(void) {
   rot_transpose(mcrotaFC_Vitess, mctr1);
   rot_mul(mcrotaMonitor2_xt, mctr1, mcrotrMonitor2_xt);
   mctc1 = coords_set(
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0,
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     0,
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
     mcipd_FD);
 #line 15550 "./Test_Fermi.c"
   rot_transpose(mcrotaFC_Position, mctr1);
@@ -17253,7 +17253,7 @@ int target_index = mccSource_target_index;
 #line 17253 "./Test_Fermi.c"
 /* 'Source=Source_gen()' component instance extend code */
     SIG_MESSAGE("Source (Trace:Extend)");
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   /* 1 ms triangle time window */
   // t = randtriangle()*1e-3;  /* trianglular distribution */
   // t = randpm1()*time_window_width-time_to_arrival;          /* rectangular distribution */
@@ -18008,7 +18008,7 @@ if (( mcipFermi == 4 ))
     SIG_MESSAGE("FC_GuideG (Trace:Extend)");
 if (( mcipFermi == 4 )) {
 
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   if (!SCATTERED) ABSORB;
 #line 18011 "./Test_Fermi.c"
 }
@@ -18321,7 +18321,7 @@ if (( mcipFermi == 5 ))
     SIG_MESSAGE("FC_GuideC (Trace:Extend)");
 if (( mcipFermi == 5 )) {
 
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr"
   if (!SCATTERED) ABSORB;
 #line 18321 "./Test_Fermi.c"
 }

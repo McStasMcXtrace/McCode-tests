@@ -2,64 +2,60 @@ INFO: Using directory: "1"
 INFO: Using existing c-file: ./Test_Pol_TripleAxis.c
 INFO: Using existing binary: ./Test_Pol_TripleAxis.out
 INFO: ===
-INFO: Using system default number of mpirun -np processes
-[1574209096.877121] [n-62-23-6:32394:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3132.91
-[1574209096.878368] [n-62-23-6:32395:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3132.91
-[1574209096.879073] [n-62-23-6:32394:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209096.879088] [n-62-23-6:32394:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-23-14:25316] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:25316] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:25316] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582664389.618480] [n-62-23-14:25321:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664389.618518] [n-62-23-14:25321:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 --------------------------------------------------------------------------
 Initialization of MXM library failed.
 
   Error: Input/output error
 
 --------------------------------------------------------------------------
-[1574209096.880202] [n-62-23-6:32395:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209096.880218] [n-62-23-6:32395:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209096.881049] [n-62-23-6:32394:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209096.881064] [n-62-23-6:32394:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209096.882166] [n-62-23-6:32395:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209096.882181] [n-62-23-6:32395:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209096.889012] [n-62-23-6:32396:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3103.00
-[1574209096.890519] [n-62-23-6:32396:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209096.890536] [n-62-23-6:32396:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209096.891254] [n-62-23-6:32399:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3103.00
-[1574209096.892360] [n-62-23-6:32396:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209096.892374] [n-62-23-6:32396:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209096.892427] [n-62-23-6:32397:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3103.86
-[1574209096.892652] [n-62-23-6:32399:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209096.892668] [n-62-23-6:32399:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209096.893266] [n-62-23-6:32398:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3103.86
-[1574209096.893941] [n-62-23-6:32397:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209096.893958] [n-62-23-6:32397:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209096.894542] [n-62-23-6:32399:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209096.894556] [n-62-23-6:32399:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209096.895055] [n-62-23-6:32398:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209096.895071] [n-62-23-6:32398:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209096.895813] [n-62-23-6:32397:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209096.895827] [n-62-23-6:32397:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209096.897007] [n-62-23-6:32398:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209096.897021] [n-62-23-6:32398:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209096.918000] [n-62-23-3:26157:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3180.59
-[1574209096.918000] [n-62-23-3:26158:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3180.59
-[1574209096.918000] [n-62-23-3:26159:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3180.59
-[1574209096.918001] [n-62-23-3:26160:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3180.59
-[1574209096.922110] [n-62-23-3:26157:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209096.922127] [n-62-23-3:26157:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209096.922110] [n-62-23-3:26158:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209096.922127] [n-62-23-3:26158:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209096.922110] [n-62-23-3:26159:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209096.922127] [n-62-23-3:26159:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209096.922545] [n-62-23-3:26160:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209096.922562] [n-62-23-3:26160:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209096.924257] [n-62-23-3:26157:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209096.924271] [n-62-23-3:26157:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209096.924255] [n-62-23-3:26158:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209096.924309] [n-62-23-3:26158:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209096.924367] [n-62-23-3:26159:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209096.924457] [n-62-23-3:26159:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574209096.924486] [n-62-23-3:26160:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574209096.924498] [n-62-23-3:26160:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'Test_Pol_TripleAxis' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+[1582664389.621166] [n-62-23-14:25321:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664389.621190] [n-62-23-14:25321:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664389.632315] [n-62-23-14:25323:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664389.632355] [n-62-23-14:25323:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664389.634825] [n-62-23-14:25323:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664389.634845] [n-62-23-14:25323:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664389.635378] [n-62-23-14:25322:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664389.635407] [n-62-23-14:25322:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664389.638111] [n-62-23-14:25324:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664389.638215] [n-62-23-14:25324:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664389.638491] [n-62-23-14:25322:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664389.638698] [n-62-23-14:25322:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664389.640000] [n-62-23-14:25328:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664389.640068] [n-62-23-14:25328:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664389.640929] [n-62-23-14:25324:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664389.640945] [n-62-23-14:25324:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664389.641985] [n-62-23-14:25329:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664389.642020] [n-62-23-14:25329:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664389.642279] [n-62-23-14:25328:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664389.642335] [n-62-23-14:25328:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664389.645541] [n-62-23-14:25325:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664389.645577] [n-62-23-14:25325:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664389.646233] [n-62-23-14:25329:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664389.646252] [n-62-23-14:25329:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664389.647883] [n-62-23-14:25327:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664389.647913] [n-62-23-14:25327:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664389.648349] [n-62-23-14:25325:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664389.648368] [n-62-23-14:25325:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664389.650346] [n-62-23-14:25327:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664389.650362] [n-62-23-14:25327:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664389.649740] [n-62-23-14:25326:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664389.649769] [n-62-23-14:25326:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664389.651763] [n-62-23-14:25326:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664389.651781] [n-62-23-14:25326:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664389.652868] [n-62-23-14:25330:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664389.652899] [n-62-23-14:25330:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582664389.655049] [n-62-23-14:25330:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582664389.655068] [n-62-23-14:25330:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'Test_Pol_TripleAxis' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
+[Test_Pol_TripleAxis] Initialize
+[Test_Pol_TripleAxis] Initialize
+Pol_constBfield: msf: Magnetic field set to B=-1.695831 Gauss
+[Test_Pol_TripleAxis] Initialize
 [Test_Pol_TripleAxis] Initialize
 Pol_constBfield: msf: Magnetic field set to B=-1.695831 Gauss
 [Test_Pol_TripleAxis] Initialize
@@ -68,11 +64,7 @@ Pol_constBfield: msf: Magnetic field set to B=-1.695831 Gauss
 Pol_constBfield: msf: Magnetic field set to B=-1.695831 Gauss
 [Test_Pol_TripleAxis] Initialize
 Pol_constBfield: msf: Magnetic field set to B=-1.695831 Gauss
-[Test_Pol_TripleAxis] Initialize
 Pol_constBfield: msf: Magnetic field set to B=-1.695831 Gauss
-[Test_Pol_TripleAxis] Initialize
-Pol_constBfield: msf: Magnetic field set to B=-1.695831 Gauss
-[Test_Pol_TripleAxis] Initialize
 Pol_constBfield: msf: Magnetic field set to B=-1.695831 Gauss
 [Test_Pol_TripleAxis] Initialize
 Pol_constBfield: msf: Magnetic field set to B=-1.695831 Gauss
@@ -81,31 +73,31 @@ Pol_constBfield: msf: Magnetic field set to B=-1.695831 Gauss
 [Test_Pol_TripleAxis] Initialize
 Pol_constBfield: msf: Magnetic field set to B=-1.695831 Gauss
 
+Finally [Test_Pol_TripleAxis: 1]. Time: 3 [s] 
 
-Finally [Test_Pol_TripleAxis: 1]. Time: 1 [s] 
-Finally [Test_Pol_TripleAxis: 1]. Time: 1 [s] 
+Finally [Test_Pol_TripleAxis: 1]. Time: 3 [s] 
 
-Finally [Test_Pol_TripleAxis: 1]. Time: 1 [s] 
+Finally [Test_Pol_TripleAxis: 1]. Time: 3 [s] 
 
-Finally [Test_Pol_TripleAxis: 1]. Time: 2 [s] 
+Finally [Test_Pol_TripleAxis: 1]. Time: 3 [s] 
 
-Finally [Test_Pol_TripleAxis: 1]. Time: 1 [s] 
+Finally [Test_Pol_TripleAxis: 1]. Time: 4 [s] 
 
-Finally [Test_Pol_TripleAxis: 1]. Time: 2 [s] 
+Finally [Test_Pol_TripleAxis: 1]. Time: 4 [s] 
+
+Finally [Test_Pol_TripleAxis: 1]. Time: 4 [s] 
 
 Save [Test_Pol_TripleAxis]
-Detector: pollambdaMonitorMono_I=2.19484e-05 pollambdaMonitorMono_ERR=1.05035e-08 pollambdaMonitorMono_N=4.36653e+06 "pollambdaMonMono.data"
+Detector: pollambdaMonitorMono_I=2.19538e-05 pollambdaMonitorMono_ERR=1.05048e-08 pollambdaMonitorMono_N=4.36762e+06 "pollambdaMonMono.data"
 
-Finally [Test_Pol_TripleAxis: 1]. Time: 1 [s] 
-Detector: pollambdaMonitorSample_I=2.394e-11 pollambdaMonitorSample_ERR=1.38633e-14 pollambdaMonitorSample_N=4.31874e+06 "pollambdaMonSample.data"
+Finally [Test_Pol_TripleAxis: 1]. Time: 4 [s] 
+Detector: pollambdaMonitorSample_I=2.39394e-11 pollambdaMonitorSample_ERR=1.38612e-14 pollambdaMonitorSample_N=4.31911e+06 "pollambdaMonSample.data"
+Detector: pollambdaMonitorMSF_I=2.39394e-11 pollambdaMonitorMSF_ERR=1.38612e-14 pollambdaMonitorMSF_N=4.31911e+06 "pollambdaMonMsf.data"
 
-Finally [Test_Pol_TripleAxis: 1]. Time: 1 [s] 
-Detector: pollambdaMonitorMSF_I=2.394e-11 pollambdaMonitorMSF_ERR=1.38633e-14 pollambdaMonitorMSF_N=4.31874e+06 "pollambdaMonMsf.data"
+Finally [Test_Pol_TripleAxis: 1]. Time: 4 [s] 
+Detector: pollambdaMonitorDet_I=5.6431e-12 pollambdaMonitorDet_ERR=5.61237e-15 pollambdaMonitorDet_N=1.19946e+06 "pollambdaMonDet.data"
 
-Finally [Test_Pol_TripleAxis: 1]. Time: 1 [s] 
-Detector: pollambdaMonitorDet_I=5.63526e-12 pollambdaMonitorDet_ERR=5.6085e-15 pollambdaMonitorDet_N=1.19725e+06 "pollambdaMonDet.data"
-
-Finally [Test_Pol_TripleAxis: 1]. Time: 1 [s] 
-[n-62-23-6:32385] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-6:32385] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
-INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr in dataset 1
+Finally [Test_Pol_TripleAxis: 1]. Time: 4 [s] 
+[n-62-23-14:25316] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-14:25316] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr in dataset 1

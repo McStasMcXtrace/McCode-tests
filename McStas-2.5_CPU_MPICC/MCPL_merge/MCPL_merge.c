@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr (MCPL_merge)
- * Date:       Wed Nov 20 00:43:57 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr (MCPL_merge)
+ * Date:       Tue Feb 25 20:59:16 2020
  * File:       ./MCPL_merge.c
  * Compile:    cc -o MCPL_merge.out ./MCPL_merge.c  -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
  * CFLAGS= -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "MCPL_merge";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -5414,7 +5414,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define f7 mcipf7
 #define f8 mcipf8
 #define f9 mcipf9
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   long long unsigned int ncount_set;
 #line 5419 "./MCPL_merge.c"
 #undef f9
@@ -6171,7 +6171,7 @@ void mcinit(void) {
 #define f7 mcipf7
 #define f8 mcipf8
 #define f9 mcipf9
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
 {
   ncount_set=0;
 }
@@ -6204,13 +6204,13 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccOrigin_minutes = 0;
 #line 6215 "./MCPL_merge.c"
 
@@ -6222,11 +6222,11 @@ void mcinit(void) {
 #line 6222 "./MCPL_merge.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0);
 #line 6231 "./MCPL_merge.c"
   mctc1 = coords_neg(mcposaOrigin);
@@ -6239,23 +6239,23 @@ void mcinit(void) {
     /* Component MCPLinput0. */
   /* Setting parameters for component MCPLinput0. */
   SIG_MESSAGE("MCPLinput0 (Init:SetPar)");
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   if(mcipf0) strncpy(mccMCPLinput0_filename, mcipf0 ? mcipf0 : "", 16384); else mccMCPLinput0_filename[0]='\0';
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput0_polarisationuse = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput0_verbose = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput0_Emin = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput0_Emax = FLT_MAX;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput0_repeat_count = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput0_E_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput0_pos_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput0_dir_smear = 0;
 #line 6260 "./MCPL_merge.c"
 
@@ -6269,11 +6269,11 @@ void mcinit(void) {
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotaMCPLinput0, mctr1, mcrotrMCPLinput0);
   mctc1 = coords_set(
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0);
 #line 6278 "./MCPL_merge.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -6289,23 +6289,23 @@ void mcinit(void) {
     /* Component MCPLinput1. */
   /* Setting parameters for component MCPLinput1. */
   SIG_MESSAGE("MCPLinput1 (Init:SetPar)");
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   if(mcipf1) strncpy(mccMCPLinput1_filename, mcipf1 ? mcipf1 : "", 16384); else mccMCPLinput1_filename[0]='\0';
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput1_polarisationuse = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput1_verbose = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput1_Emin = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput1_Emax = FLT_MAX;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput1_repeat_count = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput1_E_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput1_pos_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput1_dir_smear = 0;
 #line 6310 "./MCPL_merge.c"
 
@@ -6319,11 +6319,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMCPLinput0, mctr1);
   rot_mul(mcrotaMCPLinput1, mctr1, mcrotrMCPLinput1);
   mctc1 = coords_set(
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0);
 #line 6328 "./MCPL_merge.c"
   rot_transpose(mcrotaMCPLinput0, mctr1);
@@ -6339,23 +6339,23 @@ void mcinit(void) {
     /* Component MCPLinput2. */
   /* Setting parameters for component MCPLinput2. */
   SIG_MESSAGE("MCPLinput2 (Init:SetPar)");
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   if(mcipf2) strncpy(mccMCPLinput2_filename, mcipf2 ? mcipf2 : "", 16384); else mccMCPLinput2_filename[0]='\0';
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput2_polarisationuse = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput2_verbose = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput2_Emin = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput2_Emax = FLT_MAX;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput2_repeat_count = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput2_E_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput2_pos_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput2_dir_smear = 0;
 #line 6360 "./MCPL_merge.c"
 
@@ -6369,11 +6369,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMCPLinput1, mctr1);
   rot_mul(mcrotaMCPLinput2, mctr1, mcrotrMCPLinput2);
   mctc1 = coords_set(
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0);
 #line 6378 "./MCPL_merge.c"
   rot_transpose(mcrotaMCPLinput1, mctr1);
@@ -6389,23 +6389,23 @@ void mcinit(void) {
     /* Component MCPLinput3. */
   /* Setting parameters for component MCPLinput3. */
   SIG_MESSAGE("MCPLinput3 (Init:SetPar)");
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   if(mcipf3) strncpy(mccMCPLinput3_filename, mcipf3 ? mcipf3 : "", 16384); else mccMCPLinput3_filename[0]='\0';
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput3_polarisationuse = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput3_verbose = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput3_Emin = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput3_Emax = FLT_MAX;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput3_repeat_count = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput3_E_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput3_pos_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput3_dir_smear = 0;
 #line 6410 "./MCPL_merge.c"
 
@@ -6419,11 +6419,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMCPLinput2, mctr1);
   rot_mul(mcrotaMCPLinput3, mctr1, mcrotrMCPLinput3);
   mctc1 = coords_set(
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0);
 #line 6428 "./MCPL_merge.c"
   rot_transpose(mcrotaMCPLinput2, mctr1);
@@ -6439,23 +6439,23 @@ void mcinit(void) {
     /* Component MCPLinput4. */
   /* Setting parameters for component MCPLinput4. */
   SIG_MESSAGE("MCPLinput4 (Init:SetPar)");
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   if(mcipf4) strncpy(mccMCPLinput4_filename, mcipf4 ? mcipf4 : "", 16384); else mccMCPLinput4_filename[0]='\0';
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput4_polarisationuse = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput4_verbose = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput4_Emin = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput4_Emax = FLT_MAX;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput4_repeat_count = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput4_E_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput4_pos_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput4_dir_smear = 0;
 #line 6460 "./MCPL_merge.c"
 
@@ -6469,11 +6469,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMCPLinput3, mctr1);
   rot_mul(mcrotaMCPLinput4, mctr1, mcrotrMCPLinput4);
   mctc1 = coords_set(
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0);
 #line 6478 "./MCPL_merge.c"
   rot_transpose(mcrotaMCPLinput3, mctr1);
@@ -6489,23 +6489,23 @@ void mcinit(void) {
     /* Component MCPLinput5. */
   /* Setting parameters for component MCPLinput5. */
   SIG_MESSAGE("MCPLinput5 (Init:SetPar)");
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   if(mcipf5) strncpy(mccMCPLinput5_filename, mcipf5 ? mcipf5 : "", 16384); else mccMCPLinput5_filename[0]='\0';
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput5_polarisationuse = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput5_verbose = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput5_Emin = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput5_Emax = FLT_MAX;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput5_repeat_count = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput5_E_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput5_pos_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput5_dir_smear = 0;
 #line 6510 "./MCPL_merge.c"
 
@@ -6519,11 +6519,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMCPLinput4, mctr1);
   rot_mul(mcrotaMCPLinput5, mctr1, mcrotrMCPLinput5);
   mctc1 = coords_set(
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0);
 #line 6528 "./MCPL_merge.c"
   rot_transpose(mcrotaMCPLinput4, mctr1);
@@ -6539,23 +6539,23 @@ void mcinit(void) {
     /* Component MCPLinput6. */
   /* Setting parameters for component MCPLinput6. */
   SIG_MESSAGE("MCPLinput6 (Init:SetPar)");
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   if(mcipf6) strncpy(mccMCPLinput6_filename, mcipf6 ? mcipf6 : "", 16384); else mccMCPLinput6_filename[0]='\0';
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput6_polarisationuse = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput6_verbose = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput6_Emin = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput6_Emax = FLT_MAX;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput6_repeat_count = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput6_E_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput6_pos_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput6_dir_smear = 0;
 #line 6560 "./MCPL_merge.c"
 
@@ -6569,11 +6569,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMCPLinput5, mctr1);
   rot_mul(mcrotaMCPLinput6, mctr1, mcrotrMCPLinput6);
   mctc1 = coords_set(
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0);
 #line 6578 "./MCPL_merge.c"
   rot_transpose(mcrotaMCPLinput5, mctr1);
@@ -6589,23 +6589,23 @@ void mcinit(void) {
     /* Component MCPLinput7. */
   /* Setting parameters for component MCPLinput7. */
   SIG_MESSAGE("MCPLinput7 (Init:SetPar)");
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   if(mcipf7) strncpy(mccMCPLinput7_filename, mcipf7 ? mcipf7 : "", 16384); else mccMCPLinput7_filename[0]='\0';
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput7_polarisationuse = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput7_verbose = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput7_Emin = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput7_Emax = FLT_MAX;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput7_repeat_count = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput7_E_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput7_pos_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput7_dir_smear = 0;
 #line 6610 "./MCPL_merge.c"
 
@@ -6619,11 +6619,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMCPLinput6, mctr1);
   rot_mul(mcrotaMCPLinput7, mctr1, mcrotrMCPLinput7);
   mctc1 = coords_set(
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0);
 #line 6628 "./MCPL_merge.c"
   rot_transpose(mcrotaMCPLinput6, mctr1);
@@ -6639,23 +6639,23 @@ void mcinit(void) {
     /* Component MCPLinput8. */
   /* Setting parameters for component MCPLinput8. */
   SIG_MESSAGE("MCPLinput8 (Init:SetPar)");
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   if(mcipf8) strncpy(mccMCPLinput8_filename, mcipf8 ? mcipf8 : "", 16384); else mccMCPLinput8_filename[0]='\0';
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput8_polarisationuse = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput8_verbose = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput8_Emin = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput8_Emax = FLT_MAX;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput8_repeat_count = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput8_E_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput8_pos_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput8_dir_smear = 0;
 #line 6660 "./MCPL_merge.c"
 
@@ -6669,11 +6669,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMCPLinput7, mctr1);
   rot_mul(mcrotaMCPLinput8, mctr1, mcrotrMCPLinput8);
   mctc1 = coords_set(
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0);
 #line 6678 "./MCPL_merge.c"
   rot_transpose(mcrotaMCPLinput7, mctr1);
@@ -6689,23 +6689,23 @@ void mcinit(void) {
     /* Component MCPLinput9. */
   /* Setting parameters for component MCPLinput9. */
   SIG_MESSAGE("MCPLinput9 (Init:SetPar)");
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   if(mcipf9) strncpy(mccMCPLinput9_filename, mcipf9 ? mcipf9 : "", 16384); else mccMCPLinput9_filename[0]='\0';
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput9_polarisationuse = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput9_verbose = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput9_Emin = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput9_Emax = FLT_MAX;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput9_repeat_count = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput9_E_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput9_pos_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLinput9_dir_smear = 0;
 #line 6710 "./MCPL_merge.c"
 
@@ -6719,11 +6719,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMCPLinput8, mctr1);
   rot_mul(mcrotaMCPLinput9, mctr1, mcrotrMCPLinput9);
   mctc1 = coords_set(
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0);
 #line 6728 "./MCPL_merge.c"
   rot_transpose(mcrotaMCPLinput8, mctr1);
@@ -6750,11 +6750,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMCPLinput9, mctr1);
   rot_mul(mcrotaCalc, mctr1, mcrotrCalc);
   mctc1 = coords_set(
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0);
 #line 6759 "./MCPL_merge.c"
   rot_transpose(mcrotaMCPLinput9, mctr1);
@@ -6770,13 +6770,13 @@ void mcinit(void) {
     /* Component MCPLoutput. */
   /* Setting parameters for component MCPLoutput. */
   SIG_MESSAGE("MCPLoutput (Init:SetPar)");
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   if(mcipfout) strncpy(mccMCPLoutput_filename, mcipfout ? mcipfout : "", 16384); else mccMCPLoutput_filename[0]='\0';
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   if("") strncpy(mccMCPLoutput_userflagcomment, "" ? "" : "", 16384); else mccMCPLoutput_userflagcomment[0]='\0';
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLoutput_merge_mpi = 1;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   mccMCPLoutput_keep_mpi_unmerged = 0;
 #line 6781 "./MCPL_merge.c"
 
@@ -6790,11 +6790,11 @@ void mcinit(void) {
   rot_transpose(mcrotaCalc, mctr1);
   rot_mul(mcrotaMCPLoutput, mctr1, mcrotrMCPLoutput);
   mctc1 = coords_set(
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0,
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
     0);
 #line 6799 "./MCPL_merge.c"
   rot_transpose(mcrotaCalc, mctr1);
@@ -8186,7 +8186,7 @@ MCNUM minutes = mccOrigin_minutes;
 #line 8186 "./MCPL_merge.c"
 /* 'Origin=Progress_bar()' component instance extend code */
     SIG_MESSAGE("Origin (Trace:Extend)");
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   if (!ncount_set) {
     if (strcmp(MC_GETPAR(MCPLinput0,filename),"NULL")) ncount_set+= mcpl_hdr_nparticles(MC_GETPAR(MCPLinput0,inputfile));
     if (strcmp(MC_GETPAR(MCPLinput1,filename),"NULL")) ncount_set+= mcpl_hdr_nparticles(MC_GETPAR(MCPLinput0,inputfile));
@@ -10847,7 +10847,7 @@ RESTORE=1;
 #define mccompcurindex 12
 /* 'Calc=Arm()' component instance extend code */
     SIG_MESSAGE("Calc (Trace:Extend)");
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_merge/MCPL_merge.instr"
   SCATTER;
   printf("Reached last particle!\n");
   mcset_ncount(mcget_run_num());

@@ -1,10 +1,10 @@
 McStas simulation description file for Test_Pol_Bender.
-Date:    Wed Nov 20 01:18:00 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:59:18 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: Test_Pol_Bender
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender/Test_Pol_Bender.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender/Test_Pol_Bender.instr
   Parameters:  GUIDELENGTH(double) GUIDERADIUS(double) ENDOPTION(int) NSLITS(int) WSPACER(double) DRAWOPTION(int)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender/Test_Pol_Bender.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender/Test_Pol_Bender.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574241013
+  Seed: 1582689031
   Directory: 1
   Nodes: 10
   Param: GUIDELENGTH=1
@@ -31,16 +31,16 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:18:01 2019 (1574209081)
+  Date: Tue Feb 25 21:59:21 2020 (1582664361)
   type: array_1d(30)
-  Source: Test_Pol_Bender (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender/Test_Pol_Bender.instr)
+  Source: Test_Pol_Bender (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender/Test_Pol_Bender.instr)
   component: lamStart
   position: 0 0 0.1
   title: Wavelength monitor
   Ncount: 10000000
   filename: lambdaStart.dat
-  statistics: X0=14.9969; dX=8.38184;
-  signal: Min=0.0278569; Max=0.0559004; Mean=0.0538941;
+  statistics: X0=15.0026; dX=8.38024;
+  signal: Min=0.0278227; Max=0.0559921; Mean=0.0538941;
   values: 1.61682 0.000511285 1e+07
   xvar: L
   yvar: (I,I_err)
@@ -51,16 +51,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:18:01 2019 (1574209081)
+  Date: Tue Feb 25 21:59:21 2020 (1582664361)
   type: array_2d(40, 40)
-  Source: Test_Pol_Bender (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender/Test_Pol_Bender.instr)
+  Source: Test_Pol_Bender (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender/Test_Pol_Bender.instr)
   component: psdStart
   position: 0 0 1.15
   title: PSD monitor
   Ncount: 10000000
   filename: psdStart.dat
-  statistics: X0=0.000417885; dX=2.2146; Y0=0.000235707; dY=2.21405;
-  signal: Min=0; Max=0.00176477; Mean=0.00101051;
+  statistics: X0=0.000112883; dX=2.21474; Y0=0.000506624; dY=2.21473;
+  signal: Min=0; Max=0.00177605; Mean=0.00101051;
   values: 1.61682 0.000511285 1e+07
   xvar: X
   yvar: Y
@@ -73,17 +73,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:18:01 2019 (1574209081)
+  Date: Tue Feb 25 21:59:21 2020 (1582664361)
   type: array_1d(30)
-  Source: Test_Pol_Bender (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender/Test_Pol_Bender.instr)
+  Source: Test_Pol_Bender (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender/Test_Pol_Bender.instr)
   component: lamStopBender
   position: 0.0500582 0 2.19933
   title: Wavelength monitor
   Ncount: 10000000
   filename: lambdaStopBender.dat
-  statistics: X0=19.6178; dX=6.07122;
-  signal: Min=5.86628e-07; Max=0.0373655; Mean=0.0234757;
-  values: 0.704272 0.000318667 5.79464e+06
+  statistics: X0=19.6235; dX=6.06849;
+  signal: Min=5.36978e-07; Max=0.037456; Mean=0.0234981;
+  values: 0.704942 0.000318832 5.79954e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -93,17 +93,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:18:01 2019 (1574209081)
+  Date: Tue Feb 25 21:59:21 2020 (1582664361)
   type: array_2d(80, 80)
-  Source: Test_Pol_Bender (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender/Test_Pol_Bender.instr)
+  Source: Test_Pol_Bender (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender/Test_Pol_Bender.instr)
   component: psdBender
   position: 0.0500582 0 2.19933
   title: PSD monitor
   Ncount: 10000000
   filename: psdBender.dat
-  statistics: X0=-0.0847441; dX=2.2734; Y0=0.000342423; dY=2.40334;
-  signal: Min=0; Max=0.000595912; Mean=0.000110043;
-  values: 0.704272 0.000318667 5.79464e+06
+  statistics: X0=-0.0837813; dX=2.27275; Y0=-0.000244398; dY=2.40399;
+  signal: Min=0; Max=0.000597609; Mean=0.000110147;
+  values: 0.704942 0.000318832 5.79954e+06
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -115,17 +115,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:18:01 2019 (1574209081)
+  Date: Tue Feb 25 21:59:21 2020 (1582664361)
   type: array_2d(30, 41)
-  Source: Test_Pol_Bender (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender/Test_Pol_Bender.instr)
+  Source: Test_Pol_Bender (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender/Test_Pol_Bender.instr)
   component: pollambdaMonitorY
   position: 0.05495 0 2.24808
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: pollambdaMonY.data
-  statistics: X0=19.6178; dX=6.07122; Y0=0.0710327; dY=0.234477;
-  signal: Min=0; Max=0.0373655; Mean=0.000572579;
-  values: 0.704272 0.000318667 5.79464e+06
+  statistics: X0=19.6235; dX=6.06849; Y0=0.0710185; dY=0.234446;
+  signal: Min=0; Max=0.037456; Mean=0.000573124;
+  values: 0.704942 0.000318832 5.79954e+06
   xvar: Wavelength
   yvar: Polarisation
   xlabel: Wavelength [AA]
@@ -137,17 +137,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:18:01 2019 (1574209081)
+  Date: Tue Feb 25 21:59:21 2020 (1582664361)
   type: array_1d(30)
-  Source: Test_Pol_Bender (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender/Test_Pol_Bender.instr)
+  Source: Test_Pol_Bender (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender/Test_Pol_Bender.instr)
   component: meanpollambdaMonitorY
   position: 0.05495 0 2.24808
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: meanpollambdaMonY.data
-  statistics: X0=6.42332; dX=3.57331;
-  signal: Min=1.79925e-06; Max=5.84804; Mean=2.04076;
-  values: 61.2227 0.290608 5.79464e+06
+  statistics: X0=6.1711; dX=3.68975;
+  signal: Min=1.79078e-06; Max=6.43862; Mean=2.13846;
+  values: 64.1539 0.211257 5.79954e+06
   xvar: Wavelength
   yvar: (I,I_err)
   xlabel: Wavelength [AA]

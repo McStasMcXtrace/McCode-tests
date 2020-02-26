@@ -1,11 +1,25 @@
-      [1574207019.798512] [n-62-23-6:9242 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3373.88
-[1574207019.799925] [n-62-23-6:9242 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207019.799928] [n-62-23-6:9242 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207019.801901] [n-62-23-6:9242 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207019.801904] [n-62-23-6:9242 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-begin instrument: MCPL_filter_energy
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL2Mantid_flat/MCPL2Mantid_flat.instr
+INFO: No output directory specified (--dir)
+INFO: Using directory: "MCPL2Mantid_flat_20200225_205855"
+INFO: Regenerating c-file: MCPL2Mantid_flat.c
+CFLAGS= -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
+      INFO: Recompiling: ./MCPL2Mantid_flat.out
+INFO: ===
+[n-62-23-14:05211] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:05211] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582660739.117147] [n-62-23-14:5210 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3376.44
+[1582660739.118755] [n-62-23-14:5210 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582660739.118759] [n-62-23-14:5210 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1582660739.121282] [n-62-23-14:5210 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582660739.121286] [n-62-23-14:5210 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+begin instrument: MCPL2Mantid_flat
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL2Mantid_flat/MCPL2Mantid_flat.instr
   Parameters:  MCPLfile(string) sourceX(double) sourceY(double) sourceZ(double) sampleX(double) sampleY(double) sampleZ(double) detectorX(double) detectorY(double) detectorZ(double) detrotX(double) detrotY(double) detrotZ(double) xwidth(double) yheight(double) xbins(int) ybins(int)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +28,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL2Mantid_flat/MCPL2Mantid_flat.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL2Mantid_flat/MCPL2Mantid_flat.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1574216261
+  Seed: 1582665949
   Directory: .
   Param: MCPLfile=my.mcpl.gz
   Param: sourceX=0
@@ -40,15 +54,3 @@ begin simulation: .
   Param: ybins=128
 end simulation
 info!
-INFO: No output directory specified (--dir)
-INFO: Using directory: "MCPL2Mantid_flat_20191120_004335"
-INFO: Regenerating c-file: MCPL2Mantid_flat.c
-CFLAGS= -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
-INFO: Recompiling: ./MCPL2Mantid_flat.out
-INFO: ===
---------------------------------------------------------------------------
-Initialization of MXM library failed.
-
-  Error: Input/output error
-
---------------------------------------------------------------------------

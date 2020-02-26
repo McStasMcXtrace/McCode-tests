@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr (Union_knot)
- * Date:       Wed Nov 20 00:56:12 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr (Union_knot)
+ * Date:       Tue Feb 25 21:11:14 2020
  * File:       ./Union_test_mesh.c
  * Compile:    cc -o Union_knot.out ./Union_test_mesh.c  -I@MCCODE_LIB@/share/
  * CFLAGS= -I@MCCODE_LIB@/share/
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Union_knot";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -5769,7 +5769,7 @@ struct pointer_to_1d_coords_list shell_points(struct geometry_struct *geometry,i
 	double *v1_z = geometry->geometry_parameters.p_mesh_storage->v1_z;
 	double *v2_x = geometry->geometry_parameters.p_mesh_storage->v2_x;
 	double *v2_y = geometry->geometry_parameters.p_mesh_storage->v2_y;
-	double *v2_z= geometry->geometry_parameters.p_mesh_storage->v2_z;
+	double *v2_z = geometry->geometry_parameters.p_mesh_storage->v2_z;
 	double *v3_x = geometry->geometry_parameters.p_mesh_storage->v3_x;
 	double *v3_y = geometry->geometry_parameters.p_mesh_storage->v3_y;
 	double *v3_z = geometry->geometry_parameters.p_mesh_storage->v3_z;
@@ -5842,7 +5842,9 @@ struct pointer_to_1d_coords_list shell_points(struct geometry_struct *geometry,i
 			//printf("\n Added a point [%f,%f,%f] ",this_vert.x,this_vert.y,this_vert.z);
 		}
 	}
+    
   printf("\n test is there to high j? j = %i, number_of_points_in_array = %i , lenght of array = %i ",j,number_of_points_in_array,3*n_facets * sizeof(Coords));
+  j = number_of_points_in_array - 1; // Last legal index, currently j is out of bounds.
   printf("\n test= [%f,%f,%f]",mesh_shell_array.elements[j].x ,mesh_shell_array.elements[j].y,mesh_shell_array.elements[j].z);
   
   mesh_shell_array.num_elements = number_of_points_in_array;
@@ -5853,7 +5855,7 @@ struct pointer_to_1d_coords_list shell_points(struct geometry_struct *geometry,i
   return mesh_shell_array;
 }
 
-#line 5856 "./Union_test_mesh.c"
+#line 5858 "./Union_test_mesh.c"
 
 /* Shared user declarations for all components 'Union_logger_2D_space'. */
 #line 82 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/union/Union_logger_2D_space.comp"
@@ -6223,7 +6225,7 @@ void free2Ddouble_2DS(double** ptr_array) {
     free(ptr_array);
 }
 
-#line 6226 "./Union_test_mesh.c"
+#line 6228 "./Union_test_mesh.c"
 
 /* Shared user declarations for all components 'Union_master'. */
 #line 54 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/union/Union_master.comp"
@@ -6236,7 +6238,7 @@ void free2Ddouble_2DS(double** ptr_array) {
 #endif
 // TEST
 struct logger_with_data_struct loggers_with_data_array;
-#line 6239 "./Union_test_mesh.c"
+#line 6241 "./Union_test_mesh.c"
 
 /* Shared user declarations for all components 'PSD_monitor'. */
 #line 57 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../monitors/PSD_monitor.comp"
@@ -6322,7 +6324,7 @@ void destroy_darr3d(DArray3d a){
 }
 #endif
 
-#line 6325 "./Union_test_mesh.c"
+#line 6327 "./Union_test_mesh.c"
 
 /* Instrument parameters. */
 MCNUM mciprot_x;
@@ -6539,7 +6541,7 @@ struct scattering_process_struct This_process;
 struct Incoherent_physics_storage_struct Incoherent_storage;
 double effective_my_scattering;
 
-#line 6542 "./Union_test_mesh.c"
+#line 6544 "./Union_test_mesh.c"
 #undef interact_fraction
 #undef unit_cell_volume
 #undef packing_factor
@@ -6588,7 +6590,7 @@ struct pointer_to_1d_int_list accepted_processes = {0,NULL};
 	#define UNION_LOGGER_DECLARE dummy
 #endif
 
-#line 6591 "./Union_test_mesh.c"
+#line 6593 "./Union_test_mesh.c"
 #undef absorber
 #undef my_absorption
 #undef process_string
@@ -6623,7 +6625,7 @@ double IntermediateCnts;
 time_t StartTime;
 time_t EndTime;
 time_t CurrentTime;
-#line 6626 "./Union_test_mesh.c"
+#line 6628 "./Union_test_mesh.c"
 #undef minutes
 #undef flag_save
 #undef percent
@@ -6662,7 +6664,7 @@ time_t CurrentTime;
 #define flux mccsource_flux
 #line 69 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../sources/Source_div.comp"
 double thetah, thetav, sigmah, sigmav, tan_h, tan_v, p_init, dist, focus_xw, focus_yh;
-#line 6665 "./Union_test_mesh.c"
+#line 6667 "./Union_test_mesh.c"
 #undef flux
 #undef gauss
 #undef dlambda
@@ -6712,7 +6714,7 @@ double thetah, thetav, sigmah, sigmav, tan_h, tan_v, p_init, dist, focus_xw, foc
 #define mask_string mccmesh1_mask_string
 #define mask_setting mccmesh1_mask_setting
 #define number_of_activations mccmesh1_number_of_activations
-#line 407 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/union/Union_mesh.comp"
+#line 409 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/union/Union_mesh.comp"
 // Needed for transport to the main component
 
 //
@@ -6731,7 +6733,7 @@ int material_index;
 
 struct Volume_struct this_mesh_volume;
 struct mesh_storage this_mesh_storage;
-#line 6734 "./Union_test_mesh.c"
+#line 6736 "./Union_test_mesh.c"
 #undef number_of_activations
 #undef mask_setting
 #undef mask_string
@@ -6782,7 +6784,7 @@ struct mesh_storage this_mesh_storage;
 #define mask_string mccmesh2_mask_string
 #define mask_setting mccmesh2_mask_setting
 #define number_of_activations mccmesh2_number_of_activations
-#line 407 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/union/Union_mesh.comp"
+#line 409 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/union/Union_mesh.comp"
 // Needed for transport to the main component
 
 //
@@ -6801,7 +6803,7 @@ int material_index;
 
 struct Volume_struct this_mesh_volume;
 struct mesh_storage this_mesh_storage;
-#line 6804 "./Union_test_mesh.c"
+#line 6806 "./Union_test_mesh.c"
 #undef number_of_activations
 #undef mask_setting
 #undef mask_string
@@ -6882,7 +6884,7 @@ struct Volume_struct *target_volume;
 
 char temp_string[2];
 
-#line 6885 "./Union_test_mesh.c"
+#line 6887 "./Union_test_mesh.c"
 #undef logger_conditional_extend_index
 #undef order_volume_process
 #undef order_volume
@@ -6966,7 +6968,7 @@ struct Volume_struct *target_volume;
 
 char temp_string[2];
 
-#line 6969 "./Union_test_mesh.c"
+#line 6971 "./Union_test_mesh.c"
 #undef logger_conditional_extend_index
 #undef order_volume_process
 #undef order_volume
@@ -7050,7 +7052,7 @@ struct Volume_struct *target_volume;
 
 char temp_string[2];
 
-#line 7053 "./Union_test_mesh.c"
+#line 7055 "./Union_test_mesh.c"
 #undef logger_conditional_extend_index
 #undef order_volume_process
 #undef order_volume
@@ -7334,7 +7336,7 @@ char temp_string[2];
   struct focus_data_struct temporary_focus_data;
   int focus_data_index;
   
-#line 7337 "./Union_test_mesh.c"
+#line 7339 "./Union_test_mesh.c"
 #undef inherit_number_of_scattering_events
 #undef enable_conditionals
 #undef history_limit
@@ -7473,7 +7475,7 @@ char temp_string[2];
   DArray2d PSD_N;
   DArray2d PSD_p;
   DArray2d PSD_p2;
-#line 7476 "./Union_test_mesh.c"
+#line 7478 "./Union_test_mesh.c"
 #undef restore_neutron
 #undef yheight
 #undef xwidth
@@ -7544,35 +7546,35 @@ void mcinit(void) {
     /* Component test_incoherent. */
   /* Setting parameters for component test_incoherent. */
   SIG_MESSAGE("test_incoherent (Init:SetPar)");
-#line 36 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 36 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcctest_incoherent_sigma = 5.08;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcctest_incoherent_f_QE = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcctest_incoherent_gamma = 0;
-#line 36 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 36 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcctest_incoherent_packing_factor = 1;
-#line 36 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 36 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcctest_incoherent_unit_cell_volume = 13.827;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcctest_incoherent_interact_fraction = -1;
-#line 7559 "./Union_test_mesh.c"
+#line 7561 "./Union_test_mesh.c"
 
   SIG_MESSAGE("test_incoherent (Init:Place/Rotate)");
   rot_set_rotation(mcrotatest_incoherent,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 7566 "./Union_test_mesh.c"
+#line 7568 "./Union_test_mesh.c"
   rot_copy(mcrotrtest_incoherent, mcrotatest_incoherent);
   mcposatest_incoherent = coords_set(
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0,
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0,
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0);
-#line 7575 "./Union_test_mesh.c"
+#line 7577 "./Union_test_mesh.c"
   mctc1 = coords_neg(mcposatest_incoherent);
   mcposrtest_incoherent = rot_apply(mcrotatest_incoherent, mctc1);
   mcDEBUG_COMPONENT("test_incoherent", mcposatest_incoherent, mcrotatest_incoherent)
@@ -7583,30 +7585,30 @@ void mcinit(void) {
     /* Component test. */
   /* Setting parameters for component test. */
   SIG_MESSAGE("test (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if("test_incoherent") strncpy(mcctest_process_string, "test_incoherent" ? "test_incoherent" : "", 16384); else mcctest_process_string[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcctest_my_absorption = 100;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcctest_absorber = 0;
-#line 7592 "./Union_test_mesh.c"
+#line 7594 "./Union_test_mesh.c"
 
   SIG_MESSAGE("test (Init:Place/Rotate)");
   rot_set_rotation(mcrotatest,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 7599 "./Union_test_mesh.c"
+#line 7601 "./Union_test_mesh.c"
   rot_transpose(mcrotatest_incoherent, mctr1);
   rot_mul(mcrotatest, mctr1, mcrotrtest);
   mcposatest = coords_set(
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0,
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0,
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0);
-#line 7609 "./Union_test_mesh.c"
+#line 7611 "./Union_test_mesh.c"
   mctc1 = coords_sub(mcposatest_incoherent, mcposatest);
   mcposrtest = rot_apply(mcrotatest, mctc1);
   mcDEBUG_COMPONENT("test", mcposatest, mcrotatest)
@@ -7617,32 +7619,32 @@ void mcinit(void) {
     /* Component a1. */
   /* Setting parameters for component a1. */
   SIG_MESSAGE("a1 (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if("NULL") strncpy(mcca1_profile, "NULL" ? "NULL" : "", 16384); else mcca1_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcca1_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcca1_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcca1_minutes = 0;
-#line 7628 "./Union_test_mesh.c"
+#line 7630 "./Union_test_mesh.c"
 
   SIG_MESSAGE("a1 (Init:Place/Rotate)");
   rot_set_rotation(mcrotaa1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 7635 "./Union_test_mesh.c"
+#line 7637 "./Union_test_mesh.c"
   rot_transpose(mcrotatest, mctr1);
   rot_mul(mcrotaa1, mctr1, mcrotra1);
   mcposaa1 = coords_set(
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0,
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0,
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0);
-#line 7645 "./Union_test_mesh.c"
+#line 7647 "./Union_test_mesh.c"
   mctc1 = coords_sub(mcposatest, mcposaa1);
   mcposra1 = rot_apply(mcrotaa1, mctc1);
   mcDEBUG_COMPONENT("a1", mcposaa1, mcrotaa1)
@@ -7653,45 +7655,45 @@ void mcinit(void) {
     /* Component source. */
   /* Setting parameters for component source. */
   SIG_MESSAGE("source (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccsource_xwidth = 0.12;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccsource_yheight = 0.12;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccsource_focus_aw = 1;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccsource_focus_ah = 1;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccsource_E0 = 0.0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccsource_dE = 0.0;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccsource_lambda0 = 4.8621;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccsource_dlambda = 0.001;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccsource_gauss = 0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccsource_flux = 1E9;
-#line 7676 "./Union_test_mesh.c"
+#line 7678 "./Union_test_mesh.c"
 
   SIG_MESSAGE("source (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 7683 "./Union_test_mesh.c"
+#line 7685 "./Union_test_mesh.c"
   rot_mul(mctr1, mcrotaa1, mcrotasource);
   rot_transpose(mcrotaa1, mctr1);
   rot_mul(mcrotasource, mctr1, mcrotrsource);
   mctc1 = coords_set(
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0,
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0,
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0);
-#line 7694 "./Union_test_mesh.c"
+#line 7696 "./Union_test_mesh.c"
   rot_transpose(mcrotaa1, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposasource = coords_add(mcposaa1, mctc2);
@@ -7705,62 +7707,62 @@ void mcinit(void) {
     /* Component mesh1. */
   /* Setting parameters for component mesh1. */
   SIG_MESSAGE("mesh1 (Init:SetPar)");
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if("knot.stl") strncpy(mccmesh1_filename, "knot.stl" ? "knot.stl" : "", 16384); else mccmesh1_filename[0]='\0';
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if("test") strncpy(mccmesh1_material_string, "test" ? "test" : "", 16384); else mccmesh1_material_string[0]='\0';
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh1_priority = 100;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh1_visualize = 1;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh1_target_index = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh1_target_x = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh1_target_y = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh1_target_z = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh1_focus_aw = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh1_focus_ah = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh1_focus_xw = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh1_focus_xh = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh1_focus_r = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh1_p_interact = 0.3;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if(0) strncpy(mccmesh1_mask_string, 0 ? 0 : "", 16384); else mccmesh1_mask_string[0]='\0';
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if(0) strncpy(mccmesh1_mask_setting, 0 ? 0 : "", 16384); else mccmesh1_mask_setting[0]='\0';
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh1_number_of_activations = 1;
-#line 7742 "./Union_test_mesh.c"
+#line 7744 "./Union_test_mesh.c"
 
   SIG_MESSAGE("mesh1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     (mciprot_x)*DEG2RAD,
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     (mciprot_y)*DEG2RAD,
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     (0)*DEG2RAD);
-#line 7752 "./Union_test_mesh.c"
+#line 7754 "./Union_test_mesh.c"
   rot_mul(mctr1, mcrotaa1, mcrotamesh1);
   rot_transpose(mcrotasource, mctr1);
   rot_mul(mcrotamesh1, mctr1, mcrotrmesh1);
   mctc1 = coords_set(
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0,
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0,
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0.25);
-#line 7763 "./Union_test_mesh.c"
+#line 7765 "./Union_test_mesh.c"
   rot_transpose(mcrotaa1, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposamesh1 = coords_add(mcposaa1, mctc2);
@@ -7774,62 +7776,62 @@ void mcinit(void) {
     /* Component mesh2. */
   /* Setting parameters for component mesh2. */
   SIG_MESSAGE("mesh2 (Init:SetPar)");
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if("knot.stl") strncpy(mccmesh2_filename, "knot.stl" ? "knot.stl" : "", 16384); else mccmesh2_filename[0]='\0';
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if("test") strncpy(mccmesh2_material_string, "test" ? "test" : "", 16384); else mccmesh2_material_string[0]='\0';
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh2_priority = 101;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh2_visualize = 1;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh2_target_index = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh2_target_x = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh2_target_y = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh2_target_z = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh2_focus_aw = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh2_focus_ah = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh2_focus_xw = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh2_focus_xh = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh2_focus_r = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh2_p_interact = 0.3;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if(0) strncpy(mccmesh2_mask_string, 0 ? 0 : "", 16384); else mccmesh2_mask_string[0]='\0';
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if(0) strncpy(mccmesh2_mask_setting, 0 ? 0 : "", 16384); else mccmesh2_mask_setting[0]='\0';
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccmesh2_number_of_activations = 1;
-#line 7811 "./Union_test_mesh.c"
+#line 7813 "./Union_test_mesh.c"
 
   SIG_MESSAGE("mesh2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     (- mciprot_x)*DEG2RAD,
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     (- mciprot_y)*DEG2RAD,
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     (0)*DEG2RAD);
-#line 7821 "./Union_test_mesh.c"
+#line 7823 "./Union_test_mesh.c"
   rot_mul(mctr1, mcrotaa1, mcrotamesh2);
   rot_transpose(mcrotamesh1, mctr1);
   rot_mul(mcrotamesh2, mctr1, mcrotrmesh2);
   mctc1 = coords_set(
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0,
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0,
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0.05);
-#line 7832 "./Union_test_mesh.c"
+#line 7834 "./Union_test_mesh.c"
   rot_transpose(mcrotamesh1, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposamesh2 = coords_add(mcposamesh1, mctc2);
@@ -7843,51 +7845,51 @@ void mcinit(void) {
     /* Component logger_space_all. */
   /* Setting parameters for component logger_space_all. */
   SIG_MESSAGE("logger_space_all (Init:SetPar)");
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if("NULL") strncpy(mcclogger_space_all_target_geometry, "NULL" ? "NULL" : "", 16384); else mcclogger_space_all_target_geometry[0]='\0';
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if("NULL") strncpy(mcclogger_space_all_target_process, "NULL" ? "NULL" : "", 16384); else mcclogger_space_all_target_process[0]='\0';
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcclogger_space_all_D1_min = -0.1;
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcclogger_space_all_D1_max = 0.1;
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcclogger_space_all_D2_min = -0.1;
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcclogger_space_all_D2_max = 0.1;
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if("z") strncpy(mcclogger_space_all_D_direction_1, "z" ? "z" : "", 16384); else mcclogger_space_all_D_direction_1[0]='\0';
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if("x") strncpy(mcclogger_space_all_D_direction_2, "x" ? "x" : "", 16384); else mcclogger_space_all_D_direction_2[0]='\0';
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if("space_horizontal.dat") strncpy(mcclogger_space_all_filename, "space_horizontal.dat" ? "space_horizontal.dat" : "", 16384); else mcclogger_space_all_filename[0]='\0';
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcclogger_space_all_order_total = 0;
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcclogger_space_all_order_volume = 0;
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcclogger_space_all_order_volume_process = 0;
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcclogger_space_all_logger_conditional_extend_index = -1;
-#line 7872 "./Union_test_mesh.c"
+#line 7874 "./Union_test_mesh.c"
 
   SIG_MESSAGE("logger_space_all (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 7879 "./Union_test_mesh.c"
+#line 7881 "./Union_test_mesh.c"
   rot_mul(mctr1, mcrotaa1, mcrotalogger_space_all);
   rot_transpose(mcrotamesh2, mctr1);
   rot_mul(mcrotalogger_space_all, mctr1, mcrotrlogger_space_all);
   mctc1 = coords_set(
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0,
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0,
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0.25);
-#line 7890 "./Union_test_mesh.c"
+#line 7892 "./Union_test_mesh.c"
   rot_transpose(mcrotaa1, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposalogger_space_all = coords_add(mcposaa1, mctc2);
@@ -7901,51 +7903,51 @@ void mcinit(void) {
     /* Component logger_space_all2. */
   /* Setting parameters for component logger_space_all2. */
   SIG_MESSAGE("logger_space_all2 (Init:SetPar)");
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if("NULL") strncpy(mcclogger_space_all2_target_geometry, "NULL" ? "NULL" : "", 16384); else mcclogger_space_all2_target_geometry[0]='\0';
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if("NULL") strncpy(mcclogger_space_all2_target_process, "NULL" ? "NULL" : "", 16384); else mcclogger_space_all2_target_process[0]='\0';
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcclogger_space_all2_D1_min = -0.1;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcclogger_space_all2_D1_max = 0.1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcclogger_space_all2_D2_min = -0.1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcclogger_space_all2_D2_max = 0.1;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if("z") strncpy(mcclogger_space_all2_D_direction_1, "z" ? "z" : "", 16384); else mcclogger_space_all2_D_direction_1[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if("y") strncpy(mcclogger_space_all2_D_direction_2, "y" ? "y" : "", 16384); else mcclogger_space_all2_D_direction_2[0]='\0';
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if("space_vertical.dat") strncpy(mcclogger_space_all2_filename, "space_vertical.dat" ? "space_vertical.dat" : "", 16384); else mcclogger_space_all2_filename[0]='\0';
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcclogger_space_all2_order_total = 0;
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcclogger_space_all2_order_volume = 0;
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcclogger_space_all2_order_volume_process = 0;
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcclogger_space_all2_logger_conditional_extend_index = -1;
-#line 7930 "./Union_test_mesh.c"
+#line 7932 "./Union_test_mesh.c"
 
   SIG_MESSAGE("logger_space_all2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 7937 "./Union_test_mesh.c"
+#line 7939 "./Union_test_mesh.c"
   rot_mul(mctr1, mcrotaa1, mcrotalogger_space_all2);
   rot_transpose(mcrotalogger_space_all, mctr1);
   rot_mul(mcrotalogger_space_all2, mctr1, mcrotrlogger_space_all2);
   mctc1 = coords_set(
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0,
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0,
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0.25);
-#line 7948 "./Union_test_mesh.c"
+#line 7950 "./Union_test_mesh.c"
   rot_transpose(mcrotaa1, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposalogger_space_all2 = coords_add(mcposaa1, mctc2);
@@ -7959,51 +7961,51 @@ void mcinit(void) {
     /* Component logger_space_all3. */
   /* Setting parameters for component logger_space_all3. */
   SIG_MESSAGE("logger_space_all3 (Init:SetPar)");
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if("NULL") strncpy(mcclogger_space_all3_target_geometry, "NULL" ? "NULL" : "", 16384); else mcclogger_space_all3_target_geometry[0]='\0';
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if("NULL") strncpy(mcclogger_space_all3_target_process, "NULL" ? "NULL" : "", 16384); else mcclogger_space_all3_target_process[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcclogger_space_all3_D1_min = -0.1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcclogger_space_all3_D1_max = 0.1;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcclogger_space_all3_D2_min = -0.1;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcclogger_space_all3_D2_max = 0.1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if("x") strncpy(mcclogger_space_all3_D_direction_1, "x" ? "x" : "", 16384); else mcclogger_space_all3_D_direction_1[0]='\0';
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if("y") strncpy(mcclogger_space_all3_D_direction_2, "y" ? "y" : "", 16384); else mcclogger_space_all3_D_direction_2[0]='\0';
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if("space_otherOne.dat") strncpy(mcclogger_space_all3_filename, "space_otherOne.dat" ? "space_otherOne.dat" : "", 16384); else mcclogger_space_all3_filename[0]='\0';
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcclogger_space_all3_order_total = 0;
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcclogger_space_all3_order_volume = 0;
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcclogger_space_all3_order_volume_process = 0;
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mcclogger_space_all3_logger_conditional_extend_index = -1;
-#line 7988 "./Union_test_mesh.c"
+#line 7990 "./Union_test_mesh.c"
 
   SIG_MESSAGE("logger_space_all3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 7995 "./Union_test_mesh.c"
+#line 7997 "./Union_test_mesh.c"
   rot_mul(mctr1, mcrotaa1, mcrotalogger_space_all3);
   rot_transpose(mcrotalogger_space_all2, mctr1);
   rot_mul(mcrotalogger_space_all3, mctr1, mcrotrlogger_space_all3);
   mctc1 = coords_set(
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0,
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0,
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0.25);
-#line 8006 "./Union_test_mesh.c"
+#line 8008 "./Union_test_mesh.c"
   rot_transpose(mcrotaa1, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposalogger_space_all3 = coords_add(mcposaa1, mctc2);
@@ -8017,36 +8019,36 @@ void mcinit(void) {
     /* Component knot. */
   /* Setting parameters for component knot. */
   SIG_MESSAGE("knot (Init:SetPar)");
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccknot_allow_inside_start = 1;
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccknot_history_limit = 1000000;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccknot_enable_conditionals = 1;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccknot_inherit_number_of_scattering_events = 0;
-#line 8028 "./Union_test_mesh.c"
+#line 8030 "./Union_test_mesh.c"
 
   SIG_MESSAGE("knot (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     (30)*DEG2RAD,
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     (0)*DEG2RAD,
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     (0)*DEG2RAD);
-#line 8038 "./Union_test_mesh.c"
+#line 8040 "./Union_test_mesh.c"
   rot_mul(mctr1, mcrotaa1, mcrotaknot);
   rot_transpose(mcrotalogger_space_all3, mctr1);
   rot_mul(mcrotaknot, mctr1, mcrotrknot);
   mctc1 = coords_set(
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0,
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0,
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0.15);
-#line 8049 "./Union_test_mesh.c"
+#line 8051 "./Union_test_mesh.c"
   rot_transpose(mcrotaa1, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaknot = coords_add(mcposaa1, mctc2);
@@ -8060,45 +8062,45 @@ void mcinit(void) {
     /* Component psd. */
   /* Setting parameters for component psd. */
   SIG_MESSAGE("psd (Init:SetPar)");
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccpsd_nx = 200;
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccpsd_ny = 200;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   if("PSD") strncpy(mccpsd_filename, "PSD" ? "PSD" : "", 16384); else mccpsd_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccpsd_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccpsd_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccpsd_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccpsd_ymax = 0.05;
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccpsd_xwidth = 0.1;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccpsd_yheight = 0.1;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
   mccpsd_restore_neutron = 1;
-#line 8083 "./Union_test_mesh.c"
+#line 8085 "./Union_test_mesh.c"
 
   SIG_MESSAGE("psd (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 8090 "./Union_test_mesh.c"
+#line 8092 "./Union_test_mesh.c"
   rot_mul(mctr1, mcrotaa1, mcrotapsd);
   rot_transpose(mcrotaknot, mctr1);
   rot_mul(mcrotapsd, mctr1, mcrotrpsd);
   mctc1 = coords_set(
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0,
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0,
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_mesh/Union_test_mesh.instr"
     0.75);
-#line 8101 "./Union_test_mesh.c"
+#line 8103 "./Union_test_mesh.c"
   rot_transpose(mcrotaa1, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposapsd = coords_add(mcposaa1, mctc2);
@@ -8151,7 +8153,7 @@ void mcinit(void) {
   global_process_element.p_scattering_process = &This_process;
   add_element_to_process_list(&global_process_list,global_process_element);
 }
-#line 8154 "./Union_test_mesh.c"
+#line 8156 "./Union_test_mesh.c"
 #undef interact_fraction
 #undef unit_cell_volume
 #undef packing_factor
@@ -8238,7 +8240,7 @@ void mcinit(void) {
   global_material_element.physics = &this_material; // Would be nicer if this material was a pointer, now we have the (small) data two places
   add_element_to_material_list(&global_material_list,global_material_element);
 }
-#line 8241 "./Union_test_mesh.c"
+#line 8243 "./Union_test_mesh.c"
 #undef absorber
 #undef my_absorption
 #undef process_string
@@ -8275,7 +8277,7 @@ fprintf(stdout, "[%s] Initialize\n", mcinstrument_name);
     percent=1e5*100.0/mcget_ncount();
   }
 }
-#line 8278 "./Union_test_mesh.c"
+#line 8280 "./Union_test_mesh.c"
 #undef minutes
 #undef flag_save
 #undef percent
@@ -8359,7 +8361,7 @@ sigmah = DEG2RAD*focus_aw/(sqrt(8.0*log(2.0)));
   else if (dE)
     p_init *= 2*dE;
 }
-#line 8362 "./Union_test_mesh.c"
+#line 8364 "./Union_test_mesh.c"
 #undef flux
 #undef gauss
 #undef dlambda
@@ -8410,7 +8412,7 @@ sigmah = DEG2RAD*focus_aw/(sqrt(8.0*log(2.0)));
 #define mask_string mccmesh1_mask_string
 #define mask_setting mccmesh1_mask_setting
 #define number_of_activations mccmesh1_number_of_activations
-#line 428 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/union/Union_mesh.comp"
+#line 430 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/union/Union_mesh.comp"
 {
 // Initializes the focusing system for this volume including input sanitation.
 focus_initialize(&this_mesh_volume.geometry, POS_A_COMP_INDEX(INDEX_CURRENT_COMP+target_index), POS_A_CURRENT_COMP, ROT_A_CURRENT_COMP, target_index, target_x, target_y, target_z, focus_aw, focus_ah, focus_xw, focus_xh, focus_r, NAME_CURRENT_COMP);
@@ -8658,7 +8660,7 @@ if (mask_string && strlen(mask_string) && strcmp(mask_string, "NULL") && strcmp(
         */
 		
 	}
-	printf("\n TEST inf v1 is long enough! i = %i , n_facets = %i\n",i,n_facets);
+	printf("\n TEST inf v1 is long enough! i = %i , n_facets = %i, counter = %i \n",i,n_facets,counter);
 	
 	// Create bounding sphere using Ritter [https://en.wikipedia.org/wiki/Bounding_sphere#cite_note-Ritter1990-2]
 	//  Ritter, Jack (1990), "An efficient bounding sphere", in Glassner, Andrew S., Graphics Gems, San Diego, CA, US: Academic Press Professional, Inc., pp. 301–303, ISBN 0-12-286166-3
@@ -8811,7 +8813,7 @@ global_geometry_element.component_index = INDEX_CURRENT_COMP;
 global_geometry_element.Volume = &this_mesh_volume; // Would be nicer if this m was a pointer, now we have the (small) data two places
 add_element_to_geometry_list(&global_geometry_list,global_geometry_element);
 }
-#line 8814 "./Union_test_mesh.c"
+#line 8816 "./Union_test_mesh.c"
 #undef number_of_activations
 #undef mask_setting
 #undef mask_string
@@ -8863,7 +8865,7 @@ add_element_to_geometry_list(&global_geometry_list,global_geometry_element);
 #define mask_string mccmesh2_mask_string
 #define mask_setting mccmesh2_mask_setting
 #define number_of_activations mccmesh2_number_of_activations
-#line 428 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/union/Union_mesh.comp"
+#line 430 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/union/Union_mesh.comp"
 {
 // Initializes the focusing system for this volume including input sanitation.
 focus_initialize(&this_mesh_volume.geometry, POS_A_COMP_INDEX(INDEX_CURRENT_COMP+target_index), POS_A_CURRENT_COMP, ROT_A_CURRENT_COMP, target_index, target_x, target_y, target_z, focus_aw, focus_ah, focus_xw, focus_xh, focus_r, NAME_CURRENT_COMP);
@@ -9111,7 +9113,7 @@ if (mask_string && strlen(mask_string) && strcmp(mask_string, "NULL") && strcmp(
         */
 		
 	}
-	printf("\n TEST inf v1 is long enough! i = %i , n_facets = %i\n",i,n_facets);
+	printf("\n TEST inf v1 is long enough! i = %i , n_facets = %i, counter = %i \n",i,n_facets,counter);
 	
 	// Create bounding sphere using Ritter [https://en.wikipedia.org/wiki/Bounding_sphere#cite_note-Ritter1990-2]
 	//  Ritter, Jack (1990), "An efficient bounding sphere", in Glassner, Andrew S., Graphics Gems, San Diego, CA, US: Academic Press Professional, Inc., pp. 301–303, ISBN 0-12-286166-3
@@ -9264,7 +9266,7 @@ global_geometry_element.component_index = INDEX_CURRENT_COMP;
 global_geometry_element.Volume = &this_mesh_volume; // Would be nicer if this m was a pointer, now we have the (small) data two places
 add_element_to_geometry_list(&global_geometry_list,global_geometry_element);
 }
-#line 9267 "./Union_test_mesh.c"
+#line 9269 "./Union_test_mesh.c"
 #undef number_of_activations
 #undef mask_setting
 #undef mask_string
@@ -9499,7 +9501,7 @@ add_element_to_geometry_list(&global_geometry_list,global_geometry_element);
   
 
 }
-#line 9502 "./Union_test_mesh.c"
+#line 9504 "./Union_test_mesh.c"
 #undef logger_conditional_extend_index
 #undef order_volume_process
 #undef order_volume
@@ -9737,7 +9739,7 @@ add_element_to_geometry_list(&global_geometry_list,global_geometry_element);
   
 
 }
-#line 9740 "./Union_test_mesh.c"
+#line 9742 "./Union_test_mesh.c"
 #undef logger_conditional_extend_index
 #undef order_volume_process
 #undef order_volume
@@ -9975,7 +9977,7 @@ add_element_to_geometry_list(&global_geometry_list,global_geometry_element);
   
 
 }
-#line 9978 "./Union_test_mesh.c"
+#line 9980 "./Union_test_mesh.c"
 #undef logger_conditional_extend_index
 #undef order_volume_process
 #undef order_volume
@@ -10223,7 +10225,7 @@ add_element_to_geometry_list(&global_geometry_list,global_geometry_element);
           printf("Volume.name         [%d]: %s \n",iterate,global_geometry_list.elements[iterate].Volume->name);
           if (global_geometry_list.elements[iterate].Volume->geometry.is_mask_volume == 0) {
           printf("Volume.p_physics.is_vacuum           [%d]: %d \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->is_vacuum);
-          printf("Volume.p_physics.my_absoprtion       [%d]: %f \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->my_a);
+          printf("Volume.p_physics.my_absorption       [%d]: %f \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->my_a);
           printf("Volume.p_physics.number of processes [%d]: %d \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->number_of_processes);
           }
           printf("Volume.geometry.shape                [%d]: %s \n",iterate,global_geometry_list.elements[iterate].Volume->geometry.shape);
@@ -10790,7 +10792,7 @@ add_element_to_geometry_list(&global_geometry_list,global_geometry_element);
   )
 
 }
-#line 10793 "./Union_test_mesh.c"
+#line 10795 "./Union_test_mesh.c"
 #undef inherit_number_of_scattering_events
 #undef enable_conditionals
 #undef history_limit
@@ -10951,7 +10953,7 @@ add_element_to_geometry_list(&global_geometry_list,global_geometry_element);
     }
   }
 }
-#line 10954 "./Union_test_mesh.c"
+#line 10956 "./Union_test_mesh.c"
 #undef restore_neutron
 #undef yheight
 #undef xwidth
@@ -11355,7 +11357,7 @@ MCNUM minutes = mcca1_minutes;
     if (flag_save) mcsave(NULL);
   }
 }
-#line 11358 "./Union_test_mesh.c"
+#line 11360 "./Union_test_mesh.c"
 }   /* End of a1=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -11533,7 +11535,7 @@ MCNUM flux = mccsource_flux;
   vy = tan_v * vz;
   vx = tan_h * vz;
 }
-#line 11536 "./Union_test_mesh.c"
+#line 11538 "./Union_test_mesh.c"
 }   /* End of source=Source_div() SETTING parameter declarations. */
 #undef focus_yh
 #undef focus_xw
@@ -11670,11 +11672,11 @@ MCNUM p_interact = mccmesh1_p_interact;
 char* mask_string = mccmesh1_mask_string;
 char* mask_setting = mccmesh1_mask_setting;
 MCNUM number_of_activations = mccmesh1_number_of_activations;
-#line 830 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/union/Union_mesh.comp"
+#line 832 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/union/Union_mesh.comp"
 {
 dummy = 1;
 }
-#line 11677 "./Union_test_mesh.c"
+#line 11679 "./Union_test_mesh.c"
 }   /* End of mesh1=Union_mesh() SETTING parameter declarations. */
 #undef this_mesh_storage
 #undef global_geometry_element
@@ -11805,11 +11807,11 @@ MCNUM p_interact = mccmesh2_p_interact;
 char* mask_string = mccmesh2_mask_string;
 char* mask_setting = mccmesh2_mask_setting;
 MCNUM number_of_activations = mccmesh2_number_of_activations;
-#line 830 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/union/Union_mesh.comp"
+#line 832 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/union/Union_mesh.comp"
 {
 dummy = 1;
 }
-#line 11812 "./Union_test_mesh.c"
+#line 11814 "./Union_test_mesh.c"
 }   /* End of mesh2=Union_mesh() SETTING parameter declarations. */
 #undef this_mesh_storage
 #undef global_geometry_element
@@ -13516,7 +13518,7 @@ MCNUM inherit_number_of_scattering_events = mccknot_inherit_number_of_scattering
   
   
 }
-#line 13519 "./Union_test_mesh.c"
+#line 13521 "./Union_test_mesh.c"
 }   /* End of knot=Union_master() SETTING parameter declarations. */
 #undef focus_data_index
 #undef temporary_focus_data
@@ -13759,7 +13761,7 @@ MCNUM restore_neutron = mccpsd_restore_neutron;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 13762 "./Union_test_mesh.c"
+#line 13764 "./Union_test_mesh.c"
 }   /* End of psd=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -13871,7 +13873,7 @@ MCNUM minutes = mcca1_minutes;
 
   }
 }
-#line 13874 "./Union_test_mesh.c"
+#line 13876 "./Union_test_mesh.c"
 }   /* End of a1=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -13925,7 +13927,7 @@ DETECTOR_OUT_2D(
  this_storage.Detector_2D.Filename);
 
 }
-#line 13928 "./Union_test_mesh.c"
+#line 13930 "./Union_test_mesh.c"
 }   /* End of logger_space_all=Union_logger_2D_space() SETTING parameter declarations. */
 #undef logger_conditional_extend_index
 #undef target_volume
@@ -13986,7 +13988,7 @@ DETECTOR_OUT_2D(
  this_storage.Detector_2D.Filename);
 
 }
-#line 13989 "./Union_test_mesh.c"
+#line 13991 "./Union_test_mesh.c"
 }   /* End of logger_space_all2=Union_logger_2D_space() SETTING parameter declarations. */
 #undef logger_conditional_extend_index
 #undef target_volume
@@ -14047,7 +14049,7 @@ DETECTOR_OUT_2D(
  this_storage.Detector_2D.Filename);
 
 }
-#line 14050 "./Union_test_mesh.c"
+#line 14052 "./Union_test_mesh.c"
 }   /* End of logger_space_all3=Union_logger_2D_space() SETTING parameter declarations. */
 #undef logger_conditional_extend_index
 #undef target_volume
@@ -14094,7 +14096,7 @@ MCNUM restore_neutron = mccpsd_restore_neutron;
     &PSD_N[0][0],&PSD_p[0][0],&PSD_p2[0][0],
     filename);
 }
-#line 14097 "./Union_test_mesh.c"
+#line 14099 "./Union_test_mesh.c"
 }   /* End of psd=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -14130,7 +14132,7 @@ MCNUM interact_fraction = mcctest_incoherent_interact_fraction;
 // Since the process and it's storage is a static allocation, there is nothing to deallocate
 
 }
-#line 14133 "./Union_test_mesh.c"
+#line 14135 "./Union_test_mesh.c"
 }   /* End of test_incoherent=Incoherent_process() SETTING parameter declarations. */
 #undef effective_my_scattering
 #undef Incoherent_storage
@@ -14194,7 +14196,7 @@ if (accepted_processes.num_elements > 0) free(accepted_processes.elements);
 
 
 }
-#line 14196 "./Union_test_mesh.c"
+#line 14198 "./Union_test_mesh.c"
 }   /* End of test=Union_make_material() SETTING parameter declarations. */
 #undef global_material_element
 #undef accepted_processes
@@ -14234,7 +14236,7 @@ MCNUM minutes = mcca1_minutes;
     fprintf(stdout, "%g [min] ", difftime(NowTime,StartTime)/60.0);
   fprintf(stdout, "\n");
 }
-#line 14235 "./Union_test_mesh.c"
+#line 14237 "./Union_test_mesh.c"
 }   /* End of a1=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -14299,7 +14301,7 @@ if (accepted_processes.num_elements > 0) free(accepted_processes.elements);
 if (accepted_volumes.num_elements > 0) free(accepted_volumes.elements);
 
 }
-#line 14296 "./Union_test_mesh.c"
+#line 14298 "./Union_test_mesh.c"
 }   /* End of logger_space_all=Union_logger_2D_space() SETTING parameter declarations. */
 #undef logger_conditional_extend_index
 #undef target_volume
@@ -14362,7 +14364,7 @@ if (accepted_processes.num_elements > 0) free(accepted_processes.elements);
 if (accepted_volumes.num_elements > 0) free(accepted_volumes.elements);
 
 }
-#line 14358 "./Union_test_mesh.c"
+#line 14360 "./Union_test_mesh.c"
 }   /* End of logger_space_all2=Union_logger_2D_space() SETTING parameter declarations. */
 #undef logger_conditional_extend_index
 #undef target_volume
@@ -14425,7 +14427,7 @@ if (accepted_processes.num_elements > 0) free(accepted_processes.elements);
 if (accepted_volumes.num_elements > 0) free(accepted_volumes.elements);
 
 }
-#line 14420 "./Union_test_mesh.c"
+#line 14422 "./Union_test_mesh.c"
 }   /* End of logger_space_all3=Union_logger_2D_space() SETTING parameter declarations. */
 #undef logger_conditional_extend_index
 #undef target_volume
@@ -14727,7 +14729,7 @@ if (global_master_list.elements[global_master_list.num_elements-1].component_ind
 }
 
 }
-#line 14721 "./Union_test_mesh.c"
+#line 14723 "./Union_test_mesh.c"
 }   /* End of knot=Union_master() SETTING parameter declarations. */
 #undef focus_data_index
 #undef temporary_focus_data
@@ -14870,7 +14872,7 @@ MCNUM restore_neutron = mccpsd_restore_neutron;
   destroy_darr2d(PSD_p);
   destroy_darr2d(PSD_p2);
 }
-#line 14863 "./Union_test_mesh.c"
+#line 14865 "./Union_test_mesh.c"
 }   /* End of psd=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -14916,7 +14918,7 @@ MCNUM minutes = mcca1_minutes;
 {
   
 }
-#line 14908 "./Union_test_mesh.c"
+#line 14910 "./Union_test_mesh.c"
 }   /* End of a1=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -14968,7 +14970,7 @@ MCNUM flux = mccsource_flux;
     dashed_line(0,0,0, -focus_xw/2, focus_yh/2,dist, 4);
   }
 }
-#line 14960 "./Union_test_mesh.c"
+#line 14962 "./Union_test_mesh.c"
 }   /* End of source=Source_div() SETTING parameter declarations. */
 #undef focus_yh
 #undef focus_xw
@@ -15130,7 +15132,7 @@ MCNUM inherit_number_of_scattering_events = mccknot_inherit_number_of_scattering
    }
 
 }
-#line 15122 "./Union_test_mesh.c"
+#line 15124 "./Union_test_mesh.c"
 }   /* End of knot=Union_master() SETTING parameter declarations. */
 #undef focus_data_index
 #undef temporary_focus_data
@@ -15274,7 +15276,7 @@ MCNUM restore_neutron = mccpsd_restore_neutron;
     (double)xmin, (double)ymax, 0.0,
     (double)xmin, (double)ymin, 0.0);
 }
-#line 15266 "./Union_test_mesh.c"
+#line 15268 "./Union_test_mesh.c"
 }   /* End of psd=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p

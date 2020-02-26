@@ -1,10 +1,10 @@
 McStas simulation description file for Test_Guides_Curved.
-Date:    Wed Nov 20 01:14:26 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:51:47 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: Test_Guides_Curved
   File: 4/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr
   Parameters:  Guide(int) curvature(double) length(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 4
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574237860
+  Seed: 1582686163
   Directory: 4
   Nodes: 10
   Param: Guide=4
@@ -28,16 +28,16 @@ begin simulation: 4
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:14:27 2019 (1574208867)
+  Date: Tue Feb 25 21:51:50 2020 (1582663910)
   type: array_2d(20, 20)
-  Source: Test_Guides_Curved (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr)
+  Source: Test_Guides_Curved (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr)
   component: Monitor1_xt
   position: 0 0 1
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: Monitor1_xt_1574208866.x_y
-  statistics: X0=5.34672e-06; dX=0.0144161; Y0=-7.91145e-08; dY=0.01441;
-  signal: Min=9.16637e-05; Max=9.51717e-05; Mean=9.35941e-05;
+  filename: Monitor1_xt_1582663907.x_y
+  statistics: X0=-1.42189e-06; dX=0.0144091; Y0=2.54978e-06; dY=0.0144137;
+  signal: Min=9.12135e-05; Max=9.55719e-05; Mean=9.35941e-05;
   values: 0.0374376 1.18388e-05 1e+07
   xvar: x
   yvar: y
@@ -50,14 +50,14 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:14:27 2019 (1574208867)
+  Date: Tue Feb 25 21:51:50 2020 (1582663910)
   type: array_2d(20, 20)
-  Source: Test_Guides_Curved (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr)
+  Source: Test_Guides_Curved (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr)
   component: Monitor2_xy1
   position: 5.1955 0 102.923
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: Monitor2_xy1_1574208866.x_y
+  filename: Monitor2_xy1_1582663907.x_y
   statistics: X0=0; dX=0; Y0=0; dY=0;
   signal: Min=0; Max=0; Mean=0;
   values: 0 0 0
@@ -72,14 +72,14 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:14:27 2019 (1574208867)
+  Date: Tue Feb 25 21:51:50 2020 (1582663910)
   type: array_2d(20, 20)
-  Source: Test_Guides_Curved (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr)
+  Source: Test_Guides_Curved (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr)
   component: Monitor2_xy2
   position: 0 0 103.1
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: Monitor2_xy2_1574208866.x_y
+  filename: Monitor2_xy2_1582663907.x_y
   statistics: X0=0; dX=0; Y0=0; dY=0;
   signal: Min=0; Max=0; Mean=0;
   values: 0 0 0
@@ -94,14 +94,14 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:14:27 2019 (1574208867)
+  Date: Tue Feb 25 21:51:50 2020 (1582663910)
   type: array_2d(20, 20)
-  Source: Test_Guides_Curved (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr)
+  Source: Test_Guides_Curved (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr)
   component: Monitor2_xy3
   position: -5.1955 0 102.923
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: Monitor2_xy3_1574208866.x_y
+  filename: Monitor2_xy3_1582663907.x_y
   statistics: X0=0; dX=0; Y0=0; dY=0;
   signal: Min=0; Max=0; Mean=0;
   values: 0 0 0
@@ -116,17 +116,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:14:27 2019 (1574208867)
+  Date: Tue Feb 25 21:51:50 2020 (1582663910)
   type: array_2d(20, 20)
-  Source: Test_Guides_Curved (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr)
+  Source: Test_Guides_Curved (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr)
   component: Monitor2_xy4
   position: 0 0 103.1
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: Monitor2_xy4_1574208866.x_y
-  statistics: X0=0.00484268; dX=0.0150116; Y0=-2.46608e-05; dY=0.016313;
-  signal: Min=2.67298e-08; Max=1.06825e-05; Mean=4.21484e-06;
-  values: 0.00168594 1.95139e-06 2.39808e+06
+  filename: Monitor2_xy4_1582663907.x_y
+  statistics: X0=0.00480692; dX=0.0150015; Y0=-3.50102e-05; dY=0.016303;
+  signal: Min=2.8395e-08; Max=1.05938e-05; Mean=4.21512e-06;
+  values: 0.00168605 1.95067e-06 2.39793e+06
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -138,9 +138,9 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:14:27 2019 (1574208867)
+  Date: Tue Feb 25 21:51:50 2020 (1582663910)
   type: array_2d(90, 90)
-  Source: Test_Guides_Curved (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr)
+  Source: Test_Guides_Curved (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr)
   component: dummy
   position: 0 0 0
   title: 4PI PSD monitor

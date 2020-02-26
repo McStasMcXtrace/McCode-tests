@@ -1,11 +1,25 @@
-[1575393367.190716] [hpclogin2:12624:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 2999.89
-[1575393367.194427] [hpclogin2:12624:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1575393367.194433] [hpclogin2:12624:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1575393367.196792] [hpclogin2:12624:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1575393367.196797] [hpclogin2:12624:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: No output directory specified (--dir)
+INFO: Using directory: "linup-1_20200225_211205"
+INFO: Regenerating c-file: linup-1.c
+CFLAGS=
+INFO: Recompiling: ./linup-1.out
+INFO: ===
+[n-62-23-14:09855] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:09855] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582661529.358056] [n-62-23-14:9854 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3371.83
+[1582661529.359767] [n-62-23-14:9854 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661529.359770] [n-62-23-14:9854 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1582661529.362372] [n-62-23-14:9854 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661529.362376] [n-62-23-14:9854 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 begin instrument: TAS1_C1
-  Creator: McStas 2.5 - Dec. 03, 2019
-  Source: /zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-1/linup-1.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/linup-1/linup-1.instr
   Parameters:  PHM(double) TTM(double) C1(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,29 +28,15 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Dec. 03, 2019
-  Instrument: /zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-1/linup-1.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/linup-1/linup-1.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1575405991
+  Seed: 1582671383
   Directory: .
   Param: PHM=-37.077
   Param: TTM=-74
   Param: C1=30
 end simulation
 info!
-INFO: No output directory specified (--dir)
-INFO: Using directory: "linup-1_20191203_181601"
-INFO: Regenerating c-file: linup-1.c
-CFLAGS=
-INFO: Recompiling: ./linup-1.out
-INFO: ===
-[hpclogin2:12625] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[hpclogin2:12625] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
---------------------------------------------------------------------------
-Initialization of MXM library failed.
-
-  Error: Input/output error
-
---------------------------------------------------------------------------

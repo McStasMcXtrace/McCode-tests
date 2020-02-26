@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr (Test_Pol_TripleAxis)
- * Date:       Wed Nov 20 00:52:09 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr (Test_Pol_TripleAxis)
+ * Date:       Tue Feb 25 21:06:51 2020
  * File:       ./Test_Pol_TripleAxis.c
  * Compile:    cc -o Test_Pol_TripleAxis.out ./Test_Pol_TripleAxis.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Test_Pol_TripleAxis";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -5420,6 +5420,13 @@ double Gauss_W[] = {0.030753241996117, 0.070366047488108, 0.107159220467172,
 #include <mcstas-r.h>
 #endif
 
+/*Redefine MAGNET_OFF to also clear the magnetic field stack.*/
+#undef MAGNET_OFF
+#define MAGNET_OFF \
+  do { \
+    mcMagnet = 0; \
+    mcmagnet_pop_all(); \
+  } while(0)
 
 typedef int mcmagnet_field_func (double, double, double, double, double *, double *, double *, void *);
 typedef void mcmagnet_prec_func (double, double, double, double, double, double, double, double*, double*, double*, double, Coords, Rotation);
@@ -5457,7 +5464,7 @@ void mc_pol_set_angular_accuracy(double);
   do { \
     mcMagneticField=NULL; \
     mcMagnetData=NULL; \
-    MAGNET_OFF; \
+    mcMagnet=0; \
   } while (0);
 
 #define mcmagnet_set_active(mcmagnet_new) \
@@ -5495,6 +5502,7 @@ void *mcmagnet_init_par_backend(int dummy, ...);
 int mcmagnet_get_field(double x, double y, double z, double t, double *bx,double *by, double *bz, void *dummy);
 void *mcmagnet_push(mcmagnet_field_func *func,  Rotation *magnet_rot, Coords *magnet_pos, int stopbit, void * prms);
 void *mcmagnet_pop(void);
+void *mcmagnet_pop_all(void);
 
 /*example functions for magnetic fields*/
 int const_magnetic_field(double x, double y, double z, double t, double *bx, double *by, double *bz, void *data);
@@ -7832,7 +7840,7 @@ void *mcmagnet_push(mcmagnet_field_func *func,  Rotation *magnet_rot, Coords *ma
   mcmagnet_pack(stack[0],func,magnet_rot,magnet_pos,stopbit,prms);
   mcmagnet_set_active(stack[0]);
   if(stack[0] && stack[0]->func){
-    MAGNET_ON;
+    mcMagnet=1;
   }
   return (void *) stack[0];
 }
@@ -7848,11 +7856,19 @@ void *mcmagnet_pop(void) {
   stack[MCMAGNET_STACKSIZE-1]=NULL;
   mcmagnet_set_active(stack[0]);
   if(stack[0] && stack[0]->func){
-    MAGNET_ON;
+    mcMagnet=1;
   }else{
-    MAGNET_OFF;
+    mcMagnet=0;
   }
   return (void*) t;
+}
+
+void *mcmagnet_pop_all(void){
+  void *t=mcmagnet_pop();
+  while (t!=NULL){
+    t=mcmagnet_pop();
+  }
+  return NULL;
 }
 
 void mcmagnet_free_stack(void){
@@ -8196,7 +8212,7 @@ double GetConstantField(double mc_pol_length, double mc_pol_lambda,
 
 /* end of regular pol-lib.c */
 
-#line 8199 "./Test_Pol_TripleAxis.c"
+#line 8215 "./Test_Pol_TripleAxis.c"
 
 /* Shared user declarations for all components 'V_sample'. */
 #line 100 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../obsolete/V_sample.comp"
@@ -8213,7 +8229,7 @@ double  sigma_a; /* Absorption cross section per atom (barns) */
     double  xw,yh;       /* rectangular metrical dimensions */
     double  tx,ty,tz;    /* target coords */
   };
-#line 8216 "./Test_Pol_TripleAxis.c"
+#line 8232 "./Test_Pol_TripleAxis.c"
 
 /* Shared user declarations for all components 'Pol_constBfield'. */
 #line 49 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Pol_constBfield.comp"
@@ -8228,7 +8244,7 @@ double IntersectWall(double pos, double vel, double wallpos) {
     else
       return (-wallpos-pos)/vel;
   }
-#line 8231 "./Test_Pol_TripleAxis.c"
+#line 8247 "./Test_Pol_TripleAxis.c"
 
 /* Instrument parameters. */
 int mcipOPTION;
@@ -8252,7 +8268,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define OPTION mcipOPTION
 #define LAMBDA mcipLAMBDA
 #define MOZ mcipMOZ
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   double DM  = 3.3539; /* Monochromator d-spacing in Angs */
                        /* PG002 Orders : 1st 3.355 2e 1.6775, 3e 1.1183 */
 
@@ -8264,7 +8280,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 
   /* This variable helps us switch on and of the spin flipper*/
   double filterProb;
-#line 8267 "./Test_Pol_TripleAxis.c"
+#line 8283 "./Test_Pol_TripleAxis.c"
 #undef MOZ
 #undef LAMBDA
 #undef OPTION
@@ -8489,7 +8505,7 @@ double IntermediateCnts;
 time_t StartTime;
 time_t EndTime;
 time_t CurrentTime;
-#line 8492 "./Test_Pol_TripleAxis.c"
+#line 8508 "./Test_Pol_TripleAxis.c"
 #undef minutes
 #undef flag_save
 #undef percent
@@ -8526,7 +8542,7 @@ time_t CurrentTime;
 double pmul, srcArea;
 int square;
 double tx,ty,tz;
-#line 8529 "./Test_Pol_TripleAxis.c"
+#line 8545 "./Test_Pol_TripleAxis.c"
 #undef target_index
 #undef gauss
 #undef flux
@@ -8587,7 +8603,7 @@ double tx,ty,tz;
   double mos_rms_z;
   double mos_rms_max;
   double mono_Q;
-#line 8590 "./Test_Pol_TripleAxis.c"
+#line 8606 "./Test_Pol_TripleAxis.c"
 #undef DM
 #undef Q
 #undef r0
@@ -8633,7 +8649,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 8636 "./Test_Pol_TripleAxis.c"
+#line 8652 "./Test_Pol_TripleAxis.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -8676,7 +8692,7 @@ double FM; /* Unit cell magnetic structure factor */
 double PolL_N[nL][npol];
 double PolL_p[nL][npol];
 double PolL_p2[nL][npol];
-#line 8679 "./Test_Pol_TripleAxis.c"
+#line 8695 "./Test_Pol_TripleAxis.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -8749,7 +8765,7 @@ double PolL_p2[nL][npol];
 #define multiples mccSample_multiples
 #line 117 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../obsolete/V_sample.comp"
   struct StructVarsV VarsV;
-#line 8752 "./Test_Pol_TripleAxis.c"
+#line 8768 "./Test_Pol_TripleAxis.c"
 #undef multiples
 #undef target_index
 #undef V0
@@ -8808,7 +8824,7 @@ double PolL_p2[nL][npol];
 double PolL_N[nL][npol];
 double PolL_p[nL][npol];
 double PolL_p2[nL][npol];
-#line 8811 "./Test_Pol_TripleAxis.c"
+#line 8827 "./Test_Pol_TripleAxis.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -8842,7 +8858,7 @@ double PolL_p2[nL][npol];
 #line 64 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Pol_constBfield.comp"
   // Larmor frequency
   double omegaL;
-#line 8845 "./Test_Pol_TripleAxis.c"
+#line 8861 "./Test_Pol_TripleAxis.c"
 #undef flipangle
 #undef fliplambda
 #undef B
@@ -8877,7 +8893,7 @@ double PolL_p2[nL][npol];
 double PolL_N[nL][npol];
 double PolL_p[nL][npol];
 double PolL_p2[nL][npol];
-#line 8880 "./Test_Pol_TripleAxis.c"
+#line 8896 "./Test_Pol_TripleAxis.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -8937,7 +8953,7 @@ double PolL_p2[nL][npol];
   double mos_rms_z;
   double mos_rms_max;
   double mono_Q;
-#line 8940 "./Test_Pol_TripleAxis.c"
+#line 8956 "./Test_Pol_TripleAxis.c"
 #undef DM
 #undef Q
 #undef r0
@@ -8983,7 +8999,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 8986 "./Test_Pol_TripleAxis.c"
+#line 9002 "./Test_Pol_TripleAxis.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -9026,7 +9042,7 @@ double FM; /* Unit cell magnetic structure factor */
 double PolL_N[nL][npol];
 double PolL_p[nL][npol];
 double PolL_p2[nL][npol];
-#line 9029 "./Test_Pol_TripleAxis.c"
+#line 9045 "./Test_Pol_TripleAxis.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -9095,7 +9111,7 @@ void mcinit(void) {
 #define OPTION mcipOPTION
 #define LAMBDA mcipLAMBDA
 #define MOZ mcipMOZ
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
 {
   int    ORDER = 1;
   double vi, Ki, Kf;
@@ -9131,7 +9147,7 @@ void mcinit(void) {
   A6 *= SA;   /* A5 : analyser theta (crystal) */
   A5 = A6/2;  /* A6 : analyser 2 theta (arm to Dector) */
 }
-#line 9134 "./Test_Pol_TripleAxis.c"
+#line 9150 "./Test_Pol_TripleAxis.c"
 #undef MOZ
 #undef LAMBDA
 #undef OPTION
@@ -9152,31 +9168,31 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccOrigin_minutes = 0;
-#line 9163 "./Test_Pol_TripleAxis.c"
+#line 9179 "./Test_Pol_TripleAxis.c"
 
   SIG_MESSAGE("Origin (Init:Place/Rotate)");
   rot_set_rotation(mcrotaOrigin,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9170 "./Test_Pol_TripleAxis.c"
+#line 9186 "./Test_Pol_TripleAxis.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0);
-#line 9179 "./Test_Pol_TripleAxis.c"
+#line 9195 "./Test_Pol_TripleAxis.c"
   mctc1 = coords_neg(mcposaOrigin);
   mcposrOrigin = rot_apply(mcrotaOrigin, mctc1);
   mcDEBUG_COMPONENT("Origin", mcposaOrigin, mcrotaOrigin)
@@ -9187,51 +9203,51 @@ void mcinit(void) {
     /* Component Source. */
   /* Setting parameters for component Source. */
   SIG_MESSAGE("Source (Init:SetPar)");
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSource_radius = 0.01;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSource_yheight = 0;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSource_xwidth = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSource_dist = 5.0;
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSource_focus_xw = 0.02;
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSource_focus_yh = 0.02;
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSource_E0 = Ei;
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSource_dE = 0.5;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSource_lambda0 = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSource_dlambda = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSource_flux = 1;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSource_gauss = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSource_target_index = + 1;
-#line 9216 "./Test_Pol_TripleAxis.c"
+#line 9232 "./Test_Pol_TripleAxis.c"
 
   SIG_MESSAGE("Source (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9223 "./Test_Pol_TripleAxis.c"
+#line 9239 "./Test_Pol_TripleAxis.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaSource);
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotaSource, mctr1, mcrotrSource);
   mctc1 = coords_set(
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0);
-#line 9234 "./Test_Pol_TripleAxis.c"
+#line 9250 "./Test_Pol_TripleAxis.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaSource = coords_add(mcposaOrigin, mctc2);
@@ -9248,24 +9264,24 @@ void mcinit(void) {
 
   SIG_MESSAGE("Mono_Arm (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     (0)*DEG2RAD,
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     (A1)*DEG2RAD,
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     (0)*DEG2RAD);
-#line 9257 "./Test_Pol_TripleAxis.c"
+#line 9273 "./Test_Pol_TripleAxis.c"
   rot_mul(mctr1, mcrotaSource, mcrotaMono_Arm);
   rot_transpose(mcrotaSource, mctr1);
   rot_mul(mcrotaMono_Arm, mctr1, mcrotrMono_Arm);
   mctc1 = coords_set(
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     5.0);
-#line 9268 "./Test_Pol_TripleAxis.c"
+#line 9284 "./Test_Pol_TripleAxis.c"
   rot_transpose(mcrotaSource, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMono_Arm = coords_add(mcposaSource, mctc2);
@@ -9282,24 +9298,24 @@ void mcinit(void) {
 
   SIG_MESSAGE("Mono_Out (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     (0)*DEG2RAD,
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     (A2)*DEG2RAD,
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     (0)*DEG2RAD);
-#line 9291 "./Test_Pol_TripleAxis.c"
+#line 9307 "./Test_Pol_TripleAxis.c"
   rot_mul(mctr1, mcrotaSource, mcrotaMono_Out);
   rot_transpose(mcrotaMono_Arm, mctr1);
   rot_mul(mcrotaMono_Out, mctr1, mcrotrMono_Out);
   mctc1 = coords_set(
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0);
-#line 9302 "./Test_Pol_TripleAxis.c"
+#line 9318 "./Test_Pol_TripleAxis.c"
   rot_transpose(mcrotaMono_Arm, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMono_Out = coords_add(mcposaMono_Arm, mctc2);
@@ -9313,47 +9329,47 @@ void mcinit(void) {
     /* Component Mono. */
   /* Setting parameters for component Mono. */
   SIG_MESSAGE("Mono (Init:SetPar)");
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccMono_zmin = -0.05;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccMono_zmax = 0.05;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccMono_ymin = -0.05;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccMono_ymax = 0.05;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccMono_zwidth = 0.10;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccMono_yheight = 0.08;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccMono_mosaich = mcipMOZ;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccMono_mosaicv = mcipMOZ;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccMono_r0 = 1.0;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccMono_Q = mono_q;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccMono_DM = 0;
-#line 9338 "./Test_Pol_TripleAxis.c"
+#line 9354 "./Test_Pol_TripleAxis.c"
 
   SIG_MESSAGE("Mono (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9345 "./Test_Pol_TripleAxis.c"
+#line 9361 "./Test_Pol_TripleAxis.c"
   rot_mul(mctr1, mcrotaMono_Arm, mcrotaMono);
   rot_transpose(mcrotaMono_Out, mctr1);
   rot_mul(mcrotaMono, mctr1, mcrotrMono);
   mctc1 = coords_set(
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0);
-#line 9356 "./Test_Pol_TripleAxis.c"
+#line 9372 "./Test_Pol_TripleAxis.c"
   rot_transpose(mcrotaMono_Arm, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMono = coords_add(mcposaMono_Arm, mctc2);
@@ -9367,45 +9383,45 @@ void mcinit(void) {
     /* Component Mono_pol. */
   /* Setting parameters for component Mono_pol. */
   SIG_MESSAGE("Mono_pol (Init:SetPar)");
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccMono_pol_zwidth = 0.10;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccMono_pol_yheight = 0.08;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccMono_pol_mosaic = mcipMOZ;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccMono_pol_dspread = 0.0;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccMono_pol_Q = mono_q;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccMono_pol_DM = 0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccMono_pol_pThreshold = 0;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccMono_pol_Rup = 1.0;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccMono_pol_Rdown = 0.0;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccMono_pol_debug = 0;
-#line 9390 "./Test_Pol_TripleAxis.c"
+#line 9406 "./Test_Pol_TripleAxis.c"
 
   SIG_MESSAGE("Mono_pol (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9397 "./Test_Pol_TripleAxis.c"
+#line 9413 "./Test_Pol_TripleAxis.c"
   rot_mul(mctr1, mcrotaMono_Arm, mcrotaMono_pol);
   rot_transpose(mcrotaMono, mctr1);
   rot_mul(mcrotaMono_pol, mctr1, mcrotrMono_pol);
   mctc1 = coords_set(
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0);
-#line 9408 "./Test_Pol_TripleAxis.c"
+#line 9424 "./Test_Pol_TripleAxis.c"
   rot_transpose(mcrotaMono_Arm, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMono_pol = coords_add(mcposaMono_Arm, mctc2);
@@ -9419,37 +9435,37 @@ void mcinit(void) {
     /* Component pollambdaMonitorMono. */
   /* Setting parameters for component pollambdaMonitorMono. */
   SIG_MESSAGE("pollambdaMonitorMono (Init:SetPar)");
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   if("pollambdaMonMono.data") strncpy(mccpollambdaMonitorMono_filename, "pollambdaMonMono.data" ? "pollambdaMonMono.data" : "", 16384); else mccpollambdaMonitorMono_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccpollambdaMonitorMono_mx = 0;
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccpollambdaMonitorMono_my = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccpollambdaMonitorMono_mz = 0;
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccpollambdaMonitorMono_Lmin = 0.97 * mcipLAMBDA;
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccpollambdaMonitorMono_Lmax = 1.03 * mcipLAMBDA;
-#line 9434 "./Test_Pol_TripleAxis.c"
+#line 9450 "./Test_Pol_TripleAxis.c"
 
   SIG_MESSAGE("pollambdaMonitorMono (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9441 "./Test_Pol_TripleAxis.c"
+#line 9457 "./Test_Pol_TripleAxis.c"
   rot_mul(mctr1, mcrotaMono_Out, mcrotapollambdaMonitorMono);
   rot_transpose(mcrotaMono_pol, mctr1);
   rot_mul(mcrotapollambdaMonitorMono, mctr1, mcrotrpollambdaMonitorMono);
   mctc1 = coords_set(
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0.5);
-#line 9452 "./Test_Pol_TripleAxis.c"
+#line 9468 "./Test_Pol_TripleAxis.c"
   rot_transpose(mcrotaMono_Out, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposapollambdaMonitorMono = coords_add(mcposaMono_Out, mctc2);
@@ -9466,24 +9482,24 @@ void mcinit(void) {
 
   SIG_MESSAGE("Sample_Arm (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     (0)*DEG2RAD,
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     (A3)*DEG2RAD,
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     (0)*DEG2RAD);
-#line 9475 "./Test_Pol_TripleAxis.c"
+#line 9491 "./Test_Pol_TripleAxis.c"
   rot_mul(mctr1, mcrotaMono_Out, mcrotaSample_Arm);
   rot_transpose(mcrotapollambdaMonitorMono, mctr1);
   rot_mul(mcrotaSample_Arm, mctr1, mcrotrSample_Arm);
   mctc1 = coords_set(
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     1.0);
-#line 9486 "./Test_Pol_TripleAxis.c"
+#line 9502 "./Test_Pol_TripleAxis.c"
   rot_transpose(mcrotaMono_Out, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaSample_Arm = coords_add(mcposaMono_Out, mctc2);
@@ -9500,24 +9516,24 @@ void mcinit(void) {
 
   SIG_MESSAGE("Sample_Out (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     (0)*DEG2RAD,
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     (A4)*DEG2RAD,
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     (0)*DEG2RAD);
-#line 9509 "./Test_Pol_TripleAxis.c"
+#line 9525 "./Test_Pol_TripleAxis.c"
   rot_mul(mctr1, mcrotaMono_Out, mcrotaSample_Out);
   rot_transpose(mcrotaSample_Arm, mctr1);
   rot_mul(mcrotaSample_Out, mctr1, mcrotrSample_Out);
   mctc1 = coords_set(
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0);
-#line 9520 "./Test_Pol_TripleAxis.c"
+#line 9536 "./Test_Pol_TripleAxis.c"
   rot_transpose(mcrotaSample_Arm, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaSample_Out = coords_add(mcposaSample_Arm, mctc2);
@@ -9531,85 +9547,85 @@ void mcinit(void) {
     /* Component Sample. */
   /* Setting parameters for component Sample. */
   SIG_MESSAGE("Sample (Init:SetPar)");
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_radius = 0.024;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_thickness = 0;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_zdepth = 0;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_Vc = 13.827;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_sigma_abs = 5.08;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_sigma_inc = 5.08;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_radius_i = 0;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_radius_o = 0;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_h = 0;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_focus_r = 0;
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_pack = 1;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_frac = 1;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_f_QE = 0;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_gamma = 0;
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_target_x = 0;
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_target_y = 0;
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_target_z = 1.0;
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_focus_xw = 0.01;
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_focus_yh = 0.01;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_focus_aw = 0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_focus_ah = 0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_xwidth = 0;
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_yheight = 0.0254;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_zthick = 0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_rad_sphere = 0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_sig_a = 0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_sig_i = 0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_V0 = 0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_target_index = 0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccSample_multiples = 1;
-#line 9594 "./Test_Pol_TripleAxis.c"
+#line 9610 "./Test_Pol_TripleAxis.c"
 
   SIG_MESSAGE("Sample (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9601 "./Test_Pol_TripleAxis.c"
+#line 9617 "./Test_Pol_TripleAxis.c"
   rot_mul(mctr1, mcrotaSample_Out, mcrotaSample);
   rot_transpose(mcrotaSample_Out, mctr1);
   rot_mul(mcrotaSample, mctr1, mcrotrSample);
   mctc1 = coords_set(
-#line 142 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 142 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 142 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 142 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 142 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 142 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0);
-#line 9612 "./Test_Pol_TripleAxis.c"
+#line 9628 "./Test_Pol_TripleAxis.c"
   rot_transpose(mcrotaSample_Out, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaSample = coords_add(mcposaSample_Out, mctc2);
@@ -9623,37 +9639,37 @@ void mcinit(void) {
     /* Component pollambdaMonitorSample. */
   /* Setting parameters for component pollambdaMonitorSample. */
   SIG_MESSAGE("pollambdaMonitorSample (Init:SetPar)");
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   if("pollambdaMonSample.data") strncpy(mccpollambdaMonitorSample_filename, "pollambdaMonSample.data" ? "pollambdaMonSample.data" : "", 16384); else mccpollambdaMonitorSample_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccpollambdaMonitorSample_mx = 0;
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccpollambdaMonitorSample_my = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccpollambdaMonitorSample_mz = 0;
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccpollambdaMonitorSample_Lmin = 0.97 * mcipLAMBDA;
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccpollambdaMonitorSample_Lmax = 1.03 * mcipLAMBDA;
-#line 9638 "./Test_Pol_TripleAxis.c"
+#line 9654 "./Test_Pol_TripleAxis.c"
 
   SIG_MESSAGE("pollambdaMonitorSample (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9645 "./Test_Pol_TripleAxis.c"
+#line 9661 "./Test_Pol_TripleAxis.c"
   rot_mul(mctr1, mcrotaSample_Out, mcrotapollambdaMonitorSample);
   rot_transpose(mcrotaSample, mctr1);
   rot_mul(mcrotapollambdaMonitorSample, mctr1, mcrotrpollambdaMonitorSample);
   mctc1 = coords_set(
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0.25);
-#line 9656 "./Test_Pol_TripleAxis.c"
+#line 9672 "./Test_Pol_TripleAxis.c"
   rot_transpose(mcrotaSample_Out, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposapollambdaMonitorSample = coords_add(mcposaSample_Out, mctc2);
@@ -9667,34 +9683,34 @@ void mcinit(void) {
     /* Component msf. */
   /* Setting parameters for component msf. */
   SIG_MESSAGE("msf (Init:SetPar)");
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccmsf_B = 0;
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccmsf_fliplambda = mcipLAMBDA;
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccmsf_flipangle = 180;
-#line 9676 "./Test_Pol_TripleAxis.c"
+#line 9692 "./Test_Pol_TripleAxis.c"
 
   SIG_MESSAGE("msf (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     (0)*DEG2RAD,
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     (0)*DEG2RAD,
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     (90)*DEG2RAD);
-#line 9686 "./Test_Pol_TripleAxis.c"
+#line 9702 "./Test_Pol_TripleAxis.c"
   rot_mul(mctr1, mcrotaSample_Out, mcrotamsf);
   rot_transpose(mcrotapollambdaMonitorSample, mctr1);
   rot_mul(mcrotamsf, mctr1, mcrotrmsf);
   mctc1 = coords_set(
-#line 152 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 152 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 152 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 152 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 152 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 152 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0.4);
-#line 9697 "./Test_Pol_TripleAxis.c"
+#line 9713 "./Test_Pol_TripleAxis.c"
   rot_transpose(mcrotaSample_Out, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposamsf = coords_add(mcposaSample_Out, mctc2);
@@ -9708,37 +9724,37 @@ void mcinit(void) {
     /* Component pollambdaMonitorMSF. */
   /* Setting parameters for component pollambdaMonitorMSF. */
   SIG_MESSAGE("pollambdaMonitorMSF (Init:SetPar)");
-#line 158 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 158 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   if("pollambdaMonMsf.data") strncpy(mccpollambdaMonitorMSF_filename, "pollambdaMonMsf.data" ? "pollambdaMonMsf.data" : "", 16384); else mccpollambdaMonitorMSF_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccpollambdaMonitorMSF_mx = 0;
-#line 158 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 158 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccpollambdaMonitorMSF_my = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccpollambdaMonitorMSF_mz = 0;
-#line 157 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 157 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccpollambdaMonitorMSF_Lmin = 0.97 * mcipLAMBDA;
-#line 157 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 157 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccpollambdaMonitorMSF_Lmax = 1.03 * mcipLAMBDA;
-#line 9723 "./Test_Pol_TripleAxis.c"
+#line 9739 "./Test_Pol_TripleAxis.c"
 
   SIG_MESSAGE("pollambdaMonitorMSF (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9730 "./Test_Pol_TripleAxis.c"
+#line 9746 "./Test_Pol_TripleAxis.c"
   rot_mul(mctr1, mcrotaSample_Out, mcrotapollambdaMonitorMSF);
   rot_transpose(mcrotamsf, mctr1);
   rot_mul(mcrotapollambdaMonitorMSF, mctr1, mcrotrpollambdaMonitorMSF);
   mctc1 = coords_set(
-#line 159 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 159 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 159 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 159 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 159 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 159 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0.75);
-#line 9741 "./Test_Pol_TripleAxis.c"
+#line 9757 "./Test_Pol_TripleAxis.c"
   rot_transpose(mcrotaSample_Out, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposapollambdaMonitorMSF = coords_add(mcposaSample_Out, mctc2);
@@ -9755,24 +9771,24 @@ void mcinit(void) {
 
   SIG_MESSAGE("Ana_Arm (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     (0)*DEG2RAD,
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     (A5)*DEG2RAD,
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     (0)*DEG2RAD);
-#line 9764 "./Test_Pol_TripleAxis.c"
+#line 9780 "./Test_Pol_TripleAxis.c"
   rot_mul(mctr1, mcrotaSample_Out, mcrotaAna_Arm);
   rot_transpose(mcrotapollambdaMonitorMSF, mctr1);
   rot_mul(mcrotaAna_Arm, mctr1, mcrotrAna_Arm);
   mctc1 = coords_set(
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     1.0);
-#line 9775 "./Test_Pol_TripleAxis.c"
+#line 9791 "./Test_Pol_TripleAxis.c"
   rot_transpose(mcrotaSample_Out, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaAna_Arm = coords_add(mcposaSample_Out, mctc2);
@@ -9789,24 +9805,24 @@ void mcinit(void) {
 
   SIG_MESSAGE("Ana_Out (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     (0)*DEG2RAD,
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     (A6)*DEG2RAD,
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     (0)*DEG2RAD);
-#line 9798 "./Test_Pol_TripleAxis.c"
+#line 9814 "./Test_Pol_TripleAxis.c"
   rot_mul(mctr1, mcrotaSample_Out, mcrotaAna_Out);
   rot_transpose(mcrotaAna_Arm, mctr1);
   rot_mul(mcrotaAna_Out, mctr1, mcrotrAna_Out);
   mctc1 = coords_set(
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0);
-#line 9809 "./Test_Pol_TripleAxis.c"
+#line 9825 "./Test_Pol_TripleAxis.c"
   rot_transpose(mcrotaAna_Arm, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaAna_Out = coords_add(mcposaAna_Arm, mctc2);
@@ -9820,47 +9836,47 @@ void mcinit(void) {
     /* Component Ana. */
   /* Setting parameters for component Ana. */
   SIG_MESSAGE("Ana (Init:SetPar)");
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccAna_zmin = -0.05;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccAna_zmax = 0.05;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccAna_ymin = -0.05;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccAna_ymax = 0.05;
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccAna_zwidth = 0.10;
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccAna_yheight = 0.08;
-#line 169 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccAna_mosaich = mcipMOZ;
-#line 169 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccAna_mosaicv = mcipMOZ;
-#line 170 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 170 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccAna_r0 = 1.0;
-#line 170 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 170 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccAna_Q = mono_q;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccAna_DM = 0;
-#line 9845 "./Test_Pol_TripleAxis.c"
+#line 9861 "./Test_Pol_TripleAxis.c"
 
   SIG_MESSAGE("Ana (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9852 "./Test_Pol_TripleAxis.c"
+#line 9868 "./Test_Pol_TripleAxis.c"
   rot_mul(mctr1, mcrotaAna_Arm, mcrotaAna);
   rot_transpose(mcrotaAna_Out, mctr1);
   rot_mul(mcrotaAna, mctr1, mcrotrAna);
   mctc1 = coords_set(
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0);
-#line 9863 "./Test_Pol_TripleAxis.c"
+#line 9879 "./Test_Pol_TripleAxis.c"
   rot_transpose(mcrotaAna_Arm, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaAna = coords_add(mcposaAna_Arm, mctc2);
@@ -9874,45 +9890,45 @@ void mcinit(void) {
     /* Component Ana_pol. */
   /* Setting parameters for component Ana_pol. */
   SIG_MESSAGE("Ana_pol (Init:SetPar)");
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccAna_pol_zwidth = 0.10;
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccAna_pol_yheight = 0.08;
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 175 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccAna_pol_mosaic = mcipMOZ;
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 175 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccAna_pol_dspread = 0.0;
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccAna_pol_Q = mono_q;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccAna_pol_DM = 0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccAna_pol_pThreshold = 0;
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccAna_pol_Rup = 1.0;
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccAna_pol_Rdown = 0.0;
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccAna_pol_debug = 0;
-#line 9897 "./Test_Pol_TripleAxis.c"
+#line 9913 "./Test_Pol_TripleAxis.c"
 
   SIG_MESSAGE("Ana_pol (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9904 "./Test_Pol_TripleAxis.c"
+#line 9920 "./Test_Pol_TripleAxis.c"
   rot_mul(mctr1, mcrotaAna_Arm, mcrotaAna_pol);
   rot_transpose(mcrotaAna, mctr1);
   rot_mul(mcrotaAna_pol, mctr1, mcrotrAna_pol);
   mctc1 = coords_set(
-#line 177 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 177 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 177 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 177 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 177 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 177 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0);
-#line 9915 "./Test_Pol_TripleAxis.c"
+#line 9931 "./Test_Pol_TripleAxis.c"
   rot_transpose(mcrotaAna_Arm, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaAna_pol = coords_add(mcposaAna_Arm, mctc2);
@@ -9926,37 +9942,37 @@ void mcinit(void) {
     /* Component pollambdaMonitorDet. */
   /* Setting parameters for component pollambdaMonitorDet. */
   SIG_MESSAGE("pollambdaMonitorDet (Init:SetPar)");
-#line 183 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 183 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   if("pollambdaMonDet.data") strncpy(mccpollambdaMonitorDet_filename, "pollambdaMonDet.data" ? "pollambdaMonDet.data" : "", 16384); else mccpollambdaMonitorDet_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccpollambdaMonitorDet_mx = 0;
-#line 183 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 183 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccpollambdaMonitorDet_my = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccpollambdaMonitorDet_mz = 0;
-#line 182 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 182 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccpollambdaMonitorDet_Lmin = 0.97 * mcipLAMBDA;
-#line 182 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 182 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
   mccpollambdaMonitorDet_Lmax = 1.03 * mcipLAMBDA;
-#line 9941 "./Test_Pol_TripleAxis.c"
+#line 9957 "./Test_Pol_TripleAxis.c"
 
   SIG_MESSAGE("pollambdaMonitorDet (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9948 "./Test_Pol_TripleAxis.c"
+#line 9964 "./Test_Pol_TripleAxis.c"
   rot_mul(mctr1, mcrotaAna_Out, mcrotapollambdaMonitorDet);
   rot_transpose(mcrotaAna_pol, mctr1);
   rot_mul(mcrotapollambdaMonitorDet, mctr1, mcrotrpollambdaMonitorDet);
   mctc1 = coords_set(
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 184 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 184 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0,
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
+#line 184 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr"
     0.15);
-#line 9959 "./Test_Pol_TripleAxis.c"
+#line 9975 "./Test_Pol_TripleAxis.c"
   rot_transpose(mcrotaAna_Out, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposapollambdaMonitorDet = coords_add(mcposaAna_Out, mctc2);
@@ -9993,7 +10009,7 @@ fprintf(stdout, "[%s] Initialize\n", mcinstrument_name);
     percent=1e5*100.0/mcget_ncount();
   }
 }
-#line 9996 "./Test_Pol_TripleAxis.c"
+#line 10012 "./Test_Pol_TripleAxis.c"
 #undef minutes
 #undef flag_save
 #undef percent
@@ -10087,7 +10103,7 @@ if (radius && !yheight && !xwidth ) {
       exit(0);
   }
 }
-#line 10090 "./Test_Pol_TripleAxis.c"
+#line 10106 "./Test_Pol_TripleAxis.c"
 #undef target_index
 #undef gauss
 #undef flux
@@ -10149,7 +10165,7 @@ if (radius && !yheight && !xwidth ) {
   if (zmin==zmax || ymin==ymax)
     exit(fprintf(stderr, "Monochromator_flat: %s : Surface is null (zmin,zmax,ymin,ymax)\n", NAME_CURRENT_COMP));
 }
-#line 10152 "./Test_Pol_TripleAxis.c"
+#line 10168 "./Test_Pol_TripleAxis.c"
 #undef DM
 #undef Q
 #undef r0
@@ -10209,7 +10225,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 10212 "./Test_Pol_TripleAxis.c"
+#line 10228 "./Test_Pol_TripleAxis.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -10289,7 +10305,7 @@ if (Lmax<=Lmin) {
     }
   }
 }
-#line 10292 "./Test_Pol_TripleAxis.c"
+#line 10308 "./Test_Pol_TripleAxis.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -10409,7 +10425,7 @@ if (Lmax<=Lmin) {
     VarsV.ah = DEG2RAD*focus_ah;
   }
 }
-#line 10412 "./Test_Pol_TripleAxis.c"
+#line 10428 "./Test_Pol_TripleAxis.c"
 #undef multiples
 #undef target_index
 #undef V0
@@ -10505,7 +10521,7 @@ if (Lmax<=Lmin) {
     }
   }
 }
-#line 10508 "./Test_Pol_TripleAxis.c"
+#line 10524 "./Test_Pol_TripleAxis.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -10571,7 +10587,7 @@ if (Lmax<=Lmin) {
 
 
 }
-#line 10574 "./Test_Pol_TripleAxis.c"
+#line 10590 "./Test_Pol_TripleAxis.c"
 #undef flipangle
 #undef fliplambda
 #undef B
@@ -10643,7 +10659,7 @@ if (Lmax<=Lmin) {
     }
   }
 }
-#line 10646 "./Test_Pol_TripleAxis.c"
+#line 10662 "./Test_Pol_TripleAxis.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -10704,7 +10720,7 @@ if (Lmax<=Lmin) {
   if (zmin==zmax || ymin==ymax)
     exit(fprintf(stderr, "Monochromator_flat: %s : Surface is null (zmin,zmax,ymin,ymax)\n", NAME_CURRENT_COMP));
 }
-#line 10707 "./Test_Pol_TripleAxis.c"
+#line 10723 "./Test_Pol_TripleAxis.c"
 #undef DM
 #undef Q
 #undef r0
@@ -10764,7 +10780,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 10767 "./Test_Pol_TripleAxis.c"
+#line 10783 "./Test_Pol_TripleAxis.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -10844,7 +10860,7 @@ if (Lmax<=Lmin) {
     }
   }
 }
-#line 10847 "./Test_Pol_TripleAxis.c"
+#line 10863 "./Test_Pol_TripleAxis.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -11017,7 +11033,7 @@ MCNUM minutes = mccOrigin_minutes;
     if (flag_save) mcsave(NULL);
   }
 }
-#line 11020 "./Test_Pol_TripleAxis.c"
+#line 11036 "./Test_Pol_TripleAxis.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -11188,7 +11204,7 @@ int target_index = mccSource_target_index;
  vy=v*dy/rf;
  vx=v*dx/rf;
 }
-#line 11191 "./Test_Pol_TripleAxis.c"
+#line 11207 "./Test_Pol_TripleAxis.c"
 }   /* End of Source=Source_simple() SETTING parameter declarations. */
 #undef srcArea
 #undef square
@@ -11656,7 +11672,7 @@ if (( mcipOPTION == 0 ))
     } /* End intersect the crystal */
   } /* End neutron moving towards crystal */
 }
-#line 11658 "./Test_Pol_TripleAxis.c"
+#line 11674 "./Test_Pol_TripleAxis.c"
 }   /* End of Mono=Monochromator_flat() SETTING parameter declarations. */
 #undef mono_Q
 #undef mos_rms_max
@@ -11852,7 +11868,7 @@ if (( mcipOPTION == -1 || mcipOPTION == 1 ))
   } /* End intersect the crystal */
 
 }
-#line 11853 "./Test_Pol_TripleAxis.c"
+#line 11869 "./Test_Pol_TripleAxis.c"
 }   /* End of Mono_pol=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -12009,7 +12025,7 @@ MCNUM Lmax = mccpollambdaMonitorMono_Lmax;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 12010 "./Test_Pol_TripleAxis.c"
+#line 12026 "./Test_Pol_TripleAxis.c"
 }   /* End of pollambdaMonitorMono=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -12500,7 +12516,7 @@ MCNUM multiples = mccSample_multiples;
     }
   }
 }
-#line 12501 "./Test_Pol_TripleAxis.c"
+#line 12517 "./Test_Pol_TripleAxis.c"
 }   /* End of Sample=V_sample() SETTING parameter declarations. */
 #undef VarsV
 #undef mccompcurname
@@ -12653,7 +12669,7 @@ MCNUM Lmax = mccpollambdaMonitorSample_Lmax;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 12654 "./Test_Pol_TripleAxis.c"
+#line 12670 "./Test_Pol_TripleAxis.c"
 }   /* End of pollambdaMonitorSample=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -12822,7 +12838,7 @@ if (( mcipOPTION == -1 ))
   sz = cos(omegaL*deltaT)*sz_in - sin(omegaL*deltaT)*sx_in;
   sx = sin(omegaL*deltaT)*sz_in + cos(omegaL*deltaT)*sx_in;
 }
-#line 12822 "./Test_Pol_TripleAxis.c"
+#line 12838 "./Test_Pol_TripleAxis.c"
 }   /* End of msf=Pol_constBfield() SETTING parameter declarations. */
 #undef omegaL
 #undef length
@@ -12978,7 +12994,7 @@ MCNUM Lmax = mccpollambdaMonitorMSF_Lmax;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 12978 "./Test_Pol_TripleAxis.c"
+#line 12994 "./Test_Pol_TripleAxis.c"
 }   /* End of pollambdaMonitorMSF=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -13452,7 +13468,7 @@ if (( mcipOPTION == 0 ))
     } /* End intersect the crystal */
   } /* End neutron moving towards crystal */
 }
-#line 13451 "./Test_Pol_TripleAxis.c"
+#line 13467 "./Test_Pol_TripleAxis.c"
 }   /* End of Ana=Monochromator_flat() SETTING parameter declarations. */
 #undef mono_Q
 #undef mos_rms_max
@@ -13648,7 +13664,7 @@ if (( mcipOPTION == -1 || mcipOPTION == 1 ))
   } /* End intersect the crystal */
 
 }
-#line 13646 "./Test_Pol_TripleAxis.c"
+#line 13662 "./Test_Pol_TripleAxis.c"
 }   /* End of Ana_pol=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -13805,7 +13821,7 @@ MCNUM Lmax = mccpollambdaMonitorDet_Lmax;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 13803 "./Test_Pol_TripleAxis.c"
+#line 13819 "./Test_Pol_TripleAxis.c"
 }   /* End of pollambdaMonitorDet=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -13923,7 +13939,7 @@ MCNUM minutes = mccOrigin_minutes;
 
   }
 }
-#line 13921 "./Test_Pol_TripleAxis.c"
+#line 13937 "./Test_Pol_TripleAxis.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -13965,7 +13981,7 @@ MCNUM Lmax = mccpollambdaMonitorMono_Lmax;
 		  filename);
     }
 }
-#line 13963 "./Test_Pol_TripleAxis.c"
+#line 13979 "./Test_Pol_TripleAxis.c"
 }   /* End of pollambdaMonitorMono=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -14012,7 +14028,7 @@ MCNUM Lmax = mccpollambdaMonitorSample_Lmax;
 		  filename);
     }
 }
-#line 14010 "./Test_Pol_TripleAxis.c"
+#line 14026 "./Test_Pol_TripleAxis.c"
 }   /* End of pollambdaMonitorSample=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -14059,7 +14075,7 @@ MCNUM Lmax = mccpollambdaMonitorMSF_Lmax;
 		  filename);
     }
 }
-#line 14057 "./Test_Pol_TripleAxis.c"
+#line 14073 "./Test_Pol_TripleAxis.c"
 }   /* End of pollambdaMonitorMSF=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -14106,7 +14122,7 @@ MCNUM Lmax = mccpollambdaMonitorDet_Lmax;
 		  filename);
     }
 }
-#line 14104 "./Test_Pol_TripleAxis.c"
+#line 14120 "./Test_Pol_TripleAxis.c"
 }   /* End of pollambdaMonitorDet=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -14155,7 +14171,7 @@ MCNUM minutes = mccOrigin_minutes;
     fprintf(stdout, "%g [min] ", difftime(NowTime,StartTime)/60.0);
   fprintf(stdout, "\n");
 }
-#line 14153 "./Test_Pol_TripleAxis.c"
+#line 14169 "./Test_Pol_TripleAxis.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -14253,7 +14269,7 @@ MCNUM minutes = mccOrigin_minutes;
 {
   
 }
-#line 14233 "./Test_Pol_TripleAxis.c"
+#line 14249 "./Test_Pol_TripleAxis.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -14302,7 +14318,7 @@ int target_index = mccSource_target_index;
     dashed_line(0,0,0, -focus_xw/2+tx, focus_yh/2+ty,tz, 4);
   }
 }
-#line 14282 "./Test_Pol_TripleAxis.c"
+#line 14298 "./Test_Pol_TripleAxis.c"
 }   /* End of Source=Source_simple() SETTING parameter declarations. */
 #undef srcArea
 #undef square
@@ -14325,7 +14341,7 @@ int target_index = mccSource_target_index;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 14305 "./Test_Pol_TripleAxis.c"
+#line 14321 "./Test_Pol_TripleAxis.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -14344,7 +14360,7 @@ int target_index = mccSource_target_index;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 14324 "./Test_Pol_TripleAxis.c"
+#line 14340 "./Test_Pol_TripleAxis.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -14380,7 +14396,7 @@ MCNUM DM = mccMono_DM;
                0.0, (double)ymin, (double)zmax,
                0.0, (double)ymin, (double)zmin);
 }
-#line 14360 "./Test_Pol_TripleAxis.c"
+#line 14376 "./Test_Pol_TripleAxis.c"
 }   /* End of Mono=Monochromator_flat() SETTING parameter declarations. */
 #undef mono_Q
 #undef mos_rms_max
@@ -14417,7 +14433,7 @@ int debug = mccMono_pol_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 14397 "./Test_Pol_TripleAxis.c"
+#line 14413 "./Test_Pol_TripleAxis.c"
 }   /* End of Mono_pol=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -14455,7 +14471,7 @@ MCNUM Lmax = mccpollambdaMonitorMono_Lmax;
   
   rectangle("xy", 0, 0, 0, xwidth, yheight);
 }
-#line 14435 "./Test_Pol_TripleAxis.c"
+#line 14451 "./Test_Pol_TripleAxis.c"
 }   /* End of pollambdaMonitorMono=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -14484,7 +14500,7 @@ MCNUM Lmax = mccpollambdaMonitorMono_Lmax;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 14464 "./Test_Pol_TripleAxis.c"
+#line 14480 "./Test_Pol_TripleAxis.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -14503,7 +14519,7 @@ MCNUM Lmax = mccpollambdaMonitorMono_Lmax;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 14483 "./Test_Pol_TripleAxis.c"
+#line 14499 "./Test_Pol_TripleAxis.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -14593,7 +14609,7 @@ MCNUM multiples = mccSample_multiples;
     }
   }
 }
-#line 14573 "./Test_Pol_TripleAxis.c"
+#line 14589 "./Test_Pol_TripleAxis.c"
 }   /* End of Sample=V_sample() SETTING parameter declarations. */
 #undef VarsV
 #undef mccompcurname
@@ -14627,7 +14643,7 @@ MCNUM Lmax = mccpollambdaMonitorSample_Lmax;
   
   rectangle("xy", 0, 0, 0, xwidth, yheight);
 }
-#line 14607 "./Test_Pol_TripleAxis.c"
+#line 14623 "./Test_Pol_TripleAxis.c"
 }   /* End of pollambdaMonitorSample=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -14662,7 +14678,7 @@ MCNUM flipangle = mccmsf_flipangle;
 
   box(0, 0, length/2, xwidth, yheight, length);
 }
-#line 14642 "./Test_Pol_TripleAxis.c"
+#line 14658 "./Test_Pol_TripleAxis.c"
 }   /* End of msf=Pol_constBfield() SETTING parameter declarations. */
 #undef omegaL
 #undef length
@@ -14699,7 +14715,7 @@ MCNUM Lmax = mccpollambdaMonitorMSF_Lmax;
   
   rectangle("xy", 0, 0, 0, xwidth, yheight);
 }
-#line 14679 "./Test_Pol_TripleAxis.c"
+#line 14695 "./Test_Pol_TripleAxis.c"
 }   /* End of pollambdaMonitorMSF=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -14728,7 +14744,7 @@ MCNUM Lmax = mccpollambdaMonitorMSF_Lmax;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 14708 "./Test_Pol_TripleAxis.c"
+#line 14724 "./Test_Pol_TripleAxis.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -14747,7 +14763,7 @@ MCNUM Lmax = mccpollambdaMonitorMSF_Lmax;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 14727 "./Test_Pol_TripleAxis.c"
+#line 14743 "./Test_Pol_TripleAxis.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -14783,7 +14799,7 @@ MCNUM DM = mccAna_DM;
                0.0, (double)ymin, (double)zmax,
                0.0, (double)ymin, (double)zmin);
 }
-#line 14763 "./Test_Pol_TripleAxis.c"
+#line 14779 "./Test_Pol_TripleAxis.c"
 }   /* End of Ana=Monochromator_flat() SETTING parameter declarations. */
 #undef mono_Q
 #undef mos_rms_max
@@ -14820,7 +14836,7 @@ int debug = mccAna_pol_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 14800 "./Test_Pol_TripleAxis.c"
+#line 14816 "./Test_Pol_TripleAxis.c"
 }   /* End of Ana_pol=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -14858,7 +14874,7 @@ MCNUM Lmax = mccpollambdaMonitorDet_Lmax;
   
   rectangle("xy", 0, 0, 0, xwidth, yheight);
 }
-#line 14838 "./Test_Pol_TripleAxis.c"
+#line 14854 "./Test_Pol_TripleAxis.c"
 }   /* End of pollambdaMonitorDet=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p

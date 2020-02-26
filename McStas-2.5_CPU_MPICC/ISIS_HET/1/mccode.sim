@@ -1,10 +1,10 @@
 McStas simulation description file for ISIS_HET.
-Date:    Wed Nov 20 01:05:35 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:30:11 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: ISIS_HET
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_HET/ISIS_HET.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_HET/ISIS_HET.instr
   Parameters:  Emin(double) Emax(double) nu_chop(double) type(int)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_HET/ISIS_HET.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_HET/ISIS_HET.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574231426
+  Seed: 1582679075
   Directory: 1
   Nodes: 10
   Param: Emin=443
@@ -29,61 +29,61 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:05:38 2019 (1574208338)
+  Date: Tue Feb 25 21:30:19 2020 (1582662619)
   type: array_1d(100)
-  Source: ISIS_HET (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_HET/ISIS_HET.instr)
+  Source: ISIS_HET (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_HET/ISIS_HET.instr)
   component: monFC
   position: 0 0 9.8
   title: TOF [s] monitor
   Ncount: 10000000
   filename: FC_mon2.dat
-  statistics: X0=0.00105338; dX=1.03199e-05;
-  signal: Min=3.96243; Max=87284.5; Mean=22012.9;
-  values: 2.20129e+06 696.118 9.9997e+06
+  statistics: X0=0.00105259; dX=9.46701e-06;
+  signal: Min=0; Max=91650; Mean=22013.2;
+  values: 2.20132e+06 696.124 9.99986e+06
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.00103431 0.00115892
+  xlimits: 0.00103427 0.00116154
   variables: t I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:05:38 2019 (1574208338)
+  Date: Tue Feb 25 21:30:19 2020 (1582662619)
   type: array_1d(100)
-  Source: ISIS_HET (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_HET/ISIS_HET.instr)
+  Source: ISIS_HET (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_HET/ISIS_HET.instr)
   component: monT
   position: 0 0 10.185
   title: TOF [s] monitor
   Ncount: 10000000
   filename: FC_mon.dat
-  statistics: X0=0.00109439; dX=9.06087e-06;
-  signal: Min=6.06472; Max=33150.8; Mean=14664.5;
-  values: 1.46645e+06 553.784 7.01222e+06
+  statistics: X0=0.00109365; dX=8.66741e-06;
+  signal: Min=5.22821; Max=33198.1; Mean=14669.3;
+  values: 1.46693e+06 553.875 7.01451e+06
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.00107482 0.0011337
+  xlimits: 0.00107489 0.0011313
   variables: t I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:05:38 2019 (1574208338)
+  Date: Tue Feb 25 21:30:19 2020 (1582662619)
   type: array_1d(100)
-  Source: ISIS_HET (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_HET/ISIS_HET.instr)
+  Source: ISIS_HET (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_HET/ISIS_HET.instr)
   component: cyl
   position: 0 0 11.8
   title:  Intensity Time_Of_Flight Angle Monitor (Banana) [out] per bin
   Ncount: 10000000
   filename: det_out.dat
-  statistics: X0=0.0015348; dX=1.23795e-05;
-  signal: Min=0.627548; Max=3857.7; Mean=1929.39;
-  values: 192939 200.827 4.47054e+06
+  statistics: X0=0.00153492; dX=1.22922e-05;
+  signal: Min=0.418564; Max=3806.45; Mean=1931.96;
+  values: 193196 200.961 4.47363e+06
   xvar: TOF
   yvar: (I,Ierr)
   xlabel: TOF [s]
   ylabel: Y
-  xlimits: 0.00150864 0.00158012
+  xlimits: 0.0015089 0.00157908
   variables: TOF I I_err N
 end data

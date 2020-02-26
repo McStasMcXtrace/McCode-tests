@@ -1,11 +1,11 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Nov. 19, 2019
-# Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr
+# Creator: McStas 2.5 - Feb. 24, 2020
+# Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr
 # Ncount: 1000000
 # Trace: no
 # Gravitation: no
-# Seed: 1574226575
+# Seed: 1582672815
 # Directory: 1
 # Nodes: 10
 # Param: Lmin=4.9
@@ -55,9 +55,9 @@
 # Param: RES_DE=0.5
 # Param: port=30
 # Param: cold=0.95
-# Date: Wed Nov 20 00:59:05 2019 (1574207945)
+# Date: Tue Feb 25 21:14:43 2020 (1582661683)
 # type: array_1d(512)
-# Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+# Source: ESS_IN5_reprate (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
 # component: TOFdetector
 # position: 3.06418 0 103.771
 # title: Time-of-flight monitor

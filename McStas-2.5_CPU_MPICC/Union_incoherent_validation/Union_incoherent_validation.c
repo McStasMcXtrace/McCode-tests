@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr (Union_incoherent_validation)
- * Date:       Wed Nov 20 00:54:34 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr (Union_incoherent_validation)
+ * Date:       Tue Feb 25 21:09:37 2020
  * File:       ./Union_incoherent_validation.c
  * Compile:    cc -o Union_incoherent_validation.out ./Union_incoherent_validation.c  -I@MCCODE_LIB@/share/
  * CFLAGS= -I@MCCODE_LIB@/share/
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Union_incoherent_validation";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -5593,7 +5593,7 @@ void initialize_cylinder_geometry_from_main_component(struct geometry_struct *cy
 struct pointer_to_1d_coords_list cylinder_shell_points(struct geometry_struct *geometry,int max_number_of_points) {
   // Function that returns a number (less than max) of points on the geometry surface
   // If used, remember to free the space allocated.
-  int points_per_circle = floor(max_number_of_points/2);
+  int points_per_circle = floor(max_number_of_points/2.0);
   
   struct pointer_to_1d_coords_list cylinder_shell_array;
   cylinder_shell_array.elements = malloc(2*points_per_circle*sizeof(Coords));
@@ -11397,17 +11397,17 @@ void mcinit(void) {
     /* Component Vanadium_incoherent. */
   /* Setting parameters for component Vanadium_incoherent. */
   SIG_MESSAGE("Vanadium_incoherent (Init:SetPar)");
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccVanadium_incoherent_sigma = mcipsigma_inc_vanadium;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccVanadium_incoherent_f_QE = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccVanadium_incoherent_gamma = 0;
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccVanadium_incoherent_packing_factor = mcippack;
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccVanadium_incoherent_unit_cell_volume = mcipVc_vanadium;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccVanadium_incoherent_interact_fraction = -1;
 #line 11412 "./Union_incoherent_validation.c"
 
@@ -11419,11 +11419,11 @@ void mcinit(void) {
 #line 11419 "./Union_incoherent_validation.c"
   rot_copy(mcrotrVanadium_incoherent, mcrotaVanadium_incoherent);
   mcposaVanadium_incoherent = coords_set(
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0);
 #line 11428 "./Union_incoherent_validation.c"
   mctc1 = coords_neg(mcposaVanadium_incoherent);
@@ -11436,11 +11436,11 @@ void mcinit(void) {
     /* Component Vanadium. */
   /* Setting parameters for component Vanadium. */
   SIG_MESSAGE("Vanadium (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   if("Vanadium_incoherent") strncpy(mccVanadium_process_string, "Vanadium_incoherent" ? "Vanadium_incoherent" : "", 16384); else mccVanadium_process_string[0]='\0';
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccVanadium_my_absorption = 100 * mcipsigma_abs_vanadium / mcipVc_vanadium * mcippack;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccVanadium_absorber = 0;
 #line 11445 "./Union_incoherent_validation.c"
 
@@ -11453,11 +11453,11 @@ void mcinit(void) {
   rot_transpose(mcrotaVanadium_incoherent, mctr1);
   rot_mul(mcrotaVanadium, mctr1, mcrotrVanadium);
   mcposaVanadium = coords_set(
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0);
 #line 11462 "./Union_incoherent_validation.c"
   mctc1 = coords_sub(mcposaVanadium_incoherent, mcposaVanadium);
@@ -11470,13 +11470,13 @@ void mcinit(void) {
     /* Component a1. */
   /* Setting parameters for component a1. */
   SIG_MESSAGE("a1 (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   if("NULL") strncpy(mcca1_profile, "NULL" ? "NULL" : "", 16384); else mcca1_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcca1_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcca1_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcca1_minutes = 0;
 #line 11481 "./Union_incoherent_validation.c"
 
@@ -11489,11 +11489,11 @@ void mcinit(void) {
   rot_transpose(mcrotaVanadium, mctr1);
   rot_mul(mcrotaa1, mctr1, mcrotra1);
   mcposaa1 = coords_set(
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0);
 #line 11498 "./Union_incoherent_validation.c"
   mctc1 = coords_sub(mcposaVanadium, mcposaa1);
@@ -11506,46 +11506,46 @@ void mcinit(void) {
     /* Component source. */
   /* Setting parameters for component source. */
   SIG_MESSAGE("source (Init:SetPar)");
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccsource_xwidth = 0.0005;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccsource_yheight = 0.0005;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccsource_focus_aw = 2;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccsource_focus_ah = 1.5;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccsource_E0 = 10;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccsource_dE = 0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccsource_lambda0 = 0.0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccsource_dlambda = 0.0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccsource_gauss = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccsource_flux = 1E10;
 #line 11529 "./Union_incoherent_validation.c"
 
   SIG_MESSAGE("source (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     (0)*DEG2RAD,
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     (0)*DEG2RAD,
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     (0)*DEG2RAD);
 #line 11539 "./Union_incoherent_validation.c"
   rot_mul(mctr1, mcrotaa1, mcrotasource);
   rot_transpose(mcrotaa1, mctr1);
   rot_mul(mcrotasource, mctr1, mcrotrsource);
   mctc1 = coords_set(
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0);
 #line 11550 "./Union_incoherent_validation.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -11564,22 +11564,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("sample_position (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     (0)*DEG2RAD,
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     (0)*DEG2RAD,
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     (0)*DEG2RAD);
 #line 11573 "./Union_incoherent_validation.c"
   rot_mul(mctr1, mcrotaa1, mcrotasample_position);
   rot_transpose(mcrotasource, mctr1);
   rot_mul(mcrotasample_position, mctr1, mcrotrsample_position);
   mctc1 = coords_set(
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     1);
 #line 11584 "./Union_incoherent_validation.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -11595,62 +11595,62 @@ void mcinit(void) {
     /* Component cylinder_sample_union. */
   /* Setting parameters for component cylinder_sample_union. */
   SIG_MESSAGE("cylinder_sample_union (Init:SetPar)");
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   if("Vanadium") strncpy(mcccylinder_sample_union_material_string, "Vanadium" ? "Vanadium" : "", 16384); else mcccylinder_sample_union_material_string[0]='\0';
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_union_priority = 1;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_union_radius = mcipsample_radius;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_union_yheight = mcipsample_height;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_union_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_union_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_union_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_union_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_union_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_union_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_union_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_union_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_union_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_union_focus_r = 0;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_union_p_interact = mcipgeometry_interact;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   if(0) strncpy(mcccylinder_sample_union_mask_string, 0 ? 0 : "", 16384); else mcccylinder_sample_union_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   if(0) strncpy(mcccylinder_sample_union_mask_setting, 0 ? 0 : "", 16384); else mcccylinder_sample_union_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_union_number_of_activations = 1;
 #line 11634 "./Union_incoherent_validation.c"
 
   SIG_MESSAGE("cylinder_sample_union (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     (0)*DEG2RAD,
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     (0)*DEG2RAD,
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     (0)*DEG2RAD);
 #line 11644 "./Union_incoherent_validation.c"
   rot_mul(mctr1, mcrotasample_position, mcrotacylinder_sample_union);
   rot_transpose(mcrotasample_position, mctr1);
   rot_mul(mcrotacylinder_sample_union, mctr1, mcrotrcylinder_sample_union);
   mctc1 = coords_set(
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0);
 #line 11655 "./Union_incoherent_validation.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -11666,13 +11666,13 @@ void mcinit(void) {
     /* Component test_sample. */
   /* Setting parameters for component test_sample. */
   SIG_MESSAGE("test_sample (Init:SetPar)");
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcctest_sample_allow_inside_start = 0;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcctest_sample_history_limit = 300000;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcctest_sample_enable_conditionals = 1;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcctest_sample_inherit_number_of_scattering_events = 0;
 #line 11677 "./Union_incoherent_validation.c"
 
@@ -11686,11 +11686,11 @@ void mcinit(void) {
   rot_transpose(mcrotacylinder_sample_union, mctr1);
   rot_mul(mcrotatest_sample, mctr1, mcrotrtest_sample);
   mctc1 = coords_set(
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     1);
 #line 11695 "./Union_incoherent_validation.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -11706,78 +11706,78 @@ void mcinit(void) {
     /* Component cylinder_sample_incoherent. */
   /* Setting parameters for component cylinder_sample_incoherent. */
   SIG_MESSAGE("cylinder_sample_incoherent (Init:SetPar)");
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   if(0) strncpy(mcccylinder_sample_incoherent_geometry, 0 ? 0 : "", 16384); else mcccylinder_sample_incoherent_geometry[0]='\0';
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_radius = mcipsample_radius;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_xwidth = 0;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_yheight = mcipsample_height;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_zdepth = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_thickness = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_target_x = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_target_y = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_target_z = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_focus_r = 0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_focus_xw = 0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_focus_yh = 0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_focus_aw = 0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_focus_ah = 0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_target_index = 0;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_pack = mcippack;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_p_interact = 0.8;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_f_QE = 0;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_gamma = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_Etrans = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_deltaE = 0;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_sigma_abs = mcipsigma_abs_vanadium;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_sigma_inc = mcipsigma_inc_vanadium;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_Vc = mcipVc_vanadium;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_concentric = 0;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mcccylinder_sample_incoherent_order = 0;
 #line 11761 "./Union_incoherent_validation.c"
 
   SIG_MESSAGE("cylinder_sample_incoherent (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     (0)*DEG2RAD,
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     (0)*DEG2RAD,
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     (0)*DEG2RAD);
 #line 11771 "./Union_incoherent_validation.c"
   rot_mul(mctr1, mcrotasample_position, mcrotacylinder_sample_incoherent);
   rot_transpose(mcrotatest_sample, mctr1);
   rot_mul(mcrotacylinder_sample_incoherent, mctr1, mcrotrcylinder_sample_incoherent);
   mctc1 = coords_set(
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0);
 #line 11782 "./Union_incoherent_validation.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -11793,13 +11793,13 @@ void mcinit(void) {
     /* Component m4pi. */
   /* Setting parameters for component m4pi. */
   SIG_MESSAGE("m4pi (Init:SetPar)");
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   if("4Pi_events.dat") strncpy(mccm4pi_filename, "4Pi_events.dat" ? "4Pi_events.dat" : "", 16384); else mccm4pi_filename[0]='\0';
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccm4pi_radius = 1;
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccm4pi_restore_neutron = 1;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccm4pi_nowritefile = 0;
 #line 11804 "./Union_incoherent_validation.c"
 
@@ -11813,11 +11813,11 @@ void mcinit(void) {
   rot_transpose(mcrotacylinder_sample_incoherent, mctr1);
   rot_mul(mcrotam4pi, mctr1, mcrotrm4pi);
   mctc1 = coords_set(
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0);
 #line 11822 "./Union_incoherent_validation.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -11833,68 +11833,68 @@ void mcinit(void) {
     /* Component Banana_monitor. */
   /* Setting parameters for component Banana_monitor. */
   SIG_MESSAGE("Banana_monitor (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccBanana_monitor_xwidth = 0;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccBanana_monitor_yheight = 0.1;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccBanana_monitor_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccBanana_monitor_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccBanana_monitor_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccBanana_monitor_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccBanana_monitor_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccBanana_monitor_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccBanana_monitor_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccBanana_monitor_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccBanana_monitor_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccBanana_monitor_max = 1e40;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccBanana_monitor_restore_neutron = 1;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccBanana_monitor_radius = 1;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   if("banana, theta limits=[20,170], bins=200") strncpy(mccBanana_monitor_options, "banana, theta limits=[20,170], bins=200" ? "banana, theta limits=[20,170], bins=200" : "", 16384); else mccBanana_monitor_options[0]='\0';
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   if("banana.dat") strncpy(mccBanana_monitor_filename, "banana.dat" ? "banana.dat" : "", 16384); else mccBanana_monitor_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   if("NULL") strncpy(mccBanana_monitor_geometry, "NULL" ? "NULL" : "", 16384); else mccBanana_monitor_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   if("NULL") strncpy(mccBanana_monitor_username1, "NULL" ? "NULL" : "", 16384); else mccBanana_monitor_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   if("NULL") strncpy(mccBanana_monitor_username2, "NULL" ? "NULL" : "", 16384); else mccBanana_monitor_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   if("NULL") strncpy(mccBanana_monitor_username3, "NULL" ? "NULL" : "", 16384); else mccBanana_monitor_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccBanana_monitor_nowritefile = 0;
 #line 11878 "./Union_incoherent_validation.c"
 
   SIG_MESSAGE("Banana_monitor (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     (0)*DEG2RAD,
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     (0)*DEG2RAD,
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     (0)*DEG2RAD);
 #line 11888 "./Union_incoherent_validation.c"
   rot_mul(mctr1, mcrotasample_position, mcrotaBanana_monitor);
   rot_transpose(mcrotam4pi, mctr1);
   rot_mul(mcrotaBanana_monitor, mctr1, mcrotrBanana_monitor);
   mctc1 = coords_set(
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0);
 #line 11899 "./Union_incoherent_validation.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -11910,23 +11910,23 @@ void mcinit(void) {
     /* Component PSDlin_transmission. */
   /* Setting parameters for component PSDlin_transmission. */
   SIG_MESSAGE("PSDlin_transmission (Init:SetPar)");
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   if("Output_transmission_lin.psd") strncpy(mccPSDlin_transmission_filename, "Output_transmission_lin.psd" ? "Output_transmission_lin.psd" : "", 16384); else mccPSDlin_transmission_filename[0]='\0';
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSDlin_transmission_xmin = -0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSDlin_transmission_xmax = 0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSDlin_transmission_ymin = -0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSDlin_transmission_ymax = 0.05;
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSDlin_transmission_xwidth = 0.1;
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSDlin_transmission_yheight = 0.01;
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSDlin_transmission_restore_neutron = 1;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSDlin_transmission_nowritefile = 0;
 #line 11931 "./Union_incoherent_validation.c"
 
@@ -11940,11 +11940,11 @@ void mcinit(void) {
   rot_transpose(mcrotaBanana_monitor, mctr1);
   rot_mul(mcrotaPSDlin_transmission, mctr1, mcrotrPSDlin_transmission);
   mctc1 = coords_set(
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0.5);
 #line 11949 "./Union_incoherent_validation.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -11960,25 +11960,25 @@ void mcinit(void) {
     /* Component PSD_transmission. */
   /* Setting parameters for component PSD_transmission. */
   SIG_MESSAGE("PSD_transmission (Init:SetPar)");
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSD_transmission_nx = 100;
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSD_transmission_ny = 100;
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   if("Output_transmission.psd") strncpy(mccPSD_transmission_filename, "Output_transmission.psd" ? "Output_transmission.psd" : "", 16384); else mccPSD_transmission_filename[0]='\0';
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSD_transmission_xmin = -0.05;
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSD_transmission_xmax = 0.05;
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSD_transmission_ymin = -0.05;
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSD_transmission_ymax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSD_transmission_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSD_transmission_yheight = 0;
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSD_transmission_restore_neutron = 1;
 #line 11983 "./Union_incoherent_validation.c"
 
@@ -11992,11 +11992,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPSDlin_transmission, mctr1);
   rot_mul(mcrotaPSD_transmission, mctr1, mcrotrPSD_transmission);
   mctc1 = coords_set(
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0.5);
 #line 12001 "./Union_incoherent_validation.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -12015,22 +12015,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("scattering_arm (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     (0)*DEG2RAD,
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     (25)*DEG2RAD,
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     (0)*DEG2RAD);
 #line 12024 "./Union_incoherent_validation.c"
   rot_mul(mctr1, mcrotasample_position, mcrotascattering_arm);
   rot_transpose(mcrotaPSD_transmission, mctr1);
   rot_mul(mcrotascattering_arm, mctr1, mcrotrscattering_arm);
   mctc1 = coords_set(
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0);
 #line 12035 "./Union_incoherent_validation.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -12046,23 +12046,23 @@ void mcinit(void) {
     /* Component PSDlin_scattering. */
   /* Setting parameters for component PSDlin_scattering. */
   SIG_MESSAGE("PSDlin_scattering (Init:SetPar)");
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   if("Output_scattering.psd") strncpy(mccPSDlin_scattering_filename, "Output_scattering.psd" ? "Output_scattering.psd" : "", 16384); else mccPSDlin_scattering_filename[0]='\0';
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSDlin_scattering_xmin = -0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSDlin_scattering_xmax = 0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSDlin_scattering_ymin = -0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSDlin_scattering_ymax = 0.05;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSDlin_scattering_xwidth = 0.1;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSDlin_scattering_yheight = 0.05;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSDlin_scattering_restore_neutron = 1;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSDlin_scattering_nowritefile = 0;
 #line 12067 "./Union_incoherent_validation.c"
 
@@ -12076,11 +12076,11 @@ void mcinit(void) {
   rot_transpose(mcrotascattering_arm, mctr1);
   rot_mul(mcrotaPSDlin_scattering, mctr1, mcrotrPSDlin_scattering);
   mctc1 = coords_set(
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0.5);
 #line 12085 "./Union_incoherent_validation.c"
   rot_transpose(mcrotascattering_arm, mctr1);
@@ -12099,22 +12099,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("scattering_arm_2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     (45)*DEG2RAD,
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     (-35)*DEG2RAD,
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     (0)*DEG2RAD);
 #line 12108 "./Union_incoherent_validation.c"
   rot_mul(mctr1, mcrotasample_position, mcrotascattering_arm_2);
   rot_transpose(mcrotaPSDlin_scattering, mctr1);
   rot_mul(mcrotascattering_arm_2, mctr1, mcrotrscattering_arm_2);
   mctc1 = coords_set(
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0);
 #line 12119 "./Union_incoherent_validation.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -12130,23 +12130,23 @@ void mcinit(void) {
     /* Component PSDlin_scattering_2. */
   /* Setting parameters for component PSDlin_scattering_2. */
   SIG_MESSAGE("PSDlin_scattering_2 (Init:SetPar)");
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   if("Output_scattering_2.psd") strncpy(mccPSDlin_scattering_2_filename, "Output_scattering_2.psd" ? "Output_scattering_2.psd" : "", 16384); else mccPSDlin_scattering_2_filename[0]='\0';
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSDlin_scattering_2_xmin = -0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSDlin_scattering_2_xmax = 0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSDlin_scattering_2_ymin = -0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSDlin_scattering_2_ymax = 0.05;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSDlin_scattering_2_xwidth = 0.1;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSDlin_scattering_2_yheight = 0.05;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSDlin_scattering_2_restore_neutron = 1;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
   mccPSDlin_scattering_2_nowritefile = 0;
 #line 12151 "./Union_incoherent_validation.c"
 
@@ -12160,11 +12160,11 @@ void mcinit(void) {
   rot_transpose(mcrotascattering_arm_2, mctr1);
   rot_mul(mcrotaPSDlin_scattering_2, mctr1, mcrotrPSDlin_scattering_2);
   mctc1 = coords_set(
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_incoherent_validation/Union_incoherent_validation.instr"
     0.5);
 #line 12169 "./Union_incoherent_validation.c"
   rot_transpose(mcrotascattering_arm_2, mctr1);
@@ -12887,7 +12887,7 @@ add_element_to_geometry_list(&global_geometry_list,global_geometry_element);
           printf("Volume.name         [%d]: %s \n",iterate,global_geometry_list.elements[iterate].Volume->name);
           if (global_geometry_list.elements[iterate].Volume->geometry.is_mask_volume == 0) {
           printf("Volume.p_physics.is_vacuum           [%d]: %d \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->is_vacuum);
-          printf("Volume.p_physics.my_absoprtion       [%d]: %f \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->my_a);
+          printf("Volume.p_physics.my_absorption       [%d]: %f \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->my_a);
           printf("Volume.p_physics.number of processes [%d]: %d \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->number_of_processes);
           }
           printf("Volume.geometry.shape                [%d]: %s \n",iterate,global_geometry_list.elements[iterate].Volume->geometry.shape);

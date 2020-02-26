@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr (Samples_Phonon)
- * Date:       Wed Nov 20 00:49:18 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr (Samples_Phonon)
+ * Date:       Tue Feb 25 21:03:47 2020
  * File:       ./Samples_Phonon.c
  * Compile:    cc -o Samples_Phonon.out ./Samples_Phonon.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Samples_Phonon";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -5895,13 +5895,13 @@ void mcinit(void) {
     /* Component a1. */
   /* Setting parameters for component a1. */
   SIG_MESSAGE("a1 (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   if("NULL") strncpy(mcca1_profile, "NULL" ? "NULL" : "", 16384); else mcca1_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mcca1_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mcca1_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mcca1_minutes = 0;
 #line 5906 "./Samples_Phonon.c"
 
@@ -5913,11 +5913,11 @@ void mcinit(void) {
 #line 5913 "./Samples_Phonon.c"
   rot_copy(mcrotra1, mcrotaa1);
   mcposaa1 = coords_set(
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
     0,
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
     0,
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
     0);
 #line 5922 "./Samples_Phonon.c"
   mctc1 = coords_neg(mcposaa1);
@@ -5930,46 +5930,46 @@ void mcinit(void) {
     /* Component source. */
   /* Setting parameters for component source. */
   SIG_MESSAGE("source (Init:SetPar)");
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsource_xwidth = 0.0005;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsource_yheight = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsource_focus_aw = mcipHDIV;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsource_focus_ah = mcipVDIV;
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsource_E0 = mcipE;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsource_dE = mcipDE;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsource_lambda0 = 0.0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsource_dlambda = 0.0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsource_gauss = 0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsource_flux = 1;
 #line 5953 "./Samples_Phonon.c"
 
   SIG_MESSAGE("source (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
     (0)*DEG2RAD,
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
     (0)*DEG2RAD,
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
     (0)*DEG2RAD);
 #line 5963 "./Samples_Phonon.c"
   rot_mul(mctr1, mcrotaa1, mcrotasource);
   rot_transpose(mcrotaa1, mctr1);
   rot_mul(mcrotasource, mctr1, mcrotrsource);
   mctc1 = coords_set(
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
     0,
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
     0,
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
     0);
 #line 5974 "./Samples_Phonon.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -5985,66 +5985,66 @@ void mcinit(void) {
     /* Component sample. */
   /* Setting parameters for component sample. */
   SIG_MESSAGE("sample (Init:SetPar)");
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsample_radius = 0.01;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsample_yheight = 0.02;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsample_sigma_abs = 0.17;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsample_sigma_inc = 0.003;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsample_a = 4.95;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsample_b = 0.90;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsample_M = 208;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsample_c = mcipC;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsample_DW = 1.00;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsample_T = 300;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsample_target_x = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsample_target_y = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsample_target_z = 0;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsample_target_index = + 2;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsample_focus_r = 0.001;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsample_focus_xw = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsample_focus_yh = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsample_focus_aw = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsample_focus_ah = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccsample_gap = 0;
 #line 6028 "./Samples_Phonon.c"
 
   SIG_MESSAGE("sample (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
     (0)*DEG2RAD,
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
     (mcipOM)*DEG2RAD,
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
     (0)*DEG2RAD);
 #line 6038 "./Samples_Phonon.c"
   rot_mul(mctr1, mcrotaa1, mcrotasample);
   rot_transpose(mcrotasource, mctr1);
   rot_mul(mcrotasample, mctr1, mcrotrsample);
   mctc1 = coords_set(
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
     0,
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
     0,
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
     1.00);
 #line 6049 "./Samples_Phonon.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -6063,22 +6063,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("a2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
     (0)*DEG2RAD,
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
     (mcipTT)*DEG2RAD,
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
     (0)*DEG2RAD);
 #line 6072 "./Samples_Phonon.c"
   rot_mul(mctr1, mcrotaa1, mcrotaa2);
   rot_transpose(mcrotasample, mctr1);
   rot_mul(mcrotaa2, mctr1, mcrotra2);
   mctc1 = coords_set(
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
     0,
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
     0,
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
     0);
 #line 6083 "./Samples_Phonon.c"
   rot_transpose(mcrotasample, mctr1);
@@ -6094,27 +6094,27 @@ void mcinit(void) {
     /* Component mon1. */
   /* Setting parameters for component mon1. */
   SIG_MESSAGE("mon1 (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   if("e.dat") strncpy(mccmon1_filename, "e.dat" ? "e.dat" : "", 16384); else mccmon1_filename[0]='\0';
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccmon1_xmin = -0.01;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccmon1_xmax = 0.01;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccmon1_ymin = -0.02;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccmon1_ymax = 0.02;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccmon1_xwidth = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccmon1_yheight = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccmon1_Emin = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccmon1_Emax = 40;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccmon1_restore_neutron = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
   mccmon1_nowritefile = 0;
 #line 6119 "./Samples_Phonon.c"
 
@@ -6128,11 +6128,11 @@ void mcinit(void) {
   rot_transpose(mcrotaa2, mctr1);
   rot_mul(mcrotamon1, mctr1, mcrotrmon1);
   mctc1 = coords_set(
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
     0,
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
     0,
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr"
     1);
 #line 6137 "./Samples_Phonon.c"
   rot_transpose(mcrotaa2, mctr1);

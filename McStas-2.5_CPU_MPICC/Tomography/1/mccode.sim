@@ -1,10 +1,10 @@
 McStas simulation description file for Tomography.
-Date:    Wed Nov 20 01:24:53 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 22:16:36 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: Tomography
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr
   Parameters:  geometry(string) omega(double) sigma_abs(double) frac_scatt(double) div_v(double) div_h(double) source_w(double) source_h(double) det_w(double) det_h(double) opts(string)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574212718
+  Seed: 1582693125
   Directory: 1
   Nodes: 10
   Param: geometry=socket.off
@@ -36,17 +36,17 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:25:25 2019 (1574209525)
+  Date: Tue Feb 25 22:17:56 2020 (1582665476)
   type: array_2d(80, 40)
-  Source: Tomography (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr)
+  Source: Tomography (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr)
   component: monitor
   position: 0 0 2
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: monitor_1574209493.x_y
-  statistics: X0=-8.24408e-06; dX=0.120307; Y0=3.22086e-05; dY=0.0597344;
-  signal: Min=8.67652e-23; Max=8.08576e-13; Mean=6.98085e-13;
-  values: 2.23387e-09 7.37822e-13 9.99654e+06
+  filename: monitor_1582665396.x_y
+  statistics: X0=9.06345e-05; dX=0.12032; Y0=5.03239e-05; dY=0.0597302;
+  signal: Min=3.79086e-23; Max=8.06871e-13; Mean=6.98038e-13;
+  values: 2.23372e-09 7.37797e-13 9.99635e+06
   xvar: x
   yvar: y
   xlabel: x [m]

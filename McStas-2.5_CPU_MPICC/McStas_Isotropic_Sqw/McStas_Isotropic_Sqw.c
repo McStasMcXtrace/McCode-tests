@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr (McStas_Isotropic_Sqw)
- * Date:       Wed Nov 20 00:44:00 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr (McStas_Isotropic_Sqw)
+ * Date:       Tue Feb 25 20:59:19 2020
  * File:       ./McStas_Isotropic_Sqw.c
  * Compile:    cc -o McStas_Isotropic_Sqw.out ./McStas_Isotropic_Sqw.c  -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
  * CFLAGS= -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "McStas_Isotropic_Sqw";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -9899,23 +9899,23 @@ void mcinit(void) {
     /* Component mcpl_in. */
   /* Setting parameters for component mcpl_in. */
   SIG_MESSAGE("mcpl_in (Init:SetPar)");
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   if("McStas_Isotropic_Sqw_in.mcpl") strncpy(mccmcpl_in_filename, "McStas_Isotropic_Sqw_in.mcpl" ? "McStas_Isotropic_Sqw_in.mcpl" : "", 16384); else mccmcpl_in_filename[0]='\0';
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccmcpl_in_polarisationuse = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccmcpl_in_verbose = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccmcpl_in_Emin = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccmcpl_in_Emax = FLT_MAX;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccmcpl_in_repeat_count = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccmcpl_in_E_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccmcpl_in_pos_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccmcpl_in_dir_smear = 0;
 #line 9920 "./McStas_Isotropic_Sqw.c"
 
@@ -9927,11 +9927,11 @@ void mcinit(void) {
 #line 9927 "./McStas_Isotropic_Sqw.c"
   rot_copy(mcrotrmcpl_in, mcrotamcpl_in);
   mcposamcpl_in = coords_set(
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
     0,
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
     0,
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
     0);
 #line 9936 "./McStas_Isotropic_Sqw.c"
   mctc1 = coords_neg(mcposamcpl_in);
@@ -9944,81 +9944,81 @@ void mcinit(void) {
     /* Component Iso. */
   /* Setting parameters for component Iso. */
   SIG_MESSAGE("Iso (Init:SetPar)");
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   if(mcipSqw_coh) strncpy(mccIso_Sqw_coh, mcipSqw_coh ? mcipSqw_coh : "", 16384); else mccIso_Sqw_coh[0]='\0';
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   if(mcipSqw_inc) strncpy(mccIso_Sqw_inc, mcipSqw_inc ? mcipSqw_inc : "", 16384); else mccIso_Sqw_inc[0]='\0';
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   if(mcipgeometry) strncpy(mccIso_geometry, mcipgeometry ? mcipgeometry : "", 16384); else mccIso_geometry[0]='\0';
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccIso_radius = mcipradius;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccIso_thickness = mcipthickness;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccIso_xwidth = mcipxwidth;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccIso_yheight = mcipyheight;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccIso_zdepth = mcipzdepth;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccIso_threshold = mcipthreshold;
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccIso_order = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccIso_T = mcipT;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccIso_verbose = mcipverbose;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccIso_d_phi = mcipd_phi;
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccIso_concentric = 0;
-#line 274 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 274 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccIso_rho = 0;
-#line 274 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 274 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccIso_sigma_abs = 0;
-#line 274 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 274 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccIso_sigma_coh = 0;
-#line 274 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 274 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccIso_sigma_inc = 0;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccIso_classical = mcipclassical;
-#line 275 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 275 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccIso_powder_Dd = 0;
-#line 275 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 275 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccIso_powder_DW = 0;
-#line 275 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 275 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccIso_powder_Vc = 0;
-#line 275 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 275 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccIso_density = 0;
-#line 275 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 275 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccIso_weight = 0;
-#line 276 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 276 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccIso_p_interact = -1;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccIso_norm = mcipnorm;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccIso_powder_barns = mcippowder_barns;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   if(mcipquantum_correction) strncpy(mccIso_quantum_correction, mcipquantum_correction ? mcipquantum_correction : "", 16384); else mccIso_quantum_correction[0]='\0';
 #line 10003 "./McStas_Isotropic_Sqw.c"
 
   SIG_MESSAGE("Iso (Init:Place/Rotate)");
   rot_set_rotation(mcrotaIso,
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
     (mciprot_x)*DEG2RAD,
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
     (mciprot_y)*DEG2RAD,
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
     (mciprot_z)*DEG2RAD);
 #line 10013 "./McStas_Isotropic_Sqw.c"
   rot_transpose(mcrotamcpl_in, mctr1);
   rot_mul(mcrotaIso, mctr1, mcrotrIso);
   mcposaIso = coords_set(
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
     0,
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
     0,
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
     0);
 #line 10023 "./McStas_Isotropic_Sqw.c"
   mctc1 = coords_sub(mcposamcpl_in, mcposaIso);
@@ -10031,13 +10031,13 @@ void mcinit(void) {
     /* Component mcpl_out. */
   /* Setting parameters for component mcpl_out. */
   SIG_MESSAGE("mcpl_out (Init:SetPar)");
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   if("McStas_Isotropic_Sqw_out.mcpl") strncpy(mccmcpl_out_filename, "McStas_Isotropic_Sqw_out.mcpl" ? "McStas_Isotropic_Sqw_out.mcpl" : "", 16384); else mccmcpl_out_filename[0]='\0';
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   if("") strncpy(mccmcpl_out_userflagcomment, "" ? "" : "", 16384); else mccmcpl_out_userflagcomment[0]='\0';
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccmcpl_out_merge_mpi = 1;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
   mccmcpl_out_keep_mpi_unmerged = 0;
 #line 10042 "./McStas_Isotropic_Sqw.c"
 
@@ -10050,11 +10050,11 @@ void mcinit(void) {
   rot_transpose(mcrotaIso, mctr1);
   rot_mul(mcrotamcpl_out, mctr1, mcrotrmcpl_out);
   mcposamcpl_out = coords_set(
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
     0,
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
     0,
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Isotropic_Sqw/McStas_Isotropic_Sqw.instr"
     0);
 #line 10059 "./McStas_Isotropic_Sqw.c"
   mctc1 = coords_sub(mcposaIso, mcposamcpl_out);

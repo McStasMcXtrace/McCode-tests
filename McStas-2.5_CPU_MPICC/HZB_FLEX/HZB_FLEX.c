@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr (HZB_FLEX)
- * Date:       Wed Nov 20 00:13:52 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr (HZB_FLEX)
+ * Date:       Tue Feb 25 20:25:39 2020
  * File:       ./HZB_FLEX.c
  * Compile:    cc -o HZB_FLEX.out ./HZB_FLEX.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "HZB_FLEX";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -7161,7 +7161,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define L3 mcipL3
 #define L4 mcipL4
 #define Mono_flatswitch mcipMono_flatswitch
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
 #include <math.h>
 
 // unit conversions
@@ -8764,7 +8764,7 @@ void mcinit(void) {
 #define L3 mcipL3
 #define L4 mcipL4
 #define Mono_flatswitch mcipMono_flatswitch
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
 {
 #include <math.h>
 
@@ -8869,13 +8869,13 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccOrigin_minutes = 0;
 #line 8880 "./HZB_FLEX.c"
 
@@ -8887,11 +8887,11 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
 #line 8887 "./HZB_FLEX.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 182 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 182 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 182 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 182 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 182 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 182 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0);
 #line 8896 "./HZB_FLEX.c"
   mctc1 = coords_neg(mcposaOrigin);
@@ -8904,86 +8904,86 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
     /* Component Gen_Source. */
   /* Setting parameters for component Gen_Source. */
   SIG_MESSAGE("Gen_Source (Init:SetPar)");
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   if("NULL") strncpy(mccGen_Source_flux_file, "NULL" ? "NULL" : "", 16384); else mccGen_Source_flux_file[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   if("NULL") strncpy(mccGen_Source_xdiv_file, "NULL" ? "NULL" : "", 16384); else mccGen_Source_xdiv_file[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   if("NULL") strncpy(mccGen_Source_ydiv_file, "NULL" ? "NULL" : "", 16384); else mccGen_Source_ydiv_file[0]='\0';
-#line 187 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 187 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_radius = 0.0775;
-#line 187 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 187 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_dist = 1.53;
-#line 187 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 187 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_focus_xw = 0.2;
-#line 187 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 187 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_focus_yh = 0.125;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_focus_aw = 0;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_focus_ah = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_E0 = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_dE = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_lambda0 = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_dlambda = 0;
-#line 188 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 188 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_I1 = 1e10;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_yheight = 0.1;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_xwidth = 0.1;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_verbose = 0;
-#line 189 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 189 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_T1 = 45;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_flux_file_perAA = 0;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_flux_file_log = 0;
-#line 188 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 188 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_Lmin = l_min;
-#line 188 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 188 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_Lmax = l_max;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_Emin = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_Emax = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_T2 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_I2 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_T3 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_I3 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_zdepth = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccGen_Source_target_index = + 1;
 #line 8967 "./HZB_FLEX.c"
 
   SIG_MESSAGE("Gen_Source (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 191 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 191 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 191 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 191 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 191 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 191 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD);
 #line 8977 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaGen_Source);
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotaGen_Source, mctr1, mcrotrGen_Source);
   mctc1 = coords_set(
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0);
 #line 8988 "./HZB_FLEX.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -9002,22 +9002,22 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
 
   SIG_MESSAGE("NL1A_NL1B_NL2_NL3_InPile_Entrance_Window (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 197 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 197 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 197 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 197 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 197 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 197 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD);
 #line 9011 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaNL1A_NL1B_NL2_NL3_InPile_Entrance_Window);
   rot_transpose(mcrotaGen_Source, mctr1);
   rot_mul(mcrotaNL1A_NL1B_NL2_NL3_InPile_Entrance_Window, mctr1, mcrotrNL1A_NL1B_NL2_NL3_InPile_Entrance_Window);
   mctc1 = coords_set(
-#line 197 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 197 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 197 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 197 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 197 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 197 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     1.530);
 #line 9022 "./HZB_FLEX.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -9033,48 +9033,48 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
     /* Component NL1A_NL1B_NL2_NL3_InPile. */
   /* Setting parameters for component NL1A_NL1B_NL2_NL3_InPile. */
   SIG_MESSAGE("NL1A_NL1B_NL2_NL3_InPile (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   if(0) strncpy(mccNL1A_NL1B_NL2_NL3_InPile_reflect, 0 ? 0 : "", 16384); else mccNL1A_NL1B_NL2_NL3_InPile_reflect[0]='\0';
-#line 201 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 201 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1A_NL1B_NL2_NL3_InPile_w1 = 0.170696;
-#line 201 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 201 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1A_NL1B_NL2_NL3_InPile_h1 = 0.129;
-#line 201 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 201 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1A_NL1B_NL2_NL3_InPile_w2 = 0.340522;
-#line 201 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 201 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1A_NL1B_NL2_NL3_InPile_h2 = 0.129;
-#line 201 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 201 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1A_NL1B_NL2_NL3_InPile_l = 1.870;
-#line 202 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 202 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1A_NL1B_NL2_NL3_InPile_R0 = R0_para;
-#line 202 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 202 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1A_NL1B_NL2_NL3_InPile_Qc = Qc_para;
-#line 202 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 202 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1A_NL1B_NL2_NL3_InPile_alpha = alpha_para;
-#line 202 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 202 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1A_NL1B_NL2_NL3_InPile_m = MGUIDE;
-#line 202 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 202 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1A_NL1B_NL2_NL3_InPile_W = W_para;
 #line 9058 "./HZB_FLEX.c"
 
   SIG_MESSAGE("NL1A_NL1B_NL2_NL3_InPile (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD);
 #line 9068 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaNL1A_NL1B_NL2_NL3_InPile_Entrance_Window, mcrotaNL1A_NL1B_NL2_NL3_InPile);
   rot_transpose(mcrotaNL1A_NL1B_NL2_NL3_InPile_Entrance_Window, mctr1);
   rot_mul(mcrotaNL1A_NL1B_NL2_NL3_InPile, mctr1, mcrotrNL1A_NL1B_NL2_NL3_InPile);
   mctc1 = coords_set(
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0);
 #line 9079 "./HZB_FLEX.c"
   rot_transpose(mcrotaNL1A_NL1B_NL2_NL3_InPile_Entrance_Window, mctr1);
@@ -9093,22 +9093,22 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
 
   SIG_MESSAGE("NL1B_Straight1_Entrance_Window (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (-2.15)*DEG2RAD,
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD);
 #line 9102 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaNL1B_Straight1_Entrance_Window);
   rot_transpose(mcrotaNL1A_NL1B_NL2_NL3_InPile, mctr1);
   rot_mul(mcrotaNL1B_Straight1_Entrance_Window, mctr1, mcrotrNL1B_Straight1_Entrance_Window);
   mctc1 = coords_set(
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     -0.1277,
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     3.400);
 #line 9113 "./HZB_FLEX.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -9124,48 +9124,48 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
     /* Component NL1B_Straight1. */
   /* Setting parameters for component NL1B_Straight1. */
   SIG_MESSAGE("NL1B_Straight1 (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   if(0) strncpy(mccNL1B_Straight1_reflect, 0 ? 0 : "", 16384); else mccNL1B_Straight1_reflect[0]='\0';
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Straight1_w1 = 0.06;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Straight1_h1 = 0.125;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Straight1_w2 = 0.06;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Straight1_h2 = 0.125;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Straight1_l = 1.549;
-#line 212 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 212 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Straight1_R0 = R0_para;
-#line 212 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 212 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Straight1_Qc = Qc_para;
-#line 212 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 212 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Straight1_alpha = alpha_para;
-#line 212 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 212 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Straight1_m = MGUIDE;
-#line 212 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 212 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Straight1_W = W_para;
 #line 9149 "./HZB_FLEX.c"
 
   SIG_MESSAGE("NL1B_Straight1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 213 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 213 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 213 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD);
 #line 9159 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaNL1B_Straight1_Entrance_Window, mcrotaNL1B_Straight1);
   rot_transpose(mcrotaNL1B_Straight1_Entrance_Window, mctr1);
   rot_mul(mcrotaNL1B_Straight1, mctr1, mcrotrNL1B_Straight1);
   mctc1 = coords_set(
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 213 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 213 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 213 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0);
 #line 9170 "./HZB_FLEX.c"
   rot_transpose(mcrotaNL1B_Straight1_Entrance_Window, mctr1);
@@ -9184,22 +9184,22 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
 
   SIG_MESSAGE("NL1B_Curved_Entrance_Window (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 216 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 216 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 216 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 216 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 216 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 216 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD);
 #line 9193 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaNL1B_Straight1_Entrance_Window, mcrotaNL1B_Curved_Entrance_Window);
   rot_transpose(mcrotaNL1B_Straight1, mctr1);
   rot_mul(mcrotaNL1B_Curved_Entrance_Window, mctr1, mcrotrNL1B_Curved_Entrance_Window);
   mctc1 = coords_set(
-#line 216 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 216 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 216 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 216 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 216 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 216 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     1.549);
 #line 9204 "./HZB_FLEX.c"
   rot_transpose(mcrotaNL1B_Straight1_Entrance_Window, mctr1);
@@ -9215,44 +9215,44 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
     /* Component NL1B_Curved_Guide_1. */
   /* Setting parameters for component NL1B_Curved_Guide_1. */
   SIG_MESSAGE("NL1B_Curved_Guide_1 (Init:SetPar)");
-#line 222 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 222 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Curved_Guide_1_w1 = 0.06;
-#line 222 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 222 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Curved_Guide_1_h1 = 0.125;
-#line 222 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 222 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Curved_Guide_1_l = LGUIDE_1;
-#line 222 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 222 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Curved_Guide_1_R0 = R0_para;
-#line 222 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 222 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Curved_Guide_1_Qc = Qc_para;
-#line 223 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 223 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Curved_Guide_1_alpha = alpha_para;
-#line 223 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 223 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Curved_Guide_1_m = MGUIDE;
-#line 223 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 223 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Curved_Guide_1_W = W_para;
-#line 223 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 223 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Curved_Guide_1_curvature = 2800;
 #line 9236 "./HZB_FLEX.c"
 
   SIG_MESSAGE("NL1B_Curved_Guide_1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 224 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 224 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 224 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (180)*DEG2RAD);
 #line 9246 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaNL1B_Curved_Entrance_Window, mcrotaNL1B_Curved_Guide_1);
   rot_transpose(mcrotaNL1B_Curved_Entrance_Window, mctr1);
   rot_mul(mcrotaNL1B_Curved_Guide_1, mctr1, mcrotrNL1B_Curved_Guide_1);
   mctc1 = coords_set(
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 224 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 224 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 224 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0);
 #line 9257 "./HZB_FLEX.c"
   rot_transpose(mcrotaNL1B_Curved_Entrance_Window, mctr1);
@@ -9271,22 +9271,22 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
 
   SIG_MESSAGE("NL1B_Velocity_Selector_Gap_Entrance_Window (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 229 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 229 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 229 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 229 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (- beta_guide_1)*DEG2RAD,
-#line 229 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 229 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD);
 #line 9280 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaNL1B_Curved_Entrance_Window, mcrotaNL1B_Velocity_Selector_Gap_Entrance_Window);
   rot_transpose(mcrotaNL1B_Curved_Guide_1, mctr1);
   rot_mul(mcrotaNL1B_Velocity_Selector_Gap_Entrance_Window, mctr1, mcrotrNL1B_Velocity_Selector_Gap_Entrance_Window);
   mctc1 = coords_set(
-#line 229 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 229 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     - s_guide_1,
-#line 229 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 229 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 229 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 229 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     LGUIDE_1);
 #line 9291 "./HZB_FLEX.c"
   rot_transpose(mcrotaNL1B_Curved_Entrance_Window, mctr1);
@@ -9302,25 +9302,25 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
     /* Component Before_selec. */
   /* Setting parameters for component Before_selec. */
   SIG_MESSAGE("Before_selec (Init:SetPar)");
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccBefore_selec_nx = 50;
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccBefore_selec_ny = 50;
-#line 235 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 235 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   if("PSD_monitor_before.dat") strncpy(mccBefore_selec_filename, "PSD_monitor_before.dat" ? "PSD_monitor_before.dat" : "", 16384); else mccBefore_selec_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccBefore_selec_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccBefore_selec_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccBefore_selec_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccBefore_selec_ymax = 0.05;
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccBefore_selec_xwidth = 0.20;
-#line 235 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 235 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccBefore_selec_yheight = 0.20;
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccBefore_selec_restore_neutron = 1;
 #line 9325 "./HZB_FLEX.c"
 
@@ -9334,11 +9334,11 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
   rot_transpose(mcrotaNL1B_Velocity_Selector_Gap_Entrance_Window, mctr1);
   rot_mul(mcrotaBefore_selec, mctr1, mcrotrBefore_selec);
   mctc1 = coords_set(
-#line 236 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 236 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 236 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 236 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 236 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 236 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0.19);
 #line 9343 "./HZB_FLEX.c"
   rot_transpose(mcrotaNL1B_Velocity_Selector_Gap_Entrance_Window, mctr1);
@@ -9354,50 +9354,50 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
     /* Component SELEC. */
   /* Setting parameters for component SELEC. */
   SIG_MESSAGE("SELEC (Init:SetPar)");
-#line 239 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 239 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccSELEC_xmin = -0.0625;
-#line 240 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 240 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccSELEC_xmax = 0.0625;
-#line 241 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 241 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccSELEC_ymin = -0.03;
-#line 242 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 242 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccSELEC_ymax = 0.03;
-#line 243 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 243 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccSELEC_length = 0.25;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccSELEC_xwidth = 0;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccSELEC_yheight = 0;
-#line 244 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 244 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccSELEC_nslit = 72;
-#line 245 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 245 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccSELEC_d = 0.0004;
-#line 246 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 246 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccSELEC_radius = 0.123;
-#line 247 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 247 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccSELEC_alpha = 19.7;
-#line 248 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 248 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccSELEC_nu = SelFreq;
 #line 9381 "./HZB_FLEX.c"
 
   SIG_MESSAGE("SELEC (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 252 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 252 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 252 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 252 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (mciptilt)*DEG2RAD,
-#line 252 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 252 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (90)*DEG2RAD);
 #line 9391 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaNL1B_Velocity_Selector_Gap_Entrance_Window, mcrotaSELEC);
   rot_transpose(mcrotaBefore_selec, mctr1);
   rot_mul(mcrotaSELEC, mctr1, mcrotrSELEC);
   mctc1 = coords_set(
-#line 251 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 251 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 251 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 251 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 251 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 251 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0.2);
 #line 9402 "./HZB_FLEX.c"
   rot_transpose(mcrotaNL1B_Velocity_Selector_Gap_Entrance_Window, mctr1);
@@ -9413,25 +9413,25 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
     /* Component After_selec. */
   /* Setting parameters for component After_selec. */
   SIG_MESSAGE("After_selec (Init:SetPar)");
-#line 255 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 255 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccAfter_selec_nx = 50;
-#line 255 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 255 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccAfter_selec_ny = 50;
-#line 256 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 256 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   if("PSD_monitor_after.dat") strncpy(mccAfter_selec_filename, "PSD_monitor_after.dat" ? "PSD_monitor_after.dat" : "", 16384); else mccAfter_selec_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccAfter_selec_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccAfter_selec_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccAfter_selec_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccAfter_selec_ymax = 0.05;
-#line 255 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 255 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccAfter_selec_xwidth = 0.20;
-#line 256 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 256 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccAfter_selec_yheight = 0.20;
-#line 255 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 255 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccAfter_selec_restore_neutron = 1;
 #line 9436 "./HZB_FLEX.c"
 
@@ -9445,11 +9445,11 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
   rot_transpose(mcrotaSELEC, mctr1);
   rot_mul(mcrotaAfter_selec, mctr1, mcrotrAfter_selec);
   mctc1 = coords_set(
-#line 257 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 257 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 257 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 257 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 257 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 257 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0.46);
 #line 9454 "./HZB_FLEX.c"
   rot_transpose(mcrotaNL1B_Velocity_Selector_Gap_Entrance_Window, mctr1);
@@ -9468,22 +9468,22 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
 
   SIG_MESSAGE("NL1B_Curved_2_Entrance_Window (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 260 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 260 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 260 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 260 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 260 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 260 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD);
 #line 9477 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaNL1B_Velocity_Selector_Gap_Entrance_Window, mcrotaNL1B_Curved_2_Entrance_Window);
   rot_transpose(mcrotaAfter_selec, mctr1);
   rot_mul(mcrotaNL1B_Curved_2_Entrance_Window, mctr1, mcrotrNL1B_Curved_2_Entrance_Window);
   mctc1 = coords_set(
-#line 260 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 260 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 260 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 260 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 260 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 260 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0.47);
 #line 9488 "./HZB_FLEX.c"
   rot_transpose(mcrotaNL1B_Velocity_Selector_Gap_Entrance_Window, mctr1);
@@ -9499,44 +9499,44 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
     /* Component NL1B_Curved_Guide_2. */
   /* Setting parameters for component NL1B_Curved_Guide_2. */
   SIG_MESSAGE("NL1B_Curved_Guide_2 (Init:SetPar)");
-#line 263 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 263 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Curved_Guide_2_w1 = 0.06;
-#line 263 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 263 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Curved_Guide_2_h1 = 0.125;
-#line 263 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 263 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Curved_Guide_2_l = LGUIDE_2;
-#line 263 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 263 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Curved_Guide_2_R0 = R0_para;
-#line 263 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 263 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Curved_Guide_2_Qc = Qc_para;
-#line 264 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 264 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Curved_Guide_2_alpha = alpha_para;
-#line 264 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 264 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Curved_Guide_2_m = MGUIDE;
-#line 264 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 264 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Curved_Guide_2_W = W_para;
-#line 264 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 264 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Curved_Guide_2_curvature = 2800;
 #line 9520 "./HZB_FLEX.c"
 
   SIG_MESSAGE("NL1B_Curved_Guide_2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (180)*DEG2RAD);
 #line 9530 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaNL1B_Curved_2_Entrance_Window, mcrotaNL1B_Curved_Guide_2);
   rot_transpose(mcrotaNL1B_Curved_2_Entrance_Window, mctr1);
   rot_mul(mcrotaNL1B_Curved_Guide_2, mctr1, mcrotrNL1B_Curved_Guide_2);
   mctc1 = coords_set(
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0);
 #line 9541 "./HZB_FLEX.c"
   rot_transpose(mcrotaNL1B_Curved_2_Entrance_Window, mctr1);
@@ -9555,22 +9555,22 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
 
   SIG_MESSAGE("NL1B_Straight2_Entrance_Window (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 268 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 268 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 268 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 268 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (- beta_guide_2)*DEG2RAD,
-#line 268 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 268 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD);
 #line 9564 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaNL1B_Curved_2_Entrance_Window, mcrotaNL1B_Straight2_Entrance_Window);
   rot_transpose(mcrotaNL1B_Curved_Guide_2, mctr1);
   rot_mul(mcrotaNL1B_Straight2_Entrance_Window, mctr1, mcrotrNL1B_Straight2_Entrance_Window);
   mctc1 = coords_set(
-#line 268 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 268 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     - s_guide_2,
-#line 268 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 268 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 268 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 268 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     LGUIDE_2);
 #line 9575 "./HZB_FLEX.c"
   rot_transpose(mcrotaNL1B_Curved_2_Entrance_Window, mctr1);
@@ -9586,48 +9586,48 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
     /* Component NL1B_Straight2. */
   /* Setting parameters for component NL1B_Straight2. */
   SIG_MESSAGE("NL1B_Straight2 (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   if(0) strncpy(mccNL1B_Straight2_reflect, 0 ? 0 : "", 16384); else mccNL1B_Straight2_reflect[0]='\0';
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Straight2_w1 = 0.06;
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Straight2_h1 = 0.125;
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Straight2_w2 = 0.06;
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Straight2_h2 = 0.125;
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Straight2_l = 3.500;
-#line 272 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 272 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Straight2_R0 = R0_para;
-#line 272 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 272 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Straight2_Qc = Qc_para;
-#line 272 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 272 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Straight2_alpha = alpha_para;
-#line 272 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 272 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Straight2_m = MGUIDE;
-#line 272 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 272 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Straight2_W = W_para;
 #line 9611 "./HZB_FLEX.c"
 
   SIG_MESSAGE("NL1B_Straight2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD);
 #line 9621 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaNL1B_Straight2_Entrance_Window, mcrotaNL1B_Straight2);
   rot_transpose(mcrotaNL1B_Straight2_Entrance_Window, mctr1);
   rot_mul(mcrotaNL1B_Straight2, mctr1, mcrotrNL1B_Straight2);
   mctc1 = coords_set(
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0);
 #line 9632 "./HZB_FLEX.c"
   rot_transpose(mcrotaNL1B_Straight2_Entrance_Window, mctr1);
@@ -9646,22 +9646,22 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
 
   SIG_MESSAGE("NL1B_Elliptical_Entrance_Window (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 279 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 279 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 279 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 279 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0.000)*DEG2RAD,
-#line 279 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 279 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0.00)*DEG2RAD);
 #line 9655 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaNL1B_Straight2_Entrance_Window, mcrotaNL1B_Elliptical_Entrance_Window);
   rot_transpose(mcrotaNL1B_Straight2, mctr1);
   rot_mul(mcrotaNL1B_Elliptical_Entrance_Window, mctr1, mcrotrNL1B_Elliptical_Entrance_Window);
   mctc1 = coords_set(
-#line 279 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 279 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0.0000,
-#line 279 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 279 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 279 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 279 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     3.500);
 #line 9666 "./HZB_FLEX.c"
   rot_transpose(mcrotaNL1B_Straight2_Entrance_Window, mctr1);
@@ -9677,64 +9677,64 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
     /* Component elliptical_piece. */
   /* Setting parameters for component elliptical_piece. */
   SIG_MESSAGE("elliptical_piece (Init:SetPar)");
-#line 283 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 283 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   if("elliptical") strncpy(mccelliptical_piece_option, "elliptical" ? "elliptical" : "", 16384); else mccelliptical_piece_option[0]='\0';
-#line 283 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 283 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccelliptical_piece_w1 = 0.06;
-#line 283 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 283 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccelliptical_piece_h1 = 0.125;
-#line 284 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 284 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccelliptical_piece_l = 2.5;
-#line 284 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 284 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccelliptical_piece_linw = 2.9;
-#line 284 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 284 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccelliptical_piece_loutw = 0.4;
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccelliptical_piece_linh = 0;
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccelliptical_piece_louth = 0;
-#line 284 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 284 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccelliptical_piece_R0 = 0.99;
-#line 284 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 284 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccelliptical_piece_Qcx = 0.0217;
-#line 285 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 285 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccelliptical_piece_Qcy = 0.0217;
-#line 285 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 285 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccelliptical_piece_alphax = 4.00;
-#line 285 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 285 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccelliptical_piece_alphay = alpha_para;
-#line 285 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 285 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccelliptical_piece_W = 0.002;
-#line 286 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 286 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccelliptical_piece_mx = 5.2;
-#line 286 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 286 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccelliptical_piece_my = MGUIDE;
-#line 283 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 283 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccelliptical_piece_segno = 800;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccelliptical_piece_curvature = 0;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccelliptical_piece_curvature_v = 0;
 #line 9718 "./HZB_FLEX.c"
 
   SIG_MESSAGE("elliptical_piece (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 289 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 289 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 289 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 289 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 289 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 289 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD);
 #line 9728 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaNL1B_Elliptical_Entrance_Window, mcrotaelliptical_piece);
   rot_transpose(mcrotaNL1B_Elliptical_Entrance_Window, mctr1);
   rot_mul(mcrotaelliptical_piece, mctr1, mcrotrelliptical_piece);
   mctc1 = coords_set(
-#line 288 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 288 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 288 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 288 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 288 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 288 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0);
 #line 9739 "./HZB_FLEX.c"
   rot_transpose(mcrotaNL1B_Elliptical_Entrance_Window, mctr1);
@@ -9750,19 +9750,19 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
     /* Component Virtual_source. */
   /* Setting parameters for component Virtual_source. */
   SIG_MESSAGE("Virtual_source (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccVirtual_source_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccVirtual_source_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccVirtual_source_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccVirtual_source_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccVirtual_source_radius = 0;
-#line 295 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 295 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccVirtual_source_xwidth = mcipwVS;
-#line 295 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 295 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccVirtual_source_yheight = 0.2;
 #line 9767 "./HZB_FLEX.c"
 
@@ -9776,11 +9776,11 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
   rot_transpose(mcrotaelliptical_piece, mctr1);
   rot_mul(mcrotaVirtual_source, mctr1, mcrotrVirtual_source);
   mctc1 = coords_set(
-#line 296 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 296 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 296 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 296 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 296 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 296 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     2.900);
 #line 9785 "./HZB_FLEX.c"
   rot_transpose(mcrotaNL1B_Elliptical_Entrance_Window, mctr1);
@@ -9799,22 +9799,22 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
 
   SIG_MESSAGE("NL1B_Vertical_Guide_Entrance_Window (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 303 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 303 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 303 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 303 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0.000)*DEG2RAD,
-#line 303 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 303 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0.00)*DEG2RAD);
 #line 9808 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaNL1B_Elliptical_Entrance_Window, mcrotaNL1B_Vertical_Guide_Entrance_Window);
   rot_transpose(mcrotaVirtual_source, mctr1);
   rot_mul(mcrotaNL1B_Vertical_Guide_Entrance_Window, mctr1, mcrotrNL1B_Vertical_Guide_Entrance_Window);
   mctc1 = coords_set(
-#line 303 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 303 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0.0000,
-#line 303 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 303 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 303 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 303 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     2.925);
 #line 9819 "./HZB_FLEX.c"
   rot_transpose(mcrotaNL1B_Elliptical_Entrance_Window, mctr1);
@@ -9830,66 +9830,66 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
     /* Component NL1B_Vertical_Guide. */
   /* Setting parameters for component NL1B_Vertical_Guide. */
   SIG_MESSAGE("NL1B_Vertical_Guide (Init:SetPar)");
-#line 307 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 307 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Vertical_Guide_w1 = 0.03;
-#line 307 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 307 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Vertical_Guide_h1 = 0.125;
-#line 307 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 307 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Vertical_Guide_w2 = 0.15;
-#line 307 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 307 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Vertical_Guide_h2 = 0.125;
-#line 307 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 307 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Vertical_Guide_l = 1.475;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Vertical_Guide_R0 = R0_para;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Vertical_Guide_Qc = 0;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Vertical_Guide_alpha = 0;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Vertical_Guide_m = 0;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Vertical_Guide_nslit = 1;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Vertical_Guide_d = 0.0005;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Vertical_Guide_Qcx = Qc_para;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Vertical_Guide_Qcy = Qc_para;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Vertical_Guide_alphax = alpha_para;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Vertical_Guide_alphay = alpha_para;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Vertical_Guide_W = W_para;
-#line 310 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 310 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Vertical_Guide_mx = 0;
-#line 310 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 310 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Vertical_Guide_my = MGUIDE;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Vertical_Guide_nu = 0;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccNL1B_Vertical_Guide_phase = 0;
 #line 9873 "./HZB_FLEX.c"
 
   SIG_MESSAGE("NL1B_Vertical_Guide (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 313 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 313 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 313 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 313 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 313 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 313 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD);
 #line 9883 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaNL1B_Vertical_Guide_Entrance_Window, mcrotaNL1B_Vertical_Guide);
   rot_transpose(mcrotaNL1B_Vertical_Guide_Entrance_Window, mctr1);
   rot_mul(mcrotaNL1B_Vertical_Guide, mctr1, mcrotrNL1B_Vertical_Guide);
   mctc1 = coords_set(
-#line 312 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 312 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 312 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 312 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 312 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 312 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0);
 #line 9894 "./HZB_FLEX.c"
   rot_transpose(mcrotaNL1B_Vertical_Guide_Entrance_Window, mctr1);
@@ -9908,22 +9908,22 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
 
   SIG_MESSAGE("NL1B_Guide_Exit (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 316 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 316 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 316 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 316 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 316 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 316 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD);
 #line 9917 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaNL1B_Vertical_Guide_Entrance_Window, mcrotaNL1B_Guide_Exit);
   rot_transpose(mcrotaNL1B_Vertical_Guide, mctr1);
   rot_mul(mcrotaNL1B_Guide_Exit, mctr1, mcrotrNL1B_Guide_Exit);
   mctc1 = coords_set(
-#line 316 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 316 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 316 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 316 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 316 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 316 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     1.475);
 #line 9928 "./HZB_FLEX.c"
   rot_transpose(mcrotaNL1B_Vertical_Guide_Entrance_Window, mctr1);
@@ -9939,27 +9939,27 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
     /* Component energy_endguide. */
   /* Setting parameters for component energy_endguide. */
   SIG_MESSAGE("energy_endguide (Init:SetPar)");
-#line 324 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 324 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   if("energy-endguide.dat") strncpy(mccenergy_endguide_filename, "energy-endguide.dat" ? "energy-endguide.dat" : "", 16384); else mccenergy_endguide_filename[0]='\0';
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_endguide_xmin = -0.05;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_endguide_xmax = 0.05;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_endguide_ymin = -0.05;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_endguide_ymax = 0.05;
-#line 325 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 325 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_endguide_xwidth = 0.17;
-#line 325 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 325 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_endguide_yheight = 0.135;
-#line 325 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 325 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_endguide_Emin = e_min;
-#line 325 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 325 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_endguide_Emax = e_max;
-#line 324 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 324 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_endguide_restore_neutron = 1;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_endguide_nowritefile = 0;
 #line 9964 "./HZB_FLEX.c"
 
@@ -9973,11 +9973,11 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
   rot_transpose(mcrotaNL1B_Guide_Exit, mctr1);
   rot_mul(mcrotaenergy_endguide, mctr1, mcrotrenergy_endguide);
   mctc1 = coords_set(
-#line 326 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 326 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 326 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 326 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 326 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 326 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0);
 #line 9982 "./HZB_FLEX.c"
   rot_transpose(mcrotaNL1B_Guide_Exit, mctr1);
@@ -9996,22 +9996,22 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
 
   SIG_MESSAGE("Mono_center (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 343 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 343 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 343 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 343 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (A1)*DEG2RAD,
-#line 343 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 343 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD);
 #line 10005 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaNL1B_Guide_Exit, mcrotaMono_center);
   rot_transpose(mcrotaenergy_endguide, mctr1);
   rot_mul(mcrotaMono_center, mctr1, mcrotrMono_center);
   mctc1 = coords_set(
-#line 343 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 343 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 343 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 343 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 343 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 343 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0.25);
 #line 10016 "./HZB_FLEX.c"
   rot_transpose(mcrotaNL1B_Guide_Exit, mctr1);
@@ -10027,66 +10027,66 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
     /* Component Monochromator. */
   /* Setting parameters for component Monochromator. */
   SIG_MESSAGE("Monochromator (Init:SetPar)");
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   if("NULL") strncpy(mccMonochromator_reflect, "NULL" ? "NULL" : "", 16384); else mccMonochromator_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   if("NULL") strncpy(mccMonochromator_transmit, "NULL" ? "NULL" : "", 16384); else mccMonochromator_transmit[0]='\0';
-#line 347 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 347 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccMonochromator_zwidth = 0.02;
-#line 348 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 348 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccMonochromator_yheight = 0.02;
-#line 349 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 349 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccMonochromator_gap = 0.0005;
-#line 350 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 350 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccMonochromator_NH = 15;
-#line 351 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 351 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccMonochromator_NV = 7;
-#line 352 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 352 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccMonochromator_mosaich = 40;
-#line 353 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 353 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccMonochromator_mosaicv = 40;
-#line 354 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 354 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccMonochromator_r0 = 1.0;
-#line 355 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 355 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccMonochromator_t0 = 0.00001;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccMonochromator_Q = 1.8734;
-#line 356 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 356 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccMonochromator_RV = RMV;
-#line 357 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 357 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccMonochromator_RH = RMH;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccMonochromator_DM = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccMonochromator_mosaic = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccMonochromator_width = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccMonochromator_height = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccMonochromator_verbose = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccMonochromator_order = 0;
 #line 10070 "./HZB_FLEX.c"
 
   SIG_MESSAGE("Monochromator (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 359 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 359 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 359 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 359 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 359 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 359 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD);
 #line 10080 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaMono_center, mcrotaMonochromator);
   rot_transpose(mcrotaMono_center, mctr1);
   rot_mul(mcrotaMonochromator, mctr1, mcrotrMonochromator);
   mctc1 = coords_set(
-#line 359 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 359 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 359 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 359 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 359 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 359 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0);
 #line 10091 "./HZB_FLEX.c"
   rot_transpose(mcrotaMono_center, mctr1);
@@ -10105,22 +10105,22 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
 
   SIG_MESSAGE("Mono_sample_arm (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 362 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 362 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 362 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 362 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (A2)*DEG2RAD,
-#line 362 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 362 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD);
 #line 10114 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaNL1B_Guide_Exit, mcrotaMono_sample_arm);
   rot_transpose(mcrotaMonochromator, mctr1);
   rot_mul(mcrotaMono_sample_arm, mctr1, mcrotrMono_sample_arm);
   mctc1 = coords_set(
-#line 362 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 362 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 362 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 362 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 362 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 362 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0);
 #line 10125 "./HZB_FLEX.c"
   rot_transpose(mcrotaMono_center, mctr1);
@@ -10136,27 +10136,27 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
     /* Component energy_mono. */
   /* Setting parameters for component energy_mono. */
   SIG_MESSAGE("energy_mono (Init:SetPar)");
-#line 370 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 370 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   if("energy-mono.dat") strncpy(mccenergy_mono_filename, "energy-mono.dat" ? "energy-mono.dat" : "", 16384); else mccenergy_mono_filename[0]='\0';
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_mono_xmin = -0.05;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_mono_xmax = 0.05;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_mono_ymin = -0.05;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_mono_ymax = 0.05;
-#line 371 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 371 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_mono_xwidth = 0.2;
-#line 371 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 371 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_mono_yheight = 0.125;
-#line 371 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 371 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_mono_Emin = e_min;
-#line 371 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 371 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_mono_Emax = e_max;
-#line 370 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 370 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_mono_restore_neutron = 1;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_mono_nowritefile = 0;
 #line 10161 "./HZB_FLEX.c"
 
@@ -10170,11 +10170,11 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
   rot_transpose(mcrotaMono_sample_arm, mctr1);
   rot_mul(mcrotaenergy_mono, mctr1, mcrotrenergy_mono);
   mctc1 = coords_set(
-#line 372 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 372 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 372 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 372 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 372 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 372 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0.15);
 #line 10179 "./HZB_FLEX.c"
   rot_transpose(mcrotaMono_sample_arm, mctr1);
@@ -10190,27 +10190,27 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
     /* Component energy_pre_sample. */
   /* Setting parameters for component energy_pre_sample. */
   SIG_MESSAGE("energy_pre_sample (Init:SetPar)");
-#line 387 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 387 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   if("energy-pre-sample.dat") strncpy(mccenergy_pre_sample_filename, "energy-pre-sample.dat" ? "energy-pre-sample.dat" : "", 16384); else mccenergy_pre_sample_filename[0]='\0';
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_pre_sample_xmin = -0.05;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_pre_sample_xmax = 0.05;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_pre_sample_ymin = -0.05;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_pre_sample_ymax = 0.05;
-#line 388 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 388 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_pre_sample_xwidth = 0.08;
-#line 388 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 388 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_pre_sample_yheight = 0.08;
-#line 388 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 388 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_pre_sample_Emin = e_min;
-#line 388 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 388 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_pre_sample_Emax = e_max;
-#line 387 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 387 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_pre_sample_restore_neutron = 1;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccenergy_pre_sample_nowritefile = 0;
 #line 10215 "./HZB_FLEX.c"
 
@@ -10224,11 +10224,11 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
   rot_transpose(mcrotaenergy_mono, mctr1);
   rot_mul(mcrotaenergy_pre_sample, mctr1, mcrotrenergy_pre_sample);
   mctc1 = coords_set(
-#line 389 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 389 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 389 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 389 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 389 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 389 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     L2 -0.1);
 #line 10233 "./HZB_FLEX.c"
   rot_transpose(mcrotaMono_sample_arm, mctr1);
@@ -10247,22 +10247,22 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
 
   SIG_MESSAGE("Sample_center (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 400 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 400 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 400 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 400 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (mcipA3)*DEG2RAD,
-#line 400 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 400 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD);
 #line 10256 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaMono_sample_arm, mcrotaSample_center);
   rot_transpose(mcrotaenergy_pre_sample, mctr1);
   rot_mul(mcrotaSample_center, mctr1, mcrotrSample_center);
   mctc1 = coords_set(
-#line 400 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 400 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 400 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 400 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 400 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 400 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     L2);
 #line 10267 "./HZB_FLEX.c"
   rot_transpose(mcrotaMono_sample_arm, mctr1);
@@ -10281,22 +10281,22 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
 
   SIG_MESSAGE("Sample_analyser_arm (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 405 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 405 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 405 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 405 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (mcipA4)*DEG2RAD,
-#line 405 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 405 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD);
 #line 10290 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaMono_sample_arm, mcrotaSample_analyser_arm);
   rot_transpose(mcrotaSample_center, mctr1);
   rot_mul(mcrotaSample_analyser_arm, mctr1, mcrotrSample_analyser_arm);
   mctc1 = coords_set(
-#line 405 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 405 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 405 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 405 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 405 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 405 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0);
 #line 10301 "./HZB_FLEX.c"
   rot_transpose(mcrotaSample_center, mctr1);
@@ -10312,33 +10312,33 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
     /* Component div_mono. */
   /* Setting parameters for component div_mono. */
   SIG_MESSAGE("div_mono (Init:SetPar)");
-#line 408 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 408 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   if("div-sample.dat") strncpy(mccdiv_mono_filename, "div-sample.dat" ? "div-sample.dat" : "", 16384); else mccdiv_mono_filename[0]='\0';
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccdiv_mono_xmin = -0.05;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccdiv_mono_xmax = 0.05;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccdiv_mono_ymin = -0.05;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccdiv_mono_ymax = 0.05;
-#line 409 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 409 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccdiv_mono_xwidth = 0.1;
-#line 409 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 409 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccdiv_mono_yheight = 0.1;
-#line 410 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 410 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccdiv_mono_maxdiv_h = 4;
-#line 410 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 410 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccdiv_mono_maxdiv_v = 4;
-#line 409 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 409 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccdiv_mono_restore_neutron = 1;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccdiv_mono_nx = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccdiv_mono_ny = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccdiv_mono_nz = 1;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccdiv_mono_nowritefile = 0;
 #line 10343 "./HZB_FLEX.c"
 
@@ -10352,11 +10352,11 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
   rot_transpose(mcrotaSample_analyser_arm, mctr1);
   rot_mul(mcrotadiv_mono, mctr1, mcrotrdiv_mono);
   mctc1 = coords_set(
-#line 411 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 411 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 411 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 411 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 411 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 411 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     L2 -0.05);
 #line 10361 "./HZB_FLEX.c"
   rot_transpose(mcrotaMono_sample_arm, mctr1);
@@ -10372,25 +10372,25 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
     /* Component div_mono_H. */
   /* Setting parameters for component div_mono_H. */
   SIG_MESSAGE("div_mono_H (Init:SetPar)");
-#line 414 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 414 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   if("H-div-sample.dat") strncpy(mccdiv_mono_H_filename, "H-div-sample.dat" ? "H-div-sample.dat" : "", 16384); else mccdiv_mono_H_filename[0]='\0';
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccdiv_mono_H_xmin = -0.05;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccdiv_mono_H_xmax = 0.05;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccdiv_mono_H_ymin = -0.05;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccdiv_mono_H_ymax = 0.05;
-#line 415 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 415 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccdiv_mono_H_xwidth = 0.005;
-#line 415 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 415 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccdiv_mono_H_yheight = 0.7;
-#line 416 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 416 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccdiv_mono_H_h_maxdiv = 4;
-#line 415 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 415 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccdiv_mono_H_restore_neutron = 1;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccdiv_mono_H_nowritefile = 0;
 #line 10395 "./HZB_FLEX.c"
 
@@ -10404,11 +10404,11 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
   rot_transpose(mcrotadiv_mono, mctr1);
   rot_mul(mcrotadiv_mono_H, mctr1, mcrotrdiv_mono_H);
   mctc1 = coords_set(
-#line 417 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 417 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 417 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 417 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 417 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 417 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     L2 -0.04);
 #line 10413 "./HZB_FLEX.c"
   rot_transpose(mcrotaMono_sample_arm, mctr1);
@@ -10424,46 +10424,46 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
     /* Component psd_sam. */
   /* Setting parameters for component psd_sam. */
   SIG_MESSAGE("psd_sam (Init:SetPar)");
-#line 420 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 420 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccpsd_sam_nx = 60;
-#line 420 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 420 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccpsd_sam_ny = 60;
-#line 420 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 420 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   if("psd-sam.dat") strncpy(mccpsd_sam_filename, "psd-sam.dat" ? "psd-sam.dat" : "", 16384); else mccpsd_sam_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccpsd_sam_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccpsd_sam_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccpsd_sam_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccpsd_sam_ymax = 0.05;
-#line 421 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 421 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccpsd_sam_xwidth = 0.20;
-#line 421 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 421 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccpsd_sam_yheight = 0.20;
-#line 421 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 421 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mccpsd_sam_restore_neutron = 1;
 #line 10447 "./HZB_FLEX.c"
 
   SIG_MESSAGE("psd_sam (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 422 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 422 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 422 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 422 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 422 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 422 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD);
 #line 10457 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaMono_sample_arm, mcrotapsd_sam);
   rot_transpose(mcrotadiv_mono_H, mctr1);
   rot_mul(mcrotapsd_sam, mctr1, mcrotrpsd_sam);
   mctc1 = coords_set(
-#line 422 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 422 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 422 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 422 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 422 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 422 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0);
 #line 10468 "./HZB_FLEX.c"
   rot_transpose(mcrotaSample_center, mctr1);
@@ -10479,44 +10479,44 @@ printf("sample angles are:\n A3=%7.3f, A4=%7.3f [deg]\n",A3,A4);
     /* Component 1dpsd. */
   /* Setting parameters for component 1dpsd. */
   SIG_MESSAGE("1dpsd (Init:SetPar)");
-#line 424 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 424 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   if("linpsdsam.dat") strncpy(mcc1dpsd_filename, "linpsdsam.dat" ? "linpsdsam.dat" : "", 16384); else mcc1dpsd_filename[0]='\0';
-#line 425 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 425 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mcc1dpsd_xmin = -0.1;
-#line 425 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 425 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mcc1dpsd_xmax = 0.1;
-#line 425 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 425 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mcc1dpsd_ymin = -0.1;
-#line 425 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 425 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mcc1dpsd_ymax = 0.1;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mcc1dpsd_xwidth = 0;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mcc1dpsd_yheight = 0;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mcc1dpsd_restore_neutron = 0;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
   mcc1dpsd_nowritefile = 0;
 #line 10500 "./HZB_FLEX.c"
 
   SIG_MESSAGE("1dpsd (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 426 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 426 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 426 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 426 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD,
-#line 426 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 426 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     (0)*DEG2RAD);
 #line 10510 "./HZB_FLEX.c"
   rot_mul(mctr1, mcrotaMono_sample_arm, mcrota1dpsd);
   rot_transpose(mcrotapsd_sam, mctr1);
   rot_mul(mcrota1dpsd, mctr1, mcrotr1dpsd);
   mctc1 = coords_set(
-#line 426 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 426 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 426 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 426 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0,
-#line 426 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
+#line 426 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr"
     0);
 #line 10521 "./HZB_FLEX.c"
   rot_transpose(mcrotaSample_center, mctr1);

@@ -1,11 +1,28 @@
-      [1574207186.366482] [n-62-23-6:10812:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3477.61
-[1574207186.367770] [n-62-23-6:10812:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207186.367774] [n-62-23-6:10812:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207186.369642] [n-62-23-6:10812:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207186.369645] [n-62-23-6:10812:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: No output directory specified (--dir)
+INFO: Using directory: "RTP_SANS_20200225_210059"
+INFO: Regenerating c-file: RTP_SANS.c
+Info:    'PSD_monitor_rad' is a contributed component.
+Info:    Defining SPLIT from mono_cradle=Arm() to END in instrument RTP_SANS
+Info:    Defining SPLIT from sample=Sans_spheres() to END in instrument RTP_SANS
+CFLAGS=
+      INFO: Recompiling: ./RTP_SANS.out
+INFO: ===
+[n-62-23-14:06137] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:06137] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582660871.368808] [n-62-23-14:6136 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3375.93
+[1582660871.370559] [n-62-23-14:6136 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582660871.370563] [n-62-23-14:6136 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1582660871.373250] [n-62-23-14:6136 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582660871.373253] [n-62-23-14:6136 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 begin instrument: RTP_SANS
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_SANS/RTP_SANS.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_SANS/RTP_SANS.instr
   Parameters:  lambda(double) DM(double) dlambda(double) Be_Filter_depth(double) Mono_tilt(double) mono_rotation(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +31,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_SANS/RTP_SANS.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_SANS/RTP_SANS.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1574217998
+  Seed: 1582667007
   Directory: .
   Param: lambda=5
   Param: DM=3.355
@@ -29,18 +46,3 @@ begin simulation: .
   Param: mono_rotation=0
 end simulation
 info!
-INFO: No output directory specified (--dir)
-INFO: Using directory: "RTP_SANS_20191120_004614"
-INFO: Regenerating c-file: RTP_SANS.c
-Info:    'PSD_monitor_rad' is a contributed component.
-Info:    Defining SPLIT from mono_cradle=Arm() to END in instrument RTP_SANS
-Info:    Defining SPLIT from sample=Sans_spheres() to END in instrument RTP_SANS
-CFLAGS=
-INFO: Recompiling: ./RTP_SANS.out
-INFO: ===
---------------------------------------------------------------------------
-Initialization of MXM library failed.
-
-  Error: Input/output error
-
---------------------------------------------------------------------------

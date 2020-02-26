@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr (Test_Magnetic_Rotation)
- * Date:       Wed Nov 20 00:51:07 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr (Test_Magnetic_Rotation)
+ * Date:       Tue Feb 25 21:05:45 2020
  * File:       ./Test_Magnetic_Rotation.c
  * Compile:    cc -o Test_Magnetic_Rotation.out ./Test_Magnetic_Rotation.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Test_Magnetic_Rotation";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -5396,6 +5396,13 @@ void mcdisplay(void);
 #include <mcstas-r.h>
 #endif
 
+/*Redefine MAGNET_OFF to also clear the magnetic field stack.*/
+#undef MAGNET_OFF
+#define MAGNET_OFF \
+  do { \
+    mcMagnet = 0; \
+    mcmagnet_pop_all(); \
+  } while(0)
 
 typedef int mcmagnet_field_func (double, double, double, double, double *, double *, double *, void *);
 typedef void mcmagnet_prec_func (double, double, double, double, double, double, double, double*, double*, double*, double, Coords, Rotation);
@@ -5433,7 +5440,7 @@ void mc_pol_set_angular_accuracy(double);
   do { \
     mcMagneticField=NULL; \
     mcMagnetData=NULL; \
-    MAGNET_OFF; \
+    mcMagnet=0; \
   } while (0);
 
 #define mcmagnet_set_active(mcmagnet_new) \
@@ -5471,6 +5478,7 @@ void *mcmagnet_init_par_backend(int dummy, ...);
 int mcmagnet_get_field(double x, double y, double z, double t, double *bx,double *by, double *bz, void *dummy);
 void *mcmagnet_push(mcmagnet_field_func *func,  Rotation *magnet_rot, Coords *magnet_pos, int stopbit, void * prms);
 void *mcmagnet_pop(void);
+void *mcmagnet_pop_all(void);
 
 /*example functions for magnetic fields*/
 int const_magnetic_field(double x, double y, double z, double t, double *bx, double *by, double *bz, void *data);
@@ -7808,7 +7816,7 @@ void *mcmagnet_push(mcmagnet_field_func *func,  Rotation *magnet_rot, Coords *ma
   mcmagnet_pack(stack[0],func,magnet_rot,magnet_pos,stopbit,prms);
   mcmagnet_set_active(stack[0]);
   if(stack[0] && stack[0]->func){
-    MAGNET_ON;
+    mcMagnet=1;
   }
   return (void *) stack[0];
 }
@@ -7824,11 +7832,19 @@ void *mcmagnet_pop(void) {
   stack[MCMAGNET_STACKSIZE-1]=NULL;
   mcmagnet_set_active(stack[0]);
   if(stack[0] && stack[0]->func){
-    MAGNET_ON;
+    mcMagnet=1;
   }else{
-    MAGNET_OFF;
+    mcMagnet=0;
   }
   return (void*) t;
+}
+
+void *mcmagnet_pop_all(void){
+  void *t=mcmagnet_pop();
+  while (t!=NULL){
+    t=mcmagnet_pop();
+  }
+  return NULL;
 }
 
 void mcmagnet_free_stack(void){
@@ -8174,7 +8190,7 @@ double GetConstantField(double mc_pol_length, double mc_pol_lambda,
 
   double fmax(double, double);
   double fmin(double, double);
-#line 8177 "./Test_Magnetic_Rotation.c"
+#line 8193 "./Test_Magnetic_Rotation.c"
 
 /* Instrument parameters. */
 MCNUM mcipdummy;
@@ -8192,12 +8208,12 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define mccompcurindex 0
 #define mcposaTest_Magnetic_Rotation coords_set(0,0,0)
 #define dummy mcipdummy
-#line 35 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 35 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   const double magnetLength =  0.2;
   double Bmagnitude;
 
 
-#line 8200 "./Test_Magnetic_Rotation.c"
+#line 8216 "./Test_Magnetic_Rotation.c"
 #undef dummy
 #undef mcposaTest_Magnetic_Rotation
 #undef mccompcurindex
@@ -8378,7 +8394,7 @@ double IntermediateCnts;
 time_t StartTime;
 time_t EndTime;
 time_t CurrentTime;
-#line 8381 "./Test_Magnetic_Rotation.c"
+#line 8397 "./Test_Magnetic_Rotation.c"
 #undef minutes
 #undef flag_save
 #undef percent
@@ -8415,7 +8431,7 @@ time_t CurrentTime;
 double pmul, srcArea;
 int square;
 double tx,ty,tz;
-#line 8418 "./Test_Magnetic_Rotation.c"
+#line 8434 "./Test_Magnetic_Rotation.c"
 #undef target_index
 #undef gauss
 #undef flux
@@ -8447,7 +8463,7 @@ double tx,ty,tz;
 #define normalize mccpolSetter_normalize
 #line 48 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Set_pol.comp"
 
-#line 8450 "./Test_Magnetic_Rotation.c"
+#line 8466 "./Test_Magnetic_Rotation.c"
 #undef normalize
 #undef randomOn
 #undef pz
@@ -8480,7 +8496,7 @@ double tx,ty,tz;
 double PolL_N[nL][npol];
 double PolL_p[nL][npol];
 double PolL_p2[nL][npol];
-#line 8483 "./Test_Magnetic_Rotation.c"
+#line 8499 "./Test_Magnetic_Rotation.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -8523,7 +8539,7 @@ double PolL_p2[nL][npol];
 double PolL_N[nL][npol];
 double PolL_p[nL][npol];
 double PolL_p2[nL][npol];
-#line 8526 "./Test_Magnetic_Rotation.c"
+#line 8542 "./Test_Magnetic_Rotation.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -8566,7 +8582,7 @@ double PolL_p2[nL][npol];
 double PolL_N[nL][npol];
 double PolL_p[nL][npol];
 double PolL_p2[nL][npol];
-#line 8569 "./Test_Magnetic_Rotation.c"
+#line 8585 "./Test_Magnetic_Rotation.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -8613,7 +8629,7 @@ double PolL_p2[nL][npol];
   struct {
       int shape;
   } prms;
-#line 8616 "./Test_Magnetic_Rotation.c"
+#line 8632 "./Test_Magnetic_Rotation.c"
 #undef concentric
 #undef geometry
 #undef filename
@@ -8657,7 +8673,7 @@ double PolL_N[nL];
 double PolL_p[nL];
 double PolL_p2[nL];
 double HelpArray[nL];
-#line 8660 "./Test_Magnetic_Rotation.c"
+#line 8676 "./Test_Magnetic_Rotation.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -8701,7 +8717,7 @@ double PolL_N[nL];
 double PolL_p[nL];
 double PolL_p2[nL];
 double HelpArray[nL];
-#line 8704 "./Test_Magnetic_Rotation.c"
+#line 8720 "./Test_Magnetic_Rotation.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -8745,7 +8761,7 @@ double PolL_N[nL];
 double PolL_p[nL];
 double PolL_p2[nL];
 double HelpArray[nL];
-#line 8748 "./Test_Magnetic_Rotation.c"
+#line 8764 "./Test_Magnetic_Rotation.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -8796,7 +8812,7 @@ void mcinit(void) {
 #define mccompcurindex 0
 #define mcposaTest_Magnetic_Rotation coords_set(0,0,0)
 #define dummy mcipdummy
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
 {
   // we want to set Bmagnitude to the value that the adiabicity
   // E=2/PI(-gamma_n*Bmagnitude)*deltaT
@@ -8810,7 +8826,7 @@ void mcinit(void) {
   Bmagnitude = PI/2*20/deltaT/183.247e6; // Tesla
   printf("Bmagnitude = %f T\n", Bmagnitude);
 }
-#line 8813 "./Test_Magnetic_Rotation.c"
+#line 8829 "./Test_Magnetic_Rotation.c"
 #undef dummy
 #undef mcposaTest_Magnetic_Rotation
 #undef mccompcurindex
@@ -8829,31 +8845,31 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccOrigin_minutes = 0;
-#line 8840 "./Test_Magnetic_Rotation.c"
+#line 8856 "./Test_Magnetic_Rotation.c"
 
   SIG_MESSAGE("Origin (Init:Place/Rotate)");
   rot_set_rotation(mcrotaOrigin,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 8847 "./Test_Magnetic_Rotation.c"
+#line 8863 "./Test_Magnetic_Rotation.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0,
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0,
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0);
-#line 8856 "./Test_Magnetic_Rotation.c"
+#line 8872 "./Test_Magnetic_Rotation.c"
   mctc1 = coords_neg(mcposaOrigin);
   mcposrOrigin = rot_apply(mcrotaOrigin, mctc1);
   mcDEBUG_COMPONENT("Origin", mcposaOrigin, mcrotaOrigin)
@@ -8864,51 +8880,51 @@ void mcinit(void) {
     /* Component source. */
   /* Setting parameters for component source. */
   SIG_MESSAGE("source (Init:SetPar)");
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccsource_radius = 0.01;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccsource_yheight = 0;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccsource_xwidth = 0;
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccsource_dist = 1.0;
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccsource_focus_xw = 0.01;
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccsource_focus_yh = 0.01;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccsource_E0 = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccsource_dE = 0;
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccsource_lambda0 = 5.0;
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccsource_dlambda = 4.99;
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccsource_flux = 1;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccsource_gauss = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccsource_target_index = + 1;
-#line 8893 "./Test_Magnetic_Rotation.c"
+#line 8909 "./Test_Magnetic_Rotation.c"
 
   SIG_MESSAGE("source (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 8900 "./Test_Magnetic_Rotation.c"
+#line 8916 "./Test_Magnetic_Rotation.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotasource);
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotasource, mctr1, mcrotrsource);
   mctc1 = coords_set(
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0,
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0,
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0);
-#line 8911 "./Test_Magnetic_Rotation.c"
+#line 8927 "./Test_Magnetic_Rotation.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposasource = coords_add(mcposaOrigin, mctc2);
@@ -8922,35 +8938,35 @@ void mcinit(void) {
     /* Component polSetter. */
   /* Setting parameters for component polSetter. */
   SIG_MESSAGE("polSetter (Init:SetPar)");
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccpolSetter_px = 0;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccpolSetter_py = 1;
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccpolSetter_pz = 0;
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccpolSetter_randomOn = 0;
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccpolSetter_normalize = 0;
-#line 8935 "./Test_Magnetic_Rotation.c"
+#line 8951 "./Test_Magnetic_Rotation.c"
 
   SIG_MESSAGE("polSetter (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 8942 "./Test_Magnetic_Rotation.c"
+#line 8958 "./Test_Magnetic_Rotation.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotapolSetter);
   rot_transpose(mcrotasource, mctr1);
   rot_mul(mcrotapolSetter, mctr1, mcrotrpolSetter);
   mctc1 = coords_set(
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0,
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0,
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0.5);
-#line 8953 "./Test_Magnetic_Rotation.c"
+#line 8969 "./Test_Magnetic_Rotation.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposapolSetter = coords_add(mcposaOrigin, mctc2);
@@ -8964,37 +8980,37 @@ void mcinit(void) {
     /* Component pollambdaMonitor1x. */
   /* Setting parameters for component pollambdaMonitor1x. */
   SIG_MESSAGE("pollambdaMonitor1x (Init:SetPar)");
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   if("pollambdaMon1x.data") strncpy(mccpollambdaMonitor1x_filename, "pollambdaMon1x.data" ? "pollambdaMon1x.data" : "", 16384); else mccpollambdaMonitor1x_filename[0]='\0';
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccpollambdaMonitor1x_mx = 1;
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccpollambdaMonitor1x_my = 0;
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccpollambdaMonitor1x_mz = 0;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccpollambdaMonitor1x_Lmin = 0.0;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccpollambdaMonitor1x_Lmax = 10.0;
-#line 8979 "./Test_Magnetic_Rotation.c"
+#line 8995 "./Test_Magnetic_Rotation.c"
 
   SIG_MESSAGE("pollambdaMonitor1x (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 8986 "./Test_Magnetic_Rotation.c"
+#line 9002 "./Test_Magnetic_Rotation.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotapollambdaMonitor1x);
   rot_transpose(mcrotapolSetter, mctr1);
   rot_mul(mcrotapollambdaMonitor1x, mctr1, mcrotrpollambdaMonitor1x);
   mctc1 = coords_set(
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0,
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0,
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0.75);
-#line 8997 "./Test_Magnetic_Rotation.c"
+#line 9013 "./Test_Magnetic_Rotation.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposapollambdaMonitor1x = coords_add(mcposaOrigin, mctc2);
@@ -9008,37 +9024,37 @@ void mcinit(void) {
     /* Component pollambdaMonitor1y. */
   /* Setting parameters for component pollambdaMonitor1y. */
   SIG_MESSAGE("pollambdaMonitor1y (Init:SetPar)");
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   if("pollambdaMon1y.data") strncpy(mccpollambdaMonitor1y_filename, "pollambdaMon1y.data" ? "pollambdaMon1y.data" : "", 16384); else mccpollambdaMonitor1y_filename[0]='\0';
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccpollambdaMonitor1y_mx = 0;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccpollambdaMonitor1y_my = 1;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccpollambdaMonitor1y_mz = 0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccpollambdaMonitor1y_Lmin = 0.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccpollambdaMonitor1y_Lmax = 10.0;
-#line 9023 "./Test_Magnetic_Rotation.c"
+#line 9039 "./Test_Magnetic_Rotation.c"
 
   SIG_MESSAGE("pollambdaMonitor1y (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9030 "./Test_Magnetic_Rotation.c"
+#line 9046 "./Test_Magnetic_Rotation.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotapollambdaMonitor1y);
   rot_transpose(mcrotapollambdaMonitor1x, mctr1);
   rot_mul(mcrotapollambdaMonitor1y, mctr1, mcrotrpollambdaMonitor1y);
   mctc1 = coords_set(
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0.75);
-#line 9041 "./Test_Magnetic_Rotation.c"
+#line 9057 "./Test_Magnetic_Rotation.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposapollambdaMonitor1y = coords_add(mcposaOrigin, mctc2);
@@ -9052,37 +9068,37 @@ void mcinit(void) {
     /* Component pollambdaMonitor1z. */
   /* Setting parameters for component pollambdaMonitor1z. */
   SIG_MESSAGE("pollambdaMonitor1z (Init:SetPar)");
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   if("pollambdaMon1z.data") strncpy(mccpollambdaMonitor1z_filename, "pollambdaMon1z.data" ? "pollambdaMon1z.data" : "", 16384); else mccpollambdaMonitor1z_filename[0]='\0';
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccpollambdaMonitor1z_mx = 0;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccpollambdaMonitor1z_my = 0;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccpollambdaMonitor1z_mz = 1;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccpollambdaMonitor1z_Lmin = 0.0;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccpollambdaMonitor1z_Lmax = 10.0;
-#line 9067 "./Test_Magnetic_Rotation.c"
+#line 9083 "./Test_Magnetic_Rotation.c"
 
   SIG_MESSAGE("pollambdaMonitor1z (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9074 "./Test_Magnetic_Rotation.c"
+#line 9090 "./Test_Magnetic_Rotation.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotapollambdaMonitor1z);
   rot_transpose(mcrotapollambdaMonitor1y, mctr1);
   rot_mul(mcrotapollambdaMonitor1z, mctr1, mcrotrpollambdaMonitor1z);
   mctc1 = coords_set(
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0,
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0,
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0.75);
-#line 9085 "./Test_Magnetic_Rotation.c"
+#line 9101 "./Test_Magnetic_Rotation.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposapollambdaMonitor1z = coords_add(mcposaOrigin, mctc2);
@@ -9096,45 +9112,45 @@ void mcinit(void) {
     /* Component magnetNum. */
   /* Setting parameters for component magnetNum. */
   SIG_MESSAGE("magnetNum (Init:SetPar)");
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccmagnetNum_xwidth = 0.08;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccmagnetNum_yheight = 0.08;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccmagnetNum_zdepth = magnetLength;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccmagnetNum_radius = 0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccmagnetNum_Bx = 0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccmagnetNum_By = Bmagnitude;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccmagnetNum_Bz = 0;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   if("bfield.dat") strncpy(mccmagnetNum_filename, "bfield.dat" ? "bfield.dat" : "", 16384); else mccmagnetNum_filename[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   if(NULL) strncpy(mccmagnetNum_geometry, NULL ? NULL : "", 16384); else mccmagnetNum_geometry[0]='\0';
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccmagnetNum_concentric = 0;
-#line 9119 "./Test_Magnetic_Rotation.c"
+#line 9135 "./Test_Magnetic_Rotation.c"
 
   SIG_MESSAGE("magnetNum (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9126 "./Test_Magnetic_Rotation.c"
+#line 9142 "./Test_Magnetic_Rotation.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotamagnetNum);
   rot_transpose(mcrotapollambdaMonitor1z, mctr1);
   rot_mul(mcrotamagnetNum, mctr1, mcrotrmagnetNum);
   mctc1 = coords_set(
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0,
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0,
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     1.0);
-#line 9137 "./Test_Magnetic_Rotation.c"
+#line 9153 "./Test_Magnetic_Rotation.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposamagnetNum = coords_add(mcposaOrigin, mctc2);
@@ -9148,37 +9164,37 @@ void mcinit(void) {
     /* Component MPLMonNum2X. */
   /* Setting parameters for component MPLMonNum2X. */
   SIG_MESSAGE("MPLMonNum2X (Init:SetPar)");
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   if("MPLMonNum2X.data") strncpy(mccMPLMonNum2X_filename, "MPLMonNum2X.data" ? "MPLMonNum2X.data" : "", 16384); else mccMPLMonNum2X_filename[0]='\0';
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccMPLMonNum2X_mx = 1;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccMPLMonNum2X_my = 0;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccMPLMonNum2X_mz = 0;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccMPLMonNum2X_Lmin = 0.0;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccMPLMonNum2X_Lmax = 10.0;
-#line 9163 "./Test_Magnetic_Rotation.c"
+#line 9179 "./Test_Magnetic_Rotation.c"
 
   SIG_MESSAGE("MPLMonNum2X (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9170 "./Test_Magnetic_Rotation.c"
+#line 9186 "./Test_Magnetic_Rotation.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaMPLMonNum2X);
   rot_transpose(mcrotamagnetNum, mctr1);
   rot_mul(mcrotaMPLMonNum2X, mctr1, mcrotrMPLMonNum2X);
   mctc1 = coords_set(
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0,
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0,
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     2.5);
-#line 9181 "./Test_Magnetic_Rotation.c"
+#line 9197 "./Test_Magnetic_Rotation.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMPLMonNum2X = coords_add(mcposaOrigin, mctc2);
@@ -9192,37 +9208,37 @@ void mcinit(void) {
     /* Component MPLMonNum2Y. */
   /* Setting parameters for component MPLMonNum2Y. */
   SIG_MESSAGE("MPLMonNum2Y (Init:SetPar)");
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   if("MPLMonNum2Y.data") strncpy(mccMPLMonNum2Y_filename, "MPLMonNum2Y.data" ? "MPLMonNum2Y.data" : "", 16384); else mccMPLMonNum2Y_filename[0]='\0';
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccMPLMonNum2Y_mx = 0;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccMPLMonNum2Y_my = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccMPLMonNum2Y_mz = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccMPLMonNum2Y_Lmin = 0.0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccMPLMonNum2Y_Lmax = 10.0;
-#line 9207 "./Test_Magnetic_Rotation.c"
+#line 9223 "./Test_Magnetic_Rotation.c"
 
   SIG_MESSAGE("MPLMonNum2Y (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9214 "./Test_Magnetic_Rotation.c"
+#line 9230 "./Test_Magnetic_Rotation.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaMPLMonNum2Y);
   rot_transpose(mcrotaMPLMonNum2X, mctr1);
   rot_mul(mcrotaMPLMonNum2Y, mctr1, mcrotrMPLMonNum2Y);
   mctc1 = coords_set(
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     2.5);
-#line 9225 "./Test_Magnetic_Rotation.c"
+#line 9241 "./Test_Magnetic_Rotation.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMPLMonNum2Y = coords_add(mcposaOrigin, mctc2);
@@ -9236,37 +9252,37 @@ void mcinit(void) {
     /* Component MPLMonNum2Z. */
   /* Setting parameters for component MPLMonNum2Z. */
   SIG_MESSAGE("MPLMonNum2Z (Init:SetPar)");
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   if("MPLMonNum2Z.data") strncpy(mccMPLMonNum2Z_filename, "MPLMonNum2Z.data" ? "MPLMonNum2Z.data" : "", 16384); else mccMPLMonNum2Z_filename[0]='\0';
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccMPLMonNum2Z_mx = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccMPLMonNum2Z_my = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccMPLMonNum2Z_mz = 1;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccMPLMonNum2Z_Lmin = 0.0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
   mccMPLMonNum2Z_Lmax = 10.0;
-#line 9251 "./Test_Magnetic_Rotation.c"
+#line 9267 "./Test_Magnetic_Rotation.c"
 
   SIG_MESSAGE("MPLMonNum2Z (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9258 "./Test_Magnetic_Rotation.c"
+#line 9274 "./Test_Magnetic_Rotation.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaMPLMonNum2Z);
   rot_transpose(mcrotaMPLMonNum2Y, mctr1);
   rot_mul(mcrotaMPLMonNum2Z, mctr1, mcrotrMPLMonNum2Z);
   mctc1 = coords_set(
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0,
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     0,
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr"
     2.5);
-#line 9269 "./Test_Magnetic_Rotation.c"
+#line 9285 "./Test_Magnetic_Rotation.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMPLMonNum2Z = coords_add(mcposaOrigin, mctc2);
@@ -9303,7 +9319,7 @@ fprintf(stdout, "[%s] Initialize\n", mcinstrument_name);
     percent=1e5*100.0/mcget_ncount();
   }
 }
-#line 9306 "./Test_Magnetic_Rotation.c"
+#line 9322 "./Test_Magnetic_Rotation.c"
 #undef minutes
 #undef flag_save
 #undef percent
@@ -9397,7 +9413,7 @@ if (radius && !yheight && !xwidth ) {
       exit(0);
   }
 }
-#line 9400 "./Test_Magnetic_Rotation.c"
+#line 9416 "./Test_Magnetic_Rotation.c"
 #undef target_index
 #undef gauss
 #undef flux
@@ -9446,7 +9462,7 @@ if (radius && !yheight && !xwidth ) {
            NAME_CURRENT_COMP, px, py, pz);
   }
 }
-#line 9449 "./Test_Magnetic_Rotation.c"
+#line 9465 "./Test_Magnetic_Rotation.c"
 #undef normalize
 #undef randomOn
 #undef pz
@@ -9516,7 +9532,7 @@ if (Lmax<=Lmin) {
     }
   }
 }
-#line 9519 "./Test_Magnetic_Rotation.c"
+#line 9535 "./Test_Magnetic_Rotation.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -9596,7 +9612,7 @@ if (Lmax<=Lmin) {
     }
   }
 }
-#line 9599 "./Test_Magnetic_Rotation.c"
+#line 9615 "./Test_Magnetic_Rotation.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -9676,7 +9692,7 @@ if (Lmax<=Lmin) {
     }
   }
 }
-#line 9679 "./Test_Magnetic_Rotation.c"
+#line 9695 "./Test_Magnetic_Rotation.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -9772,7 +9788,7 @@ if (Lmax<=Lmin) {
   }
 
 }
-#line 9775 "./Test_Magnetic_Rotation.c"
+#line 9791 "./Test_Magnetic_Rotation.c"
 #undef concentric
 #undef geometry
 #undef filename
@@ -9851,7 +9867,7 @@ if (Lmax<=Lmin) {
       HelpArray[i] = 0;
   }
 }
-#line 9854 "./Test_Magnetic_Rotation.c"
+#line 9870 "./Test_Magnetic_Rotation.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -9930,7 +9946,7 @@ if (Lmax<=Lmin) {
       HelpArray[i] = 0;
   }
 }
-#line 9933 "./Test_Magnetic_Rotation.c"
+#line 9949 "./Test_Magnetic_Rotation.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -10009,7 +10025,7 @@ if (Lmax<=Lmin) {
       HelpArray[i] = 0;
   }
 }
-#line 10012 "./Test_Magnetic_Rotation.c"
+#line 10028 "./Test_Magnetic_Rotation.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -10182,7 +10198,7 @@ MCNUM minutes = mccOrigin_minutes;
     if (flag_save) mcsave(NULL);
   }
 }
-#line 10185 "./Test_Magnetic_Rotation.c"
+#line 10201 "./Test_Magnetic_Rotation.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -10353,7 +10369,7 @@ int target_index = mccsource_target_index;
  vy=v*dy/rf;
  vx=v*dx/rf;
 }
-#line 10356 "./Test_Magnetic_Rotation.c"
+#line 10372 "./Test_Magnetic_Rotation.c"
 }   /* End of source=Source_simple() SETTING parameter declarations. */
 #undef srcArea
 #undef square
@@ -10498,7 +10514,7 @@ MCNUM normalize = mccpolSetter_normalize;
 
   SCATTER;
 }
-#line 10501 "./Test_Magnetic_Rotation.c"
+#line 10517 "./Test_Magnetic_Rotation.c"
 }   /* End of polSetter=Set_pol() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -10650,7 +10666,7 @@ MCNUM Lmax = mccpollambdaMonitor1x_Lmax;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 10653 "./Test_Magnetic_Rotation.c"
+#line 10669 "./Test_Magnetic_Rotation.c"
 }   /* End of pollambdaMonitor1x=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -10811,7 +10827,7 @@ MCNUM Lmax = mccpollambdaMonitor1y_Lmax;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 10814 "./Test_Magnetic_Rotation.c"
+#line 10830 "./Test_Magnetic_Rotation.c"
 }   /* End of pollambdaMonitor1y=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -10972,7 +10988,7 @@ MCNUM Lmax = mccpollambdaMonitor1z_Lmax;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 10975 "./Test_Magnetic_Rotation.c"
+#line 10991 "./Test_Magnetic_Rotation.c"
 }   /* End of pollambdaMonitor1z=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -11171,7 +11187,7 @@ MCNUM concentric = mccmagnetNum_concentric;
         mcmagnet_pop();
     }
 }
-#line 11174 "./Test_Magnetic_Rotation.c"
+#line 11190 "./Test_Magnetic_Rotation.c"
 }   /* End of magnetNum=Pol_Bfield() SETTING parameter declarations. */
 #undef prms
 #undef parPtr
@@ -11324,7 +11340,7 @@ MCNUM Lmax = mccMPLMonNum2X_Lmax;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 11327 "./Test_Magnetic_Rotation.c"
+#line 11343 "./Test_Magnetic_Rotation.c"
 }   /* End of MPLMonNum2X=MeanPolLambda_monitor() SETTING parameter declarations. */
 #undef HelpArray
 #undef PolL_p2
@@ -11481,7 +11497,7 @@ MCNUM Lmax = mccMPLMonNum2Y_Lmax;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 11484 "./Test_Magnetic_Rotation.c"
+#line 11500 "./Test_Magnetic_Rotation.c"
 }   /* End of MPLMonNum2Y=MeanPolLambda_monitor() SETTING parameter declarations. */
 #undef HelpArray
 #undef PolL_p2
@@ -11638,7 +11654,7 @@ MCNUM Lmax = mccMPLMonNum2Z_Lmax;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 11641 "./Test_Magnetic_Rotation.c"
+#line 11657 "./Test_Magnetic_Rotation.c"
 }   /* End of MPLMonNum2Z=MeanPolLambda_monitor() SETTING parameter declarations. */
 #undef HelpArray
 #undef PolL_p2
@@ -11756,7 +11772,7 @@ MCNUM minutes = mccOrigin_minutes;
 
   }
 }
-#line 11759 "./Test_Magnetic_Rotation.c"
+#line 11775 "./Test_Magnetic_Rotation.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -11798,7 +11814,7 @@ MCNUM Lmax = mccpollambdaMonitor1x_Lmax;
 		  filename);
     }
 }
-#line 11801 "./Test_Magnetic_Rotation.c"
+#line 11817 "./Test_Magnetic_Rotation.c"
 }   /* End of pollambdaMonitor1x=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -11845,7 +11861,7 @@ MCNUM Lmax = mccpollambdaMonitor1y_Lmax;
 		  filename);
     }
 }
-#line 11848 "./Test_Magnetic_Rotation.c"
+#line 11864 "./Test_Magnetic_Rotation.c"
 }   /* End of pollambdaMonitor1y=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -11892,7 +11908,7 @@ MCNUM Lmax = mccpollambdaMonitor1z_Lmax;
 		  filename);
     }
 }
-#line 11895 "./Test_Magnetic_Rotation.c"
+#line 11911 "./Test_Magnetic_Rotation.c"
 }   /* End of pollambdaMonitor1z=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -11956,7 +11972,7 @@ MCNUM Lmax = mccMPLMonNum2X_Lmax;
 		  filename);
     }
 }
-#line 11959 "./Test_Magnetic_Rotation.c"
+#line 11975 "./Test_Magnetic_Rotation.c"
 }   /* End of MPLMonNum2X=MeanPolLambda_monitor() SETTING parameter declarations. */
 #undef HelpArray
 #undef PolL_p2
@@ -12020,7 +12036,7 @@ MCNUM Lmax = mccMPLMonNum2Y_Lmax;
 		  filename);
     }
 }
-#line 12023 "./Test_Magnetic_Rotation.c"
+#line 12039 "./Test_Magnetic_Rotation.c"
 }   /* End of MPLMonNum2Y=MeanPolLambda_monitor() SETTING parameter declarations. */
 #undef HelpArray
 #undef PolL_p2
@@ -12084,7 +12100,7 @@ MCNUM Lmax = mccMPLMonNum2Z_Lmax;
 		  filename);
     }
 }
-#line 12087 "./Test_Magnetic_Rotation.c"
+#line 12103 "./Test_Magnetic_Rotation.c"
 }   /* End of MPLMonNum2Z=MeanPolLambda_monitor() SETTING parameter declarations. */
 #undef HelpArray
 #undef PolL_p2
@@ -12133,7 +12149,7 @@ MCNUM minutes = mccOrigin_minutes;
     fprintf(stdout, "%g [min] ", difftime(NowTime,StartTime)/60.0);
   fprintf(stdout, "\n");
 }
-#line 12136 "./Test_Magnetic_Rotation.c"
+#line 12152 "./Test_Magnetic_Rotation.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -12207,7 +12223,7 @@ MCNUM minutes = mccOrigin_minutes;
 {
   
 }
-#line 12200 "./Test_Magnetic_Rotation.c"
+#line 12216 "./Test_Magnetic_Rotation.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -12256,7 +12272,7 @@ int target_index = mccsource_target_index;
     dashed_line(0,0,0, -focus_xw/2+tx, focus_yh/2+ty,tz, 4);
   }
 }
-#line 12249 "./Test_Magnetic_Rotation.c"
+#line 12265 "./Test_Magnetic_Rotation.c"
 }   /* End of source=Source_simple() SETTING parameter declarations. */
 #undef srcArea
 #undef square
@@ -12285,7 +12301,7 @@ MCNUM normalize = mccpolSetter_normalize;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 12278 "./Test_Magnetic_Rotation.c"
+#line 12294 "./Test_Magnetic_Rotation.c"
 }   /* End of polSetter=Set_pol() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -12318,7 +12334,7 @@ MCNUM Lmax = mccpollambdaMonitor1x_Lmax;
   
   rectangle("xy", 0, 0, 0, xwidth, yheight);
 }
-#line 12311 "./Test_Magnetic_Rotation.c"
+#line 12327 "./Test_Magnetic_Rotation.c"
 }   /* End of pollambdaMonitor1x=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -12360,7 +12376,7 @@ MCNUM Lmax = mccpollambdaMonitor1y_Lmax;
   
   rectangle("xy", 0, 0, 0, xwidth, yheight);
 }
-#line 12353 "./Test_Magnetic_Rotation.c"
+#line 12369 "./Test_Magnetic_Rotation.c"
 }   /* End of pollambdaMonitor1y=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -12402,7 +12418,7 @@ MCNUM Lmax = mccpollambdaMonitor1z_Lmax;
   
   rectangle("xy", 0, 0, 0, xwidth, yheight);
 }
-#line 12395 "./Test_Magnetic_Rotation.c"
+#line 12411 "./Test_Magnetic_Rotation.c"
 }   /* End of pollambdaMonitor1z=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -12464,7 +12480,7 @@ MCNUM concentric = mccmagnetNum_concentric;
             break;
     }
 }
-#line 12457 "./Test_Magnetic_Rotation.c"
+#line 12473 "./Test_Magnetic_Rotation.c"
 }   /* End of magnetNum=Pol_Bfield() SETTING parameter declarations. */
 #undef prms
 #undef parPtr
@@ -12502,7 +12518,7 @@ MCNUM Lmax = mccMPLMonNum2X_Lmax;
   
   rectangle("xy", 0, 0, 0, xwidth, yheight);
 }
-#line 12495 "./Test_Magnetic_Rotation.c"
+#line 12511 "./Test_Magnetic_Rotation.c"
 }   /* End of MPLMonNum2X=MeanPolLambda_monitor() SETTING parameter declarations. */
 #undef HelpArray
 #undef PolL_p2
@@ -12544,7 +12560,7 @@ MCNUM Lmax = mccMPLMonNum2Y_Lmax;
   
   rectangle("xy", 0, 0, 0, xwidth, yheight);
 }
-#line 12537 "./Test_Magnetic_Rotation.c"
+#line 12553 "./Test_Magnetic_Rotation.c"
 }   /* End of MPLMonNum2Y=MeanPolLambda_monitor() SETTING parameter declarations. */
 #undef HelpArray
 #undef PolL_p2
@@ -12586,7 +12602,7 @@ MCNUM Lmax = mccMPLMonNum2Z_Lmax;
   
   rectangle("xy", 0, 0, 0, xwidth, yheight);
 }
-#line 12579 "./Test_Magnetic_Rotation.c"
+#line 12595 "./Test_Magnetic_Rotation.c"
 }   /* End of MPLMonNum2Z=MeanPolLambda_monitor() SETTING parameter declarations. */
 #undef HelpArray
 #undef PolL_p2

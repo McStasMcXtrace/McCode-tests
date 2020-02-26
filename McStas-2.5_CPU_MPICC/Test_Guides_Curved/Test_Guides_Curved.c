@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr (Test_Guides_Curved)
- * Date:       Wed Nov 20 00:49:51 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr (Test_Guides_Curved)
+ * Date:       Tue Feb 25 21:04:28 2020
  * File:       ./Test_Guides_Curved.c
  * Compile:    cc -o Test_Guides_Curved.out ./Test_Guides_Curved.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Test_Guides_Curved";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -10584,6 +10584,13 @@ double guide_elliptical_handleReflection(double x0, double y0, double z0,
 #include <mcstas-r.h>
 #endif
 
+/*Redefine MAGNET_OFF to also clear the magnetic field stack.*/
+#undef MAGNET_OFF
+#define MAGNET_OFF \
+  do { \
+    mcMagnet = 0; \
+    mcmagnet_pop_all(); \
+  } while(0)
 
 typedef int mcmagnet_field_func (double, double, double, double, double *, double *, double *, void *);
 typedef void mcmagnet_prec_func (double, double, double, double, double, double, double, double*, double*, double*, double, Coords, Rotation);
@@ -10621,7 +10628,7 @@ void mc_pol_set_angular_accuracy(double);
   do { \
     mcMagneticField=NULL; \
     mcMagnetData=NULL; \
-    MAGNET_OFF; \
+    mcMagnet=0; \
   } while (0);
 
 #define mcmagnet_set_active(mcmagnet_new) \
@@ -10659,6 +10666,7 @@ void *mcmagnet_init_par_backend(int dummy, ...);
 int mcmagnet_get_field(double x, double y, double z, double t, double *bx,double *by, double *bz, void *dummy);
 void *mcmagnet_push(mcmagnet_field_func *func,  Rotation *magnet_rot, Coords *magnet_pos, int stopbit, void * prms);
 void *mcmagnet_pop(void);
+void *mcmagnet_pop_all(void);
 
 /*example functions for magnetic fields*/
 int const_magnetic_field(double x, double y, double z, double t, double *bx, double *by, double *bz, void *data);
@@ -11554,7 +11562,7 @@ void *mcmagnet_push(mcmagnet_field_func *func,  Rotation *magnet_rot, Coords *ma
   mcmagnet_pack(stack[0],func,magnet_rot,magnet_pos,stopbit,prms);
   mcmagnet_set_active(stack[0]);
   if(stack[0] && stack[0]->func){
-    MAGNET_ON;
+    mcMagnet=1;
   }
   return (void *) stack[0];
 }
@@ -11570,11 +11578,19 @@ void *mcmagnet_pop(void) {
   stack[MCMAGNET_STACKSIZE-1]=NULL;
   mcmagnet_set_active(stack[0]);
   if(stack[0] && stack[0]->func){
-    MAGNET_ON;
+    mcMagnet=1;
   }else{
-    MAGNET_OFF;
+    mcMagnet=0;
   }
   return (void*) t;
+}
+
+void *mcmagnet_pop_all(void){
+  void *t=mcmagnet_pop();
+  while (t!=NULL){
+    t=mcmagnet_pop();
+  }
+  return NULL;
 }
 
 void mcmagnet_free_stack(void){
@@ -11919,12 +11935,12 @@ double GetConstantField(double mc_pol_length, double mc_pol_lambda,
 /* end of regular pol-lib.c */
 
 
-#line 11922 "./Test_Guides_Curved.c"
+#line 11938 "./Test_Guides_Curved.c"
 
 /* Shared user declarations for all components 'Bender'. */
 #line 102 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Bender.comp"
 
-#line 11927 "./Test_Guides_Curved.c"
+#line 11943 "./Test_Guides_Curved.c"
 
 /* Instrument parameters. */
 int mcipGuide;
@@ -11948,7 +11964,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define Guide mcipGuide
 #define curvature mcipcurvature
 #define length mciplength
-#line 33 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 33 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   double Circumf, Arcangle, angle, ex, ey, ez, rx, ry, rz, lz;
 
   double calcAlpha(double length, double radius) {
@@ -11967,7 +11983,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
     double alpha = DEG2RAD * calcAlpha(length, radius);
     return radius*sin(alpha);
   }
-#line 11970 "./Test_Guides_Curved.c"
+#line 11986 "./Test_Guides_Curved.c"
 #undef length
 #undef curvature
 #undef Guide
@@ -12305,7 +12321,7 @@ double IntermediateCnts;
 time_t StartTime;
 time_t EndTime;
 time_t CurrentTime;
-#line 12308 "./Test_Guides_Curved.c"
+#line 12324 "./Test_Guides_Curved.c"
 #undef minutes
 #undef flag_save
 #undef percent
@@ -12389,7 +12405,7 @@ time_t CurrentTime;
   double pTable_dymin;
   double pTable_dymax;
 
-#line 12392 "./Test_Guides_Curved.c"
+#line 12408 "./Test_Guides_Curved.c"
 #undef target_index
 #undef zdepth
 #undef I3
@@ -12478,7 +12494,7 @@ time_t CurrentTime;
   MonitornD_Variables_type Vars;
   MCDETECTOR detector;
   off_struct offdata;
-#line 12481 "./Test_Guides_Curved.c"
+#line 12497 "./Test_Guides_Curved.c"
 #undef nowritefile
 #undef username3
 #undef username2
@@ -12581,7 +12597,7 @@ time_t CurrentTime;
 	double Circ;
 	double *dynamicalSegLength;
 
-#line 12584 "./Test_Guides_Curved.c"
+#line 12600 "./Test_Guides_Curved.c"
 #undef curvature
 #undef enableGravity
 #undef verbose
@@ -12702,7 +12718,7 @@ Coords pointTop, pointBot, pointIn, pointOut;
   double rRightUpParPtr[]   = (double [])rRightUpPar;
   double rRightDownParPtr[] = (double [])rRightDownPar;
 #endif
-#line 12705 "./Test_Guides_Curved.c"
+#line 12721 "./Test_Guides_Curved.c"
 #undef drawOption
 #undef endFlat
 #undef debug
@@ -12779,7 +12795,7 @@ Coords pointTop, pointBot, pointIn, pointOut;
 #define Ws mccGuideB2_Ws
 #line 108 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Bender.comp"
 double bk, mWin;
-#line 12782 "./Test_Guides_Curved.c"
+#line 12798 "./Test_Guides_Curved.c"
 #undef Ws
 #undef ms
 #undef alphas
@@ -12853,7 +12869,7 @@ double bk, mWin;
   MonitornD_Variables_type Vars;
   MCDETECTOR detector;
   off_struct offdata;
-#line 12856 "./Test_Guides_Curved.c"
+#line 12872 "./Test_Guides_Curved.c"
 #undef nowritefile
 #undef username3
 #undef username2
@@ -12923,7 +12939,7 @@ double bk, mWin;
   MonitornD_Variables_type Vars;
   MCDETECTOR detector;
   off_struct offdata;
-#line 12926 "./Test_Guides_Curved.c"
+#line 12942 "./Test_Guides_Curved.c"
 #undef nowritefile
 #undef username3
 #undef username2
@@ -13001,7 +13017,7 @@ double bk, mWin;
   MonitornD_Variables_type Vars;
   MCDETECTOR detector;
   off_struct offdata;
-#line 13004 "./Test_Guides_Curved.c"
+#line 13020 "./Test_Guides_Curved.c"
 #undef nowritefile
 #undef username3
 #undef username2
@@ -13071,7 +13087,7 @@ double bk, mWin;
   MonitornD_Variables_type Vars;
   MCDETECTOR detector;
   off_struct offdata;
-#line 13074 "./Test_Guides_Curved.c"
+#line 13090 "./Test_Guides_Curved.c"
 #undef nowritefile
 #undef username3
 #undef username2
@@ -13121,7 +13137,7 @@ double bk, mWin;
 double PSD_N[nx][ny];
 double PSD_p[nx][ny];
 double PSD_p2[nx][ny];
-#line 13124 "./Test_Guides_Curved.c"
+#line 13140 "./Test_Guides_Curved.c"
 #undef nowritefile
 #undef restore_neutron
 #undef radius
@@ -13198,31 +13214,31 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccOrigin_minutes = 0;
-#line 13209 "./Test_Guides_Curved.c"
+#line 13225 "./Test_Guides_Curved.c"
 
   SIG_MESSAGE("Origin (Init:Place/Rotate)");
   rot_set_rotation(mcrotaOrigin,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 13216 "./Test_Guides_Curved.c"
+#line 13232 "./Test_Guides_Curved.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0);
-#line 13225 "./Test_Guides_Curved.c"
+#line 13241 "./Test_Guides_Curved.c"
   mctc1 = coords_neg(mcposaOrigin);
   mcposrOrigin = rot_apply(mcrotaOrigin, mctc1);
   mcDEBUG_COMPONENT("Origin", mcposaOrigin, mcrotaOrigin)
@@ -13233,85 +13249,85 @@ void mcinit(void) {
     /* Component Source. */
   /* Setting parameters for component Source. */
   SIG_MESSAGE("Source (Init:SetPar)");
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccSource_flux_file, "NULL" ? "NULL" : "", 16384); else mccSource_flux_file[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccSource_xdiv_file, "NULL" ? "NULL" : "", 16384); else mccSource_xdiv_file[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccSource_ydiv_file, "NULL" ? "NULL" : "", 16384); else mccSource_ydiv_file[0]='\0';
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_radius = 0.0;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_dist = 0;
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_focus_xw = 0.05;
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_focus_yh = 0.05;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_focus_aw = 0;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_focus_ah = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_E0 = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_dE = 0;
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_lambda0 = 3.39;
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_dlambda = 0.3;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_I1 = 1;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_yheight = 0.05;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_xwidth = 0.05;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_verbose = 0;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_T1 = 0;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_flux_file_perAA = 0;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_flux_file_log = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_Lmin = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_Lmax = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_Emin = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_Emax = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_T2 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_I2 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_T3 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_I3 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_zdepth = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccSource_target_index = + 1;
-#line 13296 "./Test_Guides_Curved.c"
+#line 13312 "./Test_Guides_Curved.c"
 
   SIG_MESSAGE("Source (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 13303 "./Test_Guides_Curved.c"
+#line 13319 "./Test_Guides_Curved.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaSource);
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotaSource, mctr1, mcrotrSource);
   mctc1 = coords_set(
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0);
-#line 13314 "./Test_Guides_Curved.c"
+#line 13330 "./Test_Guides_Curved.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaSource = coords_add(mcposaOrigin, mctc2);
@@ -13325,67 +13341,67 @@ void mcinit(void) {
     /* Component Monitor1_xt. */
   /* Setting parameters for component Monitor1_xt. */
   SIG_MESSAGE("Monitor1_xt (Init:SetPar)");
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor1_xt_xwidth = 0.05;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor1_xt_yheight = 0.05;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor1_xt_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor1_xt_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor1_xt_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor1_xt_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor1_xt_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor1_xt_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor1_xt_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor1_xt_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor1_xt_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor1_xt_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor1_xt_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor1_xt_radius = 0;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("x y") strncpy(mccMonitor1_xt_options, "x y" ? "x y" : "", 16384); else mccMonitor1_xt_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor1_xt_filename, "NULL" ? "NULL" : "", 16384); else mccMonitor1_xt_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor1_xt_geometry, "NULL" ? "NULL" : "", 16384); else mccMonitor1_xt_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor1_xt_username1, "NULL" ? "NULL" : "", 16384); else mccMonitor1_xt_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor1_xt_username2, "NULL" ? "NULL" : "", 16384); else mccMonitor1_xt_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor1_xt_username3, "NULL" ? "NULL" : "", 16384); else mccMonitor1_xt_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor1_xt_nowritefile = 0;
-#line 13370 "./Test_Guides_Curved.c"
+#line 13386 "./Test_Guides_Curved.c"
 
   SIG_MESSAGE("Monitor1_xt (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 13377 "./Test_Guides_Curved.c"
+#line 13393 "./Test_Guides_Curved.c"
   rot_mul(mctr1, mcrotaSource, mcrotaMonitor1_xt);
   rot_transpose(mcrotaSource, mctr1);
   rot_mul(mcrotaMonitor1_xt, mctr1, mcrotrMonitor1_xt);
   mctc1 = coords_set(
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     1);
-#line 13388 "./Test_Guides_Curved.c"
+#line 13404 "./Test_Guides_Curved.c"
   rot_transpose(mcrotaSource, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMonitor1_xt = coords_add(mcposaSource, mctc2);
@@ -13405,18 +13421,18 @@ void mcinit(void) {
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 13408 "./Test_Guides_Curved.c"
+#line 13424 "./Test_Guides_Curved.c"
   rot_mul(mctr1, mcrotaMonitor1_xt, mcrotaGuide_Position);
   rot_transpose(mcrotaMonitor1_xt, mctr1);
   rot_mul(mcrotaGuide_Position, mctr1, mcrotrGuide_Position);
   mctc1 = coords_set(
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0.1);
-#line 13419 "./Test_Guides_Curved.c"
+#line 13435 "./Test_Guides_Curved.c"
   rot_transpose(mcrotaMonitor1_xt, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuide_Position = coords_add(mcposaMonitor1_xt, mctc2);
@@ -13430,43 +13446,43 @@ void mcinit(void) {
     /* Component GuideR. */
   /* Setting parameters for component GuideR. */
   SIG_MESSAGE("GuideR (Init:SetPar)");
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideR_w1 = 0.05;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideR_h1 = 0.05;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideR_l = mciplength;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideR_R0 = 0.995;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideR_Qc = 0.0218;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideR_alpha = 4.38;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideR_m = 2;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideR_W = 0.003;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideR_curvature = mcipcurvature;
-#line 13451 "./Test_Guides_Curved.c"
+#line 13467 "./Test_Guides_Curved.c"
 
   SIG_MESSAGE("GuideR (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 13458 "./Test_Guides_Curved.c"
+#line 13474 "./Test_Guides_Curved.c"
   rot_mul(mctr1, mcrotaGuide_Position, mcrotaGuideR);
   rot_transpose(mcrotaGuide_Position, mctr1);
   rot_mul(mcrotaGuideR, mctr1, mcrotrGuideR);
   mctc1 = coords_set(
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0);
-#line 13469 "./Test_Guides_Curved.c"
+#line 13485 "./Test_Guides_Curved.c"
   rot_transpose(mcrotaGuide_Position, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuideR = coords_add(mcposaGuide_Position, mctc2);
@@ -13480,87 +13496,87 @@ void mcinit(void) {
     /* Component GuideEl. */
   /* Setting parameters for component GuideEl. */
   SIG_MESSAGE("GuideEl (Init:SetPar)");
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_l = mciplength;
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_xwidth = 0.05;
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_yheight = 0.05;
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_linxw = 1e6;
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_loutxw = 1e6;
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_linyh = 1e6;
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_loutyh = 1e6;
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_majorAxisxw = 0;
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_minorAxisxw = 0;
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_majorAxisyh = 0;
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_minorAxisyh = 0;
-#line 167 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_majorAxisoffsetxw = 0;
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_majorAxisoffsetyh = 0;
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("mid") strncpy(mccGuideEl_dimensionsAt, "mid" ? "mid" : "", 16384); else mccGuideEl_dimensionsAt[0]='\0';
-#line 170 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 170 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("ellipse") strncpy(mccGuideEl_option, "ellipse" ? "ellipse" : "", 16384); else mccGuideEl_option[0]='\0';
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_R0 = 0.99;
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_Qc = 0.0218;
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_alpha = 6.07;
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_m = 2;
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_W = 0.003;
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 172 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_alpharight = -1;
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 172 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_mright = -1;
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_alphaleft = -1;
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_mleft = -1;
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_alphatop = -1;
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_mtop = -1;
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 175 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_alphabottom = -1;
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 175 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_mbottom = -1;
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("on") strncpy(mccGuideEl_verbose, "on" ? "on" : "", 16384); else mccGuideEl_verbose[0]='\0';
-#line 177 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 177 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_enableGravity = 1.0;
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideEl_curvature = - mcipcurvature;
-#line 13545 "./Test_Guides_Curved.c"
+#line 13561 "./Test_Guides_Curved.c"
 
   SIG_MESSAGE("GuideEl (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 13552 "./Test_Guides_Curved.c"
+#line 13568 "./Test_Guides_Curved.c"
   rot_mul(mctr1, mcrotaGuide_Position, mcrotaGuideEl);
   rot_transpose(mcrotaGuideR, mctr1);
   rot_mul(mcrotaGuideEl, mctr1, mcrotrGuideEl);
   mctc1 = coords_set(
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0);
-#line 13563 "./Test_Guides_Curved.c"
+#line 13579 "./Test_Guides_Curved.c"
   rot_transpose(mcrotaGuide_Position, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuideEl = coords_add(mcposaGuide_Position, mctc2);
@@ -13574,45 +13590,45 @@ void mcinit(void) {
     /* Component GuideB. */
   /* Setting parameters for component GuideB. */
   SIG_MESSAGE("GuideB (Init:SetPar)");
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB_xwidth = 0.05;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB_yheight = 0.05;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB_length = mciplength;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB_radius = - mcipcurvature;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB_G = 9.8;
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB_nslit = 1;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB_d = 0.0;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB_debug = 0;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB_endFlat = 0;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB_drawOption = 1;
-#line 13597 "./Test_Guides_Curved.c"
+#line 13613 "./Test_Guides_Curved.c"
 
   SIG_MESSAGE("GuideB (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 13604 "./Test_Guides_Curved.c"
+#line 13620 "./Test_Guides_Curved.c"
   rot_mul(mctr1, mcrotaGuide_Position, mcrotaGuideB);
   rot_transpose(mcrotaGuideEl, mctr1);
   rot_mul(mcrotaGuideB, mctr1, mcrotrGuideB);
   mctc1 = coords_set(
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0);
-#line 13615 "./Test_Guides_Curved.c"
+#line 13631 "./Test_Guides_Curved.c"
   rot_transpose(mcrotaGuide_Position, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuideB = coords_add(mcposaGuide_Position, mctc2);
@@ -13626,69 +13642,69 @@ void mcinit(void) {
     /* Component GuideB2. */
   /* Setting parameters for component GuideB2. */
   SIG_MESSAGE("GuideB2 (Init:SetPar)");
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB2_w = 0.05;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB2_h = 0.05;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB2_r = mcipcurvature;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB2_Win = mciplength / mcipcurvature;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB2_k = 1;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB2_d = 0.001;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB2_l = 0;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB2_R0a = 0.99;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB2_Qca = 0.021;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB2_alphaa = 6.07;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB2_ma = 2;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB2_Wa = 0.003;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB2_R0i = 0.99;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB2_Qci = 0.021;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB2_alphai = 6.07;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB2_mi = 2;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB2_Wi = 0.003;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB2_R0s = 0.99;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB2_Qcs = 0.021;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB2_alphas = 6.07;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB2_ms = 2;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccGuideB2_Ws = 0.003;
-#line 13673 "./Test_Guides_Curved.c"
+#line 13689 "./Test_Guides_Curved.c"
 
   SIG_MESSAGE("GuideB2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 13680 "./Test_Guides_Curved.c"
+#line 13696 "./Test_Guides_Curved.c"
   rot_mul(mctr1, mcrotaGuide_Position, mcrotaGuideB2);
   rot_transpose(mcrotaGuideB, mctr1);
   rot_mul(mcrotaGuideB2, mctr1, mcrotrGuideB2);
   mctc1 = coords_set(
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0);
-#line 13691 "./Test_Guides_Curved.c"
+#line 13707 "./Test_Guides_Curved.c"
   rot_transpose(mcrotaGuide_Position, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuideB2 = coords_add(mcposaGuide_Position, mctc2);
@@ -13705,24 +13721,24 @@ void mcinit(void) {
 
   SIG_MESSAGE("RArm (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     (0)*DEG2RAD,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     (calcAlpha ( mciplength , mcipcurvature ))*DEG2RAD,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     (0)*DEG2RAD);
-#line 13714 "./Test_Guides_Curved.c"
+#line 13730 "./Test_Guides_Curved.c"
   rot_mul(mctr1, mcrotaGuideR, mcrotaRArm);
   rot_transpose(mcrotaGuideB2, mctr1);
   rot_mul(mcrotaRArm, mctr1, mcrotrRArm);
   mctc1 = coords_set(
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     calcX ( mciplength , mcipcurvature ),
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     calcZ ( mciplength , mcipcurvature ));
-#line 13725 "./Test_Guides_Curved.c"
+#line 13741 "./Test_Guides_Curved.c"
   rot_transpose(mcrotaGuideR, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaRArm = coords_add(mcposaGuideR, mctc2);
@@ -13736,67 +13752,67 @@ void mcinit(void) {
     /* Component Monitor2_xy1. */
   /* Setting parameters for component Monitor2_xy1. */
   SIG_MESSAGE("Monitor2_xy1 (Init:SetPar)");
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy1_xwidth = 0.07;
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy1_yheight = 0.07;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy1_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy1_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy1_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy1_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy1_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy1_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy1_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy1_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy1_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy1_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy1_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy1_radius = 0;
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("x y") strncpy(mccMonitor2_xy1_options, "x y" ? "x y" : "", 16384); else mccMonitor2_xy1_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor2_xy1_filename, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy1_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor2_xy1_geometry, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy1_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor2_xy1_username1, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy1_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor2_xy1_username2, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy1_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor2_xy1_username3, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy1_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy1_nowritefile = 0;
-#line 13781 "./Test_Guides_Curved.c"
+#line 13797 "./Test_Guides_Curved.c"
 
   SIG_MESSAGE("Monitor2_xy1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 13788 "./Test_Guides_Curved.c"
+#line 13804 "./Test_Guides_Curved.c"
   rot_mul(mctr1, mcrotaRArm, mcrotaMonitor2_xy1);
   rot_transpose(mcrotaRArm, mctr1);
   rot_mul(mcrotaMonitor2_xy1, mctr1, mcrotrMonitor2_xy1);
   mctc1 = coords_set(
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     2);
-#line 13799 "./Test_Guides_Curved.c"
+#line 13815 "./Test_Guides_Curved.c"
   rot_transpose(mcrotaRArm, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMonitor2_xy1 = coords_add(mcposaRArm, mctc2);
@@ -13810,67 +13826,67 @@ void mcinit(void) {
     /* Component Monitor2_xy2. */
   /* Setting parameters for component Monitor2_xy2. */
   SIG_MESSAGE("Monitor2_xy2 (Init:SetPar)");
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy2_xwidth = 0.07;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy2_yheight = 0.07;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy2_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy2_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy2_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy2_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy2_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy2_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy2_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy2_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy2_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy2_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy2_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy2_radius = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("x y") strncpy(mccMonitor2_xy2_options, "x y" ? "x y" : "", 16384); else mccMonitor2_xy2_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor2_xy2_filename, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy2_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor2_xy2_geometry, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy2_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor2_xy2_username1, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy2_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor2_xy2_username2, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy2_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor2_xy2_username3, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy2_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy2_nowritefile = 0;
-#line 13855 "./Test_Guides_Curved.c"
+#line 13871 "./Test_Guides_Curved.c"
 
   SIG_MESSAGE("Monitor2_xy2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 13862 "./Test_Guides_Curved.c"
+#line 13878 "./Test_Guides_Curved.c"
   rot_mul(mctr1, mcrotaGuide_Position, mcrotaMonitor2_xy2);
   rot_transpose(mcrotaMonitor2_xy1, mctr1);
   rot_mul(mcrotaMonitor2_xy2, mctr1, mcrotrMonitor2_xy2);
   mctc1 = coords_set(
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     mciplength + 2);
-#line 13873 "./Test_Guides_Curved.c"
+#line 13889 "./Test_Guides_Curved.c"
   rot_transpose(mcrotaGuide_Position, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMonitor2_xy2 = coords_add(mcposaGuide_Position, mctc2);
@@ -13887,24 +13903,24 @@ void mcinit(void) {
 
   SIG_MESSAGE("BArm (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     (0)*DEG2RAD,
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     (calcAlpha ( mciplength , - mcipcurvature ))*DEG2RAD,
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     (0)*DEG2RAD);
-#line 13896 "./Test_Guides_Curved.c"
+#line 13912 "./Test_Guides_Curved.c"
   rot_mul(mctr1, mcrotaGuideR, mcrotaBArm);
   rot_transpose(mcrotaMonitor2_xy2, mctr1);
   rot_mul(mcrotaBArm, mctr1, mcrotrBArm);
   mctc1 = coords_set(
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     calcX ( mciplength , - mcipcurvature ),
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     calcZ ( mciplength , mcipcurvature ));
-#line 13907 "./Test_Guides_Curved.c"
+#line 13923 "./Test_Guides_Curved.c"
   rot_transpose(mcrotaGuideR, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaBArm = coords_add(mcposaGuideR, mctc2);
@@ -13918,67 +13934,67 @@ void mcinit(void) {
     /* Component Monitor2_xy3. */
   /* Setting parameters for component Monitor2_xy3. */
   SIG_MESSAGE("Monitor2_xy3 (Init:SetPar)");
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy3_xwidth = 0.07;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy3_yheight = 0.07;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy3_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy3_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy3_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy3_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy3_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy3_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy3_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy3_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy3_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy3_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy3_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy3_radius = 0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("x y") strncpy(mccMonitor2_xy3_options, "x y" ? "x y" : "", 16384); else mccMonitor2_xy3_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor2_xy3_filename, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy3_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor2_xy3_geometry, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy3_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor2_xy3_username1, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy3_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor2_xy3_username2, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy3_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor2_xy3_username3, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy3_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy3_nowritefile = 0;
-#line 13963 "./Test_Guides_Curved.c"
+#line 13979 "./Test_Guides_Curved.c"
 
   SIG_MESSAGE("Monitor2_xy3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 13970 "./Test_Guides_Curved.c"
+#line 13986 "./Test_Guides_Curved.c"
   rot_mul(mctr1, mcrotaBArm, mcrotaMonitor2_xy3);
   rot_transpose(mcrotaBArm, mctr1);
   rot_mul(mcrotaMonitor2_xy3, mctr1, mcrotrMonitor2_xy3);
   mctc1 = coords_set(
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     2);
-#line 13981 "./Test_Guides_Curved.c"
+#line 13997 "./Test_Guides_Curved.c"
   rot_transpose(mcrotaBArm, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMonitor2_xy3 = coords_add(mcposaBArm, mctc2);
@@ -13992,67 +14008,67 @@ void mcinit(void) {
     /* Component Monitor2_xy4. */
   /* Setting parameters for component Monitor2_xy4. */
   SIG_MESSAGE("Monitor2_xy4 (Init:SetPar)");
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy4_xwidth = 0.07;
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy4_yheight = 0.07;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy4_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy4_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy4_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy4_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy4_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy4_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy4_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy4_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy4_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy4_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy4_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy4_radius = 0;
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("x y") strncpy(mccMonitor2_xy4_options, "x y" ? "x y" : "", 16384); else mccMonitor2_xy4_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor2_xy4_filename, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy4_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor2_xy4_geometry, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy4_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor2_xy4_username1, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy4_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor2_xy4_username2, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy4_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("NULL") strncpy(mccMonitor2_xy4_username3, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy4_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccMonitor2_xy4_nowritefile = 0;
-#line 14037 "./Test_Guides_Curved.c"
+#line 14053 "./Test_Guides_Curved.c"
 
   SIG_MESSAGE("Monitor2_xy4 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 14044 "./Test_Guides_Curved.c"
+#line 14060 "./Test_Guides_Curved.c"
   rot_mul(mctr1, mcrotaGuide_Position, mcrotaMonitor2_xy4);
   rot_transpose(mcrotaMonitor2_xy3, mctr1);
   rot_mul(mcrotaMonitor2_xy4, mctr1, mcrotrMonitor2_xy4);
   mctc1 = coords_set(
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     mciplength + 2);
-#line 14055 "./Test_Guides_Curved.c"
+#line 14071 "./Test_Guides_Curved.c"
   rot_transpose(mcrotaGuide_Position, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMonitor2_xy4 = coords_add(mcposaGuide_Position, mctc2);
@@ -14066,32 +14082,32 @@ void mcinit(void) {
     /* Component dummy. */
   /* Setting parameters for component dummy. */
   SIG_MESSAGE("dummy (Init:SetPar)");
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   if("junk") strncpy(mccdummy_filename, "junk" ? "junk" : "", 16384); else mccdummy_filename[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccdummy_radius = mciplength + 1.1;
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccdummy_restore_neutron = 1;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
   mccdummy_nowritefile = 0;
-#line 14077 "./Test_Guides_Curved.c"
+#line 14093 "./Test_Guides_Curved.c"
 
   SIG_MESSAGE("dummy (Init:Place/Rotate)");
   rot_set_rotation(mcrotadummy,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 14084 "./Test_Guides_Curved.c"
+#line 14100 "./Test_Guides_Curved.c"
   rot_transpose(mcrotaMonitor2_xy4, mctr1);
   rot_mul(mcrotadummy, mctr1, mcrotrdummy);
   mcposadummy = coords_set(
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0,
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
     0);
-#line 14094 "./Test_Guides_Curved.c"
+#line 14110 "./Test_Guides_Curved.c"
   mctc1 = coords_sub(mcposaMonitor2_xy4, mcposadummy);
   mcposrdummy = rot_apply(mcrotadummy, mctc1);
   mcDEBUG_COMPONENT("dummy", mcposadummy, mcrotadummy)
@@ -14125,7 +14141,7 @@ fprintf(stdout, "[%s] Initialize\n", mcinstrument_name);
     percent=1e5*100.0/mcget_ncount();
   }
 }
-#line 14128 "./Test_Guides_Curved.c"
+#line 14144 "./Test_Guides_Curved.c"
 #undef minutes
 #undef flag_save
 #undef percent
@@ -14462,7 +14478,7 @@ fprintf(stdout, "[%s] Initialize\n", mcinstrument_name);
       printf("Source_gen: component %s unactivated", NAME_CURRENT_COMP);
   );
 }
-#line 14465 "./Test_Guides_Curved.c"
+#line 14481 "./Test_Guides_Curved.c"
 #undef target_index
 #undef zdepth
 #undef I3
@@ -14627,7 +14643,7 @@ MPI_MASTER(
 );
 #endif
 }
-#line 14630 "./Test_Guides_Curved.c"
+#line 14646 "./Test_Guides_Curved.c"
 #undef nowritefile
 #undef username3
 #undef username2
@@ -14684,7 +14700,7 @@ if (mcgravitation) fprintf(stderr,"WARNING: Guide_curved: %s: "
     "Use Guide_gravity.\n",
     NAME_CURRENT_COMP);
 }
-#line 14687 "./Test_Guides_Curved.c"
+#line 14703 "./Test_Guides_Curved.c"
 #undef curvature
 #undef W
 #undef m
@@ -15341,7 +15357,7 @@ if (mcgravitation) fprintf(stderr,"WARNING: Guide_curved: %s: "
 	}
 	Circ=2*PI*curvature;
 }
-#line 15344 "./Test_Guides_Curved.c"
+#line 15360 "./Test_Guides_Curved.c"
 #undef curvature
 #undef enableGravity
 #undef verbose
@@ -15542,7 +15558,7 @@ if (mcgravitation) fprintf(stderr,"WARNING: Guide_curved: %s: "
   pointBot = coords_set(0, -yheight/2, 0);
 
 }
-#line 15545 "./Test_Guides_Curved.c"
+#line 15561 "./Test_Guides_Curved.c"
 #undef drawOption
 #undef endFlat
 #undef debug
@@ -15638,7 +15654,7 @@ if (r <0)
         "This component produces wrong results with gravitation !\n",
         NAME_CURRENT_COMP);
 }
-#line 15641 "./Test_Guides_Curved.c"
+#line 15657 "./Test_Guides_Curved.c"
 #undef Ws
 #undef ms
 #undef alphas
@@ -15783,7 +15799,7 @@ MPI_MASTER(
 );
 #endif
 }
-#line 15786 "./Test_Guides_Curved.c"
+#line 15802 "./Test_Guides_Curved.c"
 #undef nowritefile
 #undef username3
 #undef username2
@@ -15929,7 +15945,7 @@ MPI_MASTER(
 );
 #endif
 }
-#line 15932 "./Test_Guides_Curved.c"
+#line 15948 "./Test_Guides_Curved.c"
 #undef nowritefile
 #undef username3
 #undef username2
@@ -16078,7 +16094,7 @@ MPI_MASTER(
 );
 #endif
 }
-#line 16081 "./Test_Guides_Curved.c"
+#line 16097 "./Test_Guides_Curved.c"
 #undef nowritefile
 #undef username3
 #undef username2
@@ -16224,7 +16240,7 @@ MPI_MASTER(
 );
 #endif
 }
-#line 16227 "./Test_Guides_Curved.c"
+#line 16243 "./Test_Guides_Curved.c"
 #undef nowritefile
 #undef username3
 #undef username2
@@ -16283,7 +16299,7 @@ for (i=0; i<nx; i++)
       PSD_p2[i][j] = 0;
     }
 }
-#line 16286 "./Test_Guides_Curved.c"
+#line 16302 "./Test_Guides_Curved.c"
 #undef nowritefile
 #undef restore_neutron
 #undef radius
@@ -16450,7 +16466,7 @@ MCNUM minutes = mccOrigin_minutes;
     if (flag_save) mcsave(NULL);
   }
 }
-#line 16453 "./Test_Guides_Curved.c"
+#line 16469 "./Test_Guides_Curved.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -16698,12 +16714,12 @@ int target_index = mccSource_target_index;
     SCATTER;
   }
 }
-#line 16701 "./Test_Guides_Curved.c"
+#line 16717 "./Test_Guides_Curved.c"
 /* 'Source=Source_gen()' component instance extend code */
     SIG_MESSAGE("Source (Trace:Extend)");
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr"
 	t = randtriangle()*1e-3;	/* 1 ms triangle time window */
-#line 16706 "./Test_Guides_Curved.c"
+#line 16722 "./Test_Guides_Curved.c"
 }   /* End of Source=Source_gen() SETTING parameter declarations. */
 #undef pTable_dymax
 #undef pTable_dymin
@@ -17023,7 +17039,7 @@ int nowritefile = mccMonitor1_xt_nowritefile;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 17026 "./Test_Guides_Curved.c"
+#line 17042 "./Test_Guides_Curved.c"
 }   /* End of Monitor1_xt=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -17315,7 +17331,7 @@ if (( mcipGuide == 1 ))
     SCATTER;
   }
 }
-#line 17317 "./Test_Guides_Curved.c"
+#line 17333 "./Test_Guides_Curved.c"
 }   /* End of GuideR=Guide_curved() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -17540,7 +17556,7 @@ if (( mcipGuide == 2 ))
 		ABSORB;
 	
 }
-#line 17541 "./Test_Guides_Curved.c"
+#line 17557 "./Test_Guides_Curved.c"
 }   /* End of GuideEl=Elliptic_guide_gravity() SETTING parameter declarations. */
 #undef dynamicalSegLength
 #undef Circ
@@ -17925,7 +17941,7 @@ if (( mcipGuide == 3 ))
   }
 
 }
-#line 17925 "./Test_Guides_Curved.c"
+#line 17941 "./Test_Guides_Curved.c"
 }   /* End of GuideB=Pol_bender() SETTING parameter declarations. */
 #undef rRightDownParPtr
 #undef rRightUpParPtr
@@ -18225,7 +18241,7 @@ if (( mcipGuide == 4 ))
       ABSORB; /* miss entry window */
 
 }
-#line 18224 "./Test_Guides_Curved.c"
+#line 18240 "./Test_Guides_Curved.c"
 }   /* End of GuideB2=Bender() SETTING parameter declarations. */
 #undef mWin
 #undef bk
@@ -18636,7 +18652,7 @@ if (( mcipGuide == 1 ))
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 18634 "./Test_Guides_Curved.c"
+#line 18650 "./Test_Guides_Curved.c"
 }   /* End of Monitor2_xy1=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -18949,7 +18965,7 @@ if (( mcipGuide == 2 ))
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 18946 "./Test_Guides_Curved.c"
+#line 18962 "./Test_Guides_Curved.c"
 }   /* End of Monitor2_xy2=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -19365,7 +19381,7 @@ if (( mcipGuide == 3 ))
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 19361 "./Test_Guides_Curved.c"
+#line 19377 "./Test_Guides_Curved.c"
 }   /* End of Monitor2_xy3=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -19678,7 +19694,7 @@ if (( mcipGuide == 4 ))
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 19673 "./Test_Guides_Curved.c"
+#line 19689 "./Test_Guides_Curved.c"
 }   /* End of Monitor2_xy4=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -19835,7 +19851,7 @@ if (( 1 == 0 ))
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 19829 "./Test_Guides_Curved.c"
+#line 19845 "./Test_Guides_Curved.c"
 }   /* End of dummy=PSD_monitor_4PI() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -19949,7 +19965,7 @@ MCNUM minutes = mccOrigin_minutes;
 
   }
 }
-#line 19943 "./Test_Guides_Curved.c"
+#line 19959 "./Test_Guides_Curved.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -20000,7 +20016,7 @@ int nowritefile = mccMonitor1_xt_nowritefile;
     detector = Monitor_nD_Save(&DEFS, &Vars);
   }
 }
-#line 19994 "./Test_Guides_Curved.c"
+#line 20010 "./Test_Guides_Curved.c"
 }   /* End of Monitor1_xt=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -20054,7 +20070,7 @@ int nowritefile = mccMonitor2_xy1_nowritefile;
     detector = Monitor_nD_Save(&DEFS, &Vars);
   }
 }
-#line 20048 "./Test_Guides_Curved.c"
+#line 20064 "./Test_Guides_Curved.c"
 }   /* End of Monitor2_xy1=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -20108,7 +20124,7 @@ int nowritefile = mccMonitor2_xy2_nowritefile;
     detector = Monitor_nD_Save(&DEFS, &Vars);
   }
 }
-#line 20102 "./Test_Guides_Curved.c"
+#line 20118 "./Test_Guides_Curved.c"
 }   /* End of Monitor2_xy2=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -20162,7 +20178,7 @@ int nowritefile = mccMonitor2_xy3_nowritefile;
     detector = Monitor_nD_Save(&DEFS, &Vars);
   }
 }
-#line 20156 "./Test_Guides_Curved.c"
+#line 20172 "./Test_Guides_Curved.c"
 }   /* End of Monitor2_xy3=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -20216,7 +20232,7 @@ int nowritefile = mccMonitor2_xy4_nowritefile;
     detector = Monitor_nD_Save(&DEFS, &Vars);
   }
 }
-#line 20210 "./Test_Guides_Curved.c"
+#line 20226 "./Test_Guides_Curved.c"
 }   /* End of Monitor2_xy4=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -20257,7 +20273,7 @@ int nowritefile = mccdummy_nowritefile;
     filename);
   }
 }
-#line 20251 "./Test_Guides_Curved.c"
+#line 20267 "./Test_Guides_Curved.c"
 }   /* End of dummy=PSD_monitor_4PI() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -20302,7 +20318,7 @@ MCNUM minutes = mccOrigin_minutes;
     fprintf(stdout, "%g [min] ", difftime(NowTime,StartTime)/60.0);
   fprintf(stdout, "\n");
 }
-#line 20296 "./Test_Guides_Curved.c"
+#line 20312 "./Test_Guides_Curved.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -20374,7 +20390,7 @@ int target_index = mccSource_target_index;
   Table_Free(&pTable_x);
   Table_Free(&pTable_y);
 }
-#line 20367 "./Test_Guides_Curved.c"
+#line 20383 "./Test_Guides_Curved.c"
 }   /* End of Source=Source_gen() SETTING parameter declarations. */
 #undef pTable_dymax
 #undef pTable_dymin
@@ -20439,7 +20455,7 @@ int nowritefile = mccMonitor1_xt_nowritefile;
   /* free pointers */
   Monitor_nD_Finally(&DEFS, &Vars);
 }
-#line 20431 "./Test_Guides_Curved.c"
+#line 20447 "./Test_Guides_Curved.c"
 }   /* End of Monitor1_xt=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -20512,7 +20528,7 @@ int nowritefile = mccMonitor2_xy1_nowritefile;
   /* free pointers */
   Monitor_nD_Finally(&DEFS, &Vars);
 }
-#line 20497 "./Test_Guides_Curved.c"
+#line 20513 "./Test_Guides_Curved.c"
 }   /* End of Monitor2_xy1=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -20567,7 +20583,7 @@ int nowritefile = mccMonitor2_xy2_nowritefile;
   /* free pointers */
   Monitor_nD_Finally(&DEFS, &Vars);
 }
-#line 20551 "./Test_Guides_Curved.c"
+#line 20567 "./Test_Guides_Curved.c"
 }   /* End of Monitor2_xy2=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -20625,7 +20641,7 @@ int nowritefile = mccMonitor2_xy3_nowritefile;
   /* free pointers */
   Monitor_nD_Finally(&DEFS, &Vars);
 }
-#line 20607 "./Test_Guides_Curved.c"
+#line 20623 "./Test_Guides_Curved.c"
 }   /* End of Monitor2_xy3=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -20680,7 +20696,7 @@ int nowritefile = mccMonitor2_xy4_nowritefile;
   /* free pointers */
   Monitor_nD_Finally(&DEFS, &Vars);
 }
-#line 20661 "./Test_Guides_Curved.c"
+#line 20677 "./Test_Guides_Curved.c"
 }   /* End of Monitor2_xy4=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -20733,7 +20749,7 @@ MCNUM minutes = mccOrigin_minutes;
 {
   
 }
-#line 20712 "./Test_Guides_Curved.c"
+#line 20728 "./Test_Guides_Curved.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -20846,7 +20862,7 @@ int target_index = mccSource_target_index;
     dashed_line(0,0,0, -focus_xw/2, focus_yh/2,dist, 4);
   }
 }
-#line 20825 "./Test_Guides_Curved.c"
+#line 20841 "./Test_Guides_Curved.c"
 }   /* End of Source=Source_gen() SETTING parameter declarations. */
 #undef pTable_dymax
 #undef pTable_dymin
@@ -20913,7 +20929,7 @@ int nowritefile = mccMonitor1_xt_nowritefile;
     Monitor_nD_McDisplay(&DEFS, &Vars);
   }
 }
-#line 20892 "./Test_Guides_Curved.c"
+#line 20908 "./Test_Guides_Curved.c"
 }   /* End of Monitor1_xt=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -20940,7 +20956,7 @@ int nowritefile = mccMonitor1_xt_nowritefile;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 20919 "./Test_Guides_Curved.c"
+#line 20935 "./Test_Guides_Curved.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -20997,7 +21013,7 @@ MCNUM curvature = mccGuideR_curvature;
   line(xplot2[n-1],-0.5*h1,zplot2[n-1],xplot2[n-1], 0.5*h1,zplot2[n-1]);
   line(xplot1[n-1],-0.5*h1,zplot1[n-1],xplot2[n-1],-0.5*h1,zplot2[n-1]);
 }
-#line 20976 "./Test_Guides_Curved.c"
+#line 20992 "./Test_Guides_Curved.c"
 }   /* End of GuideR=Guide_curved() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -21246,7 +21262,7 @@ MCNUM curvature = mccGuideEl_curvature;
 							guideInfo.xArray[1],guideInfo.yArray[1],guideInfo.zArray[1],10 );
 		}
 }
-#line 21225 "./Test_Guides_Curved.c"
+#line 21241 "./Test_Guides_Curved.c"
 }   /* End of GuideEl=Elliptic_guide_gravity() SETTING parameter declarations. */
 #undef dynamicalSegLength
 #undef Circ
@@ -21397,7 +21413,7 @@ int drawOption = mccGuideB_drawOption;
   line(x2,-0.5*yheight, z2, x2, 0.5*yheight, z2);
   line(x1,-0.5*yheight, z1, x2,-0.5*yheight, z2);
 }
-#line 21376 "./Test_Guides_Curved.c"
+#line 21392 "./Test_Guides_Curved.c"
 }   /* End of GuideB=Pol_bender() SETTING parameter declarations. */
 #undef rRightDownParPtr
 #undef rRightUpParPtr
@@ -21494,7 +21510,7 @@ MCNUM Ws = mccGuideB2_Ws;
   line(-w1/2.0, -h1/2.0, 0.0, w1/2.0, -h1/2.0, 0.0);
   line(-w2/2.0, -h2/2.0, (double)L, w2/2.0, -h2/2.0, (double)L);
 }
-#line 21473 "./Test_Guides_Curved.c"
+#line 21489 "./Test_Guides_Curved.c"
 }   /* End of GuideB2=Bender() SETTING parameter declarations. */
 #undef mWin
 #undef bk
@@ -21516,7 +21532,7 @@ MCNUM Ws = mccGuideB2_Ws;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 21495 "./Test_Guides_Curved.c"
+#line 21511 "./Test_Guides_Curved.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -21565,7 +21581,7 @@ int nowritefile = mccMonitor2_xy1_nowritefile;
     Monitor_nD_McDisplay(&DEFS, &Vars);
   }
 }
-#line 21544 "./Test_Guides_Curved.c"
+#line 21560 "./Test_Guides_Curved.c"
 }   /* End of Monitor2_xy1=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -21622,7 +21638,7 @@ int nowritefile = mccMonitor2_xy2_nowritefile;
     Monitor_nD_McDisplay(&DEFS, &Vars);
   }
 }
-#line 21601 "./Test_Guides_Curved.c"
+#line 21617 "./Test_Guides_Curved.c"
 }   /* End of Monitor2_xy2=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -21649,7 +21665,7 @@ int nowritefile = mccMonitor2_xy2_nowritefile;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 21628 "./Test_Guides_Curved.c"
+#line 21644 "./Test_Guides_Curved.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -21698,7 +21714,7 @@ int nowritefile = mccMonitor2_xy3_nowritefile;
     Monitor_nD_McDisplay(&DEFS, &Vars);
   }
 }
-#line 21677 "./Test_Guides_Curved.c"
+#line 21693 "./Test_Guides_Curved.c"
 }   /* End of Monitor2_xy3=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -21755,7 +21771,7 @@ int nowritefile = mccMonitor2_xy4_nowritefile;
     Monitor_nD_McDisplay(&DEFS, &Vars);
   }
 }
-#line 21734 "./Test_Guides_Curved.c"
+#line 21750 "./Test_Guides_Curved.c"
 }   /* End of Monitor2_xy4=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -21791,7 +21807,7 @@ int nowritefile = mccdummy_nowritefile;
   circle("xz",0,0,0,radius);
   circle("yz",0,0,0,radius);
 }
-#line 21770 "./Test_Guides_Curved.c"
+#line 21786 "./Test_Guides_Curved.c"
 }   /* End of dummy=PSD_monitor_4PI() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p

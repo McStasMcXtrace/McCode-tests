@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr (ISIS_CRISP)
- * Date:       Wed Nov 20 00:41:13 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr (ISIS_CRISP)
+ * Date:       Tue Feb 25 20:56:32 2020
  * File:       ./ISIS_CRISP.c
  * Compile:    cc -o ISIS_CRISP.out ./ISIS_CRISP.c  -lgsl -lgslcblas -L@MCCODE_LIB@/miniconda3/lib -I@MCCODE_LIB@/miniconda3/include
  * CFLAGS= -lgsl -lgslcblas -L@MCCODE_LIB@/miniconda3/lib -I@MCCODE_LIB@/miniconda3/include
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "ISIS_CRISP";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -7821,7 +7821,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define w1 mcipw1
 #define vm mcipvm
 #define FRAC mcipFRAC
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   double glen,flen,spos,tend,t15,fp1;
   double linw,loutw,l,u1,u2,div1,b_ell_q,w1,w12,a_ell_q,lbw,w2;
 #line 7827 "./ISIS_CRISP.c"
@@ -8946,7 +8946,7 @@ void mcinit(void) {
 #define w1 mcipw1
 #define vm mcipvm
 #define FRAC mcipFRAC
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
 {
   spos=10.2055;
   l=glen;
@@ -9001,11 +9001,11 @@ void mcinit(void) {
 #line 9001 "./ISIS_CRISP.c"
   rot_copy(mcrotra1, mcrotaa1);
   mcposaa1 = coords_set(
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     0,
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     0,
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     0);
 #line 9010 "./ISIS_CRISP.c"
   mctc1 = coords_neg(mcposaa1);
@@ -9018,51 +9018,51 @@ void mcinit(void) {
     /* Component isis_source. */
   /* Setting parameters for component isis_source. */
   SIG_MESSAGE("isis_source (Init:SetPar)");
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccisis_source_Emin = -6.5;
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccisis_source_Emax = -0.55;
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccisis_source_dist = 7.2695;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccisis_source_focus_xw = 0.045;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccisis_source_focus_yh = 0.0045;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccisis_source_xwidth = -1;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccisis_source_yheight = -1;
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccisis_source_CAngle = 0.0;
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccisis_source_SAC = 1;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccisis_source_Lmin = 0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccisis_source_Lmax = 0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccisis_source_target_index = + 1;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccisis_source_verbose = 0;
 #line 9047 "./ISIS_CRISP.c"
 
   SIG_MESSAGE("isis_source (Init:Place/Rotate)");
   rot_set_rotation(mcrotaisis_source,
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     (1.5)*DEG2RAD,
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     (0.0)*DEG2RAD,
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     (0.0)*DEG2RAD);
 #line 9057 "./ISIS_CRISP.c"
   rot_transpose(mcrotaa1, mctr1);
   rot_mul(mcrotaisis_source, mctr1, mcrotrisis_source);
   mctc1 = coords_set(
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     0.0,
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     0.0,
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     0.00001);
 #line 9067 "./ISIS_CRISP.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -9078,19 +9078,19 @@ void mcinit(void) {
     /* Component defslit1. */
   /* Setting parameters for component defslit1. */
   SIG_MESSAGE("defslit1 (Init:SetPar)");
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccdefslit1_xmin = -0.0345;
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccdefslit1_xmax = 0.0345;
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccdefslit1_ymin = -0.01731;
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccdefslit1_ymax = 0.01731;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccdefslit1_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccdefslit1_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccdefslit1_yheight = 0;
 #line 9095 "./ISIS_CRISP.c"
 
@@ -9103,11 +9103,11 @@ void mcinit(void) {
   rot_transpose(mcrotaisis_source, mctr1);
   rot_mul(mcrotadefslit1, mctr1, mcrotrdefslit1);
   mcposadefslit1 = coords_set(
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     0.0,
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     -0.09829,
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     3.7537);
 #line 9112 "./ISIS_CRISP.c"
   mctc1 = coords_sub(mcposaisis_source, mcposadefslit1);
@@ -9120,19 +9120,19 @@ void mcinit(void) {
     /* Component defslit2. */
   /* Setting parameters for component defslit2. */
   SIG_MESSAGE("defslit2 (Init:SetPar)");
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccdefslit2_xmin = -0.0289;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccdefslit2_xmax = 0.0289;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccdefslit2_ymin = -0.0123;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccdefslit2_ymax = 0.0123;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccdefslit2_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccdefslit2_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccdefslit2_yheight = 0;
 #line 9137 "./ISIS_CRISP.c"
 
@@ -9145,11 +9145,11 @@ void mcinit(void) {
   rot_transpose(mcrotadefslit1, mctr1);
   rot_mul(mcrotadefslit2, mctr1, mcrotrdefslit2);
   mcposadefslit2 = coords_set(
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     0.0,
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     -0.15976,
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     6.101);
 #line 9154 "./ISIS_CRISP.c"
   mctc1 = coords_sub(mcposadefslit1, mcposadefslit2);
@@ -9162,19 +9162,19 @@ void mcinit(void) {
     /* Component coarseslit1. */
   /* Setting parameters for component coarseslit1. */
   SIG_MESSAGE("coarseslit1 (Init:SetPar)");
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcccoarseslit1_xmin = -0.03;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcccoarseslit1_xmax = 0.03;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcccoarseslit1_ymin = -0.1;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcccoarseslit1_ymax = 0.1;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcccoarseslit1_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcccoarseslit1_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcccoarseslit1_yheight = 0;
 #line 9179 "./ISIS_CRISP.c"
 
@@ -9187,11 +9187,11 @@ void mcinit(void) {
   rot_transpose(mcrotadefslit2, mctr1);
   rot_mul(mcrotacoarseslit1, mctr1, mcrotrcoarseslit1);
   mcposacoarseslit1 = coords_set(
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     0.0,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     -0.1757,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     6.7096);
 #line 9196 "./ISIS_CRISP.c"
   mctc1 = coords_sub(mcposadefslit2, mcposacoarseslit1);
@@ -9204,19 +9204,19 @@ void mcinit(void) {
     /* Component coarseslit2. */
   /* Setting parameters for component coarseslit2. */
   SIG_MESSAGE("coarseslit2 (Init:SetPar)");
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcccoarseslit2_xmin = -0.1;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcccoarseslit2_xmax = 0.1;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcccoarseslit2_ymin = -0.01;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcccoarseslit2_ymax = 0.01;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcccoarseslit2_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcccoarseslit2_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcccoarseslit2_yheight = 0;
 #line 9221 "./ISIS_CRISP.c"
 
@@ -9229,11 +9229,11 @@ void mcinit(void) {
   rot_transpose(mcrotacoarseslit1, mctr1);
   rot_mul(mcrotacoarseslit2, mctr1, mcrotrcoarseslit2);
   mcposacoarseslit2 = coords_set(
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     0.0,
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     -0.17832,
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     6.8096);
 #line 9238 "./ISIS_CRISP.c"
   mctc1 = coords_sub(mcposacoarseslit1, mcposacoarseslit2);
@@ -9246,27 +9246,27 @@ void mcinit(void) {
     /* Component lmon1. */
   /* Setting parameters for component lmon1. */
   SIG_MESSAGE("lmon1 (Init:SetPar)");
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   if("lmon1.dat") strncpy(mcclmon1_filename, "lmon1.dat" ? "lmon1.dat" : "", 16384); else mcclmon1_filename[0]='\0';
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon1_xmin = -0.06;
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon1_xmax = 0.06;
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon1_ymin = -0.04;
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon1_ymax = 0.04;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon1_xwidth = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon1_yheight = 0;
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon1_Lmin = 0.0;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon1_Lmax = 10.0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon1_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon1_nowritefile = 0;
 #line 9271 "./ISIS_CRISP.c"
 
@@ -9279,11 +9279,11 @@ void mcinit(void) {
   rot_transpose(mcrotacoarseslit2, mctr1);
   rot_mul(mcrotalmon1, mctr1, mcrotrlmon1);
   mcposalmon1 = coords_set(
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     0.0,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     -0.1833,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     7.0);
 #line 9288 "./ISIS_CRISP.c"
   mctc1 = coords_sub(mcposacoarseslit2, mcposalmon1);
@@ -9296,25 +9296,25 @@ void mcinit(void) {
     /* Component PSDmon1. */
   /* Setting parameters for component PSDmon1. */
   SIG_MESSAGE("PSDmon1 (Init:SetPar)");
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDmon1_nx = 100;
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDmon1_ny = 100;
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   if("PSD1.dat") strncpy(mccPSDmon1_filename, "PSD1.dat" ? "PSD1.dat" : "", 16384); else mccPSDmon1_filename[0]='\0';
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDmon1_xmin = -0.05;
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDmon1_xmax = 0.05;
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDmon1_ymin = -0.01;
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDmon1_ymax = 0.01;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDmon1_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDmon1_yheight = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDmon1_restore_neutron = 0;
 #line 9319 "./ISIS_CRISP.c"
 
@@ -9327,11 +9327,11 @@ void mcinit(void) {
   rot_transpose(mcrotalmon1, mctr1);
   rot_mul(mcrotaPSDmon1, mctr1, mcrotrPSDmon1);
   mcposaPSDmon1 = coords_set(
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     0.0,
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     -0.1833,
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     7.01);
 #line 9336 "./ISIS_CRISP.c"
   mctc1 = coords_sub(mcposalmon1, mcposaPSDmon1);
@@ -9344,19 +9344,19 @@ void mcinit(void) {
     /* Component slit1. */
   /* Setting parameters for component slit1. */
   SIG_MESSAGE("slit1 (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccslit1_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccslit1_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccslit1_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccslit1_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccslit1_radius = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccslit1_xwidth = 0.04;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccslit1_yheight = 0.004;
 #line 9361 "./ISIS_CRISP.c"
 
@@ -9369,11 +9369,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPSDmon1, mctr1);
   rot_mul(mcrotaslit1, mctr1, mcrotrslit1);
   mcposaslit1 = coords_set(
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     0.0,
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     -0.1904,
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     7.2695);
 #line 9378 "./ISIS_CRISP.c"
   mctc1 = coords_sub(mcposaPSDmon1, mcposaslit1);
@@ -9386,25 +9386,25 @@ void mcinit(void) {
     /* Component PSDmons1. */
   /* Setting parameters for component PSDmons1. */
   SIG_MESSAGE("PSDmons1 (Init:SetPar)");
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDmons1_nx = 100;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDmons1_ny = 100;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   if("PSDs1.dat") strncpy(mccPSDmons1_filename, "PSDs1.dat" ? "PSDs1.dat" : "", 16384); else mccPSDmons1_filename[0]='\0';
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDmons1_xmin = -0.05;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDmons1_xmax = 0.05;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDmons1_ymin = -0.01;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDmons1_ymax = 0.01;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDmons1_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDmons1_yheight = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDmons1_restore_neutron = 0;
 #line 9409 "./ISIS_CRISP.c"
 
@@ -9417,11 +9417,11 @@ void mcinit(void) {
   rot_transpose(mcrotaslit1, mctr1);
   rot_mul(mcrotaPSDmons1, mctr1, mcrotrPSDmons1);
   mcposaPSDmons1 = coords_set(
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     0.0,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     7.27 * t15,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     7.27);
 #line 9426 "./ISIS_CRISP.c"
   mctc1 = coords_sub(mcposaslit1, mcposaPSDmons1);
@@ -9434,63 +9434,63 @@ void mcinit(void) {
     /* Component eguide1. */
   /* Setting parameters for component eguide1. */
   SIG_MESSAGE("eguide1 (Init:SetPar)");
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   if("elliptical") strncpy(mcceguide1_option, "elliptical" ? "elliptical" : "", 16384); else mcceguide1_option[0]='\0';
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide1_w1 = mcipw1;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide1_h1 = 0.1;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide1_l = mcipglen;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide1_linw = 10.0;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide1_loutw = mcipflen;
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide1_linh = 0;
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide1_louth = 0;
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide1_R0 = 0.99;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide1_Qcx = 0.021;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide1_Qcy = 0.021;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide1_alphax = 6.07;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide1_alphay = 6.07;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide1_W = 0.003;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide1_mx = mcipvm;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide1_my = 0;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide1_segno = 10;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide1_curvature = 0;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide1_curvature_v = 0;
 #line 9475 "./ISIS_CRISP.c"
 
   SIG_MESSAGE("eguide1 (Init:Place/Rotate)");
   rot_set_rotation(mcrotaeguide1,
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     (1.5)*DEG2RAD,
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     (0.0)*DEG2RAD,
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     (0.0)*DEG2RAD);
 #line 9485 "./ISIS_CRISP.c"
   rot_transpose(mcrotaPSDmons1, mctr1);
   rot_mul(mcrotaeguide1, mctr1, mcrotreguide1);
   mcposaeguide1 = coords_set(
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     0.0,
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     ( spos - mcipflen - mcipglen ) * t15,
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     spos - mcipflen - mcipglen);
 #line 9495 "./ISIS_CRISP.c"
   mctc1 = coords_sub(mcposaPSDmons1, mcposaeguide1);
@@ -9503,19 +9503,19 @@ void mcinit(void) {
     /* Component slit2. */
   /* Setting parameters for component slit2. */
   SIG_MESSAGE("slit2 (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccslit2_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccslit2_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccslit2_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccslit2_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccslit2_radius = 0;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccslit2_xwidth = tend;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccslit2_yheight = 0.0025;
 #line 9520 "./ISIS_CRISP.c"
 
@@ -9528,11 +9528,11 @@ void mcinit(void) {
   rot_transpose(mcrotaeguide1, mctr1);
   rot_mul(mcrotaslit2, mctr1, mcrotrslit2);
   mcposaslit2 = coords_set(
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     0.0,
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     -0.2581,
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     9.8555);
 #line 9537 "./ISIS_CRISP.c"
   mctc1 = coords_sub(mcposaeguide1, mcposaslit2);
@@ -9545,27 +9545,27 @@ void mcinit(void) {
     /* Component lmon2. */
   /* Setting parameters for component lmon2. */
   SIG_MESSAGE("lmon2 (Init:SetPar)");
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   if("lmon2.dat") strncpy(mcclmon2_filename, "lmon2.dat" ? "lmon2.dat" : "", 16384); else mcclmon2_filename[0]='\0';
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon2_xmin = -0.06;
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon2_xmax = 0.06;
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon2_ymin = -0.04;
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon2_ymax = 0.04;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon2_xwidth = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon2_yheight = 0;
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon2_Lmin = 0.0;
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon2_Lmax = 10.0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon2_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon2_nowritefile = 0;
 #line 9570 "./ISIS_CRISP.c"
 
@@ -9578,11 +9578,11 @@ void mcinit(void) {
   rot_transpose(mcrotaslit2, mctr1);
   rot_mul(mcrotalmon2, mctr1, mcrotrlmon2);
   mcposalmon2 = coords_set(
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     0.0,
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     -0.2608,
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     9.96);
 #line 9587 "./ISIS_CRISP.c"
   mctc1 = coords_sub(mcposaslit2, mcposalmon2);
@@ -9605,11 +9605,11 @@ void mcinit(void) {
   rot_transpose(mcrotalmon2, mctr1);
   rot_mul(mcrotasamp1, mctr1, mcrotrsamp1);
   mcposasamp1 = coords_set(
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     0.0,
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     spos * t15,
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     spos);
 #line 9614 "./ISIS_CRISP.c"
   mctc1 = coords_sub(mcposalmon2, mcposasamp1);
@@ -9622,19 +9622,19 @@ void mcinit(void) {
     /* Component slit3. */
   /* Setting parameters for component slit3. */
   SIG_MESSAGE("slit3 (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccslit3_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccslit3_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccslit3_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccslit3_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccslit3_radius = 0;
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccslit3_xwidth = tend;
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccslit3_yheight = 0.003;
 #line 9639 "./ISIS_CRISP.c"
 
@@ -9647,11 +9647,11 @@ void mcinit(void) {
   rot_transpose(mcrotasamp1, mctr1);
   rot_mul(mcrotaslit3, mctr1, mcrotrslit3);
   mcposaslit3 = coords_set(
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     0.0,
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     ( spos + mcipflen -0.01 ) * t15 -2.0 * ( mcipflen -0.01 ) * t15,
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     spos + mcipflen -0.01);
 #line 9656 "./ISIS_CRISP.c"
   mctc1 = coords_sub(mcposasamp1, mcposaslit3);
@@ -9664,63 +9664,63 @@ void mcinit(void) {
     /* Component eguide2. */
   /* Setting parameters for component eguide2. */
   SIG_MESSAGE("eguide2 (Init:SetPar)");
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   if("elliptical") strncpy(mcceguide2_option, "elliptical" ? "elliptical" : "", 16384); else mcceguide2_option[0]='\0';
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide2_w1 = tend;
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide2_h1 = 0.1;
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide2_l = mcipglen;
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide2_linw = mcipflen;
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide2_loutw = 10.0;
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide2_linh = 0;
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide2_louth = 0;
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide2_R0 = 0.99;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide2_Qcx = 0.021;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide2_Qcy = 0.021;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide2_alphax = 6.07;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide2_alphay = 6.07;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide2_W = 0.003;
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide2_mx = mcipvm;
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide2_my = 0;
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide2_segno = 10;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide2_curvature = 0;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcceguide2_curvature_v = 0;
 #line 9705 "./ISIS_CRISP.c"
 
   SIG_MESSAGE("eguide2 (Init:Place/Rotate)");
   rot_set_rotation(mcrotaeguide2,
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     (-1.5)*DEG2RAD,
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     (0.0)*DEG2RAD,
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     (0.0)*DEG2RAD);
 #line 9715 "./ISIS_CRISP.c"
   rot_transpose(mcrotaslit3, mctr1);
   rot_mul(mcrotaeguide2, mctr1, mcrotreguide2);
   mcposaeguide2 = coords_set(
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     0.0,
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     ( spos + mcipflen ) * t15 -2.0 * mcipflen * t15,
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     spos + mcipflen);
 #line 9725 "./ISIS_CRISP.c"
   mctc1 = coords_sub(mcposaslit3, mcposaeguide2);
@@ -9733,27 +9733,27 @@ void mcinit(void) {
     /* Component lmon3. */
   /* Setting parameters for component lmon3. */
   SIG_MESSAGE("lmon3 (Init:SetPar)");
-#line 159 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 159 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   if("lmon3.dat") strncpy(mcclmon3_filename, "lmon3.dat" ? "lmon3.dat" : "", 16384); else mcclmon3_filename[0]='\0';
-#line 159 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 159 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon3_xmin = -0.05;
-#line 160 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 160 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon3_xmax = 0.05;
-#line 160 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 160 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon3_ymin = -0.05;
-#line 160 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 160 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon3_ymax = 0.05;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon3_xwidth = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon3_yheight = 0;
-#line 160 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 160 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon3_Lmin = 0.0;
-#line 161 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 161 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon3_Lmax = 10.0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon3_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mcclmon3_nowritefile = 0;
 #line 9758 "./ISIS_CRISP.c"
 
@@ -9766,11 +9766,11 @@ void mcinit(void) {
   rot_transpose(mcrotaeguide2, mctr1);
   rot_mul(mcrotalmon3, mctr1, mcrotrlmon3);
   mcposalmon3 = coords_set(
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     0.0,
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     12.11 * t15 -2.0 * ( 12.11 - spos ) * t15,
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     12.11);
 #line 9775 "./ISIS_CRISP.c"
   mctc1 = coords_sub(mcposaeguide2, mcposalmon3);
@@ -9783,25 +9783,25 @@ void mcinit(void) {
     /* Component PSDdet1. */
   /* Setting parameters for component PSDdet1. */
   SIG_MESSAGE("PSDdet1 (Init:SetPar)");
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDdet1_nx = 100;
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDdet1_ny = 100;
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   if("PSD3.dat") strncpy(mccPSDdet1_filename, "PSD3.dat" ? "PSD3.dat" : "", 16384); else mccPSDdet1_filename[0]='\0';
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDdet1_xmin = -0.05;
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDdet1_xmax = 0.05;
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDdet1_ymin = -0.05;
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDdet1_ymax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDdet1_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDdet1_yheight = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
   mccPSDdet1_restore_neutron = 0;
 #line 9806 "./ISIS_CRISP.c"
 
@@ -9814,11 +9814,11 @@ void mcinit(void) {
   rot_transpose(mcrotalmon3, mctr1);
   rot_mul(mcrotaPSDdet1, mctr1, mcrotrPSDdet1);
   mcposaPSDdet1 = coords_set(
-#line 167 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     0.0,
-#line 167 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     12.111 * t15 -2.0 * ( 12.111 - spos ) * t15,
-#line 167 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr"
     12.111);
 #line 9823 "./ISIS_CRISP.c"
   mctc1 = coords_sub(mcposalmon3, mcposaPSDdet1);

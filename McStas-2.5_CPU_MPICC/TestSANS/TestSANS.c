@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr (TestSANS)
- * Date:       Wed Nov 20 00:49:23 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr (TestSANS)
+ * Date:       Tue Feb 25 21:03:59 2020
  * File:       ./TestSANS.c
  * Compile:    cc -o TestSANS.out ./TestSANS.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "TestSANS";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -5984,13 +5984,13 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccOrigin_minutes = 0;
 #line 5995 "./TestSANS.c"
 
@@ -6002,11 +6002,11 @@ void mcinit(void) {
 #line 6002 "./TestSANS.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
     0,
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
     0,
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
     0);
 #line 6011 "./TestSANS.c"
   mctc1 = coords_neg(mcposaOrigin);
@@ -6019,31 +6019,31 @@ void mcinit(void) {
     /* Component Source. */
   /* Setting parameters for component Source. */
   SIG_MESSAGE("Source (Init:SetPar)");
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSource_radius = 0.02;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSource_yheight = 0.01;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSource_xwidth = 0.01;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSource_dist = mcipDistSrcPin2;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSource_focus_xw = .045;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSource_focus_yh = .12;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSource_E0 = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSource_dE = 0;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSource_lambda0 = mcipLambda;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSource_dlambda = mcipDLambda * mcipLambda;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSource_flux = 1;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSource_gauss = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSource_target_index = + 1;
 #line 6048 "./TestSANS.c"
 
@@ -6057,11 +6057,11 @@ void mcinit(void) {
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotaSource, mctr1, mcrotrSource);
   mctc1 = coords_set(
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
     0,
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
     0,
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
     0);
 #line 6066 "./TestSANS.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -6077,19 +6077,19 @@ void mcinit(void) {
     /* Component FirstPinhole. */
   /* Setting parameters for component FirstPinhole. */
   SIG_MESSAGE("FirstPinhole (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccFirstPinhole_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccFirstPinhole_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccFirstPinhole_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccFirstPinhole_ymax = 0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccFirstPinhole_radius = 0.01;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccFirstPinhole_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccFirstPinhole_yheight = 0;
 #line 6094 "./TestSANS.c"
 
@@ -6103,11 +6103,11 @@ void mcinit(void) {
   rot_transpose(mcrotaSource, mctr1);
   rot_mul(mcrotaFirstPinhole, mctr1, mcrotrFirstPinhole);
   mctc1 = coords_set(
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
     0,
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
     0,
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
     mcipDistSrcPin1);
 #line 6112 "./TestSANS.c"
   rot_transpose(mcrotaSource, mctr1);
@@ -6123,19 +6123,19 @@ void mcinit(void) {
     /* Component SecondPinhole. */
   /* Setting parameters for component SecondPinhole. */
   SIG_MESSAGE("SecondPinhole (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSecondPinhole_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSecondPinhole_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSecondPinhole_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSecondPinhole_ymax = 0;
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSecondPinhole_radius = 0.005;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSecondPinhole_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSecondPinhole_yheight = 0;
 #line 6140 "./TestSANS.c"
 
@@ -6149,11 +6149,11 @@ void mcinit(void) {
   rot_transpose(mcrotaFirstPinhole, mctr1);
   rot_mul(mcrotaSecondPinhole, mctr1, mcrotrSecondPinhole);
   mctc1 = coords_set(
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
     0,
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
     0,
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
     mcipDistSrcPin2);
 #line 6158 "./TestSANS.c"
   rot_transpose(mcrotaSource, mctr1);
@@ -6169,39 +6169,39 @@ void mcinit(void) {
     /* Component Sample. */
   /* Setting parameters for component Sample. */
   SIG_MESSAGE("Sample (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSample_Radius = 800.0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSample_Thickness = 38.89;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSample_SigmaRadius = 0.20;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSample_VolumeOfHeadgroup = 319.0;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSample_VolumeOfCH2Tail = 818.8;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSample_VolumeOfCH3Tail = 108.6;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSample_ScatteringLengthOfHeadgroup = 7.05E-12;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSample_ScatteringLengthOfCH2Tail = -1.76E-12;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSample_ScatteringLengthOfCH3Tail = -9.15E-13;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSample_Concentration = 0.01;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSample_RhoSolvent = 6.4e-14;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSample_AbsorptionCrosssection = 0.0;
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSample_xwidth = 0.1;
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSample_yheight = 0.1;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSample_zdepth = 0.1;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSample_SampleToDetectorDistance = mcipDistSampDet;
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccSample_DetectorRadius = mcipDetRadius;
 #line 6206 "./TestSANS.c"
 
@@ -6215,11 +6215,11 @@ void mcinit(void) {
   rot_transpose(mcrotaSecondPinhole, mctr1);
   rot_mul(mcrotaSample, mctr1, mcrotrSample);
   mctc1 = coords_set(
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
     0,
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
     0,
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
     mcipDistSampDet);
 #line 6224 "./TestSANS.c"
   rot_transpose(mcrotaSecondPinhole, mctr1);
@@ -6235,19 +6235,19 @@ void mcinit(void) {
     /* Component Beamstop. */
   /* Setting parameters for component Beamstop. */
   SIG_MESSAGE("Beamstop (Init:SetPar)");
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccBeamstop_xmin = -0.05;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccBeamstop_xmax = 0.05;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccBeamstop_ymin = -0.05;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccBeamstop_ymax = 0.05;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccBeamstop_xwidth = 0;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccBeamstop_yheight = 0;
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 184 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccBeamstop_radius = 0.1;
 #line 6252 "./TestSANS.c"
 
@@ -6261,11 +6261,11 @@ void mcinit(void) {
   rot_transpose(mcrotaSample, mctr1);
   rot_mul(mcrotaBeamstop, mctr1, mcrotrBeamstop);
   mctc1 = coords_set(
-#line 185 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 185 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
     0,
-#line 185 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 185 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
     0,
-#line 185 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 185 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
     mcipDistSampDet - 0.000001);
 #line 6270 "./TestSANS.c"
   rot_transpose(mcrotaSample, mctr1);
@@ -6281,25 +6281,25 @@ void mcinit(void) {
     /* Component Monitor. */
   /* Setting parameters for component Monitor. */
   SIG_MESSAGE("Monitor (Init:SetPar)");
-#line 194 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 194 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccMonitor_nx = 200;
-#line 195 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 195 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccMonitor_ny = 200;
-#line 189 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 189 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   if("PSDMonitor") strncpy(mccMonitor_filename, "PSDMonitor" ? "PSDMonitor" : "", 16384); else mccMonitor_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccMonitor_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccMonitor_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccMonitor_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccMonitor_ymax = 0.05;
-#line 191 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 191 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccMonitor_xwidth = 2.0 * mcipDetRadius;
-#line 193 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 193 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccMonitor_yheight = 2.0 * mcipDetRadius;
-#line 196 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 196 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccMonitor_restore_neutron = 1;
 #line 6304 "./TestSANS.c"
 
@@ -6313,11 +6313,11 @@ void mcinit(void) {
   rot_transpose(mcrotaBeamstop, mctr1);
   rot_mul(mcrotaMonitor, mctr1, mcrotrMonitor);
   mctc1 = coords_set(
-#line 197 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 197 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
     0,
-#line 197 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 197 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
     0,
-#line 197 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 197 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
     0.000001);
 #line 6322 "./TestSANS.c"
   rot_transpose(mcrotaBeamstop, mctr1);
@@ -6333,13 +6333,13 @@ void mcinit(void) {
     /* Component QMonitor. */
   /* Setting parameters for component QMonitor. */
   SIG_MESSAGE("QMonitor (Init:SetPar)");
-#line 201 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 201 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccQMonitor_RadiusDetector = mcipDetRadius;
-#line 202 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 202 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccQMonitor_DistanceFromSample = mcipDistSampDet;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccQMonitor_LambdaMin = mcipLambda;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
   mccQMonitor_Lambda0 = mcipLambda;
 #line 6344 "./TestSANS.c"
 
@@ -6353,11 +6353,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMonitor, mctr1);
   rot_mul(mcrotaQMonitor, mctr1, mcrotrQMonitor);
   mctc1 = coords_set(
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
     0,
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
     0,
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr"
     0.000001000000001);
 #line 6362 "./TestSANS.c"
   rot_transpose(mcrotaBeamstop, mctr1);

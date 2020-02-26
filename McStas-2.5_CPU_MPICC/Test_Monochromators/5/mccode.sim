@@ -1,10 +1,10 @@
 McStas simulation description file for Test_Monochromators.
-Date:    Wed Nov 20 01:17:55 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:59:10 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: Test_Monochromators
   File: 5/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr
   Parameters:  Mono(int) lambda(double) Moz(double) PG(double) powder(double) order(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 5
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574240850
+  Seed: 1582688812
   Directory: 5
   Nodes: 10
   Param: Mono=5
@@ -31,16 +31,16 @@ begin simulation: 5
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:17:57 2019 (1574209077)
+  Date: Tue Feb 25 21:59:13 2020 (1582664353)
   type: array_1d(200)
-  Source: Test_Monochromators (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr)
+  Source: Test_Monochromators (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr)
   component: lamStart
   position: 0 0 0.5
   title: Wavelength monitor
   Ncount: 10000000
   filename: lambdaStart.dat
-  statistics: X0=2.00017; dX=0.230916;
-  signal: Min=0; Max=7.62309e-06; Mean=5.02538e-06;
+  statistics: X0=1.9999; dX=0.230938;
+  signal: Min=0; Max=7.61284e-06; Mean=5.02538e-06;
   values: 0.00100508 3.17833e-07 1e+07
   xvar: L
   yvar: (I,I_err)
@@ -51,17 +51,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:17:57 2019 (1574209077)
+  Date: Tue Feb 25 21:59:13 2020 (1582664353)
   type: array_2d(90, 90)
-  Source: Test_Monochromators (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr)
+  Source: Test_Monochromators (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr)
   component: Sphere1
   position: 0 0 1
   title: 4PI PSD monitor
   Ncount: 10000000
   filename: sphere.dat
-  statistics: X0=-26.562; dX=14.2279; Y0=0.99974; dY=0.854368;
-  signal: Min=0; Max=0.000248653; Mean=4.98561e-08;
-  values: 0.000403835 1.93164e-07 1e+07
+  statistics: X0=-26.5735; dX=14.2189; Y0=0.999021; dY=0.854413;
+  signal: Min=0; Max=0.000249063; Mean=4.99189e-08;
+  values: 0.000404343 1.93298e-07 1e+07
   xvar: Longitude
   yvar: Lattitude
   xlabel: Longitude [deg]
@@ -73,17 +73,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:17:57 2019 (1574209077)
+  Date: Tue Feb 25 21:59:13 2020 (1582664353)
   type: array_1d(200)
-  Source: Test_Monochromators (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr)
+  Source: Test_Monochromators (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr)
   component: lam1
   position: 0.142299 0 1.20555
   title: Wavelength monitor
   Ncount: 10000000
   filename: lambda1.dat
-  statistics: X0=1.99974; dX=0.0582421;
-  signal: Min=0; Max=3.54012e-06; Mean=4.48246e-07;
-  values: 8.96493e-05 7.57262e-08 6.87401e+06
+  statistics: X0=1.99973; dX=0.0582741;
+  signal: Min=0; Max=3.54636e-06; Mean=4.48126e-07;
+  values: 8.96252e-05 7.57145e-08 6.86871e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -93,17 +93,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:17:57 2019 (1574209077)
+  Date: Tue Feb 25 21:59:13 2020 (1582664353)
   type: array_2d(20, 20)
-  Source: Test_Monochromators (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr)
+  Source: Test_Monochromators (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr)
   component: psd1
   position: 0.284599 0 1.4111
   title: PSD monitor
   Ncount: 10000000
   filename: psd1.dat
-  statistics: X0=-0.00182226; dX=1.0377; Y0=-0.00147761; dY=0.924014;
-  signal: Min=0; Max=2.47678e-06; Mean=2.24123e-07;
-  values: 8.96493e-05 7.57262e-08 5.86025e+06
+  statistics: X0=-0.00155844; dX=1.03876; Y0=-0.000454841; dY=0.923378;
+  signal: Min=0; Max=2.4711e-06; Mean=2.24063e-07;
+  values: 8.96252e-05 7.57145e-08 5.85772e+06
   xvar: X
   yvar: Y
   xlabel: X position [cm]

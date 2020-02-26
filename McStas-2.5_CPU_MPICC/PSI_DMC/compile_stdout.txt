@@ -1,11 +1,29 @@
-      [1574207062.479078] [n-62-23-6:9783 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3370.46
-[1574207062.480466] [n-62-23-6:9783 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207062.480470] [n-62-23-6:9783 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207062.482415] [n-62-23-6:9783 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207062.482417] [n-62-23-6:9783 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: No output directory specified (--dir)
+INFO: Using directory: "PSI_DMC_20200225_205933"
+INFO: Regenerating c-file: PSI_DMC.c
+Info:    'Al_window' is a contributed component.
+Info:    'Monochromator_2foc' is a contributed component.
+Info:    Defining SPLIT from foc_mono=Monochromator_2foc() to END in instrument PSI_DMC
+Info:    Defining SPLIT from sample=PowderN() to END in instrument PSI_DMC
+CFLAGS=
+      INFO: Recompiling: ./PSI_DMC.out
+INFO: ===
+[n-62-23-14:05602] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:05602] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582660782.417846] [n-62-23-14:5601 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3374.56
+[1582660782.419387] [n-62-23-14:5601 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582660782.419390] [n-62-23-14:5601 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1582660782.422233] [n-62-23-14:5601 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582660782.422237] [n-62-23-14:5601 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 begin instrument: PSI_DMC
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_DMC/PSI_DMC.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_DMC/PSI_DMC.instr
   Parameters:  lambda(double) R(double) R_curve(double) filename(string) D_PHI(double) SHIFT(double) PACK(double) Dw(double) BARNS(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +32,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_DMC/PSI_DMC.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_DMC/PSI_DMC.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1574216845
+  Seed: 1582666383
   Directory: .
   Param: lambda=2.5666
   Param: R=0.87
@@ -32,19 +50,3 @@ begin simulation: .
   Param: BARNS=1
 end simulation
 info!
-INFO: No output directory specified (--dir)
-INFO: Using directory: "PSI_DMC_20191120_004413"
-INFO: Regenerating c-file: PSI_DMC.c
-Info:    'Al_window' is a contributed component.
-Info:    'Monochromator_2foc' is a contributed component.
-Info:    Defining SPLIT from foc_mono=Monochromator_2foc() to END in instrument PSI_DMC
-Info:    Defining SPLIT from sample=PowderN() to END in instrument PSI_DMC
-CFLAGS=
-INFO: Recompiling: ./PSI_DMC.out
-INFO: ===
---------------------------------------------------------------------------
-Initialization of MXM library failed.
-
-  Error: Input/output error
-
---------------------------------------------------------------------------

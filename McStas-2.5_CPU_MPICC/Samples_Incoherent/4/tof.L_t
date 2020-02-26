@@ -1,11 +1,11 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Nov. 19, 2019
-# Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr
+# Creator: McStas 2.5 - Feb. 24, 2020
+# Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr
 # Ncount: 1000000
 # Trace: no
 # Gravitation: no
-# Seed: 1574232381
+# Seed: 1582680332
 # Directory: 4
 # Nodes: 10
 # Param: L_min=0.5
@@ -18,9 +18,9 @@
 # Param: ABS=5.08
 # Param: DB=0
 # Param: ISISFACE=hydrogen
-# Date: Wed Nov 20 01:06:14 2019 (1574208374)
+# Date: Tue Feb 25 21:31:28 2020 (1582662688)
 # type: array_2d(2000, 20)
-# Source: Samples_Incoherent (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr)
+# Source: Samples_Incoherent (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr)
 # component: Tof_Sphere_4pi
 # position: 0 0 8.3
 # title:  Intensity Wavelength Time_Of_Flight Monitor (Sphere) [out] per bin

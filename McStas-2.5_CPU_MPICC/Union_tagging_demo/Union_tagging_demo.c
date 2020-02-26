@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr (Union_tagging_demo)
- * Date:       Wed Nov 20 00:55:31 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr (Union_tagging_demo)
+ * Date:       Tue Feb 25 21:10:33 2020
  * File:       ./Union_tagging_demo.c
  * Compile:    cc -o Union_tagging_demo.out ./Union_tagging_demo.c  -I@MCCODE_LIB@/share/
  * CFLAGS= -I@MCCODE_LIB@/share/
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Union_tagging_demo";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -8587,7 +8587,7 @@ void initialize_cylinder_geometry_from_main_component(struct geometry_struct *cy
 struct pointer_to_1d_coords_list cylinder_shell_points(struct geometry_struct *geometry,int max_number_of_points) {
   // Function that returns a number (less than max) of points on the geometry surface
   // If used, remember to free the space allocated.
-  int points_per_circle = floor(max_number_of_points/2);
+  int points_per_circle = floor(max_number_of_points/2.0);
   
   struct pointer_to_1d_coords_list cylinder_shell_array;
   cylinder_shell_array.elements = malloc(2*points_per_circle*sizeof(Coords));
@@ -12219,17 +12219,17 @@ void mcinit(void) {
     /* Component Al_incoherent. */
   /* Setting parameters for component Al_incoherent. */
   SIG_MESSAGE("Al_incoherent (Init:SetPar)");
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccAl_incoherent_sigma = 4 * 0.0082;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccAl_incoherent_f_QE = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccAl_incoherent_gamma = 0;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccAl_incoherent_packing_factor = 1;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccAl_incoherent_unit_cell_volume = 66.4;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccAl_incoherent_interact_fraction = -1;
 #line 12234 "./Union_tagging_demo.c"
 
@@ -12241,11 +12241,11 @@ void mcinit(void) {
 #line 12241 "./Union_tagging_demo.c"
   rot_copy(mcrotrAl_incoherent, mcrotaAl_incoherent);
   mcposaAl_incoherent = coords_set(
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0);
 #line 12250 "./Union_tagging_demo.c"
   mctc1 = coords_neg(mcposaAl_incoherent);
@@ -12258,29 +12258,29 @@ void mcinit(void) {
     /* Component Al_Powder. */
   /* Setting parameters for component Al_Powder. */
   SIG_MESSAGE("Al_Powder (Init:SetPar)");
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   if("Al.laz") strncpy(mccAl_Powder_reflections, "Al.laz" ? "Al.laz" : "", 16384); else mccAl_Powder_reflections[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccAl_Powder_packing_factor = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccAl_Powder_Vc = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccAl_Powder_delta_d_d = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccAl_Powder_DW = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccAl_Powder_nb_atoms = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccAl_Powder_d_phi = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccAl_Powder_density = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccAl_Powder_weight = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccAl_Powder_barns = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccAl_Powder_Strain = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccAl_Powder_interact_fraction = -1;
 #line 12285 "./Union_tagging_demo.c"
 
@@ -12293,11 +12293,11 @@ void mcinit(void) {
   rot_transpose(mcrotaAl_incoherent, mctr1);
   rot_mul(mcrotaAl_Powder, mctr1, mcrotrAl_Powder);
   mcposaAl_Powder = coords_set(
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0);
 #line 12302 "./Union_tagging_demo.c"
   mctc1 = coords_sub(mcposaAl_incoherent, mcposaAl_Powder);
@@ -12310,11 +12310,11 @@ void mcinit(void) {
     /* Component Al. */
   /* Setting parameters for component Al. */
   SIG_MESSAGE("Al (Init:SetPar)");
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   if("NULL") strncpy(mccAl_process_string, "NULL" ? "NULL" : "", 16384); else mccAl_process_string[0]='\0';
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccAl_my_absorption = 100 * 4 * 0.231 / 66.4;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccAl_absorber = 0;
 #line 12319 "./Union_tagging_demo.c"
 
@@ -12327,11 +12327,11 @@ void mcinit(void) {
   rot_transpose(mcrotaAl_Powder, mctr1);
   rot_mul(mcrotaAl, mctr1, mcrotrAl);
   mcposaAl = coords_set(
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0);
 #line 12336 "./Union_tagging_demo.c"
   mctc1 = coords_sub(mcposaAl_Powder, mcposaAl);
@@ -12344,17 +12344,17 @@ void mcinit(void) {
     /* Component Cu_incoherent_process. */
   /* Setting parameters for component Cu_incoherent_process. */
   SIG_MESSAGE("Cu_incoherent_process (Init:SetPar)");
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccCu_incoherent_process_sigma = mcipsigma_inc;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccCu_incoherent_process_f_QE = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccCu_incoherent_process_gamma = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccCu_incoherent_process_packing_factor = mcippack;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccCu_incoherent_process_unit_cell_volume = mcipVc;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccCu_incoherent_process_interact_fraction = mcipincoherent_fraction;
 #line 12359 "./Union_tagging_demo.c"
 
@@ -12367,11 +12367,11 @@ void mcinit(void) {
   rot_transpose(mcrotaAl, mctr1);
   rot_mul(mcrotaCu_incoherent_process, mctr1, mcrotrCu_incoherent_process);
   mcposaCu_incoherent_process = coords_set(
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0);
 #line 12376 "./Union_tagging_demo.c"
   mctc1 = coords_sub(mcposaAl, mcposaCu_incoherent_process);
@@ -12384,29 +12384,29 @@ void mcinit(void) {
     /* Component Cu_powder_process. */
   /* Setting parameters for component Cu_powder_process. */
   SIG_MESSAGE("Cu_powder_process (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   if(mcipmaterial_data_file) strncpy(mccCu_powder_process_reflections, mcipmaterial_data_file ? mcipmaterial_data_file : "", 16384); else mccCu_powder_process_reflections[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccCu_powder_process_packing_factor = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccCu_powder_process_Vc = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccCu_powder_process_delta_d_d = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccCu_powder_process_DW = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccCu_powder_process_nb_atoms = 1;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccCu_powder_process_d_phi = 15;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccCu_powder_process_density = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccCu_powder_process_weight = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccCu_powder_process_barns = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccCu_powder_process_Strain = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccCu_powder_process_interact_fraction = -1;
 #line 12411 "./Union_tagging_demo.c"
 
@@ -12419,11 +12419,11 @@ void mcinit(void) {
   rot_transpose(mcrotaCu_incoherent_process, mctr1);
   rot_mul(mcrotaCu_powder_process, mctr1, mcrotrCu_powder_process);
   mcposaCu_powder_process = coords_set(
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0);
 #line 12428 "./Union_tagging_demo.c"
   mctc1 = coords_sub(mcposaCu_incoherent_process, mcposaCu_powder_process);
@@ -12436,11 +12436,11 @@ void mcinit(void) {
     /* Component Cu_powder. */
   /* Setting parameters for component Cu_powder. */
   SIG_MESSAGE("Cu_powder (Init:SetPar)");
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   if("Cu_incoherent_process,Cu_powder_process") strncpy(mccCu_powder_process_string, "Cu_incoherent_process,Cu_powder_process" ? "Cu_incoherent_process,Cu_powder_process" : "", 16384); else mccCu_powder_process_string[0]='\0';
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccCu_powder_my_absorption = 100 * mcipsigma_abs / mcipVc * mcippack;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccCu_powder_absorber = 0;
 #line 12445 "./Union_tagging_demo.c"
 
@@ -12453,11 +12453,11 @@ void mcinit(void) {
   rot_transpose(mcrotaCu_powder_process, mctr1);
   rot_mul(mcrotaCu_powder, mctr1, mcrotrCu_powder);
   mcposaCu_powder = coords_set(
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0);
 #line 12462 "./Union_tagging_demo.c"
   mctc1 = coords_sub(mcposaCu_powder_process, mcposaCu_powder);
@@ -12470,13 +12470,13 @@ void mcinit(void) {
     /* Component a1. */
   /* Setting parameters for component a1. */
   SIG_MESSAGE("a1 (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   if("NULL") strncpy(mcca1_profile, "NULL" ? "NULL" : "", 16384); else mcca1_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mcca1_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mcca1_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mcca1_minutes = 0;
 #line 12481 "./Union_tagging_demo.c"
 
@@ -12489,11 +12489,11 @@ void mcinit(void) {
   rot_transpose(mcrotaCu_powder, mctr1);
   rot_mul(mcrotaa1, mctr1, mcrotra1);
   mcposaa1 = coords_set(
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0);
 #line 12498 "./Union_tagging_demo.c"
   mctc1 = coords_sub(mcposaCu_powder, mcposaa1);
@@ -12506,46 +12506,46 @@ void mcinit(void) {
     /* Component source. */
   /* Setting parameters for component source. */
   SIG_MESSAGE("source (Init:SetPar)");
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccsource_xwidth = 0.0005;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccsource_yheight = 0.0005;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccsource_focus_aw = 1.5;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccsource_focus_ah = 1.5;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccsource_E0 = mcipE0;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccsource_dE = mcipdE;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccsource_lambda0 = 0.0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccsource_dlambda = 0.0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccsource_gauss = 0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccsource_flux = 1;
 #line 12529 "./Union_tagging_demo.c"
 
   SIG_MESSAGE("source (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     (0)*DEG2RAD,
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     (0)*DEG2RAD,
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     (0)*DEG2RAD);
 #line 12539 "./Union_tagging_demo.c"
   rot_mul(mctr1, mcrotaa1, mcrotasource);
   rot_transpose(mcrotaa1, mctr1);
   rot_mul(mcrotasource, mctr1, mcrotrsource);
   mctc1 = coords_set(
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0);
 #line 12550 "./Union_tagging_demo.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -12564,22 +12564,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("sample_position (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     (0)*DEG2RAD,
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     (0)*DEG2RAD,
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     (0)*DEG2RAD);
 #line 12573 "./Union_tagging_demo.c"
   rot_mul(mctr1, mcrotaa1, mcrotasample_position);
   rot_transpose(mcrotasource, mctr1);
   rot_mul(mcrotasample_position, mctr1, mcrotrsample_position);
   mctc1 = coords_set(
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     1);
 #line 12584 "./Union_tagging_demo.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -12595,62 +12595,62 @@ void mcinit(void) {
     /* Component powder_container. */
   /* Setting parameters for component powder_container. */
   SIG_MESSAGE("powder_container (Init:SetPar)");
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   if("Al") strncpy(mccpowder_container_material_string, "Al" ? "Al" : "", 16384); else mccpowder_container_material_string[0]='\0';
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_container_priority = 1;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_container_radius = mcipsample_radius * 1.2;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_container_yheight = mcipsample_height * 1.1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_container_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_container_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_container_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_container_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_container_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_container_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_container_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_container_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_container_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_container_focus_r = 0;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_container_p_interact = 0.2;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   if(0) strncpy(mccpowder_container_mask_string, 0 ? 0 : "", 16384); else mccpowder_container_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   if(0) strncpy(mccpowder_container_mask_setting, 0 ? 0 : "", 16384); else mccpowder_container_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_container_number_of_activations = 1;
 #line 12634 "./Union_tagging_demo.c"
 
   SIG_MESSAGE("powder_container (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     (0)*DEG2RAD,
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     (0)*DEG2RAD,
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     (0)*DEG2RAD);
 #line 12644 "./Union_tagging_demo.c"
   rot_mul(mctr1, mcrotasample_position, mcrotapowder_container);
   rot_transpose(mcrotasample_position, mctr1);
   rot_mul(mcrotapowder_container, mctr1, mcrotrpowder_container);
   mctc1 = coords_set(
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0);
 #line 12655 "./Union_tagging_demo.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -12666,62 +12666,62 @@ void mcinit(void) {
     /* Component powder_inside_container. */
   /* Setting parameters for component powder_inside_container. */
   SIG_MESSAGE("powder_inside_container (Init:SetPar)");
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   if("Cu_powder") strncpy(mccpowder_inside_container_material_string, "Cu_powder" ? "Cu_powder" : "", 16384); else mccpowder_inside_container_material_string[0]='\0';
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_inside_container_priority = 2;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_inside_container_radius = mcipsample_radius;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_inside_container_yheight = mcipsample_height;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_inside_container_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_inside_container_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_inside_container_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_inside_container_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_inside_container_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_inside_container_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_inside_container_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_inside_container_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_inside_container_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_inside_container_focus_r = 0;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_inside_container_p_interact = mcipgeometry_interact;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   if(0) strncpy(mccpowder_inside_container_mask_string, 0 ? 0 : "", 16384); else mccpowder_inside_container_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   if(0) strncpy(mccpowder_inside_container_mask_setting, 0 ? 0 : "", 16384); else mccpowder_inside_container_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccpowder_inside_container_number_of_activations = 1;
 #line 12705 "./Union_tagging_demo.c"
 
   SIG_MESSAGE("powder_inside_container (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     (0)*DEG2RAD,
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     (0)*DEG2RAD,
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     (0)*DEG2RAD);
 #line 12715 "./Union_tagging_demo.c"
   rot_mul(mctr1, mcrotasample_position, mcrotapowder_inside_container);
   rot_transpose(mcrotapowder_container, mctr1);
   rot_mul(mcrotapowder_inside_container, mctr1, mcrotrpowder_inside_container);
   mctc1 = coords_set(
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0);
 #line 12726 "./Union_tagging_demo.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -12737,13 +12737,13 @@ void mcinit(void) {
     /* Component test_sample. */
   /* Setting parameters for component test_sample. */
   SIG_MESSAGE("test_sample (Init:SetPar)");
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mcctest_sample_allow_inside_start = 0;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mcctest_sample_history_limit = 300000;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mcctest_sample_enable_conditionals = 1;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mcctest_sample_inherit_number_of_scattering_events = 0;
 #line 12748 "./Union_tagging_demo.c"
 
@@ -12757,11 +12757,11 @@ void mcinit(void) {
   rot_transpose(mcrotapowder_inside_container, mctr1);
   rot_mul(mcrotatest_sample, mctr1, mcrotrtest_sample);
   mctc1 = coords_set(
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     1);
 #line 12766 "./Union_tagging_demo.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -12777,13 +12777,13 @@ void mcinit(void) {
     /* Component detector_m4pi. */
   /* Setting parameters for component detector_m4pi. */
   SIG_MESSAGE("detector_m4pi (Init:SetPar)");
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   if("4Pi_events.dat") strncpy(mccdetector_m4pi_filename, "4Pi_events.dat" ? "4Pi_events.dat" : "", 16384); else mccdetector_m4pi_filename[0]='\0';
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccdetector_m4pi_radius = 1;
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccdetector_m4pi_restore_neutron = 1;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccdetector_m4pi_nowritefile = 0;
 #line 12788 "./Union_tagging_demo.c"
 
@@ -12797,11 +12797,11 @@ void mcinit(void) {
   rot_transpose(mcrotatest_sample, mctr1);
   rot_mul(mcrotadetector_m4pi, mctr1, mcrotrdetector_m4pi);
   mctc1 = coords_set(
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0);
 #line 12806 "./Union_tagging_demo.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -12817,68 +12817,68 @@ void mcinit(void) {
     /* Component Banana_monitor. */
   /* Setting parameters for component Banana_monitor. */
   SIG_MESSAGE("Banana_monitor (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccBanana_monitor_xwidth = 0;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccBanana_monitor_yheight = 0.1;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccBanana_monitor_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccBanana_monitor_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccBanana_monitor_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccBanana_monitor_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccBanana_monitor_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccBanana_monitor_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccBanana_monitor_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccBanana_monitor_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccBanana_monitor_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccBanana_monitor_max = 1e40;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccBanana_monitor_restore_neutron = 1;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccBanana_monitor_radius = 1;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   if("banana, theta limits=[20,170], bins=500") strncpy(mccBanana_monitor_options, "banana, theta limits=[20,170], bins=500" ? "banana, theta limits=[20,170], bins=500" : "", 16384); else mccBanana_monitor_options[0]='\0';
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   if("banana.dat") strncpy(mccBanana_monitor_filename, "banana.dat" ? "banana.dat" : "", 16384); else mccBanana_monitor_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   if("NULL") strncpy(mccBanana_monitor_geometry, "NULL" ? "NULL" : "", 16384); else mccBanana_monitor_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   if("NULL") strncpy(mccBanana_monitor_username1, "NULL" ? "NULL" : "", 16384); else mccBanana_monitor_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   if("NULL") strncpy(mccBanana_monitor_username2, "NULL" ? "NULL" : "", 16384); else mccBanana_monitor_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   if("NULL") strncpy(mccBanana_monitor_username3, "NULL" ? "NULL" : "", 16384); else mccBanana_monitor_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccBanana_monitor_nowritefile = 0;
 #line 12862 "./Union_tagging_demo.c"
 
   SIG_MESSAGE("Banana_monitor (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     (0)*DEG2RAD,
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     (0)*DEG2RAD,
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     (0)*DEG2RAD);
 #line 12872 "./Union_tagging_demo.c"
   rot_mul(mctr1, mcrotasample_position, mcrotaBanana_monitor);
   rot_transpose(mcrotadetector_m4pi, mctr1);
   rot_mul(mcrotaBanana_monitor, mctr1, mcrotrBanana_monitor);
   mctc1 = coords_set(
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0);
 #line 12883 "./Union_tagging_demo.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -12894,23 +12894,23 @@ void mcinit(void) {
     /* Component PSDlin_transmission. */
   /* Setting parameters for component PSDlin_transmission. */
   SIG_MESSAGE("PSDlin_transmission (Init:SetPar)");
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   if("Output_transmission_lin.psd") strncpy(mccPSDlin_transmission_filename, "Output_transmission_lin.psd" ? "Output_transmission_lin.psd" : "", 16384); else mccPSDlin_transmission_filename[0]='\0';
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSDlin_transmission_xmin = -0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSDlin_transmission_xmax = 0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSDlin_transmission_ymin = -0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSDlin_transmission_ymax = 0.05;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSDlin_transmission_xwidth = 0.1;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSDlin_transmission_yheight = 0.01;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSDlin_transmission_restore_neutron = 1;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSDlin_transmission_nowritefile = 0;
 #line 12915 "./Union_tagging_demo.c"
 
@@ -12924,11 +12924,11 @@ void mcinit(void) {
   rot_transpose(mcrotaBanana_monitor, mctr1);
   rot_mul(mcrotaPSDlin_transmission, mctr1, mcrotrPSDlin_transmission);
   mctc1 = coords_set(
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0.5);
 #line 12933 "./Union_tagging_demo.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -12944,25 +12944,25 @@ void mcinit(void) {
     /* Component PSD_transmission. */
   /* Setting parameters for component PSD_transmission. */
   SIG_MESSAGE("PSD_transmission (Init:SetPar)");
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSD_transmission_nx = 100;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSD_transmission_ny = 100;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   if("Output_transmission.psd") strncpy(mccPSD_transmission_filename, "Output_transmission.psd" ? "Output_transmission.psd" : "", 16384); else mccPSD_transmission_filename[0]='\0';
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSD_transmission_xmin = -0.05;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSD_transmission_xmax = 0.05;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSD_transmission_ymin = -0.05;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSD_transmission_ymax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSD_transmission_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSD_transmission_yheight = 0;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSD_transmission_restore_neutron = 1;
 #line 12967 "./Union_tagging_demo.c"
 
@@ -12976,11 +12976,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPSDlin_transmission, mctr1);
   rot_mul(mcrotaPSD_transmission, mctr1, mcrotrPSD_transmission);
   mctc1 = coords_set(
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0.5);
 #line 12985 "./Union_tagging_demo.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -12999,22 +12999,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("scattering_arm (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     (0)*DEG2RAD,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     (25)*DEG2RAD,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     (0)*DEG2RAD);
 #line 13008 "./Union_tagging_demo.c"
   rot_mul(mctr1, mcrotasample_position, mcrotascattering_arm);
   rot_transpose(mcrotaPSD_transmission, mctr1);
   rot_mul(mcrotascattering_arm, mctr1, mcrotrscattering_arm);
   mctc1 = coords_set(
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0);
 #line 13019 "./Union_tagging_demo.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -13030,23 +13030,23 @@ void mcinit(void) {
     /* Component PSDlin_scattering. */
   /* Setting parameters for component PSDlin_scattering. */
   SIG_MESSAGE("PSDlin_scattering (Init:SetPar)");
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   if("Output_scattering.psd") strncpy(mccPSDlin_scattering_filename, "Output_scattering.psd" ? "Output_scattering.psd" : "", 16384); else mccPSDlin_scattering_filename[0]='\0';
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSDlin_scattering_xmin = -0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSDlin_scattering_xmax = 0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSDlin_scattering_ymin = -0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSDlin_scattering_ymax = 0.05;
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSDlin_scattering_xwidth = 0.1;
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSDlin_scattering_yheight = 0.05;
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSDlin_scattering_restore_neutron = 1;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSDlin_scattering_nowritefile = 0;
 #line 13051 "./Union_tagging_demo.c"
 
@@ -13060,11 +13060,11 @@ void mcinit(void) {
   rot_transpose(mcrotascattering_arm, mctr1);
   rot_mul(mcrotaPSDlin_scattering, mctr1, mcrotrPSDlin_scattering);
   mctc1 = coords_set(
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0.5);
 #line 13069 "./Union_tagging_demo.c"
   rot_transpose(mcrotascattering_arm, mctr1);
@@ -13083,22 +13083,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("scattering_arm_2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     (45)*DEG2RAD,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     (-35)*DEG2RAD,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     (0)*DEG2RAD);
 #line 13092 "./Union_tagging_demo.c"
   rot_mul(mctr1, mcrotasample_position, mcrotascattering_arm_2);
   rot_transpose(mcrotaPSDlin_scattering, mctr1);
   rot_mul(mcrotascattering_arm_2, mctr1, mcrotrscattering_arm_2);
   mctc1 = coords_set(
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0);
 #line 13103 "./Union_tagging_demo.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -13114,23 +13114,23 @@ void mcinit(void) {
     /* Component PSDlin_scattering_2. */
   /* Setting parameters for component PSDlin_scattering_2. */
   SIG_MESSAGE("PSDlin_scattering_2 (Init:SetPar)");
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   if("Output_scattering_2.psd") strncpy(mccPSDlin_scattering_2_filename, "Output_scattering_2.psd" ? "Output_scattering_2.psd" : "", 16384); else mccPSDlin_scattering_2_filename[0]='\0';
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSDlin_scattering_2_xmin = -0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSDlin_scattering_2_xmax = 0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSDlin_scattering_2_ymin = -0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSDlin_scattering_2_ymax = 0.05;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSDlin_scattering_2_xwidth = 0.1;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSDlin_scattering_2_yheight = 0.05;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSDlin_scattering_2_restore_neutron = 1;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
   mccPSDlin_scattering_2_nowritefile = 0;
 #line 13135 "./Union_tagging_demo.c"
 
@@ -13144,11 +13144,11 @@ void mcinit(void) {
   rot_transpose(mcrotascattering_arm_2, mctr1);
   rot_mul(mcrotaPSDlin_scattering_2, mctr1, mcrotrPSDlin_scattering_2);
   mctc1 = coords_set(
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0,
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_tagging_demo/Union_tagging_demo.instr"
     0.5);
 #line 13153 "./Union_tagging_demo.c"
   rot_transpose(mcrotascattering_arm_2, mctr1);
@@ -14566,7 +14566,7 @@ add_element_to_geometry_list(&global_geometry_list,global_geometry_element);
           printf("Volume.name         [%d]: %s \n",iterate,global_geometry_list.elements[iterate].Volume->name);
           if (global_geometry_list.elements[iterate].Volume->geometry.is_mask_volume == 0) {
           printf("Volume.p_physics.is_vacuum           [%d]: %d \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->is_vacuum);
-          printf("Volume.p_physics.my_absoprtion       [%d]: %f \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->my_a);
+          printf("Volume.p_physics.my_absorption       [%d]: %f \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->my_a);
           printf("Volume.p_physics.number of processes [%d]: %d \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->number_of_processes);
           }
           printf("Volume.geometry.shape                [%d]: %s \n",iterate,global_geometry_list.elements[iterate].Volume->geometry.shape);

@@ -1,10 +1,10 @@
 McStas simulation description file for PSI_Focus.
-Date:    Wed Nov 20 01:05:51 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:30:41 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: PSI_Focus
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr
   Parameters:  lambda(double) chopp_ratio(double) DET(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574231892
+  Seed: 1582679640
   Directory: 1
   Nodes: 10
   Param: lambda=3.4
@@ -28,17 +28,17 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:05:57 2019 (1574208357)
+  Date: Tue Feb 25 21:30:57 2020 (1582662657)
   type: array_1d(60)
-  Source: PSI_Focus (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
+  Source: PSI_Focus (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
   component: lambdaGuideExit
   position: 0 0 66.611
   title: Wavelength monitor
   Ncount: 10000000
   filename: lambdaguide.dat
-  statistics: X0=3.42515; dX=0.39491;
-  signal: Min=5.72052e+07; Max=7.84088e+07; Mean=7.23934e+07;
-  values: 4.34361e+09 4.33263e+06 3.74234e+06
+  statistics: X0=3.42496; dX=0.395259;
+  signal: Min=5.8065e+07; Max=7.75171e+07; Mean=7.24647e+07;
+  values: 4.34788e+09 4.33474e+06 3.74409e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -48,17 +48,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:05:57 2019 (1574208357)
+  Date: Tue Feb 25 21:30:57 2020 (1582662657)
   type: array_2d(60, 60)
-  Source: PSI_Focus (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
+  Source: PSI_Focus (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
   component: DivMonGuideExit
   position: 0 0 66.612
   title: Divergence monitor
   Ncount: 10000000
   filename: divguide.dat
-  statistics: X0=-0.000439485; dX=0.283168; Y0=0.00021013; dY=0.328286;
-  signal: Min=0; Max=2.16881e+07; Mean=1.2064e+06;
-  values: 4.34305e+09 4.33239e+06 3.74138e+06
+  statistics: X0=-0.000171072; dX=0.282925; Y0=0.00024745; dY=0.328577;
+  signal: Min=0; Max=2.13179e+07; Mean=1.20759e+06;
+  values: 4.34731e+09 4.33449e+06 3.74306e+06
   xvar: X
   yvar: Y
   xlabel: X divergence [deg]
@@ -70,17 +70,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:05:57 2019 (1574208357)
+  Date: Tue Feb 25 21:30:57 2020 (1582662657)
   type: array_2d(60, 60)
-  Source: PSI_Focus (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
+  Source: PSI_Focus (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
   component: PSDGuideExit
   position: 0 0 66.613
   title: PSD monitor
   Ncount: 10000000
   filename: psdguide.dat
-  statistics: X0=-0.000550719; dX=1.44191; Y0=-0.0015772; dY=3.46627;
-  signal: Min=965291; Max=1.47581e+06; Mean=1.20627e+06;
-  values: 4.34257e+09 4.33219e+06 3.74036e+06
+  statistics: X0=-0.000566458; dX=1.4427; Y0=0.00588891; dY=3.46415;
+  signal: Min=974759; Max=1.51427e+06; Mean=1.20743e+06;
+  values: 4.34677e+09 4.33425e+06 3.7421e+06
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -92,37 +92,37 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:05:57 2019 (1574208357)
+  Date: Tue Feb 25 21:30:57 2020 (1582662657)
   type: array_1d(30)
-  Source: PSI_Focus (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
+  Source: PSI_Focus (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
   component: DISCTOF
   position: 0 0 69.718
   title: TOF [s] monitor
   Ncount: 10000000
   filename: DISC_TOF.dat
-  statistics: X0=0.00343015; dX=0.000490244;
-  signal: Min=190592; Max=1.6135e+07; Mean=8.9136e+06;
-  values: 2.67408e+08 269463 3.68365e+06
+  statistics: X0=0.00341198; dX=0.000491056;
+  signal: Min=187184; Max=1.61694e+07; Mean=8.92272e+06;
+  values: 2.67682e+08 269612 3.68525e+06
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.00219321 0.00467279
+  xlimits: 0.00216965 0.00465626
   variables: t I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:05:57 2019 (1574208357)
+  Date: Tue Feb 25 21:30:57 2020 (1582662657)
   type: array_2d(60, 60)
-  Source: PSI_Focus (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
+  Source: PSI_Focus (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
   component: PSDmon1Chopper
   position: 0 0 69.719
   title: PSD monitor
   Ncount: 10000000
   filename: psdchopper.dat
-  statistics: X0=-0.00319251; dX=1.44851; Y0=-0.00158796; dY=2.85034;
-  signal: Min=0; Max=386862; Mean=74281;
-  values: 2.67412e+08 269465 3.68372e+06
+  statistics: X0=-0.00102962; dX=1.44789; Y0=0.0052005; dY=2.85067;
+  signal: Min=0; Max=389889; Mean=74356.7;
+  values: 2.67684e+08 269613 3.6853e+06
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -134,17 +134,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:05:57 2019 (1574208357)
+  Date: Tue Feb 25 21:30:57 2020 (1582662657)
   type: array_2d(60, 60)
-  Source: PSI_Focus (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
+  Source: PSI_Focus (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
   component: PSDmonMono
   position: 0 0 72.4
   title: PSD monitor
   Ncount: 10000000
   filename: psdmono.dat
-  statistics: X0=-0.0039842; dX=1.9789; Y0=-0.00165605; dY=2.9538;
-  signal: Min=1.94573e-48; Max=390033; Mean=74123.1;
-  values: 2.66843e+08 269388 3.12668e+06
+  statistics: X0=-0.000250863; dX=1.97773; Y0=0.00398705; dY=2.95651;
+  signal: Min=2.23406e-50; Max=389545; Mean=74199.4;
+  values: 2.67118e+08 269537 3.12824e+06
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -156,37 +156,37 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:05:57 2019 (1574208357)
+  Date: Tue Feb 25 21:30:57 2020 (1582662657)
   type: array_1d(30)
-  Source: PSI_Focus (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
+  Source: PSI_Focus (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
   component: MONOTOF
   position: 0 0 72.41
   title: TOF [s] monitor
   Ncount: 10000000
   filename: MONO_TOF.dat
-  statistics: X0=0.00574429; dX=0.000559966;
-  signal: Min=80108.1; Max=1.95426e+07; Mean=8.89379e+06;
-  values: 2.66814e+08 269381 3.12038e+06
+  statistics: X0=0.0057842; dX=0.000564583;
+  signal: Min=67964.6; Max=1.95499e+07; Mean=8.90292e+06;
+  values: 2.67088e+08 269528 3.12219e+06
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.00408973 0.00738053
+  xlimits: 0.00411314 0.00742909
   variables: t I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:05:57 2019 (1574208357)
+  Date: Tue Feb 25 21:30:57 2020 (1582662657)
   type: array_2d(60, 60)
-  Source: PSI_Focus (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
+  Source: PSI_Focus (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
   component: DivMonMono
   position: 0 0 72.42
   title: Divergence monitor
   Ncount: 10000000
   filename: divmono.dat
-  statistics: X0=-0.000108037; dX=0.280838; Y0=-9.23328e-06; dY=0.47599;
-  signal: Min=0; Max=2.41137e+06; Mean=74110.7;
-  values: 2.66799e+08 269381 3.1143e+06
+  statistics: X0=0.000201665; dX=0.28064; Y0=-0.000252155; dY=0.475825;
+  signal: Min=0; Max=2.37563e+06; Mean=74187.5;
+  values: 2.67075e+08 269529 3.11602e+06
   xvar: X
   yvar: Y
   xlabel: X divergence [deg]
@@ -198,37 +198,37 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:05:57 2019 (1574208357)
+  Date: Tue Feb 25 21:30:57 2020 (1582662657)
   type: array_1d(30)
-  Source: PSI_Focus (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
+  Source: PSI_Focus (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
   component: FERMITOF_before
   position: 0.786314 0 73.0548
   title: TOF [s] monitor
   Ncount: 10000000
   filename: FERMI_TOF_before.dat
-  statistics: X0=0.00667392; dX=0.000515491;
-  signal: Min=1190.14; Max=1.01217e+06; Mean=513953;
-  values: 1.54186e+07 17386.2 5.50659e+06
+  statistics: X0=0.00664637; dX=0.000489933;
+  signal: Min=1341.23; Max=1.01844e+06; Mean=513918;
+  values: 1.54175e+07 17399.7 5.51117e+06
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.00530612 0.00810284
+  xlimits: 0.00535235 0.00800923
   variables: t I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:05:57 2019 (1574208357)
+  Date: Tue Feb 25 21:30:57 2020 (1582662657)
   type: array_1d(60)
-  Source: PSI_Focus (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
+  Source: PSI_Focus (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
   component: lambdaFermi
   position: 0.787188 0 73.0553
   title: Wavelength monitor
   Ncount: 10000000
   filename: lambdafermi.dat
-  statistics: X0=3.39927; dX=0.0448002;
-  signal: Min=0; Max=3.02466e+06; Mean=256976;
-  values: 1.54185e+07 17386.2 5.50267e+06
+  statistics: X0=3.39899; dX=0.0447322;
+  signal: Min=0; Max=3.05502e+06; Mean=256959;
+  values: 1.54175e+07 17399.7 5.5074e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -238,17 +238,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:05:57 2019 (1574208357)
+  Date: Tue Feb 25 21:30:57 2020 (1582662657)
   type: array_1d(60)
-  Source: PSI_Focus (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
+  Source: PSI_Focus (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
   component: EMON_Fermi
   position: 0.820999 0 73.0742
   title: Energy monitor
   Ncount: 10000000
   filename: emon_fermi.dat
-  statistics: X0=7.08349; dX=0.18474;
-  signal: Min=0; Max=3.15625e+06; Mean=242760;
-  values: 1.45656e+07 17221.6 3.08382e+06
+  statistics: X0=7.0844; dX=0.184188;
+  signal: Min=0; Max=3.14217e+06; Mean=242709;
+  values: 1.45626e+07 17234.6 3.0848e+06
   xvar: E
   yvar: (I,I_err)
   xlabel: Energy [meV]
@@ -258,17 +258,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:05:57 2019 (1574208357)
+  Date: Tue Feb 25 21:30:57 2020 (1582662657)
   type: array_2d(30, 30)
-  Source: PSI_Focus (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
+  Source: PSI_Focus (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
   component: DivMonfermi1
   position: 0.821086 0 73.0742
   title: Divergence monitor
   Ncount: 10000000
   filename: divfermi1.dat
-  statistics: X0=-0.0137333; dX=0.852676; Y0=0.0064055; dY=0.985151;
-  signal: Min=1020.97; Max=35009.9; Mean=14924.8;
-  values: 1.34323e+07 16717.9 1.93327e+06
+  statistics: X0=-0.0196194; dX=0.848106; Y0=-0.00121038; dY=0.985399;
+  signal: Min=854.575; Max=37801.5; Mean=14913.1;
+  values: 1.34218e+07 16731.4 1.93443e+06
   xvar: X
   yvar: Y
   xlabel: X divergence [deg]
@@ -280,17 +280,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:05:57 2019 (1574208357)
+  Date: Tue Feb 25 21:30:57 2020 (1582662657)
   type: array_2d(30, 30)
-  Source: PSI_Focus (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
+  Source: PSI_Focus (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
   component: PSD_Fermi1
   position: 0.821174 0 73.0743
   title: PSD monitor
   Ncount: 10000000
   filename: psdfermi1.dat
-  statistics: X0=-0.0651383; dX=1.37411; Y0=0.000795246; dY=1.77337;
-  signal: Min=0.190311; Max=55868.1; Mean=16186.7;
-  values: 1.4568e+07 17222.5 3.21376e+06
+  statistics: X0=-0.0604499; dX=1.37525; Y0=-0.00205918; dY=1.76706;
+  signal: Min=0.852177; Max=58837.3; Mean=16183.2;
+  values: 1.45649e+07 17235.4 3.21382e+06
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -302,17 +302,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:05:57 2019 (1574208357)
+  Date: Tue Feb 25 21:30:57 2020 (1582662657)
   type: array_2d(30, 30)
-  Source: PSI_Focus (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
+  Source: PSI_Focus (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
   component: PSD_Fermi2
   position: 0.928724 0 73.1341
   title: PSD monitor
   Ncount: 10000000
   filename: psdfermi2.dat
-  statistics: X0=-0.15642; dX=1.34824; Y0=0.0671887; dY=1.66885;
-  signal: Min=2.22951e-53; Max=2241.54; Mean=487.006;
-  values: 438305 2924.76 90172
+  statistics: X0=-0.128329; dX=1.34127; Y0=0.00312075; dY=1.67788;
+  signal: Min=2.75621e-62; Max=2489.99; Mean=493.506;
+  values: 444155 2967.12 90534
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -324,17 +324,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:05:57 2019 (1574208357)
+  Date: Tue Feb 25 21:30:57 2020 (1582662657)
   type: array_2d(30, 30)
-  Source: PSI_Focus (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
+  Source: PSI_Focus (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
   component: DivMonfermi2
   position: 0.929598 0 73.1346
   title: Divergence monitor
   Ncount: 10000000
   filename: divfermi2.dat
-  statistics: X0=-0.031446; dX=0.849671; Y0=-0.0257499; dY=0.996368;
-  signal: Min=12.5091; Max=1362.47; Mean=449.976;
-  values: 404978 2835.69 60097
+  statistics: X0=-0.012753; dX=0.829429; Y0=-0.0171217; dY=0.98625;
+  signal: Min=0.284645; Max=1386.53; Mean=458.792;
+  values: 412912 2885.86 61004
   xvar: X
   yvar: Y
   xlabel: X divergence [deg]
@@ -346,57 +346,57 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:05:57 2019 (1574208357)
+  Date: Tue Feb 25 21:30:57 2020 (1582662657)
   type: array_1d(30)
-  Source: PSI_Focus (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
+  Source: PSI_Focus (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
   component: FERMITOF1
   position: 1.00823 0 73.1784
   title: TOF [s] monitor
   Ncount: 10000000
   filename: FERMI_TOF1.dat.dat
-  statistics: X0=0.00701275; dX=2.50212e-05;
-  signal: Min=0.0353518; Max=50770.6; Mean=14657;
-  values: 439711 2925.91 93056
+  statistics: X0=0.00701137; dX=2.5479e-05;
+  signal: Min=0.529594; Max=49870.1; Mean=14853;
+  values: 445591 2968.37 93455
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.00690422 0.00711883
+  xlimits: 0.00690149 0.00711581
   variables: t I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:05:57 2019 (1574208357)
+  Date: Tue Feb 25 21:30:57 2020 (1582662657)
   type: array_1d(30)
-  Source: PSI_Focus (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
+  Source: PSI_Focus (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
   component: FERMITOF2
   position: 1.04842 0 73.2008
   title: TOF [s] monitor
   Ncount: 10000000
   filename: FERMI_TOF2.dat.dat
-  statistics: X0=0.0070464; dX=2.49777e-05;
-  signal: Min=92.9576; Max=15793.5; Mean=6471.18;
-  values: 194135 2108.69 19676
+  statistics: X0=0.0070554; dX=2.6e-05;
+  signal: Min=50.6986; Max=19893.9; Mean=6859.47;
+  values: 205784 2198.84 20339
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.00696649 0.00712143
+  xlimits: 0.00696739 0.00713761
   variables: t I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:05:57 2019 (1574208357)
+  Date: Tue Feb 25 21:30:57 2020 (1582662657)
   type: array_2d(30, 30)
-  Source: PSI_Focus (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
+  Source: PSI_Focus (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
   component: PSD_SAMPLE
   position: 1.26684 0 73.3224
   title: PSD monitor
   Ncount: 10000000
   filename: psdsample.dat
-  statistics: X0=-0.0176442; dX=0.527879; Y0=0.0152402; dY=1.44929;
-  signal: Min=0; Max=1058.2; Mean=169.087;
-  values: 152179 1917.68 12772
+  statistics: X0=-0.0413469; dX=0.536015; Y0=-0.00254909; dY=1.43206;
+  signal: Min=0; Max=831.843; Mean=181.823;
+  values: 163641 2005.3 13651
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -408,17 +408,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:05:57 2019 (1574208357)
+  Date: Tue Feb 25 21:30:57 2020 (1582662657)
   type: array_2d(30, 30)
-  Source: PSI_Focus (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
+  Source: PSI_Focus (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
   component: DivMon_Sample
   position: 1.26771 0 73.3229
   title: Divergence monitor
   Ncount: 10000000
   filename: div2.dat
-  statistics: X0=0.00812531; dX=0.736012; Y0=-0.0690484; dY=1.14768;
-  signal: Min=0; Max=917.51; Mean=96.4311;
-  values: 86788 1468.12 7077
+  statistics: X0=0.0456854; dX=0.742397; Y0=0.0191082; dY=1.07604;
+  signal: Min=0; Max=1021.47; Mean=100.663;
+  values: 90596.5 1511.86 7417
   xvar: X
   yvar: Y
   xlabel: X divergence [deg]
@@ -430,17 +430,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:05:57 2019 (1574208357)
+  Date: Tue Feb 25 21:30:57 2020 (1582662657)
   type: array_1d(60)
-  Source: PSI_Focus (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
+  Source: PSI_Focus (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
   component: EMON_SAMPLE
   position: 1.26859 0 73.3234
   title: Energy monitor
   Ncount: 10000000
   filename: emon_sample.dat
-  statistics: X0=7.08025; dX=0.129195;
-  signal: Min=0; Max=24909.4; Mean=1445.78;
-  values: 86746.6 1467.62 7075
+  statistics: X0=7.06958; dX=0.129731;
+  signal: Min=0; Max=28944.8; Mean=1504.86;
+  values: 90291.8 1508.75 7391
   xvar: E
   yvar: (I,I_err)
   xlabel: Energy [meV]
@@ -450,14 +450,14 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:05:57 2019 (1574208357)
+  Date: Tue Feb 25 21:30:57 2020 (1582662657)
   type: array_2d(100, 100)
-  Source: PSI_Focus (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
+  Source: PSI_Focus (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
   component: TOF_Det
   position: 1.31052 0 73.3467
   title:  Intensity Time_Of_Flight Angle Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: TOF_Det_1574208351.t_A
+  filename: TOF_Det_1582662641.t_A
   statistics: X0=0; dX=0; Y0=0; dY=0;
   signal: Min=0; Max=0; Mean=0;
   values: 0 0 0
@@ -467,42 +467,42 @@ begin data
   ylabel: Angle [deg] (abs)
   zvar: I
   zlabel: Signal per bin
-  xylimits: 0.00788489 0.00800785 10 180
+  xylimits: 0.00789182 0.00802138 10 180
   variables: I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:05:57 2019 (1574208357)
+  Date: Tue Feb 25 21:30:57 2020 (1582662657)
   type: array_1d(20)
-  Source: PSI_Focus (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
+  Source: PSI_Focus (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
   component: FoDet
   position: 3.49473 0 74.563
   title: TOF [s] monitor
   Ncount: 10000000
   filename: tofdet.dat
-  statistics: X0=0.00944472; dX=9.73231e-05;
-  signal: Min=453.644; Max=4279.61; Mean=2311.33;
-  values: 46226.5 324.954 65424
+  statistics: X0=0.00944918; dX=9.54806e-05;
+  signal: Min=434.102; Max=5385.97; Mean=2593.36;
+  values: 51867.1 347.736 70829
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.00928188 0.009653
+  xlimits: 0.00928491 0.00965017
   variables: t I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:05:57 2019 (1574208357)
+  Date: Tue Feb 25 21:30:57 2020 (1582662657)
   type: array_1d(80)
-  Source: PSI_Focus (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
+  Source: PSI_Focus (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
   component: EMON_DET
   position: 3.4956 0 74.5635
   title: Energy monitor
   Ncount: 10000000
   filename: emon_det.dat
-  statistics: X0=7.11217; dX=0.156986;
-  signal: Min=0; Max=11204.9; Mean=723.237;
-  values: 57859 358.829 83478
+  statistics: X0=7.11117; dX=0.153317;
+  signal: Min=0; Max=12362.9; Mean=754.857;
+  values: 60388.6 371.553 87822
   xvar: E
   yvar: (I,I_err)
   xlabel: Energy [meV]

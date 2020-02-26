@@ -1,10 +1,10 @@
 McStas simulation description file for ILL_H16_IN5_Mantid.
-Date:    Wed Nov 20 01:02:03 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:22:15 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: ILL_H16_IN5_Mantid
   File: 2/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H16_IN5_Mantid/ILL_H16_IN5_Mantid.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H16_IN5_Mantid/ILL_H16_IN5_Mantid.instr
   Parameters:  lambda(double) dlambda(double) m(double) speed(double) ratio(double) housing(string) coh(string) inc(string) thickness(double) height(double) radius(double) order(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 2
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H16_IN5_Mantid/ILL_H16_IN5_Mantid.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H16_IN5_Mantid/ILL_H16_IN5_Mantid.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574229150
+  Seed: 1582675966
   Directory: 2
   Nodes: 10
   Param: lambda=4.5
@@ -37,17 +37,17 @@ begin simulation: 2
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:02:05 2019 (1574208125)
+  Date: Tue Feb 25 21:22:24 2020 (1582662144)
   type: array_2d(20, 20)
-  Source: ILL_H16_IN5_Mantid (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H16_IN5_Mantid/ILL_H16_IN5_Mantid.instr)
+  Source: ILL_H16_IN5_Mantid (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H16_IN5_Mantid/ILL_H16_IN5_Mantid.instr)
   component: GuideOut_xy
   position: 0.138922 0 33.3108
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: GuideOut_xy_1574208123.x_y
-  statistics: X0=-0.000562798; dX=0.00862229; Y0=8.91294e-05; dY=0.0574093;
-  signal: Min=243075; Max=340303; Mean=288776;
-  values: 1.15511e+08 207290 1.24644e+06
+  filename: GuideOut_xy_1582662135.x_y
+  statistics: X0=-0.00056454; dX=0.00861727; Y0=4.11529e-05; dY=0.0573289;
+  signal: Min=237047; Max=340455; Mean=288890;
+  values: 1.15556e+08 207323 1.2486e+06
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -59,55 +59,54 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:02:05 2019 (1574208125)
+  Date: Tue Feb 25 21:22:24 2020 (1582662144)
   type: array_2d(20, 20)
-  Source: ILL_H16_IN5_Mantid (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H16_IN5_Mantid/ILL_H16_IN5_Mantid.instr)
+  Source: ILL_H16_IN5_Mantid (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H16_IN5_Mantid/ILL_H16_IN5_Mantid.instr)
   component: GuideOut_dxdy
   position: 0.138922 0 33.3108
   title:  Intensity Divergence Divergence Monitor (Square) per bin
   Ncount: 10000000
-  filename: GuideOut_dxdy_1574208123.hd_vd
-  statistics: X0=0.0101383; dX=0.231151; Y0=-0.000147844; dY=0.264625;
-  signal: Min=4.82912e-106; Max=1.45459e+06; Mean=288776;
-  values: 1.15511e+08 207290 1.24642e+06
+  filename: GuideOut_dxdy_1582662135.hd_vd
+  statistics: X0=0.00920682; dX=0.230464; Y0=0.00026663; dY=0.264728;
+  signal: Min=9.75602e-107; Max=1.45466e+06; Mean=288890;
+  values: 1.15556e+08 207323 1.24857e+06
   xvar: Hor.
   yvar: Vert.
   xlabel: Hor. Divergence [deg]
   ylabel: Vert. Divergence [deg]
   zvar: I
   zlabel: Signal per bin
-  xylimits: -0.928438 0.934087 -0.935153 0.935076
+  xylimits: -0.926032 0.932678 -0.935383 0.93549
   variables: I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:02:05 2019 (1574208125)
+  Date: Tue Feb 25 21:22:24 2020 (1582662144)
   type: array_0d
-  Source: ILL_H16_IN5_Mantid (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H16_IN5_Mantid/ILL_H16_IN5_Mantid.instr)
+  Source: ILL_H16_IN5_Mantid (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H16_IN5_Mantid/ILL_H16_IN5_Mantid.instr)
   component: GuideOut_Phic
   position: 0.138922 0 33.3108
   title:  Intensity Monitor (Square)
   Ncount: 10000000
-  statistics: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ1.15511e+08 207290 1.24642e+06
-  signal: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿöd]Äµí¿ÉFmŒ
-äí?~C¾üÅìí¿¹Åï·$ìí?
-  values: 
+  statistics: None
+  signal: None
+  values: 2.89139e+08 518664 1.24858e+06
   xylimits: 0 0 0 0 0 0
   variables: I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:02:05 2019 (1574208125)
+  Date: Tue Feb 25 21:22:24 2020 (1582662144)
   type: array_1d(20)
-  Source: ILL_H16_IN5_Mantid (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H16_IN5_Mantid/ILL_H16_IN5_Mantid.instr)
+  Source: ILL_H16_IN5_Mantid (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H16_IN5_Mantid/ILL_H16_IN5_Mantid.instr)
   component: GuideOut_L
   position: 0.138922 0 33.3108
   title: Wavelength [Angs] monitor
   Ncount: 10000000
-  filename: GuideOut_L_1574208123.L
+  filename: GuideOut_L_1582662135.L
   statistics: X0=4.5; dX=0;
-  signal: Min=0; Max=1.15509e+08; Mean=5.77547e+06;
-  values: 1.15509e+08 207289 1.24643e+06
+  signal: Min=0; Max=1.15555e+08; Mean=5.77775e+06;
+  values: 1.15555e+08 207322 1.24858e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
@@ -117,36 +116,36 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:02:05 2019 (1574208125)
+  Date: Tue Feb 25 21:22:24 2020 (1582662144)
   type: array_1d(20)
-  Source: ILL_H16_IN5_Mantid (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H16_IN5_Mantid/ILL_H16_IN5_Mantid.instr)
+  Source: ILL_H16_IN5_Mantid (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H16_IN5_Mantid/ILL_H16_IN5_Mantid.instr)
   component: Det_sample_t
   position: 0.283102 0 47.7792
   title: TOF [s] monitor
   Ncount: 10000000
-  filename: Det_sample_t_1574208123.t
-  statistics: X0=0.0162352; dX=2.9278e-05;
-  signal: Min=84825.2; Max=3.47575e+06; Mean=1.6635e+06;
-  values: 3.327e+07 278800 26094
+  filename: Det_sample_t_1582662135.t
+  statistics: X0=0.0162293; dX=2.82131e-05;
+  signal: Min=88393.1; Max=3.40538e+06; Mean=1.66431e+06;
+  values: 3.32862e+07 278935 25948
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.0161581 0.0163133
+  xlimits: 0.0161555 0.0163035
   variables: t I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:02:05 2019 (1574208125)
-  type: array_2d(6, 9479)
-  Source: ILL_H16_IN5_Mantid (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H16_IN5_Mantid/ILL_H16_IN5_Mantid.instr)
+  Date: Tue Feb 25 21:22:24 2020 (1582662144)
+  type: array_2d(6, 9276)
+  Source: ILL_H16_IN5_Mantid (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H16_IN5_Mantid/ILL_H16_IN5_Mantid.instr)
   component: nD_Mantid_0
   position: 0.285491 0 48.019
   title:  Intensity Angle Position Neutron_ID Pixel_ID Time_Of_Flight Monitor (Banana) [out]
   Ncount: 10000000
-  filename: nD_Mantid_0_1574208123_list.p.th.y.n.id.t
+  filename: nD_Mantid_0_1582662136_list.p.th.y.n.id.t
   statistics: X0=0; dX=0; Y0=0; dY=0;
-  signal: Min=0.00212669; Max=0.00212669; Mean=0;
+  signal: Min=2.97316e-19; Max=2.97316e-19; Mean=0;
   values: 0 0 0
   xvar: List
   yvar: p
@@ -154,22 +153,22 @@ begin data
   ylabel: p th y n id t 
   zvar: I
   zlabel: Signal per bin
-  xylimits: 1 9479 1 6
+  xylimits: 1 9276 1 6
   variables: p th y n id t 
 end data
 
 begin data
-  Date: Wed Nov 20 01:02:06 2019 (1574208126)
+  Date: Tue Feb 25 21:22:25 2020 (1582662145)
   type: array_2d(100, 300)
-  Source: ILL_H16_IN5_Mantid (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H16_IN5_Mantid/ILL_H16_IN5_Mantid.instr)
+  Source: ILL_H16_IN5_Mantid (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H16_IN5_Mantid/ILL_H16_IN5_Mantid.instr)
   component: Cp_0
   position: 0.285491 0 48.019
   title:  Intensity Angle Position Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: Cp_0_1574208123.th_y
-  statistics: X0=45.2716; dX=21.411; Y0=-0.00346923; dY=0.824681;
-  signal: Min=0; Max=914.41; Mean=40.737;
-  values: 1.22211e+06 5380.53 93287
+  filename: Cp_0_1582662136.th_y
+  statistics: X0=45.1568; dX=21.412; Y0=0.000686131; dY=0.824913;
+  signal: Min=0; Max=890.843; Mean=40.4276;
+  values: 1.21283e+06 5357.08 92650
   xvar: Longitude
   yvar: y
   xlabel: Longitude [deg]
@@ -181,17 +180,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:02:06 2019 (1574208126)
+  Date: Tue Feb 25 21:22:25 2020 (1582662145)
   type: array_2d(384, 128)
-  Source: ILL_H16_IN5_Mantid (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H16_IN5_Mantid/ILL_H16_IN5_Mantid.instr)
+  Source: ILL_H16_IN5_Mantid (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H16_IN5_Mantid/ILL_H16_IN5_Mantid.instr)
   component: Det_PSD
   position: 0.285491 0 48.019
   title: PSD Detector
   Ncount: 10000000
   filename: in5det.dat
-  statistics: X0=3.17579; dX=1.51284; Y0=-0.00460545; dY=0.837325;
-  signal: Min=0; Max=669.42; Mean=24.2809;
-  values: 1.19346e+06 5864.33 81206
+  statistics: X0=3.16256; dX=1.51707; Y0=-0.00384473; dY=0.834547;
+  signal: Min=0; Max=684.594; Mean=24.1;
+  values: 1.18456e+06 5840.01 80333
   xvar: X
   yvar: Y
   xlabel: X position [m]
@@ -203,21 +202,21 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:02:06 2019 (1574208126)
+  Date: Tue Feb 25 21:22:25 2020 (1582662145)
   type: array_1d(50)
-  Source: ILL_H16_IN5_Mantid (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H16_IN5_Mantid/ILL_H16_IN5_Mantid.instr)
+  Source: ILL_H16_IN5_Mantid (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H16_IN5_Mantid/ILL_H16_IN5_Mantid.instr)
   component: in5_t
   position: 0.285491 0 48.019
   title: TOF [s] monitor
   Ncount: 10000000
-  filename: in5_t_1574208123.t
-  statistics: X0=0.0210558; dX=0.000135343;
-  signal: Min=0; Max=1.7864e+06; Mean=46945.9;
-  values: 2.3473e+06 11492.8 205144
+  filename: in5_t_1582662136.t
+  statistics: X0=0.0211224; dX=0.000123562;
+  signal: Min=0; Max=1.9088e+06; Mean=47158.9;
+  values: 2.35794e+06 11533.5 204296
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.0164464 0.0304906
+  xlimits: 0.0164411 0.0305967
   variables: t I I_err N
 end data

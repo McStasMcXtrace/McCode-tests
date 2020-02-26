@@ -1,11 +1,44 @@
-      [1574207391.010438] [n-62-23-6:12607:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3372.34
-[1574207391.011884] [n-62-23-6:12607:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207391.011888] [n-62-23-6:12607:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207391.013868] [n-62-23-6:12607:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207391.013871] [n-62-23-6:12607:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: No output directory specified (--dir)
+INFO: Using directory: "Test_Guides_20200225_210421"
+INFO: Regenerating c-file: Test_Guides.c
+Info:    'Guide_curved' is a contributed component.
+Info:    'Guide_honeycomb' is a contributed component.
+Info:    'Guide_anyshape_r' is a contributed component.
+Warning: Component GuideA=Guide_anyshape(string reflect) definition parameter
+         may be changed into a setting parameter to avoid
+         warnings at compile time.
+Warning: Component GuideA=Guide_anyshape(string geometry) definition parameter
+         may be changed into a setting parameter to avoid
+         warnings at compile time.
+Warning: Component GuideAr=Guide_anyshape_r(string geometry) definition parameter
+         may be changed into a setting parameter to avoid
+         warnings at compile time.
+CFLAGS=
+      INFO: Recompiling: ./Test_Guides.out
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Guide_anyshape_r.comp: In function 'r_off_intersect_all':
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Guide_anyshape_r.comp:956:34: warning: passing argument 1 of 'r_off_clip_3D_mod' from incompatible pointer type [-Wincompatible-pointer-types]
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Guide_anyshape_r.comp:553:5: note: expected 'r_intersection * {aka struct r_intersection *}' but argument is of type 'intersection * {aka struct intersection *}'
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Guide_anyshape_r.comp:960:23: warning: passing argument 1 of 'r_off_cleanDouble' from incompatible pointer type [-Wincompatible-pointer-types]
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Guide_anyshape_r.comp:647:5: note: expected 'r_intersection * {aka struct r_intersection *}' but argument is of type 'intersection * {aka struct intersection *}'
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Guide_anyshape_r.comp:961:22: warning: passing argument 1 of 'r_off_cleanInOut' from incompatible pointer type [-Wincompatible-pointer-types]
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Guide_anyshape_r.comp:681:5: note: expected 'r_intersection * {aka struct r_intersection *}' but argument is of type 'intersection * {aka struct intersection *}'
+INFO: ===
+[n-62-23-14:07052] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:07052] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582661068.449630] [n-62-23-14:7051 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3379.34
+[1582661068.451404] [n-62-23-14:7051 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661068.451407] [n-62-23-14:7051 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1582661068.454270] [n-62-23-14:7051 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661068.454274] [n-62-23-14:7051 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 begin instrument: Test_Guides
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr
   Parameters:  Guide(int)
   Trace_enabled: yes
   Default_main: yes
@@ -14,33 +47,13 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1574219998
+  Seed: 1582668119
   Directory: .
   Param: Guide=1
 end simulation
 info!
-INFO: No output directory specified (--dir)
-INFO: Using directory: "Test_Guides_20191120_004944"
-INFO: Regenerating c-file: Test_Guides.c
-Info:    'Guide_curved' is a contributed component.
-Info:    'Guide_honeycomb' is a contributed component.
-Warning: Component GuideA=Guide_anyshape(string reflect) definition parameter
-         may be changed into a setting parameter to avoid
-         warnings at compile time.
-Warning: Component GuideA=Guide_anyshape(string geometry) definition parameter
-         may be changed into a setting parameter to avoid
-         warnings at compile time.
-CFLAGS=
-INFO: Recompiling: ./Test_Guides.out
-INFO: ===
---------------------------------------------------------------------------
-Initialization of MXM library failed.
-
-  Error: Input/output error
-
---------------------------------------------------------------------------

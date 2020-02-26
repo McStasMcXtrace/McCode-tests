@@ -1,11 +1,11 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Nov. 19, 2019
-# Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr
+# Creator: McStas 2.5 - Feb. 24, 2020
+# Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr
 # Ncount: 1000000
 # Trace: no
 # Gravitation: no
-# Seed: 1574226575
+# Seed: 1582672815
 # Directory: 1
 # Nodes: 10
 # Param: Lmin=4.9
@@ -55,17 +55,17 @@
 # Param: RES_DE=0.5
 # Param: port=30
 # Param: cold=0.95
-# Date: Wed Nov 20 00:59:04 2019 (1574207944)
+# Date: Tue Feb 25 21:14:42 2020 (1582661682)
 # type: array_1d(200)
-# Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+# Source: ESS_IN5_reprate (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
 # component: Lmonslow1
 # position: 0 0 6
 # title: Wavelength monitor
 # Ncount: 10000000
 # filename: Lmonslow1.dat
-# statistics: X0=4.99805; dX=0.058684;
-# signal: Min=0; Max=8.9685e+09; Mean=2.83217e+08;
-# values: 5.66434e+10 3.94054e+07 4.65573e+06
+# statistics: X0=4.99801; dX=0.0586871;
+# signal: Min=0; Max=8.99684e+09; Mean=2.82925e+08;
+# values: 5.65849e+10 3.93681e+07 4.65558e+06
 # xvar: L
 # yvar: (I,I_err)
 # xlabel: Wavelength [AA]
@@ -232,14 +232,14 @@
 4.80375 0 0 0 
 4.83425 0 0 0 
 4.86475 0 0 0 
-4.89525 3134789211 9543966.281 242993 
-4.92575 8968497530 15999240.06 705851 
-4.95625 8847063882 15773833.26 708362 
-4.98675 8695518034 15478956.62 710326 
-5.01725 8585059083 15251606.77 712321 
-5.04775 8402033164 14953445.58 711523 
-5.07825 8261014715 14691721.34 712361 
-5.10875 1749455605 6726971.118 151992 
+4.89525 3116787807 9487511.921 242546 
+4.92575 8996844690 16042652.05 706303 
+4.95625 8846718491 15769595.26 709560 
+4.98675 8674863789 15468773.35 709320 
+5.01725 8555066563 15209095.83 711413 
+5.04775 8391547434 14922371.52 712269 
+5.07825 8262464967 14683472.79 712176 
+5.10875 1740656251 6701566.388 151988 
 5.13925 0 0 0 
 5.16975 0 0 0 
 5.20025 0 0 0 

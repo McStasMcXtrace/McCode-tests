@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr (Test_Pol_Bender_Vs_Guide_Curved)
- * Date:       Wed Nov 20 00:51:47 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr (Test_Pol_Bender_Vs_Guide_Curved)
+ * Date:       Tue Feb 25 21:06:28 2020
  * File:       ./Test_Pol_Bender_Vs_Guide_Curved.c
  * Compile:    cc -o Test_Pol_Bender_Vs_Guide_Curved.out ./Test_Pol_Bender_Vs_Guide_Curved.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Test_Pol_Bender_Vs_Guide_Curved";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -5482,6 +5482,13 @@ void destroy_darr3d(DArray3d a){
 #include <mcstas-r.h>
 #endif
 
+/*Redefine MAGNET_OFF to also clear the magnetic field stack.*/
+#undef MAGNET_OFF
+#define MAGNET_OFF \
+  do { \
+    mcMagnet = 0; \
+    mcmagnet_pop_all(); \
+  } while(0)
 
 typedef int mcmagnet_field_func (double, double, double, double, double *, double *, double *, void *);
 typedef void mcmagnet_prec_func (double, double, double, double, double, double, double, double*, double*, double*, double, Coords, Rotation);
@@ -5519,7 +5526,7 @@ void mc_pol_set_angular_accuracy(double);
   do { \
     mcMagneticField=NULL; \
     mcMagnetData=NULL; \
-    MAGNET_OFF; \
+    mcMagnet=0; \
   } while (0);
 
 #define mcmagnet_set_active(mcmagnet_new) \
@@ -5557,6 +5564,7 @@ void *mcmagnet_init_par_backend(int dummy, ...);
 int mcmagnet_get_field(double x, double y, double z, double t, double *bx,double *by, double *bz, void *dummy);
 void *mcmagnet_push(mcmagnet_field_func *func,  Rotation *magnet_rot, Coords *magnet_pos, int stopbit, void * prms);
 void *mcmagnet_pop(void);
+void *mcmagnet_pop_all(void);
 
 /*example functions for magnetic fields*/
 int const_magnetic_field(double x, double y, double z, double t, double *bx, double *by, double *bz, void *data);
@@ -7894,7 +7902,7 @@ void *mcmagnet_push(mcmagnet_field_func *func,  Rotation *magnet_rot, Coords *ma
   mcmagnet_pack(stack[0],func,magnet_rot,magnet_pos,stopbit,prms);
   mcmagnet_set_active(stack[0]);
   if(stack[0] && stack[0]->func){
-    MAGNET_ON;
+    mcMagnet=1;
   }
   return (void *) stack[0];
 }
@@ -7910,11 +7918,19 @@ void *mcmagnet_pop(void) {
   stack[MCMAGNET_STACKSIZE-1]=NULL;
   mcmagnet_set_active(stack[0]);
   if(stack[0] && stack[0]->func){
-    MAGNET_ON;
+    mcMagnet=1;
   }else{
-    MAGNET_OFF;
+    mcMagnet=0;
   }
   return (void*) t;
+}
+
+void *mcmagnet_pop_all(void){
+  void *t=mcmagnet_pop();
+  while (t!=NULL){
+    t=mcmagnet_pop();
+  }
+  return NULL;
 }
 
 void mcmagnet_free_stack(void){
@@ -8406,12 +8422,12 @@ void TableReflecFunc(double mc_pol_q, t_Table *mc_pol_par, double *mc_pol_r) {
 
 /* end of ref-lib.c */
 
-#line 8409 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 8425 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 
 /* Shared user declarations for all components 'Guide_curved'. */
 #line 55 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Guide_curved.comp"
 
-#line 8414 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 8430 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 
 /* Instrument parameters. */
 MCNUM mcipguideLength;
@@ -8432,7 +8448,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define mcposaTest_Pol_Bender_Vs_Guide_Curved coords_set(0,0,0)
 #define guideLength mcipguideLength
 #define guideRadius mcipguideRadius
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   double randomSwitch;
 
   double calcAlpha(double length, double radius) {
@@ -8451,7 +8467,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
     double alpha = DEG2RAD * calcAlpha(length, radius);
     return radius*sin(alpha);
   }
-#line 8454 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 8470 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef guideRadius
 #undef guideLength
 #undef mcposaTest_Pol_Bender_Vs_Guide_Curved
@@ -8701,7 +8717,7 @@ double IntermediateCnts;
 time_t StartTime;
 time_t EndTime;
 time_t CurrentTime;
-#line 8704 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 8720 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef minutes
 #undef flag_save
 #undef percent
@@ -8738,7 +8754,7 @@ time_t CurrentTime;
 double pmul, srcArea;
 int square;
 double tx,ty,tz;
-#line 8741 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 8757 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef target_index
 #undef gauss
 #undef flux
@@ -8781,7 +8797,7 @@ double tx,ty,tz;
 #line 57 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../monitors/L_monitor.comp"
 double L_N[nL];
 double L_p[nL], L_p2[nL];
-#line 8784 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 8800 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef nowritefile
 #undef restore_neutron
 #undef Lmax
@@ -8822,7 +8838,7 @@ double L_p[nL], L_p2[nL];
   DArray2d PSD_N;
   DArray2d PSD_p;
   DArray2d PSD_p2;
-#line 8825 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 8841 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef restore_neutron
 #undef yheight
 #undef xwidth
@@ -8910,7 +8926,7 @@ Coords pointTop, pointBot, pointIn, pointOut;
   double rRightUpParPtr[]   = (double [])rRightUpPar;
   double rRightDownParPtr[] = (double [])rRightDownPar;
 #endif
-#line 8913 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 8929 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef drawOption
 #undef endFlat
 #undef debug
@@ -9027,7 +9043,7 @@ Coords pointTop, pointBot, pointIn, pointOut;
   double rRightUpParPtr[]   = (double [])rRightUpPar;
   double rRightDownParPtr[] = (double [])rRightDownPar;
 #endif
-#line 9030 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9046 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef drawOption
 #undef endFlat
 #undef debug
@@ -9112,7 +9128,7 @@ Coords pointTop, pointBot, pointIn, pointOut;
 #line 57 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../monitors/L_monitor.comp"
 double L_N[nL];
 double L_p[nL], L_p2[nL];
-#line 9115 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9131 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef nowritefile
 #undef restore_neutron
 #undef Lmax
@@ -9153,7 +9169,7 @@ double L_p[nL], L_p2[nL];
   DArray2d PSD_N;
   DArray2d PSD_p;
   DArray2d PSD_p2;
-#line 9156 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9172 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef restore_neutron
 #undef yheight
 #undef xwidth
@@ -9193,7 +9209,7 @@ double L_p[nL], L_p2[nL];
 #line 57 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../monitors/L_monitor.comp"
 double L_N[nL];
 double L_p[nL], L_p2[nL];
-#line 9196 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9212 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef nowritefile
 #undef restore_neutron
 #undef Lmax
@@ -9234,7 +9250,7 @@ double L_p[nL], L_p2[nL];
   DArray2d PSD_N;
   DArray2d PSD_p;
   DArray2d PSD_p2;
-#line 9237 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9253 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef restore_neutron
 #undef yheight
 #undef xwidth
@@ -9274,7 +9290,7 @@ double L_p[nL], L_p2[nL];
 #line 57 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../monitors/L_monitor.comp"
 double L_N[nL];
 double L_p[nL], L_p2[nL];
-#line 9277 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9293 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef nowritefile
 #undef restore_neutron
 #undef Lmax
@@ -9315,7 +9331,7 @@ double L_p[nL], L_p2[nL];
   DArray2d PSD_N;
   DArray2d PSD_p;
   DArray2d PSD_p2;
-#line 9318 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9334 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef restore_neutron
 #undef yheight
 #undef xwidth
@@ -9394,31 +9410,31 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccOrigin_minutes = 0;
-#line 9405 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9421 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 
   SIG_MESSAGE("Origin (Init:Place/Rotate)");
   rot_set_rotation(mcrotaOrigin,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9412 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9428 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0);
-#line 9421 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9437 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   mctc1 = coords_neg(mcposaOrigin);
   mcposrOrigin = rot_apply(mcrotaOrigin, mctc1);
   mcDEBUG_COMPONENT("Origin", mcposaOrigin, mcrotaOrigin)
@@ -9429,51 +9445,51 @@ void mcinit(void) {
     /* Component source. */
   /* Setting parameters for component source. */
   SIG_MESSAGE("source (Init:SetPar)");
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccsource_radius = 0.01;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccsource_yheight = 0;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccsource_xwidth = 0;
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccsource_dist = 1.2;
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccsource_focus_xw = 0.08;
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccsource_focus_yh = 0.08;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccsource_E0 = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccsource_dE = 0;
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccsource_lambda0 = 5;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccsource_dlambda = 4.5;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccsource_flux = 1;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccsource_gauss = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccsource_target_index = + 1;
-#line 9458 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9474 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 
   SIG_MESSAGE("source (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9465 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9481 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotasource);
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotasource, mctr1, mcrotrsource);
   mctc1 = coords_set(
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0);
-#line 9476 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9492 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposasource = coords_add(mcposaOrigin, mctc2);
@@ -9487,47 +9503,47 @@ void mcinit(void) {
     /* Component lamStart. */
   /* Setting parameters for component lamStart. */
   SIG_MESSAGE("lamStart (Init:SetPar)");
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   if("lambdaStart.dat") strncpy(mcclamStart_filename, "lambdaStart.dat" ? "lambdaStart.dat" : "", 16384); else mcclamStart_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStart_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStart_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStart_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStart_ymax = 0.05;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStart_xwidth = 0.10;
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStart_yheight = 0.10;
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStart_Lmin = 0.0;
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStart_Lmax = 10;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStart_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStart_nowritefile = 0;
-#line 9512 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9528 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 
   SIG_MESSAGE("lamStart (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9519 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9535 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotalamStart);
   rot_transpose(mcrotasource, mctr1);
   rot_mul(mcrotalamStart, mctr1, mcrotrlamStart);
   mctc1 = coords_set(
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0.1);
-#line 9530 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9546 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposalamStart = coords_add(mcposaOrigin, mctc2);
@@ -9541,45 +9557,45 @@ void mcinit(void) {
     /* Component psdStart. */
   /* Setting parameters for component psdStart. */
   SIG_MESSAGE("psdStart (Init:SetPar)");
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdStart_nx = 40;
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdStart_ny = 40;
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   if("psdStart.dat") strncpy(mccpsdStart_filename, "psdStart.dat" ? "psdStart.dat" : "", 16384); else mccpsdStart_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdStart_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdStart_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdStart_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdStart_ymax = 0.05;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdStart_xwidth = 0.10;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdStart_yheight = 0.10;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdStart_restore_neutron = 0;
-#line 9564 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9580 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 
   SIG_MESSAGE("psdStart (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9571 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9587 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotapsdStart);
   rot_transpose(mcrotalamStart, mctr1);
   rot_mul(mcrotapsdStart, mctr1, mcrotrpsdStart);
   mctc1 = coords_set(
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0.15);
-#line 9582 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9598 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposapsdStart = coords_add(mcposaOrigin, mctc2);
@@ -9593,45 +9609,45 @@ void mcinit(void) {
     /* Component bender1. */
   /* Setting parameters for component bender1. */
   SIG_MESSAGE("bender1 (Init:SetPar)");
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccbender1_xwidth = 0.08;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccbender1_yheight = 0.08;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccbender1_length = mcipguideLength;
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccbender1_radius = mcipguideRadius;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccbender1_G = 9.8;
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccbender1_nslit = 1;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccbender1_d = 0.0;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccbender1_debug = 0;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccbender1_endFlat = 0;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccbender1_drawOption = 1;
-#line 9616 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9632 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 
   SIG_MESSAGE("bender1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9623 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9639 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotabender1);
   rot_transpose(mcrotapsdStart, mctr1);
   rot_mul(mcrotabender1, mctr1, mcrotrbender1);
   mctc1 = coords_set(
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     1.2);
-#line 9634 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9650 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposabender1 = coords_add(mcposaOrigin, mctc2);
@@ -9645,45 +9661,45 @@ void mcinit(void) {
     /* Component bender2. */
   /* Setting parameters for component bender2. */
   SIG_MESSAGE("bender2 (Init:SetPar)");
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccbender2_xwidth = 0.08;
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccbender2_yheight = 0.08;
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccbender2_length = mcipguideLength;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccbender2_radius = - mcipguideRadius;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccbender2_G = 9.8;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccbender2_nslit = 1;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccbender2_d = 0.0;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccbender2_debug = 0;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccbender2_endFlat = 0;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccbender2_drawOption = 1;
-#line 9668 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9684 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 
   SIG_MESSAGE("bender2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9675 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9691 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotabender2);
   rot_transpose(mcrotabender1, mctr1);
   rot_mul(mcrotabender2, mctr1, mcrotrbender2);
   mctc1 = coords_set(
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     1.2);
-#line 9686 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9702 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposabender2 = coords_add(mcposaOrigin, mctc2);
@@ -9697,43 +9713,43 @@ void mcinit(void) {
     /* Component guide. */
   /* Setting parameters for component guide. */
   SIG_MESSAGE("guide (Init:SetPar)");
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccguide_w1 = 0.08;
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccguide_h1 = 0.08;
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccguide_l = mcipguideLength;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccguide_R0 = 0.995;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccguide_Qc = 0.0218;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccguide_alpha = 4.38;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccguide_m = 2;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccguide_W = 0.003;
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccguide_curvature = mcipguideRadius;
-#line 9718 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9734 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 
   SIG_MESSAGE("guide (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9725 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9741 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaguide);
   rot_transpose(mcrotabender2, mctr1);
   rot_mul(mcrotaguide, mctr1, mcrotrguide);
   mctc1 = coords_set(
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     1.2);
-#line 9736 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9752 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaguide = coords_add(mcposaOrigin, mctc2);
@@ -9750,24 +9766,24 @@ void mcinit(void) {
 
   SIG_MESSAGE("armlambdaStop1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     (0)*DEG2RAD,
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     (calcAlpha ( mcipguideLength , mcipguideRadius ))*DEG2RAD,
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     (0)*DEG2RAD);
-#line 9759 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9775 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaarmlambdaStop1);
   rot_transpose(mcrotaguide, mctr1);
   rot_mul(mcrotaarmlambdaStop1, mctr1, mcrotrarmlambdaStop1);
   mctc1 = coords_set(
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     calcX ( mcipguideLength , mcipguideRadius ),
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     calcZ ( mcipguideLength , mcipguideRadius ) + 1.2);
-#line 9770 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9786 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaarmlambdaStop1 = coords_add(mcposaOrigin, mctc2);
@@ -9784,24 +9800,24 @@ void mcinit(void) {
 
   SIG_MESSAGE("armlambdaStop2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     (0)*DEG2RAD,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     (calcAlpha ( mcipguideLength , - mcipguideRadius ))*DEG2RAD,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     (0)*DEG2RAD);
-#line 9793 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9809 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaarmlambdaStop2);
   rot_transpose(mcrotaarmlambdaStop1, mctr1);
   rot_mul(mcrotaarmlambdaStop2, mctr1, mcrotrarmlambdaStop2);
   mctc1 = coords_set(
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     calcX ( mcipguideLength , - mcipguideRadius ),
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     calcZ ( mcipguideLength , - mcipguideRadius ) + 1.2);
-#line 9804 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9820 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaarmlambdaStop2 = coords_add(mcposaOrigin, mctc2);
@@ -9815,47 +9831,47 @@ void mcinit(void) {
     /* Component lamStopBender1. */
   /* Setting parameters for component lamStopBender1. */
   SIG_MESSAGE("lamStopBender1 (Init:SetPar)");
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   if("lambdaStopBender1.dat") strncpy(mcclamStopBender1_filename, "lambdaStopBender1.dat" ? "lambdaStopBender1.dat" : "", 16384); else mcclamStopBender1_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopBender1_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopBender1_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopBender1_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopBender1_ymax = 0.05;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopBender1_xwidth = 0.20;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopBender1_yheight = 0.20;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopBender1_Lmin = 0.0;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopBender1_Lmax = 10;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopBender1_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopBender1_nowritefile = 0;
-#line 9840 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9856 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 
   SIG_MESSAGE("lamStopBender1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9847 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9863 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_mul(mctr1, mcrotaarmlambdaStop1, mcrotalamStopBender1);
   rot_transpose(mcrotaarmlambdaStop2, mctr1);
   rot_mul(mcrotalamStopBender1, mctr1, mcrotrlamStopBender1);
   mctc1 = coords_set(
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0.05);
-#line 9858 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9874 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_transpose(mcrotaarmlambdaStop1, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposalamStopBender1 = coords_add(mcposaarmlambdaStop1, mctc2);
@@ -9869,45 +9885,45 @@ void mcinit(void) {
     /* Component psdBender1. */
   /* Setting parameters for component psdBender1. */
   SIG_MESSAGE("psdBender1 (Init:SetPar)");
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdBender1_nx = 40;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdBender1_ny = 40;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   if("psdBender1.dat") strncpy(mccpsdBender1_filename, "psdBender1.dat" ? "psdBender1.dat" : "", 16384); else mccpsdBender1_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdBender1_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdBender1_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdBender1_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdBender1_ymax = 0.05;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdBender1_xwidth = 0.10;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdBender1_yheight = 0.10;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdBender1_restore_neutron = 0;
-#line 9892 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9908 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 
   SIG_MESSAGE("psdBender1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9899 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9915 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_mul(mctr1, mcrotaarmlambdaStop1, mcrotapsdBender1);
   rot_transpose(mcrotalamStopBender1, mctr1);
   rot_mul(mcrotapsdBender1, mctr1, mcrotrpsdBender1);
   mctc1 = coords_set(
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0.05);
-#line 9910 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9926 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_transpose(mcrotaarmlambdaStop1, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposapsdBender1 = coords_add(mcposaarmlambdaStop1, mctc2);
@@ -9921,47 +9937,47 @@ void mcinit(void) {
     /* Component lamStopBender2. */
   /* Setting parameters for component lamStopBender2. */
   SIG_MESSAGE("lamStopBender2 (Init:SetPar)");
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   if("lambdaStopBender2.dat") strncpy(mcclamStopBender2_filename, "lambdaStopBender2.dat" ? "lambdaStopBender2.dat" : "", 16384); else mcclamStopBender2_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopBender2_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopBender2_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopBender2_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopBender2_ymax = 0.05;
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopBender2_xwidth = 0.20;
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopBender2_yheight = 0.20;
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopBender2_Lmin = 0.0;
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopBender2_Lmax = 10;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopBender2_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopBender2_nowritefile = 0;
-#line 9946 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9962 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 
   SIG_MESSAGE("lamStopBender2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9953 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9969 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_mul(mctr1, mcrotaarmlambdaStop2, mcrotalamStopBender2);
   rot_transpose(mcrotapsdBender1, mctr1);
   rot_mul(mcrotalamStopBender2, mctr1, mcrotrlamStopBender2);
   mctc1 = coords_set(
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0.05);
-#line 9964 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 9980 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_transpose(mcrotaarmlambdaStop2, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposalamStopBender2 = coords_add(mcposaarmlambdaStop2, mctc2);
@@ -9975,45 +9991,45 @@ void mcinit(void) {
     /* Component psdBender2. */
   /* Setting parameters for component psdBender2. */
   SIG_MESSAGE("psdBender2 (Init:SetPar)");
-#line 142 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 142 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdBender2_nx = 40;
-#line 142 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 142 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdBender2_ny = 40;
-#line 142 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 142 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   if("psdBender2.dat") strncpy(mccpsdBender2_filename, "psdBender2.dat" ? "psdBender2.dat" : "", 16384); else mccpsdBender2_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdBender2_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdBender2_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdBender2_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdBender2_ymax = 0.05;
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdBender2_xwidth = 0.10;
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdBender2_yheight = 0.10;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdBender2_restore_neutron = 0;
-#line 9998 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 10014 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 
   SIG_MESSAGE("psdBender2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10005 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 10021 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_mul(mctr1, mcrotaarmlambdaStop2, mcrotapsdBender2);
   rot_transpose(mcrotalamStopBender2, mctr1);
   rot_mul(mcrotapsdBender2, mctr1, mcrotrpsdBender2);
   mctc1 = coords_set(
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0.05);
-#line 10016 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 10032 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_transpose(mcrotaarmlambdaStop2, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposapsdBender2 = coords_add(mcposaarmlambdaStop2, mctc2);
@@ -10027,47 +10043,47 @@ void mcinit(void) {
     /* Component lamStopGuide. */
   /* Setting parameters for component lamStopGuide. */
   SIG_MESSAGE("lamStopGuide (Init:SetPar)");
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   if("lambdaStopGuide.dat") strncpy(mcclamStopGuide_filename, "lambdaStopGuide.dat" ? "lambdaStopGuide.dat" : "", 16384); else mcclamStopGuide_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopGuide_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopGuide_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopGuide_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopGuide_ymax = 0.05;
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopGuide_xwidth = 0.20;
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopGuide_yheight = 0.20;
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopGuide_Lmin = 0.0;
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopGuide_Lmax = 10;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopGuide_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mcclamStopGuide_nowritefile = 0;
-#line 10052 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 10068 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 
   SIG_MESSAGE("lamStopGuide (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10059 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 10075 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_mul(mctr1, mcrotaarmlambdaStop1, mcrotalamStopGuide);
   rot_transpose(mcrotapsdBender2, mctr1);
   rot_mul(mcrotalamStopGuide, mctr1, mcrotrlamStopGuide);
   mctc1 = coords_set(
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0.05);
-#line 10070 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 10086 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_transpose(mcrotaarmlambdaStop1, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposalamStopGuide = coords_add(mcposaarmlambdaStop1, mctc2);
@@ -10081,45 +10097,45 @@ void mcinit(void) {
     /* Component psdGuide. */
   /* Setting parameters for component psdGuide. */
   SIG_MESSAGE("psdGuide (Init:SetPar)");
-#line 152 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 152 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdGuide_nx = 40;
-#line 152 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 152 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdGuide_ny = 40;
-#line 152 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 152 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   if("psdGuide.dat") strncpy(mccpsdGuide_filename, "psdGuide.dat" ? "psdGuide.dat" : "", 16384); else mccpsdGuide_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdGuide_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdGuide_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdGuide_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdGuide_ymax = 0.05;
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdGuide_xwidth = 0.10;
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdGuide_yheight = 0.10;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   mccpsdGuide_restore_neutron = 0;
-#line 10104 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 10120 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 
   SIG_MESSAGE("psdGuide (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10111 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 10127 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_mul(mctr1, mcrotaarmlambdaStop1, mcrotapsdGuide);
   rot_transpose(mcrotalamStopGuide, mctr1);
   rot_mul(mcrotapsdGuide, mctr1, mcrotrpsdGuide);
   mctc1 = coords_set(
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0,
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
     0.05);
-#line 10122 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 10138 "./Test_Pol_Bender_Vs_Guide_Curved.c"
   rot_transpose(mcrotaarmlambdaStop1, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposapsdGuide = coords_add(mcposaarmlambdaStop1, mctc2);
@@ -10156,7 +10172,7 @@ fprintf(stdout, "[%s] Initialize\n", mcinstrument_name);
     percent=1e5*100.0/mcget_ncount();
   }
 }
-#line 10159 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 10175 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef minutes
 #undef flag_save
 #undef percent
@@ -10250,7 +10266,7 @@ if (radius && !yheight && !xwidth ) {
       exit(0);
   }
 }
-#line 10253 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 10269 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef target_index
 #undef gauss
 #undef flux
@@ -10312,7 +10328,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
       L_p2[i] = 0;
     }
 }
-#line 10315 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 10331 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef nowritefile
 #undef restore_neutron
 #undef Lmax
@@ -10375,7 +10391,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
     }
   }
 }
-#line 10378 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 10394 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef restore_neutron
 #undef yheight
 #undef xwidth
@@ -10543,7 +10559,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
   pointBot = coords_set(0, -yheight/2, 0);
 
 }
-#line 10546 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 10562 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef drawOption
 #undef endFlat
 #undef debug
@@ -10740,7 +10756,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
   pointBot = coords_set(0, -yheight/2, 0);
 
 }
-#line 10743 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 10759 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef drawOption
 #undef endFlat
 #undef debug
@@ -10808,7 +10824,7 @@ if (mcgravitation) fprintf(stderr,"WARNING: Guide_curved: %s: "
     "Use Guide_gravity.\n",
     NAME_CURRENT_COMP);
 }
-#line 10811 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 10827 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef curvature
 #undef W
 #undef m
@@ -10869,7 +10885,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
       L_p2[i] = 0;
     }
 }
-#line 10872 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 10888 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef nowritefile
 #undef restore_neutron
 #undef Lmax
@@ -10932,7 +10948,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
     }
   }
 }
-#line 10935 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 10951 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef restore_neutron
 #undef yheight
 #undef xwidth
@@ -10991,7 +11007,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
       L_p2[i] = 0;
     }
 }
-#line 10994 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 11010 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef nowritefile
 #undef restore_neutron
 #undef Lmax
@@ -11054,7 +11070,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
     }
   }
 }
-#line 11057 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 11073 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef restore_neutron
 #undef yheight
 #undef xwidth
@@ -11113,7 +11129,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
       L_p2[i] = 0;
     }
 }
-#line 11116 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 11132 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef nowritefile
 #undef restore_neutron
 #undef Lmax
@@ -11176,7 +11192,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
     }
   }
 }
-#line 11179 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 11195 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef restore_neutron
 #undef yheight
 #undef xwidth
@@ -11347,14 +11363,14 @@ MCNUM minutes = mccOrigin_minutes;
     if (flag_save) mcsave(NULL);
   }
 }
-#line 11350 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 11366 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 /* 'Origin=Progress_bar()' component instance extend code */
     SIG_MESSAGE("Origin (Trace:Extend)");
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr"
   // Multiply probability by 3 because we have 3 cases
   p*=3.0;
   randomSwitch = rand01();
-#line 11357 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 11373 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -11525,7 +11541,7 @@ int target_index = mccsource_target_index;
  vy=v*dy/rf;
  vx=v*dx/rf;
 }
-#line 11528 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 11544 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of source=Source_simple() SETTING parameter declarations. */
 #undef srcArea
 #undef square
@@ -11671,7 +11687,7 @@ int nowritefile = mcclamStart_nowritefile;
       RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
     }
 }
-#line 11674 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 11690 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of lamStart=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -11809,7 +11825,7 @@ MCNUM restore_neutron = mccpsdStart_restore_neutron;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 11812 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 11828 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of psdStart=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -12182,7 +12198,7 @@ if (( randomSwitch <= 1.0 / 3 ))
   }
 
 }
-#line 12184 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 12200 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of bender1=Pol_bender() SETTING parameter declarations. */
 #undef rRightDownParPtr
 #undef rRightUpParPtr
@@ -12584,7 +12600,7 @@ if (( randomSwitch > 1.0 / 3 && randomSwitch <= 2.0 / 3 ))
   }
 
 }
-#line 12585 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 12601 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of bender2=Pol_bender() SETTING parameter declarations. */
 #undef rRightDownParPtr
 #undef rRightUpParPtr
@@ -12798,7 +12814,7 @@ if (( randomSwitch > 2.0 / 3 ))
     SCATTER;
   }
 }
-#line 12798 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 12814 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of guide=Guide_curved() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -13150,7 +13166,7 @@ if (( randomSwitch <= 1.0 / 3 ))
       RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
     }
 }
-#line 13149 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 13165 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of lamStopBender1=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -13291,7 +13307,7 @@ if (( randomSwitch <= 1.0 / 3 ))
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 13289 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 13305 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of psdBender1=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -13440,7 +13456,7 @@ if (( randomSwitch > 1.0 / 3 && randomSwitch <= 2.0 / 3 ))
       RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
     }
 }
-#line 13437 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 13453 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of lamStopBender2=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -13581,7 +13597,7 @@ if (( randomSwitch > 1.0 / 3 && randomSwitch <= 2.0 / 3 ))
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 13577 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 13593 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of psdBender2=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -13730,7 +13746,7 @@ if (( randomSwitch > 2.0 / 3 ))
       RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
     }
 }
-#line 13725 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 13741 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of lamStopGuide=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -13871,7 +13887,7 @@ if (( randomSwitch > 2.0 / 3 ))
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 13865 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 13881 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of psdGuide=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -13983,7 +13999,7 @@ MCNUM minutes = mccOrigin_minutes;
 
   }
 }
-#line 13977 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 13993 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -14026,7 +14042,7 @@ int nowritefile = mcclamStart_nowritefile;
         filename);
     }
 }
-#line 14020 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 14036 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of lamStart=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -14066,7 +14082,7 @@ MCNUM restore_neutron = mccpsdStart_restore_neutron;
     &PSD_N[0][0],&PSD_p[0][0],&PSD_p2[0][0],
     filename);
 }
-#line 14060 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 14076 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of psdStart=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -14108,7 +14124,7 @@ int nowritefile = mcclamStopBender1_nowritefile;
         filename);
     }
 }
-#line 14102 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 14118 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of lamStopBender1=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -14148,7 +14164,7 @@ MCNUM restore_neutron = mccpsdBender1_restore_neutron;
     &PSD_N[0][0],&PSD_p[0][0],&PSD_p2[0][0],
     filename);
 }
-#line 14142 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 14158 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of psdBender1=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -14190,7 +14206,7 @@ int nowritefile = mcclamStopBender2_nowritefile;
         filename);
     }
 }
-#line 14184 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 14200 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of lamStopBender2=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -14230,7 +14246,7 @@ MCNUM restore_neutron = mccpsdBender2_restore_neutron;
     &PSD_N[0][0],&PSD_p[0][0],&PSD_p2[0][0],
     filename);
 }
-#line 14224 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 14240 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of psdBender2=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -14272,7 +14288,7 @@ int nowritefile = mcclamStopGuide_nowritefile;
         filename);
     }
 }
-#line 14266 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 14282 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of lamStopGuide=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -14312,7 +14328,7 @@ MCNUM restore_neutron = mccpsdGuide_restore_neutron;
     &PSD_N[0][0],&PSD_p[0][0],&PSD_p2[0][0],
     filename);
 }
-#line 14306 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 14322 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of psdGuide=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -14355,7 +14371,7 @@ MCNUM minutes = mccOrigin_minutes;
     fprintf(stdout, "%g [min] ", difftime(NowTime,StartTime)/60.0);
   fprintf(stdout, "\n");
 }
-#line 14349 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 14365 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -14399,7 +14415,7 @@ MCNUM restore_neutron = mccpsdStart_restore_neutron;
   destroy_darr2d(PSD_p);
   destroy_darr2d(PSD_p2);
 }
-#line 14390 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 14406 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of psdStart=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -14454,7 +14470,7 @@ MCNUM restore_neutron = mccpsdBender1_restore_neutron;
   destroy_darr2d(PSD_p);
   destroy_darr2d(PSD_p2);
 }
-#line 14438 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 14454 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of psdBender1=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -14494,7 +14510,7 @@ MCNUM restore_neutron = mccpsdBender2_restore_neutron;
   destroy_darr2d(PSD_p);
   destroy_darr2d(PSD_p2);
 }
-#line 14476 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 14492 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of psdBender2=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -14534,7 +14550,7 @@ MCNUM restore_neutron = mccpsdGuide_restore_neutron;
   destroy_darr2d(PSD_p);
   destroy_darr2d(PSD_p2);
 }
-#line 14514 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 14530 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of psdGuide=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -14580,7 +14596,7 @@ MCNUM minutes = mccOrigin_minutes;
 {
   
 }
-#line 14559 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 14575 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -14629,7 +14645,7 @@ int target_index = mccsource_target_index;
     dashed_line(0,0,0, -focus_xw/2+tx, focus_yh/2+ty,tz, 4);
   }
 }
-#line 14608 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 14624 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of source=Source_simple() SETTING parameter declarations. */
 #undef srcArea
 #undef square
@@ -14669,7 +14685,7 @@ int nowritefile = mcclamStart_nowritefile;
                (double)xmin, (double)ymax, 0.0,
                (double)xmin, (double)ymin, 0.0);
 }
-#line 14648 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 14664 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of lamStart=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -14708,7 +14724,7 @@ MCNUM restore_neutron = mccpsdStart_restore_neutron;
     (double)xmin, (double)ymax, 0.0,
     (double)xmin, (double)ymin, 0.0);
 }
-#line 14687 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 14703 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of psdStart=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -14847,7 +14863,7 @@ int drawOption = mccbender1_drawOption;
   line(x2,-0.5*yheight, z2, x2, 0.5*yheight, z2);
   line(x1,-0.5*yheight, z1, x2,-0.5*yheight, z2);
 }
-#line 14826 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 14842 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of bender1=Pol_bender() SETTING parameter declarations. */
 #undef rRightDownParPtr
 #undef rRightUpParPtr
@@ -15015,7 +15031,7 @@ int drawOption = mccbender2_drawOption;
   line(x2,-0.5*yheight, z2, x2, 0.5*yheight, z2);
   line(x1,-0.5*yheight, z1, x2,-0.5*yheight, z2);
 }
-#line 14994 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 15010 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of bender2=Pol_bender() SETTING parameter declarations. */
 #undef rRightDownParPtr
 #undef rRightUpParPtr
@@ -15105,7 +15121,7 @@ MCNUM curvature = mccguide_curvature;
   line(xplot2[n-1],-0.5*h1,zplot2[n-1],xplot2[n-1], 0.5*h1,zplot2[n-1]);
   line(xplot1[n-1],-0.5*h1,zplot1[n-1],xplot2[n-1],-0.5*h1,zplot2[n-1]);
 }
-#line 15084 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 15100 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of guide=Guide_curved() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -15125,7 +15141,7 @@ MCNUM curvature = mccguide_curvature;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 15104 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 15120 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -15144,7 +15160,7 @@ MCNUM curvature = mccguide_curvature;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 15123 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 15139 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -15180,7 +15196,7 @@ int nowritefile = mcclamStopBender1_nowritefile;
                (double)xmin, (double)ymax, 0.0,
                (double)xmin, (double)ymin, 0.0);
 }
-#line 15159 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 15175 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of lamStopBender1=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -15219,7 +15235,7 @@ MCNUM restore_neutron = mccpsdBender1_restore_neutron;
     (double)xmin, (double)ymax, 0.0,
     (double)xmin, (double)ymin, 0.0);
 }
-#line 15198 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 15214 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of psdBender1=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -15259,7 +15275,7 @@ int nowritefile = mcclamStopBender2_nowritefile;
                (double)xmin, (double)ymax, 0.0,
                (double)xmin, (double)ymin, 0.0);
 }
-#line 15238 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 15254 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of lamStopBender2=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -15298,7 +15314,7 @@ MCNUM restore_neutron = mccpsdBender2_restore_neutron;
     (double)xmin, (double)ymax, 0.0,
     (double)xmin, (double)ymin, 0.0);
 }
-#line 15277 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 15293 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of psdBender2=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -15338,7 +15354,7 @@ int nowritefile = mcclamStopGuide_nowritefile;
                (double)xmin, (double)ymax, 0.0,
                (double)xmin, (double)ymin, 0.0);
 }
-#line 15317 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 15333 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of lamStopGuide=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -15377,7 +15393,7 @@ MCNUM restore_neutron = mccpsdGuide_restore_neutron;
     (double)xmin, (double)ymax, 0.0,
     (double)xmin, (double)ymin, 0.0);
 }
-#line 15356 "./Test_Pol_Bender_Vs_Guide_Curved.c"
+#line 15372 "./Test_Pol_Bender_Vs_Guide_Curved.c"
 }   /* End of psdGuide=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p

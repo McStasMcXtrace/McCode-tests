@@ -2,66 +2,66 @@ INFO: Using directory: "1"
 INFO: Using existing c-file: ./linup-1.c
 INFO: Using existing binary: ./linup-1.out
 INFO: ===
-[hpclogin2:13780] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[hpclogin2:13780] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[hpclogin2:13780] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1575393410.951370] [hpclogin2:13786:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 2895.96
-[1575393410.952967] [hpclogin2:13786:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1575393410.952986] [hpclogin2:13786:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-23-14:27896] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:27896] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:27896] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582665477.671323] [n-62-23-14:27901:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3217.33
+[1582665477.674014] [n-62-23-14:27901:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665477.674038] [n-62-23-14:27901:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665477.677040] [n-62-23-14:27903:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3234.42
+[1582665477.678940] [n-62-23-14:27903:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665477.678957] [n-62-23-14:27903:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 --------------------------------------------------------------------------
 Initialization of MXM library failed.
 
   Error: Input/output error
 
 --------------------------------------------------------------------------
-[1575393410.954955] [hpclogin2:13786:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1575393410.954971] [hpclogin2:13786:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1575393410.955721] [hpclogin2:13785:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 2895.96
-[1575393410.957814] [hpclogin2:13785:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1575393410.957835] [hpclogin2:13785:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1575393410.959900] [hpclogin2:13785:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1575393410.959923] [hpclogin2:13785:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1575393410.979368] [hpclogin2:13788:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 2895.96
-[1575393410.981111] [hpclogin2:13787:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 2895.96
-[1575393410.981166] [hpclogin2:13788:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1575393410.981183] [hpclogin2:13788:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1575393410.983202] [hpclogin2:13788:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1575393410.983217] [hpclogin2:13788:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1575393410.983246] [hpclogin2:13787:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1575393410.983268] [hpclogin2:13787:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1575393410.983940] [hpclogin2:13790:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 2895.96
-[1575393410.985496] [hpclogin2:13790:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1575393410.985515] [hpclogin2:13790:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1575393410.985570] [hpclogin2:13787:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1575393410.985590] [hpclogin2:13787:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1575393410.987396] [hpclogin2:13790:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1575393410.987411] [hpclogin2:13790:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1575393410.992514] [hpclogin2:13794:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 2895.96
-[1575393410.993985] [hpclogin2:13794:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1575393410.994002] [hpclogin2:13794:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1575393410.995847] [hpclogin2:13794:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1575393410.995863] [hpclogin2:13794:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1575393410.999152] [hpclogin2:13792:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 2846.14
-[1575393411.000666] [hpclogin2:13792:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1575393411.000684] [hpclogin2:13792:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1575393411.002208] [hpclogin2:13791:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 2846.14
-[1575393411.002588] [hpclogin2:13792:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1575393411.002604] [hpclogin2:13792:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1575393411.003644] [hpclogin2:13793:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 2846.14
-[1575393411.004050] [hpclogin2:13791:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1575393411.004071] [hpclogin2:13791:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1575393411.004385] [hpclogin2:13789:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 2846.14
-[1575393411.005494] [hpclogin2:13793:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1575393411.005514] [hpclogin2:13793:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1575393411.006164] [hpclogin2:13791:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1575393411.006185] [hpclogin2:13791:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1575393411.006163] [hpclogin2:13789:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1575393411.006184] [hpclogin2:13789:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1575393411.007495] [hpclogin2:13793:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1575393411.007514] [hpclogin2:13793:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1575393411.008179] [hpclogin2:13789:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1575393411.008198] [hpclogin2:13789:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'TAS1_C1' (/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-1/linup-1.instr): running on 10 nodes (master is 'hpclogin2', MPI version 3.1).
+[1582665477.681694] [n-62-23-14:27902:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3234.42
+[1582665477.681961] [n-62-23-14:27903:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665477.681979] [n-62-23-14:27903:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665477.684561] [n-62-23-14:27902:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665477.684578] [n-62-23-14:27902:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665477.684653] [n-62-23-14:27901:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665477.684671] [n-62-23-14:27901:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665477.684723] [n-62-23-14:27905:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3220.41
+[1582665477.686530] [n-62-23-14:27905:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665477.686547] [n-62-23-14:27905:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665477.687422] [n-62-23-14:27902:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665477.687439] [n-62-23-14:27902:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665477.687843] [n-62-23-14:27904:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3191.19
+[1582665477.689653] [n-62-23-14:27905:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665477.689668] [n-62-23-14:27905:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665477.690693] [n-62-23-14:27904:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665477.690708] [n-62-23-14:27904:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665477.691142] [n-62-23-14:27907:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3191.19
+[1582665477.694141] [n-62-23-14:27906:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3181.10
+[1582665477.693693] [n-62-23-14:27904:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665477.693711] [n-62-23-14:27904:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665477.694303] [n-62-23-14:27907:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665477.694320] [n-62-23-14:27907:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665477.696100] [n-62-23-14:27906:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665477.696117] [n-62-23-14:27906:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665477.697066] [n-62-23-14:27907:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665477.697083] [n-62-23-14:27907:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665477.698210] [n-62-23-14:27906:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665477.698292] [n-62-23-14:27906:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665477.702318] [n-62-23-14:27909:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3167.60
+[1582665477.704157] [n-62-23-14:27909:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665477.704173] [n-62-23-14:27909:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665477.706255] [n-62-23-14:27909:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665477.706272] [n-62-23-14:27909:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665477.706512] [n-62-23-14:27910:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3206.22
+[1582665477.707682] [n-62-23-14:27908:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3213.57
+[1582665477.710295] [n-62-23-14:27908:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665477.710311] [n-62-23-14:27908:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665477.710390] [n-62-23-14:27910:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665477.710407] [n-62-23-14:27910:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665477.712434] [n-62-23-14:27910:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665477.712449] [n-62-23-14:27910:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665477.712517] [n-62-23-14:27908:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665477.712534] [n-62-23-14:27908:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'TAS1_C1' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/linup-1/linup-1.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
 [TAS1_C1] Initialize
 [TAS1_C1] Initialize
 [TAS1_C1] Initialize
@@ -72,40 +72,40 @@ Simulation 'TAS1_C1' (/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linu
 [TAS1_C1] Initialize
 [TAS1_C1] Initialize
 [TAS1_C1] Initialize
-<E> : 20.1203 meV , E-width : 0.168179 meV 
+<E> : 20.1205 meV , E-width : 0.168406 meV 
 
-Finally [TAS1_C1: 1]. Time: 1 [s] 
-<E> : 20.1213 meV , E-width : 0.168194 meV 
-<E> : 20.1208 meV , E-width : 0.168275 meV 
+Finally [TAS1_C1: 1]. Time: 3 [s] 
+<E> : 20.1213 meV , E-width : 0.167178 meV 
 
-Finally [TAS1_C1: 1]. Time: 1 [s] 
+Finally [TAS1_C1: 1]. Time: 4 [s] 
+<E> : 20.1217 meV , E-width : 0.168443 meV 
 
-Finally [TAS1_C1: 1]. Time: 1 [s] 
-<E> : 20.1206 meV , E-width : 0.168312 meV 
+Finally [TAS1_C1: 1]. Time: 4 [s] 
+<E> : 20.1215 meV , E-width : 0.168186 meV 
 
-Finally [TAS1_C1: 1]. Time: 1 [s] 
-<E> : 20.1195 meV , E-width : 0.168046 meV 
+Finally [TAS1_C1: 1]. Time: 4 [s] 
+<E> : 20.1224 meV , E-width : 0.167274 meV 
 
-Finally [TAS1_C1: 1]. Time: 1 [s] 
+Finally [TAS1_C1: 1]. Time: 4 [s] 
 
 Save [TAS1_C1]
-<E> : 20.1219 meV , E-width : 0.169608 meV 
-<E> : 20.1207 meV , E-width : 0.167813 meV 
-<E> : 20.1212 meV , E-width : 0.168172 meV 
-Detector: emon1_I=0.000909224 emon1_ERR=1.95158e-06 emon1_N=266411 "linup_1_1.emon"
-<E> : 20.1204 meV , E-width : 0.167591 meV 
+<E> : 20.1217 meV , E-width : 0.16736 meV 
+<E> : 20.1218 meV , E-width : 0.168296 meV 
+<E> : 20.1223 meV , E-width : 0.168735 meV 
 
-Finally [TAS1_C1: 1]. Time: 1 [s] 
+Finally [TAS1_C1: 1]. Time: 4 [s] 
 
-Finally [TAS1_C1: 1]. Time: 1 [s] 
+Finally [TAS1_C1: 1]. Time: 4 [s] 
 
-Finally [TAS1_C1: 1]. Time: 1 [s] 
+Finally [TAS1_C1: 1]. Time: 4 [s] 
+Detector: emon1_I=0.000910632 emon1_ERR=1.95426e-06 emon1_N=266261 "linup_1_1.emon"
+<E> : 20.1224 meV , E-width : 0.168851 meV 
 
-Finally [TAS1_C1: 1]. Time: 1 [s] 
-<E> : 20.1209 meV , E-width : 0.167983 meV 
-Detector: sng_I=0.000422831 sng_ERR=1.32289e-06 sng_N=124793 "sng"
+Finally [TAS1_C1: 1]. Time: 4 [s] 
+<E> : 20.1219 meV , E-width : 0.168322 meV 
+Detector: sng_I=0.000425225 sng_ERR=1.32763e-06 sng_N=125115 "sng"
 
-Finally [TAS1_C1: 1]. Time: 1 [s] 
-[hpclogin2:13780] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[hpclogin2:13780] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
-INFO: Placing instr file copy /zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-1/linup-1.instr in dataset 1
+Finally [TAS1_C1: 1]. Time: 4 [s] 
+[n-62-23-14:27896] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-14:27896] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/linup-1/linup-1.instr in dataset 1

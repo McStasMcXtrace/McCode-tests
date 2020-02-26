@@ -1,11 +1,28 @@
-      [1574205082.447829] [n-62-23-6:28374:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3371.83
-[1574205082.449132] [n-62-23-6:28374:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574205082.449136] [n-62-23-6:28374:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574205082.450959] [n-62-23-6:28374:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574205082.450962] [n-62-23-6:28374:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: No output directory specified (--dir)
+INFO: Using directory: "ESS_BEER_MCPL_20200225_202255"
+INFO: Regenerating c-file: ESS_BEER_MCPL.c
+Info:    'Exact_radial_coll' is a contributed component.
+Info:    'NPI_tof_dhkl_detector' is a contributed component.
+Info:    'NPI_tof_theta_monitor' is a contributed component.
+CFLAGS= -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
+      INFO: Recompiling: ./ESS_BEER_MCPL.out
+INFO: ===
+[n-62-23-14:31976] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:31976] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582658581.794446] [n-62-23-14:31975:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3377.81
+[1582658581.796218] [n-62-23-14:31975:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582658581.796222] [n-62-23-14:31975:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1582658581.798823] [n-62-23-14:31975:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582658581.798826] [n-62-23-14:31975:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 begin instrument: ESS_BEER_MCPL
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr
   Parameters:  input(string) repetition(int) pwdfile(string) lc(double) lam0(double) dlam(double) omega(double) chi(double) colw(double) modul(double) mod_frq(double) mod_twidth(double) mod_shift(double) only_event(double) pinc(double) ptra(double) strain(double) ustrain(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +31,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1574233456
+  Seed: 1582690556
   Directory: .
   Param: input=BEER_MR.mcpl
   Param: repetition=50
@@ -41,18 +58,3 @@ begin simulation: .
   Param: ustrain=0
 end simulation
 info!
-INFO: No output directory specified (--dir)
-INFO: Using directory: "ESS_BEER_MCPL_20191120_001115"
-INFO: Regenerating c-file: ESS_BEER_MCPL.c
-Info:    'Exact_radial_coll' is a contributed component.
-Info:    'NPI_tof_dhkl_detector' is a contributed component.
-Info:    'NPI_tof_theta_monitor' is a contributed component.
-CFLAGS= -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
-INFO: Recompiling: ./ESS_BEER_MCPL.out
-INFO: ===
---------------------------------------------------------------------------
-Initialization of MXM library failed.
-
-  Error: Input/output error
-
---------------------------------------------------------------------------

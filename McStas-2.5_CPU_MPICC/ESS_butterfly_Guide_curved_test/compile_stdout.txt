@@ -1,11 +1,34 @@
-      [1574205168.815318] [n-62-23-6:29204:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3363.96
-[1574205168.816587] [n-62-23-6:29204:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574205168.816590] [n-62-23-6:29204:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574205168.818437] [n-62-23-6:29204:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574205168.818440] [n-62-23-6:29204:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: No output directory specified (--dir)
+INFO: Using directory: "ESS_butterfly_Guide_curved_test_20200225_202420"
+INFO: Regenerating c-file: ESS_butterfly_Guide_curved_test.c
+Warning: Using DEFINITION parameter of component Brilliance_monitor() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_butterfly_Guide_curved_test/ESS_butterfly_Guide_curved_test.instr:293
+  srcarea=( 100 * 0.072 * 100 * mcipYheight )
+Warning: Using DEFINITION parameter of component Brilliance_monitor() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_butterfly_Guide_curved_test/ESS_butterfly_Guide_curved_test.instr:301
+  srcarea=( 100 * 0.06 * 100 * 2 * mcipYheight / 2.5 )
+Warning: Using DEFINITION parameter of component Brilliance_monitor() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_butterfly_Guide_curved_test/ESS_butterfly_Guide_curved_test.instr:308
+  srcarea=( 100 * 0.108 * 100 * mcipYheight )
+Warning: Using DEFINITION parameter of component Brilliance_monitor() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_butterfly_Guide_curved_test/ESS_butterfly_Guide_curved_test.instr:316
+  srcarea=( 100 * 0.06 * 100 * 2 * mcipYheight / 2.5 )
+Info:    'Guide_curved' is a contributed component.
+CFLAGS= -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
+      INFO: Recompiling: ./ESS_butterfly_Guide_curved_test.out
+INFO: ===
+[n-62-23-14:32344] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:32344] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582658674.638531] [n-62-23-14:32343:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3384.81
+[1582658674.640204] [n-62-23-14:32343:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582658674.640208] [n-62-23-14:32343:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1582658674.643287] [n-62-23-14:32343:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582658674.643290] [n-62-23-14:32343:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 begin instrument: ESS_butterfly_test
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_butterfly_Guide_curved_test/ESS_butterfly_Guide_curved_test.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_butterfly_Guide_curved_test/ESS_butterfly_Guide_curved_test.instr
   Parameters:  sector(string) beamline(int) Lmin(double) Lmax(double) c_performance(double) t_performance(double) index(int) dist(double) cold(double) Yheight(double) delta(double) thres(double) filter(double) repeat(double) E_smear(double) pos_smear(double) dir_smear(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +37,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_butterfly_Guide_curved_test/ESS_butterfly_Guide_curved_test.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_butterfly_Guide_curved_test/ESS_butterfly_Guide_curved_test.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1574234372
+  Seed: 1582691017
   Directory: .
   Param: sector=N
   Param: beamline=1
@@ -40,24 +63,3 @@ begin simulation: .
   Param: dir_smear=0.01
 end simulation
 info!
-INFO: No output directory specified (--dir)
-INFO: Using directory: "ESS_butterfly_Guide_curved_test_20191120_001235"
-INFO: Regenerating c-file: ESS_butterfly_Guide_curved_test.c
-Warning: Using DEFINITION parameter of component Brilliance_monitor() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_butterfly_Guide_curved_test/ESS_butterfly_Guide_curved_test.instr:293
-  srcarea=( 100 * 0.072 * 100 * mcipYheight )
-Warning: Using DEFINITION parameter of component Brilliance_monitor() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_butterfly_Guide_curved_test/ESS_butterfly_Guide_curved_test.instr:301
-  srcarea=( 100 * 0.06 * 100 * 2 * mcipYheight / 2.5 )
-Warning: Using DEFINITION parameter of component Brilliance_monitor() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_butterfly_Guide_curved_test/ESS_butterfly_Guide_curved_test.instr:308
-  srcarea=( 100 * 0.108 * 100 * mcipYheight )
-Warning: Using DEFINITION parameter of component Brilliance_monitor() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_butterfly_Guide_curved_test/ESS_butterfly_Guide_curved_test.instr:316
-  srcarea=( 100 * 0.06 * 100 * 2 * mcipYheight / 2.5 )
-Info:    'Guide_curved' is a contributed component.
-CFLAGS= -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
-INFO: Recompiling: ./ESS_butterfly_Guide_curved_test.out
-INFO: ===
---------------------------------------------------------------------------
-Initialization of MXM library failed.
-
-  Error: Input/output error
-
---------------------------------------------------------------------------

@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr (ISIS_TOSCA_preupgrade_Mantid)
- * Date:       Wed Nov 20 00:42:53 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr (ISIS_TOSCA_preupgrade_Mantid)
+ * Date:       Tue Feb 25 20:58:12 2020
  * File:       ./ISIS_TOSCA_preupgrade_Mantid.c
  * Compile:    cc -o ISIS_TOSCA_preupgrade_Mantid.out ./ISIS_TOSCA_preupgrade_Mantid.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "ISIS_TOSCA_preupgrade_Mantid";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -11638,7 +11638,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define Emin mcipEmin
 #define Emax mcipEmax
 #define eventmode mcipeventmode
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
 double v_foc, c_h1, c_h2, slit_curv, num_slits; 
 double nu_chop = 0, phase_chop = 28, E_min = 1, E_max = 1000;
 double lam, deg_phase, phase_time; 
@@ -16976,7 +16976,7 @@ void mcinit(void) {
 #define Emin mcipEmin
 #define Emax mcipEmax
 #define eventmode mcipeventmode
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
 {
 L_minE= 10.0*sqrt(0.81787/(E_max*1.15));
 L_maxE= 10.0*sqrt(0.81787/(E_min*0.85));
@@ -17008,13 +17008,13 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component arm1. */
   /* Setting parameters for component arm1. */
   SIG_MESSAGE("arm1 (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccarm1_profile, "NULL" ? "NULL" : "", 16384); else mccarm1_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccarm1_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccarm1_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccarm1_minutes = 0;
 #line 17019 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -17026,11 +17026,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
 #line 17026 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_copy(mcrotrarm1, mcrotaarm1);
   mcposaarm1 = coords_set(
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0);
 #line 17035 "./ISIS_TOSCA_preupgrade_Mantid.c"
   mctc1 = coords_neg(mcposaarm1);
@@ -17043,27 +17043,27 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component moder. */
   /* Setting parameters for component moder. */
   SIG_MESSAGE("moder (Init:SetPar)");
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("TS1_N08_Tosca.mcstas") strncpy(mccmoder_Face, "TS1_N08_Tosca.mcstas" ? "TS1_N08_Tosca.mcstas" : "", 16384); else mccmoder_Face[0]='\0';
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmoder_E0 = 0.01;
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmoder_E1 = 500.0;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmoder_modPosition = 0;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmoder_xw = 0.12;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmoder_yh = 0.115;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmoder_focus_xw = 0.094;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmoder_focus_yh = 0.094;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmoder_dist = 17;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmoder_verbose = 0;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmoder_beamcurrent = 1;
 #line 17068 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -17077,11 +17077,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaarm1, mctr1);
   rot_mul(mcrotamoder, mctr1, mcrotrmoder);
   mctc1 = coords_set(
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.00001);
 #line 17086 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm1, mctr1);
@@ -17108,11 +17108,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotamoder, mctr1);
   rot_mul(mcrotasourceMantid, mctr1, mcrotrsourceMantid);
   mctc1 = coords_set(
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0);
 #line 17117 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotamoder, mctr1);
@@ -17128,45 +17128,45 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component OldShutter. */
   /* Setting parameters for component OldShutter. */
   SIG_MESSAGE("OldShutter (Init:SetPar)");
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccOldShutter_w1 = 0.0845;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccOldShutter_h1 = 0.080;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccOldShutter_w2 = 0.0735;
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccOldShutter_h2 = 0.073;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccOldShutter_l = 1.940;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccOldShutter_R0 = 0.995;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccOldShutter_Qc = 0;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccOldShutter_alpha = 0;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccOldShutter_m = 0;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccOldShutter_nslit = 1;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccOldShutter_d = 0.0005;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccOldShutter_Qcx = 0.0218;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccOldShutter_Qcy = 0.0218;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccOldShutter_alphax = 4.38;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccOldShutter_alphay = 4.38;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccOldShutter_W = 0.003;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccOldShutter_mx = 0;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccOldShutter_my = 0;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccOldShutter_nu = 0;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccOldShutter_phase = 0;
 #line 17171 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -17180,11 +17180,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotasourceMantid, mctr1);
   rot_mul(mcrotaOldShutter, mctr1, mcrotrOldShutter);
   mctc1 = coords_set(
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     1.626);
 #line 17189 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm1, mctr1);
@@ -17200,19 +17200,19 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component Slit. */
   /* Setting parameters for component Slit. */
   SIG_MESSAGE("Slit (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccSlit_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccSlit_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccSlit_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccSlit_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccSlit_radius = 0;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccSlit_xwidth = 0.043;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccSlit_yheight = 0.043;
 #line 17217 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -17226,11 +17226,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaOldShutter, mctr1);
   rot_mul(mcrotaSlit, mctr1, mcrotrSlit);
   mctc1 = coords_set(
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     15.761);
 #line 17235 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm1, mctr1);
@@ -17246,29 +17246,29 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component Bmon. */
   /* Setting parameters for component Bmon. */
   SIG_MESSAGE("Bmon (Init:SetPar)");
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("Bmon.tof") strncpy(mccBmon_filename, "Bmon.tof" ? "Bmon.tof" : "", 16384); else mccBmon_filename[0]='\0';
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccBmon_xmin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccBmon_xmax = 0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccBmon_ymin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccBmon_ymax = 0.05;
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccBmon_xwidth = 0.04;
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccBmon_yheight = 0.04;
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccBmon_tmin = 0;
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccBmon_tmax = 26000;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccBmon_dt = 1.0;
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccBmon_restore_neutron = 1;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccBmon_nowritefile = 0;
 #line 17273 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -17282,11 +17282,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaSlit, mctr1);
   rot_mul(mcrotaBmon, mctr1, mcrotrBmon);
   mctc1 = coords_set(
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     15.791);
 #line 17291 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm1, mctr1);
@@ -17302,27 +17302,27 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component Emon. */
   /* Setting parameters for component Emon. */
   SIG_MESSAGE("Emon (Init:SetPar)");
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("Emon") strncpy(mccEmon_filename, "Emon" ? "Emon" : "", 16384); else mccEmon_filename[0]='\0';
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEmon_xmin = -0.05;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEmon_xmax = 0.05;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEmon_ymin = -0.05;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEmon_ymax = 0.05;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEmon_xwidth = 0.04;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEmon_yheight = 0.04;
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEmon_Emin = mcipEmin;
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEmon_Emax = mcipEmax;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEmon_restore_neutron = 1;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEmon_nowritefile = 0;
 #line 17327 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -17336,11 +17336,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaBmon, mctr1);
   rot_mul(mcrotaEmon, mctr1, mcrotrEmon);
   mctc1 = coords_set(
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     15.792);
 #line 17345 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm1, mctr1);
@@ -17356,47 +17356,47 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component TOF_sample. */
   /* Setting parameters for component TOF_sample. */
   SIG_MESSAGE("TOF_sample (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_sample_xwidth = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_sample_yheight = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_sample_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_sample_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_sample_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_sample_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_sample_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_sample_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_sample_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_sample_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_sample_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_sample_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_sample_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_sample_radius = 0;
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("user1 limits=[0 0.026] bins=1000,previous") strncpy(mccTOF_sample_options, "user1 limits=[0 0.026] bins=1000,previous" ? "user1 limits=[0 0.026] bins=1000,previous" : "", 16384); else mccTOF_sample_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_sample_filename, "NULL" ? "NULL" : "", 16384); else mccTOF_sample_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_sample_geometry, "NULL" ? "NULL" : "", 16384); else mccTOF_sample_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_sample_username1, "NULL" ? "NULL" : "", 16384); else mccTOF_sample_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_sample_username2, "NULL" ? "NULL" : "", 16384); else mccTOF_sample_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_sample_username3, "NULL" ? "NULL" : "", 16384); else mccTOF_sample_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_sample_nowritefile = 0;
 #line 17401 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -17410,11 +17410,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaEmon, mctr1);
   rot_mul(mcrotaTOF_sample, mctr1, mcrotrTOF_sample);
   mctc1 = coords_set(
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0);
 #line 17419 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaEmon, mctr1);
@@ -17433,21 +17433,21 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
 
   SIG_MESSAGE("arm_sample (Init:Place/Rotate)");
   rot_set_rotation(mcrotaarm_sample,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (180)*DEG2RAD,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD);
 #line 17442 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaTOF_sample, mctr1);
   rot_mul(mcrotaarm_sample, mctr1, mcrotrarm_sample);
   mctc1 = coords_set(
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     17.0);
 #line 17452 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm1, mctr1);
@@ -17466,22 +17466,22 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
 
   SIG_MESSAGE("arm_bank1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD,
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0 * 180)*DEG2RAD,
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (-180 + 0 * 60)*DEG2RAD);
 #line 17475 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_mul(mctr1, mcrotaarm1, mcrotaarm_bank1);
   rot_transpose(mcrotaarm_sample, mctr1);
   rot_mul(mcrotaarm_bank1, mctr1, mcrotrarm_bank1);
   mctc1 = coords_set(
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0);
 #line 17486 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_sample, mctr1);
@@ -17500,22 +17500,22 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
 
   SIG_MESSAGE("arm_bank2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD,
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0 * 180)*DEG2RAD,
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (-180 + 1 * 60)*DEG2RAD);
 #line 17509 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_mul(mctr1, mcrotaarm1, mcrotaarm_bank2);
   rot_transpose(mcrotaarm_bank1, mctr1);
   rot_mul(mcrotaarm_bank2, mctr1, mcrotrarm_bank2);
   mctc1 = coords_set(
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0);
 #line 17520 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_sample, mctr1);
@@ -17534,22 +17534,22 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
 
   SIG_MESSAGE("arm_bank3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD,
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0 * 180)*DEG2RAD,
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (-180 + 2 * 60)*DEG2RAD);
 #line 17543 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_mul(mctr1, mcrotaarm1, mcrotaarm_bank3);
   rot_transpose(mcrotaarm_bank2, mctr1);
   rot_mul(mcrotaarm_bank3, mctr1, mcrotrarm_bank3);
   mctc1 = coords_set(
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0);
 #line 17554 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_sample, mctr1);
@@ -17568,22 +17568,22 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
 
   SIG_MESSAGE("arm_bank4 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD,
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0 * 180)*DEG2RAD,
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (-180 + 3 * 60)*DEG2RAD);
 #line 17577 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_mul(mctr1, mcrotaarm1, mcrotaarm_bank4);
   rot_transpose(mcrotaarm_bank3, mctr1);
   rot_mul(mcrotaarm_bank4, mctr1, mcrotrarm_bank4);
   mctc1 = coords_set(
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0);
 #line 17588 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_sample, mctr1);
@@ -17602,22 +17602,22 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
 
   SIG_MESSAGE("arm_bank5 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD,
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0 * 180)*DEG2RAD,
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (-180 + 4 * 60)*DEG2RAD);
 #line 17611 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_mul(mctr1, mcrotaarm1, mcrotaarm_bank5);
   rot_transpose(mcrotaarm_bank4, mctr1);
   rot_mul(mcrotaarm_bank5, mctr1, mcrotrarm_bank5);
   mctc1 = coords_set(
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0);
 #line 17622 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_sample, mctr1);
@@ -17636,22 +17636,22 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
 
   SIG_MESSAGE("arm_bank6 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (180)*DEG2RAD,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (-180 + 0 * 60)*DEG2RAD);
 #line 17645 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_mul(mctr1, mcrotaarm1, mcrotaarm_bank6);
   rot_transpose(mcrotaarm_bank5, mctr1);
   rot_mul(mcrotaarm_bank6, mctr1, mcrotrarm_bank6);
   mctc1 = coords_set(
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0);
 #line 17656 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_sample, mctr1);
@@ -17670,22 +17670,22 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
 
   SIG_MESSAGE("arm_bank7 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD,
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (180)*DEG2RAD,
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (-180 + 2 * 60)*DEG2RAD);
 #line 17679 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_mul(mctr1, mcrotaarm1, mcrotaarm_bank7);
   rot_transpose(mcrotaarm_bank6, mctr1);
   rot_mul(mcrotaarm_bank7, mctr1, mcrotrarm_bank7);
   mctc1 = coords_set(
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0);
 #line 17690 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_sample, mctr1);
@@ -17704,22 +17704,22 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
 
   SIG_MESSAGE("arm_bank8 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD,
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (180)*DEG2RAD,
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (-180 + 3 * 60)*DEG2RAD);
 #line 17713 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_mul(mctr1, mcrotaarm1, mcrotaarm_bank8);
   rot_transpose(mcrotaarm_bank7, mctr1);
   rot_mul(mcrotaarm_bank8, mctr1, mcrotrarm_bank8);
   mctc1 = coords_set(
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0);
 #line 17724 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_sample, mctr1);
@@ -17738,22 +17738,22 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
 
   SIG_MESSAGE("arm_bank9 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD,
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (180)*DEG2RAD,
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (-180 + 4 * 60)*DEG2RAD);
 #line 17747 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_mul(mctr1, mcrotaarm1, mcrotaarm_bank9);
   rot_transpose(mcrotaarm_bank8, mctr1);
   rot_mul(mcrotaarm_bank9, mctr1, mcrotrarm_bank9);
   mctc1 = coords_set(
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0);
 #line 17758 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_sample, mctr1);
@@ -17772,22 +17772,22 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
 
   SIG_MESSAGE("arm_bank10 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD,
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (180)*DEG2RAD,
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (-180 + 5 * 60)*DEG2RAD);
 #line 17781 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_mul(mctr1, mcrotaarm1, mcrotaarm_bank10);
   rot_transpose(mcrotaarm_bank9, mctr1);
   rot_mul(mcrotaarm_bank10, mctr1, mcrotrarm_bank10);
   mctc1 = coords_set(
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0);
 #line 17792 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_sample, mctr1);
@@ -17803,61 +17803,61 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component powder. */
   /* Setting parameters for component powder. */
   SIG_MESSAGE("powder (Init:SetPar)");
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccpowder_Sqw_coh, "NULL" ? "NULL" : "", 16384); else mccpowder_Sqw_coh[0]='\0';
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if(mcipinc) strncpy(mccpowder_Sqw_inc, mcipinc ? mcipinc : "", 16384); else mccpowder_Sqw_inc[0]='\0';
-#line 270 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 270 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if(0) strncpy(mccpowder_geometry, 0 ? 0 : "", 16384); else mccpowder_geometry[0]='\0';
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccpowder_radius = 0;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccpowder_thickness = 0;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccpowder_xwidth = 0.04;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccpowder_yheight = 0.04;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccpowder_zdepth = mcipzdepth;
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccpowder_threshold = 1e-20;
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccpowder_order = 0;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccpowder_T = -1;
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccpowder_verbose = 1;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccpowder_d_phi = 105;
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccpowder_concentric = 0;
-#line 274 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 274 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccpowder_rho = 0;
-#line 274 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 274 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccpowder_sigma_abs = 0;
-#line 274 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 274 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccpowder_sigma_coh = 0;
-#line 274 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 274 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccpowder_sigma_inc = 0;
-#line 274 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 274 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccpowder_classical = -1;
-#line 275 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 275 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccpowder_powder_Dd = 0;
-#line 275 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 275 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccpowder_powder_DW = 0;
-#line 275 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 275 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccpowder_powder_Vc = 0;
-#line 275 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 275 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccpowder_density = 0;
-#line 275 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 275 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccpowder_weight = 0;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccpowder_p_interact = 0.9;
-#line 276 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 276 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccpowder_norm = -1;
-#line 276 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 276 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccpowder_powder_barns = 1;
-#line 276 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 276 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("Frommhold") strncpy(mccpowder_quantum_correction, "Frommhold" ? "Frommhold" : "", 16384); else mccpowder_quantum_correction[0]='\0';
 #line 17862 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -17871,11 +17871,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaarm_bank10, mctr1);
   rot_mul(mcrotapowder, mctr1, mcrotrpowder);
   mctc1 = coords_set(
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0);
 #line 17880 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_sample, mctr1);
@@ -17902,11 +17902,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotapowder, mctr1);
   rot_mul(mcrotasampleMantid, mctr1, mcrotrsampleMantid);
   mctc1 = coords_set(
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0);
 #line 17911 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotapowder, mctr1);
@@ -17922,43 +17922,43 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component sqw. */
   /* Setting parameters for component sqw. */
   SIG_MESSAGE("sqw (Init:SetPar)");
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw_xwidth = 0;
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw_yheight = 0;
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw_zdepth = 0;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw_xmin = 0;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw_xmax = 0;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw_ymin = 0;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw_ymax = 0;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw_zmin = 0;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw_zmax = 0;
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw_radius = 2;
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw_bins = 1000;
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw_min = -1e40;
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw_max = 1e40;
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw_index = -2;
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("user1 limits=[-18 18] bins=361, user2 limits=[-100 100] bins=501, parallel") strncpy(mccsqw_options, "user1 limits=[-18 18] bins=361, user2 limits=[-100 100] bins=501, parallel" ? "user1 limits=[-18 18] bins=361, user2 limits=[-100 100] bins=501, parallel" : "", 16384); else mccsqw_options[0]='\0';
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if(0) strncpy(mccsqw_filename, 0 ? 0 : "", 16384); else mccsqw_filename[0]='\0';
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if(0) strncpy(mccsqw_geometry, 0 ? 0 : "", 16384); else mccsqw_geometry[0]='\0';
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if(0) strncpy(mccsqw_username3, 0 ? 0 : "", 16384); else mccsqw_username3[0]='\0';
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw_nowritefile = 0;
 #line 17963 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -17972,11 +17972,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotasampleMantid, mctr1);
   rot_mul(mcrotasqw, mctr1, mcrotrsqw);
   mctc1 = coords_set(
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0);
 #line 17981 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotapowder, mctr1);
@@ -18003,11 +18003,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotasqw, mctr1);
   rot_mul(mcrotaRepeat, mctr1, mcrotrRepeat);
   mctc1 = coords_set(
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0);
 #line 18012 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotasqw, mctr1);
@@ -18023,66 +18023,66 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component monocr_b1. */
   /* Setting parameters for component monocr_b1. */
   SIG_MESSAGE("monocr_b1 (Init:SetPar)");
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("HOPG.rfl") strncpy(mccmonocr_b1_reflect, "HOPG.rfl" ? "HOPG.rfl" : "", 16384); else mccmonocr_b1_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccmonocr_b1_transmit, "NULL" ? "NULL" : "", 16384); else mccmonocr_b1_transmit[0]='\0';
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b1_zwidth = 0.01;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b1_yheight = 0.01;
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b1_gap = 0.001;
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b1_NH = 15;
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b1_NV = 10;
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b1_mosaich = 150;
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b1_mosaicv = 150;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b1_r0 = 0.7;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b1_t0 = 1.0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b1_Q = 1.8734;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b1_RV = 0;
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b1_RH = 0;
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b1_DM = 3.354;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b1_mosaic = 0;
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b1_width = 0.10;
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b1_height = 0.12;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b1_verbose = 0;
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b1_order = 1;
 #line 18066 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
   SIG_MESSAGE("monocr_b1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD,
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (90)*DEG2RAD,
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD);
 #line 18076 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_mul(mctr1, mcrotaarm_bank1, mcrotamonocr_b1);
   rot_transpose(mcrotaRepeat, mctr1);
   rot_mul(mcrotamonocr_b1, mctr1, mcrotrmonocr_b1);
   mctc1 = coords_set(
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.23,
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.2625);
 #line 18087 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank1, mctr1);
@@ -18098,66 +18098,66 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component monocr_b2. */
   /* Setting parameters for component monocr_b2. */
   SIG_MESSAGE("monocr_b2 (Init:SetPar)");
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("HOPG.rfl") strncpy(mccmonocr_b2_reflect, "HOPG.rfl" ? "HOPG.rfl" : "", 16384); else mccmonocr_b2_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccmonocr_b2_transmit, "NULL" ? "NULL" : "", 16384); else mccmonocr_b2_transmit[0]='\0';
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b2_zwidth = 0.01;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b2_yheight = 0.01;
-#line 167 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b2_gap = 0.001;
-#line 167 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b2_NH = 15;
-#line 167 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b2_NV = 10;
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b2_mosaich = 150;
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b2_mosaicv = 150;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b2_r0 = 0.7;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b2_t0 = 1.0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b2_Q = 1.8734;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b2_RV = 0;
-#line 167 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b2_RH = 0;
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b2_DM = 3.354;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b2_mosaic = 0;
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b2_width = 0.10;
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b2_height = 0.12;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b2_verbose = 0;
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b2_order = 1;
 #line 18141 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
   SIG_MESSAGE("monocr_b2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD,
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (90)*DEG2RAD,
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD);
 #line 18151 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_mul(mctr1, mcrotaarm_bank2, mcrotamonocr_b2);
   rot_transpose(mcrotamonocr_b1, mctr1);
   rot_mul(mcrotamonocr_b2, mctr1, mcrotrmonocr_b2);
   mctc1 = coords_set(
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.23,
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.2625);
 #line 18162 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank2, mctr1);
@@ -18173,66 +18173,66 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component monocr_b3. */
   /* Setting parameters for component monocr_b3. */
   SIG_MESSAGE("monocr_b3 (Init:SetPar)");
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 175 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("HOPG.rfl") strncpy(mccmonocr_b3_reflect, "HOPG.rfl" ? "HOPG.rfl" : "", 16384); else mccmonocr_b3_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccmonocr_b3_transmit, "NULL" ? "NULL" : "", 16384); else mccmonocr_b3_transmit[0]='\0';
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b3_zwidth = 0.01;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b3_yheight = 0.01;
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b3_gap = 0.001;
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b3_NH = 15;
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b3_NV = 10;
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b3_mosaich = 150;
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 175 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b3_mosaicv = 150;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b3_r0 = 0.7;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b3_t0 = 1.0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b3_Q = 1.8734;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b3_RV = 0;
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b3_RH = 0;
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 175 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b3_DM = 3.354;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b3_mosaic = 0;
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 175 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b3_width = 0.10;
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 175 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b3_height = 0.12;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b3_verbose = 0;
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b3_order = 1;
 #line 18216 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
   SIG_MESSAGE("monocr_b3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 177 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 177 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD,
-#line 177 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 177 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (90)*DEG2RAD,
-#line 177 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 177 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD);
 #line 18226 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_mul(mctr1, mcrotaarm_bank3, mcrotamonocr_b3);
   rot_transpose(mcrotamonocr_b2, mctr1);
   rot_mul(mcrotamonocr_b3, mctr1, mcrotrmonocr_b3);
   mctc1 = coords_set(
-#line 177 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 177 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 177 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 177 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.23,
-#line 177 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 177 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.2625);
 #line 18237 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank3, mctr1);
@@ -18248,66 +18248,66 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component monocr_b4. */
   /* Setting parameters for component monocr_b4. */
   SIG_MESSAGE("monocr_b4 (Init:SetPar)");
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 184 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("HOPG.rfl") strncpy(mccmonocr_b4_reflect, "HOPG.rfl" ? "HOPG.rfl" : "", 16384); else mccmonocr_b4_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccmonocr_b4_transmit, "NULL" ? "NULL" : "", 16384); else mccmonocr_b4_transmit[0]='\0';
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b4_zwidth = 0.01;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b4_yheight = 0.01;
-#line 185 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 185 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b4_gap = 0.001;
-#line 185 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 185 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b4_NH = 15;
-#line 185 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 185 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b4_NV = 10;
-#line 183 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 183 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b4_mosaich = 150;
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 184 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b4_mosaicv = 150;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b4_r0 = 0.7;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b4_t0 = 1.0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b4_Q = 1.8734;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b4_RV = 0;
-#line 185 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 185 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b4_RH = 0;
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 184 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b4_DM = 3.354;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b4_mosaic = 0;
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 184 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b4_width = 0.10;
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 184 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b4_height = 0.12;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b4_verbose = 0;
-#line 183 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 183 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b4_order = 1;
 #line 18291 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
   SIG_MESSAGE("monocr_b4 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD,
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (90)*DEG2RAD,
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD);
 #line 18301 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_mul(mctr1, mcrotaarm_bank4, mcrotamonocr_b4);
   rot_transpose(mcrotamonocr_b3, mctr1);
   rot_mul(mcrotamonocr_b4, mctr1, mcrotrmonocr_b4);
   mctc1 = coords_set(
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.23,
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.2625);
 #line 18312 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank4, mctr1);
@@ -18323,66 +18323,66 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component monocr_b5. */
   /* Setting parameters for component monocr_b5. */
   SIG_MESSAGE("monocr_b5 (Init:SetPar)");
-#line 193 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 193 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("HOPG.rfl") strncpy(mccmonocr_b5_reflect, "HOPG.rfl" ? "HOPG.rfl" : "", 16384); else mccmonocr_b5_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccmonocr_b5_transmit, "NULL" ? "NULL" : "", 16384); else mccmonocr_b5_transmit[0]='\0';
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b5_zwidth = 0.01;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b5_yheight = 0.01;
-#line 194 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 194 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b5_gap = 0.001;
-#line 194 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 194 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b5_NH = 15;
-#line 194 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 194 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b5_NV = 10;
-#line 192 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 192 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b5_mosaich = 150;
-#line 193 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 193 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b5_mosaicv = 150;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b5_r0 = 0.7;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b5_t0 = 1.0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b5_Q = 1.8734;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b5_RV = 0;
-#line 194 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 194 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b5_RH = 0;
-#line 193 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 193 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b5_DM = 3.354;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b5_mosaic = 0;
-#line 193 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 193 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b5_width = 0.10;
-#line 193 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 193 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b5_height = 0.12;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b5_verbose = 0;
-#line 192 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 192 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_b5_order = 1;
 #line 18366 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
   SIG_MESSAGE("monocr_b5 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 195 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 195 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD,
-#line 195 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 195 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (90)*DEG2RAD,
-#line 195 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 195 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD);
 #line 18376 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_mul(mctr1, mcrotaarm_bank5, mcrotamonocr_b5);
   rot_transpose(mcrotamonocr_b4, mctr1);
   rot_mul(mcrotamonocr_b5, mctr1, mcrotrmonocr_b5);
   mctc1 = coords_set(
-#line 195 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 195 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 195 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 195 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.23,
-#line 195 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 195 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.2625);
 #line 18387 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank5, mctr1);
@@ -18398,66 +18398,66 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component monocr_f6. */
   /* Setting parameters for component monocr_f6. */
   SIG_MESSAGE("monocr_f6 (Init:SetPar)");
-#line 202 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 202 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("HOPG.rfl") strncpy(mccmonocr_f6_reflect, "HOPG.rfl" ? "HOPG.rfl" : "", 16384); else mccmonocr_f6_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccmonocr_f6_transmit, "NULL" ? "NULL" : "", 16384); else mccmonocr_f6_transmit[0]='\0';
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f6_zwidth = 0.01;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f6_yheight = 0.01;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f6_gap = 0.001;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f6_NH = 15;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f6_NV = 10;
-#line 201 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 201 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f6_mosaich = 150;
-#line 202 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 202 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f6_mosaicv = 150;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f6_r0 = 0.7;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f6_t0 = 1.0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f6_Q = 1.8734;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f6_RV = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f6_RH = 0;
-#line 202 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 202 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f6_DM = 3.354;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f6_mosaic = 0;
-#line 202 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 202 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f6_width = 0.10;
-#line 202 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 202 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f6_height = 0.12;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f6_verbose = 0;
-#line 201 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 201 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f6_order = 1;
 #line 18441 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
   SIG_MESSAGE("monocr_f6 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD,
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (90)*DEG2RAD,
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD);
 #line 18451 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_mul(mctr1, mcrotaarm_bank6, mcrotamonocr_f6);
   rot_transpose(mcrotamonocr_b5, mctr1);
   rot_mul(mcrotamonocr_f6, mctr1, mcrotrmonocr_f6);
   mctc1 = coords_set(
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.23,
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.2625);
 #line 18462 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank6, mctr1);
@@ -18473,66 +18473,66 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component monocr_f7. */
   /* Setting parameters for component monocr_f7. */
   SIG_MESSAGE("monocr_f7 (Init:SetPar)");
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("HOPG.rfl") strncpy(mccmonocr_f7_reflect, "HOPG.rfl" ? "HOPG.rfl" : "", 16384); else mccmonocr_f7_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccmonocr_f7_transmit, "NULL" ? "NULL" : "", 16384); else mccmonocr_f7_transmit[0]='\0';
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f7_zwidth = 0.01;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f7_yheight = 0.01;
-#line 212 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 212 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f7_gap = 0.001;
-#line 212 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 212 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f7_NH = 15;
-#line 212 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 212 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f7_NV = 10;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f7_mosaich = 150;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f7_mosaicv = 150;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f7_r0 = 0.7;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f7_t0 = 1.0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f7_Q = 1.8734;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f7_RV = 0;
-#line 212 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 212 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f7_RH = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f7_DM = 3.354;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f7_mosaic = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f7_width = 0.10;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f7_height = 0.12;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f7_verbose = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f7_order = 1;
 #line 18516 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
   SIG_MESSAGE("monocr_f7 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 213 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD,
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 213 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (90)*DEG2RAD,
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 213 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD);
 #line 18526 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_mul(mctr1, mcrotaarm_bank7, mcrotamonocr_f7);
   rot_transpose(mcrotamonocr_f6, mctr1);
   rot_mul(mcrotamonocr_f7, mctr1, mcrotrmonocr_f7);
   mctc1 = coords_set(
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 213 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 213 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.23,
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 213 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.2625);
 #line 18537 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank7, mctr1);
@@ -18548,66 +18548,66 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component monocr_f8. */
   /* Setting parameters for component monocr_f8. */
   SIG_MESSAGE("monocr_f8 (Init:SetPar)");
-#line 220 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 220 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("HOPG.rfl") strncpy(mccmonocr_f8_reflect, "HOPG.rfl" ? "HOPG.rfl" : "", 16384); else mccmonocr_f8_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccmonocr_f8_transmit, "NULL" ? "NULL" : "", 16384); else mccmonocr_f8_transmit[0]='\0';
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f8_zwidth = 0.01;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f8_yheight = 0.01;
-#line 221 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 221 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f8_gap = 0.001;
-#line 221 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 221 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f8_NH = 15;
-#line 221 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 221 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f8_NV = 10;
-#line 219 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 219 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f8_mosaich = 150;
-#line 220 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 220 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f8_mosaicv = 150;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f8_r0 = 0.7;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f8_t0 = 1.0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f8_Q = 1.8734;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f8_RV = 0;
-#line 221 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 221 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f8_RH = 0;
-#line 220 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 220 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f8_DM = 3.354;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f8_mosaic = 0;
-#line 220 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 220 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f8_width = 0.10;
-#line 220 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 220 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f8_height = 0.12;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f8_verbose = 0;
-#line 219 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 219 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f8_order = 1;
 #line 18591 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
   SIG_MESSAGE("monocr_f8 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 222 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 222 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD,
-#line 222 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 222 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (90)*DEG2RAD,
-#line 222 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 222 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD);
 #line 18601 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_mul(mctr1, mcrotaarm_bank8, mcrotamonocr_f8);
   rot_transpose(mcrotamonocr_f7, mctr1);
   rot_mul(mcrotamonocr_f8, mctr1, mcrotrmonocr_f8);
   mctc1 = coords_set(
-#line 222 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 222 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 222 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 222 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.23,
-#line 222 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 222 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.2625);
 #line 18612 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank8, mctr1);
@@ -18623,66 +18623,66 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component monocr_f9. */
   /* Setting parameters for component monocr_f9. */
   SIG_MESSAGE("monocr_f9 (Init:SetPar)");
-#line 229 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 229 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("HOPG.rfl") strncpy(mccmonocr_f9_reflect, "HOPG.rfl" ? "HOPG.rfl" : "", 16384); else mccmonocr_f9_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccmonocr_f9_transmit, "NULL" ? "NULL" : "", 16384); else mccmonocr_f9_transmit[0]='\0';
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f9_zwidth = 0.01;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f9_yheight = 0.01;
-#line 230 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 230 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f9_gap = 0.001;
-#line 230 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 230 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f9_NH = 15;
-#line 230 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 230 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f9_NV = 10;
-#line 228 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 228 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f9_mosaich = 150;
-#line 229 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 229 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f9_mosaicv = 150;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f9_r0 = 0.7;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f9_t0 = 1.0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f9_Q = 1.8734;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f9_RV = 0;
-#line 230 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 230 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f9_RH = 0;
-#line 229 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 229 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f9_DM = 3.354;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f9_mosaic = 0;
-#line 229 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 229 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f9_width = 0.10;
-#line 229 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 229 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f9_height = 0.12;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f9_verbose = 0;
-#line 228 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 228 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f9_order = 1;
 #line 18666 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
   SIG_MESSAGE("monocr_f9 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 231 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 231 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD,
-#line 231 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 231 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (90)*DEG2RAD,
-#line 231 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 231 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD);
 #line 18676 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_mul(mctr1, mcrotaarm_bank9, mcrotamonocr_f9);
   rot_transpose(mcrotamonocr_f8, mctr1);
   rot_mul(mcrotamonocr_f9, mctr1, mcrotrmonocr_f9);
   mctc1 = coords_set(
-#line 231 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 231 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 231 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 231 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.23,
-#line 231 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 231 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.2625);
 #line 18687 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank9, mctr1);
@@ -18698,66 +18698,66 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component monocr_f10. */
   /* Setting parameters for component monocr_f10. */
   SIG_MESSAGE("monocr_f10 (Init:SetPar)");
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("HOPG.rfl") strncpy(mccmonocr_f10_reflect, "HOPG.rfl" ? "HOPG.rfl" : "", 16384); else mccmonocr_f10_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccmonocr_f10_transmit, "NULL" ? "NULL" : "", 16384); else mccmonocr_f10_transmit[0]='\0';
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f10_zwidth = 0.01;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f10_yheight = 0.01;
-#line 239 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 239 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f10_gap = 0.001;
-#line 239 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 239 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f10_NH = 15;
-#line 239 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 239 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f10_NV = 10;
-#line 237 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 237 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f10_mosaich = 150;
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f10_mosaicv = 150;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f10_r0 = 0.7;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f10_t0 = 1.0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f10_Q = 1.8734;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f10_RV = 0;
-#line 239 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 239 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f10_RH = 0;
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f10_DM = 3.354;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f10_mosaic = 0;
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f10_width = 0.10;
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f10_height = 0.12;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f10_verbose = 0;
-#line 237 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 237 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccmonocr_f10_order = 1;
 #line 18741 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
   SIG_MESSAGE("monocr_f10 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 240 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 240 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD,
-#line 240 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 240 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (90)*DEG2RAD,
-#line 240 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 240 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     (0)*DEG2RAD);
 #line 18751 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_mul(mctr1, mcrotaarm_bank10, mcrotamonocr_f10);
   rot_transpose(mcrotamonocr_f9, mctr1);
   rot_mul(mcrotamonocr_f10, mctr1, mcrotrmonocr_f10);
   mctc1 = coords_set(
-#line 240 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 240 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 240 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 240 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.23,
-#line 240 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 240 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.2625);
 #line 18762 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank10, mctr1);
@@ -18773,43 +18773,43 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component sqw2. */
   /* Setting parameters for component sqw2. */
   SIG_MESSAGE("sqw2 (Init:SetPar)");
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw2_xwidth = 0;
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw2_yheight = 0;
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw2_zdepth = 0;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw2_xmin = 0;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw2_xmax = 0;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw2_ymin = 0;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw2_ymax = 0;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw2_zmin = 0;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw2_zmax = 0;
-#line 246 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 246 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw2_radius = 2;
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw2_bins = 0;
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw2_min = -1e40;
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw2_max = 1e40;
-#line 246 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 246 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw2_index = -14;
-#line 246 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 246 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("user2 limits=[-100 100] bins=501, user1 limits=[-18 18] bins=361, parallel") strncpy(mccsqw2_options, "user2 limits=[-100 100] bins=501, user1 limits=[-18 18] bins=361, parallel" ? "user2 limits=[-100 100] bins=501, user1 limits=[-18 18] bins=361, parallel" : "", 16384); else mccsqw2_options[0]='\0';
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if(0) strncpy(mccsqw2_filename, 0 ? 0 : "", 16384); else mccsqw2_filename[0]='\0';
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if(0) strncpy(mccsqw2_geometry, 0 ? 0 : "", 16384); else mccsqw2_geometry[0]='\0';
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if(0) strncpy(mccsqw2_username3, 0 ? 0 : "", 16384); else mccsqw2_username3[0]='\0';
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccsqw2_nowritefile = 0;
 #line 18814 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -18823,11 +18823,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotamonocr_f10, mctr1);
   rot_mul(mcrotasqw2, mctr1, mcrotrsqw2);
   mctc1 = coords_set(
-#line 247 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 247 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 247 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 247 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 247 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 247 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0);
 #line 18832 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotapowder, mctr1);
@@ -18843,47 +18843,47 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component Eabs. */
   /* Setting parameters for component Eabs. */
   SIG_MESSAGE("Eabs (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEabs_xwidth = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEabs_yheight = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEabs_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEabs_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEabs_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEabs_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEabs_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEabs_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEabs_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEabs_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEabs_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEabs_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEabs_restore_neutron = 0;
-#line 249 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 249 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEabs_radius = 2;
-#line 249 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 249 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("energy limits=[-100 100] bins=501, q limits=[-18 18] bins=361, parallel") strncpy(mccEabs_options, "energy limits=[-100 100] bins=501, q limits=[-18 18] bins=361, parallel" ? "energy limits=[-100 100] bins=501, q limits=[-18 18] bins=361, parallel" : "", 16384); else mccEabs_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccEabs_filename, "NULL" ? "NULL" : "", 16384); else mccEabs_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccEabs_geometry, "NULL" ? "NULL" : "", 16384); else mccEabs_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccEabs_username1, "NULL" ? "NULL" : "", 16384); else mccEabs_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccEabs_username2, "NULL" ? "NULL" : "", 16384); else mccEabs_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccEabs_username3, "NULL" ? "NULL" : "", 16384); else mccEabs_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccEabs_nowritefile = 0;
 #line 18888 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -18897,11 +18897,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotasqw2, mctr1);
   rot_mul(mcrotaEabs, mctr1, mcrotrEabs);
   mctc1 = coords_set(
-#line 250 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 250 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 250 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 250 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 250 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 250 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0);
 #line 18906 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotapowder, mctr1);
@@ -18917,13 +18917,13 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component Sphere. */
   /* Setting parameters for component Sphere. */
   SIG_MESSAGE("Sphere (Init:SetPar)");
-#line 253 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 253 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("outgoing") strncpy(mccSphere_filename, "outgoing" ? "outgoing" : "", 16384); else mccSphere_filename[0]='\0';
-#line 253 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 253 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccSphere_radius = 2.1;
-#line 253 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 253 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccSphere_restore_neutron = 1;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccSphere_nowritefile = 0;
 #line 18928 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -18937,11 +18937,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaEabs, mctr1);
   rot_mul(mcrotaSphere, mctr1, mcrotrSphere);
   mctc1 = coords_set(
-#line 254 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 254 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 254 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 254 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 254 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 254 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0);
 #line 18946 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotapowder, mctr1);
@@ -18957,47 +18957,47 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component Histo1. */
   /* Setting parameters for component Histo1. */
   SIG_MESSAGE("Histo1 (Init:SetPar)");
-#line 258 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 258 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto1_xwidth = 0.2;
-#line 258 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 258 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto1_yheight = 0.1762;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto1_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto1_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto1_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto1_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto1_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto1_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto1_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto1_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto1_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto1_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto1_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto1_radius = 0;
-#line 258 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 258 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000") strncpy(mccHisto1_options, "y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000" ? "y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000" : "", 16384); else mccHisto1_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto1_filename, "NULL" ? "NULL" : "", 16384); else mccHisto1_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto1_geometry, "NULL" ? "NULL" : "", 16384); else mccHisto1_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto1_username1, "NULL" ? "NULL" : "", 16384); else mccHisto1_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto1_username2, "NULL" ? "NULL" : "", 16384); else mccHisto1_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto1_username3, "NULL" ? "NULL" : "", 16384); else mccHisto1_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto1_nowritefile = 0;
 #line 19002 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -19011,11 +19011,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaSphere, mctr1);
   rot_mul(mcrotaHisto1, mctr1, mcrotrHisto1);
   mctc1 = coords_set(
-#line 259 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 259 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 259 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 259 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.4165 + 0.09 -0.18 / 13 * 7,
-#line 259 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 259 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.46548);
 #line 19020 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank1, mctr1);
@@ -19031,47 +19031,47 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component Histo2. */
   /* Setting parameters for component Histo2. */
   SIG_MESSAGE("Histo2 (Init:SetPar)");
-#line 261 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 261 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto2_xwidth = 0.2;
-#line 261 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 261 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto2_yheight = 0.1762;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto2_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto2_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto2_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto2_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto2_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto2_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto2_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto2_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto2_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto2_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto2_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto2_radius = 0;
-#line 261 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 261 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000") strncpy(mccHisto2_options, "y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000" ? "y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000" : "", 16384); else mccHisto2_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto2_filename, "NULL" ? "NULL" : "", 16384); else mccHisto2_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto2_geometry, "NULL" ? "NULL" : "", 16384); else mccHisto2_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto2_username1, "NULL" ? "NULL" : "", 16384); else mccHisto2_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto2_username2, "NULL" ? "NULL" : "", 16384); else mccHisto2_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto2_username3, "NULL" ? "NULL" : "", 16384); else mccHisto2_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto2_nowritefile = 0;
 #line 19076 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -19085,11 +19085,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaHisto1, mctr1);
   rot_mul(mcrotaHisto2, mctr1, mcrotrHisto2);
   mctc1 = coords_set(
-#line 262 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 262 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 262 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 262 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.4165 + 0.09 -0.18 / 13 * 7,
-#line 262 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 262 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.46548);
 #line 19094 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank2, mctr1);
@@ -19105,47 +19105,47 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component Histo3. */
   /* Setting parameters for component Histo3. */
   SIG_MESSAGE("Histo3 (Init:SetPar)");
-#line 264 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 264 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto3_xwidth = 0.2;
-#line 264 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 264 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto3_yheight = 0.1762;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto3_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto3_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto3_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto3_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto3_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto3_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto3_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto3_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto3_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto3_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto3_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto3_radius = 0;
-#line 264 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 264 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000") strncpy(mccHisto3_options, "y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000" ? "y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000" : "", 16384); else mccHisto3_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto3_filename, "NULL" ? "NULL" : "", 16384); else mccHisto3_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto3_geometry, "NULL" ? "NULL" : "", 16384); else mccHisto3_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto3_username1, "NULL" ? "NULL" : "", 16384); else mccHisto3_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto3_username2, "NULL" ? "NULL" : "", 16384); else mccHisto3_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto3_username3, "NULL" ? "NULL" : "", 16384); else mccHisto3_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto3_nowritefile = 0;
 #line 19150 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -19159,11 +19159,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaHisto2, mctr1);
   rot_mul(mcrotaHisto3, mctr1, mcrotrHisto3);
   mctc1 = coords_set(
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.4165 + 0.09 -0.18 / 13 * 7,
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.46548);
 #line 19168 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank3, mctr1);
@@ -19179,47 +19179,47 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component Histo4. */
   /* Setting parameters for component Histo4. */
   SIG_MESSAGE("Histo4 (Init:SetPar)");
-#line 267 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 267 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto4_xwidth = 0.2;
-#line 267 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 267 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto4_yheight = 0.1762;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto4_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto4_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto4_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto4_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto4_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto4_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto4_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto4_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto4_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto4_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto4_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto4_radius = 0;
-#line 267 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 267 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000") strncpy(mccHisto4_options, "y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000" ? "y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000" : "", 16384); else mccHisto4_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto4_filename, "NULL" ? "NULL" : "", 16384); else mccHisto4_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto4_geometry, "NULL" ? "NULL" : "", 16384); else mccHisto4_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto4_username1, "NULL" ? "NULL" : "", 16384); else mccHisto4_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto4_username2, "NULL" ? "NULL" : "", 16384); else mccHisto4_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto4_username3, "NULL" ? "NULL" : "", 16384); else mccHisto4_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto4_nowritefile = 0;
 #line 19224 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -19233,11 +19233,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaHisto3, mctr1);
   rot_mul(mcrotaHisto4, mctr1, mcrotrHisto4);
   mctc1 = coords_set(
-#line 268 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 268 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 268 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 268 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.4165 + 0.09 -0.18 / 13 * 7,
-#line 268 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 268 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.46548);
 #line 19242 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank4, mctr1);
@@ -19253,47 +19253,47 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component Histo5. */
   /* Setting parameters for component Histo5. */
   SIG_MESSAGE("Histo5 (Init:SetPar)");
-#line 270 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 270 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto5_xwidth = 0.2;
-#line 270 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 270 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto5_yheight = 0.1762;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto5_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto5_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto5_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto5_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto5_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto5_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto5_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto5_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto5_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto5_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto5_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto5_radius = 0;
-#line 270 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 270 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000") strncpy(mccHisto5_options, "y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000" ? "y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000" : "", 16384); else mccHisto5_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto5_filename, "NULL" ? "NULL" : "", 16384); else mccHisto5_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto5_geometry, "NULL" ? "NULL" : "", 16384); else mccHisto5_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto5_username1, "NULL" ? "NULL" : "", 16384); else mccHisto5_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto5_username2, "NULL" ? "NULL" : "", 16384); else mccHisto5_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto5_username3, "NULL" ? "NULL" : "", 16384); else mccHisto5_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto5_nowritefile = 0;
 #line 19298 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -19307,11 +19307,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaHisto4, mctr1);
   rot_mul(mcrotaHisto5, mctr1, mcrotrHisto5);
   mctc1 = coords_set(
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.4165 + 0.09 -0.18 / 13 * 7,
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.46548);
 #line 19316 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank5, mctr1);
@@ -19327,47 +19327,47 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component Histo6. */
   /* Setting parameters for component Histo6. */
   SIG_MESSAGE("Histo6 (Init:SetPar)");
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto6_xwidth = 0.2;
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto6_yheight = 0.1762;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto6_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto6_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto6_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto6_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto6_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto6_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto6_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto6_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto6_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto6_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto6_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto6_radius = 0;
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000") strncpy(mccHisto6_options, "y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000" ? "y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000" : "", 16384); else mccHisto6_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto6_filename, "NULL" ? "NULL" : "", 16384); else mccHisto6_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto6_geometry, "NULL" ? "NULL" : "", 16384); else mccHisto6_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto6_username1, "NULL" ? "NULL" : "", 16384); else mccHisto6_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto6_username2, "NULL" ? "NULL" : "", 16384); else mccHisto6_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto6_username3, "NULL" ? "NULL" : "", 16384); else mccHisto6_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto6_nowritefile = 0;
 #line 19372 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -19381,11 +19381,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaHisto5, mctr1);
   rot_mul(mcrotaHisto6, mctr1, mcrotrHisto6);
   mctc1 = coords_set(
-#line 274 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 274 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 274 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 274 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.4165 + 0.09 -0.18 / 13 * 7,
-#line 274 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 274 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.46548);
 #line 19390 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank6, mctr1);
@@ -19401,47 +19401,47 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component Histo7. */
   /* Setting parameters for component Histo7. */
   SIG_MESSAGE("Histo7 (Init:SetPar)");
-#line 276 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 276 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto7_xwidth = 0.2;
-#line 276 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 276 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto7_yheight = 0.1762;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto7_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto7_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto7_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto7_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto7_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto7_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto7_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto7_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto7_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto7_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto7_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto7_radius = 0;
-#line 276 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 276 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000") strncpy(mccHisto7_options, "y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000" ? "y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000" : "", 16384); else mccHisto7_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto7_filename, "NULL" ? "NULL" : "", 16384); else mccHisto7_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto7_geometry, "NULL" ? "NULL" : "", 16384); else mccHisto7_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto7_username1, "NULL" ? "NULL" : "", 16384); else mccHisto7_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto7_username2, "NULL" ? "NULL" : "", 16384); else mccHisto7_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto7_username3, "NULL" ? "NULL" : "", 16384); else mccHisto7_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto7_nowritefile = 0;
 #line 19446 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -19455,11 +19455,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaHisto6, mctr1);
   rot_mul(mcrotaHisto7, mctr1, mcrotrHisto7);
   mctc1 = coords_set(
-#line 277 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 277 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 277 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 277 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.4165 + 0.09 -0.18 / 13 * 7,
-#line 277 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 277 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.46548);
 #line 19464 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank7, mctr1);
@@ -19475,47 +19475,47 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component Histo8. */
   /* Setting parameters for component Histo8. */
   SIG_MESSAGE("Histo8 (Init:SetPar)");
-#line 279 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 279 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto8_xwidth = 0.2;
-#line 279 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 279 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto8_yheight = 0.1762;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto8_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto8_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto8_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto8_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto8_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto8_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto8_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto8_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto8_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto8_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto8_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto8_radius = 0;
-#line 279 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 279 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000") strncpy(mccHisto8_options, "y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000" ? "y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000" : "", 16384); else mccHisto8_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto8_filename, "NULL" ? "NULL" : "", 16384); else mccHisto8_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto8_geometry, "NULL" ? "NULL" : "", 16384); else mccHisto8_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto8_username1, "NULL" ? "NULL" : "", 16384); else mccHisto8_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto8_username2, "NULL" ? "NULL" : "", 16384); else mccHisto8_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto8_username3, "NULL" ? "NULL" : "", 16384); else mccHisto8_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto8_nowritefile = 0;
 #line 19520 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -19529,11 +19529,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaHisto7, mctr1);
   rot_mul(mcrotaHisto8, mctr1, mcrotrHisto8);
   mctc1 = coords_set(
-#line 280 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 280 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 280 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 280 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.4165 + 0.09 -0.18 / 13 * 7,
-#line 280 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 280 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.46548);
 #line 19538 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank8, mctr1);
@@ -19549,47 +19549,47 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component Histo9. */
   /* Setting parameters for component Histo9. */
   SIG_MESSAGE("Histo9 (Init:SetPar)");
-#line 282 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 282 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto9_xwidth = 0.2;
-#line 282 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 282 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto9_yheight = 0.1762;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto9_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto9_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto9_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto9_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto9_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto9_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto9_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto9_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto9_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto9_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto9_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto9_radius = 0;
-#line 282 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 282 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000") strncpy(mccHisto9_options, "y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000" ? "y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000" : "", 16384); else mccHisto9_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto9_filename, "NULL" ? "NULL" : "", 16384); else mccHisto9_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto9_geometry, "NULL" ? "NULL" : "", 16384); else mccHisto9_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto9_username1, "NULL" ? "NULL" : "", 16384); else mccHisto9_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto9_username2, "NULL" ? "NULL" : "", 16384); else mccHisto9_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto9_username3, "NULL" ? "NULL" : "", 16384); else mccHisto9_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto9_nowritefile = 0;
 #line 19594 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -19603,11 +19603,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaHisto8, mctr1);
   rot_mul(mcrotaHisto9, mctr1, mcrotrHisto9);
   mctc1 = coords_set(
-#line 283 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 283 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 283 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 283 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.4165 + 0.09 -0.18 / 13 * 7,
-#line 283 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 283 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.46548);
 #line 19612 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank9, mctr1);
@@ -19623,47 +19623,47 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component Histo10. */
   /* Setting parameters for component Histo10. */
   SIG_MESSAGE("Histo10 (Init:SetPar)");
-#line 285 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 285 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto10_xwidth = 0.2;
-#line 285 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 285 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto10_yheight = 0.1762;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto10_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto10_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto10_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto10_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto10_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto10_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto10_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto10_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto10_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto10_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto10_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto10_radius = 0;
-#line 285 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 285 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000") strncpy(mccHisto10_options, "y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000" ? "y limits=[-0.0881 0.0881] user1 limits=[0 0.026] bins=1000" : "", 16384); else mccHisto10_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto10_filename, "NULL" ? "NULL" : "", 16384); else mccHisto10_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto10_geometry, "NULL" ? "NULL" : "", 16384); else mccHisto10_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto10_username1, "NULL" ? "NULL" : "", 16384); else mccHisto10_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto10_username2, "NULL" ? "NULL" : "", 16384); else mccHisto10_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccHisto10_username3, "NULL" ? "NULL" : "", 16384); else mccHisto10_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccHisto10_nowritefile = 0;
 #line 19668 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -19677,11 +19677,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaHisto9, mctr1);
   rot_mul(mcrotaHisto10, mctr1, mcrotrHisto10);
   mctc1 = coords_set(
-#line 286 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 286 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 286 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 286 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.4165 + 0.09 -0.18 / 13 * 7,
-#line 286 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 286 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.46548);
 #line 19686 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank10, mctr1);
@@ -19697,47 +19697,47 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component ALL_TOF_B. */
   /* Setting parameters for component ALL_TOF_B. */
   SIG_MESSAGE("ALL_TOF_B (Init:SetPar)");
-#line 288 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 288 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_B_xwidth = 1.5;
-#line 288 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 288 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_B_yheight = 1.5;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_B_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_B_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_B_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_B_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_B_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_B_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_B_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_B_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_B_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_B_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_B_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_B_radius = 0;
-#line 288 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 288 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("user1 limits=[0 0.08] bins=81 parallel") strncpy(mccALL_TOF_B_options, "user1 limits=[0 0.08] bins=81 parallel" ? "user1 limits=[0 0.08] bins=81 parallel" : "", 16384); else mccALL_TOF_B_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccALL_TOF_B_filename, "NULL" ? "NULL" : "", 16384); else mccALL_TOF_B_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccALL_TOF_B_geometry, "NULL" ? "NULL" : "", 16384); else mccALL_TOF_B_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccALL_TOF_B_username1, "NULL" ? "NULL" : "", 16384); else mccALL_TOF_B_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccALL_TOF_B_username2, "NULL" ? "NULL" : "", 16384); else mccALL_TOF_B_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccALL_TOF_B_username3, "NULL" ? "NULL" : "", 16384); else mccALL_TOF_B_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_B_nowritefile = 0;
 #line 19742 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -19751,11 +19751,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaHisto10, mctr1);
   rot_mul(mcrotaALL_TOF_B, mctr1, mcrotrALL_TOF_B);
   mctc1 = coords_set(
-#line 289 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 289 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 289 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 289 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 289 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 289 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.46548);
 #line 19760 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotapowder, mctr1);
@@ -19771,47 +19771,47 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component ALL_TOF_F. */
   /* Setting parameters for component ALL_TOF_F. */
   SIG_MESSAGE("ALL_TOF_F (Init:SetPar)");
-#line 291 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 291 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_F_xwidth = 1.5;
-#line 291 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 291 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_F_yheight = 1.5;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_F_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_F_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_F_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_F_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_F_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_F_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_F_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_F_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_F_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_F_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_F_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_F_radius = 0;
-#line 291 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 291 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("user1 limits=[0 0.08] bins=81 parallel") strncpy(mccALL_TOF_F_options, "user1 limits=[0 0.08] bins=81 parallel" ? "user1 limits=[0 0.08] bins=81 parallel" : "", 16384); else mccALL_TOF_F_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccALL_TOF_F_filename, "NULL" ? "NULL" : "", 16384); else mccALL_TOF_F_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccALL_TOF_F_geometry, "NULL" ? "NULL" : "", 16384); else mccALL_TOF_F_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccALL_TOF_F_username1, "NULL" ? "NULL" : "", 16384); else mccALL_TOF_F_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccALL_TOF_F_username2, "NULL" ? "NULL" : "", 16384); else mccALL_TOF_F_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccALL_TOF_F_username3, "NULL" ? "NULL" : "", 16384); else mccALL_TOF_F_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccALL_TOF_F_nowritefile = 0;
 #line 19816 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -19825,11 +19825,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaALL_TOF_B, mctr1);
   rot_mul(mcrotaALL_TOF_F, mctr1, mcrotrALL_TOF_F);
   mctc1 = coords_set(
-#line 292 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 292 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 292 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 292 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 292 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 292 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.46548);
 #line 19834 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotapowder, mctr1);
@@ -19856,11 +19856,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaALL_TOF_F, mctr1);
   rot_mul(mcrotaCalcT, mctr1, mcrotrCalcT);
   mctc1 = coords_set(
-#line 295 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 295 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 295 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 295 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 295 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 295 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0);
 #line 19865 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotapowder, mctr1);
@@ -19876,47 +19876,47 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component nD_Mantid_1. */
   /* Setting parameters for component nD_Mantid_1. */
   SIG_MESSAGE("nD_Mantid_1 (Init:SetPar)");
-#line 303 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 303 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_1_xwidth = 0.2;
-#line 303 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 303 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_1_yheight = 0.1762;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_1_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_1_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_1_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_1_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_1_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_1_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_1_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_1_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_1_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_1_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_1_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_1_radius = 0;
-#line 303 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 303 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("mantid square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel user1, list all neutrons") strncpy(mccnD_Mantid_1_options, "mantid square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel user1, list all neutrons" ? "mantid square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel user1, list all neutrons" : "", 16384); else mccnD_Mantid_1_options[0]='\0';
-#line 304 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 304 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("Bbank") strncpy(mccnD_Mantid_1_filename, "Bbank" ? "Bbank" : "", 16384); else mccnD_Mantid_1_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccnD_Mantid_1_geometry, "NULL" ? "NULL" : "", 16384); else mccnD_Mantid_1_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccnD_Mantid_1_username1, "NULL" ? "NULL" : "", 16384); else mccnD_Mantid_1_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccnD_Mantid_1_username2, "NULL" ? "NULL" : "", 16384); else mccnD_Mantid_1_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccnD_Mantid_1_username3, "NULL" ? "NULL" : "", 16384); else mccnD_Mantid_1_username3[0]='\0';
-#line 304 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 304 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_1_nowritefile = ( ! mcipeventmode );
 #line 19921 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -19930,11 +19930,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaCalcT, mctr1);
   rot_mul(mcrotanD_Mantid_1, mctr1, mcrotrnD_Mantid_1);
   mctc1 = coords_set(
-#line 305 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 305 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 305 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 305 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.4165 + 0.09 -0.18 / 13 * 7,
-#line 305 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 305 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.46548);
 #line 19939 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank1, mctr1);
@@ -19950,47 +19950,47 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component TOF2. */
   /* Setting parameters for component TOF2. */
   SIG_MESSAGE("TOF2 (Init:SetPar)");
-#line 307 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 307 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF2_xwidth = 0.2;
-#line 307 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 307 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF2_yheight = 0.1762;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF2_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF2_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF2_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF2_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF2_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF2_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF2_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF2_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF2_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF2_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF2_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF2_radius = 0;
-#line 307 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 307 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel user1, list all neutrons") strncpy(mccTOF2_options, "square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel user1, list all neutrons" ? "square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel user1, list all neutrons" : "", 16384); else mccTOF2_options[0]='\0';
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("Bbank") strncpy(mccTOF2_filename, "Bbank" ? "Bbank" : "", 16384); else mccTOF2_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF2_geometry, "NULL" ? "NULL" : "", 16384); else mccTOF2_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF2_username1, "NULL" ? "NULL" : "", 16384); else mccTOF2_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF2_username2, "NULL" ? "NULL" : "", 16384); else mccTOF2_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF2_username3, "NULL" ? "NULL" : "", 16384); else mccTOF2_username3[0]='\0';
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF2_nowritefile = ( ! mcipeventmode );
 #line 19995 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -20004,11 +20004,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotanD_Mantid_1, mctr1);
   rot_mul(mcrotaTOF2, mctr1, mcrotrTOF2);
   mctc1 = coords_set(
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.4165 + 0.09 -0.18 / 13 * 7,
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.46548);
 #line 20013 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank2, mctr1);
@@ -20024,47 +20024,47 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component TOF_3. */
   /* Setting parameters for component TOF_3. */
   SIG_MESSAGE("TOF_3 (Init:SetPar)");
-#line 311 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 311 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_3_xwidth = 0.2;
-#line 311 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 311 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_3_yheight = 0.1762;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_3_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_3_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_3_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_3_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_3_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_3_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_3_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_3_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_3_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_3_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_3_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_3_radius = 0;
-#line 311 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 311 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel user1, list all neutrons") strncpy(mccTOF_3_options, "square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel user1, list all neutrons" ? "square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel user1, list all neutrons" : "", 16384); else mccTOF_3_options[0]='\0';
-#line 312 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 312 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("Bbank") strncpy(mccTOF_3_filename, "Bbank" ? "Bbank" : "", 16384); else mccTOF_3_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_3_geometry, "NULL" ? "NULL" : "", 16384); else mccTOF_3_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_3_username1, "NULL" ? "NULL" : "", 16384); else mccTOF_3_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_3_username2, "NULL" ? "NULL" : "", 16384); else mccTOF_3_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_3_username3, "NULL" ? "NULL" : "", 16384); else mccTOF_3_username3[0]='\0';
-#line 312 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 312 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_3_nowritefile = ( ! mcipeventmode );
 #line 20069 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -20078,11 +20078,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaTOF2, mctr1);
   rot_mul(mcrotaTOF_3, mctr1, mcrotrTOF_3);
   mctc1 = coords_set(
-#line 313 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 313 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 313 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 313 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.4165 + 0.09 -0.18 / 13 * 7,
-#line 313 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 313 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.46548);
 #line 20087 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank3, mctr1);
@@ -20098,47 +20098,47 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component TOF_4. */
   /* Setting parameters for component TOF_4. */
   SIG_MESSAGE("TOF_4 (Init:SetPar)");
-#line 315 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 315 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_4_xwidth = 0.2;
-#line 315 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 315 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_4_yheight = 0.1762;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_4_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_4_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_4_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_4_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_4_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_4_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_4_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_4_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_4_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_4_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_4_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_4_radius = 0;
-#line 315 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 315 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel user1, list all neutrons") strncpy(mccTOF_4_options, "square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel user1, list all neutrons" ? "square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel user1, list all neutrons" : "", 16384); else mccTOF_4_options[0]='\0';
-#line 316 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 316 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("Bbank") strncpy(mccTOF_4_filename, "Bbank" ? "Bbank" : "", 16384); else mccTOF_4_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_4_geometry, "NULL" ? "NULL" : "", 16384); else mccTOF_4_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_4_username1, "NULL" ? "NULL" : "", 16384); else mccTOF_4_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_4_username2, "NULL" ? "NULL" : "", 16384); else mccTOF_4_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_4_username3, "NULL" ? "NULL" : "", 16384); else mccTOF_4_username3[0]='\0';
-#line 316 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 316 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_4_nowritefile = ( ! mcipeventmode );
 #line 20143 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -20152,11 +20152,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaTOF_3, mctr1);
   rot_mul(mcrotaTOF_4, mctr1, mcrotrTOF_4);
   mctc1 = coords_set(
-#line 317 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 317 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 317 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 317 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.4165 + 0.09 -0.18 / 13 * 7,
-#line 317 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 317 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.46548);
 #line 20161 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank4, mctr1);
@@ -20172,47 +20172,47 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component TOF_5. */
   /* Setting parameters for component TOF_5. */
   SIG_MESSAGE("TOF_5 (Init:SetPar)");
-#line 319 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 319 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_5_xwidth = 0.2;
-#line 319 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 319 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_5_yheight = 0.1762;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_5_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_5_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_5_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_5_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_5_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_5_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_5_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_5_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_5_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_5_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_5_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_5_radius = 0;
-#line 319 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 319 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel user1, list all neutrons") strncpy(mccTOF_5_options, "square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel user1, list all neutrons" ? "square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel user1, list all neutrons" : "", 16384); else mccTOF_5_options[0]='\0';
-#line 320 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 320 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("Bbank") strncpy(mccTOF_5_filename, "Bbank" ? "Bbank" : "", 16384); else mccTOF_5_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_5_geometry, "NULL" ? "NULL" : "", 16384); else mccTOF_5_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_5_username1, "NULL" ? "NULL" : "", 16384); else mccTOF_5_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_5_username2, "NULL" ? "NULL" : "", 16384); else mccTOF_5_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_5_username3, "NULL" ? "NULL" : "", 16384); else mccTOF_5_username3[0]='\0';
-#line 320 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 320 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_5_nowritefile = ( ! mcipeventmode );
 #line 20217 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -20226,11 +20226,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaTOF_4, mctr1);
   rot_mul(mcrotaTOF_5, mctr1, mcrotrTOF_5);
   mctc1 = coords_set(
-#line 321 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 321 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 321 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 321 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.4165 + 0.09 -0.18 / 13 * 7,
-#line 321 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 321 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.46548);
 #line 20235 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank5, mctr1);
@@ -20246,47 +20246,47 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component nD_Mantid_2. */
   /* Setting parameters for component nD_Mantid_2. */
   SIG_MESSAGE("nD_Mantid_2 (Init:SetPar)");
-#line 323 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 323 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_2_xwidth = 0.2;
-#line 323 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 323 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_2_yheight = 0.1762;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_2_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_2_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_2_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_2_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_2_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_2_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_2_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_2_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_2_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_2_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_2_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_2_radius = 0;
-#line 323 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 323 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("mantid square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel min=100 user1, list all neutrons") strncpy(mccnD_Mantid_2_options, "mantid square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel min=100 user1, list all neutrons" ? "mantid square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel min=100 user1, list all neutrons" : "", 16384); else mccnD_Mantid_2_options[0]='\0';
-#line 324 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 324 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("Fbank") strncpy(mccnD_Mantid_2_filename, "Fbank" ? "Fbank" : "", 16384); else mccnD_Mantid_2_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccnD_Mantid_2_geometry, "NULL" ? "NULL" : "", 16384); else mccnD_Mantid_2_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccnD_Mantid_2_username1, "NULL" ? "NULL" : "", 16384); else mccnD_Mantid_2_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccnD_Mantid_2_username2, "NULL" ? "NULL" : "", 16384); else mccnD_Mantid_2_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccnD_Mantid_2_username3, "NULL" ? "NULL" : "", 16384); else mccnD_Mantid_2_username3[0]='\0';
-#line 324 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 324 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccnD_Mantid_2_nowritefile = ( ! mcipeventmode );
 #line 20291 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -20300,11 +20300,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaTOF_5, mctr1);
   rot_mul(mcrotanD_Mantid_2, mctr1, mcrotrnD_Mantid_2);
   mctc1 = coords_set(
-#line 325 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 325 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 325 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 325 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.4165 + 0.09 -0.18 / 13 * 7,
-#line 325 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 325 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.46548);
 #line 20309 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank6, mctr1);
@@ -20320,47 +20320,47 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component TOF_7. */
   /* Setting parameters for component TOF_7. */
   SIG_MESSAGE("TOF_7 (Init:SetPar)");
-#line 327 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 327 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_7_xwidth = 0.2;
-#line 327 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 327 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_7_yheight = 0.1762;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_7_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_7_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_7_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_7_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_7_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_7_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_7_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_7_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_7_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_7_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_7_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_7_radius = 0;
-#line 327 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 327 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel min=100 user1, list all neutrons") strncpy(mccTOF_7_options, "square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel min=100 user1, list all neutrons" ? "square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel min=100 user1, list all neutrons" : "", 16384); else mccTOF_7_options[0]='\0';
-#line 328 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 328 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("Fbank") strncpy(mccTOF_7_filename, "Fbank" ? "Fbank" : "", 16384); else mccTOF_7_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_7_geometry, "NULL" ? "NULL" : "", 16384); else mccTOF_7_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_7_username1, "NULL" ? "NULL" : "", 16384); else mccTOF_7_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_7_username2, "NULL" ? "NULL" : "", 16384); else mccTOF_7_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_7_username3, "NULL" ? "NULL" : "", 16384); else mccTOF_7_username3[0]='\0';
-#line 328 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 328 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_7_nowritefile = ( ! mcipeventmode );
 #line 20365 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -20374,11 +20374,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotanD_Mantid_2, mctr1);
   rot_mul(mcrotaTOF_7, mctr1, mcrotrTOF_7);
   mctc1 = coords_set(
-#line 329 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 329 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 329 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 329 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.4165 + 0.09 -0.18 / 13 * 7,
-#line 329 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 329 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.46548);
 #line 20383 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank7, mctr1);
@@ -20394,47 +20394,47 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component TOF_8. */
   /* Setting parameters for component TOF_8. */
   SIG_MESSAGE("TOF_8 (Init:SetPar)");
-#line 331 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 331 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_8_xwidth = 0.2;
-#line 331 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 331 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_8_yheight = 0.1762;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_8_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_8_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_8_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_8_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_8_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_8_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_8_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_8_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_8_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_8_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_8_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_8_radius = 0;
-#line 331 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 331 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel min=100 user1, list all neutrons") strncpy(mccTOF_8_options, "square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel min=100 user1, list all neutrons" ? "square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel min=100 user1, list all neutrons" : "", 16384); else mccTOF_8_options[0]='\0';
-#line 332 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 332 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("Fbank") strncpy(mccTOF_8_filename, "Fbank" ? "Fbank" : "", 16384); else mccTOF_8_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_8_geometry, "NULL" ? "NULL" : "", 16384); else mccTOF_8_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_8_username1, "NULL" ? "NULL" : "", 16384); else mccTOF_8_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_8_username2, "NULL" ? "NULL" : "", 16384); else mccTOF_8_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_8_username3, "NULL" ? "NULL" : "", 16384); else mccTOF_8_username3[0]='\0';
-#line 332 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 332 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_8_nowritefile = ( ! mcipeventmode );
 #line 20439 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -20448,11 +20448,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaTOF_7, mctr1);
   rot_mul(mcrotaTOF_8, mctr1, mcrotrTOF_8);
   mctc1 = coords_set(
-#line 333 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 333 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 333 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 333 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.4165 + 0.09 -0.18 / 13 * 7,
-#line 333 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 333 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.46548);
 #line 20457 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank8, mctr1);
@@ -20468,47 +20468,47 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component TOF_9. */
   /* Setting parameters for component TOF_9. */
   SIG_MESSAGE("TOF_9 (Init:SetPar)");
-#line 335 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 335 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_9_xwidth = 0.2;
-#line 335 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 335 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_9_yheight = 0.1762;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_9_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_9_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_9_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_9_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_9_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_9_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_9_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_9_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_9_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_9_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_9_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_9_radius = 0;
-#line 335 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 335 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel min=100 user1, list all neutrons") strncpy(mccTOF_9_options, "square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel min=100 user1, list all neutrons" ? "square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel min=100 user1, list all neutrons" : "", 16384); else mccTOF_9_options[0]='\0';
-#line 336 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 336 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("Fbank") strncpy(mccTOF_9_filename, "Fbank" ? "Fbank" : "", 16384); else mccTOF_9_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_9_geometry, "NULL" ? "NULL" : "", 16384); else mccTOF_9_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_9_username1, "NULL" ? "NULL" : "", 16384); else mccTOF_9_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_9_username2, "NULL" ? "NULL" : "", 16384); else mccTOF_9_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_9_username3, "NULL" ? "NULL" : "", 16384); else mccTOF_9_username3[0]='\0';
-#line 336 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 336 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_9_nowritefile = ( ! mcipeventmode );
 #line 20513 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -20522,11 +20522,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaTOF_8, mctr1);
   rot_mul(mcrotaTOF_9, mctr1, mcrotrTOF_9);
   mctc1 = coords_set(
-#line 337 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 337 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 337 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 337 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.4165 + 0.09 -0.18 / 13 * 7,
-#line 337 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 337 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.46548);
 #line 20531 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank9, mctr1);
@@ -20542,47 +20542,47 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
     /* Component TOF_10. */
   /* Setting parameters for component TOF_10. */
   SIG_MESSAGE("TOF_10 (Init:SetPar)");
-#line 339 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 339 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_10_xwidth = 0.2;
-#line 339 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 339 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_10_yheight = 0.1762;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_10_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_10_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_10_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_10_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_10_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_10_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_10_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_10_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_10_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_10_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_10_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_10_radius = 0;
-#line 339 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 339 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel min=100 user1, list all neutrons") strncpy(mccTOF_10_options, "square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel min=100 user1, list all neutrons" ? "square x limits=[-0.1 0.1] bins=2 y limits=[-0.0881 0.0881] bins=13, neutron pixel min=100 user1, list all neutrons" : "", 16384); else mccTOF_10_options[0]='\0';
-#line 340 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 340 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("Fbank") strncpy(mccTOF_10_filename, "Fbank" ? "Fbank" : "", 16384); else mccTOF_10_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_10_geometry, "NULL" ? "NULL" : "", 16384); else mccTOF_10_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_10_username1, "NULL" ? "NULL" : "", 16384); else mccTOF_10_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_10_username2, "NULL" ? "NULL" : "", 16384); else mccTOF_10_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if("NULL") strncpy(mccTOF_10_username3, "NULL" ? "NULL" : "", 16384); else mccTOF_10_username3[0]='\0';
-#line 340 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 340 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   mccTOF_10_nowritefile = ( ! mcipeventmode );
 #line 20587 "./ISIS_TOSCA_preupgrade_Mantid.c"
 
@@ -20596,11 +20596,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaTOF_9, mctr1);
   rot_mul(mcrotaTOF_10, mctr1, mcrotrTOF_10);
   mctc1 = coords_set(
-#line 341 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 341 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 341 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 341 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0.4165 + 0.09 -0.18 / 13 * 7,
-#line 341 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 341 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     -0.46548);
 #line 20605 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotaarm_bank10, mctr1);
@@ -20627,11 +20627,11 @@ t_minE = L0/sqrt(2/mneu*meV2J*(E_max*1.15))*1E6;
   rot_transpose(mcrotaTOF_10, mctr1);
   rot_mul(mcrotaCatchall, mctr1, mcrotrCatchall);
   mctc1 = coords_set(
-#line 344 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 344 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 344 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 344 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0,
-#line 344 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 344 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     0);
 #line 20636 "./ISIS_TOSCA_preupgrade_Mantid.c"
   rot_transpose(mcrotapowder, mctr1);
@@ -29997,7 +29997,7 @@ if (SCATTERED) {
 #line 29997 "./ISIS_TOSCA_preupgrade_Mantid.c"
 /* 'powder=Isotropic_Sqw()' component instance extend code */
     SIG_MESSAGE("powder (Trace:Extend)");
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if (!SCATTERED) ABSORB; 
 #line 30002 "./ISIS_TOSCA_preupgrade_Mantid.c"
 }   /* End of powder=Isotropic_Sqw() SETTING parameter declarations. */
@@ -30860,7 +30860,7 @@ MCNUM order = mccmonocr_b1_order;
 #line 30860 "./ISIS_TOSCA_preupgrade_Mantid.c"
 /* 'monocr_b1=Monochromator_curved()' component instance extend code */
     SIG_MESSAGE("monocr_b1 (Trace:Extend)");
-#line 159 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 159 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     // For calculation of the correct flightpath, these analysers
     // transmit instead of reflect, and the detectors are placed differently than
     // in the physical TOSCA instrument
@@ -31259,7 +31259,7 @@ MCNUM order = mccmonocr_b2_order;
 #line 31256 "./ISIS_TOSCA_preupgrade_Mantid.c"
 /* 'monocr_b2=Monochromator_curved()' component instance extend code */
     SIG_MESSAGE("monocr_b2 (Trace:Extend)");
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     if (SCATTERED) vx=-vx;
 #line 31261 "./ISIS_TOSCA_preupgrade_Mantid.c"
 }   /* End of monocr_b2=Monochromator_curved() SETTING parameter declarations. */
@@ -31655,7 +31655,7 @@ MCNUM order = mccmonocr_b3_order;
 #line 31649 "./ISIS_TOSCA_preupgrade_Mantid.c"
 /* 'monocr_b3=Monochromator_curved()' component instance extend code */
     SIG_MESSAGE("monocr_b3 (Trace:Extend)");
-#line 180 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 180 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
    if (SCATTERED) vx=-vx;
 #line 31654 "./ISIS_TOSCA_preupgrade_Mantid.c"
 }   /* End of monocr_b3=Monochromator_curved() SETTING parameter declarations. */
@@ -32051,7 +32051,7 @@ MCNUM order = mccmonocr_b4_order;
 #line 32042 "./ISIS_TOSCA_preupgrade_Mantid.c"
 /* 'monocr_b4=Monochromator_curved()' component instance extend code */
     SIG_MESSAGE("monocr_b4 (Trace:Extend)");
-#line 189 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 189 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
     if (SCATTERED) vx=-vx;
 #line 32047 "./ISIS_TOSCA_preupgrade_Mantid.c"
 }   /* End of monocr_b4=Monochromator_curved() SETTING parameter declarations. */
@@ -32447,7 +32447,7 @@ MCNUM order = mccmonocr_b5_order;
 #line 32435 "./ISIS_TOSCA_preupgrade_Mantid.c"
 /* 'monocr_b5=Monochromator_curved()' component instance extend code */
     SIG_MESSAGE("monocr_b5 (Trace:Extend)");
-#line 198 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 198 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
    if (SCATTERED) vx=-vx;
 #line 32440 "./ISIS_TOSCA_preupgrade_Mantid.c"
 }   /* End of monocr_b5=Monochromator_curved() SETTING parameter declarations. */
@@ -32843,7 +32843,7 @@ MCNUM order = mccmonocr_f6_order;
 #line 32828 "./ISIS_TOSCA_preupgrade_Mantid.c"
 /* 'monocr_f6=Monochromator_curved()' component instance extend code */
     SIG_MESSAGE("monocr_f6 (Trace:Extend)");
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
    if (SCATTERED) vx=-vx;
 #line 32833 "./ISIS_TOSCA_preupgrade_Mantid.c"
 }   /* End of monocr_f6=Monochromator_curved() SETTING parameter declarations. */
@@ -33239,7 +33239,7 @@ MCNUM order = mccmonocr_f7_order;
 #line 33221 "./ISIS_TOSCA_preupgrade_Mantid.c"
 /* 'monocr_f7=Monochromator_curved()' component instance extend code */
     SIG_MESSAGE("monocr_f7 (Trace:Extend)");
-#line 216 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 216 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
    if (SCATTERED) vx=-vx;
 #line 33226 "./ISIS_TOSCA_preupgrade_Mantid.c"
 }   /* End of monocr_f7=Monochromator_curved() SETTING parameter declarations. */
@@ -33635,7 +33635,7 @@ MCNUM order = mccmonocr_f8_order;
 #line 33614 "./ISIS_TOSCA_preupgrade_Mantid.c"
 /* 'monocr_f8=Monochromator_curved()' component instance extend code */
     SIG_MESSAGE("monocr_f8 (Trace:Extend)");
-#line 225 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 225 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
    if (SCATTERED) vx=-vx;
 #line 33619 "./ISIS_TOSCA_preupgrade_Mantid.c"
 }   /* End of monocr_f8=Monochromator_curved() SETTING parameter declarations. */
@@ -34031,7 +34031,7 @@ MCNUM order = mccmonocr_f9_order;
 #line 34007 "./ISIS_TOSCA_preupgrade_Mantid.c"
 /* 'monocr_f9=Monochromator_curved()' component instance extend code */
     SIG_MESSAGE("monocr_f9 (Trace:Extend)");
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
    if (SCATTERED) vx=-vx;
 #line 34012 "./ISIS_TOSCA_preupgrade_Mantid.c"
 }   /* End of monocr_f9=Monochromator_curved() SETTING parameter declarations. */
@@ -34427,7 +34427,7 @@ MCNUM order = mccmonocr_f10_order;
 #line 34400 "./ISIS_TOSCA_preupgrade_Mantid.c"
 /* 'monocr_f10=Monochromator_curved()' component instance extend code */
     SIG_MESSAGE("monocr_f10 (Trace:Extend)");
-#line 243 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 243 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if (SCATTERED) vx=-vx;
 #line 34405 "./ISIS_TOSCA_preupgrade_Mantid.c"
 }   /* End of monocr_f10=Monochromator_curved() SETTING parameter declarations. */
@@ -39162,7 +39162,7 @@ if (( mcipeventmode == 1 ))
     SIG_MESSAGE("CalcT (Trace:Extend)");
 if (( mcipeventmode == 1 )) {
 
-#line 298 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 298 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   t=t-t_minE/1e6;
 #line 39098 "./ISIS_TOSCA_preupgrade_Mantid.c"
 }
@@ -42539,7 +42539,7 @@ if (( mcipeventmode == 0 ))
     SIG_MESSAGE("Catchall (Trace:Extend)");
 if (( mcipeventmode == 0 )) {
 
-#line 347 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
+#line 347 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr"
   if(mcipeventmode==0) SCATTER;
 #line 42429 "./ISIS_TOSCA_preupgrade_Mantid.c"
 }

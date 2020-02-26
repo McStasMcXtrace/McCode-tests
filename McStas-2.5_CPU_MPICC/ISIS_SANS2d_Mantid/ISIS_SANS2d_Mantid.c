@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr (ISIS_SANS2d_Mantid)
- * Date:       Wed Nov 20 00:42:20 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr (ISIS_SANS2d_Mantid)
+ * Date:       Tue Feb 25 20:57:40 2020
  * File:       ./ISIS_SANS2d_Mantid.c
  * Compile:    cc -o ISIS_SANS2d_Mantid.out ./ISIS_SANS2d_Mantid.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "ISIS_SANS2d_Mantid";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -14241,13 +14241,13 @@ void mcinit(void) {
     /* Component a1. */
   /* Setting parameters for component a1. */
   SIG_MESSAGE("a1 (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("NULL") strncpy(mcca1_profile, "NULL" ? "NULL" : "", 16384); else mcca1_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcca1_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcca1_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcca1_minutes = 0;
 #line 14252 "./ISIS_SANS2d_Mantid.c"
 
@@ -14259,11 +14259,11 @@ void mcinit(void) {
 #line 14259 "./ISIS_SANS2d_Mantid.c"
   rot_copy(mcrotra1, mcrotaa1);
   mcposaa1 = coords_set(
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0);
 #line 14268 "./ISIS_SANS2d_Mantid.c"
   mctc1 = coords_neg(mcposaa1);
@@ -14286,11 +14286,11 @@ void mcinit(void) {
   rot_transpose(mcrotaa1, mctr1);
   rot_mul(mcrotaOrigin, mctr1, mcrotrOrigin);
   mcposaOrigin = coords_set(
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0);
 #line 14295 "./ISIS_SANS2d_Mantid.c"
   mctc1 = coords_sub(mcposaa1, mcposaOrigin);
@@ -14303,52 +14303,52 @@ void mcinit(void) {
     /* Component isis_source. */
   /* Setting parameters for component isis_source. */
   SIG_MESSAGE("isis_source (Init:SetPar)");
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccisis_source_Emin = - mcipLmax;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccisis_source_Emax = - mcipLmin;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccisis_source_dist = 3.68;
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccisis_source_focus_xw = 0.0365;
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccisis_source_focus_yh = 0.021;
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccisis_source_xwidth = -1;
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccisis_source_yheight = -1;
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccisis_source_CAngle = 0.0;
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccisis_source_SAC = 1;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccisis_source_Lmin = 0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccisis_source_Lmax = 0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccisis_source_target_index = + 1;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccisis_source_verbose = 0;
 #line 14332 "./ISIS_SANS2d_Mantid.c"
 
   SIG_MESSAGE("isis_source (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.0)*DEG2RAD,
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.0)*DEG2RAD,
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.0)*DEG2RAD);
 #line 14342 "./ISIS_SANS2d_Mantid.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaisis_source);
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotaisis_source, mctr1, mcrotrisis_source);
   mctc1 = coords_set(
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.0,
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.0,
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.00001);
 #line 14353 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -14364,27 +14364,27 @@ void mcinit(void) {
     /* Component lmon1. */
   /* Setting parameters for component lmon1. */
   SIG_MESSAGE("lmon1 (Init:SetPar)");
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("lmon1.dat") strncpy(mcclmon1_filename, "lmon1.dat" ? "lmon1.dat" : "", 16384); else mcclmon1_filename[0]='\0';
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon1_xmin = -0.04;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon1_xmax = 0.04;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon1_ymin = -0.03;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon1_ymax = 0.03;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon1_xwidth = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon1_yheight = 0;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon1_Lmin = 0.0;
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon1_Lmax = 17.0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon1_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon1_nowritefile = 0;
 #line 14389 "./ISIS_SANS2d_Mantid.c"
 
@@ -14398,11 +14398,11 @@ void mcinit(void) {
   rot_transpose(mcrotaisis_source, mctr1);
   rot_mul(mcrotalmon1, mctr1, mcrotrlmon1);
   mctc1 = coords_set(
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.0,
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.0,
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     3.698);
 #line 14407 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotaisis_source, mctr1);
@@ -14418,25 +14418,25 @@ void mcinit(void) {
     /* Component psd1. */
   /* Setting parameters for component psd1. */
   SIG_MESSAGE("psd1 (Init:SetPar)");
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd1_nx = 100;
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd1_ny = 100;
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("psd1.dat") strncpy(mccpsd1_filename, "psd1.dat" ? "psd1.dat" : "", 16384); else mccpsd1_filename[0]='\0';
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd1_xmin = -0.05;
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd1_xmax = 0.05;
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd1_ymin = -0.05;
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd1_ymax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd1_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd1_yheight = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd1_restore_neutron = 0;
 #line 14441 "./ISIS_SANS2d_Mantid.c"
 
@@ -14450,11 +14450,11 @@ void mcinit(void) {
   rot_transpose(mcrotalmon1, mctr1);
   rot_mul(mcrotapsd1, mctr1, mcrotrpsd1);
   mctc1 = coords_set(
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.0,
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.0,
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     3.699);
 #line 14459 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotaisis_source, mctr1);
@@ -14470,94 +14470,94 @@ void mcinit(void) {
     /* Component bender1. */
   /* Setting parameters for component bender1. */
   SIG_MESSAGE("bender1 (Init:SetPar)");
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_w1 = .0355;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_h1 = .020;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_w2 = .0355;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_h2 = .020;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_l = 0.3245;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_R0 = 0.995;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_Qc = 0.0218;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_alpha = 4.38;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_m = 1.0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_W = 0.003;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_nslit = 9;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_d = .0005;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_mleft = 1;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_mright = 3;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_mtop = 1;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_mbottom = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_nhslit = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_G = 0;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_aleft = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_aright = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_atop = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_abottom = -1;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_wavy = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_wavy_z = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_wavy_tb = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_wavy_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_chamfers = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_chamfers_z = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_chamfers_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_chamfers_tb = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_nelements = 1;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_nu = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender1_phase = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("NULL") strncpy(mccbender1_reflect, "NULL" ? "NULL" : "", 16384); else mccbender1_reflect[0]='\0';
 #line 14541 "./ISIS_SANS2d_Mantid.c"
 
   SIG_MESSAGE("bender1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.0)*DEG2RAD,
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.137099)*DEG2RAD,
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.0)*DEG2RAD);
 #line 14551 "./ISIS_SANS2d_Mantid.c"
   rot_mul(mctr1, mcrotaisis_source, mcrotabender1);
   rot_transpose(mcrotapsd1, mctr1);
   rot_mul(mcrotabender1, mctr1, mcrotrbender1);
   mctc1 = coords_set(
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     3.7);
 #line 14562 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotaisis_source, mctr1);
@@ -14573,94 +14573,94 @@ void mcinit(void) {
     /* Component bender2. */
   /* Setting parameters for component bender2. */
   SIG_MESSAGE("bender2 (Init:SetPar)");
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_w1 = .0355;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_h1 = .020;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_w2 = .0355;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_h2 = .020;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_l = 0.3245;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_R0 = 0.995;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_Qc = 0.0218;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_alpha = 4.38;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_m = 1.0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_W = 0.003;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_nslit = 9;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_d = .0005;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_mleft = 1;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_mright = 3;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_mtop = 1;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_mbottom = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_nhslit = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_G = 0;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_aleft = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_aright = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_atop = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_abottom = -1;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_wavy = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_wavy_z = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_wavy_tb = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_wavy_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_chamfers = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_chamfers_z = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_chamfers_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_chamfers_tb = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_nelements = 1;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_nu = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender2_phase = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("NULL") strncpy(mccbender2_reflect, "NULL" ? "NULL" : "", 16384); else mccbender2_reflect[0]='\0';
 #line 14644 "./ISIS_SANS2d_Mantid.c"
 
   SIG_MESSAGE("bender2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.0)*DEG2RAD,
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.1375099)*DEG2RAD,
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.0)*DEG2RAD);
 #line 14654 "./ISIS_SANS2d_Mantid.c"
   rot_mul(mctr1, mcrotabender1, mcrotabender2);
   rot_transpose(mcrotabender1, mctr1);
   rot_mul(mcrotabender2, mctr1, mcrotrbender2);
   mctc1 = coords_set(
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.325);
 #line 14665 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotabender1, mctr1);
@@ -14676,94 +14676,94 @@ void mcinit(void) {
     /* Component bender3. */
   /* Setting parameters for component bender3. */
   SIG_MESSAGE("bender3 (Init:SetPar)");
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_w1 = .0355;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_h1 = .020;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_w2 = .0355;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_h2 = .020;
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_l = 0.3245;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_R0 = 0.995;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_Qc = 0.0218;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_alpha = 4.38;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_m = 1.0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_W = 0.003;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_nslit = 9;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_d = .0005;
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_mleft = 1;
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_mright = 3;
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_mtop = 1;
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_mbottom = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_nhslit = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_G = 0;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_aleft = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_aright = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_atop = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_abottom = -1;
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_wavy = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_wavy_z = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_wavy_tb = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_wavy_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_chamfers = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_chamfers_z = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_chamfers_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_chamfers_tb = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_nelements = 1;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_nu = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender3_phase = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("NULL") strncpy(mccbender3_reflect, "NULL" ? "NULL" : "", 16384); else mccbender3_reflect[0]='\0';
 #line 14747 "./ISIS_SANS2d_Mantid.c"
 
   SIG_MESSAGE("bender3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.0)*DEG2RAD,
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.1375099)*DEG2RAD,
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.0)*DEG2RAD);
 #line 14757 "./ISIS_SANS2d_Mantid.c"
   rot_mul(mctr1, mcrotabender2, mcrotabender3);
   rot_transpose(mcrotabender2, mctr1);
   rot_mul(mcrotabender3, mctr1, mcrotrbender3);
   mctc1 = coords_set(
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.325);
 #line 14768 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotabender2, mctr1);
@@ -14779,94 +14779,94 @@ void mcinit(void) {
     /* Component bender4. */
   /* Setting parameters for component bender4. */
   SIG_MESSAGE("bender4 (Init:SetPar)");
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_w1 = .0355;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_h1 = .020;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_w2 = .0355;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_h2 = .020;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_l = 0.3245;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_R0 = 0.995;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_Qc = 0.0218;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_alpha = 4.38;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_m = 1.0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_W = 0.003;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_nslit = 9;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_d = .0005;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_mleft = 1;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_mright = 3;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_mtop = 1;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_mbottom = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_nhslit = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_G = 0;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_aleft = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_aright = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_atop = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_abottom = -1;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_wavy = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_wavy_z = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_wavy_tb = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_wavy_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_chamfers = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_chamfers_z = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_chamfers_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_chamfers_tb = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_nelements = 1;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_nu = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender4_phase = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("NULL") strncpy(mccbender4_reflect, "NULL" ? "NULL" : "", 16384); else mccbender4_reflect[0]='\0';
 #line 14850 "./ISIS_SANS2d_Mantid.c"
 
   SIG_MESSAGE("bender4 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.0)*DEG2RAD,
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.1375099)*DEG2RAD,
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.0)*DEG2RAD);
 #line 14860 "./ISIS_SANS2d_Mantid.c"
   rot_mul(mctr1, mcrotabender3, mcrotabender4);
   rot_transpose(mcrotabender3, mctr1);
   rot_mul(mcrotabender4, mctr1, mcrotrbender4);
   mctc1 = coords_set(
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.325);
 #line 14871 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotabender3, mctr1);
@@ -14882,94 +14882,94 @@ void mcinit(void) {
     /* Component bender5. */
   /* Setting parameters for component bender5. */
   SIG_MESSAGE("bender5 (Init:SetPar)");
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_w1 = .0355;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_h1 = .020;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_w2 = .0355;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_h2 = .020;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_l = 0.3245;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_R0 = 0.995;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_Qc = 0.0218;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_alpha = 4.38;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_m = 1.0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_W = 0.003;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_nslit = 9;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_d = .0005;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_mleft = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_mright = 3;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_mtop = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_mbottom = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_nhslit = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_G = 0;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_aleft = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_aright = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_atop = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_abottom = -1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_wavy = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_wavy_z = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_wavy_tb = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_wavy_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_chamfers = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_chamfers_z = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_chamfers_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_chamfers_tb = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_nelements = 1;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_nu = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender5_phase = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("NULL") strncpy(mccbender5_reflect, "NULL" ? "NULL" : "", 16384); else mccbender5_reflect[0]='\0';
 #line 14953 "./ISIS_SANS2d_Mantid.c"
 
   SIG_MESSAGE("bender5 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.0)*DEG2RAD,
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.1375099)*DEG2RAD,
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.0)*DEG2RAD);
 #line 14963 "./ISIS_SANS2d_Mantid.c"
   rot_mul(mctr1, mcrotabender4, mcrotabender5);
   rot_transpose(mcrotabender4, mctr1);
   rot_mul(mcrotabender5, mctr1, mcrotrbender5);
   mctc1 = coords_set(
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.325);
 #line 14974 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotabender4, mctr1);
@@ -14985,94 +14985,94 @@ void mcinit(void) {
     /* Component bender6. */
   /* Setting parameters for component bender6. */
   SIG_MESSAGE("bender6 (Init:SetPar)");
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_w1 = .0355;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_h1 = .020;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_w2 = .0355;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_h2 = .020;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_l = 0.3245;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_R0 = 0.995;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_Qc = 0.0218;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_alpha = 4.38;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_m = 1.0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_W = 0.003;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_nslit = 9;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_d = .0005;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_mleft = 1;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_mright = 3;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_mtop = 1;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_mbottom = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_nhslit = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_G = 0;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_aleft = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_aright = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_atop = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_abottom = -1;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_wavy = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_wavy_z = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_wavy_tb = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_wavy_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_chamfers = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_chamfers_z = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_chamfers_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_chamfers_tb = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_nelements = 1;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_nu = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender6_phase = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("NULL") strncpy(mccbender6_reflect, "NULL" ? "NULL" : "", 16384); else mccbender6_reflect[0]='\0';
 #line 15056 "./ISIS_SANS2d_Mantid.c"
 
   SIG_MESSAGE("bender6 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.0)*DEG2RAD,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.1375099)*DEG2RAD,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.0)*DEG2RAD);
 #line 15066 "./ISIS_SANS2d_Mantid.c"
   rot_mul(mctr1, mcrotabender5, mcrotabender6);
   rot_transpose(mcrotabender5, mctr1);
   rot_mul(mcrotabender6, mctr1, mcrotrbender6);
   mctc1 = coords_set(
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.325);
 #line 15077 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotabender5, mctr1);
@@ -15088,94 +15088,94 @@ void mcinit(void) {
     /* Component bender7. */
   /* Setting parameters for component bender7. */
   SIG_MESSAGE("bender7 (Init:SetPar)");
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_w1 = .0355;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_h1 = .020;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_w2 = .0355;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_h2 = .020;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_l = 0.3245;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_R0 = 0.995;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_Qc = 0.0218;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_alpha = 4.38;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_m = 1.0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_W = 0.003;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_nslit = 9;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_d = .0005;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_mleft = 1;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_mright = 3;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_mtop = 1;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_mbottom = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_nhslit = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_G = 0;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_aleft = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_aright = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_atop = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_abottom = -1;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_wavy = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_wavy_z = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_wavy_tb = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_wavy_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_chamfers = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_chamfers_z = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_chamfers_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_chamfers_tb = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_nelements = 1;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_nu = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender7_phase = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("NULL") strncpy(mccbender7_reflect, "NULL" ? "NULL" : "", 16384); else mccbender7_reflect[0]='\0';
 #line 15159 "./ISIS_SANS2d_Mantid.c"
 
   SIG_MESSAGE("bender7 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.0)*DEG2RAD,
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.1375099)*DEG2RAD,
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.0)*DEG2RAD);
 #line 15169 "./ISIS_SANS2d_Mantid.c"
   rot_mul(mctr1, mcrotabender6, mcrotabender7);
   rot_transpose(mcrotabender6, mctr1);
   rot_mul(mcrotabender7, mctr1, mcrotrbender7);
   mctc1 = coords_set(
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.325);
 #line 15180 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotabender6, mctr1);
@@ -15191,94 +15191,94 @@ void mcinit(void) {
     /* Component bender8. */
   /* Setting parameters for component bender8. */
   SIG_MESSAGE("bender8 (Init:SetPar)");
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_w1 = .0355;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_h1 = .020;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_w2 = .0355;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_h2 = .020;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_l = 0.3245;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_R0 = 0.995;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_Qc = 0.0218;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_alpha = 4.38;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_m = 1.0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_W = 0.003;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_nslit = 9;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_d = .0005;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_mleft = 1;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_mright = 3;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_mtop = 1;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_mbottom = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_nhslit = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_G = 0;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_aleft = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_aright = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_atop = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_abottom = -1;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_wavy = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_wavy_z = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_wavy_tb = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_wavy_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_chamfers = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_chamfers_z = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_chamfers_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_chamfers_tb = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_nelements = 1;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_nu = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender8_phase = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("NULL") strncpy(mccbender8_reflect, "NULL" ? "NULL" : "", 16384); else mccbender8_reflect[0]='\0';
 #line 15262 "./ISIS_SANS2d_Mantid.c"
 
   SIG_MESSAGE("bender8 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.0)*DEG2RAD,
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.1375099)*DEG2RAD,
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.0)*DEG2RAD);
 #line 15272 "./ISIS_SANS2d_Mantid.c"
   rot_mul(mctr1, mcrotabender7, mcrotabender8);
   rot_transpose(mcrotabender7, mctr1);
   rot_mul(mcrotabender8, mctr1, mcrotrbender8);
   mctc1 = coords_set(
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.325);
 #line 15283 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotabender7, mctr1);
@@ -15294,94 +15294,94 @@ void mcinit(void) {
     /* Component bender9. */
   /* Setting parameters for component bender9. */
   SIG_MESSAGE("bender9 (Init:SetPar)");
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_w1 = .0355;
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_h1 = .020;
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_w2 = .0355;
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_h2 = .020;
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_l = 0.3245;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_R0 = 0.995;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_Qc = 0.0218;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_alpha = 4.38;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_m = 1.0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_W = 0.003;
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_nslit = 9;
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_d = .0005;
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_mleft = 1;
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_mright = 3;
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_mtop = 1;
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_mbottom = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_nhslit = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_G = 0;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_aleft = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_aright = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_atop = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_abottom = -1;
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_wavy = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_wavy_z = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_wavy_tb = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_wavy_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_chamfers = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_chamfers_z = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_chamfers_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_chamfers_tb = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_nelements = 1;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_nu = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender9_phase = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("NULL") strncpy(mccbender9_reflect, "NULL" ? "NULL" : "", 16384); else mccbender9_reflect[0]='\0';
 #line 15365 "./ISIS_SANS2d_Mantid.c"
 
   SIG_MESSAGE("bender9 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.0)*DEG2RAD,
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.1375099)*DEG2RAD,
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.0)*DEG2RAD);
 #line 15375 "./ISIS_SANS2d_Mantid.c"
   rot_mul(mctr1, mcrotabender8, mcrotabender9);
   rot_transpose(mcrotabender8, mctr1);
   rot_mul(mcrotabender9, mctr1, mcrotrbender9);
   mctc1 = coords_set(
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.325);
 #line 15386 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotabender8, mctr1);
@@ -15397,94 +15397,94 @@ void mcinit(void) {
     /* Component bender10. */
   /* Setting parameters for component bender10. */
   SIG_MESSAGE("bender10 (Init:SetPar)");
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_w1 = .0355;
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_h1 = .020;
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_w2 = .0355;
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_h2 = .020;
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_l = 0.3245;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_R0 = 0.995;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_Qc = 0.0218;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_alpha = 4.38;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_m = 1.0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_W = 0.003;
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_nslit = 9;
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_d = .0005;
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_mleft = 1;
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_mright = 3;
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_mtop = 1;
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_mbottom = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_nhslit = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_G = 0;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_aleft = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_aright = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_atop = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_abottom = -1;
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_wavy = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_wavy_z = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_wavy_tb = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_wavy_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_chamfers = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_chamfers_z = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_chamfers_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_chamfers_tb = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_nelements = 1;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_nu = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccbender10_phase = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("NULL") strncpy(mccbender10_reflect, "NULL" ? "NULL" : "", 16384); else mccbender10_reflect[0]='\0';
 #line 15468 "./ISIS_SANS2d_Mantid.c"
 
   SIG_MESSAGE("bender10 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.0)*DEG2RAD,
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.1375099)*DEG2RAD,
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     (0.0)*DEG2RAD);
 #line 15478 "./ISIS_SANS2d_Mantid.c"
   rot_mul(mctr1, mcrotabender9, mcrotabender10);
   rot_transpose(mcrotabender9, mctr1);
   rot_mul(mcrotabender10, mctr1, mcrotrbender10);
   mctc1 = coords_set(
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.325);
 #line 15489 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotabender9, mctr1);
@@ -15500,27 +15500,27 @@ void mcinit(void) {
     /* Component lmonb. */
   /* Setting parameters for component lmonb. */
   SIG_MESSAGE("lmonb (Init:SetPar)");
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("lmonB.dat") strncpy(mcclmonb_filename, "lmonB.dat" ? "lmonB.dat" : "", 16384); else mcclmonb_filename[0]='\0';
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmonb_xmin = -0.018;
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmonb_xmax = 0.018;
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmonb_ymin = -0.018;
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmonb_ymax = 0.018;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmonb_xwidth = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmonb_yheight = 0;
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmonb_Lmin = 0.0;
-#line 152 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 152 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmonb_Lmax = 17.0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmonb_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmonb_nowritefile = 0;
 #line 15525 "./ISIS_SANS2d_Mantid.c"
 
@@ -15534,11 +15534,11 @@ void mcinit(void) {
   rot_transpose(mcrotabender10, mctr1);
   rot_mul(mcrotalmonb, mctr1, mcrotrlmonb);
   mctc1 = coords_set(
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.0,
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.0,
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.326);
 #line 15543 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotabender10, mctr1);
@@ -15554,25 +15554,25 @@ void mcinit(void) {
     /* Component psd2. */
   /* Setting parameters for component psd2. */
   SIG_MESSAGE("psd2 (Init:SetPar)");
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd2_nx = 100;
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd2_ny = 100;
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("psd2.dat") strncpy(mccpsd2_filename, "psd2.dat" ? "psd2.dat" : "", 16384); else mccpsd2_filename[0]='\0';
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd2_xmin = -0.025;
-#line 157 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 157 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd2_xmax = 0.025;
-#line 157 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 157 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd2_ymin = -0.025;
-#line 157 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 157 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd2_ymax = 0.025;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd2_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd2_yheight = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd2_restore_neutron = 0;
 #line 15577 "./ISIS_SANS2d_Mantid.c"
 
@@ -15586,11 +15586,11 @@ void mcinit(void) {
   rot_transpose(mcrotalmonb, mctr1);
   rot_mul(mcrotapsd2, mctr1, mcrotrpsd2);
   mctc1 = coords_set(
-#line 158 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 158 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.0,
-#line 158 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 158 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.0,
-#line 158 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 158 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.001);
 #line 15595 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotalmonb, mctr1);
@@ -15606,19 +15606,19 @@ void mcinit(void) {
     /* Component guide_in. */
   /* Setting parameters for component guide_in. */
   SIG_MESSAGE("guide_in (Init:SetPar)");
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_in_xmin = -0.015;
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_in_xmax = 0.015;
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_in_ymin = -.01;
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_in_ymax = + .01;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_in_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_in_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_in_yheight = 0;
 #line 15623 "./ISIS_SANS2d_Mantid.c"
 
@@ -15632,11 +15632,11 @@ void mcinit(void) {
   rot_transpose(mcrotapsd2, mctr1);
   rot_mul(mcrotaguide_in, mctr1, mcrotrguide_in);
   mctc1 = coords_set(
-#line 163 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 163 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 163 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 163 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 163 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 163 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.2845);
 #line 15641 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotapsd2, mctr1);
@@ -15652,73 +15652,73 @@ void mcinit(void) {
     /* Component guide_straight1. */
   /* Setting parameters for component guide_straight1. */
   SIG_MESSAGE("guide_straight1 (Init:SetPar)");
-#line 169 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_w1 = .030;
-#line 169 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_h1 = .020;
-#line 169 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_w2 = .030;
-#line 169 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_h2 = .020;
-#line 169 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_l = 1.985;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_R0 = 0.995;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_Qc = 0.0218;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_alpha = 4.38;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_m = 1.0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_W = 0.003;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_nslit = 1;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_d = 0.0005;
-#line 170 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 170 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_mleft = 1;
-#line 170 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 170 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_mright = 1;
-#line 170 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 170 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_mtop = 1;
-#line 170 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 170 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_mbottom = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_nhslit = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_G = 0;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_aleft = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_aright = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_atop = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_abottom = -1;
-#line 170 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 170 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_wavy = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_wavy_z = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_wavy_tb = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_wavy_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_chamfers = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_chamfers_z = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_chamfers_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_chamfers_tb = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_nelements = 1;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_nu = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight1_phase = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("NULL") strncpy(mccguide_straight1_reflect, "NULL" ? "NULL" : "", 16384); else mccguide_straight1_reflect[0]='\0';
 #line 15723 "./ISIS_SANS2d_Mantid.c"
 
@@ -15732,11 +15732,11 @@ void mcinit(void) {
   rot_transpose(mcrotaguide_in, mctr1);
   rot_mul(mcrotaguide_straight1, mctr1, mcrotrguide_straight1);
   mctc1 = coords_set(
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.0075);
 #line 15741 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotaguide_in, mctr1);
@@ -15752,73 +15752,73 @@ void mcinit(void) {
     /* Component guide_straight2. */
   /* Setting parameters for component guide_straight2. */
   SIG_MESSAGE("guide_straight2 (Init:SetPar)");
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_w1 = .030;
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_h1 = .020;
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_w2 = .030;
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_h2 = .020;
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_l = 1.985;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_R0 = 0.995;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_Qc = 0.0218;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_alpha = 4.38;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_m = 1.0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_W = 0.003;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_nslit = 1;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_d = 0.0005;
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 175 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_mleft = 1;
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 175 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_mright = 1;
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 175 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_mtop = 1;
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 175 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_mbottom = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_nhslit = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_G = 0;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_aleft = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_aright = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_atop = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_abottom = -1;
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 175 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_wavy = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_wavy_z = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_wavy_tb = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_wavy_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_chamfers = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_chamfers_z = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_chamfers_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_chamfers_tb = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_nelements = 1;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_nu = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight2_phase = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("NULL") strncpy(mccguide_straight2_reflect, "NULL" ? "NULL" : "", 16384); else mccguide_straight2_reflect[0]='\0';
 #line 15823 "./ISIS_SANS2d_Mantid.c"
 
@@ -15832,11 +15832,11 @@ void mcinit(void) {
   rot_transpose(mcrotaguide_straight1, mctr1);
   rot_mul(mcrotaguide_straight2, mctr1, mcrotrguide_straight2);
   mctc1 = coords_set(
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     2.000);
 #line 15841 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotaguide_straight1, mctr1);
@@ -15852,73 +15852,73 @@ void mcinit(void) {
     /* Component guide_straight3. */
   /* Setting parameters for component guide_straight3. */
   SIG_MESSAGE("guide_straight3 (Init:SetPar)");
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_w1 = .030;
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_h1 = .020;
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_w2 = .030;
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_h2 = .020;
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_l = 1.985;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_R0 = 0.995;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_Qc = 0.0218;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_alpha = 4.38;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_m = 1.0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_W = 0.003;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_nslit = 1;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_d = 0.0005;
-#line 180 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 180 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_mleft = 1;
-#line 180 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 180 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_mright = 1;
-#line 180 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 180 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_mtop = 1;
-#line 180 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 180 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_mbottom = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_nhslit = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_G = 0;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_aleft = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_aright = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_atop = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_abottom = -1;
-#line 180 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 180 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_wavy = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_wavy_z = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_wavy_tb = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_wavy_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_chamfers = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_chamfers_z = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_chamfers_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_chamfers_tb = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_nelements = 1;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_nu = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight3_phase = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("NULL") strncpy(mccguide_straight3_reflect, "NULL" ? "NULL" : "", 16384); else mccguide_straight3_reflect[0]='\0';
 #line 15923 "./ISIS_SANS2d_Mantid.c"
 
@@ -15932,11 +15932,11 @@ void mcinit(void) {
   rot_transpose(mcrotaguide_straight2, mctr1);
   rot_mul(mcrotaguide_straight3, mctr1, mcrotrguide_straight3);
   mctc1 = coords_set(
-#line 181 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 181 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 181 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 181 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 181 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 181 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     2.000);
 #line 15941 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotaguide_straight2, mctr1);
@@ -15952,73 +15952,73 @@ void mcinit(void) {
     /* Component guide_straight4. */
   /* Setting parameters for component guide_straight4. */
   SIG_MESSAGE("guide_straight4 (Init:SetPar)");
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 184 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_w1 = .030;
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 184 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_h1 = .020;
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 184 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_w2 = .030;
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 184 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_h2 = .020;
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 184 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_l = 1.985;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_R0 = 0.995;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_Qc = 0.0218;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_alpha = 4.38;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_m = 1.0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_W = 0.003;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_nslit = 1;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_d = 0.0005;
-#line 185 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 185 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_mleft = 1;
-#line 185 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 185 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_mright = 1;
-#line 185 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 185 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_mtop = 1;
-#line 185 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 185 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_mbottom = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_nhslit = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_G = 0;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_aleft = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_aright = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_atop = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_abottom = -1;
-#line 185 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 185 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_wavy = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_wavy_z = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_wavy_tb = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_wavy_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_chamfers = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_chamfers_z = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_chamfers_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_chamfers_tb = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_nelements = 1;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_nu = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccguide_straight4_phase = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("NULL") strncpy(mccguide_straight4_reflect, "NULL" ? "NULL" : "", 16384); else mccguide_straight4_reflect[0]='\0';
 #line 16023 "./ISIS_SANS2d_Mantid.c"
 
@@ -16032,11 +16032,11 @@ void mcinit(void) {
   rot_transpose(mcrotaguide_straight3, mctr1);
   rot_mul(mcrotaguide_straight4, mctr1, mcrotrguide_straight4);
   mctc1 = coords_set(
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     2.000);
 #line 16041 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotaguide_straight3, mctr1);
@@ -16052,25 +16052,25 @@ void mcinit(void) {
     /* Component psd3. */
   /* Setting parameters for component psd3. */
   SIG_MESSAGE("psd3 (Init:SetPar)");
-#line 189 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 189 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd3_nx = 100;
-#line 189 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 189 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd3_ny = 100;
-#line 189 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 189 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("psd3.dat") strncpy(mccpsd3_filename, "psd3.dat" ? "psd3.dat" : "", 16384); else mccpsd3_filename[0]='\0';
-#line 189 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 189 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd3_xmin = -0.030;
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd3_xmax = 0.030;
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd3_ymin = -0.030;
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd3_ymax = 0.030;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd3_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd3_yheight = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd3_restore_neutron = 0;
 #line 16075 "./ISIS_SANS2d_Mantid.c"
 
@@ -16084,11 +16084,11 @@ void mcinit(void) {
   rot_transpose(mcrotaguide_straight4, mctr1);
   rot_mul(mcrotapsd3, mctr1, mcrotrpsd3);
   mctc1 = coords_set(
-#line 191 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 191 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.0,
-#line 191 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 191 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.0,
-#line 191 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 191 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     7.999);
 #line 16093 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotaguide_in, mctr1);
@@ -16104,19 +16104,19 @@ void mcinit(void) {
     /* Component aperture1. */
   /* Setting parameters for component aperture1. */
   SIG_MESSAGE("aperture1 (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccaperture1_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccaperture1_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccaperture1_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccaperture1_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccaperture1_radius = 0;
-#line 195 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 195 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccaperture1_xwidth = mcipA1w;
-#line 195 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 195 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccaperture1_yheight = mcipA1h;
 #line 16121 "./ISIS_SANS2d_Mantid.c"
 
@@ -16130,11 +16130,11 @@ void mcinit(void) {
   rot_transpose(mcrotapsd3, mctr1);
   rot_mul(mcrotaaperture1, mctr1, mcrotraperture1);
   mctc1 = coords_set(
-#line 196 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 196 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 196 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 196 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 196 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 196 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     8.000);
 #line 16139 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotaguide_in, mctr1);
@@ -16150,27 +16150,27 @@ void mcinit(void) {
     /* Component lmonitor2. */
   /* Setting parameters for component lmonitor2. */
   SIG_MESSAGE("lmonitor2 (Init:SetPar)");
-#line 200 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 200 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("lmonitor2.dat") strncpy(mcclmonitor2_filename, "lmonitor2.dat" ? "lmonitor2.dat" : "", 16384); else mcclmonitor2_filename[0]='\0';
-#line 200 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 200 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmonitor2_xmin = -0.0155;
-#line 201 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 201 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmonitor2_xmax = 0.0155;
-#line 201 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 201 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmonitor2_ymin = -0.0105;
-#line 201 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 201 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmonitor2_ymax = 0.0105;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmonitor2_xwidth = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmonitor2_yheight = 0;
-#line 201 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 201 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmonitor2_Lmin = 0.0;
-#line 202 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 202 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmonitor2_Lmax = 17.0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmonitor2_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmonitor2_nowritefile = 0;
 #line 16175 "./ISIS_SANS2d_Mantid.c"
 
@@ -16184,11 +16184,11 @@ void mcinit(void) {
   rot_transpose(mcrotaaperture1, mctr1);
   rot_mul(mcrotalmonitor2, mctr1, mcrotrlmonitor2);
   mctc1 = coords_set(
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.0,
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.0,
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     2.651);
 #line 16193 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotaaperture1, mctr1);
@@ -16204,19 +16204,19 @@ void mcinit(void) {
     /* Component S6. */
   /* Setting parameters for component S6. */
   SIG_MESSAGE("S6 (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccS6_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccS6_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccS6_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccS6_ymax = 0;
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccS6_radius = mcipS6;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccS6_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccS6_yheight = 0;
 #line 16221 "./ISIS_SANS2d_Mantid.c"
 
@@ -16230,11 +16230,11 @@ void mcinit(void) {
   rot_transpose(mcrotalmonitor2, mctr1);
   rot_mul(mcrotaS6, mctr1, mcrotrS6);
   mctc1 = coords_set(
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     2.800);
 #line 16239 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotaaperture1, mctr1);
@@ -16261,11 +16261,11 @@ void mcinit(void) {
   rot_transpose(mcrotaS6, mctr1);
   rot_mul(mcrotasourceMantid, mctr1, mcrotrsourceMantid);
   mctc1 = coords_set(
-#line 215 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 215 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 215 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 215 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 215 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 215 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     -18.087);
 #line 16270 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotaS6, mctr1);
@@ -16281,19 +16281,19 @@ void mcinit(void) {
     /* Component APERTURE2. */
   /* Setting parameters for component APERTURE2. */
   SIG_MESSAGE("APERTURE2 (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccAPERTURE2_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccAPERTURE2_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccAPERTURE2_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccAPERTURE2_ymax = 0;
-#line 220 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 220 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccAPERTURE2_radius = mcipA2;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccAPERTURE2_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccAPERTURE2_yheight = 0;
 #line 16298 "./ISIS_SANS2d_Mantid.c"
 
@@ -16307,11 +16307,11 @@ void mcinit(void) {
   rot_transpose(mcrotasourceMantid, mctr1);
   rot_mul(mcrotaAPERTURE2, mctr1, mcrotrAPERTURE2);
   mctc1 = coords_set(
-#line 221 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 221 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 221 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 221 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 221 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 221 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     mcipL1);
 #line 16316 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotaaperture1, mctr1);
@@ -16327,27 +16327,27 @@ void mcinit(void) {
     /* Component lmon2. */
   /* Setting parameters for component lmon2. */
   SIG_MESSAGE("lmon2 (Init:SetPar)");
-#line 225 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 225 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("Edet0.dat") strncpy(mcclmon2_filename, "Edet0.dat" ? "Edet0.dat" : "", 16384); else mcclmon2_filename[0]='\0';
-#line 225 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 225 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon2_xmin = -0.0075;
-#line 226 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 226 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon2_xmax = 0.0075;
-#line 226 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 226 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon2_ymin = -0.0075;
-#line 226 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 226 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon2_ymax = 0.0075;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon2_xwidth = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon2_yheight = 0;
-#line 226 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 226 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon2_Lmin = 0.0;
-#line 227 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 227 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon2_Lmax = 17.0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon2_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon2_nowritefile = 0;
 #line 16352 "./ISIS_SANS2d_Mantid.c"
 
@@ -16361,11 +16361,11 @@ void mcinit(void) {
   rot_transpose(mcrotaAPERTURE2, mctr1);
   rot_mul(mcrotalmon2, mctr1, mcrotrlmon2);
   mctc1 = coords_set(
-#line 228 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 228 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.0,
-#line 228 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 228 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.0,
-#line 228 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 228 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.285);
 #line 16370 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotaAPERTURE2, mctr1);
@@ -16381,25 +16381,25 @@ void mcinit(void) {
     /* Component psd4. */
   /* Setting parameters for component psd4. */
   SIG_MESSAGE("psd4 (Init:SetPar)");
-#line 231 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 231 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd4_nx = 100;
-#line 231 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 231 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd4_ny = 100;
-#line 231 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 231 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("psd4.dat") strncpy(mccpsd4_filename, "psd4.dat" ? "psd4.dat" : "", 16384); else mccpsd4_filename[0]='\0';
-#line 231 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 231 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd4_xmin = -0.0075;
-#line 232 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 232 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd4_xmax = 0.0075;
-#line 232 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 232 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd4_ymin = -0.0075;
-#line 232 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 232 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd4_ymax = 0.0075;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd4_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd4_yheight = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd4_restore_neutron = 0;
 #line 16404 "./ISIS_SANS2d_Mantid.c"
 
@@ -16413,11 +16413,11 @@ void mcinit(void) {
   rot_transpose(mcrotalmon2, mctr1);
   rot_mul(mcrotapsd4, mctr1, mcrotrpsd4);
   mctc1 = coords_set(
-#line 233 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 233 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.0,
-#line 233 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 233 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.0,
-#line 233 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 233 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.286);
 #line 16422 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotaAPERTURE2, mctr1);
@@ -16433,25 +16433,25 @@ void mcinit(void) {
     /* Component psd5. */
   /* Setting parameters for component psd5. */
   SIG_MESSAGE("psd5 (Init:SetPar)");
-#line 237 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 237 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd5_nx = 100;
-#line 237 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 237 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd5_ny = 100;
-#line 237 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 237 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("psd5.dat") strncpy(mccpsd5_filename, "psd5.dat" ? "psd5.dat" : "", 16384); else mccpsd5_filename[0]='\0';
-#line 237 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 237 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd5_xmin = -0.0075;
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd5_xmax = 0.0075;
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd5_ymin = -0.0075;
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd5_ymax = 0.0075;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd5_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd5_yheight = 0;
-#line 239 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 239 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccpsd5_restore_neutron = 1;
 #line 16456 "./ISIS_SANS2d_Mantid.c"
 
@@ -16465,11 +16465,11 @@ void mcinit(void) {
   rot_transpose(mcrotapsd4, mctr1);
   rot_mul(mcrotapsd5, mctr1, mcrotrpsd5);
   mctc1 = coords_set(
-#line 240 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 240 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.0,
-#line 240 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 240 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.0,
-#line 240 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 240 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.18);
 #line 16474 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotapsd4, mctr1);
@@ -16485,21 +16485,21 @@ void mcinit(void) {
     /* Component sampleMantid. */
   /* Setting parameters for component sampleMantid. */
   SIG_MESSAGE("sampleMantid (Init:SetPar)");
-#line 243 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 243 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccsampleMantid_xwidth = 0.01;
-#line 244 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 244 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccsampleMantid_yheight = 0.01;
-#line 245 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 245 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccsampleMantid_zthick = 0.001;
-#line 246 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 246 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccsampleMantid_model = mcipmodel_nr;
-#line 247 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 247 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccsampleMantid_dsdw_inc = 0.0;
-#line 248 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 248 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccsampleMantid_sc_aim = 1.0;
-#line 249 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 249 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccsampleMantid_sans_aim = 1.00;
-#line 250 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 250 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccsampleMantid_singlesp = 1.0;
 #line 16504 "./ISIS_SANS2d_Mantid.c"
 
@@ -16513,11 +16513,11 @@ void mcinit(void) {
   rot_transpose(mcrotapsd5, mctr1);
   rot_mul(mcrotasampleMantid, mctr1, mcrotrsampleMantid);
   mctc1 = coords_set(
-#line 251 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 251 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 251 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 251 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 251 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 251 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.2);
 #line 16522 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotapsd4, mctr1);
@@ -16533,25 +16533,25 @@ void mcinit(void) {
     /* Component detector. */
   /* Setting parameters for component detector. */
   SIG_MESSAGE("detector (Init:SetPar)");
-#line 258 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 258 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccdetector_nx = 200;
-#line 258 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 258 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccdetector_ny = 200;
-#line 259 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 259 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("PSD.dat") strncpy(mccdetector_filename, "PSD.dat" ? "PSD.dat" : "", 16384); else mccdetector_filename[0]='\0';
-#line 260 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 260 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccdetector_xmin = -0.5;
-#line 261 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 261 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccdetector_xmax = 0.5;
-#line 262 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 262 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccdetector_ymin = -0.5;
-#line 263 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 263 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccdetector_ymax = 0.5;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccdetector_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccdetector_yheight = 0;
-#line 264 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 264 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccdetector_restore_neutron = 1;
 #line 16556 "./ISIS_SANS2d_Mantid.c"
 
@@ -16565,11 +16565,11 @@ void mcinit(void) {
   rot_transpose(mcrotasampleMantid, mctr1);
   rot_mul(mcrotadetector, mctr1, mcrotrdetector);
   mctc1 = coords_set(
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     3.9);
 #line 16574 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotasampleMantid, mctr1);
@@ -16585,47 +16585,47 @@ void mcinit(void) {
     /* Component nD_Mantid_1. */
   /* Setting parameters for component nD_Mantid_1. */
   SIG_MESSAGE("nD_Mantid_1 (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccnD_Mantid_1_xwidth = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccnD_Mantid_1_yheight = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccnD_Mantid_1_zdepth = 0;
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccnD_Mantid_1_xmin = -0.5;
-#line 272 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 272 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccnD_Mantid_1_xmax = 0.5;
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccnD_Mantid_1_ymin = -0.5;
-#line 274 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 274 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccnD_Mantid_1_ymax = 0.5;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccnD_Mantid_1_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccnD_Mantid_1_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccnD_Mantid_1_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccnD_Mantid_1_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccnD_Mantid_1_max = 1e40;
-#line 275 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 275 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccnD_Mantid_1_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccnD_Mantid_1_radius = 0;
-#line 270 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 270 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("mantid square x limits=[-0.5 0.5] bins=200 y limits=[-0.5 0.5] bins=200, neutron pixel t, list all neutrons") strncpy(mccnD_Mantid_1_options, "mantid square x limits=[-0.5 0.5] bins=200 y limits=[-0.5 0.5] bins=200, neutron pixel t, list all neutrons" ? "mantid square x limits=[-0.5 0.5] bins=200 y limits=[-0.5 0.5] bins=200, neutron pixel t, list all neutrons" : "", 16384); else mccnD_Mantid_1_options[0]='\0';
-#line 276 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 276 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("bank01_events.dat") strncpy(mccnD_Mantid_1_filename, "bank01_events.dat" ? "bank01_events.dat" : "", 16384); else mccnD_Mantid_1_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("NULL") strncpy(mccnD_Mantid_1_geometry, "NULL" ? "NULL" : "", 16384); else mccnD_Mantid_1_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("NULL") strncpy(mccnD_Mantid_1_username1, "NULL" ? "NULL" : "", 16384); else mccnD_Mantid_1_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("NULL") strncpy(mccnD_Mantid_1_username2, "NULL" ? "NULL" : "", 16384); else mccnD_Mantid_1_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("NULL") strncpy(mccnD_Mantid_1_username3, "NULL" ? "NULL" : "", 16384); else mccnD_Mantid_1_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mccnD_Mantid_1_nowritefile = 0;
 #line 16630 "./ISIS_SANS2d_Mantid.c"
 
@@ -16639,11 +16639,11 @@ void mcinit(void) {
   rot_transpose(mcrotadetector, mctr1);
   rot_mul(mcrotanD_Mantid_1, mctr1, mcrotrnD_Mantid_1);
   mctc1 = coords_set(
-#line 277 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 277 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 277 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 277 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0,
-#line 277 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 277 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     3.9);
 #line 16648 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotasampleMantid, mctr1);
@@ -16659,27 +16659,27 @@ void mcinit(void) {
     /* Component lmon_post. */
   /* Setting parameters for component lmon_post. */
   SIG_MESSAGE("lmon_post (Init:SetPar)");
-#line 282 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 282 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   if("lmonitor_post.dat") strncpy(mcclmon_post_filename, "lmonitor_post.dat" ? "lmonitor_post.dat" : "", 16384); else mcclmon_post_filename[0]='\0';
-#line 282 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 282 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon_post_xmin = -0.5;
-#line 283 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 283 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon_post_xmax = 0.5;
-#line 283 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 283 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon_post_ymin = -0.5;
-#line 283 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 283 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon_post_ymax = 0.5;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon_post_xwidth = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon_post_yheight = 0;
-#line 283 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 283 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon_post_Lmin = 0.0;
-#line 284 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 284 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon_post_Lmax = 17.0;
-#line 285 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 285 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon_post_restore_neutron = 1;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   mcclmon_post_nowritefile = 0;
 #line 16684 "./ISIS_SANS2d_Mantid.c"
 
@@ -16693,11 +16693,11 @@ void mcinit(void) {
   rot_transpose(mcrotanD_Mantid_1, mctr1);
   rot_mul(mcrotalmon_post, mctr1, mcrotrlmon_post);
   mctc1 = coords_set(
-#line 286 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 286 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.0,
-#line 286 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 286 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     0.0,
-#line 286 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 286 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
     3.9);
 #line 16702 "./ISIS_SANS2d_Mantid.c"
   rot_transpose(mcrotasampleMantid, mctr1);
@@ -20170,7 +20170,7 @@ MCNUM minutes = mcca1_minutes;
 #line 20170 "./ISIS_SANS2d_Mantid.c"
 /* 'a1=Progress_bar()' component instance extend code */
     SIG_MESSAGE("a1 (Trace:Extend)");
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
   /* Initialize to a know non-meaningful value */
 
 #line 20176 "./ISIS_SANS2d_Mantid.c"
@@ -27095,7 +27095,7 @@ MCNUM singlesp = mccsampleMantid_singlesp;
 #line 27095 "./ISIS_SANS2d_Mantid.c"
 /* 'sampleMantid=SANS_benchmark2()' component instance extend code */
     SIG_MESSAGE("sampleMantid (Trace:Extend)");
-#line 253 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
+#line 253 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_SANS2d_Mantid/ISIS_SANS2d_Mantid.instr"
         if (!SCATTERED) ABSORB;
 #line 27100 "./ISIS_SANS2d_Mantid.c"
 }   /* End of sampleMantid=SANS_benchmark2() SETTING parameter declarations. */

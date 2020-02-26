@@ -1,11 +1,11 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Nov. 19, 2019
-# Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr
+# Creator: McStas 2.5 - Feb. 24, 2020
+# Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr
 # Ncount: 1000000
 # Trace: no
 # Gravitation: no
-# Seed: 1574230213
+# Seed: 1582677787
 # Directory: 1
 # Nodes: 10
 # Param: KI=1.55
@@ -74,17 +74,17 @@
 # Param: radius=0.01
 # Param: thickness=0.005
 # Param: height=0.05
-# Date: Wed Nov 20 01:03:36 2019 (1574208216)
+# Date: Tue Feb 25 21:26:09 2020 (1582662369)
 # type: array_1d(60)
-# Source: ILL_H53_IN14 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr)
+# Source: ILL_H53_IN14 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr)
 # component: Mon_VS_L
 # position: 0 0 8.049
 # title: Wavelength [Angs] monitor
 # Ncount: 10000000
 # filename: mon_vs_l.dat
 # statistics: X0=4.10833; dX=0;
-# signal: Min=0; Max=4.08668e+08; Mean=6.81113e+06;
-# values: 4.08668e+08 1.10381e+06 297162
+# signal: Min=0; Max=4.09228e+08; Mean=6.82046e+06;
+# values: 4.09228e+08 1.1045e+06 297689
 # xvar: L
 # yvar: (I,I_err)
 # xlabel: Wavelength [Angs]
@@ -99,7 +99,7 @@
 2.658333333 0 0 0 
 3.141666667 0 0 0 
 3.625 0 0 0 
-4.108333333 408668000.4 1103810.635 297162 
+4.108333333 409227705.8 1104497.823 297689 
 4.591666667 0 0 0 
 5.075 0 0 0 
 5.558333333 0 0 0 

@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr (Test_FocalisationMirrors)
- * Date:       Wed Nov 20 00:49:41 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr (Test_FocalisationMirrors)
+ * Date:       Tue Feb 25 21:04:17 2020
  * File:       ./Test_FocalisationMirrors.c
  * Compile:    cc -o Test_FocalisationMirrors.out ./Test_FocalisationMirrors.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Test_FocalisationMirrors";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -7126,7 +7126,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define divergence mcipdivergence
 #define BeamWidth mcipBeamWidth
 #define TetaMin mcipTetaMin
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   float T;       /* (Tan(2*Theta))^2 */
   float x1b;
   float y1b;
@@ -7665,7 +7665,7 @@ void mcinit(void) {
 #define divergence mcipdivergence
 #define BeamWidth mcipBeamWidth
 #define TetaMin mcipTetaMin
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
 {
   T=(tan(TetaMin*DEG2RAD))*(tan(TetaMin*DEG2RAD));
   x1b=.5*(2*F+4*F/T+sqrt((2*F+4*F/T)*(2*F+4*F/T)-4*F*F));
@@ -7713,13 +7713,13 @@ void mcinit(void) {
     /* Component base. */
   /* Setting parameters for component base. */
   SIG_MESSAGE("base (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   if("NULL") strncpy(mccbase_profile, "NULL" ? "NULL" : "", 16384); else mccbase_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccbase_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccbase_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccbase_minutes = 0;
 #line 7724 "./Test_FocalisationMirrors.c"
 
@@ -7731,11 +7731,11 @@ void mcinit(void) {
 #line 7731 "./Test_FocalisationMirrors.c"
   rot_copy(mcrotrbase, mcrotabase);
   mcposabase = coords_set(
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
     0,
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
     0,
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
     0);
 #line 7740 "./Test_FocalisationMirrors.c"
   mctc1 = coords_neg(mcposabase);
@@ -7748,65 +7748,65 @@ void mcinit(void) {
     /* Component source1. */
   /* Setting parameters for component source1. */
   SIG_MESSAGE("source1 (Init:SetPar)");
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   if("NULL") strncpy(mccsource1_flux_file, "NULL" ? "NULL" : "", 16384); else mccsource1_flux_file[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   if("NULL") strncpy(mccsource1_xdiv_file, "NULL" ? "NULL" : "", 16384); else mccsource1_xdiv_file[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   if("NULL") strncpy(mccsource1_ydiv_file, "NULL" ? "NULL" : "", 16384); else mccsource1_ydiv_file[0]='\0';
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_radius = 0.0;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_dist = 0;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_focus_xw = 0.045;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_focus_yh = 0.12;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_focus_aw = mcipdivergence;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_focus_ah = .0001;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_E0 = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_dE = 0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_lambda0 = mciplambda;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_dlambda = 0.01;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_I1 = 1;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_yheight = mcipH / 1000;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_xwidth = mcipBeamWidth;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_verbose = 0;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_T1 = 0;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_flux_file_perAA = 0;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_flux_file_log = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_Lmin = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_Lmax = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_Emin = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_Emax = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_T2 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_I2 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_T3 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_I3 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_zdepth = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccsource1_target_index = + 1;
 #line 7811 "./Test_FocalisationMirrors.c"
 
@@ -7820,11 +7820,11 @@ void mcinit(void) {
   rot_transpose(mcrotabase, mctr1);
   rot_mul(mcrotasource1, mctr1, mcrotrsource1);
   mctc1 = coords_set(
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
     0,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
     0,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
     0.1);
 #line 7829 "./Test_FocalisationMirrors.c"
   rot_transpose(mcrotabase, mctr1);
@@ -7840,25 +7840,25 @@ void mcinit(void) {
     /* Component mirpara. */
   /* Setting parameters for component mirpara. */
   SIG_MESSAGE("mirpara (Init:SetPar)");
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   if("supermirror_m3.rfl") strncpy(mccmirpara_reflect, "supermirror_m3.rfl" ? "supermirror_m3.rfl" : "", 16384); else mccmirpara_reflect[0]='\0';
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmirpara_xwidth = mcipBeamWidth;
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmirpara_xshift = y1b;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmirpara_yheight = mcipH * 2;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmirpara_focus = mcipF;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmirpara_R0 = 0.99;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmirpara_Qc = 0.0219;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmirpara_alpha = 6.07;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmirpara_m = 1.0;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmirpara_W = 0.003;
 #line 7863 "./Test_FocalisationMirrors.c"
 
@@ -7872,11 +7872,11 @@ void mcinit(void) {
   rot_transpose(mcrotasource1, mctr1);
   rot_mul(mcrotamirpara, mctr1, mcrotrmirpara);
   mctc1 = coords_set(
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
     - ( y1b + mcipBeamWidth / 2 ),
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
     0,
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
     0.1001);
 #line 7881 "./Test_FocalisationMirrors.c"
   rot_transpose(mcrotabase, mctr1);
@@ -7892,19 +7892,19 @@ void mcinit(void) {
     /* Component filter. */
   /* Setting parameters for component filter. */
   SIG_MESSAGE("filter (Init:SetPar)");
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccfilter_xmin = 0;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccfilter_xmax = .1;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccfilter_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccfilter_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccfilter_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccfilter_xwidth = 0;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccfilter_yheight = 2 * mcipH;
 #line 7909 "./Test_FocalisationMirrors.c"
 
@@ -7918,11 +7918,11 @@ void mcinit(void) {
   rot_transpose(mcrotamirpara, mctr1);
   rot_mul(mcrotafilter, mctr1, mcrotrfilter);
   mctc1 = coords_set(
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
     ( rayon1 + y1h ) / ( x1h - mcipF ) * ( x1b - x1h ) + y1h,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
     0,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
     x1h - x1b);
 #line 7927 "./Test_FocalisationMirrors.c"
   rot_transpose(mcrotamirpara, mctr1);
@@ -7938,19 +7938,19 @@ void mcinit(void) {
     /* Component spatialfilter. */
   /* Setting parameters for component spatialfilter. */
   SIG_MESSAGE("spatialfilter (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccspatialfilter_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccspatialfilter_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccspatialfilter_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccspatialfilter_ymax = 0;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccspatialfilter_radius = rayon1;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccspatialfilter_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccspatialfilter_yheight = 0;
 #line 7955 "./Test_FocalisationMirrors.c"
 
@@ -7964,11 +7964,11 @@ void mcinit(void) {
   rot_transpose(mcrotafilter, mctr1);
   rot_mul(mcrotaspatialfilter, mctr1, mcrotrspatialfilter);
   mctc1 = coords_set(
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
     0,
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
     0,
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
     xf);
 #line 7973 "./Test_FocalisationMirrors.c"
   rot_transpose(mcrotamirpara, mctr1);
@@ -7984,27 +7984,27 @@ void mcinit(void) {
     /* Component mirelli. */
   /* Setting parameters for component mirelli. */
   SIG_MESSAGE("mirelli (Init:SetPar)");
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   if("supermirror_m3.rfl") strncpy(mccmirelli_reflect, "supermirror_m3.rfl" ? "supermirror_m3.rfl" : "", 16384); else mccmirelli_reflect[0]='\0';
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmirelli_focus = mcipF * mcipG;
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmirelli_interfocus = mcipDET;
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmirelli_yheight = mcipH * 2;
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmirelli_zmin = - x2b - mcipDET / 2;
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmirelli_zmax = - x2h - mcipDET / 2;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmirelli_R0 = 0.99;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmirelli_Qc = 0.0219;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmirelli_alpha = 6.07;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmirelli_m = 1.0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmirelli_W = 0.003;
 #line 8009 "./Test_FocalisationMirrors.c"
 
@@ -8018,11 +8018,11 @@ void mcinit(void) {
   rot_transpose(mcrotaspatialfilter, mctr1);
   rot_mul(mcrotamirelli, mctr1, mcrotrmirelli);
   mctc1 = coords_set(
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
     0,
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
     0,
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
     mcipDET / 2 - mcipG * mcipF + x1h);
 #line 8027 "./Test_FocalisationMirrors.c"
   rot_transpose(mcrotamirpara, mctr1);
@@ -8038,25 +8038,25 @@ void mcinit(void) {
     /* Component monPSD. */
   /* Setting parameters for component monPSD. */
   SIG_MESSAGE("monPSD (Init:SetPar)");
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmonPSD_nx = 100;
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmonPSD_ny = 1;
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   if("det.txt") strncpy(mccmonPSD_filename, "det.txt" ? "det.txt" : "", 16384); else mccmonPSD_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmonPSD_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmonPSD_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmonPSD_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmonPSD_ymax = 0.05;
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmonPSD_xwidth = 3 * BS;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmonPSD_yheight = .01;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
   mccmonPSD_restore_neutron = 0;
 #line 8061 "./Test_FocalisationMirrors.c"
 
@@ -8070,11 +8070,11 @@ void mcinit(void) {
   rot_transpose(mcrotamirelli, mctr1);
   rot_mul(mcrotamonPSD, mctr1, mcrotrmonPSD);
   mctc1 = coords_set(
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
     0,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
     0,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
     mcipDET / 2);
 #line 8079 "./Test_FocalisationMirrors.c"
   rot_transpose(mcrotamirelli, mctr1);
@@ -10534,7 +10534,7 @@ MCNUM restore_neutron = mccmonPSD_restore_neutron;
 #define divergence mcipdivergence
 #define BeamWidth mcipBeamWidth
 #define TetaMin mcipTetaMin
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_FocalisationMirrors/Test_FocalisationMirrors.instr"
 {
   printf("%s: end of simulation\n", NAME_CURRENT_COMP);
   printf("T=%f \n X1B=%f et Y1B=%f \n X1H=%f et Y1H=%f \n a=%f et b=%f \n X2H=%f et X2B=%f \n Y2H=%f et Y2B=%f\n\n",T,x1b,y1b,x1h,y1h,Ellia,Ellib,x2h,x2b,y2h,y2b);

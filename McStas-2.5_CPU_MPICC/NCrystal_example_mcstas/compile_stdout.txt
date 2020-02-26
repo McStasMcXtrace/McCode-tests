@@ -1,10 +1,9 @@
-      
 INFO: No output directory specified (--dir)
-INFO: Using directory: "NCrystal_example_mcstas_20191120_004412"
+INFO: Using directory: "NCrystal_example_mcstas_20200225_205932"
 INFO: Regenerating c-file: NCrystal_example_mcstas.c
 Info:    'NCrystal_sample' is a contributed component.
 CFLAGS= -Wl,-rpath,@MCCODE_LIB@/libs/ncrystal/lib -L@MCCODE_LIB@/libs/ncrystal/lib -lNCrystal -I@MCCODE_LIB@libs/ncrystal/include
-INFO: Recompiling: ./NCrystal_example_mcstas.out
+      INFO: Recompiling: ./NCrystal_example_mcstas.out
 /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/NCrystal_sample.comp:71:31: fatal error: NCrystal/ncrystal.h: No such file or directory
  #include "NCrystal/ncrystal.h"
                                ^

@@ -1,11 +1,26 @@
-      [1574205155.186814] [n-62-23-6:29103:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3380.71
-[1574205155.188316] [n-62-23-6:29103:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574205155.188319] [n-62-23-6:29103:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574205155.190300] [n-62-23-6:29103:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574205155.190303] [n-62-23-6:29103:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: No output directory specified (--dir)
+INFO: Using directory: "ESS_Testbeamline_HZB_V20_20200225_202348"
+INFO: Regenerating c-file: ESS_Testbeamline_HZB_V20.c
+Info:    Defining SPLIT from Fealpha=PowderN() to END in instrument ESS_Testbeamline_HZB_V20
+CFLAGS=
+      INFO: Recompiling: ./ESS_Testbeamline_HZB_V20.out
+INFO: ===
+[n-62-23-14:32296] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:32296] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582658660.420484] [n-62-23-14:32295:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3279.88
+[1582658660.422294] [n-62-23-14:32295:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582658660.422298] [n-62-23-14:32295:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1582658660.424820] [n-62-23-14:32295:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582658660.424824] [n-62-23-14:32295:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 begin instrument: ESS_Testbeamline_HZB_V20
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr
   Parameters:  lambda_min(double) lambda_max(double) frequency(double) Choppers_WFM1_in(double) Choppers_WFM2_in(double) Choppers_FOC1_in(double) Choppers_FOC2_in(double) s1_x(double) s1_y(double) s2_x(double) s2_y(double) s3_x(double) s3_y(double) Offset_deg_SC1(double) Offset_deg_SC2(double) Offset_deg_BC1(double) Offset_deg_BC2(double) Offset_deg_WFM1(double) Offset_deg_WFM2(double) Offset_deg_FOC1(double) Offset_deg_FOC2(double) Z(double) sp(double) npulses(double) emulate_reactor_emmision(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +29,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1574234258
+  Seed: 1582690955
   Directory: .
   Param: lambda_min=1
   Param: lambda_max=15
@@ -48,16 +63,3 @@ begin simulation: .
   Param: emulate_reactor_emmision=0
 end simulation
 info!
-INFO: No output directory specified (--dir)
-INFO: Using directory: "ESS_Testbeamline_HZB_V20_20191120_001204"
-INFO: Regenerating c-file: ESS_Testbeamline_HZB_V20.c
-Info:    Defining SPLIT from Fealpha=PowderN() to END in instrument ESS_Testbeamline_HZB_V20
-CFLAGS=
-INFO: Recompiling: ./ESS_Testbeamline_HZB_V20.out
-INFO: ===
---------------------------------------------------------------------------
-Initialization of MXM library failed.
-
-  Error: Input/output error
-
---------------------------------------------------------------------------

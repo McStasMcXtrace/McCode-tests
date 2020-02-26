@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr (ESS_Testbeamline_HZB_V20)
- * Date:       Wed Nov 20 00:12:04 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr (ESS_Testbeamline_HZB_V20)
+ * Date:       Tue Feb 25 20:23:48 2020
  * File:       ./ESS_Testbeamline_HZB_V20.c
  * Compile:    cc -o ESS_Testbeamline_HZB_V20.out ./ESS_Testbeamline_HZB_V20.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "ESS_Testbeamline_HZB_V20";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -10410,7 +10410,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define sp mcipsp
 #define npulses mcipnpulses
 #define emulate_reactor_emmision mcipemulate_reactor_emmision
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
 
 
  double L_g1,L_g2,L_g3,L_g4,L_g5,L_g6,L_g7,L_g8,L_g9,L_g10,L_g11,L_g12;
@@ -15811,7 +15811,7 @@ void mcinit(void) {
 #define sp mcipsp
 #define npulses mcipnpulses
 #define emulate_reactor_emmision mcipemulate_reactor_emmision
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
 {
 
 /* guide lengths  */
@@ -15899,13 +15899,13 @@ h_g12=0.125;
     /* Component origin. */
   /* Setting parameters for component origin. */
   SIG_MESSAGE("origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("NULL") strncpy(mccorigin_profile, "NULL" ? "NULL" : "", 16384); else mccorigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccorigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccorigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccorigin_minutes = 0;
 #line 15910 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -15917,11 +15917,11 @@ h_g12=0.125;
 #line 15917 "./ESS_Testbeamline_HZB_V20.c"
   rot_copy(mcrotrorigin, mcrotaorigin);
   mcposaorigin = coords_set(
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0);
 #line 15926 "./ESS_Testbeamline_HZB_V20.c"
   mctc1 = coords_neg(mcposaorigin);
@@ -15934,39 +15934,39 @@ h_g12=0.125;
     /* Component source. */
   /* Setting parameters for component source. */
   SIG_MESSAGE("source (Init:SetPar)");
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccsource_size = 0.155;
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccsource_yheight = 0;
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccsource_xwidth = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccsource_Lmin = mciplambda_min;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccsource_Lmax = mciplambda_max;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccsource_dist = 1.53;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccsource_focus_xw = 0.06;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccsource_focus_yh = 0.125;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccsource_T1 = 43.7;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccsource_T2 = 137.2;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccsource_T3 = 300;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccsource_I1 = 1.4e12;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccsource_I2 = 2.08e12;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccsource_I3 = 0;
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccsource_target_index = + 1;
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccsource_lambda0 = 0;
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccsource_dlambda = 0;
 #line 15971 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -15980,11 +15980,11 @@ h_g12=0.125;
   rot_transpose(mcrotaorigin, mctr1);
   rot_mul(mcrotasource, mctr1, mcrotrsource);
   mctc1 = coords_set(
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0);
 #line 15989 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -16000,27 +16000,27 @@ h_g12=0.125;
     /* Component lmon_source. */
   /* Setting parameters for component lmon_source. */
   SIG_MESSAGE("lmon_source (Init:SetPar)");
-#line 142 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 142 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("L_Monitor_Source.dat") strncpy(mcclmon_source_filename, "L_Monitor_Source.dat" ? "L_Monitor_Source.dat" : "", 16384); else mcclmon_source_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_source_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_source_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_source_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_source_ymax = 0.05;
-#line 142 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 142 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_source_xwidth = 0.06;
-#line 142 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 142 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_source_yheight = 0.125;
-#line 142 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 142 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_source_Lmin = mciplambda_min;
-#line 142 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 142 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_source_Lmax = mciplambda_max;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_source_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_source_nowritefile = 0;
 #line 16025 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -16034,11 +16034,11 @@ h_g12=0.125;
   rot_transpose(mcrotasource, mctr1);
   rot_mul(mcrotalmon_source, mctr1, mcrotrlmon_source);
   mctc1 = coords_set(
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     1.5290);
 #line 16043 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -16054,25 +16054,25 @@ h_g12=0.125;
     /* Component psd_source. */
   /* Setting parameters for component psd_source. */
   SIG_MESSAGE("psd_source (Init:SetPar)");
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_source_nx = 150;
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_source_ny = 150;
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("PSD_Monitor_Source.dat") strncpy(mccpsd_source_filename, "PSD_Monitor_Source.dat" ? "PSD_Monitor_Source.dat" : "", 16384); else mccpsd_source_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_source_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_source_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_source_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_source_ymax = 0.05;
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_source_xwidth = 0.15;
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_source_yheight = 0.15;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_source_restore_neutron = 0;
 #line 16077 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -16086,11 +16086,11 @@ h_g12=0.125;
   rot_transpose(mcrotalmon_source, mctr1);
   rot_mul(mcrotapsd_source, mctr1, mcrotrpsd_source);
   mctc1 = coords_set(
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     1.5291);
 #line 16095 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -16106,27 +16106,27 @@ h_g12=0.125;
     /* Component time_lambda_source. */
   /* Setting parameters for component time_lambda_source. */
   SIG_MESSAGE("time_lambda_source (Init:SetPar)");
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("Time_Lambda_Source.dat") strncpy(mcctime_lambda_source_filename, "Time_Lambda_Source.dat" ? "Time_Lambda_Source.dat" : "", 16384); else mcctime_lambda_source_filename[0]='\0';
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_source_xmin = -0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_source_xmax = 0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_source_ymin = -0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_source_ymax = 0.05;
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_source_xwidth = 0.06;
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_source_yheight = 0.125;
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_source_Lmin = 0;
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_source_Lmax = 10;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_source_restore_neutron = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_source_nowritefile = 0;
 #line 16131 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -16140,11 +16140,11 @@ h_g12=0.125;
   rot_transpose(mcrotapsd_source, mctr1);
   rot_mul(mcrotatime_lambda_source, mctr1, mcrotrtime_lambda_source);
   mctc1 = coords_set(
-#line 152 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 152 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 152 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 152 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 152 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 152 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     1.5292);
 #line 16149 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -16160,29 +16160,29 @@ h_g12=0.125;
     /* Component tofmon_source. */
   /* Setting parameters for component tofmon_source. */
   SIG_MESSAGE("tofmon_source (Init:SetPar)");
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("TOF_Monitor_Source.dat") strncpy(mcctofmon_source_filename, "TOF_Monitor_Source.dat" ? "TOF_Monitor_Source.dat" : "", 16384); else mcctofmon_source_filename[0]='\0';
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_source_xmin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_source_xmax = 0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_source_ymin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_source_ymax = 0.05;
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_source_xwidth = 0.06;
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_source_yheight = 0.125;
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_source_tmin = 0;
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_source_tmax = 72000;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_source_dt = 1.0;
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_source_restore_neutron = 1;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_source_nowritefile = 0;
 #line 16187 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -16196,11 +16196,11 @@ h_g12=0.125;
   rot_transpose(mcrotatime_lambda_source, mctr1);
   rot_mul(mcrotatofmon_source, mctr1, mcrotrtofmon_source);
   mctc1 = coords_set(
-#line 157 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 157 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 157 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 157 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 157 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 157 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     1.52921);
 #line 16205 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -16216,27 +16216,27 @@ h_g12=0.125;
     /* Component g1. */
   /* Setting parameters for component g1. */
   SIG_MESSAGE("g1 (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if(0) strncpy(mccg1_reflect, 0 ? 0 : "", 16384); else mccg1_reflect[0]='\0';
-#line 163 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 163 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg1_w1 = w_g1;
-#line 163 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 163 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg1_h1 = h_g1;
-#line 163 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 163 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg1_w2 = w_g1;
-#line 163 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 163 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg1_h2 = h_g1;
-#line 163 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 163 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg1_l = L_g1;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg1_R0 = 0.99;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg1_Qc = 0.0219;
-#line 163 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 163 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg1_alpha = 6.49;
-#line 163 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 163 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg1_m = 3;
-#line 163 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 163 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg1_W = 0.00333;
 #line 16241 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -16250,11 +16250,11 @@ h_g12=0.125;
   rot_transpose(mcrotatofmon_source, mctr1);
   rot_mul(mcrotag1, mctr1, mcrotrg1);
   mctc1 = coords_set(
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 164 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 164 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 164 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     1.53);
 #line 16259 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -16270,45 +16270,45 @@ h_g12=0.125;
     /* Component g2_channeled. */
   /* Setting parameters for component g2_channeled. */
   SIG_MESSAGE("g2_channeled (Init:SetPar)");
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg2_channeled_w1 = w_g2;
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg2_channeled_h1 = h_g2;
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg2_channeled_w2 = w_g2;
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg2_channeled_h2 = h_g2;
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg2_channeled_l = L_g2;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg2_channeled_R0 = 0.995;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg2_channeled_Qc = 0;
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg2_channeled_alpha = 6.49;
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg2_channeled_m = 3;
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg2_channeled_nslit = 6;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg2_channeled_d = 0.0005;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg2_channeled_Qcx = 0.0218;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg2_channeled_Qcy = 0.0218;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg2_channeled_alphax = 4.38;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg2_channeled_alphay = 4.38;
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg2_channeled_W = 0.00333;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg2_channeled_mx = 1;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg2_channeled_my = 1;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg2_channeled_nu = 0;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg2_channeled_phase = 0;
 #line 16313 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -16322,11 +16322,11 @@ h_g12=0.125;
   rot_transpose(mcrotag1, mctr1);
   rot_mul(mcrotag2_channeled, mctr1, mcrotrg2_channeled);
   mctc1 = coords_set(
-#line 169 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 169 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 169 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     3.47);
 #line 16331 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -16342,49 +16342,49 @@ h_g12=0.125;
     /* Component g3. */
   /* Setting parameters for component g3. */
   SIG_MESSAGE("g3 (Init:SetPar)");
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg3_w = w_g3;
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg3_h = h_g3;
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg3_r = 1500;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg3_Win = 0.04;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg3_k = 1;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg3_d = 0.001;
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg3_l = L_g3;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg3_R0a = 0.99;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg3_Qca = 0.021;
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg3_alphaa = 6.49;
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg3_ma = 3;
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg3_Wa = 0.00333;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg3_R0i = 0.99;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg3_Qci = 0.021;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg3_alphai = 6.07;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg3_mi = 2;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg3_Wi = 0.003;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg3_R0s = 0.99;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg3_Qcs = 0.021;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg3_alphas = 6.07;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg3_ms = 2;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg3_Ws = 0.003;
 #line 16389 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -16398,11 +16398,11 @@ h_g12=0.125;
   rot_transpose(mcrotag2_channeled, mctr1);
   rot_mul(mcrotag3, mctr1, mcrotrg3);
   mctc1 = coords_set(
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     5);
 #line 16407 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -16418,49 +16418,49 @@ h_g12=0.125;
     /* Component g4. */
   /* Setting parameters for component g4. */
   SIG_MESSAGE("g4 (Init:SetPar)");
-#line 178 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 178 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg4_w = w_g4;
-#line 178 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 178 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg4_h = h_g4;
-#line 178 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 178 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg4_r = 2300;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg4_Win = 0.04;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg4_k = 1;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg4_d = 0.001;
-#line 178 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 178 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg4_l = L_g4;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg4_R0a = 0.99;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg4_Qca = 0.021;
-#line 178 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 178 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg4_alphaa = 6.49;
-#line 178 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 178 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg4_ma = 3;
-#line 178 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 178 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg4_Wa = 0.00333;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg4_R0i = 0.99;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg4_Qci = 0.021;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg4_alphai = 6.07;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg4_mi = 2;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg4_Wi = 0.003;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg4_R0s = 0.99;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg4_Qcs = 0.021;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg4_alphas = 6.07;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg4_ms = 2;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg4_Ws = 0.003;
 #line 16465 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -16474,11 +16474,11 @@ h_g12=0.125;
   rot_transpose(mcrotag3, mctr1);
   rot_mul(mcrotag4, mctr1, mcrotrg4);
   mctc1 = coords_set(
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     10.706);
 #line 16483 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -16494,49 +16494,49 @@ h_g12=0.125;
     /* Component g5. */
   /* Setting parameters for component g5. */
   SIG_MESSAGE("g5 (Init:SetPar)");
-#line 182 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 182 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg5_w = w_g5;
-#line 182 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 182 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg5_h = h_g5;
-#line 182 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 182 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg5_r = 2300;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg5_Win = 0.04;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg5_k = 1;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg5_d = 0.001;
-#line 182 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 182 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg5_l = L_g5;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg5_R0a = 0.99;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg5_Qca = 0.021;
-#line 182 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 182 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg5_alphaa = 6.49;
-#line 182 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 182 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg5_ma = 3;
-#line 182 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 182 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg5_Wa = 0.00333;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg5_R0i = 0.99;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg5_Qci = 0.021;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg5_alphai = 6.07;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg5_mi = 2;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg5_Wi = 0.003;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg5_R0s = 0.99;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg5_Qcs = 0.021;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg5_alphas = 6.07;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg5_ms = 2;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg5_Ws = 0.003;
 #line 16541 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -16550,11 +16550,11 @@ h_g12=0.125;
   rot_transpose(mcrotag4, mctr1);
   rot_mul(mcrotag5, mctr1, mcrotrg5);
   mctc1 = coords_set(
-#line 183 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 183 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 183 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 183 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 183 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 183 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     18.206);
 #line 16559 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -16570,49 +16570,49 @@ h_g12=0.125;
     /* Component g6. */
   /* Setting parameters for component g6. */
   SIG_MESSAGE("g6 (Init:SetPar)");
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg6_w = w_g6;
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg6_h = h_g6;
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg6_r = 2300;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg6_Win = 0.04;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg6_k = 1;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg6_d = 0.001;
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg6_l = L_g6;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg6_R0a = 0.99;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg6_Qca = 0.021;
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg6_alphaa = 6.49;
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg6_ma = 3;
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg6_Wa = 0.00333;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg6_R0i = 0.99;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg6_Qci = 0.021;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg6_alphai = 6.07;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg6_mi = 2;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg6_Wi = 0.003;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg6_R0s = 0.99;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg6_Qcs = 0.021;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg6_alphas = 6.07;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg6_ms = 2;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg6_Ws = 0.003;
 #line 16617 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -16626,11 +16626,11 @@ h_g12=0.125;
   rot_transpose(mcrotag5, mctr1);
   rot_mul(mcrotag6, mctr1, mcrotrg6);
   mctc1 = coords_set(
-#line 187 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 187 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 187 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 187 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 187 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 187 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     21.206);
 #line 16635 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -16646,52 +16646,52 @@ h_g12=0.125;
     /* Component Source_Chopper_1. */
   /* Setting parameters for component Source_Chopper_1. */
   SIG_MESSAGE("Source_Chopper_1 (Init:SetPar)");
-#line 199 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 199 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_1_theta_0 = 23;
-#line 199 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 199 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_1_radius = 0.35;
-#line 199 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 199 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_1_yheight = 0.13;
-#line 199 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 199 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_1_nu = -1 * mcipfrequency;
-#line 200 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 200 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_1_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_1_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_1_delay = 0;
-#line 200 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 200 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_1_isfirst = 1;
-#line 200 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 200 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_1_n_pulse = mcipnpulses;
-#line 200 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 200 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_1_abs_out = 1;
-#line 200 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 200 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_1_phase = mcipOffset_deg_SC1 + 191.5 -180;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_1_xwidth = 0;
-#line 200 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 200 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_1_verbose = 1;
 #line 16675 "./ESS_Testbeamline_HZB_V20.c"
 
   SIG_MESSAGE("Source_Chopper_1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 202 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 202 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     (0)*DEG2RAD,
-#line 202 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 202 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     (0)*DEG2RAD,
-#line 202 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 202 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     (180)*DEG2RAD);
 #line 16685 "./ESS_Testbeamline_HZB_V20.c"
   rot_mul(mctr1, mcrotaorigin, mcrotaSource_Chopper_1);
   rot_transpose(mcrotag6, mctr1);
   rot_mul(mcrotaSource_Chopper_1, mctr1, mcrotrSource_Chopper_1);
   mctc1 = coords_set(
-#line 201 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 201 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 201 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 201 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 201 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 201 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     21.729);
 #line 16696 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -16707,31 +16707,31 @@ h_g12=0.125;
     /* Component Source_Chopper_2. */
   /* Setting parameters for component Source_Chopper_2. */
   SIG_MESSAGE("Source_Chopper_2 (Init:SetPar)");
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_2_theta_0 = 50;
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_2_radius = 0.35;
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_2_yheight = 0.13;
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_2_nu = 3 * mcipfrequency;
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_2_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_2_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_2_delay = 0;
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_2_isfirst = 0;
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_2_n_pulse = 1;
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_2_abs_out = 1;
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_2_phase = mcipOffset_deg_SC2 + 205;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_2_xwidth = 0;
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccSource_Chopper_2_verbose = 1;
 #line 16736 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -16745,11 +16745,11 @@ h_g12=0.125;
   rot_transpose(mcrotaSource_Chopper_1, mctr1);
   rot_mul(mcrotaSource_Chopper_2, mctr1, mcrotrSource_Chopper_2);
   mctc1 = coords_set(
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.57,
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     21.759);
 #line 16754 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -16765,27 +16765,27 @@ h_g12=0.125;
     /* Component lmon_source_chopper. */
   /* Setting parameters for component lmon_source_chopper. */
   SIG_MESSAGE("lmon_source_chopper (Init:SetPar)");
-#line 214 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 214 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("L_Monitor_SourceChopper.dat") strncpy(mcclmon_source_chopper_filename, "L_Monitor_SourceChopper.dat" ? "L_Monitor_SourceChopper.dat" : "", 16384); else mcclmon_source_chopper_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_source_chopper_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_source_chopper_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_source_chopper_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_source_chopper_ymax = 0.05;
-#line 215 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 215 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_source_chopper_xwidth = 0.06;
-#line 215 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 215 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_source_chopper_yheight = 0.125;
-#line 215 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 215 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_source_chopper_Lmin = mciplambda_min;
-#line 215 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 215 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_source_chopper_Lmax = mciplambda_max;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_source_chopper_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_source_chopper_nowritefile = 0;
 #line 16790 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -16799,11 +16799,11 @@ h_g12=0.125;
   rot_transpose(mcrotaSource_Chopper_2, mctr1);
   rot_mul(mcrotalmon_source_chopper, mctr1, mcrotrlmon_source_chopper);
   mctc1 = coords_set(
-#line 216 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 216 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 216 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 216 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 216 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 216 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     21.770);
 #line 16808 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -16819,25 +16819,25 @@ h_g12=0.125;
     /* Component psd_source_chopper. */
   /* Setting parameters for component psd_source_chopper. */
   SIG_MESSAGE("psd_source_chopper (Init:SetPar)");
-#line 219 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 219 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_source_chopper_nx = 150;
-#line 219 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 219 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_source_chopper_ny = 150;
-#line 219 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 219 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("PSD_Monitor_SourceChopper.dat") strncpy(mccpsd_source_chopper_filename, "PSD_Monitor_SourceChopper.dat" ? "PSD_Monitor_SourceChopper.dat" : "", 16384); else mccpsd_source_chopper_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_source_chopper_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_source_chopper_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_source_chopper_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_source_chopper_ymax = 0.05;
-#line 220 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 220 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_source_chopper_xwidth = 0.15;
-#line 220 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 220 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_source_chopper_yheight = 0.15;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_source_chopper_restore_neutron = 0;
 #line 16842 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -16851,11 +16851,11 @@ h_g12=0.125;
   rot_transpose(mcrotalmon_source_chopper, mctr1);
   rot_mul(mcrotapsd_source_chopper, mctr1, mcrotrpsd_source_chopper);
   mctc1 = coords_set(
-#line 221 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 221 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 221 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 221 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 221 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 221 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     21.771);
 #line 16860 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -16871,29 +16871,29 @@ h_g12=0.125;
     /* Component tofmon_source_chopper. */
   /* Setting parameters for component tofmon_source_chopper. */
   SIG_MESSAGE("tofmon_source_chopper (Init:SetPar)");
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 224 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("TOF_Monitor_SourceChopper.dat") strncpy(mcctofmon_source_chopper_filename, "TOF_Monitor_SourceChopper.dat" ? "TOF_Monitor_SourceChopper.dat" : "", 16384); else mcctofmon_source_chopper_filename[0]='\0';
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_source_chopper_xmin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_source_chopper_xmax = 0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_source_chopper_ymin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_source_chopper_ymax = 0.05;
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 224 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_source_chopper_xwidth = 0.06;
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 224 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_source_chopper_yheight = 0.125;
-#line 225 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 225 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_source_chopper_tmin = 0;
-#line 225 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 225 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_source_chopper_tmax = 72000;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_source_chopper_dt = 1.0;
-#line 225 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 225 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_source_chopper_restore_neutron = 1;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_source_chopper_nowritefile = 0;
 #line 16898 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -16907,11 +16907,11 @@ h_g12=0.125;
   rot_transpose(mcrotapsd_source_chopper, mctr1);
   rot_mul(mcrotatofmon_source_chopper, mctr1, mcrotrtofmon_source_chopper);
   mctc1 = coords_set(
-#line 226 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 226 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 226 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 226 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 226 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 226 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     21.772);
 #line 16916 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -16927,27 +16927,27 @@ h_g12=0.125;
     /* Component time_lambda_SC. */
   /* Setting parameters for component time_lambda_SC. */
   SIG_MESSAGE("time_lambda_SC (Init:SetPar)");
-#line 229 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 229 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("Time_Lambda_SourceChopper.dat") strncpy(mcctime_lambda_SC_filename, "Time_Lambda_SourceChopper.dat" ? "Time_Lambda_SourceChopper.dat" : "", 16384); else mcctime_lambda_SC_filename[0]='\0';
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_SC_xmin = -0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_SC_xmax = 0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_SC_ymin = -0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_SC_ymax = 0.05;
-#line 230 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 230 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_SC_xwidth = 0.06;
-#line 230 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 230 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_SC_yheight = 0.125;
-#line 230 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 230 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_SC_Lmin = mciplambda_min;
-#line 230 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 230 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_SC_Lmax = mciplambda_max;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_SC_restore_neutron = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_SC_nowritefile = 0;
 #line 16952 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -16961,11 +16961,11 @@ h_g12=0.125;
   rot_transpose(mcrotatofmon_source_chopper, mctr1);
   rot_mul(mcrotatime_lambda_SC, mctr1, mcrotrtime_lambda_SC);
   mctc1 = coords_set(
-#line 231 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 231 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 231 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 231 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 231 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 231 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     21.773);
 #line 16970 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -16981,49 +16981,49 @@ h_g12=0.125;
     /* Component g7. */
   /* Setting parameters for component g7. */
   SIG_MESSAGE("g7 (Init:SetPar)");
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg7_w = w_g7;
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg7_h = h_g7;
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg7_r = 2300;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg7_Win = 0.04;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg7_k = 1;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg7_d = 0.001;
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg7_l = L_g7;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg7_R0a = 0.99;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg7_Qca = 0.021;
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg7_alphaa = 6.49;
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg7_ma = 3;
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg7_Wa = 0.00333;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg7_R0i = 0.99;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg7_Qci = 0.021;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg7_alphai = 6.07;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg7_mi = 2;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg7_Wi = 0.003;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg7_R0s = 0.99;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg7_Qcs = 0.021;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg7_alphas = 6.07;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg7_ms = 2;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg7_Ws = 0.003;
 #line 17028 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -17037,11 +17037,11 @@ h_g12=0.125;
   rot_transpose(mcrotatime_lambda_SC, mctr1);
   rot_mul(mcrotag7, mctr1, mcrotrg7);
   mctc1 = coords_set(
-#line 235 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 235 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 235 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 235 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 235 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 235 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     21.831);
 #line 17046 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -17057,31 +17057,31 @@ h_g12=0.125;
     /* Component WFMC_1_a. */
   /* Setting parameters for component WFMC_1_a. */
   SIG_MESSAGE("WFMC_1_a (Init:SetPar)");
-#line 241 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 241 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_a_theta_0 = 10.9872;
-#line 241 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 241 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_a_radius = 0.3;
-#line 241 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 241 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_a_yheight = 0.135;
-#line 241 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 241 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_a_nu = -5 * mcipfrequency;
-#line 242 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 242 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_a_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_a_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_a_delay = 0;
-#line 242 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 242 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_a_isfirst = 0;
-#line 242 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 242 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_a_n_pulse = 1;
-#line 242 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 242 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_a_abs_out = 1;
-#line 242 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 242 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_a_phase = mcipOffset_deg_WFM1 + 89.208 + 180 + 14.8428;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_a_xwidth = 0;
-#line 242 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 242 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_a_verbose = 1;
 #line 17086 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -17095,11 +17095,11 @@ h_g12=0.125;
   rot_transpose(mcrotag7, mctr1);
   rot_mul(mcrotaWFMC_1_a, mctr1, mcrotrWFMC_1_a);
   mctc1 = coords_set(
-#line 243 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 243 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 243 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 243 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 243 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 243 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     28.594 - mcipZ * 0.5);
 #line 17104 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -17115,31 +17115,31 @@ h_g12=0.125;
     /* Component WFMC_1_b. */
   /* Setting parameters for component WFMC_1_b. */
   SIG_MESSAGE("WFMC_1_b (Init:SetPar)");
-#line 247 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 247 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_b_theta_0 = 15.2964;
-#line 247 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 247 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_b_radius = 0.3;
-#line 247 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 247 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_b_yheight = 0.135;
-#line 247 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 247 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_b_nu = -5 * mcipfrequency;
-#line 248 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 248 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_b_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_b_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_b_delay = 0;
-#line 248 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 248 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_b_isfirst = 0;
-#line 248 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 248 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_b_n_pulse = 1;
-#line 248 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 248 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_b_abs_out = 1;
-#line 248 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 248 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_b_phase = mcipOffset_deg_WFM1 + 148.1382 + 180 + 14.8428;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_b_xwidth = 0;
-#line 248 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 248 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_b_verbose = 1;
 #line 17144 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -17153,11 +17153,11 @@ h_g12=0.125;
   rot_transpose(mcrotaWFMC_1_a, mctr1);
   rot_mul(mcrotaWFMC_1_b, mctr1, mcrotrWFMC_1_b);
   mctc1 = coords_set(
-#line 249 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 249 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 249 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 249 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 249 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 249 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     28.594 - mcipZ * 0.5);
 #line 17162 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -17173,31 +17173,31 @@ h_g12=0.125;
     /* Component WFMC_1_c. */
   /* Setting parameters for component WFMC_1_c. */
   SIG_MESSAGE("WFMC_1_c (Init:SetPar)");
-#line 253 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 253 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_c_theta_0 = 19.3032;
-#line 253 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 253 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_c_radius = 0.3;
-#line 253 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 253 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_c_yheight = 0.135;
-#line 253 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 253 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_c_nu = -5 * mcipfrequency;
-#line 254 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 254 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_c_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_c_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_c_delay = 0;
-#line 254 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 254 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_c_isfirst = 0;
-#line 254 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 254 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_c_n_pulse = 1;
-#line 254 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 254 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_c_abs_out = 1;
-#line 254 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 254 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_c_phase = mcipOffset_deg_WFM1 + 202.9104 + 180 + 14.8428;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_c_xwidth = 0;
-#line 254 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 254 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_c_verbose = 1;
 #line 17202 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -17211,11 +17211,11 @@ h_g12=0.125;
   rot_transpose(mcrotaWFMC_1_b, mctr1);
   rot_mul(mcrotaWFMC_1_c, mctr1, mcrotrWFMC_1_c);
   mctc1 = coords_set(
-#line 255 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 255 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 255 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 255 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 255 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 255 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     28.594 - mcipZ * 0.5);
 #line 17220 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -17231,31 +17231,31 @@ h_g12=0.125;
     /* Component WFMC_1_d. */
   /* Setting parameters for component WFMC_1_d. */
   SIG_MESSAGE("WFMC_1_d (Init:SetPar)");
-#line 259 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 259 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_d_theta_0 = 23.0076;
-#line 259 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 259 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_d_radius = 0.3;
-#line 259 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 259 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_d_yheight = 0.135;
-#line 259 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 259 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_d_nu = -5 * mcipfrequency;
-#line 260 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 260 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_d_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_d_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_d_delay = 0;
-#line 260 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 260 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_d_isfirst = 0;
-#line 260 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 260 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_d_n_pulse = 1;
-#line 260 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 260 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_d_abs_out = 1;
-#line 260 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 260 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_d_phase = mcipOffset_deg_WFM1 + 253.827 + 180 + 14.8428;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_d_xwidth = 0;
-#line 260 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 260 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_d_verbose = 1;
 #line 17260 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -17269,11 +17269,11 @@ h_g12=0.125;
   rot_transpose(mcrotaWFMC_1_c, mctr1);
   rot_mul(mcrotaWFMC_1_d, mctr1, mcrotrWFMC_1_d);
   mctc1 = coords_set(
-#line 261 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 261 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 261 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 261 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 261 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 261 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     28.594 - mcipZ * 0.5);
 #line 17278 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -17289,31 +17289,31 @@ h_g12=0.125;
     /* Component WFMC_1_e. */
   /* Setting parameters for component WFMC_1_e. */
   SIG_MESSAGE("WFMC_1_e (Init:SetPar)");
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_e_theta_0 = 26.46;
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_e_radius = 0.3;
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_e_yheight = 0.135;
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_e_nu = -5 * mcipfrequency;
-#line 266 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 266 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_e_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_e_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_e_delay = 0;
-#line 266 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 266 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_e_isfirst = 0;
-#line 266 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 266 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_e_n_pulse = 1;
-#line 266 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 266 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_e_abs_out = 1;
-#line 266 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 266 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_e_phase = mcipOffset_deg_WFM1 + 301.14 + 180 + 14.8428;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_e_xwidth = 0;
-#line 266 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 266 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_e_verbose = 1;
 #line 17318 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -17327,11 +17327,11 @@ h_g12=0.125;
   rot_transpose(mcrotaWFMC_1_d, mctr1);
   rot_mul(mcrotaWFMC_1_e, mctr1, mcrotrWFMC_1_e);
   mctc1 = coords_set(
-#line 267 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 267 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 267 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 267 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 267 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 267 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     28.594 - mcipZ * 0.5);
 #line 17336 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -17347,31 +17347,31 @@ h_g12=0.125;
     /* Component WFMC_1_f. */
   /* Setting parameters for component WFMC_1_f. */
   SIG_MESSAGE("WFMC_1_f (Init:SetPar)");
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_f_theta_0 = 29.6856;
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_f_radius = 0.3;
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_f_yheight = 0.135;
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_f_nu = -5 * mcipfrequency;
-#line 272 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 272 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_f_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_f_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_f_delay = 0;
-#line 272 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 272 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_f_isfirst = 0;
-#line 272 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 272 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_f_n_pulse = 1;
-#line 272 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 272 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_f_abs_out = 1;
-#line 272 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 272 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_f_phase = mcipOffset_deg_WFM1 + 345.1392 + 180 + 14.8428;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_f_xwidth = 0;
-#line 272 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 272 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_1_f_verbose = 1;
 #line 17376 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -17385,11 +17385,11 @@ h_g12=0.125;
   rot_transpose(mcrotaWFMC_1_e, mctr1);
   rot_mul(mcrotaWFMC_1_f, mctr1, mcrotrWFMC_1_f);
   mctc1 = coords_set(
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     28.594 - mcipZ * 0.5);
 #line 17394 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -17416,11 +17416,11 @@ h_g12=0.125;
   rot_transpose(mcrotaWFMC_1_f, mctr1);
   rot_mul(mcrotaWFMC_1_dummy, mctr1, mcrotrWFMC_1_dummy);
   mctc1 = coords_set(
-#line 279 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 279 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 279 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 279 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 279 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 279 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     28.594 - mcipZ * 0.5);
 #line 17425 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -17436,27 +17436,27 @@ h_g12=0.125;
     /* Component lmon_WFMC_1. */
   /* Setting parameters for component lmon_WFMC_1. */
   SIG_MESSAGE("lmon_WFMC_1 (Init:SetPar)");
-#line 290 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 290 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("L_Monitor_WFMC1.dat") strncpy(mcclmon_WFMC_1_filename, "L_Monitor_WFMC1.dat" ? "L_Monitor_WFMC1.dat" : "", 16384); else mcclmon_WFMC_1_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_WFMC_1_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_WFMC_1_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_WFMC_1_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_WFMC_1_ymax = 0.05;
-#line 291 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 291 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_WFMC_1_xwidth = 0.06;
-#line 291 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 291 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_WFMC_1_yheight = 0.125;
-#line 291 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 291 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_WFMC_1_Lmin = mciplambda_min;
-#line 291 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 291 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_WFMC_1_Lmax = mciplambda_max;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_WFMC_1_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_WFMC_1_nowritefile = 0;
 #line 17461 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -17470,11 +17470,11 @@ h_g12=0.125;
   rot_transpose(mcrotaWFMC_1_dummy, mctr1);
   rot_mul(mcrotalmon_WFMC_1, mctr1, mcrotrlmon_WFMC_1);
   mctc1 = coords_set(
-#line 292 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 292 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 292 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 292 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 292 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 292 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     28.592);
 #line 17479 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -17490,27 +17490,27 @@ h_g12=0.125;
     /* Component time_lambda_WFM1. */
   /* Setting parameters for component time_lambda_WFM1. */
   SIG_MESSAGE("time_lambda_WFM1 (Init:SetPar)");
-#line 295 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 295 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("Time_Lambda_WFMC1.dat") strncpy(mcctime_lambda_WFM1_filename, "Time_Lambda_WFMC1.dat" ? "Time_Lambda_WFMC1.dat" : "", 16384); else mcctime_lambda_WFM1_filename[0]='\0';
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_WFM1_xmin = -0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_WFM1_xmax = 0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_WFM1_ymin = -0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_WFM1_ymax = 0.05;
-#line 296 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 296 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_WFM1_xwidth = 0.06;
-#line 296 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 296 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_WFM1_yheight = 0.125;
-#line 297 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 297 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_WFM1_Lmin = 0;
-#line 297 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 297 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_WFM1_Lmax = 10;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_WFM1_restore_neutron = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_WFM1_nowritefile = 0;
 #line 17515 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -17524,11 +17524,11 @@ h_g12=0.125;
   rot_transpose(mcrotalmon_WFMC_1, mctr1);
   rot_mul(mcrotatime_lambda_WFM1, mctr1, mcrotrtime_lambda_WFM1);
   mctc1 = coords_set(
-#line 298 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 298 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 298 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 298 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 298 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 298 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     28.593);
 #line 17533 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -17544,19 +17544,19 @@ h_g12=0.125;
     /* Component slit_1. */
   /* Setting parameters for component slit_1. */
   SIG_MESSAGE("slit_1 (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_1_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_1_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_1_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_1_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_1_radius = 0;
-#line 303 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 303 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_1_xwidth = mcips1_x;
-#line 303 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 303 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_1_yheight = mcips1_y;
 #line 17561 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -17570,11 +17570,11 @@ h_g12=0.125;
   rot_transpose(mcrotatime_lambda_WFM1, mctr1);
   rot_mul(mcrotaslit_1, mctr1, mcrotrslit_1);
   mctc1 = coords_set(
-#line 304 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 304 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 304 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 304 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 304 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 304 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     28.594);
 #line 17579 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -17590,31 +17590,31 @@ h_g12=0.125;
     /* Component WFMC_2_a. */
   /* Setting parameters for component WFMC_2_a. */
   SIG_MESSAGE("WFMC_2_a (Init:SetPar)");
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_a_theta_0 = 10.9872;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_a_radius = 0.3;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_a_yheight = 0.135;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_a_nu = -5 * mcipfrequency;
-#line 310 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 310 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_a_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_a_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_a_delay = 0;
-#line 310 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 310 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_a_isfirst = 0;
-#line 310 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 310 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_a_n_pulse = 1;
-#line 310 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 310 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_a_abs_out = 1;
-#line 310 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 310 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_a_phase = mcipOffset_deg_WFM2 + 70.5348 + 180 + 14.8428;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_a_xwidth = 0;
-#line 310 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 310 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_a_verbose = 1;
 #line 17619 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -17628,11 +17628,11 @@ h_g12=0.125;
   rot_transpose(mcrotaslit_1, mctr1);
   rot_mul(mcrotaWFMC_2_a, mctr1, mcrotrWFMC_2_a);
   mctc1 = coords_set(
-#line 311 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 311 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 311 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 311 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 311 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 311 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     28.594 + mcipZ * 0.5);
 #line 17637 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -17648,31 +17648,31 @@ h_g12=0.125;
     /* Component WFMC_2_b. */
   /* Setting parameters for component WFMC_2_b. */
   SIG_MESSAGE("WFMC_2_b (Init:SetPar)");
-#line 315 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 315 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_b_theta_0 = 15.2964;
-#line 315 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 315 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_b_radius = 0.3;
-#line 315 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 315 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_b_yheight = 0.135;
-#line 315 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 315 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_b_nu = -5 * mcipfrequency;
-#line 316 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 316 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_b_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_b_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_b_delay = 0;
-#line 316 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 316 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_b_isfirst = 0;
-#line 316 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 316 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_b_n_pulse = 1;
-#line 316 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 316 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_b_abs_out = 1;
-#line 316 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 316 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_b_phase = mcipOffset_deg_WFM2 + 133.749 + 180 + 14.8428;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_b_xwidth = 0;
-#line 316 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 316 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_b_verbose = 1;
 #line 17677 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -17686,11 +17686,11 @@ h_g12=0.125;
   rot_transpose(mcrotaWFMC_2_a, mctr1);
   rot_mul(mcrotaWFMC_2_b, mctr1, mcrotrWFMC_2_b);
   mctc1 = coords_set(
-#line 317 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 317 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 317 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 317 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 317 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 317 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     28.594 + mcipZ * 0.5);
 #line 17695 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -17706,31 +17706,31 @@ h_g12=0.125;
     /* Component WFMC_2_c. */
   /* Setting parameters for component WFMC_2_c. */
   SIG_MESSAGE("WFMC_2_c (Init:SetPar)");
-#line 321 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 321 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_c_theta_0 = 19.3032;
-#line 321 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 321 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_c_radius = 0.3;
-#line 321 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 321 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_c_yheight = 0.135;
-#line 321 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 321 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_c_nu = -5 * mcipfrequency;
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_c_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_c_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_c_delay = 0;
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_c_isfirst = 0;
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_c_n_pulse = 1;
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_c_abs_out = 1;
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_c_phase = mcipOffset_deg_WFM2 + 192.528 + 180 + 14.8428;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_c_xwidth = 0;
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_c_verbose = 1;
 #line 17735 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -17744,11 +17744,11 @@ h_g12=0.125;
   rot_transpose(mcrotaWFMC_2_b, mctr1);
   rot_mul(mcrotaWFMC_2_c, mctr1, mcrotrWFMC_2_c);
   mctc1 = coords_set(
-#line 323 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 323 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 323 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 323 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 323 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 323 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     28.594 + mcipZ * 0.5);
 #line 17753 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -17764,31 +17764,31 @@ h_g12=0.125;
     /* Component WFMC_2_d. */
   /* Setting parameters for component WFMC_2_d. */
   SIG_MESSAGE("WFMC_2_d (Init:SetPar)");
-#line 327 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 327 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_d_theta_0 = 19.3032;
-#line 327 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 327 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_d_radius = 0.3;
-#line 327 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 327 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_d_yheight = 0.135;
-#line 327 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 327 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_d_nu = -5 * mcipfrequency;
-#line 328 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 328 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_d_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_d_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_d_delay = 0;
-#line 328 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 328 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_d_isfirst = 0;
-#line 328 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 328 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_d_n_pulse = 1;
-#line 328 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 328 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_d_abs_out = 1;
-#line 328 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 328 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_d_phase = mcipOffset_deg_WFM2 + 245.322 + 180 + 14.8428;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_d_xwidth = 0;
-#line 328 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 328 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_d_verbose = 1;
 #line 17793 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -17802,11 +17802,11 @@ h_g12=0.125;
   rot_transpose(mcrotaWFMC_2_c, mctr1);
   rot_mul(mcrotaWFMC_2_d, mctr1, mcrotrWFMC_2_d);
   mctc1 = coords_set(
-#line 329 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 329 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 329 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 329 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 329 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 329 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     28.594 + mcipZ * 0.5);
 #line 17811 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -17822,31 +17822,31 @@ h_g12=0.125;
     /* Component WFMC_2_e. */
   /* Setting parameters for component WFMC_2_e. */
   SIG_MESSAGE("WFMC_2_e (Init:SetPar)");
-#line 333 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 333 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_e_theta_0 = 23.0076;
-#line 333 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 333 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_e_radius = 0.3;
-#line 333 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 333 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_e_yheight = 0.135;
-#line 333 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 333 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_e_nu = -5 * mcipfrequency;
-#line 334 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 334 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_e_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_e_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_e_delay = 0;
-#line 334 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 334 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_e_isfirst = 0;
-#line 334 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 334 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_e_n_pulse = 1;
-#line 334 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 334 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_e_abs_out = 1;
-#line 334 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 334 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_e_phase = mcipOffset_deg_WFM2 + 296.2386 + 180 + 14.8428;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_e_xwidth = 0;
-#line 334 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 334 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_e_verbose = 1;
 #line 17851 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -17860,11 +17860,11 @@ h_g12=0.125;
   rot_transpose(mcrotaWFMC_2_d, mctr1);
   rot_mul(mcrotaWFMC_2_e, mctr1, mcrotrWFMC_2_e);
   mctc1 = coords_set(
-#line 335 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 335 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 335 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 335 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 335 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 335 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     28.594 + mcipZ * 0.5);
 #line 17869 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -17880,31 +17880,31 @@ h_g12=0.125;
     /* Component WFMC_2_f. */
   /* Setting parameters for component WFMC_2_f. */
   SIG_MESSAGE("WFMC_2_f (Init:SetPar)");
-#line 339 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 339 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_f_theta_0 = 29.6856;
-#line 339 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 339 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_f_radius = 0.3;
-#line 339 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 339 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_f_yheight = 0.135;
-#line 339 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 339 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_f_nu = -5 * mcipfrequency;
-#line 340 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 340 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_f_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_f_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_f_delay = 0;
-#line 340 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 340 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_f_isfirst = 0;
-#line 340 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 340 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_f_n_pulse = 1;
-#line 340 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 340 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_f_abs_out = 1;
-#line 340 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 340 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_f_phase = mcipOffset_deg_WFM2 + 345.1644 + 180 + 14.8428;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_f_xwidth = 0;
-#line 340 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 340 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccWFMC_2_f_verbose = 1;
 #line 17909 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -17918,11 +17918,11 @@ h_g12=0.125;
   rot_transpose(mcrotaWFMC_2_e, mctr1);
   rot_mul(mcrotaWFMC_2_f, mctr1, mcrotrWFMC_2_f);
   mctc1 = coords_set(
-#line 341 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 341 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 341 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 341 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 341 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 341 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     28.594 + mcipZ * 0.5);
 #line 17927 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -17949,11 +17949,11 @@ h_g12=0.125;
   rot_transpose(mcrotaWFMC_2_f, mctr1);
   rot_mul(mcrotaWFMC_2_dummy, mctr1, mcrotrWFMC_2_dummy);
   mctc1 = coords_set(
-#line 345 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 345 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 345 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 345 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 345 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 345 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     28.594 + mcipZ * 0.5);
 #line 17958 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -17969,27 +17969,27 @@ h_g12=0.125;
     /* Component lmon_WFMC_2. */
   /* Setting parameters for component lmon_WFMC_2. */
   SIG_MESSAGE("lmon_WFMC_2 (Init:SetPar)");
-#line 359 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 359 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("L_Monitor_WFMC2.dat") strncpy(mcclmon_WFMC_2_filename, "L_Monitor_WFMC2.dat" ? "L_Monitor_WFMC2.dat" : "", 16384); else mcclmon_WFMC_2_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_WFMC_2_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_WFMC_2_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_WFMC_2_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_WFMC_2_ymax = 0.05;
-#line 360 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 360 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_WFMC_2_xwidth = 0.06;
-#line 360 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 360 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_WFMC_2_yheight = 0.125;
-#line 360 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 360 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_WFMC_2_Lmin = mciplambda_min;
-#line 360 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 360 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_WFMC_2_Lmax = mciplambda_max;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_WFMC_2_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_WFMC_2_nowritefile = 0;
 #line 17994 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -18003,11 +18003,11 @@ h_g12=0.125;
   rot_transpose(mcrotaWFMC_2_dummy, mctr1);
   rot_mul(mcrotalmon_WFMC_2, mctr1, mcrotrlmon_WFMC_2);
   mctc1 = coords_set(
-#line 361 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 361 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 361 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 361 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 361 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 361 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     28.8441);
 #line 18012 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -18023,25 +18023,25 @@ h_g12=0.125;
     /* Component psd_WFMC_2. */
   /* Setting parameters for component psd_WFMC_2. */
   SIG_MESSAGE("psd_WFMC_2 (Init:SetPar)");
-#line 364 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 364 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_WFMC_2_nx = 150;
-#line 364 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 364 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_WFMC_2_ny = 150;
-#line 364 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 364 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("PSD_Monitor_WFMC2.dat") strncpy(mccpsd_WFMC_2_filename, "PSD_Monitor_WFMC2.dat" ? "PSD_Monitor_WFMC2.dat" : "", 16384); else mccpsd_WFMC_2_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_WFMC_2_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_WFMC_2_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_WFMC_2_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_WFMC_2_ymax = 0.05;
-#line 365 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 365 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_WFMC_2_xwidth = 0.15;
-#line 365 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 365 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_WFMC_2_yheight = 0.15;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_WFMC_2_restore_neutron = 0;
 #line 18046 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -18055,11 +18055,11 @@ h_g12=0.125;
   rot_transpose(mcrotalmon_WFMC_2, mctr1);
   rot_mul(mcrotapsd_WFMC_2, mctr1, mcrotrpsd_WFMC_2);
   mctc1 = coords_set(
-#line 366 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 366 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 366 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 366 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 366 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 366 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     28.8442);
 #line 18064 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -18075,27 +18075,27 @@ h_g12=0.125;
     /* Component time_lambda_WFM2. */
   /* Setting parameters for component time_lambda_WFM2. */
   SIG_MESSAGE("time_lambda_WFM2 (Init:SetPar)");
-#line 369 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 369 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("Time_Lambda_WFMC2.dat") strncpy(mcctime_lambda_WFM2_filename, "Time_Lambda_WFMC2.dat" ? "Time_Lambda_WFMC2.dat" : "", 16384); else mcctime_lambda_WFM2_filename[0]='\0';
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_WFM2_xmin = -0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_WFM2_xmax = 0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_WFM2_ymin = -0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_WFM2_ymax = 0.05;
-#line 370 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 370 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_WFM2_xwidth = 0.06;
-#line 370 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 370 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_WFM2_yheight = 0.125;
-#line 370 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 370 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_WFM2_Lmin = 0;
-#line 370 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 370 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_WFM2_Lmax = 10;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_WFM2_restore_neutron = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_WFM2_nowritefile = 0;
 #line 18100 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -18109,11 +18109,11 @@ h_g12=0.125;
   rot_transpose(mcrotapsd_WFMC_2, mctr1);
   rot_mul(mcrotatime_lambda_WFM2, mctr1, mcrotrtime_lambda_WFM2);
   mctc1 = coords_set(
-#line 371 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 371 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 371 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 371 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 371 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 371 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     28.8443);
 #line 18118 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -18129,49 +18129,49 @@ h_g12=0.125;
     /* Component g8. */
   /* Setting parameters for component g8. */
   SIG_MESSAGE("g8 (Init:SetPar)");
-#line 376 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 376 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg8_w = w_g8;
-#line 376 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 376 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg8_h = h_g8;
-#line 376 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 376 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg8_r = 2300;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg8_Win = 0.04;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg8_k = 1;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg8_d = 0.001;
-#line 376 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 376 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg8_l = L_g8;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg8_R0a = 0.99;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg8_Qca = 0.021;
-#line 376 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 376 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg8_alphaa = 6.49;
-#line 376 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 376 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg8_ma = 3;
-#line 376 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 376 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg8_Wa = 0.00333;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg8_R0i = 0.99;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg8_Qci = 0.021;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg8_alphai = 6.07;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg8_mi = 2;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg8_Wi = 0.003;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg8_R0s = 0.99;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg8_Qcs = 0.021;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg8_alphas = 6.07;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg8_ms = 2;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg8_Ws = 0.003;
 #line 18176 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -18185,11 +18185,11 @@ h_g12=0.125;
   rot_transpose(mcrotatime_lambda_WFM2, mctr1);
   rot_mul(mcrotag8, mctr1, mcrotrg8);
   mctc1 = coords_set(
-#line 377 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 377 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 377 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 377 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 377 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 377 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     28.894);
 #line 18194 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -18205,31 +18205,31 @@ h_g12=0.125;
     /* Component FOC_1_a. */
   /* Setting parameters for component FOC_1_a. */
   SIG_MESSAGE("FOC_1_a (Init:SetPar)");
-#line 383 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 383 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_a_theta_0 = 20.64;
-#line 383 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 383 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_a_radius = 0.3;
-#line 383 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 383 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_a_yheight = 0.135;
-#line 383 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 383 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_a_nu = -4 * mcipfrequency;
-#line 384 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 384 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_a_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_a_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_a_delay = 0;
-#line 384 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 384 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_a_isfirst = 0;
-#line 384 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 384 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_a_n_pulse = 1;
-#line 384 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 384 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_a_abs_out = 1;
-#line 384 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 384 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_a_phase = mcipOffset_deg_FOC1 + 74.67 + 180 + 12.235;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_a_xwidth = 0;
-#line 384 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 384 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_a_verbose = 1;
 #line 18234 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -18243,11 +18243,11 @@ h_g12=0.125;
   rot_transpose(mcrotag8, mctr1);
   rot_mul(mcrotaFOC_1_a, mctr1, mcrotrFOC_1_a);
   mctc1 = coords_set(
-#line 385 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 385 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 385 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 385 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 385 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 385 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     30.444);
 #line 18252 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -18263,31 +18263,31 @@ h_g12=0.125;
     /* Component FOC_1_b. */
   /* Setting parameters for component FOC_1_b. */
   SIG_MESSAGE("FOC_1_b (Init:SetPar)");
-#line 389 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 389 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_b_theta_0 = 23.24;
-#line 389 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 389 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_b_radius = 0.3;
-#line 389 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 389 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_b_yheight = 0.135;
-#line 389 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 389 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_b_nu = -4 * mcipfrequency;
-#line 390 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 390 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_b_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_b_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_b_delay = 0;
-#line 390 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 390 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_b_isfirst = 0;
-#line 390 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 390 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_b_n_pulse = 1;
-#line 390 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 390 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_b_abs_out = 1;
-#line 390 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 390 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_b_phase = mcipOffset_deg_FOC1 + 136.67 + 180 + 12.235;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_b_xwidth = 0;
-#line 390 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 390 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_b_verbose = 1;
 #line 18292 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -18301,11 +18301,11 @@ h_g12=0.125;
   rot_transpose(mcrotaFOC_1_a, mctr1);
   rot_mul(mcrotaFOC_1_b, mctr1, mcrotrFOC_1_b);
   mctc1 = coords_set(
-#line 391 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 391 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 391 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 391 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 391 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 391 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     30.444);
 #line 18310 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -18321,31 +18321,31 @@ h_g12=0.125;
     /* Component FOC_1_c. */
   /* Setting parameters for component FOC_1_c. */
   SIG_MESSAGE("FOC_1_c (Init:SetPar)");
-#line 395 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 395 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_c_theta_0 = 21.81;
-#line 395 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 395 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_c_radius = 0.3;
-#line 395 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 395 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_c_yheight = 0.135;
-#line 395 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 395 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_c_nu = -4 * mcipfrequency;
-#line 396 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 396 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_c_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_c_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_c_delay = 0;
-#line 396 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 396 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_c_isfirst = 0;
-#line 396 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 396 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_c_n_pulse = 1;
-#line 396 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 396 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_c_abs_out = 1;
-#line 396 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 396 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_c_phase = mcipOffset_deg_FOC1 + 194.315 + 180 + 12.235;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_c_xwidth = 0;
-#line 396 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 396 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_c_verbose = 1;
 #line 18350 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -18359,11 +18359,11 @@ h_g12=0.125;
   rot_transpose(mcrotaFOC_1_b, mctr1);
   rot_mul(mcrotaFOC_1_c, mctr1, mcrotrFOC_1_c);
   mctc1 = coords_set(
-#line 397 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 397 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 397 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 397 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 397 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 397 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     30.444);
 #line 18368 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -18379,31 +18379,31 @@ h_g12=0.125;
     /* Component FOC_1_d. */
   /* Setting parameters for component FOC_1_d. */
   SIG_MESSAGE("FOC_1_d (Init:SetPar)");
-#line 401 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 401 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_d_theta_0 = 17.87;
-#line 401 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 401 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_d_radius = 0.3;
-#line 401 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 401 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_d_yheight = 0.135;
-#line 401 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 401 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_d_nu = -4 * mcipfrequency;
-#line 402 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 402 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_d_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_d_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_d_delay = 0;
-#line 402 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 402 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_d_isfirst = 0;
-#line 402 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 402 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_d_n_pulse = 1;
-#line 402 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 402 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_d_abs_out = 1;
-#line 402 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 402 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_d_phase = mcipOffset_deg_FOC1 + 245.335 + 180 + 12.235;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_d_xwidth = 0;
-#line 402 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 402 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_d_verbose = 1;
 #line 18408 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -18417,11 +18417,11 @@ h_g12=0.125;
   rot_transpose(mcrotaFOC_1_c, mctr1);
   rot_mul(mcrotaFOC_1_d, mctr1, mcrotrFOC_1_d);
   mctc1 = coords_set(
-#line 403 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 403 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 403 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 403 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 403 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 403 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     30.444);
 #line 18426 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -18437,31 +18437,31 @@ h_g12=0.125;
     /* Component FOC_1_e. */
   /* Setting parameters for component FOC_1_e. */
   SIG_MESSAGE("FOC_1_e (Init:SetPar)");
-#line 407 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 407 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_e_theta_0 = 15.76;
-#line 407 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 407 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_e_radius = 0.3;
-#line 407 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 407 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_e_yheight = 0.135;
-#line 407 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 407 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_e_nu = -4 * mcipfrequency;
-#line 408 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 408 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_e_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_e_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_e_delay = 0;
-#line 408 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 408 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_e_isfirst = 0;
-#line 408 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 408 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_e_n_pulse = 1;
-#line 408 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 408 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_e_abs_out = 1;
-#line 408 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 408 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_e_phase = mcipOffset_deg_FOC1 + 294.92 + 180 + 12.235;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_e_xwidth = 0;
-#line 408 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 408 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_e_verbose = 1;
 #line 18466 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -18475,11 +18475,11 @@ h_g12=0.125;
   rot_transpose(mcrotaFOC_1_d, mctr1);
   rot_mul(mcrotaFOC_1_e, mctr1, mcrotrFOC_1_e);
   mctc1 = coords_set(
-#line 409 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 409 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 409 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 409 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 409 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 409 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     30.444);
 #line 18484 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -18495,31 +18495,31 @@ h_g12=0.125;
     /* Component FOC_1_f. */
   /* Setting parameters for component FOC_1_f. */
   SIG_MESSAGE("FOC_1_f (Init:SetPar)");
-#line 413 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 413 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_f_theta_0 = 24.47;
-#line 413 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 413 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_f_radius = 0.3;
-#line 413 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 413 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_f_yheight = 0.135;
-#line 413 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 413 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_f_nu = -4 * mcipfrequency;
-#line 414 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 414 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_f_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_f_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_f_delay = 0;
-#line 414 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 414 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_f_isfirst = 0;
-#line 414 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 414 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_f_n_pulse = 1;
-#line 414 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 414 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_f_abs_out = 1;
-#line 414 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 414 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_f_phase = mcipOffset_deg_FOC1 + 347.765 + 180 + 12.235;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_f_xwidth = 0;
-#line 414 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 414 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_1_f_verbose = 1;
 #line 18524 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -18533,11 +18533,11 @@ h_g12=0.125;
   rot_transpose(mcrotaFOC_1_e, mctr1);
   rot_mul(mcrotaFOC_1_f, mctr1, mcrotrFOC_1_f);
   mctc1 = coords_set(
-#line 415 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 415 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 415 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 415 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 415 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 415 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     30.444);
 #line 18542 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -18564,11 +18564,11 @@ h_g12=0.125;
   rot_transpose(mcrotaFOC_1_f, mctr1);
   rot_mul(mcrotaFOC_1_dummy, mctr1, mcrotrFOC_1_dummy);
   mctc1 = coords_set(
-#line 419 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 419 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 419 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 419 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 419 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 419 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     30.444);
 #line 18573 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -18584,27 +18584,27 @@ h_g12=0.125;
     /* Component lmon_FOC_1. */
   /* Setting parameters for component lmon_FOC_1. */
   SIG_MESSAGE("lmon_FOC_1 (Init:SetPar)");
-#line 433 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 433 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("L_Monitor_FOC1.dat") strncpy(mcclmon_FOC_1_filename, "L_Monitor_FOC1.dat" ? "L_Monitor_FOC1.dat" : "", 16384); else mcclmon_FOC_1_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_FOC_1_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_FOC_1_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_FOC_1_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_FOC_1_ymax = 0.05;
-#line 434 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 434 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_FOC_1_xwidth = 0.06;
-#line 434 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 434 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_FOC_1_yheight = 0.125;
-#line 434 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 434 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_FOC_1_Lmin = mciplambda_min;
-#line 434 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 434 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_FOC_1_Lmax = mciplambda_max;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_FOC_1_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_FOC_1_nowritefile = 0;
 #line 18609 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -18618,11 +18618,11 @@ h_g12=0.125;
   rot_transpose(mcrotaFOC_1_dummy, mctr1);
   rot_mul(mcrotalmon_FOC_1, mctr1, mcrotrlmon_FOC_1);
   mctc1 = coords_set(
-#line 435 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 435 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 435 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 435 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 435 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 435 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     30.4441);
 #line 18627 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -18638,25 +18638,25 @@ h_g12=0.125;
     /* Component psd_FOC_1. */
   /* Setting parameters for component psd_FOC_1. */
   SIG_MESSAGE("psd_FOC_1 (Init:SetPar)");
-#line 439 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 439 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_FOC_1_nx = 150;
-#line 439 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 439 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_FOC_1_ny = 150;
-#line 439 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 439 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("PSD_Monitor_FOC1.dat") strncpy(mccpsd_FOC_1_filename, "PSD_Monitor_FOC1.dat" ? "PSD_Monitor_FOC1.dat" : "", 16384); else mccpsd_FOC_1_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_FOC_1_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_FOC_1_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_FOC_1_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_FOC_1_ymax = 0.05;
-#line 440 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 440 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_FOC_1_xwidth = 0.15;
-#line 440 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 440 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_FOC_1_yheight = 0.15;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_FOC_1_restore_neutron = 0;
 #line 18661 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -18670,11 +18670,11 @@ h_g12=0.125;
   rot_transpose(mcrotalmon_FOC_1, mctr1);
   rot_mul(mcrotapsd_FOC_1, mctr1, mcrotrpsd_FOC_1);
   mctc1 = coords_set(
-#line 441 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 441 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 441 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 441 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 441 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 441 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     30.4442);
 #line 18679 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -18690,27 +18690,27 @@ h_g12=0.125;
     /* Component time_lambda_FOC1. */
   /* Setting parameters for component time_lambda_FOC1. */
   SIG_MESSAGE("time_lambda_FOC1 (Init:SetPar)");
-#line 444 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 444 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("Time_Lambda_FOC1.dat") strncpy(mcctime_lambda_FOC1_filename, "Time_Lambda_FOC1.dat" ? "Time_Lambda_FOC1.dat" : "", 16384); else mcctime_lambda_FOC1_filename[0]='\0';
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_FOC1_xmin = -0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_FOC1_xmax = 0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_FOC1_ymin = -0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_FOC1_ymax = 0.05;
-#line 445 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 445 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_FOC1_xwidth = 0.06;
-#line 445 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 445 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_FOC1_yheight = 0.125;
-#line 446 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 446 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_FOC1_Lmin = mciplambda_min;
-#line 446 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 446 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_FOC1_Lmax = mciplambda_max;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_FOC1_restore_neutron = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_FOC1_nowritefile = 0;
 #line 18715 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -18724,11 +18724,11 @@ h_g12=0.125;
   rot_transpose(mcrotapsd_FOC_1, mctr1);
   rot_mul(mcrotatime_lambda_FOC1, mctr1, mcrotrtime_lambda_FOC1);
   mctc1 = coords_set(
-#line 447 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 447 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 447 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 447 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 447 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 447 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     30.4443);
 #line 18733 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -18744,19 +18744,19 @@ h_g12=0.125;
     /* Component slit_fix_1. */
   /* Setting parameters for component slit_fix_1. */
   SIG_MESSAGE("slit_fix_1 (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_fix_1_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_fix_1_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_fix_1_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_fix_1_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_fix_1_radius = 0;
-#line 451 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 451 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_fix_1_xwidth = 0.05;
-#line 451 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 451 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_fix_1_yheight = 0.1;
 #line 18761 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -18770,11 +18770,11 @@ h_g12=0.125;
   rot_transpose(mcrotatime_lambda_FOC1, mctr1);
   rot_mul(mcrotaslit_fix_1, mctr1, mcrotrslit_fix_1);
   mctc1 = coords_set(
-#line 452 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 452 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 452 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 452 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 452 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 452 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     30.543);
 #line 18779 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -18790,49 +18790,49 @@ h_g12=0.125;
     /* Component g9. */
   /* Setting parameters for component g9. */
   SIG_MESSAGE("g9 (Init:SetPar)");
-#line 456 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 456 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg9_w = w_g9;
-#line 456 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 456 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg9_h = h_g9;
-#line 456 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 456 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg9_r = 2300;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg9_Win = 0.04;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg9_k = 1;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg9_d = 0.001;
-#line 456 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 456 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg9_l = L_g9;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg9_R0a = 0.99;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg9_Qca = 0.021;
-#line 456 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 456 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg9_alphaa = 6.49;
-#line 456 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 456 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg9_ma = 3;
-#line 456 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 456 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg9_Wa = 0.00333;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg9_R0i = 0.99;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg9_Qci = 0.021;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg9_alphai = 6.07;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg9_mi = 2;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg9_Wi = 0.003;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg9_R0s = 0.99;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg9_Qcs = 0.021;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg9_alphas = 6.07;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg9_ms = 2;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg9_Ws = 0.003;
 #line 18837 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -18846,11 +18846,11 @@ h_g12=0.125;
   rot_transpose(mcrotaslit_fix_1, mctr1);
   rot_mul(mcrotag9, mctr1, mcrotrg9);
   mctc1 = coords_set(
-#line 457 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 457 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 457 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 457 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 457 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 457 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     30.543);
 #line 18855 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -18866,29 +18866,29 @@ h_g12=0.125;
     /* Component t_before_BC. */
   /* Setting parameters for component t_before_BC. */
   SIG_MESSAGE("t_before_BC (Init:SetPar)");
-#line 461 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 461 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("t_before_BC") strncpy(mcct_before_BC_filename, "t_before_BC" ? "t_before_BC" : "", 16384); else mcct_before_BC_filename[0]='\0';
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcct_before_BC_xmin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcct_before_BC_xmax = 0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcct_before_BC_ymin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcct_before_BC_ymax = 0.05;
-#line 461 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 461 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcct_before_BC_xwidth = 0.06;
-#line 461 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 461 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcct_before_BC_yheight = 0.125;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcct_before_BC_tmin = 0;
-#line 461 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 461 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcct_before_BC_tmax = 72000;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcct_before_BC_dt = 1.0;
-#line 461 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 461 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcct_before_BC_restore_neutron = 1;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcct_before_BC_nowritefile = 0;
 #line 18893 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -18902,11 +18902,11 @@ h_g12=0.125;
   rot_transpose(mcrotag9, mctr1);
   rot_mul(mcrotat_before_BC, mctr1, mcrotrt_before_BC);
   mctc1 = coords_set(
-#line 462 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 462 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 462 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 462 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 462 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 462 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     31.650);
 #line 18911 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -18922,31 +18922,31 @@ h_g12=0.125;
     /* Component BC_1. */
   /* Setting parameters for component BC_1. */
   SIG_MESSAGE("BC_1 (Init:SetPar)");
-#line 466 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 466 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_1_theta_0 = 140;
-#line 466 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 466 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_1_radius = 0.35;
-#line 466 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 466 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_1_yheight = 0.13;
-#line 466 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 466 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_1_nu = -1 * mcipfrequency;
-#line 467 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 467 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_1_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_1_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_1_delay = 0;
-#line 467 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 467 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_1_isfirst = 0;
-#line 467 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 467 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_1_n_pulse = 1;
-#line 467 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 467 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_1_abs_out = 1;
-#line 467 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 467 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_1_phase = - mcipOffset_deg_BC1 + 250;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_1_xwidth = 0;
-#line 467 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 467 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_1_verbose = 1;
 #line 18951 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -18960,11 +18960,11 @@ h_g12=0.125;
   rot_transpose(mcrotat_before_BC, mctr1);
   rot_mul(mcrotaBC_1, mctr1, mcrotrBC_1);
   mctc1 = coords_set(
-#line 468 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 468 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 468 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 468 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.57,
-#line 468 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 468 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     31.653);
 #line 18969 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -18980,31 +18980,31 @@ h_g12=0.125;
     /* Component BC_2. */
   /* Setting parameters for component BC_2. */
   SIG_MESSAGE("BC_2 (Init:SetPar)");
-#line 472 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 472 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_2_theta_0 = 202;
-#line 472 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 472 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_2_radius = 0.35;
-#line 472 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 472 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_2_yheight = 0.13;
-#line 472 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 472 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_2_nu = -1 * mcipfrequency;
-#line 473 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 473 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_2_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_2_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_2_delay = 0;
-#line 473 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 473 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_2_isfirst = 0;
-#line 473 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 473 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_2_n_pulse = 1;
-#line 473 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 473 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_2_abs_out = 1;
-#line 473 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 473 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_2_phase = - mcipOffset_deg_BC2 + 281;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_2_xwidth = 0;
-#line 473 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 473 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccBC_2_verbose = 1;
 #line 19009 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -19018,11 +19018,11 @@ h_g12=0.125;
   rot_transpose(mcrotaBC_1, mctr1);
   rot_mul(mcrotaBC_2, mctr1, mcrotrBC_2);
   mctc1 = coords_set(
-#line 474 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 474 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 474 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 474 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.57,
-#line 474 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 474 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     31.683);
 #line 19027 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -19038,27 +19038,27 @@ h_g12=0.125;
     /* Component lmon_Band_Chopper. */
   /* Setting parameters for component lmon_Band_Chopper. */
   SIG_MESSAGE("lmon_Band_Chopper (Init:SetPar)");
-#line 481 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 481 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("L_Monitor_BandChopper.dat") strncpy(mcclmon_Band_Chopper_filename, "L_Monitor_BandChopper.dat" ? "L_Monitor_BandChopper.dat" : "", 16384); else mcclmon_Band_Chopper_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_Band_Chopper_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_Band_Chopper_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_Band_Chopper_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_Band_Chopper_ymax = 0.05;
-#line 482 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 482 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_Band_Chopper_xwidth = 0.06;
-#line 482 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 482 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_Band_Chopper_yheight = 0.125;
-#line 482 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 482 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_Band_Chopper_Lmin = mciplambda_min;
-#line 482 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 482 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_Band_Chopper_Lmax = mciplambda_max;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_Band_Chopper_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_Band_Chopper_nowritefile = 0;
 #line 19063 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -19072,11 +19072,11 @@ h_g12=0.125;
   rot_transpose(mcrotaBC_2, mctr1);
   rot_mul(mcrotalmon_Band_Chopper, mctr1, mcrotrlmon_Band_Chopper);
   mctc1 = coords_set(
-#line 483 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 483 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 483 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 483 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 483 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 483 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     31.6831);
 #line 19081 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -19092,25 +19092,25 @@ h_g12=0.125;
     /* Component psd_Band_Chopper. */
   /* Setting parameters for component psd_Band_Chopper. */
   SIG_MESSAGE("psd_Band_Chopper (Init:SetPar)");
-#line 486 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 486 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_Band_Chopper_nx = 150;
-#line 486 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 486 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_Band_Chopper_ny = 150;
-#line 486 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 486 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("PSD_Monitor_BandChopper.dat") strncpy(mccpsd_Band_Chopper_filename, "PSD_Monitor_BandChopper.dat" ? "PSD_Monitor_BandChopper.dat" : "", 16384); else mccpsd_Band_Chopper_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_Band_Chopper_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_Band_Chopper_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_Band_Chopper_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_Band_Chopper_ymax = 0.05;
-#line 487 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 487 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_Band_Chopper_xwidth = 0.15;
-#line 487 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 487 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_Band_Chopper_yheight = 0.15;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_Band_Chopper_restore_neutron = 0;
 #line 19115 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -19124,11 +19124,11 @@ h_g12=0.125;
   rot_transpose(mcrotalmon_Band_Chopper, mctr1);
   rot_mul(mcrotapsd_Band_Chopper, mctr1, mcrotrpsd_Band_Chopper);
   mctc1 = coords_set(
-#line 488 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 488 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 488 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 488 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 488 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 488 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     31.6832);
 #line 19133 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -19144,29 +19144,29 @@ h_g12=0.125;
     /* Component tofmon_BC. */
   /* Setting parameters for component tofmon_BC. */
   SIG_MESSAGE("tofmon_BC (Init:SetPar)");
-#line 492 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 492 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("TOF_Monitor_BandChopper.dat") strncpy(mcctofmon_BC_filename, "TOF_Monitor_BandChopper.dat" ? "TOF_Monitor_BandChopper.dat" : "", 16384); else mcctofmon_BC_filename[0]='\0';
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_BC_xmin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_BC_xmax = 0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_BC_ymin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_BC_ymax = 0.05;
-#line 493 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 493 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_BC_xwidth = 0.06;
-#line 493 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 493 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_BC_yheight = 0.125;
-#line 493 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 493 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_BC_tmin = 0;
-#line 493 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 493 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_BC_tmax = 72000;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_BC_dt = 1.0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_BC_restore_neutron = 0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_BC_nowritefile = 0;
 #line 19171 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -19180,11 +19180,11 @@ h_g12=0.125;
   rot_transpose(mcrotapsd_Band_Chopper, mctr1);
   rot_mul(mcrotatofmon_BC, mctr1, mcrotrtofmon_BC);
   mctc1 = coords_set(
-#line 494 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 494 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 494 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 494 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 494 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 494 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     31.6833);
 #line 19189 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -19200,27 +19200,27 @@ h_g12=0.125;
     /* Component time_lambda_BC. */
   /* Setting parameters for component time_lambda_BC. */
   SIG_MESSAGE("time_lambda_BC (Init:SetPar)");
-#line 498 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 498 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("Time_Lambda_BandChopper.dat") strncpy(mcctime_lambda_BC_filename, "Time_Lambda_BandChopper.dat" ? "Time_Lambda_BandChopper.dat" : "", 16384); else mcctime_lambda_BC_filename[0]='\0';
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_BC_xmin = -0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_BC_xmax = 0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_BC_ymin = -0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_BC_ymax = 0.05;
-#line 499 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 499 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_BC_xwidth = 0.06;
-#line 499 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 499 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_BC_yheight = 0.125;
-#line 499 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 499 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_BC_Lmin = mciplambda_min;
-#line 499 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 499 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_BC_Lmax = mciplambda_max;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_BC_restore_neutron = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_BC_nowritefile = 0;
 #line 19225 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -19234,11 +19234,11 @@ h_g12=0.125;
   rot_transpose(mcrotatofmon_BC, mctr1);
   rot_mul(mcrotatime_lambda_BC, mctr1, mcrotrtime_lambda_BC);
   mctc1 = coords_set(
-#line 500 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 500 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 500 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 500 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 500 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 500 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     31.6834);
 #line 19243 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -19254,49 +19254,49 @@ h_g12=0.125;
     /* Component g10. */
   /* Setting parameters for component g10. */
   SIG_MESSAGE("g10 (Init:SetPar)");
-#line 503 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 503 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg10_w = w_g10;
-#line 503 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 503 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg10_h = h_g10;
-#line 503 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 503 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg10_r = 2300;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg10_Win = 0.04;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg10_k = 1;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg10_d = 0.001;
-#line 503 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 503 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg10_l = L_g10;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg10_R0a = 0.99;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg10_Qca = 0.021;
-#line 503 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 503 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg10_alphaa = 6.49;
-#line 503 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 503 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg10_ma = 3;
-#line 503 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 503 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg10_Wa = 0.00333;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg10_R0i = 0.99;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg10_Qci = 0.021;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg10_alphai = 6.07;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg10_mi = 2;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg10_Wi = 0.003;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg10_R0s = 0.99;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg10_Qcs = 0.021;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg10_alphas = 6.07;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg10_ms = 2;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg10_Ws = 0.003;
 #line 19301 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -19310,11 +19310,11 @@ h_g12=0.125;
   rot_transpose(mcrotatime_lambda_BC, mctr1);
   rot_mul(mcrotag10, mctr1, mcrotrg10);
   mctc1 = coords_set(
-#line 504 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 504 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 504 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 504 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 504 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 504 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     31.793);
 #line 19319 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -19330,31 +19330,31 @@ h_g12=0.125;
     /* Component FOC_2_a. */
   /* Setting parameters for component FOC_2_a. */
   SIG_MESSAGE("FOC_2_a (Init:SetPar)");
-#line 511 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 511 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_a_theta_0 = 36.6;
-#line 511 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 511 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_a_radius = 0.3;
-#line 511 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 511 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_a_yheight = 0.135;
-#line 511 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 511 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_a_nu = -2 * mcipfrequency;
-#line 512 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 512 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_a_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_a_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_a_delay = 0;
-#line 512 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 512 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_a_isfirst = 0;
-#line 512 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 512 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_a_n_pulse = 1;
-#line 512 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 512 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_a_abs_out = 1;
-#line 512 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 512 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_a_phase = mcipOffset_deg_FOC2 + 98.06 + 180 + 14.555;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_a_xwidth = 0;
-#line 512 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 512 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_a_verbose = 1;
 #line 19359 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -19368,11 +19368,11 @@ h_g12=0.125;
   rot_transpose(mcrotag10, mctr1);
   rot_mul(mcrotaFOC_2_a, mctr1, mcrotrFOC_2_a);
   mctc1 = coords_set(
-#line 513 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 513 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 513 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 513 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 513 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 513 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     37.544);
 #line 19377 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -19388,31 +19388,31 @@ h_g12=0.125;
     /* Component FOC_2_b. */
   /* Setting parameters for component FOC_2_b. */
   SIG_MESSAGE("FOC_2_b (Init:SetPar)");
-#line 517 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 517 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_b_theta_0 = 36.06;
-#line 517 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 517 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_b_radius = 0.3;
-#line 517 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 517 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_b_yheight = 0.135;
-#line 517 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 517 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_b_nu = -2 * mcipfrequency;
-#line 518 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 518 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_b_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_b_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_b_delay = 0;
-#line 518 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 518 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_b_isfirst = 0;
-#line 518 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 518 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_b_n_pulse = 1;
-#line 518 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 518 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_b_abs_out = 1;
-#line 518 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 518 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_b_phase = mcipOffset_deg_FOC2 + 154.44 + 180 + 14.555;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_b_xwidth = 0;
-#line 518 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 518 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_b_verbose = 1;
 #line 19417 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -19426,11 +19426,11 @@ h_g12=0.125;
   rot_transpose(mcrotaFOC_2_a, mctr1);
   rot_mul(mcrotaFOC_2_b, mctr1, mcrotrFOC_2_b);
   mctc1 = coords_set(
-#line 519 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 519 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 519 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 519 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 519 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 519 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     37.544);
 #line 19435 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -19446,31 +19446,31 @@ h_g12=0.125;
     /* Component FOC_2_c. */
   /* Setting parameters for component FOC_2_c. */
   SIG_MESSAGE("FOC_2_c (Init:SetPar)");
-#line 523 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 523 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_c_theta_0 = 30.21;
-#line 523 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 523 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_c_radius = 0.3;
-#line 523 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 523 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_c_yheight = 0.135;
-#line 523 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 523 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_c_nu = -2 * mcipfrequency;
-#line 524 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 524 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_c_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_c_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_c_delay = 0;
-#line 524 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 524 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_c_isfirst = 0;
-#line 524 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 524 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_c_n_pulse = 1;
-#line 524 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 524 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_c_abs_out = 1;
-#line 524 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 524 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_c_phase = mcipOffset_deg_FOC2 + 206.835 + 180 + 14.555;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_c_xwidth = 0;
-#line 524 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 524 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_c_verbose = 1;
 #line 19475 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -19484,11 +19484,11 @@ h_g12=0.125;
   rot_transpose(mcrotaFOC_2_b, mctr1);
   rot_mul(mcrotaFOC_2_c, mctr1, mcrotrFOC_2_c);
   mctc1 = coords_set(
-#line 525 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 525 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 525 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 525 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 525 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 525 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     37.544);
 #line 19493 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -19504,31 +19504,31 @@ h_g12=0.125;
     /* Component FOC_2_d. */
   /* Setting parameters for component FOC_2_d. */
   SIG_MESSAGE("FOC_2_d (Init:SetPar)");
-#line 529 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 529 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_d_theta_0 = 26.88;
-#line 529 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 529 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_d_radius = 0.3;
-#line 529 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 529 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_d_yheight = 0.135;
-#line 529 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 529 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_d_nu = -2 * mcipfrequency;
-#line 530 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 530 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_d_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_d_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_d_delay = 0;
-#line 530 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 530 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_d_isfirst = 0;
-#line 530 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 530 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_d_n_pulse = 1;
-#line 530 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 530 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_d_abs_out = 1;
-#line 530 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 530 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_d_phase = mcipOffset_deg_FOC2 + 254.25 + 180 + 14.555;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_d_xwidth = 0;
-#line 530 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 530 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_d_verbose = 1;
 #line 19533 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -19542,11 +19542,11 @@ h_g12=0.125;
   rot_transpose(mcrotaFOC_2_c, mctr1);
   rot_mul(mcrotaFOC_2_d, mctr1, mcrotrFOC_2_d);
   mctc1 = coords_set(
-#line 531 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 531 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 531 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 531 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 531 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 531 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     37.544);
 #line 19551 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -19562,31 +19562,31 @@ h_g12=0.125;
     /* Component FOC_2_e. */
   /* Setting parameters for component FOC_2_e. */
   SIG_MESSAGE("FOC_2_e (Init:SetPar)");
-#line 535 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 535 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_e_theta_0 = 24.56;
-#line 535 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 535 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_e_radius = 0.3;
-#line 535 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 535 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_e_yheight = 0.135;
-#line 535 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 535 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_e_nu = -2 * mcipfrequency;
-#line 536 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 536 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_e_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_e_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_e_delay = 0;
-#line 536 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 536 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_e_isfirst = 0;
-#line 536 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 536 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_e_n_pulse = 1;
-#line 536 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 536 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_e_abs_out = 1;
-#line 536 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 536 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_e_phase = mcipOffset_deg_FOC2 + 299.41 + 180 + 14.555;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_e_xwidth = 0;
-#line 536 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 536 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_e_verbose = 1;
 #line 19591 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -19600,11 +19600,11 @@ h_g12=0.125;
   rot_transpose(mcrotaFOC_2_d, mctr1);
   rot_mul(mcrotaFOC_2_e, mctr1, mcrotrFOC_2_e);
   mctc1 = coords_set(
-#line 537 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 537 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 537 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 537 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 537 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 537 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     37.544);
 #line 19609 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -19620,31 +19620,31 @@ h_g12=0.125;
     /* Component FOC_2_f. */
   /* Setting parameters for component FOC_2_f. */
   SIG_MESSAGE("FOC_2_f (Init:SetPar)");
-#line 541 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 541 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_f_theta_0 = 29.11;
-#line 541 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 541 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_f_radius = 0.3;
-#line 541 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 541 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_f_yheight = 0.135;
-#line 541 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 541 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_f_nu = -2 * mcipfrequency;
-#line 542 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 542 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_f_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_f_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_f_delay = 0;
-#line 542 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 542 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_f_isfirst = 0;
-#line 542 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 542 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_f_n_pulse = 1;
-#line 542 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 542 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_f_abs_out = 1;
-#line 542 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 542 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_f_phase = mcipOffset_deg_FOC2 + 345.445 + 180 + 14.555;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_f_xwidth = 0;
-#line 542 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 542 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFOC_2_f_verbose = 1;
 #line 19649 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -19658,11 +19658,11 @@ h_g12=0.125;
   rot_transpose(mcrotaFOC_2_e, mctr1);
   rot_mul(mcrotaFOC_2_f, mctr1, mcrotrFOC_2_f);
   mctc1 = coords_set(
-#line 543 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 543 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 543 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 543 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 543 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 543 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     37.544);
 #line 19667 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -19689,11 +19689,11 @@ h_g12=0.125;
   rot_transpose(mcrotaFOC_2_f, mctr1);
   rot_mul(mcrotaFOC_2_dummy, mctr1, mcrotrFOC_2_dummy);
   mctc1 = coords_set(
-#line 547 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 547 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 547 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 547 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.465,
-#line 547 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 547 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     37.544);
 #line 19698 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -19709,27 +19709,27 @@ h_g12=0.125;
     /* Component lmon_FOC_2. */
   /* Setting parameters for component lmon_FOC_2. */
   SIG_MESSAGE("lmon_FOC_2 (Init:SetPar)");
-#line 566 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 566 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("L_Monitor_FOC2.dat") strncpy(mcclmon_FOC_2_filename, "L_Monitor_FOC2.dat" ? "L_Monitor_FOC2.dat" : "", 16384); else mcclmon_FOC_2_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_FOC_2_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_FOC_2_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_FOC_2_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_FOC_2_ymax = 0.05;
-#line 567 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 567 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_FOC_2_xwidth = 0.06;
-#line 567 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 567 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_FOC_2_yheight = 0.125;
-#line 567 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 567 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_FOC_2_Lmin = mciplambda_min;
-#line 567 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 567 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_FOC_2_Lmax = mciplambda_max;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_FOC_2_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_FOC_2_nowritefile = 0;
 #line 19734 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -19743,11 +19743,11 @@ h_g12=0.125;
   rot_transpose(mcrotaFOC_2_dummy, mctr1);
   rot_mul(mcrotalmon_FOC_2, mctr1, mcrotrlmon_FOC_2);
   mctc1 = coords_set(
-#line 568 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 568 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 568 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 568 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 568 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 568 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     37.5441);
 #line 19752 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -19763,25 +19763,25 @@ h_g12=0.125;
     /* Component psd_FOC_2. */
   /* Setting parameters for component psd_FOC_2. */
   SIG_MESSAGE("psd_FOC_2 (Init:SetPar)");
-#line 572 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 572 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_FOC_2_nx = 150;
-#line 572 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 572 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_FOC_2_ny = 150;
-#line 572 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 572 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("PSD_Monitor_FOC2.dat") strncpy(mccpsd_FOC_2_filename, "PSD_Monitor_FOC2.dat" ? "PSD_Monitor_FOC2.dat" : "", 16384); else mccpsd_FOC_2_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_FOC_2_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_FOC_2_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_FOC_2_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_FOC_2_ymax = 0.05;
-#line 573 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 573 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_FOC_2_xwidth = 0.15;
-#line 573 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 573 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_FOC_2_yheight = 0.15;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_FOC_2_restore_neutron = 0;
 #line 19786 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -19795,11 +19795,11 @@ h_g12=0.125;
   rot_transpose(mcrotalmon_FOC_2, mctr1);
   rot_mul(mcrotapsd_FOC_2, mctr1, mcrotrpsd_FOC_2);
   mctc1 = coords_set(
-#line 574 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 574 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 574 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 574 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 574 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 574 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     37.5442);
 #line 19804 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -19815,27 +19815,27 @@ h_g12=0.125;
     /* Component time_lambda_FOC2. */
   /* Setting parameters for component time_lambda_FOC2. */
   SIG_MESSAGE("time_lambda_FOC2 (Init:SetPar)");
-#line 577 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 577 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("Time_Lambda_FOC2.dat") strncpy(mcctime_lambda_FOC2_filename, "Time_Lambda_FOC2.dat" ? "Time_Lambda_FOC2.dat" : "", 16384); else mcctime_lambda_FOC2_filename[0]='\0';
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_FOC2_xmin = -0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_FOC2_xmax = 0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_FOC2_ymin = -0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_FOC2_ymax = 0.05;
-#line 578 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 578 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_FOC2_xwidth = 0.06;
-#line 578 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 578 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_FOC2_yheight = 0.125;
-#line 578 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 578 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_FOC2_Lmin = mciplambda_min;
-#line 578 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 578 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_FOC2_Lmax = mciplambda_max;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_FOC2_restore_neutron = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_FOC2_nowritefile = 0;
 #line 19840 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -19849,11 +19849,11 @@ h_g12=0.125;
   rot_transpose(mcrotapsd_FOC_2, mctr1);
   rot_mul(mcrotatime_lambda_FOC2, mctr1, mcrotrtime_lambda_FOC2);
   mctc1 = coords_set(
-#line 579 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 579 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 579 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 579 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 579 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 579 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     37.5443);
 #line 19858 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -19869,19 +19869,19 @@ h_g12=0.125;
     /* Component slit_fix_2. */
   /* Setting parameters for component slit_fix_2. */
   SIG_MESSAGE("slit_fix_2 (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_fix_2_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_fix_2_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_fix_2_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_fix_2_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_fix_2_radius = 0;
-#line 583 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 583 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_fix_2_xwidth = 0.02;
-#line 583 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 583 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_fix_2_yheight = 0.1;
 #line 19886 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -19895,11 +19895,11 @@ h_g12=0.125;
   rot_transpose(mcrotatime_lambda_FOC2, mctr1);
   rot_mul(mcrotaslit_fix_2, mctr1, mcrotrslit_fix_2);
   mctc1 = coords_set(
-#line 584 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 584 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 584 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 584 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 584 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 584 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     37.594);
 #line 19904 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -19915,49 +19915,49 @@ h_g12=0.125;
     /* Component g11. */
   /* Setting parameters for component g11. */
   SIG_MESSAGE("g11 (Init:SetPar)");
-#line 587 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 587 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg11_w = w_g11;
-#line 587 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 587 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg11_h = h_g11;
-#line 587 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 587 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg11_r = 2300;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg11_Win = 0.04;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg11_k = 1;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg11_d = 0.001;
-#line 587 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 587 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg11_l = L_g11;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg11_R0a = 0.99;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg11_Qca = 0.021;
-#line 587 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 587 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg11_alphaa = 6.49;
-#line 587 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 587 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg11_ma = 3;
-#line 587 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 587 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg11_Wa = 0.00333;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg11_R0i = 0.99;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg11_Qci = 0.021;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg11_alphai = 6.07;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg11_mi = 2;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg11_Wi = 0.003;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg11_R0s = 0.99;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg11_Qcs = 0.021;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg11_alphas = 6.07;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg11_ms = 2;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg11_Ws = 0.003;
 #line 19962 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -19971,11 +19971,11 @@ h_g12=0.125;
   rot_transpose(mcrotaslit_fix_2, mctr1);
   rot_mul(mcrotag11, mctr1, mcrotrg11);
   mctc1 = coords_set(
-#line 588 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 588 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 588 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 588 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 588 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 588 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     37.594);
 #line 19980 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -19991,27 +19991,27 @@ h_g12=0.125;
     /* Component g12. */
   /* Setting parameters for component g12. */
   SIG_MESSAGE("g12 (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if(0) strncpy(mccg12_reflect, 0 ? 0 : "", 16384); else mccg12_reflect[0]='\0';
-#line 591 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 591 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg12_w1 = w_g12;
-#line 591 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 591 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg12_h1 = h_g12;
-#line 591 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 591 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg12_w2 = w_g12;
-#line 591 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 591 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg12_h2 = h_g12;
-#line 591 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 591 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg12_l = L_g12;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg12_R0 = 0.99;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg12_Qc = 0.0219;
-#line 592 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 592 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg12_alpha = 6.49;
-#line 592 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 592 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg12_m = 3;
-#line 592 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 592 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccg12_W = 0.00333;
 #line 20016 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -20025,11 +20025,11 @@ h_g12=0.125;
   rot_transpose(mcrotag11, mctr1);
   rot_mul(mcrotag12, mctr1, mcrotrg12);
   mctc1 = coords_set(
-#line 593 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 593 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 593 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 593 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 593 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 593 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     41.094);
 #line 20034 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -20045,19 +20045,19 @@ h_g12=0.125;
     /* Component slit_2. */
   /* Setting parameters for component slit_2. */
   SIG_MESSAGE("slit_2 (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_2_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_2_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_2_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_2_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_2_radius = 0;
-#line 603 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 603 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_2_xwidth = mcips2_x;
-#line 603 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 603 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_2_yheight = mcips2_y;
 #line 20062 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -20071,11 +20071,11 @@ h_g12=0.125;
   rot_transpose(mcrotag12, mctr1);
   rot_mul(mcrotaslit_2, mctr1, mcrotrslit_2);
   mctc1 = coords_set(
-#line 604 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 604 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 604 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 604 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 604 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 604 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     47.3);
 #line 20080 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -20091,29 +20091,29 @@ h_g12=0.125;
     /* Component tofmon_V20. */
   /* Setting parameters for component tofmon_V20. */
   SIG_MESSAGE("tofmon_V20 (Init:SetPar)");
-#line 607 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 607 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("TOF_Monitor_V20.dat") strncpy(mcctofmon_V20_filename, "TOF_Monitor_V20.dat" ? "TOF_Monitor_V20.dat" : "", 16384); else mcctofmon_V20_filename[0]='\0';
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_V20_xmin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_V20_xmax = 0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_V20_ymin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_V20_ymax = 0.05;
-#line 608 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 608 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_V20_xwidth = 0.06;
-#line 608 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 608 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_V20_yheight = 0.125;
-#line 608 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 608 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_V20_tmin = 0;
-#line 608 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 608 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_V20_tmax = 72000;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_V20_dt = 1.0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_V20_restore_neutron = 0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_V20_nowritefile = 0;
 #line 20118 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -20127,11 +20127,11 @@ h_g12=0.125;
   rot_transpose(mcrotaslit_2, mctr1);
   rot_mul(mcrotatofmon_V20, mctr1, mcrotrtofmon_V20);
   mctc1 = coords_set(
-#line 609 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 609 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 609 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 609 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 609 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 609 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     47.4);
 #line 20136 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -20147,27 +20147,27 @@ h_g12=0.125;
     /* Component lmon_exit. */
   /* Setting parameters for component lmon_exit. */
   SIG_MESSAGE("lmon_exit (Init:SetPar)");
-#line 612 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 612 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("L_Monitor_ExitGuide.dat") strncpy(mcclmon_exit_filename, "L_Monitor_ExitGuide.dat" ? "L_Monitor_ExitGuide.dat" : "", 16384); else mcclmon_exit_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_exit_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_exit_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_exit_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_exit_ymax = 0.05;
-#line 612 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 612 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_exit_xwidth = 0.06;
-#line 613 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 613 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_exit_yheight = 0.125;
-#line 613 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 613 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_exit_Lmin = mciplambda_min;
-#line 613 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 613 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_exit_Lmax = mciplambda_max;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_exit_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcclmon_exit_nowritefile = 0;
 #line 20172 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -20181,11 +20181,11 @@ h_g12=0.125;
   rot_transpose(mcrotatofmon_V20, mctr1);
   rot_mul(mcrotalmon_exit, mctr1, mcrotrlmon_exit);
   mctc1 = coords_set(
-#line 614 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 614 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 614 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 614 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 614 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 614 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     47.4001);
 #line 20190 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -20201,25 +20201,25 @@ h_g12=0.125;
     /* Component psd_exit. */
   /* Setting parameters for component psd_exit. */
   SIG_MESSAGE("psd_exit (Init:SetPar)");
-#line 618 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 618 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_exit_nx = 150;
-#line 618 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 618 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_exit_ny = 150;
-#line 618 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 618 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("PSD_Monitor_ExitGuide.dat") strncpy(mccpsd_exit_filename, "PSD_Monitor_ExitGuide.dat" ? "PSD_Monitor_ExitGuide.dat" : "", 16384); else mccpsd_exit_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_exit_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_exit_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_exit_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_exit_ymax = 0.05;
-#line 619 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 619 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_exit_xwidth = 0.15;
-#line 619 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 619 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_exit_yheight = 0.15;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccpsd_exit_restore_neutron = 0;
 #line 20224 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -20233,11 +20233,11 @@ h_g12=0.125;
   rot_transpose(mcrotalmon_exit, mctr1);
   rot_mul(mcrotapsd_exit, mctr1, mcrotrpsd_exit);
   mctc1 = coords_set(
-#line 620 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 620 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 620 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 620 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 620 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 620 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     47.4002);
 #line 20242 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -20253,29 +20253,29 @@ h_g12=0.125;
     /* Component tofmon_exit. */
   /* Setting parameters for component tofmon_exit. */
   SIG_MESSAGE("tofmon_exit (Init:SetPar)");
-#line 623 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 623 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("TOF_Monitor_ExitGuide.dat") strncpy(mcctofmon_exit_filename, "TOF_Monitor_ExitGuide.dat" ? "TOF_Monitor_ExitGuide.dat" : "", 16384); else mcctofmon_exit_filename[0]='\0';
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_exit_xmin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_exit_xmax = 0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_exit_ymin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_exit_ymax = 0.05;
-#line 624 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 624 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_exit_xwidth = 0.06;
-#line 624 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 624 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_exit_yheight = 0.125;
-#line 624 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 624 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_exit_tmin = 10000;
-#line 624 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 624 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_exit_tmax = 90000;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_exit_dt = 1.0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_exit_restore_neutron = 0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_exit_nowritefile = 0;
 #line 20280 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -20289,11 +20289,11 @@ h_g12=0.125;
   rot_transpose(mcrotapsd_exit, mctr1);
   rot_mul(mcrotatofmon_exit, mctr1, mcrotrtofmon_exit);
   mctc1 = coords_set(
-#line 625 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 625 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 625 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 625 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 625 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 625 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     47.4003);
 #line 20298 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -20309,27 +20309,27 @@ h_g12=0.125;
     /* Component time_lambda_exit. */
   /* Setting parameters for component time_lambda_exit. */
   SIG_MESSAGE("time_lambda_exit (Init:SetPar)");
-#line 629 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 629 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("Time_Lambda_ExitGuide.dat") strncpy(mcctime_lambda_exit_filename, "Time_Lambda_ExitGuide.dat" ? "Time_Lambda_ExitGuide.dat" : "", 16384); else mcctime_lambda_exit_filename[0]='\0';
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_exit_xmin = -0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_exit_xmax = 0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_exit_ymin = -0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_exit_ymax = 0.05;
-#line 630 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 630 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_exit_xwidth = 0.06;
-#line 630 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 630 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_exit_yheight = 0.125;
-#line 630 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 630 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_exit_Lmin = mciplambda_min;
-#line 630 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 630 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_exit_Lmax = mciplambda_max;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_exit_restore_neutron = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctime_lambda_exit_nowritefile = 0;
 #line 20334 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -20343,11 +20343,11 @@ h_g12=0.125;
   rot_transpose(mcrotatofmon_exit, mctr1);
   rot_mul(mcrotatime_lambda_exit, mctr1, mcrotrtime_lambda_exit);
   mctc1 = coords_set(
-#line 631 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 631 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 631 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 631 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 631 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 631 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     47.4004);
 #line 20352 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -20363,29 +20363,29 @@ h_g12=0.125;
     /* Component tofmon_V20_2. */
   /* Setting parameters for component tofmon_V20_2. */
   SIG_MESSAGE("tofmon_V20_2 (Init:SetPar)");
-#line 635 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 635 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("TOF_Monitor_V20_2.dat") strncpy(mcctofmon_V20_2_filename, "TOF_Monitor_V20_2.dat" ? "TOF_Monitor_V20_2.dat" : "", 16384); else mcctofmon_V20_2_filename[0]='\0';
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_V20_2_xmin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_V20_2_xmax = 0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_V20_2_ymin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_V20_2_ymax = 0.05;
-#line 636 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 636 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_V20_2_xwidth = 0.06;
-#line 636 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 636 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_V20_2_yheight = 0.125;
-#line 636 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 636 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_V20_2_tmin = 0;
-#line 636 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 636 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_V20_2_tmax = 72000;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_V20_2_dt = 1.0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_V20_2_restore_neutron = 0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_V20_2_nowritefile = 0;
 #line 20390 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -20399,11 +20399,11 @@ h_g12=0.125;
   rot_transpose(mcrotatime_lambda_exit, mctr1);
   rot_mul(mcrotatofmon_V20_2, mctr1, mcrotrtofmon_V20_2);
   mctc1 = coords_set(
-#line 637 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 637 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 637 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 637 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 637 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 637 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     50.12);
 #line 20408 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -20419,19 +20419,19 @@ h_g12=0.125;
     /* Component slit_3. */
   /* Setting parameters for component slit_3. */
   SIG_MESSAGE("slit_3 (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_3_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_3_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_3_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_3_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_3_radius = 0;
-#line 641 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 641 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_3_xwidth = mcips3_x;
-#line 641 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 641 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccslit_3_yheight = mcips3_y;
 #line 20436 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -20445,11 +20445,11 @@ h_g12=0.125;
   rot_transpose(mcrotatofmon_V20_2, mctr1);
   rot_mul(mcrotaslit_3, mctr1, mcrotrslit_3);
   mctc1 = coords_set(
-#line 642 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 642 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 642 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 642 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 642 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 642 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     50.25);
 #line 20454 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -20468,22 +20468,22 @@ h_g12=0.125;
 
   SIG_MESSAGE("arm_sample (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 648 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 648 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     (0)*DEG2RAD,
-#line 648 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 648 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     (0)*DEG2RAD,
-#line 648 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 648 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     (0)*DEG2RAD);
 #line 20477 "./ESS_Testbeamline_HZB_V20.c"
   rot_mul(mctr1, mcrotaorigin, mcrotaarm_sample);
   rot_transpose(mcrotaslit_3, mctr1);
   rot_mul(mcrotaarm_sample, mctr1, mcrotrarm_sample);
   mctc1 = coords_set(
-#line 647 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 647 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 647 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 647 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 647 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 647 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     mcipsp);
 #line 20488 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -20499,59 +20499,59 @@ h_g12=0.125;
     /* Component Fealpha. */
   /* Setting parameters for component Fealpha. */
   SIG_MESSAGE("Fealpha (Init:SetPar)");
-#line 653 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 653 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("Fe.laz") strncpy(mccFealpha_reflections, "Fe.laz" ? "Fe.laz" : "", 16384); else mccFealpha_reflections[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("NULL") strncpy(mccFealpha_geometry, "NULL" ? "NULL" : "", 16384); else mccFealpha_geometry[0]='\0';
-#line 653 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 653 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_radius = 0.006;
-#line 653 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 653 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_yheight = 0.08;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_xwidth = 0;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_zdepth = 0;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_thickness = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_pack = 1;
-#line 654 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 654 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_Vc = 2.867 * 2.867 * 2.867;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_sigma_abs = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_sigma_inc = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_delta_d_d = 0;
-#line 654 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 654 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_p_inc = 0.1;
-#line 655 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 655 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_p_transmit = 0.1;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_DW = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_nb_atoms = 1;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_d_omega = 0;
-#line 655 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 655 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_d_phi = 10;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_tth_sign = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_p_interact = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_concentric = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_density = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_weight = 0;
-#line 655 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 655 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_barns = 1;
-#line 654 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 654 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_Strain = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_focus_flip = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccFealpha_target_index = 0;
 #line 20556 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -20565,11 +20565,11 @@ h_g12=0.125;
   rot_transpose(mcrotaarm_sample, mctr1);
   rot_mul(mcrotaFealpha, mctr1, mcrotrFealpha);
   mctc1 = coords_set(
-#line 656 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 656 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 656 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 656 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 656 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 656 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0);
 #line 20574 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaarm_sample, mctr1);
@@ -20588,22 +20588,22 @@ h_g12=0.125;
 
   SIG_MESSAGE("arm_detector (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 681 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 681 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     (0)*DEG2RAD,
-#line 681 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 681 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     (90)*DEG2RAD,
-#line 681 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 681 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     (0)*DEG2RAD);
 #line 20597 "./ESS_Testbeamline_HZB_V20.c"
   rot_mul(mctr1, mcrotaorigin, mcrotaarm_detector);
   rot_transpose(mcrotaFealpha, mctr1);
   rot_mul(mcrotaarm_detector, mctr1, mcrotrarm_detector);
   mctc1 = coords_set(
-#line 680 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 680 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 680 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 680 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 680 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 680 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0);
 #line 20608 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaarm_sample, mctr1);
@@ -20619,29 +20619,29 @@ h_g12=0.125;
     /* Component tofmon_detector_position2. */
   /* Setting parameters for component tofmon_detector_position2. */
   SIG_MESSAGE("tofmon_detector_position2 (Init:SetPar)");
-#line 684 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 684 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("TOF_Monitor_DetecorPosition_2.dat") strncpy(mcctofmon_detector_position2_filename, "TOF_Monitor_DetecorPosition_2.dat" ? "TOF_Monitor_DetecorPosition_2.dat" : "", 16384); else mcctofmon_detector_position2_filename[0]='\0';
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_detector_position2_xmin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_detector_position2_xmax = 0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_detector_position2_ymin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_detector_position2_ymax = 0.05;
-#line 685 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 685 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_detector_position2_xwidth = 0.025;
-#line 685 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 685 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_detector_position2_yheight = 0.3;
-#line 685 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 685 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_detector_position2_tmin = 0;
-#line 685 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 685 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_detector_position2_tmax = 72000;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_detector_position2_dt = 1.0;
-#line 685 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 685 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_detector_position2_restore_neutron = 1;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mcctofmon_detector_position2_nowritefile = 0;
 #line 20646 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -20655,11 +20655,11 @@ h_g12=0.125;
   rot_transpose(mcrotaarm_detector, mctr1);
   rot_mul(mcrotatofmon_detector_position2, mctr1, mcrotrtofmon_detector_position2);
   mctc1 = coords_set(
-#line 686 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 686 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 686 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 686 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 686 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 686 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.37001);
 #line 20664 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaarm_detector, mctr1);
@@ -20675,47 +20675,47 @@ h_g12=0.125;
     /* Component x_t. */
   /* Setting parameters for component x_t. */
   SIG_MESSAGE("x_t (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccx_t_xwidth = 0;
-#line 689 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 689 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccx_t_yheight = 0.3;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccx_t_zdepth = 0;
-#line 689 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 689 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccx_t_xmin = -0.15;
-#line 689 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 689 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccx_t_xmax = 0.15;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccx_t_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccx_t_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccx_t_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccx_t_zmax = 0;
-#line 689 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 689 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccx_t_bins = 500;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccx_t_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccx_t_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccx_t_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccx_t_radius = 0;
-#line 690 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 690 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("time limits=[0, 0.072], x limits=[-0.15,0.15]") strncpy(mccx_t_options, "time limits=[0, 0.072], x limits=[-0.15,0.15]" ? "time limits=[0, 0.072], x limits=[-0.15,0.15]" : "", 16384); else mccx_t_options[0]='\0';
-#line 691 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 691 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("x_t.dat") strncpy(mccx_t_filename, "x_t.dat" ? "x_t.dat" : "", 16384); else mccx_t_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("NULL") strncpy(mccx_t_geometry, "NULL" ? "NULL" : "", 16384); else mccx_t_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("NULL") strncpy(mccx_t_username1, "NULL" ? "NULL" : "", 16384); else mccx_t_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("NULL") strncpy(mccx_t_username2, "NULL" ? "NULL" : "", 16384); else mccx_t_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if("NULL") strncpy(mccx_t_username3, "NULL" ? "NULL" : "", 16384); else mccx_t_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   mccx_t_nowritefile = 0;
 #line 20720 "./ESS_Testbeamline_HZB_V20.c"
 
@@ -20729,11 +20729,11 @@ h_g12=0.125;
   rot_transpose(mcrotatofmon_detector_position2, mctr1);
   rot_mul(mcrotax_t, mctr1, mcrotrx_t);
   mctc1 = coords_set(
-#line 692 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 692 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 692 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 692 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0,
-#line 692 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 692 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
     0.5);
 #line 20738 "./ESS_Testbeamline_HZB_V20.c"
   rot_transpose(mcrotaarm_detector, mctr1);
@@ -27966,7 +27966,7 @@ MCNUM dlambda = mccsource_dlambda;
 #line 27966 "./ESS_Testbeamline_HZB_V20.c"
 /* 'source=Source_Maxwell_3()' component instance extend code */
     SIG_MESSAGE("source (Trace:Extend)");
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if (mcipemulate_reactor_emmision) t=rand01();
 #line 27971 "./ESS_Testbeamline_HZB_V20.c"
 }   /* End of source=Source_Maxwell_3() SETTING parameter declarations. */
@@ -32537,7 +32537,7 @@ RESTORE=1;
 #define mccompcurindex 26
 /* 'WFMC_1_dummy=Arm()' component instance extend code */
     SIG_MESSAGE("WFMC_1_dummy (Trace:Extend)");
-#line 282 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 282 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if (mcipChoppers_WFM1_in==0) SCATTER;
 #line 32518 "./ESS_Testbeamline_HZB_V20.c"
 #undef mccompcurname
@@ -34159,7 +34159,7 @@ RESTORE=1;
 #define mccompcurindex 36
 /* 'WFMC_2_dummy=Arm()' component instance extend code */
     SIG_MESSAGE("WFMC_2_dummy (Trace:Extend)");
-#line 348 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 348 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if (mcipChoppers_WFM2_in==0) SCATTER;
 #line 34113 "./ESS_Testbeamline_HZB_V20.c"
 #undef mccompcurname
@@ -36061,7 +36061,7 @@ RESTORE=1;
 #define mccompcurindex 47
 /* 'FOC_1_dummy=Arm()' component instance extend code */
     SIG_MESSAGE("FOC_1_dummy (Trace:Extend)");
-#line 422 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 422 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if (mcipChoppers_FOC1_in==0) SCATTER;
 #line 35988 "./ESS_Testbeamline_HZB_V20.c"
 #undef mccompcurname
@@ -39426,7 +39426,7 @@ RESTORE=1;
 #define mccompcurindex 67
 /* 'FOC_2_dummy=Arm()' component instance extend code */
     SIG_MESSAGE("FOC_2_dummy (Trace:Extend)");
-#line 550 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
+#line 550 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Testbeamline_HZB_V20/ESS_Testbeamline_HZB_V20.instr"
   if (mcipChoppers_FOC2_in==0) SCATTER;
 #line 39326 "./ESS_Testbeamline_HZB_V20.c"
 #undef mccompcurname

@@ -1,10 +1,10 @@
 McStas simulation description file for TAS1_Diff_Slit.
-Date:    Tue Dec  3 18:16:55 2019
-Program: McStas 2.5 - Dec. 03, 2019
+Date:    Tue Feb 25 22:18:06 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: TAS1_Diff_Slit
   File: 1/mccode
-  Source: /zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-3/linup-3.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/linup-3/linup-3.instr
   Parameters:  PHM(double) TTM(double) TT(double) C1(double) OMC1(double) C2(double) C3(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Dec. 03, 2019
-  Instrument: /zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-3/linup-3.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/linup-3/linup-3.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1575407444
+  Seed: 1582693599
   Directory: 1
   Nodes: 10
   Param: PHM=-37.077
@@ -32,32 +32,32 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Tue Dec  3 18:16:57 2019 (1575393417)
+  Date: Tue Feb 25 22:18:09 2020 (1582665489)
   type: array_0d
-  Source: TAS1_Diff_Slit (/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-3/linup-3.instr)
+  Source: TAS1_Diff_Slit (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/linup-3/linup-3.instr)
   component: mon
   position: -1.23041 0 3.91282
   title: Single monitor mon
   Ncount: 10000000
   statistics: None
   signal: None
-  values: 0.0010074 2.02143e-06 316505
+  values: 0.00101131 2.02789e-06 316820
   xylimits: 0 0 0 0 0 0
   variables: I I_err N
 end data
 
 begin data
-  Date: Tue Dec  3 18:16:57 2019 (1575393417)
+  Date: Tue Feb 25 22:18:09 2020 (1582665489)
   type: array_1d(35)
-  Source: TAS1_Diff_Slit (/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-3/linup-3.instr)
+  Source: TAS1_Diff_Slit (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/linup-3/linup-3.instr)
   component: emon1
   position: -1.44189 0 3.97346
   title: Energy monitor
   Ncount: 10000000
   filename: linup_3_1.vmon
-  statistics: X0=20.1473; dX=0.167666;
-  signal: Min=0; Max=7.72547e-05; Mean=2.49622e-05;
-  values: 0.000873676 1.90475e-06 259796
+  statistics: X0=20.1485; dX=0.167888;
+  signal: Min=0; Max=7.75972e-05; Mean=2.50585e-05;
+  values: 0.000877048 1.91088e-06 259830
   xvar: E
   yvar: (I,I_err)
   xlabel: Energy [meV]
@@ -67,32 +67,32 @@ begin data
 end data
 
 begin data
-  Date: Tue Dec  3 18:16:57 2019 (1575393417)
+  Date: Tue Feb 25 22:18:09 2020 (1582665489)
   type: array_0d
-  Source: TAS1_Diff_Slit (/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-3/linup-3.instr)
+  Source: TAS1_Diff_Slit (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/linup-3/linup-3.instr)
   component: sng
   position: -2.65789 0 4.32214
   title: Single monitor sng
   Ncount: 10000000
   statistics: None
   signal: None
-  values: 2.0571e-05 2.60359e-07 10057
+  values: 2.08774e-05 2.63006e-07 10070
   xylimits: 0 0 0 0 0 0
   variables: I I_err N
 end data
 
 begin data
-  Date: Tue Dec  3 18:16:57 2019 (1575393417)
+  Date: Tue Feb 25 22:18:09 2020 (1582665489)
   type: array_1d(35)
-  Source: TAS1_Diff_Slit (/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-3/linup-3.instr)
+  Source: TAS1_Diff_Slit (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/linup-3/linup-3.instr)
   component: Emon2
   position: -2.65789 0 4.32214
   title: Energy monitor
   Ncount: 10000000
   filename: linup_3_2.vmon
-  statistics: X0=20.1329; dX=0.149421;
-  signal: Min=0; Max=1.91405e-06; Mean=5.95899e-07;
-  values: 2.08565e-05 2.62188e-07 10197
+  statistics: X0=20.1329; dX=0.148595;
+  signal: Min=0; Max=1.959e-06; Mean=6.05265e-07;
+  values: 2.11843e-05 2.6488e-07 10219
   xvar: E
   yvar: (I,I_err)
   xlabel: Energy [meV]

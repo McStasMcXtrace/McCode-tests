@@ -1,115 +1,5 @@
-        [1574207149.767975] [n-62-23-6:10524:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3429.42
-[1574207149.769447] [n-62-23-6:10524:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207149.769450] [n-62-23-6:10524:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207149.771377] [n-62-23-6:10524:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207149.771380] [n-62-23-6:10524:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-begin instrument: RITA_II
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RITA-II/RITA-II.instr
-  Parameters:  ITAR(double) L0(double) BPL(double) BPH(double) MONO_N(double) MONOFORCE(double) MONO_MOS_H(double) MONO_MOS_V(double) EI(double) EF(double) EN(double) SM(double) SS(double) SA(double) QH(double) QK(double) QL(double) QM(double) AS(double) BS(double) CS(double) AA(double) BB(double) CC(double) AH(double) AK(double) AL(double) BH(double) BK(double) BL(double) INFILTER(double) INFILTERFILE(string) COLL_MS(double) MST(double) MSB(double) MSL(double) MSR(double) PTHICK(double) PERSPEX(double) SAMPLE(double) SAMPLEFILE(string) MOS(double) DD_D(double) SAMPLESIZE(double) BARNS(double) AAX(double) AAY(double) AAZ(double) BBX(double) BBY(double) BBZ(double) CCX(double) CCY(double) CCZ(double) A1(double) A2(double) A3(double) A4(double) AA5(double) A6(double) TILT(double) SST(double) SSB(double) SSL(double) SSR(double) OUTFILTER(double) OUTFILTERFILE(string) ANAFORCE(double) C1(double) C2(double) C3(double) C4(double) C5(double) C6(double) C7(double) C8(double)
-  Trace_enabled: yes
-  Default_main: yes
-  Embedded_runtime: yes
-end instrument
-begin simulation: .
-  Format: McStas
-  URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RITA-II/RITA-II.instr
-  Ncount: 1000000
-  Trace: no
-  Gravitation: no
-  Seed: 1574217673
-  Directory: .
-  Param: ITAR=1
-  Param: L0=4.045
-  Param: BPL=0.97
-  Param: BPH=1.03
-  Param: MONO_N=1
-  Param: MONOFORCE=0
-  Param: MONO_MOS_H=37
-  Param: MONO_MOS_V=37
-  Param: EI=0
-  Param: EF=0
-  Param: EN=0
-  Param: SM=1
-  Param: SS=-1
-  Param: SA=1
-  Param: QH=0
-  Param: QK=0
-  Param: QL=0
-  Param: QM=1.8051
-  Param: AS=4.95
-  Param: BS=4.95
-  Param: CS=4.95
-  Param: AA=90
-  Param: BB=90
-  Param: CC=90
-  Param: AH=0
-  Param: AK=1
-  Param: AL=0
-  Param: BH=1
-  Param: BK=0
-  Param: BL=0
-  Param: INFILTER=0
-  Param: INFILTERFILE=Be.trm
-  Param: COLL_MS=80
-  Param: MST=40
-  Param: MSB=40
-  Param: MSL=40
-  Param: MSR=40
-  Param: PTHICK=0.001
-  Param: PERSPEX=0
-  Param: SAMPLE=1
-  Param: SAMPLEFILE=default
-  Param: MOS=100
-  Param: DD_D=0.001
-  Param: SAMPLESIZE=0.01
-  Param: BARNS=1
-  Param: AAX=-4.95
-  Param: AAY=0
-  Param: AAZ=0
-  Param: BBX=0
-  Param: BBY=0
-  Param: BBZ=4.95
-  Param: CCX=0
-  Param: CCY=4.95
-  Param: CCZ=0
-  Param: A1=0
-  Param: A2=0
-  Param: A3=0
-  Param: A4=0
-  Param: AA5=0
-  Param: A6=0
-  Param: TILT=0
-  Param: SST=100
-  Param: SSB=100
-  Param: SSL=100
-  Param: SSR=100
-  Param: OUTFILTER=1
-  Param: OUTFILTERFILE=Be.trm
-  Param: ANAFORCE=0
-  Param: C1=0
-  Param: C2=0
-  Param: C3=0
-  Param: C4=0
-  Param: C5=0
-  Param: C6=0
-  Param: C7=0
-  Param: C8=0
-  Param: C9=0
-  Param: COARSE=1
-  Param: LC=4
-  Param: RC=3
-  Param: REP=1
-  Param: VIRTUALOUT=0
-  Param: VIRTUALIN=0
-  Param: SOURCEFILE=Vin_default.dat
-  Param: verbose=1
-end simulation
-info!
 INFO: No output directory specified (--dir)
-INFO: Using directory: "RITA-II_20191120_004449"
+INFO: Using directory: "RITA-II_20200225_210033"
 INFO: Regenerating c-file: RITA-II.c
 Info:    'Source_gen4' is a contributed component.
 Info:    'Exact_radial_coll' is a contributed component.
@@ -168,11 +58,13 @@ Info:    Defining SPLIT from monochromator_curved=Monochromator_curved() to END 
 Info:    Defining SPLIT from a3=Arm() to END in instrument RITA_II
 Info:    Defining SPLIT from focus_ana=Arm() to END in instrument RITA_II
 CFLAGS=
-INFO: Recompiling: ./RITA-II.out
-INFO: ===
---------------------------------------------------------------------------
-Initialization of MXM library failed.
-
-  Error: Input/output error
-
---------------------------------------------------------------------------
+        INFO: Recompiling: ./RITA-II.out
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../sources/Virtual_output.comp: In function 'mcraytrace':
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../sources/Virtual_output.comp:119:39: error: '_particle' undeclared (first use in this function)
+   pp = Monitor_nD_Trace(&DEFS, &Vars, _particle);
+                                       ^~~~~~~~~
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../sources/Virtual_output.comp:119:39: note: each undeclared identifier is reported only once for each function it appears in
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../sources/Virtual_output.comp:119:8: error: too many arguments to function 'Monitor_nD_Trace'
+   pp = Monitor_nD_Trace(&DEFS, &Vars, _particle);
+        ^~~~~~~~~~~~~~~~
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../sources/Virtual_output.comp:1008:5: note: declared here

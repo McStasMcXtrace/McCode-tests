@@ -1,10 +1,10 @@
 McStas simulation description file for Test_Pol_TripleAxis.
-Date:    Wed Nov 20 01:18:17 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:59:49 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: Test_Pol_TripleAxis
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr
   Parameters:  OPTION(int) LAMBDA(double) MOZ(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574241490
+  Seed: 1582689710
   Directory: 1
   Nodes: 10
   Param: OPTION=-1
@@ -28,17 +28,17 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:18:18 2019 (1574209098)
+  Date: Tue Feb 25 21:59:53 2020 (1582664393)
   type: array_2d(40, 11)
-  Source: Test_Pol_TripleAxis (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr)
+  Source: Test_Pol_TripleAxis (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr)
   component: pollambdaMonitorMono
   position: 0.284599 0 5.4111
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: pollambdaMonMono.data
-  statistics: X0=1.99982; dX=0.0136162; Y0=0.909091; dY=1.49012e-08;
-  signal: Min=0; Max=1.47681e-06; Mean=4.98826e-08;
-  values: 2.19484e-05 1.05035e-08 4.36653e+06
+  statistics: X0=1.99983; dX=0.0136075; Y0=0.909091; dY=0;
+  signal: Min=0; Max=1.47803e-06; Mean=4.98951e-08;
+  values: 2.19538e-05 1.05048e-08 4.36762e+06
   xvar: Wavelength
   yvar: Polarisation
   xlabel: Wavelength [AA]
@@ -50,17 +50,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:18:18 2019 (1574209098)
+  Date: Tue Feb 25 21:59:53 2020 (1582664393)
   type: array_2d(40, 11)
-  Source: Test_Pol_TripleAxis (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr)
+  Source: Test_Pol_TripleAxis (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr)
   component: pollambdaMonitorSample
   position: 0.569198 0 6.0722
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: pollambdaMonSample.data
-  statistics: X0=1.99935; dX=0.0135963; Y0=-0.363636; dY=5.26836e-09;
-  signal: Min=0; Max=1.62913e-12; Mean=5.44092e-14;
-  values: 2.394e-11 1.38633e-14 4.31874e+06
+  statistics: X0=1.99936; dX=0.0135861; Y0=-0.363636; dY=0;
+  signal: Min=0; Max=1.62845e-12; Mean=5.44078e-14;
+  values: 2.39394e-11 1.38612e-14 4.31911e+06
   xvar: Wavelength
   yvar: Polarisation
   xlabel: Wavelength [AA]
@@ -72,17 +72,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:18:18 2019 (1574209098)
+  Date: Tue Feb 25 21:59:53 2020 (1582664393)
   type: array_2d(40, 11)
-  Source: Test_Pol_TripleAxis (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr)
+  Source: Test_Pol_TripleAxis (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr)
   component: pollambdaMonitorMSF
   position: 0.569198 0 6.5722
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: pollambdaMonMsf.data
-  statistics: X0=1.99935; dX=0.0135963; Y0=0.363636; dY=7.45058e-09;
-  signal: Min=0; Max=1.62913e-12; Mean=5.44092e-14;
-  values: 2.394e-11 1.38633e-14 4.31874e+06
+  statistics: X0=1.99936; dX=0.0135861; Y0=0.363636; dY=0;
+  signal: Min=0; Max=1.62845e-12; Mean=5.44078e-14;
+  values: 2.39394e-11 1.38612e-14 4.31911e+06
   xvar: Wavelength
   yvar: Polarisation
   xlabel: Wavelength [AA]
@@ -94,17 +94,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:18:18 2019 (1574209098)
+  Date: Tue Feb 25 21:59:53 2020 (1582664393)
   type: array_2d(40, 11)
-  Source: Test_Pol_TripleAxis (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr)
+  Source: Test_Pol_TripleAxis (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_TripleAxis/Test_Pol_TripleAxis.instr)
   component: pollambdaMonitorDet
   position: 0.654577 0 6.94553
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: pollambdaMonDet.data
-  statistics: X0=1.99834; dX=0.0135067; Y0=0.909091; dY=1.49012e-08;
-  signal: Min=0; Max=4.01429e-13; Mean=1.28074e-14;
-  values: 5.63526e-12 5.6085e-15 1.19725e+06
+  statistics: X0=1.99835; dX=0.0135094; Y0=0.909091; dY=0;
+  signal: Min=0; Max=4.01964e-13; Mean=1.28252e-14;
+  values: 5.6431e-12 5.61237e-15 1.19946e+06
   xvar: Wavelength
   yvar: Polarisation
   xlabel: Wavelength [AA]

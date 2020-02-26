@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr (Union_test_box)
- * Date:       Wed Nov 20 00:55:57 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr (Union_test_box)
+ * Date:       Tue Feb 25 21:10:59 2020
  * File:       ./Union_test_box.c
  * Compile:    cc -o Union_test_box.out ./Union_test_box.c  -I@MCCODE_LIB@/share/
  * CFLAGS= -I@MCCODE_LIB@/share/
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Union_test_box";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -5719,7 +5719,7 @@ void initialize_cylinder_geometry_from_main_component(struct geometry_struct *cy
 struct pointer_to_1d_coords_list cylinder_shell_points(struct geometry_struct *geometry,int max_number_of_points) {
   // Function that returns a number (less than max) of points on the geometry surface
   // If used, remember to free the space allocated.
-  int points_per_circle = floor(max_number_of_points/2);
+  int points_per_circle = floor(max_number_of_points/2.0);
   
   struct pointer_to_1d_coords_list cylinder_shell_array;
   cylinder_shell_array.elements = malloc(2*points_per_circle*sizeof(Coords));
@@ -5768,7 +5768,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define mccompcurtype  INSTRUMENT
 #define mccompcurindex 0
 #define mcposaUnion_test_box coords_set(0,0,0)
-#line 30 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 30 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
 int scattered_1;
 int scattered_2;
 int sample_1_index = 3;
@@ -7301,17 +7301,17 @@ void mcinit(void) {
     /* Component test_incoherent. */
   /* Setting parameters for component test_incoherent. */
   SIG_MESSAGE("test_incoherent (Init:SetPar)");
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcctest_incoherent_sigma = 20;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcctest_incoherent_f_QE = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcctest_incoherent_gamma = 0;
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcctest_incoherent_packing_factor = 1;
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcctest_incoherent_unit_cell_volume = 66.4;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcctest_incoherent_interact_fraction = -1;
 #line 7316 "./Union_test_box.c"
 
@@ -7323,11 +7323,11 @@ void mcinit(void) {
 #line 7323 "./Union_test_box.c"
   rot_copy(mcrotrtest_incoherent, mcrotatest_incoherent);
   mcposatest_incoherent = coords_set(
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0);
 #line 7332 "./Union_test_box.c"
   mctc1 = coords_neg(mcposatest_incoherent);
@@ -7340,11 +7340,11 @@ void mcinit(void) {
     /* Component test_material. */
   /* Setting parameters for component test_material. */
   SIG_MESSAGE("test_material (Init:SetPar)");
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if("NULL") strncpy(mcctest_material_process_string, "NULL" ? "NULL" : "", 16384); else mcctest_material_process_string[0]='\0';
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcctest_material_my_absorption = 4;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcctest_material_absorber = 0;
 #line 7349 "./Union_test_box.c"
 
@@ -7357,11 +7357,11 @@ void mcinit(void) {
   rot_transpose(mcrotatest_incoherent, mctr1);
   rot_mul(mcrotatest_material, mctr1, mcrotrtest_material);
   mcposatest_material = coords_set(
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0);
 #line 7366 "./Union_test_box.c"
   mctc1 = coords_sub(mcposatest_incoherent, mcposatest_material);
@@ -7374,13 +7374,13 @@ void mcinit(void) {
     /* Component a1. */
   /* Setting parameters for component a1. */
   SIG_MESSAGE("a1 (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if("NULL") strncpy(mcca1_profile, "NULL" ? "NULL" : "", 16384); else mcca1_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcca1_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcca1_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcca1_minutes = 0;
 #line 7385 "./Union_test_box.c"
 
@@ -7393,11 +7393,11 @@ void mcinit(void) {
   rot_transpose(mcrotatest_material, mctr1);
   rot_mul(mcrotaa1, mctr1, mcrotra1);
   mcposaa1 = coords_set(
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0);
 #line 7402 "./Union_test_box.c"
   mctc1 = coords_sub(mcposatest_material, mcposaa1);
@@ -7410,46 +7410,46 @@ void mcinit(void) {
     /* Component source. */
   /* Setting parameters for component source. */
   SIG_MESSAGE("source (Init:SetPar)");
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccsource_xwidth = 0.0005;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccsource_yheight = 0.0005;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccsource_focus_aw = 3;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccsource_focus_ah = 2;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccsource_E0 = 10;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccsource_dE = 0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccsource_lambda0 = 0.0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccsource_dlambda = 0.0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccsource_gauss = 0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccsource_flux = 1;
 #line 7433 "./Union_test_box.c"
 
   SIG_MESSAGE("source (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD,
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD,
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD);
 #line 7443 "./Union_test_box.c"
   rot_mul(mctr1, mcrotaa1, mcrotasource);
   rot_transpose(mcrotaa1, mctr1);
   rot_mul(mcrotasource, mctr1, mcrotrsource);
   mctc1 = coords_set(
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0);
 #line 7454 "./Union_test_box.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -7468,22 +7468,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("beam_center (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD,
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD,
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD);
 #line 7477 "./Union_test_box.c"
   rot_mul(mctr1, mcrotaa1, mcrotabeam_center);
   rot_transpose(mcrotasource, mctr1);
   rot_mul(mcrotabeam_center, mctr1, mcrotrbeam_center);
   mctc1 = coords_set(
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     1.4);
 #line 7488 "./Union_test_box.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -7502,22 +7502,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("tube_point (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD,
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD,
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD);
 #line 7511 "./Union_test_box.c"
   rot_mul(mctr1, mcrotabeam_center, mcrotatube_point);
   rot_transpose(mcrotabeam_center, mctr1);
   rot_mul(mcrotatube_point, mctr1, mcrotrtube_point);
   mctc1 = coords_set(
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0);
 #line 7522 "./Union_test_box.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -7533,68 +7533,68 @@ void mcinit(void) {
     /* Component box_tube1. */
   /* Setting parameters for component box_tube1. */
   SIG_MESSAGE("box_tube1 (Init:SetPar)");
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if("test_material") strncpy(mccbox_tube1_material_string, "test_material" ? "test_material" : "", 16384); else mccbox_tube1_material_string[0]='\0';
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_tube1_priority = 5;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_tube1_xwidth = 0.1;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_tube1_yheight = 0.15;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_tube1_zdepth = 0.045;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_tube1_xwidth2 = 0.03;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_tube1_yheight2 = 0.03;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_tube1_visualize = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_tube1_target_index = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_tube1_target_x = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_tube1_target_y = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_tube1_target_z = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_tube1_focus_aw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_tube1_focus_ah = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_tube1_focus_xw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_tube1_focus_xh = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_tube1_focus_r = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_tube1_p_interact = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if(0) strncpy(mccbox_tube1_mask_string, 0 ? 0 : "", 16384); else mccbox_tube1_mask_string[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if(0) strncpy(mccbox_tube1_mask_setting, 0 ? 0 : "", 16384); else mccbox_tube1_mask_setting[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_tube1_number_of_activations = 1;
 #line 7578 "./Union_test_box.c"
 
   SIG_MESSAGE("box_tube1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD,
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD,
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD);
 #line 7588 "./Union_test_box.c"
   rot_mul(mctr1, mcrotatube_point, mcrotabox_tube1);
   rot_transpose(mcrotatube_point, mctr1);
   rot_mul(mcrotabox_tube1, mctr1, mcrotrbox_tube1);
   mctc1 = coords_set(
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0);
 #line 7599 "./Union_test_box.c"
   rot_transpose(mcrotatube_point, mctr1);
@@ -7610,62 +7610,62 @@ void mcinit(void) {
     /* Component cylinder_tube1. */
   /* Setting parameters for component cylinder_tube1. */
   SIG_MESSAGE("cylinder_tube1 (Init:SetPar)");
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if("Vacuum") strncpy(mcccylinder_tube1_material_string, "Vacuum" ? "Vacuum" : "", 16384); else mcccylinder_tube1_material_string[0]='\0';
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_tube1_priority = 6;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_tube1_radius = 0.013;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_tube1_yheight = 0.11;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_tube1_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_tube1_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_tube1_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_tube1_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_tube1_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_tube1_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_tube1_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_tube1_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_tube1_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_tube1_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_tube1_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if(0) strncpy(mcccylinder_tube1_mask_string, 0 ? 0 : "", 16384); else mcccylinder_tube1_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if(0) strncpy(mcccylinder_tube1_mask_setting, 0 ? 0 : "", 16384); else mcccylinder_tube1_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_tube1_number_of_activations = 1;
 #line 7649 "./Union_test_box.c"
 
   SIG_MESSAGE("cylinder_tube1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD,
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD,
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD);
 #line 7659 "./Union_test_box.c"
   rot_mul(mctr1, mcrotatube_point, mcrotacylinder_tube1);
   rot_transpose(mcrotabox_tube1, mctr1);
   rot_mul(mcrotacylinder_tube1, mctr1, mcrotrcylinder_tube1);
   mctc1 = coords_set(
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0);
 #line 7670 "./Union_test_box.c"
   rot_transpose(mcrotatube_point, mctr1);
@@ -7681,62 +7681,62 @@ void mcinit(void) {
     /* Component cylinder_cross1. */
   /* Setting parameters for component cylinder_cross1. */
   SIG_MESSAGE("cylinder_cross1 (Init:SetPar)");
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if("test_material") strncpy(mcccylinder_cross1_material_string, "test_material" ? "test_material" : "", 16384); else mcccylinder_cross1_material_string[0]='\0';
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross1_priority = 7;
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross1_radius = 0.003;
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross1_yheight = 0.11;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross1_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross1_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross1_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross1_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross1_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross1_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross1_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross1_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross1_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross1_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross1_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if(0) strncpy(mcccylinder_cross1_mask_string, 0 ? 0 : "", 16384); else mcccylinder_cross1_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if(0) strncpy(mcccylinder_cross1_mask_setting, 0 ? 0 : "", 16384); else mcccylinder_cross1_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross1_number_of_activations = 1;
 #line 7720 "./Union_test_box.c"
 
   SIG_MESSAGE("cylinder_cross1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (90)*DEG2RAD,
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD,
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (90)*DEG2RAD);
 #line 7730 "./Union_test_box.c"
   rot_mul(mctr1, mcrotatube_point, mcrotacylinder_cross1);
   rot_transpose(mcrotacylinder_tube1, mctr1);
   rot_mul(mcrotacylinder_cross1, mctr1, mcrotrcylinder_cross1);
   mctc1 = coords_set(
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0);
 #line 7741 "./Union_test_box.c"
   rot_transpose(mcrotatube_point, mctr1);
@@ -7752,62 +7752,62 @@ void mcinit(void) {
     /* Component cylinder_cross2. */
   /* Setting parameters for component cylinder_cross2. */
   SIG_MESSAGE("cylinder_cross2 (Init:SetPar)");
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if("test_material") strncpy(mcccylinder_cross2_material_string, "test_material" ? "test_material" : "", 16384); else mcccylinder_cross2_material_string[0]='\0';
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross2_priority = 8;
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross2_radius = 0.003;
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross2_yheight = 0.05;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross2_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross2_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross2_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross2_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross2_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross2_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross2_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross2_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross2_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross2_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross2_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if(0) strncpy(mcccylinder_cross2_mask_string, 0 ? 0 : "", 16384); else mcccylinder_cross2_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if(0) strncpy(mcccylinder_cross2_mask_setting, 0 ? 0 : "", 16384); else mcccylinder_cross2_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcccylinder_cross2_number_of_activations = 1;
 #line 7791 "./Union_test_box.c"
 
   SIG_MESSAGE("cylinder_cross2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (90)*DEG2RAD,
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD,
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD);
 #line 7801 "./Union_test_box.c"
   rot_mul(mctr1, mcrotatube_point, mcrotacylinder_cross2);
   rot_transpose(mcrotacylinder_cross1, mctr1);
   rot_mul(mcrotacylinder_cross2, mctr1, mcrotrcylinder_cross2);
   mctc1 = coords_set(
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0);
 #line 7812 "./Union_test_box.c"
   rot_transpose(mcrotatube_point, mctr1);
@@ -7823,68 +7823,68 @@ void mcinit(void) {
     /* Component box_totem1. */
   /* Setting parameters for component box_totem1. */
   SIG_MESSAGE("box_totem1 (Init:SetPar)");
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if("test_material") strncpy(mccbox_totem1_material_string, "test_material" ? "test_material" : "", 16384); else mccbox_totem1_material_string[0]='\0';
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem1_priority = 9;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem1_xwidth = 0.03;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem1_yheight = 0.03;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem1_zdepth = 0.03;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem1_xwidth2 = -1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem1_yheight2 = -1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem1_visualize = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem1_target_index = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem1_target_x = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem1_target_y = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem1_target_z = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem1_focus_aw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem1_focus_ah = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem1_focus_xw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem1_focus_xh = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem1_focus_r = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem1_p_interact = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if(0) strncpy(mccbox_totem1_mask_string, 0 ? 0 : "", 16384); else mccbox_totem1_mask_string[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if(0) strncpy(mccbox_totem1_mask_setting, 0 ? 0 : "", 16384); else mccbox_totem1_mask_setting[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem1_number_of_activations = 1;
 #line 7868 "./Union_test_box.c"
 
   SIG_MESSAGE("box_totem1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (45)*DEG2RAD,
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD,
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (45)*DEG2RAD);
 #line 7878 "./Union_test_box.c"
   rot_mul(mctr1, mcrotabeam_center, mcrotabox_totem1);
   rot_transpose(mcrotacylinder_cross2, mctr1);
   rot_mul(mcrotabox_totem1, mctr1, mcrotrbox_totem1);
   mctc1 = coords_set(
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     -0.01,
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     -0.07);
 #line 7889 "./Union_test_box.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -7900,68 +7900,68 @@ void mcinit(void) {
     /* Component box_totem2. */
   /* Setting parameters for component box_totem2. */
   SIG_MESSAGE("box_totem2 (Init:SetPar)");
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if("test_material") strncpy(mccbox_totem2_material_string, "test_material" ? "test_material" : "", 16384); else mccbox_totem2_material_string[0]='\0';
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem2_priority = 10;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem2_xwidth = 0.03;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem2_yheight = 0.03;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem2_zdepth = 0.03;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem2_xwidth2 = -1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem2_yheight2 = -1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem2_visualize = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem2_target_index = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem2_target_x = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem2_target_y = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem2_target_z = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem2_focus_aw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem2_focus_ah = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem2_focus_xw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem2_focus_xh = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem2_focus_r = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem2_p_interact = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if(0) strncpy(mccbox_totem2_mask_string, 0 ? 0 : "", 16384); else mccbox_totem2_mask_string[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if(0) strncpy(mccbox_totem2_mask_setting, 0 ? 0 : "", 16384); else mccbox_totem2_mask_setting[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem2_number_of_activations = 1;
 #line 7945 "./Union_test_box.c"
 
   SIG_MESSAGE("box_totem2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD);
 #line 7955 "./Union_test_box.c"
   rot_mul(mctr1, mcrotabeam_center, mcrotabox_totem2);
   rot_transpose(mcrotabox_totem1, mctr1);
   rot_mul(mcrotabox_totem2, mctr1, mcrotrbox_totem2);
   mctc1 = coords_set(
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0.01,
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     -0.065);
 #line 7966 "./Union_test_box.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -7977,68 +7977,68 @@ void mcinit(void) {
     /* Component box_totem3. */
   /* Setting parameters for component box_totem3. */
   SIG_MESSAGE("box_totem3 (Init:SetPar)");
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if("test_material") strncpy(mccbox_totem3_material_string, "test_material" ? "test_material" : "", 16384); else mccbox_totem3_material_string[0]='\0';
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem3_priority = 11;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem3_xwidth = 0.03;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem3_yheight = 0.03;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem3_zdepth = 0.03;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem3_xwidth2 = -1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem3_yheight2 = -1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem3_visualize = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem3_target_index = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem3_target_x = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem3_target_y = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem3_target_z = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem3_focus_aw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem3_focus_ah = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem3_focus_xw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem3_focus_xh = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem3_focus_r = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem3_p_interact = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if(0) strncpy(mccbox_totem3_mask_string, 0 ? 0 : "", 16384); else mccbox_totem3_mask_string[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if(0) strncpy(mccbox_totem3_mask_setting, 0 ? 0 : "", 16384); else mccbox_totem3_mask_setting[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccbox_totem3_number_of_activations = 1;
 #line 8022 "./Union_test_box.c"
 
   SIG_MESSAGE("box_totem3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (45)*DEG2RAD,
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD,
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (45)*DEG2RAD);
 #line 8032 "./Union_test_box.c"
   rot_mul(mctr1, mcrotabeam_center, mcrotabox_totem3);
   rot_transpose(mcrotabox_totem2, mctr1);
   rot_mul(mcrotabox_totem3, mctr1, mcrotrbox_totem3);
   mctc1 = coords_set(
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0.03,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     -0.06);
 #line 8043 "./Union_test_box.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -8054,34 +8054,34 @@ void mcinit(void) {
     /* Component test_sample. */
   /* Setting parameters for component test_sample. */
   SIG_MESSAGE("test_sample (Init:SetPar)");
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcctest_sample_allow_inside_start = 0;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcctest_sample_history_limit = 300000;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcctest_sample_enable_conditionals = 1;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mcctest_sample_inherit_number_of_scattering_events = 0;
 #line 8065 "./Union_test_box.c"
 
   SIG_MESSAGE("test_sample (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD,
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD,
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     (0)*DEG2RAD);
 #line 8075 "./Union_test_box.c"
   rot_mul(mctr1, mcrotabeam_center, mcrotatest_sample);
   rot_transpose(mcrotabox_totem3, mctr1);
   rot_mul(mcrotatest_sample, mctr1, mcrotrtest_sample);
   mctc1 = coords_set(
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0);
 #line 8086 "./Union_test_box.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -8097,13 +8097,13 @@ void mcinit(void) {
     /* Component m4pi. */
   /* Setting parameters for component m4pi. */
   SIG_MESSAGE("m4pi (Init:SetPar)");
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if("Events") strncpy(mccm4pi_filename, "Events" ? "Events" : "", 16384); else mccm4pi_filename[0]='\0';
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccm4pi_radius = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccm4pi_restore_neutron = 1;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccm4pi_nowritefile = 0;
 #line 8108 "./Union_test_box.c"
 
@@ -8117,11 +8117,11 @@ void mcinit(void) {
   rot_transpose(mcrotatest_sample, mctr1);
   rot_mul(mcrotam4pi, mctr1, mcrotrm4pi);
   mctc1 = coords_set(
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0);
 #line 8126 "./Union_test_box.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -8137,13 +8137,13 @@ void mcinit(void) {
     /* Component m4pi_1. */
   /* Setting parameters for component m4pi_1. */
   SIG_MESSAGE("m4pi_1 (Init:SetPar)");
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if("Events_1") strncpy(mccm4pi_1_filename, "Events_1" ? "Events_1" : "", 16384); else mccm4pi_1_filename[0]='\0';
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccm4pi_1_radius = 1;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccm4pi_1_restore_neutron = 1;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccm4pi_1_nowritefile = 0;
 #line 8148 "./Union_test_box.c"
 
@@ -8157,11 +8157,11 @@ void mcinit(void) {
   rot_transpose(mcrotam4pi, mctr1);
   rot_mul(mcrotam4pi_1, mctr1, mcrotrm4pi_1);
   mctc1 = coords_set(
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0);
 #line 8166 "./Union_test_box.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -8177,13 +8177,13 @@ void mcinit(void) {
     /* Component m4pi_2. */
   /* Setting parameters for component m4pi_2. */
   SIG_MESSAGE("m4pi_2 (Init:SetPar)");
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if("Events_2") strncpy(mccm4pi_2_filename, "Events_2" ? "Events_2" : "", 16384); else mccm4pi_2_filename[0]='\0';
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccm4pi_2_radius = 1;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccm4pi_2_restore_neutron = 1;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccm4pi_2_nowritefile = 0;
 #line 8188 "./Union_test_box.c"
 
@@ -8197,11 +8197,11 @@ void mcinit(void) {
   rot_transpose(mcrotam4pi_1, mctr1);
   rot_mul(mcrotam4pi_2, mctr1, mcrotrm4pi_2);
   mctc1 = coords_set(
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0);
 #line 8206 "./Union_test_box.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -8228,11 +8228,11 @@ void mcinit(void) {
   rot_transpose(mcrotam4pi_2, mctr1);
   rot_mul(mcrotaarm_1, mctr1, mcrotrarm_1);
   mctc1 = coords_set(
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0);
 #line 8237 "./Union_test_box.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -8248,13 +8248,13 @@ void mcinit(void) {
     /* Component m4pi_both. */
   /* Setting parameters for component m4pi_both. */
   SIG_MESSAGE("m4pi_both (Init:SetPar)");
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   if("Events_12") strncpy(mccm4pi_both_filename, "Events_12" ? "Events_12" : "", 16384); else mccm4pi_both_filename[0]='\0';
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccm4pi_both_radius = 1;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccm4pi_both_restore_neutron = 0;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
   mccm4pi_both_nowritefile = 0;
 #line 8259 "./Union_test_box.c"
 
@@ -8268,11 +8268,11 @@ void mcinit(void) {
   rot_transpose(mcrotaarm_1, mctr1);
   rot_mul(mcrotam4pi_both, mctr1, mcrotrm4pi_both);
   mctc1 = coords_set(
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0,
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
     0);
 #line 8277 "./Union_test_box.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -10504,7 +10504,7 @@ add_element_to_geometry_list(&global_geometry_list,global_geometry_element);
           printf("Volume.name         [%d]: %s \n",iterate,global_geometry_list.elements[iterate].Volume->name);
           if (global_geometry_list.elements[iterate].Volume->geometry.is_mask_volume == 0) {
           printf("Volume.p_physics.is_vacuum           [%d]: %d \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->is_vacuum);
-          printf("Volume.p_physics.my_absoprtion       [%d]: %f \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->my_a);
+          printf("Volume.p_physics.my_absorption       [%d]: %f \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->my_a);
           printf("Volume.p_physics.number of processes [%d]: %d \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->number_of_processes);
           }
           printf("Volume.geometry.shape                [%d]: %s \n",iterate,global_geometry_list.elements[iterate].Volume->geometry.shape);
@@ -14362,7 +14362,7 @@ MCNUM inherit_number_of_scattering_events = mcctest_sample_inherit_number_of_sca
 #line 14362 "./Union_test_box.c"
 /* 'test_sample=Union_master()' component instance extend code */
     SIG_MESSAGE("test_sample (Trace:Extend)");
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
 	if (scattered_flag[sample_1_index] > 0) scattered_1 = 1; else scattered_1 = 0;
 	if (scattered_flag[sample_2_index] > 0) scattered_2 = 1; else scattered_2 = 0;
 #line 14368 "./Union_test_box.c"
@@ -15043,7 +15043,7 @@ mcnlp)
 #define mccompcurindex 18
 /* 'arm_1=Arm()' component instance extend code */
     SIG_MESSAGE("arm_1 (Trace:Extend)");
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr"
 	if (scattered_1 + scattered_2 != 2) ABSORB;
 #line 15046 "./Union_test_box.c"
 #undef mccompcurname

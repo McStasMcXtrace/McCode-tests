@@ -1,10 +1,10 @@
 McStas simulation description file for BNL_H8.
-Date:    Wed Nov 20 00:58:50 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:14:07 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: BNL_H8
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BNL_H8_simple/BNL_H8_simple.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BNL_H8_simple/BNL_H8_simple.instr
   Parameters:  lambda(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,29 +14,29 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BNL_H8_simple/BNL_H8_simple.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BNL_H8_simple/BNL_H8_simple.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574226407
+  Seed: 1582672576
   Directory: 1
   Nodes: 10
   Param: lambda=2.36
 end simulation
 
 begin data
-  Date: Wed Nov 20 00:58:51 2019 (1574207931)
+  Date: Tue Feb 25 21:14:09 2020 (1582661649)
   type: array_2d(20, 20)
-  Source: BNL_H8 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BNL_H8_simple/BNL_H8_simple.instr)
+  Source: BNL_H8 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BNL_H8_simple/BNL_H8_simple.instr)
   component: D0_Source
   position: 0 0 0.0001
   title: PSD monitor
   Ncount: 10000000
   filename: D0_Source.psd
-  statistics: X0=0.000736443; dX=0.865099; Y0=0.0016674; dY=1.55491;
-  signal: Min=7.41594e-06; Max=8.7119e-06; Mean=7.93147e-06;
-  values: 0.00317259 4.41335e-06 516763
+  statistics: X0=-0.00110083; dX=0.865673; Y0=0.00161268; dY=1.55773;
+  signal: Min=7.2936e-06; Max=8.55118e-06; Mean=7.91667e-06;
+  values: 0.00316667 4.40923e-06 515799
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -48,17 +48,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 00:58:51 2019 (1574207931)
+  Date: Tue Feb 25 21:14:09 2020 (1582661649)
   type: array_2d(20, 20)
-  Source: BNL_H8 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BNL_H8_simple/BNL_H8_simple.instr)
+  Source: BNL_H8 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BNL_H8_simple/BNL_H8_simple.instr)
   component: D1_SC1_Out
   position: 0 0 3.6618
   title: PSD monitor
   Ncount: 10000000
   filename: D1_SC1_Out.psd
-  statistics: X0=-0.000377692; dX=0.854757; Y0=-0.000386425; dY=1.47599;
-  signal: Min=4.06128e-05; Max=6.23533e-05; Mean=5.10501e-05;
-  values: 0.0204201 1.11926e-05 3.34739e+06
+  statistics: X0=-0.000427806; dX=0.854481; Y0=-0.000513826; dY=1.47551;
+  signal: Min=4.03867e-05; Max=6.24023e-05; Mean=5.10374e-05;
+  values: 0.020415 1.11912e-05 3.34656e+06
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -70,17 +70,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 00:58:51 2019 (1574207931)
+  Date: Tue Feb 25 21:14:09 2020 (1582661649)
   type: array_2d(20, 20)
-  Source: BNL_H8 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BNL_H8_simple/BNL_H8_simple.instr)
+  Source: BNL_H8 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BNL_H8_simple/BNL_H8_simple.instr)
   component: D2_A4
   position: 0 0 4.4142
   title: PSD monitor
   Ncount: 10000000
   filename: D2_A4.psd
-  statistics: X0=-0.000822905; dX=1.23565; Y0=0.000558679; dY=1.76502;
-  signal: Min=1.97093e-05; Max=4.18611e-05; Mean=3.4402e-05;
-  values: 0.0137608 9.18903e-06 2.25911e+06
+  statistics: X0=0.000698296; dX=1.23618; Y0=-0.00278589; dY=1.76552;
+  signal: Min=1.97765e-05; Max=4.16233e-05; Mean=3.43891e-05;
+  values: 0.0137556 9.18731e-06 2.25818e+06
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -92,17 +92,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 00:58:51 2019 (1574207931)
+  Date: Tue Feb 25 21:14:09 2020 (1582661649)
   type: array_2d(20, 20)
-  Source: BNL_H8 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BNL_H8_simple/BNL_H8_simple.instr)
+  Source: BNL_H8 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BNL_H8_simple/BNL_H8_simple.instr)
   component: D4_SC2_In
   position: 0.146427 0 5.44198
   title: PSD monitor
   Ncount: 10000000
   filename: D4_SC2_In.psd
-  statistics: X0=0.011869; dX=0.871888; Y0=-0.00180468; dY=1.43822;
-  signal: Min=2.44247e-06; Max=4.62762e-06; Mean=3.88321e-06;
-  values: 0.00155328 3.08706e-06 256857
+  statistics: X0=0.00757833; dX=0.871494; Y0=0.00158176; dY=1.43687;
+  signal: Min=2.57152e-06; Max=4.65851e-06; Mean=3.87462e-06;
+  values: 0.00154985 3.08363e-06 256369
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -114,17 +114,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 00:58:51 2019 (1574207931)
+  Date: Tue Feb 25 21:14:09 2020 (1582661649)
   type: array_2d(20, 20)
-  Source: BNL_H8 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BNL_H8_simple/BNL_H8_simple.instr)
+  Source: BNL_H8 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BNL_H8_simple/BNL_H8_simple.instr)
   component: D5_SC2_Out
   position: 0.548083 0 5.90081
   title: PSD monitor
   Ncount: 10000000
   filename: D5_SC2_Out.psd
-  statistics: X0=0.00588145; dX=0.838474; Y0=-0.00253323; dY=1.4422;
-  signal: Min=1.82342e-06; Max=4.06866e-06; Mean=3.03385e-06;
-  values: 0.00121354 2.7284e-06 202318
+  statistics: X0=0.00237451; dX=0.838274; Y0=-0.000656811; dY=1.4413;
+  signal: Min=1.82024e-06; Max=4.02636e-06; Mean=3.03017e-06;
+  values: 0.00121207 2.72676e-06 202187
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -136,17 +136,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 00:58:51 2019 (1574207931)
+  Date: Tue Feb 25 21:14:09 2020 (1582661649)
   type: array_2d(20, 20)
-  Source: BNL_H8 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BNL_H8_simple/BNL_H8_simple.instr)
+  Source: BNL_H8 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BNL_H8_simple/BNL_H8_simple.instr)
   component: D7_SC3_In
   position: 1.06257 0 6.72344
   title: PSD monitor
   Ncount: 10000000
   filename: D7_SC3_In.psd
-  statistics: X0=-0.0110316; dX=1.37759; Y0=0.00901212; dY=1.40396;
-  signal: Min=2.10324e-10; Max=4.01668e-10; Mean=3.11877e-10;
-  values: 1.24751e-07 7.1103e-10 33721
+  statistics: X0=0.00643791; dX=1.37406; Y0=0.00261533; dY=1.4081;
+  signal: Min=2.07414e-10; Max=4.13373e-10; Mean=3.08959e-10;
+  values: 1.23584e-07 7.08244e-10 33472
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -158,17 +158,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 00:58:51 2019 (1574207931)
+  Date: Tue Feb 25 21:14:09 2020 (1582661649)
   type: array_2d(20, 20)
-  Source: BNL_H8 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BNL_H8_simple/BNL_H8_simple.instr)
+  Source: BNL_H8 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BNL_H8_simple/BNL_H8_simple.instr)
   component: D8_SC3_Out
   position: 1.06257 0 7.02824
   title: PSD monitor
   Ncount: 10000000
   filename: D8_SC3_Out.psd
-  statistics: X0=-0.0107238; dX=1.37955; Y0=-0.0162163; dY=1.41207;
-  signal: Min=1.50173e-11; Max=1.15668e-10; Mean=6.03405e-11;
-  values: 2.41362e-08 3.14627e-10 6446
+  statistics: X0=-0.00277579; dX=1.38537; Y0=0.0349185; dY=1.42218;
+  signal: Min=1.78538e-11; Max=1.15899e-10; Mean=5.92333e-11;
+  values: 2.36933e-08 3.11744e-10 6353
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -180,17 +180,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 00:58:51 2019 (1574207931)
+  Date: Tue Feb 25 21:14:09 2020 (1582661649)
   type: array_2d(20, 20)
-  Source: BNL_H8 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BNL_H8_simple/BNL_H8_simple.instr)
+  Source: BNL_H8 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BNL_H8_simple/BNL_H8_simple.instr)
   component: D10_SC4_In
   position: 1.28421 0 7.42113
   title: PSD monitor
   Ncount: 10000000
   filename: D10_SC4_In.psd
-  statistics: X0=0.0747894; dX=0.393785; Y0=0.173008; dY=1.43103;
-  signal: Min=0; Max=3.71333e-11; Mean=3.20946e-12;
-  values: 1.28379e-09 7.33242e-11 336
+  statistics: X0=0.026938; dX=0.406979; Y0=0.00589656; dY=1.36513;
+  signal: Min=0; Max=3.70678e-11; Mean=3.26113e-12;
+  values: 1.30445e-09 7.25982e-11 357
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -202,17 +202,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 00:58:51 2019 (1574207931)
+  Date: Tue Feb 25 21:14:09 2020 (1582661649)
   type: array_2d(20, 20)
-  Source: BNL_H8 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BNL_H8_simple/BNL_H8_simple.instr)
+  Source: BNL_H8 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BNL_H8_simple/BNL_H8_simple.instr)
   component: He3H
   position: 1.48511 0 7.65062
   title: PSD monitor
   Ncount: 10000000
   filename: He3.psd
-  statistics: X0=0.0597712; dX=0.392392; Y0=0.144994; dY=1.40394;
-  signal: Min=0; Max=4.2988e-11; Mean=2.4364e-12;
-  values: 9.74561e-10 6.38912e-11 252
+  statistics: X0=0.018621; dX=0.434505; Y0=-0.0311124; dY=1.42679;
+  signal: Min=0; Max=3.73377e-11; Mean=2.62563e-12;
+  values: 1.05025e-09 6.54671e-11 286
   xvar: X
   yvar: Y
   xlabel: X position [cm]

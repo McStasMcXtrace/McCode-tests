@@ -1,11 +1,74 @@
-      [1574207000.570515] [n-62-23-6:9009 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3380.71
-[1574207000.571771] [n-62-23-6:9009 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207000.571775] [n-62-23-6:9009 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207000.573578] [n-62-23-6:9009 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207000.573581] [n-62-23-6:9009 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: No output directory specified (--dir)
+INFO: Using directory: "ISIS_TOSCA_preupgrade_Mantid_20200225_205812"
+INFO: Regenerating c-file: ISIS_TOSCA_preupgrade_Mantid.c
+Info:    'ViewModISIS' is a contributed component.
+Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:112
+  user1=t - t_minE / 1e6
+Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:258
+  user1=t - t_minE / 1e6
+Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:261
+  user1=t - t_minE / 1e6
+Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:264
+  user1=t - t_minE / 1e6
+Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:267
+  user1=t - t_minE / 1e6
+Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:270
+  user1=t - t_minE / 1e6
+Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:273
+  user1=t - t_minE / 1e6
+Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:276
+  user1=t - t_minE / 1e6
+Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:279
+  user1=t - t_minE / 1e6
+Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:282
+  user1=t - t_minE / 1e6
+Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:285
+  user1=t - t_minE / 1e6
+Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:288
+  user1=t - t_minE / 1e6
+Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:291
+  user1=t - t_minE / 1e6
+Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:304
+  user1=t - t_minE / 1e6
+Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:308
+  user1=t - t_minE / 1e6
+Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:312
+  user1=t - t_minE / 1e6
+Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:316
+  user1=t - t_minE / 1e6
+Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:320
+  user1=t - t_minE / 1e6
+Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:324
+  user1=t - t_minE / 1e6
+Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:328
+  user1=t - t_minE / 1e6
+Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:332
+  user1=t - t_minE / 1e6
+Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:336
+  user1=t - t_minE / 1e6
+Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:340
+  user1=t - t_minE / 1e6
+Info:    Defining SPLIT from powder=Isotropic_Sqw() to END in instrument ISIS_TOSCA_preupgrade_Mantid
+Info:    Defining SPLIT from Repeat=Arm() to END in instrument ISIS_TOSCA_preupgrade_Mantid
+CFLAGS=
+      INFO: Recompiling: ./ISIS_TOSCA_preupgrade_Mantid.out
+INFO: ===
+[n-62-23-14:05023] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:05023] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582660719.598067] [n-62-23-14:5022 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3378.32
+[1582660719.599712] [n-62-23-14:5022 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582660719.599716] [n-62-23-14:5022 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1582660719.602372] [n-62-23-14:5022 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582660719.602375] [n-62-23-14:5022 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 begin instrument: ISIS_TOSCA_preupgrade_Mantid
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr
   Parameters:  inc(string) zdepth(double) Emin(double) Emax(double) eventmode(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +77,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1574216009
+  Seed: 1582665741
   Directory: .
   Param: inc=Benzene_inc_CASTEP_MDANSE2018.sqw
   Param: zdepth=0.002
@@ -28,64 +91,3 @@ begin simulation: .
   Param: eventmode=0
 end simulation
 info!
-INFO: No output directory specified (--dir)
-INFO: Using directory: "ISIS_TOSCA_preupgrade_Mantid_20191120_004253"
-INFO: Regenerating c-file: ISIS_TOSCA_preupgrade_Mantid.c
-Info:    'ViewModISIS' is a contributed component.
-Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:112
-  user1=t - t_minE / 1e6
-Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:258
-  user1=t - t_minE / 1e6
-Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:261
-  user1=t - t_minE / 1e6
-Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:264
-  user1=t - t_minE / 1e6
-Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:267
-  user1=t - t_minE / 1e6
-Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:270
-  user1=t - t_minE / 1e6
-Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:273
-  user1=t - t_minE / 1e6
-Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:276
-  user1=t - t_minE / 1e6
-Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:279
-  user1=t - t_minE / 1e6
-Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:282
-  user1=t - t_minE / 1e6
-Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:285
-  user1=t - t_minE / 1e6
-Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:288
-  user1=t - t_minE / 1e6
-Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:291
-  user1=t - t_minE / 1e6
-Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:304
-  user1=t - t_minE / 1e6
-Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:308
-  user1=t - t_minE / 1e6
-Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:312
-  user1=t - t_minE / 1e6
-Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:316
-  user1=t - t_minE / 1e6
-Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:320
-  user1=t - t_minE / 1e6
-Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:324
-  user1=t - t_minE / 1e6
-Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:328
-  user1=t - t_minE / 1e6
-Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:332
-  user1=t - t_minE / 1e6
-Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:336
-  user1=t - t_minE / 1e6
-Warning: Using DEFINITION parameter of component Monitor_nD() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TOSCA_preupgrade_Mantid/ISIS_TOSCA_preupgrade_Mantid.instr:340
-  user1=t - t_minE / 1e6
-Info:    Defining SPLIT from powder=Isotropic_Sqw() to END in instrument ISIS_TOSCA_preupgrade_Mantid
-Info:    Defining SPLIT from Repeat=Arm() to END in instrument ISIS_TOSCA_preupgrade_Mantid
-CFLAGS=
-INFO: Recompiling: ./ISIS_TOSCA_preupgrade_Mantid.out
-INFO: ===
---------------------------------------------------------------------------
-Initialization of MXM library failed.
-
-  Error: Input/output error
-
---------------------------------------------------------------------------

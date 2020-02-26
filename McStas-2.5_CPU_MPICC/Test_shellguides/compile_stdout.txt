@@ -1,22 +1,22 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "Test_shellguides_20191120_005320"
+INFO: Using directory: "Test_shellguides_20200225_210804"
 INFO: Regenerating c-file: Test_shellguides.c
 
-Unmatched actual parameter yheighth for component Source_gen() at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_shellguides/Test_shellguides.instr:82. Please change its name to a valid one:
+Unmatched actual parameter yheighth for component Source_gen() at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_shellguides/Test_shellguides.instr:82. Please change its name to a valid one:
   Definition parameters: 
   Setting parameters: flux_file xdiv_file ydiv_file radius dist focus_xw focus_yh focus_aw focus_ah E0 dE lambda0 dlambda I1 yheight xwidth verbose T1 flux_file_perAA flux_file_log Lmin Lmax Emin Emax T2 I2 T3 I3 zdepth target_index 
 Info:    'yheighth' parameter name used in instrument matches
          component Source_gen parameter 'yheight' from library but
          may be misspelled. Check component instance.
 
-Unmatched actual parameter HEtailA for component Source_gen() at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_shellguides/Test_shellguides.instr:82. Please change its name to a valid one:
+Unmatched actual parameter HEtailA for component Source_gen() at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_shellguides/Test_shellguides.instr:82. Please change its name to a valid one:
   Definition parameters: 
   Setting parameters: flux_file xdiv_file ydiv_file radius dist focus_xw focus_yh focus_aw focus_ah E0 dE lambda0 dlambda I1 yheight xwidth verbose T1 flux_file_perAA flux_file_log Lmin Lmax Emin Emax T2 I2 T3 I3 zdepth target_index 
 
-Unmatched actual parameter HEtailL0 for component Source_gen() at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_shellguides/Test_shellguides.instr:82. Please change its name to a valid one:
+Unmatched actual parameter HEtailL0 for component Source_gen() at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_shellguides/Test_shellguides.instr:82. Please change its name to a valid one:
   Definition parameters: 
   Setting parameters: flux_file xdiv_file ydiv_file radius dist focus_xw focus_yh focus_aw focus_ah E0 dE lambda0 dlambda I1 yheight xwidth verbose T1 flux_file_perAA flux_file_log Lmin Lmax Emin Emax T2 I2 T3 I3 zdepth target_index 
 Info:    'Sapphire_Filter' is a contributed component.
 Info:    'Guide_four_side' is a contributed component.
 Info:    'Guide_four_side_10_shells' is a contributed component.
-McStas: 3 Errors encountered during parse of /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_shellguides/Test_shellguides.instr.
+McStas: 3 Errors encountered during parse of /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_shellguides/Test_shellguides.instr.

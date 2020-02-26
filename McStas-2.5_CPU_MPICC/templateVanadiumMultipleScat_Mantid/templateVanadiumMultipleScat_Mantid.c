@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr (templateVanadiumMultipleScat_Mantid)
- * Date:       Wed Nov 20 00:58:39 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr (templateVanadiumMultipleScat_Mantid)
+ * Date:       Tue Feb 25 21:13:50 2020
  * File:       ./templateVanadiumMultipleScat_Mantid.c
  * Compile:    cc -o templateVanadiumMultipleScat_Mantid.out ./templateVanadiumMultipleScat_Mantid.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "templateVanadiumMultipleScat_Mantid";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -9761,7 +9761,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define mccompcurtype  INSTRUMENT
 #define mccompcurindex 0
 #define mcposatemplateVanadiumMultipleScat_Mantid coords_set(0,0,0)
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
 int multi_flag ;
 int single_flag ;
 #line 9767 "./templateVanadiumMultipleScat_Mantid.c"
@@ -10222,13 +10222,13 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccOrigin_percent = 5;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccOrigin_minutes = 0;
 #line 10233 "./templateVanadiumMultipleScat_Mantid.c"
 
@@ -10240,11 +10240,11 @@ void mcinit(void) {
 #line 10240 "./templateVanadiumMultipleScat_Mantid.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
     0,
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
     0,
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
     0);
 #line 10249 "./templateVanadiumMultipleScat_Mantid.c"
   mctc1 = coords_neg(mcposaOrigin);
@@ -10257,31 +10257,31 @@ void mcinit(void) {
     /* Component sourceMantid. */
   /* Setting parameters for component sourceMantid. */
   SIG_MESSAGE("sourceMantid (Init:SetPar)");
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsourceMantid_radius = 0.001;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsourceMantid_yheight = 0;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsourceMantid_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsourceMantid_dist = 1;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsourceMantid_focus_xw = 0.001;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsourceMantid_focus_yh = 0.001;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsourceMantid_E0 = 5;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsourceMantid_dE = 0.01;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsourceMantid_lambda0 = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsourceMantid_dlambda = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsourceMantid_flux = 1;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsourceMantid_gauss = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsourceMantid_target_index = + 1;
 #line 10286 "./templateVanadiumMultipleScat_Mantid.c"
 
@@ -10295,11 +10295,11 @@ void mcinit(void) {
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotasourceMantid, mctr1, mcrotrsourceMantid);
   mctc1 = coords_set(
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
     0,
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
     0,
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
     0);
 #line 10304 "./templateVanadiumMultipleScat_Mantid.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -10315,57 +10315,57 @@ void mcinit(void) {
     /* Component sampleMantid. */
   /* Setting parameters for component sampleMantid. */
   SIG_MESSAGE("sampleMantid (Init:SetPar)");
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   if(0) strncpy(mccsampleMantid_geometry, 0 ? 0 : "", 16384); else mccsampleMantid_geometry[0]='\0';
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_radius = 0.002;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_xwidth = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_yheight = 0.015;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_zdepth = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_thickness = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_target_x = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_target_y = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_target_z = 1;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_focus_r = 0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_focus_xw = 0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_focus_yh = 0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_focus_aw = 0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_focus_ah = 0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_target_index = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_pack = 1;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_p_interact = 1;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_f_QE = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_gamma = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_Etrans = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_deltaE = 0;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_sigma_abs = 5.08;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_sigma_inc = 5.08;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_Vc = 13.827;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_concentric = 0;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccsampleMantid_order = 0;
 #line 10370 "./templateVanadiumMultipleScat_Mantid.c"
 
@@ -10379,11 +10379,11 @@ void mcinit(void) {
   rot_transpose(mcrotasourceMantid, mctr1);
   rot_mul(mcrotasampleMantid, mctr1, mcrotrsampleMantid);
   mctc1 = coords_set(
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
     0,
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
     0,
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
     1);
 #line 10388 "./templateVanadiumMultipleScat_Mantid.c"
   rot_transpose(mcrotasourceMantid, mctr1);
@@ -10399,47 +10399,47 @@ void mcinit(void) {
     /* Component nD_Mantid_0. */
   /* Setting parameters for component nD_Mantid_0. */
   SIG_MESSAGE("nD_Mantid_0 (Init:SetPar)");
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccnD_Mantid_0_xwidth = 5;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccnD_Mantid_0_yheight = 5;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccnD_Mantid_0_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccnD_Mantid_0_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccnD_Mantid_0_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccnD_Mantid_0_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccnD_Mantid_0_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccnD_Mantid_0_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccnD_Mantid_0_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccnD_Mantid_0_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccnD_Mantid_0_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccnD_Mantid_0_max = 1e40;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccnD_Mantid_0_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccnD_Mantid_0_radius = 0;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   if("Mantid square, x limits=[-2.5 2.5] bins=50 y limits=[-2.5 2.5] bins=50, neutron pixel min=0 t limits [0.002,0.005] list all neutrons, file=multi") strncpy(mccnD_Mantid_0_options, "Mantid square, x limits=[-2.5 2.5] bins=50 y limits=[-2.5 2.5] bins=50, neutron pixel min=0 t limits [0.002,0.005] list all neutrons, file=multi" ? "Mantid square, x limits=[-2.5 2.5] bins=50 y limits=[-2.5 2.5] bins=50, neutron pixel min=0 t limits [0.002,0.005] list all neutrons, file=multi" : "", 16384); else mccnD_Mantid_0_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   if("NULL") strncpy(mccnD_Mantid_0_filename, "NULL" ? "NULL" : "", 16384); else mccnD_Mantid_0_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   if("NULL") strncpy(mccnD_Mantid_0_geometry, "NULL" ? "NULL" : "", 16384); else mccnD_Mantid_0_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   if("NULL") strncpy(mccnD_Mantid_0_username1, "NULL" ? "NULL" : "", 16384); else mccnD_Mantid_0_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   if("NULL") strncpy(mccnD_Mantid_0_username2, "NULL" ? "NULL" : "", 16384); else mccnD_Mantid_0_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   if("NULL") strncpy(mccnD_Mantid_0_username3, "NULL" ? "NULL" : "", 16384); else mccnD_Mantid_0_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccnD_Mantid_0_nowritefile = 0;
 #line 10444 "./templateVanadiumMultipleScat_Mantid.c"
 
@@ -10453,11 +10453,11 @@ void mcinit(void) {
   rot_transpose(mcrotasampleMantid, mctr1);
   rot_mul(mcrotanD_Mantid_0, mctr1, mcrotrnD_Mantid_0);
   mctc1 = coords_set(
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
     0,
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
     0,
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
     1);
 #line 10462 "./templateVanadiumMultipleScat_Mantid.c"
   rot_transpose(mcrotasampleMantid, mctr1);
@@ -10473,47 +10473,47 @@ void mcinit(void) {
     /* Component Mantid_1. */
   /* Setting parameters for component Mantid_1. */
   SIG_MESSAGE("Mantid_1 (Init:SetPar)");
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccMantid_1_xwidth = 5;
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccMantid_1_yheight = 5;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccMantid_1_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccMantid_1_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccMantid_1_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccMantid_1_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccMantid_1_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccMantid_1_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccMantid_1_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccMantid_1_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccMantid_1_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccMantid_1_max = 1e40;
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccMantid_1_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccMantid_1_radius = 0;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   if("square, x limits=[-2.5 2.5] bins=50 y limits=[-2.5 2.5] bins=50, neutron pixel min=0 t limits [0.002,0.005] list all neutrons, file=single") strncpy(mccMantid_1_options, "square, x limits=[-2.5 2.5] bins=50 y limits=[-2.5 2.5] bins=50, neutron pixel min=0 t limits [0.002,0.005] list all neutrons, file=single" ? "square, x limits=[-2.5 2.5] bins=50 y limits=[-2.5 2.5] bins=50, neutron pixel min=0 t limits [0.002,0.005] list all neutrons, file=single" : "", 16384); else mccMantid_1_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   if("NULL") strncpy(mccMantid_1_filename, "NULL" ? "NULL" : "", 16384); else mccMantid_1_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   if("NULL") strncpy(mccMantid_1_geometry, "NULL" ? "NULL" : "", 16384); else mccMantid_1_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   if("NULL") strncpy(mccMantid_1_username1, "NULL" ? "NULL" : "", 16384); else mccMantid_1_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   if("NULL") strncpy(mccMantid_1_username2, "NULL" ? "NULL" : "", 16384); else mccMantid_1_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   if("NULL") strncpy(mccMantid_1_username3, "NULL" ? "NULL" : "", 16384); else mccMantid_1_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
   mccMantid_1_nowritefile = 0;
 #line 10518 "./templateVanadiumMultipleScat_Mantid.c"
 
@@ -10527,11 +10527,11 @@ void mcinit(void) {
   rot_transpose(mcrotanD_Mantid_0, mctr1);
   rot_mul(mcrotaMantid_1, mctr1, mcrotrMantid_1);
   mctc1 = coords_set(
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
     0,
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
     0,
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
     1);
 #line 10536 "./templateVanadiumMultipleScat_Mantid.c"
   rot_transpose(mcrotasampleMantid, mctr1);
@@ -11274,7 +11274,7 @@ MCNUM minutes = mccOrigin_minutes;
 #line 11274 "./templateVanadiumMultipleScat_Mantid.c"
 /* 'Origin=Progress_bar()' component instance extend code */
     SIG_MESSAGE("Origin (Trace:Extend)");
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
 	single_flag = multi_flag = 0;
 #line 11279 "./templateVanadiumMultipleScat_Mantid.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
@@ -11793,7 +11793,7 @@ MCNUM order = mccsampleMantid_order;
 #line 11793 "./templateVanadiumMultipleScat_Mantid.c"
 /* 'sampleMantid=Incoherent()' component instance extend code */
     SIG_MESSAGE("sampleMantid (Trace:Extend)");
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateVanadiumMultipleScat_Mantid/templateVanadiumMultipleScat_Mantid.instr"
 if (SCATTERED == 1) single_flag =1 ;
 if (SCATTERED > 1) multi_flag =1 ;
 #line 11799 "./templateVanadiumMultipleScat_Mantid.c"

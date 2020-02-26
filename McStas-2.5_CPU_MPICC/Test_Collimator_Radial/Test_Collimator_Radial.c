@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr (Test_Collimator_Radial)
- * Date:       Wed Nov 20 00:49:25 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr (Test_Collimator_Radial)
+ * Date:       Tue Feb 25 21:04:02 2020
  * File:       ./Test_Collimator_Radial.c
  * Compile:    cc -o Test_Collimator_Radial.out ./Test_Collimator_Radial.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Test_Collimator_Radial";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -10831,7 +10831,7 @@ void mcinit(void) {
 #define mcposaTest_Collimator_Radial coords_set(0,0,0)
 #define Collimator mcipCollimator
 #define Powder mcipPowder
-#line 33 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 33 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
 {
   printf("\n%s: ", NAME_CURRENT_COMP);
   switch (Collimator) {
@@ -10863,13 +10863,13 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccOrigin_minutes = 0;
 #line 10874 "./Test_Collimator_Radial.c"
 
@@ -10881,11 +10881,11 @@ void mcinit(void) {
 #line 10881 "./Test_Collimator_Radial.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
     0,
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
     0,
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
     0);
 #line 10890 "./Test_Collimator_Radial.c"
   mctc1 = coords_neg(mcposaOrigin);
@@ -10898,65 +10898,65 @@ void mcinit(void) {
     /* Component Source. */
   /* Setting parameters for component Source. */
   SIG_MESSAGE("Source (Init:SetPar)");
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   if("NULL") strncpy(mccSource_flux_file, "NULL" ? "NULL" : "", 16384); else mccSource_flux_file[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   if("NULL") strncpy(mccSource_xdiv_file, "NULL" ? "NULL" : "", 16384); else mccSource_xdiv_file[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   if("NULL") strncpy(mccSource_ydiv_file, "NULL" ? "NULL" : "", 16384); else mccSource_ydiv_file[0]='\0';
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_radius = 0.0;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_dist = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_focus_xw = 0.006;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_focus_yh = 0.01;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_focus_aw = 0;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_focus_ah = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_E0 = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_dE = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_lambda0 = 1.5;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_dlambda = 0.01;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_I1 = 1;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_yheight = 0.05;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_xwidth = 0.05;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_verbose = 0;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_T1 = 0;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_flux_file_perAA = 0;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_flux_file_log = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_Lmin = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_Lmax = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_Emin = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_Emax = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_T2 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_I2 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_T3 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_I3 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_zdepth = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSource_target_index = + 1;
 #line 10961 "./Test_Collimator_Radial.c"
 
@@ -10970,11 +10970,11 @@ void mcinit(void) {
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotaSource, mctr1, mcrotrSource);
   mctc1 = coords_set(
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
     0,
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
     0,
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
     0);
 #line 10979 "./Test_Collimator_Radial.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -10990,47 +10990,47 @@ void mcinit(void) {
     /* Component Monitor1_xt. */
   /* Setting parameters for component Monitor1_xt. */
   SIG_MESSAGE("Monitor1_xt (Init:SetPar)");
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccMonitor1_xt_xwidth = 0.05;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccMonitor1_xt_yheight = 0.05;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccMonitor1_xt_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccMonitor1_xt_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccMonitor1_xt_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccMonitor1_xt_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccMonitor1_xt_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccMonitor1_xt_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccMonitor1_xt_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccMonitor1_xt_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccMonitor1_xt_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccMonitor1_xt_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccMonitor1_xt_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccMonitor1_xt_radius = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   if("x y") strncpy(mccMonitor1_xt_options, "x y" ? "x y" : "", 16384); else mccMonitor1_xt_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   if("NULL") strncpy(mccMonitor1_xt_filename, "NULL" ? "NULL" : "", 16384); else mccMonitor1_xt_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   if("NULL") strncpy(mccMonitor1_xt_geometry, "NULL" ? "NULL" : "", 16384); else mccMonitor1_xt_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   if("NULL") strncpy(mccMonitor1_xt_username1, "NULL" ? "NULL" : "", 16384); else mccMonitor1_xt_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   if("NULL") strncpy(mccMonitor1_xt_username2, "NULL" ? "NULL" : "", 16384); else mccMonitor1_xt_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   if("NULL") strncpy(mccMonitor1_xt_username3, "NULL" ? "NULL" : "", 16384); else mccMonitor1_xt_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccMonitor1_xt_nowritefile = 0;
 #line 11035 "./Test_Collimator_Radial.c"
 
@@ -11044,11 +11044,11 @@ void mcinit(void) {
   rot_transpose(mcrotaSource, mctr1);
   rot_mul(mcrotaMonitor1_xt, mctr1, mcrotrMonitor1_xt);
   mctc1 = coords_set(
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
     0,
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
     0,
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
     1);
 #line 11053 "./Test_Collimator_Radial.c"
   rot_transpose(mcrotaSource, mctr1);
@@ -11064,59 +11064,59 @@ void mcinit(void) {
     /* Component Sample. */
   /* Setting parameters for component Sample. */
   SIG_MESSAGE("Sample (Init:SetPar)");
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   if(mcipPowder) strncpy(mccSample_reflections, mcipPowder ? mcipPowder : "", 16384); else mccSample_reflections[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   if("NULL") strncpy(mccSample_geometry, "NULL" ? "NULL" : "", 16384); else mccSample_geometry[0]='\0';
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_radius = 0.0030;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_yheight = 0.01;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_xwidth = 0;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_zdepth = 0;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_thickness = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_pack = 1;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_Vc = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_sigma_abs = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_sigma_inc = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_delta_d_d = 0;
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_p_inc = 0.05;
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_p_transmit = 0.1;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_DW = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_nb_atoms = 1;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_d_omega = 0;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_d_phi = RAD2DEG * atan2 ( 0.09 , 1.5 );
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_tth_sign = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_p_interact = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_concentric = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_density = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_weight = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_barns = 1;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_Strain = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_focus_flip = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccSample_target_index = 0;
 #line 11121 "./Test_Collimator_Radial.c"
 
@@ -11130,11 +11130,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMonitor1_xt, mctr1);
   rot_mul(mcrotaSample, mctr1, mcrotrSample);
   mctc1 = coords_set(
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
     0,
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
     0,
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
     0.1);
 #line 11139 "./Test_Collimator_Radial.c"
   rot_transpose(mcrotaMonitor1_xt, mctr1);
@@ -11150,31 +11150,31 @@ void mcinit(void) {
     /* Component collimador_rad. */
   /* Setting parameters for component collimador_rad. */
   SIG_MESSAGE("collimador_rad (Init:SetPar)");
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_rad_xwidth = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_rad_yheight = 0.09;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_rad_length = 0.419 -0.324;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_rad_divergence = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_rad_transmission = 1;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_rad_theta_min = -160;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_rad_theta_max = 160;
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_rad_nchan = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_rad_radius = 0.324;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_rad_nslit = ceil ( ( 130 -2 ) / 0.42 );
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_rad_roc = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_rad_verbose = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_rad_approx = 0;
 #line 11179 "./Test_Collimator_Radial.c"
 
@@ -11188,11 +11188,11 @@ void mcinit(void) {
   rot_transpose(mcrotaSample, mctr1);
   rot_mul(mcrotacollimador_rad, mctr1, mcrotrcollimador_rad);
   mctc1 = coords_set(
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
     0,
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
     0,
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
     0);
 #line 11197 "./Test_Collimator_Radial.c"
   rot_transpose(mcrotaSample, mctr1);
@@ -11208,19 +11208,19 @@ void mcinit(void) {
     /* Component collimador_d20. */
   /* Setting parameters for component collimador_d20. */
   SIG_MESSAGE("collimador_d20 (Init:SetPar)");
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_d20_ROC_pitch = 0.42;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_d20_ROC_ri = 0.324;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_d20_ROC_ro = 0.419;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_d20_ROC_h = 0.09;
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_d20_ROC_ttmin = -160;
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_d20_ROC_ttmax = 160;
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_d20_ROC_sign = -1;
 #line 11225 "./Test_Collimator_Radial.c"
 
@@ -11234,11 +11234,11 @@ void mcinit(void) {
   rot_transpose(mcrotacollimador_rad, mctr1);
   rot_mul(mcrotacollimador_d20, mctr1, mcrotrcollimador_d20);
   mctc1 = coords_set(
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
     0,
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
     0,
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
     0);
 #line 11243 "./Test_Collimator_Radial.c"
   rot_transpose(mcrotaSample, mctr1);
@@ -11254,23 +11254,23 @@ void mcinit(void) {
     /* Component collimador_contrib. */
   /* Setting parameters for component collimador_contrib. */
   SIG_MESSAGE("collimador_contrib (Init:SetPar)");
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_contrib_theta_min = -160;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_contrib_theta_max = 160;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_contrib_nslit = ceil ( 130 -2 / 0.42 );
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_contrib_radius = 0.324;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_contrib_length = 0.419 -0.324;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_contrib_h_in = 0.09;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_contrib_h_out = 0.09;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_contrib_d = 0.0001;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mcccollimador_contrib_verbose = 0;
 #line 11275 "./Test_Collimator_Radial.c"
 
@@ -11284,11 +11284,11 @@ void mcinit(void) {
   rot_transpose(mcrotacollimador_d20, mctr1);
   rot_mul(mcrotacollimador_contrib, mctr1, mcrotrcollimador_contrib);
   mctc1 = coords_set(
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
     0,
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
     0,
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
     0);
 #line 11293 "./Test_Collimator_Radial.c"
   rot_transpose(mcrotaSample, mctr1);
@@ -11304,47 +11304,47 @@ void mcinit(void) {
     /* Component BananaTheta. */
   /* Setting parameters for component BananaTheta. */
   SIG_MESSAGE("BananaTheta (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccBananaTheta_xwidth = 0;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccBananaTheta_yheight = 0.09;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccBananaTheta_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccBananaTheta_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccBananaTheta_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccBananaTheta_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccBananaTheta_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccBananaTheta_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccBananaTheta_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccBananaTheta_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccBananaTheta_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccBananaTheta_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccBananaTheta_restore_neutron = 0;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccBananaTheta_radius = 1.5;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   if("banana, angle limits=[2 160], bins=1280") strncpy(mccBananaTheta_options, "banana, angle limits=[2 160], bins=1280" ? "banana, angle limits=[2 160], bins=1280" : "", 16384); else mccBananaTheta_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   if("NULL") strncpy(mccBananaTheta_filename, "NULL" ? "NULL" : "", 16384); else mccBananaTheta_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   if("NULL") strncpy(mccBananaTheta_geometry, "NULL" ? "NULL" : "", 16384); else mccBananaTheta_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   if("NULL") strncpy(mccBananaTheta_username1, "NULL" ? "NULL" : "", 16384); else mccBananaTheta_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   if("NULL") strncpy(mccBananaTheta_username2, "NULL" ? "NULL" : "", 16384); else mccBananaTheta_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   if("NULL") strncpy(mccBananaTheta_username3, "NULL" ? "NULL" : "", 16384); else mccBananaTheta_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   mccBananaTheta_nowritefile = 0;
 #line 11349 "./Test_Collimator_Radial.c"
 
@@ -11358,11 +11358,11 @@ void mcinit(void) {
   rot_transpose(mcrotacollimador_contrib, mctr1);
   rot_mul(mcrotaBananaTheta, mctr1, mcrotrBananaTheta);
   mctc1 = coords_set(
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
     0,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
     0,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
     0);
 #line 11367 "./Test_Collimator_Radial.c"
   rot_transpose(mcrotaSample, mctr1);
@@ -13768,7 +13768,7 @@ int target_index = mccSample_target_index;
 #line 13768 "./Test_Collimator_Radial.c"
 /* 'Sample=PowderN()' component instance extend code */
     SIG_MESSAGE("Sample (Trace:Extend)");
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr"
   if (!SCATTERED) ABSORB;
 #line 13773 "./Test_Collimator_Radial.c"
 }   /* End of Sample=PowderN() SETTING parameter declarations. */

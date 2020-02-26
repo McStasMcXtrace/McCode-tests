@@ -1,10 +1,10 @@
 McStas simulation description file for Test_Pol_Guide_Vmirror.
-Date:    Wed Nov 20 01:18:05 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:59:28 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: Test_Pol_Guide_Vmirror
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr
   Parameters:  polariserIn(int)
   Trace_enabled: yes
   Default_main: yes
@@ -14,28 +14,28 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574241172
+  Seed: 1582689264
   Directory: 1
   Nodes: 10
   Param: polariserIn=1
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:18:09 2019 (1574209089)
+  Date: Tue Feb 25 21:59:38 2020 (1582664378)
   type: array_1d(30)
-  Source: Test_Pol_Guide_Vmirror (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr)
+  Source: Test_Pol_Guide_Vmirror (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr)
   component: lamStart
   position: 0 0 4.8
   title: Wavelength monitor
   Ncount: 10000000
   filename: lambdaStart.dat
-  statistics: X0=11.0001; dX=5.77064;
-  signal: Min=3.1344e+11; Max=3.1481e+11; Mean=3.14121e+11;
+  statistics: X0=10.9978; dX=5.76891;
+  signal: Min=3.12904e+11; Max=3.15272e+11; Mean=3.14121e+11;
   values: 9.42362e+12 2.98001e+09 1e+07
   xvar: L
   yvar: (I,I_err)
@@ -46,16 +46,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:18:09 2019 (1574209089)
+  Date: Tue Feb 25 21:59:38 2020 (1582664378)
   type: array_2d(40, 40)
-  Source: Test_Pol_Guide_Vmirror (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr)
+  Source: Test_Pol_Guide_Vmirror (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr)
   component: psdStart
   position: 0 0 4.8
   title: PSD monitor
   Ncount: 10000000
   filename: psdStart.dat
-  statistics: X0=3.84617e-05; dX=0.840555; Y0=5.91146e-05; dY=1.39123;
-  signal: Min=0; Max=4.32379e+10; Mean=5.88976e+09;
+  statistics: X0=0.000472511; dX=0.840641; Y0=-8.98266e-05; dY=1.39079;
+  signal: Min=0; Max=4.3133e+10; Mean=5.88976e+09;
   values: 9.42362e+12 2.98001e+09 1e+07
   xvar: X
   yvar: Y
@@ -68,17 +68,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:18:09 2019 (1574209089)
+  Date: Tue Feb 25 21:59:38 2020 (1582664378)
   type: array_1d(20)
-  Source: Test_Pol_Guide_Vmirror (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr)
+  Source: Test_Pol_Guide_Vmirror (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr)
   component: lamStopPolGuide
   position: 0 0 17.85
   title: Wavelength monitor
   Ncount: 10000000
   filename: lambdaStopPolGuide.dat
-  statistics: X0=11.4343; dX=4.4211;
-  signal: Min=1.03493e+11; Max=1.81572e+11; Mean=1.68731e+11;
-  values: 3.37462e+12 1.73977e+09 7.36165e+06
+  statistics: X0=11.43; dX=4.42235;
+  signal: Min=1.04235e+11; Max=1.81638e+11; Mean=1.68819e+11;
+  values: 3.37639e+12 1.74026e+09 7.36577e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -88,17 +88,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:18:09 2019 (1574209089)
+  Date: Tue Feb 25 21:59:38 2020 (1582664378)
   type: array_2d(40, 40)
-  Source: Test_Pol_Guide_Vmirror (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr)
+  Source: Test_Pol_Guide_Vmirror (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr)
   component: psdPolGuide
   position: 0 0 17.85
   title: PSD monitor
   Ncount: 10000000
   filename: psdPolGuide.dat
-  statistics: X0=-0.000169105; dX=0.87041; Y0=0.00126138; dY=1.44448;
-  signal: Min=0; Max=1.67953e+10; Mean=2.47372e+09;
-  values: 3.95796e+12 1.88071e+09 8.95295e+06
+  statistics: X0=0.000203677; dX=0.870478; Y0=-0.000544203; dY=1.44454;
+  signal: Min=0; Max=1.67904e+10; Mean=2.47407e+09;
+  values: 3.95851e+12 1.88085e+09 8.95434e+06
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -110,17 +110,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:18:09 2019 (1574209089)
+  Date: Tue Feb 25 21:59:38 2020 (1582664378)
   type: array_2d(20, 41)
-  Source: Test_Pol_Guide_Vmirror (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr)
+  Source: Test_Pol_Guide_Vmirror (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr)
   component: pollambdaMonitorX
   position: 0 0 17.85
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: pollambdaMonX.data
-  statistics: X0=12.0663; dX=5.2479; Y0=0; dY=0;
-  signal: Min=0; Max=2.27046e+11; Mean=4.82678e+09;
-  values: 3.95796e+12 1.88071e+09 8.95295e+06
+  statistics: X0=12.0637; dX=5.24771; Y0=0; dY=0;
+  signal: Min=0; Max=2.27044e+11; Mean=4.82745e+09;
+  values: 3.95851e+12 1.88085e+09 8.95434e+06
   xvar: Wavelength
   yvar: Polarisation
   xlabel: Wavelength [AA]
@@ -132,17 +132,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:18:09 2019 (1574209089)
+  Date: Tue Feb 25 21:59:38 2020 (1582664378)
   type: array_2d(20, 41)
-  Source: Test_Pol_Guide_Vmirror (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr)
+  Source: Test_Pol_Guide_Vmirror (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr)
   component: pollambdaMonitorY
   position: 0 0 17.85
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: pollambdaMonY.data
-  statistics: X0=12.0663; dX=5.2479; Y0=-0.922451; dY=0.211182;
-  signal: Min=0; Max=2.22243e+11; Mean=4.82678e+09;
-  values: 3.95796e+12 1.88071e+09 8.95295e+06
+  statistics: X0=12.0637; dX=5.24771; Y0=-0.922526; dY=0.211048;
+  signal: Min=0; Max=2.22837e+11; Mean=4.82745e+09;
+  values: 3.95851e+12 1.88085e+09 8.95434e+06
   xvar: Wavelength
   yvar: Polarisation
   xlabel: Wavelength [AA]
@@ -154,17 +154,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:18:09 2019 (1574209089)
+  Date: Tue Feb 25 21:59:38 2020 (1582664378)
   type: array_2d(20, 41)
-  Source: Test_Pol_Guide_Vmirror (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr)
+  Source: Test_Pol_Guide_Vmirror (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr)
   component: pollambdaMonitorZ
   position: 0 0 17.85
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: pollambdaMonZ.data
-  statistics: X0=12.0663; dX=5.2479; Y0=0; dY=0;
-  signal: Min=0; Max=2.27046e+11; Mean=4.82678e+09;
-  values: 3.95796e+12 1.88071e+09 8.95295e+06
+  statistics: X0=12.0637; dX=5.24771; Y0=0; dY=0;
+  signal: Min=0; Max=2.27044e+11; Mean=4.82745e+09;
+  values: 3.95851e+12 1.88085e+09 8.95434e+06
   xvar: Wavelength
   yvar: Polarisation
   xlabel: Wavelength [AA]
@@ -176,9 +176,9 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:18:09 2019 (1574209089)
+  Date: Tue Feb 25 21:59:38 2020 (1582664378)
   type: array_1d(100)
-  Source: Test_Pol_Guide_Vmirror (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr)
+  Source: Test_Pol_Guide_Vmirror (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr)
   component: MPLMon2X
   position: 0 0 17.9
   title: Pol-wavelength monitor
@@ -186,7 +186,7 @@ begin data
   filename: MPLMon2X.data
   statistics: X0=0; dX=0;
   signal: Min=0; Max=0; Mean=0;
-  values: 0 0 8.95295e+06
+  values: 0 0 8.95434e+06
   xvar: Wavelength
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -196,17 +196,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:18:09 2019 (1574209089)
+  Date: Tue Feb 25 21:59:38 2020 (1582664378)
   type: array_1d(100)
-  Source: Test_Pol_Guide_Vmirror (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr)
+  Source: Test_Pol_Guide_Vmirror (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr)
   component: MPLMon2Y
   position: 0 0 17.9
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: MPLMon2Y.data
-  statistics: X0=12.0093; dX=5.18725;
-  signal: Min=-9.78959; Max=-4.86531e-08; Mean=-8.63698;
-  values: -863.698 0.0597132 8.95295e+06
+  statistics: X0=12.0077; dX=5.18794;
+  signal: Min=-9.79004; Max=-4.504e-08; Mean=-8.63785;
+  values: -863.785 0.0598253 8.95434e+06
   xvar: Wavelength
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -216,9 +216,9 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:18:09 2019 (1574209089)
+  Date: Tue Feb 25 21:59:38 2020 (1582664378)
   type: array_1d(100)
-  Source: Test_Pol_Guide_Vmirror (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr)
+  Source: Test_Pol_Guide_Vmirror (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr)
   component: MPLMon2Z
   position: 0 0 17.9
   title: Pol-wavelength monitor
@@ -226,7 +226,7 @@ begin data
   filename: MPLMon2Z.data
   statistics: X0=0; dX=0;
   signal: Min=0; Max=0; Mean=0;
-  values: 0 0 8.95295e+06
+  values: 0 0 8.95434e+06
   xvar: Wavelength
   yvar: (I,I_err)
   xlabel: Wavelength [AA]

@@ -2,68 +2,66 @@ INFO: Using directory: "1"
 INFO: Using existing c-file: ./Samples_Isotropic_Sqw.c
 INFO: Using existing binary: ./Samples_Isotropic_Sqw.out
 INFO: ===
-INFO: Using system default number of mpirun -np processes
-[1574208432.435513] [n-62-23-6:24896:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3336.45
-[1574208432.435559] [n-62-23-6:24895:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3336.45
-[1574208432.437147] [n-62-23-6:24896:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208432.437164] [n-62-23-6:24896:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208432.437531] [n-62-23-6:24895:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208432.437548] [n-62-23-6:24895:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-23-14:18576] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:18576] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:18576] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582662815.082145] [n-62-23-14:18582:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.15
+[1582662815.084968] [n-62-23-14:18582:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662815.084990] [n-62-23-14:18582:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 --------------------------------------------------------------------------
 Initialization of MXM library failed.
 
   Error: Input/output error
 
 --------------------------------------------------------------------------
-[1574208432.439118] [n-62-23-6:24896:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208432.439148] [n-62-23-6:24896:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208432.439541] [n-62-23-6:24895:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208432.439556] [n-62-23-6:24895:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208432.443635] [n-62-23-6:24897:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3336.45
-[1574208432.445100] [n-62-23-6:24897:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208432.445117] [n-62-23-6:24897:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208432.446915] [n-62-23-6:24897:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208432.446930] [n-62-23-6:24897:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208432.447158] [n-62-23-6:24898:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3336.45
-[1574208432.448754] [n-62-23-6:24898:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208432.448770] [n-62-23-6:24898:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208432.448808] [n-62-23-6:24900:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3336.45
-[1574208432.450039] [n-62-23-6:24899:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3336.45
-[1574208432.450280] [n-62-23-6:24900:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208432.450297] [n-62-23-6:24900:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208432.450616] [n-62-23-6:24898:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208432.450631] [n-62-23-6:24898:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208432.451396] [n-62-23-6:24899:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208432.451412] [n-62-23-6:24899:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208432.452174] [n-62-23-6:24900:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208432.452191] [n-62-23-6:24900:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208432.453249] [n-62-23-6:24899:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208432.453265] [n-62-23-6:24899:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208432.474587] [n-62-23-3:22997:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3180.76
-[1574208432.474587] [n-62-23-3:22998:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3180.76
-[1574208432.474587] [n-62-23-3:22999:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3180.76
-[1574208432.474588] [n-62-23-3:23000:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3180.76
-[1574208432.479410] [n-62-23-3:22998:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208432.479427] [n-62-23-3:22998:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208432.479410] [n-62-23-3:22999:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208432.479410] [n-62-23-3:23000:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208432.479427] [n-62-23-3:23000:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208432.479537] [n-62-23-3:22999:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208432.479767] [n-62-23-3:22997:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208432.479783] [n-62-23-3:22997:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208432.481683] [n-62-23-3:23000:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208432.481695] [n-62-23-3:23000:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208432.481677] [n-62-23-3:22998:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208432.481707] [n-62-23-3:22998:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208432.481692] [n-62-23-3:22999:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208432.481705] [n-62-23-3:22999:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208432.481735] [n-62-23-3:22997:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208432.481751] [n-62-23-3:22997:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'Samples_Isotropic_Sqw' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Isotropic_Sqw/Samples_Isotropic_Sqw.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
-[Samples_Isotropic_Sqw] Initialize
-[Samples_Isotropic_Sqw] Initialize
-[Samples_Isotropic_Sqw] Initialize
-[Samples_Isotropic_Sqw] Initialize
+[1582662815.088902] [n-62-23-14:18582:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662815.088923] [n-62-23-14:18582:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662815.102816] [n-62-23-14:18583:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.95
+[1582662815.103747] [n-62-23-14:18584:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.95
+[1582662815.104317] [n-62-23-14:18586:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.95
+[1582662815.104632] [n-62-23-14:18583:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662815.104650] [n-62-23-14:18583:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662815.105278] [n-62-23-14:18581:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.12
+[1582662815.105513] [n-62-23-14:18584:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662815.105528] [n-62-23-14:18584:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662815.107595] [n-62-23-14:18583:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662815.107613] [n-62-23-14:18583:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662815.107612] [n-62-23-14:18581:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662815.107632] [n-62-23-14:18581:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662815.108248] [n-62-23-14:18584:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662815.108266] [n-62-23-14:18584:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662815.109476] [n-62-23-14:18586:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662815.109496] [n-62-23-14:18586:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662815.110620] [n-62-23-14:18581:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662815.110643] [n-62-23-14:18581:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662815.113008] [n-62-23-14:18585:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.12
+[1582662815.113426] [n-62-23-14:18586:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662815.113443] [n-62-23-14:18586:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662815.114897] [n-62-23-14:18585:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662815.114914] [n-62-23-14:18585:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662815.117023] [n-62-23-14:18585:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662815.117041] [n-62-23-14:18585:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662815.119723] [n-62-23-14:18589:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.95
+[1582662815.121734] [n-62-23-14:18587:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.95
+[1582662815.123417] [n-62-23-14:18589:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662815.123435] [n-62-23-14:18589:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662815.124444] [n-62-23-14:18587:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662815.124460] [n-62-23-14:18587:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662815.125033] [n-62-23-14:18588:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.95
+[1582662815.126340] [n-62-23-14:18589:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662815.126358] [n-62-23-14:18589:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662815.126496] [n-62-23-14:18587:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662815.126515] [n-62-23-14:18587:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662815.126911] [n-62-23-14:18588:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662815.126928] [n-62-23-14:18588:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662815.129212] [n-62-23-14:18588:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662815.129235] [n-62-23-14:18588:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662815.129465] [n-62-23-14:18590:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.12
+[1582662815.131214] [n-62-23-14:18590:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662815.131234] [n-62-23-14:18590:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662815.133586] [n-62-23-14:18590:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662815.133607] [n-62-23-14:18590:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'Samples_Isotropic_Sqw' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Isotropic_Sqw/Samples_Isotropic_Sqw.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
 [Samples_Isotropic_Sqw] Initialize
 [Samples_Isotropic_Sqw] Initialize
 [Samples_Isotropic_Sqw] Initialize
@@ -73,6 +71,10 @@ Simulation 'Samples_Isotropic_Sqw' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.
 Monitor_nD: PSD is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
 Isotropic_Sqw: Sample: is a cylinder: radius=0.010000 thickness=0.000000 height=0.055000 [J Comp Phys 228 (2009) 5251]
+[Samples_Isotropic_Sqw] Initialize
+[Samples_Isotropic_Sqw] Initialize
+[Samples_Isotropic_Sqw] Initialize
+[Samples_Isotropic_Sqw] Initialize
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Rb_liq_inc.sqw' (Table_Read_Offset)
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Rb_liq_inc.sqw' (Table_Read_Offset)
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Rb_liq_inc.sqw' (Table_Read_Offset)
@@ -83,6 +85,8 @@ Isotropic_Sqw: Sample: Applying exp(hw/2kT) factor with T=350 [K] on Rb_liq_inc.
 Isotropic_Sqw: Sample: Generated Rb_liq_inc.sqw incoherent Sqw
                    q=[0.1:10 Angs-1] w=[0:101.849 meV] |S|=0.985192 size=[101x10185] sigma=0.5 [barns]
                    normalization factor S(q,w)*0.492586 (auto) \int q^2 S(q) dq=676.701
+[n-62-23-14:18576] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-14:18576] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Rb_liq_coh.sqw' (Table_Read_Offset)
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Rb_liq_coh.sqw' (Table_Read_Offset)
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Rb_liq_coh.sqw' (Table_Read_Offset)
@@ -97,40 +101,48 @@ Monitor_nD: M_theta_t is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
 Monitor_nD: M_aw is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
-[n-62-23-6:24885] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-6:24885] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
 
-Finally [Samples_Isotropic_Sqw: 1]. Time: 4 [s] 
 
-Finally [Samples_Isotropic_Sqw: 1]. Time: 5 [s] 
 
-Finally [Samples_Isotropic_Sqw: 1]. Time: 5 [s] 
+Trace ETA 15 [s] % 70 
+Trace ETA 13 [s] % 79 Trace ETA 14 [s] % 74 
 
-Finally [Samples_Isotropic_Sqw: 1]. Time: 5 [s] 
+Trace ETA 15 [s] % 72 Trace ETA 14 [s] % 75 Trace ETA 14 [s] % 74 75 80 75 75 75 80 85 80 80 
+Trace ETA 14 [s] % 75 
+Trace ETA 13 [s] % 80 
 
-Finally [Samples_Isotropic_Sqw: 1]. Time: 5 [s] 
+Trace ETA 14 [s] % 75 Trace ETA 16 [s] % 68 80 85 70 80 90 85 85 85 80 75 80 85 90 85 95 90 90 90 85 85 80 95 95 90 95 90 95 90 85 90 95 
+Finally [Samples_Isotropic_Sqw: 1]. Time: 14 [s] 
+95 95 
+Finally [Samples_Isotropic_Sqw: 1]. Time: 13 [s] 
+95 90 
+Finally [Samples_Isotropic_Sqw: 1]. Time: 15 [s] 
 
-Finally [Samples_Isotropic_Sqw: 1]. Time: 5 [s] 
+Finally [Samples_Isotropic_Sqw: 1]. Time: 15 [s] 
 
+Finally [Samples_Isotropic_Sqw: 1]. Time: 15 [s] 
+
+Finally [Samples_Isotropic_Sqw: 1]. Time: 15 [s] 
+
+
+Finally [Samples_Isotropic_Sqw: 1]. Time: 14 [s] 
+Finally [Samples_Isotropic_Sqw: 1]. Time: 15 [s] 
+95 
 Save [Samples_Isotropic_Sqw]
-Detector: PSD_I=1.89869e-05 PSD_ERR=6.0043e-09 PSD_N=9.99962e+06 "PSD_1574208432.x_y"
+Detector: PSD_I=1.89868e-05 PSD_ERR=6.00428e-09 PSD_N=9.99955e+06 "PSD_1582662815.x_y"
+Detector: M_theta_t_I=1.61197e-07 M_theta_t_ERR=2.19833e-10 M_theta_t_N=578998 "M_theta_t_1582662825.t_A"
 
-Finally [Samples_Isotropic_Sqw: 1]. Time: 6 [s] 
-Detector: M_theta_t_I=1.61091e-07 M_theta_t_ERR=2.19762e-10 M_theta_t_N=578572 "M_theta_t_1574208436.t_A"
+Finally [Samples_Isotropic_Sqw: 1]. Time: 14 [s] 
+Detector: M_aw_I=3.19425e-07 M_aw_ERR=3.09465e-10 M_aw_N=1.14702e+06 "M_aw_1582662825.A_E"
 
-Finally [Samples_Isotropic_Sqw: 1]. Time: 5 [s] 
-Detector: M_aw_I=3.19529e-07 M_aw_ERR=3.0952e-10 M_aw_N=1.14741e+06 "M_aw_1574208436.A_E"
-
-Finally [Samples_Isotropic_Sqw: 1]. Time: 5 [s] 
-
-Finally [Samples_Isotropic_Sqw: 1]. Time: 5 [s] 
-Isotropic_Sqw: Sample: 14531239 neutron events (out of 23938351) that should have
+Finally [Samples_Isotropic_Sqw: 1]. Time: 14 [s] 
+Isotropic_Sqw: Sample: 14521027 neutron events (out of 23926153) that should have
                scattered were transmitted because scattering conditions
 WARNING        could not be satisfied after 100 tries.
-Isotropic_Sqw: Sample: 102733 neutron events (out of 9407112) reached
+Isotropic_Sqw: Sample: 102756 neutron events (out of 9405126) reached
 WARNING        unrealistic weight. The S(q,w) norm might be too high.
-Isotropic_Sqw: Sample: Scattering fraction=0.116516 of incoming intensity
-               Absorption fraction           =0.101699
-               Single   scattering intensity =2.02932e-06 (coh=1.87089e-06 inc=1.58428e-07)
-               Multiple scattering intensity =1.64788e-07
-INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Isotropic_Sqw/Samples_Isotropic_Sqw.instr in dataset 1
+Isotropic_Sqw: Sample: Scattering fraction=0.116517 of incoming intensity
+               Absorption fraction           =0.101697
+               Single   scattering intensity =2.02969e-06 (coh=1.87147e-06 inc=1.5822e-07)
+               Multiple scattering intensity =1.64558e-07
+INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Isotropic_Sqw/Samples_Isotropic_Sqw.instr in dataset 1

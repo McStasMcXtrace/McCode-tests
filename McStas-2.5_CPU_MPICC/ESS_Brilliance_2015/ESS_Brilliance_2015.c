@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr (ESS_Brilliance_2015)
- * Date:       Wed Nov 20 00:11:39 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr (ESS_Brilliance_2015)
+ * Date:       Tue Feb 25 20:23:22 2020
  * File:       ./ESS_Brilliance_2015.c
  * Compile:    cc -o ESS_Brilliance_2015.out ./ESS_Brilliance_2015.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "ESS_Brilliance_2015";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -10775,7 +10775,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define lambdamin mciplambdamin
 #define lambdamax mciplambdamax
 #define ANGLE mcipANGLE
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   //double lambdamin,lambdamax;
   int IsCold;
   double SrcX, SrcY, SrcZ;
@@ -12315,7 +12315,7 @@ void mcinit(void) {
 #define lambdamin mciplambdamin
 #define lambdamax mciplambdamax
 #define ANGLE mcipANGLE
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
 {
   //  lambdamin=0.2;
   //  lambdamax=20;
@@ -12352,13 +12352,13 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccOrigin_minutes = 0;
 #line 12363 "./ESS_Brilliance_2015.c"
 
@@ -12370,11 +12370,11 @@ void mcinit(void) {
 #line 12370 "./ESS_Brilliance_2015.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0);
 #line 12379 "./ESS_Brilliance_2015.c"
   mctc1 = coords_neg(mcposaOrigin);
@@ -12387,41 +12387,41 @@ void mcinit(void) {
     /* Component Source. */
   /* Setting parameters for component Source. */
   SIG_MESSAGE("Source (Init:SetPar)");
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccSource_isleft = 0.9;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccSource_Lmin = 0.1;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccSource_Lmax = 19;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccSource_cold_frac = mcipfrac;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccSource_dist = 1;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccSource_focus_xw = 0.01;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccSource_focus_yh = 0.01;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccSource_target_index = 0;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccSource_tmax_multiplier = 3;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccSource_yheight_c = mcipYheight;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccSource_yheight_t = mcipYheight;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccSource_n_pulses = mcipnp;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccSource_acc_power = mcippower;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccSource_beamport_angle = mcipANGLE;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if(srcdef) strncpy(mccSource_sourcedef, srcdef ? srcdef : "", 16384); else mccSource_sourcedef[0]='\0';
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccSource_xwidth_c = 0.1;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccSource_xwidth_t = 0.18;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccSource_extraction_opening = 120;
 #line 12426 "./ESS_Brilliance_2015.c"
 
@@ -12435,11 +12435,11 @@ void mcinit(void) {
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotaSource, mctr1, mcrotrSource);
   mctc1 = coords_set(
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0);
 #line 12444 "./ESS_Brilliance_2015.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -12455,47 +12455,47 @@ void mcinit(void) {
     /* Component MonND1. */
   /* Setting parameters for component MonND1. */
   SIG_MESSAGE("MonND1 (Init:SetPar)");
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND1_xwidth = XW;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND1_yheight = YH;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND1_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND1_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND1_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND1_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND1_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND1_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND1_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND1_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND1_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND1_max = 1e40;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND1_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND1_radius = 0;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if(options1) strncpy(mccMonND1_options, options1 ? options1 : "", 16384); else mccMonND1_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("NULL") strncpy(mccMonND1_filename, "NULL" ? "NULL" : "", 16384); else mccMonND1_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("NULL") strncpy(mccMonND1_geometry, "NULL" ? "NULL" : "", 16384); else mccMonND1_geometry[0]='\0';
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("Horizontal position / [m]") strncpy(mccMonND1_username1, "Horizontal position / [m]" ? "Horizontal position / [m]" : "", 16384); else mccMonND1_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("NULL") strncpy(mccMonND1_username2, "NULL" ? "NULL" : "", 16384); else mccMonND1_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("NULL") strncpy(mccMonND1_username3, "NULL" ? "NULL" : "", 16384); else mccMonND1_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND1_nowritefile = 0;
 #line 12500 "./ESS_Brilliance_2015.c"
 
@@ -12509,11 +12509,11 @@ void mcinit(void) {
   rot_transpose(mcrotaSource, mctr1);
   rot_mul(mcrotaMonND1, mctr1, mcrotrMonND1);
   mctc1 = coords_set(
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     1);
 #line 12518 "./ESS_Brilliance_2015.c"
   rot_transpose(mcrotaSource, mctr1);
@@ -12529,47 +12529,47 @@ void mcinit(void) {
     /* Component MonND2. */
   /* Setting parameters for component MonND2. */
   SIG_MESSAGE("MonND2 (Init:SetPar)");
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_xwidth = XW;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_yheight = YH;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_max = 1e40;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_radius = 0;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if(options4) strncpy(mccMonND2_options, options4 ? options4 : "", 16384); else mccMonND2_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("NULL") strncpy(mccMonND2_filename, "NULL" ? "NULL" : "", 16384); else mccMonND2_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("NULL") strncpy(mccMonND2_geometry, "NULL" ? "NULL" : "", 16384); else mccMonND2_geometry[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("Vertical position COLD / [m]") strncpy(mccMonND2_username1, "Vertical position COLD / [m]" ? "Vertical position COLD / [m]" : "", 16384); else mccMonND2_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("NULL") strncpy(mccMonND2_username2, "NULL" ? "NULL" : "", 16384); else mccMonND2_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("NULL") strncpy(mccMonND2_username3, "NULL" ? "NULL" : "", 16384); else mccMonND2_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_nowritefile = 0;
 #line 12574 "./ESS_Brilliance_2015.c"
 
@@ -12583,11 +12583,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMonND1, mctr1);
   rot_mul(mcrotaMonND2, mctr1, mcrotrMonND2);
   mctc1 = coords_set(
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     1);
 #line 12592 "./ESS_Brilliance_2015.c"
   rot_transpose(mcrotaSource, mctr1);
@@ -12603,47 +12603,47 @@ void mcinit(void) {
     /* Component MonND2_2. */
   /* Setting parameters for component MonND2_2. */
   SIG_MESSAGE("MonND2_2 (Init:SetPar)");
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_2_xwidth = XW;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_2_yheight = YH;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_2_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_2_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_2_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_2_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_2_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_2_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_2_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_2_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_2_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_2_max = 1e40;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_2_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_2_radius = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if(options4) strncpy(mccMonND2_2_options, options4 ? options4 : "", 16384); else mccMonND2_2_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("NULL") strncpy(mccMonND2_2_filename, "NULL" ? "NULL" : "", 16384); else mccMonND2_2_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("NULL") strncpy(mccMonND2_2_geometry, "NULL" ? "NULL" : "", 16384); else mccMonND2_2_geometry[0]='\0';
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("Vertical position THERMAL/ [m]") strncpy(mccMonND2_2_username1, "Vertical position THERMAL/ [m]" ? "Vertical position THERMAL/ [m]" : "", 16384); else mccMonND2_2_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("NULL") strncpy(mccMonND2_2_username2, "NULL" ? "NULL" : "", 16384); else mccMonND2_2_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("NULL") strncpy(mccMonND2_2_username3, "NULL" ? "NULL" : "", 16384); else mccMonND2_2_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND2_2_nowritefile = 0;
 #line 12648 "./ESS_Brilliance_2015.c"
 
@@ -12657,11 +12657,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMonND2, mctr1);
   rot_mul(mcrotaMonND2_2, mctr1, mcrotrMonND2_2);
   mctc1 = coords_set(
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     1);
 #line 12666 "./ESS_Brilliance_2015.c"
   rot_transpose(mcrotaSource, mctr1);
@@ -12677,47 +12677,47 @@ void mcinit(void) {
     /* Component MonND3. */
   /* Setting parameters for component MonND3. */
   SIG_MESSAGE("MonND3 (Init:SetPar)");
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND3_xwidth = XW;
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND3_yheight = YH;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND3_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND3_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND3_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND3_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND3_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND3_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND3_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND3_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND3_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND3_max = 1e40;
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND3_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND3_radius = 0;
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if(options2) strncpy(mccMonND3_options, options2 ? options2 : "", 16384); else mccMonND3_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("NULL") strncpy(mccMonND3_filename, "NULL" ? "NULL" : "", 16384); else mccMonND3_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("NULL") strncpy(mccMonND3_geometry, "NULL" ? "NULL" : "", 16384); else mccMonND3_geometry[0]='\0';
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("Horizontal position / [m]") strncpy(mccMonND3_username1, "Horizontal position / [m]" ? "Horizontal position / [m]" : "", 16384); else mccMonND3_username1[0]='\0';
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("Vertical position / [m]") strncpy(mccMonND3_username2, "Vertical position / [m]" ? "Vertical position / [m]" : "", 16384); else mccMonND3_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("NULL") strncpy(mccMonND3_username3, "NULL" ? "NULL" : "", 16384); else mccMonND3_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND3_nowritefile = 0;
 #line 12722 "./ESS_Brilliance_2015.c"
 
@@ -12731,11 +12731,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMonND2_2, mctr1);
   rot_mul(mcrotaMonND3, mctr1, mcrotrMonND3);
   mctc1 = coords_set(
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     1);
 #line 12740 "./ESS_Brilliance_2015.c"
   rot_transpose(mcrotaSource, mctr1);
@@ -12751,47 +12751,47 @@ void mcinit(void) {
     /* Component MonND4. */
   /* Setting parameters for component MonND4. */
   SIG_MESSAGE("MonND4 (Init:SetPar)");
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND4_xwidth = XW;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND4_yheight = YH;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND4_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND4_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND4_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND4_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND4_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND4_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND4_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND4_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND4_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND4_max = 1e40;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND4_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND4_radius = 0;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("user1 bins=201 limits=[-0.3,0.3], user2 bins=201 limits=[-0.3,0.3]") strncpy(mccMonND4_options, "user1 bins=201 limits=[-0.3,0.3], user2 bins=201 limits=[-0.3,0.3]" ? "user1 bins=201 limits=[-0.3,0.3], user2 bins=201 limits=[-0.3,0.3]" : "", 16384); else mccMonND4_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("NULL") strncpy(mccMonND4_filename, "NULL" ? "NULL" : "", 16384); else mccMonND4_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("NULL") strncpy(mccMonND4_geometry, "NULL" ? "NULL" : "", 16384); else mccMonND4_geometry[0]='\0';
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("Emission position / [m]") strncpy(mccMonND4_username1, "Emission position / [m]" ? "Emission position / [m]" : "", 16384); else mccMonND4_username1[0]='\0';
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("bvlah position / [m]") strncpy(mccMonND4_username2, "bvlah position / [m]" ? "bvlah position / [m]" : "", 16384); else mccMonND4_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("NULL") strncpy(mccMonND4_username3, "NULL" ? "NULL" : "", 16384); else mccMonND4_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccMonND4_nowritefile = 0;
 #line 12796 "./ESS_Brilliance_2015.c"
 
@@ -12805,11 +12805,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMonND3, mctr1);
   rot_mul(mcrotaMonND4, mctr1, mcrotrMonND4);
   mctc1 = coords_set(
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     1);
 #line 12814 "./ESS_Brilliance_2015.c"
   rot_transpose(mcrotaSource, mctr1);
@@ -12825,31 +12825,31 @@ void mcinit(void) {
     /* Component BrillmonCOLD. */
   /* Setting parameters for component BrillmonCOLD. */
   SIG_MESSAGE("BrillmonCOLD (Init:SetPar)");
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_lambda_0 = mciplambdamin;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_lambda_1 = mciplambdamax;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_restore_neutron = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_Freq = 14;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_tofcuts = 0;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_toflambda = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_xwidth = 0.01;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_yheight = 0.01;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_source_dist = 1;
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("brillCOLD") strncpy(mccBrillmonCOLD_filename, "brillCOLD" ? "brillCOLD" : "", 16384); else mccBrillmonCOLD_filename[0]='\0';
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_t_0 = -1000;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_t_1 = 4e4;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_nowritefile = 0;
 #line 12854 "./ESS_Brilliance_2015.c"
 
@@ -12863,11 +12863,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMonND4, mctr1);
   rot_mul(mcrotaBrillmonCOLD, mctr1, mcrotrBrillmonCOLD);
   mctc1 = coords_set(
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     1);
 #line 12872 "./ESS_Brilliance_2015.c"
   rot_transpose(mcrotaSource, mctr1);
@@ -12883,31 +12883,31 @@ void mcinit(void) {
     /* Component BrillmonCOLD_COLL. */
   /* Setting parameters for component BrillmonCOLD_COLL. */
   SIG_MESSAGE("BrillmonCOLD_COLL (Init:SetPar)");
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_COLL_lambda_0 = mciplambdamin;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_COLL_lambda_1 = mciplambdamax;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_COLL_restore_neutron = 1;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_COLL_Freq = 14;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_COLL_tofcuts = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_COLL_toflambda = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_COLL_xwidth = 0.01;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_COLL_yheight = 0.01;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_COLL_source_dist = 1;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("brillCOLD_COLL") strncpy(mccBrillmonCOLD_COLL_filename, "brillCOLD_COLL" ? "brillCOLD_COLL" : "", 16384); else mccBrillmonCOLD_COLL_filename[0]='\0';
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_COLL_t_0 = -1000;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_COLL_t_1 = 4e4;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_COLL_nowritefile = 0;
 #line 12912 "./ESS_Brilliance_2015.c"
 
@@ -12921,11 +12921,11 @@ void mcinit(void) {
   rot_transpose(mcrotaBrillmonCOLD, mctr1);
   rot_mul(mcrotaBrillmonCOLD_COLL, mctr1, mcrotrBrillmonCOLD_COLL);
   mctc1 = coords_set(
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     1);
 #line 12930 "./ESS_Brilliance_2015.c"
   rot_transpose(mcrotaSource, mctr1);
@@ -12941,31 +12941,31 @@ void mcinit(void) {
     /* Component BrillmonCOLD_COLL_Ken. */
   /* Setting parameters for component BrillmonCOLD_COLL_Ken. */
   SIG_MESSAGE("BrillmonCOLD_COLL_Ken (Init:SetPar)");
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_COLL_Ken_lambda_0 = 2.02;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_COLL_Ken_lambda_1 = mciplambdamax;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_COLL_Ken_restore_neutron = 1;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_COLL_Ken_Freq = 14;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_COLL_Ken_tofcuts = 0;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_COLL_Ken_toflambda = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_COLL_Ken_xwidth = 0.01;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_COLL_Ken_yheight = 0.01;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_COLL_Ken_source_dist = 1;
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("brillCOLD_COLL_Ken") strncpy(mccBrillmonCOLD_COLL_Ken_filename, "brillCOLD_COLL_Ken" ? "brillCOLD_COLL_Ken" : "", 16384); else mccBrillmonCOLD_COLL_Ken_filename[0]='\0';
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_COLL_Ken_t_0 = -1000;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_COLL_Ken_t_1 = 4e4;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonCOLD_COLL_Ken_nowritefile = 0;
 #line 12970 "./ESS_Brilliance_2015.c"
 
@@ -12979,11 +12979,11 @@ void mcinit(void) {
   rot_transpose(mcrotaBrillmonCOLD_COLL, mctr1);
   rot_mul(mcrotaBrillmonCOLD_COLL_Ken, mctr1, mcrotrBrillmonCOLD_COLL_Ken);
   mctc1 = coords_set(
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     1);
 #line 12988 "./ESS_Brilliance_2015.c"
   rot_transpose(mcrotaSource, mctr1);
@@ -12999,31 +12999,31 @@ void mcinit(void) {
     /* Component BrillmonTHRM. */
   /* Setting parameters for component BrillmonTHRM. */
   SIG_MESSAGE("BrillmonTHRM (Init:SetPar)");
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_lambda_0 = mciplambdamin;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_lambda_1 = mciplambdamax;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_restore_neutron = 1;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_Freq = 14;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_tofcuts = 0;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_toflambda = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_xwidth = 0.01;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_yheight = 0.01;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_source_dist = 1;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("brillTHRM") strncpy(mccBrillmonTHRM_filename, "brillTHRM" ? "brillTHRM" : "", 16384); else mccBrillmonTHRM_filename[0]='\0';
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_t_0 = -1000;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_t_1 = 4e4;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_nowritefile = 0;
 #line 13028 "./ESS_Brilliance_2015.c"
 
@@ -13037,11 +13037,11 @@ void mcinit(void) {
   rot_transpose(mcrotaBrillmonCOLD_COLL_Ken, mctr1);
   rot_mul(mcrotaBrillmonTHRM, mctr1, mcrotrBrillmonTHRM);
   mctc1 = coords_set(
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     1);
 #line 13046 "./ESS_Brilliance_2015.c"
   rot_transpose(mcrotaSource, mctr1);
@@ -13057,31 +13057,31 @@ void mcinit(void) {
     /* Component BrillmonTHRM_COLL. */
   /* Setting parameters for component BrillmonTHRM_COLL. */
   SIG_MESSAGE("BrillmonTHRM_COLL (Init:SetPar)");
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_COLL_lambda_0 = mciplambdamin;
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_COLL_lambda_1 = mciplambdamax;
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_COLL_restore_neutron = 1;
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_COLL_Freq = 14;
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_COLL_tofcuts = 0;
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_COLL_toflambda = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_COLL_xwidth = 0.01;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_COLL_yheight = 0.01;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_COLL_source_dist = 1;
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("brillTHRM_COLL") strncpy(mccBrillmonTHRM_COLL_filename, "brillTHRM_COLL" ? "brillTHRM_COLL" : "", 16384); else mccBrillmonTHRM_COLL_filename[0]='\0';
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_COLL_t_0 = -1000;
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_COLL_t_1 = 4e4;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_COLL_nowritefile = 0;
 #line 13086 "./ESS_Brilliance_2015.c"
 
@@ -13095,11 +13095,11 @@ void mcinit(void) {
   rot_transpose(mcrotaBrillmonTHRM, mctr1);
   rot_mul(mcrotaBrillmonTHRM_COLL, mctr1, mcrotrBrillmonTHRM_COLL);
   mctc1 = coords_set(
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     1);
 #line 13104 "./ESS_Brilliance_2015.c"
   rot_transpose(mcrotaSource, mctr1);
@@ -13115,31 +13115,31 @@ void mcinit(void) {
     /* Component BrillmonTHRM_COLL_Ken. */
   /* Setting parameters for component BrillmonTHRM_COLL_Ken. */
   SIG_MESSAGE("BrillmonTHRM_COLL_Ken (Init:SetPar)");
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_COLL_Ken_lambda_0 = 0.905;
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_COLL_Ken_lambda_1 = 2.02;
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_COLL_Ken_restore_neutron = 1;
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_COLL_Ken_Freq = 14;
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_COLL_Ken_tofcuts = 0;
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_COLL_Ken_toflambda = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_COLL_Ken_xwidth = 0.01;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_COLL_Ken_yheight = 0.01;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_COLL_Ken_source_dist = 1;
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   if("brillTHRM_COLL_Ken") strncpy(mccBrillmonTHRM_COLL_Ken_filename, "brillTHRM_COLL_Ken" ? "brillTHRM_COLL_Ken" : "", 16384); else mccBrillmonTHRM_COLL_Ken_filename[0]='\0';
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_COLL_Ken_t_0 = -1000;
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_COLL_Ken_t_1 = 4e4;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   mccBrillmonTHRM_COLL_Ken_nowritefile = 0;
 #line 13144 "./ESS_Brilliance_2015.c"
 
@@ -13153,11 +13153,11 @@ void mcinit(void) {
   rot_transpose(mcrotaBrillmonTHRM_COLL, mctr1);
   rot_mul(mcrotaBrillmonTHRM_COLL_Ken, mctr1, mcrotrBrillmonTHRM_COLL_Ken);
   mctc1 = coords_set(
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     0,
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
     1);
 #line 13162 "./ESS_Brilliance_2015.c"
   rot_transpose(mcrotaSource, mctr1);
@@ -15450,7 +15450,7 @@ MCNUM extraction_opening = mccSource_extraction_opening;
 #line 15450 "./ESS_Brilliance_2015.c"
 /* 'Source=ESS_moderator()' component instance extend code */
     SIG_MESSAGE("Source (Trace:Extend)");
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_Brilliance_2015/ESS_Brilliance_2015.instr"
   IsCold=cold;
   SrcX=xprime;SrcY=yprime;SrcZ=zprime;
   WL=lambda;

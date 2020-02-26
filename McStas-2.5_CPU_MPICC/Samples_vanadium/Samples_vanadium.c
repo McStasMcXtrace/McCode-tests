@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr (Samples_vanadium)
- * Date:       Wed Nov 20 00:49:20 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr (Samples_vanadium)
+ * Date:       Tue Feb 25 21:03:50 2020
  * File:       ./Samples_vanadium.c
  * Compile:    cc -o Samples_vanadium.out ./Samples_vanadium.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Samples_vanadium";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -5385,7 +5385,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define mccompcurindex 0
 #define mcposaSamples_vanadium coords_set(0,0,0)
 #define ROT mcipROT
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   double coll_div = 60;
 #line 5390 "./Samples_vanadium.c"
 #undef ROT
@@ -5733,11 +5733,11 @@ void mcinit(void) {
 #line 5733 "./Samples_vanadium.c"
   rot_copy(mcrotrarm, mcrotaarm);
   mcposaarm = coords_set(
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
     0,
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
     0,
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
     0);
 #line 5742 "./Samples_vanadium.c"
   mctc1 = coords_neg(mcposaarm);
@@ -5750,31 +5750,31 @@ void mcinit(void) {
     /* Component source. */
   /* Setting parameters for component source. */
   SIG_MESSAGE("source (Init:SetPar)");
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mccsource_radius = 0.015;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mccsource_yheight = 0;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mccsource_xwidth = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mccsource_dist = 1;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mccsource_focus_xw = 0.024;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mccsource_focus_yh = 0.015;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mccsource_E0 = 5;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mccsource_dE = 0.2;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mccsource_lambda0 = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mccsource_dlambda = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mccsource_flux = 1;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mccsource_gauss = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mccsource_target_index = + 1;
 #line 5779 "./Samples_vanadium.c"
 
@@ -5788,11 +5788,11 @@ void mcinit(void) {
   rot_transpose(mcrotaarm, mctr1);
   rot_mul(mcrotasource, mctr1, mcrotrsource);
   mctc1 = coords_set(
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
     0,
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
     0,
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
     0);
 #line 5797 "./Samples_vanadium.c"
   rot_transpose(mcrotaarm, mctr1);
@@ -5808,25 +5808,25 @@ void mcinit(void) {
     /* Component collimator. */
   /* Setting parameters for component collimator. */
   SIG_MESSAGE("collimator (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcccollimator_xmin = -0.02;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcccollimator_xmax = 0.02;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcccollimator_ymin = -0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcccollimator_ymax = 0.05;
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcccollimator_xwidth = 0.04;
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcccollimator_yheight = 0.06;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcccollimator_length = 0.2;
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcccollimator_divergence = coll_div;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcccollimator_transmission = 1;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcccollimator_divergenceV = 0;
 #line 5831 "./Samples_vanadium.c"
 
@@ -5840,11 +5840,11 @@ void mcinit(void) {
   rot_transpose(mcrotasource, mctr1);
   rot_mul(mcrotacollimator, mctr1, mcrotrcollimator);
   mctc1 = coords_set(
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
     0,
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
     0,
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
     0.4);
 #line 5849 "./Samples_vanadium.c"
   rot_transpose(mcrotaarm, mctr1);
@@ -5860,65 +5860,65 @@ void mcinit(void) {
     /* Component target. */
   /* Setting parameters for component target. */
   SIG_MESSAGE("target (Init:SetPar)");
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_radius = 0.012;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_thickness = 0.004;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_zdepth = 0;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_Vc = 13.827;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_sigma_abs = 5.08;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_sigma_inc = 5.08;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_radius_i = 0;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_radius_o = 0;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_h = 0;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_focus_r = 0;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_pack = 1;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_frac = 1;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_f_QE = 0;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_gamma = 0;
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_target_x = 0;
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_target_y = 0;
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_target_z = 1;
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_focus_xw = 0;
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_focus_yh = 0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_focus_aw = 0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_focus_ah = 0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_xwidth = 0;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_yheight = 0.015;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_zthick = 0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_rad_sphere = 0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_sig_a = 0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_sig_i = 0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_V0 = 0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_target_index = 0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mcctarget_multiples = 1;
 #line 5923 "./Samples_vanadium.c"
 
@@ -5932,11 +5932,11 @@ void mcinit(void) {
   rot_transpose(mcrotacollimator, mctr1);
   rot_mul(mcrotatarget, mctr1, mcrotrtarget);
   mctc1 = coords_set(
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
     0,
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
     0,
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
     1);
 #line 5941 "./Samples_vanadium.c"
   rot_transpose(mcrotaarm, mctr1);
@@ -5955,22 +5955,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("arm2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
     (0)*DEG2RAD,
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
     (mcipROT)*DEG2RAD,
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
     (0)*DEG2RAD);
 #line 5964 "./Samples_vanadium.c"
   rot_mul(mctr1, mcrotaarm, mcrotaarm2);
   rot_transpose(mcrotatarget, mctr1);
   rot_mul(mcrotaarm2, mctr1, mcrotrarm2);
   mctc1 = coords_set(
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
     0,
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
     0,
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
     0);
 #line 5975 "./Samples_vanadium.c"
   rot_transpose(mcrotatarget, mctr1);
@@ -5986,13 +5986,13 @@ void mcinit(void) {
     /* Component PSD_4pi. */
   /* Setting parameters for component PSD_4pi. */
   SIG_MESSAGE("PSD_4pi (Init:SetPar)");
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   if("vanadium.psd") strncpy(mccPSD_4pi_filename, "vanadium.psd" ? "vanadium.psd" : "", 16384); else mccPSD_4pi_filename[0]='\0';
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mccPSD_4pi_radius = 10;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mccPSD_4pi_restore_neutron = 0;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
   mccPSD_4pi_nowritefile = 0;
 #line 5997 "./Samples_vanadium.c"
 
@@ -6006,11 +6006,11 @@ void mcinit(void) {
   rot_transpose(mcrotaarm2, mctr1);
   rot_mul(mcrotaPSD_4pi, mctr1, mcrotrPSD_4pi);
   mctc1 = coords_set(
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
     0,
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
     0,
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr"
     0);
 #line 6015 "./Samples_vanadium.c"
   rot_transpose(mcrotaarm2, mctr1);

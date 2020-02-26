@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr (SAFARI_PITSI)
- * Date:       Wed Nov 20 00:46:43 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr (SAFARI_PITSI)
+ * Date:       Tue Feb 25 21:01:13 2020
  * File:       ./SAFARI_PITSI.c
  * Compile:    cc -o SAFARI_PITSI.out ./SAFARI_PITSI.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "SAFARI_PITSI";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -8412,7 +8412,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define cor_to_det mcipcor_to_det
 #define dangle_interest mcipdangle_interest
 #define full_instrument mcipfull_instrument
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
 double hi_res, port_takeoff;
 
 double mono_Si_type, mono_mosh, mono_mosv;
@@ -11667,7 +11667,7 @@ void mcinit(void) {
 #define cor_to_det mcipcor_to_det
 #define dangle_interest mcipdangle_interest
 #define full_instrument mcipfull_instrument
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
 {
 printf ("\n------------------\n");
 
@@ -11825,13 +11825,13 @@ printf ("------------------\n\n");
     /* Component Progress. */
   /* Setting parameters for component Progress. */
   SIG_MESSAGE("Progress (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccProgress_profile, "NULL" ? "NULL" : "", 16384); else mccProgress_profile[0]='\0';
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 213 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccProgress_percent = 1;
-#line 213 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 213 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccProgress_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccProgress_minutes = 0;
 #line 11836 "./SAFARI_PITSI.c"
 
@@ -11843,11 +11843,11 @@ printf ("------------------\n\n");
 #line 11843 "./SAFARI_PITSI.c"
   rot_copy(mcrotrProgress, mcrotaProgress);
   mcposaProgress = coords_set(
-#line 214 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 214 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 214 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 214 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 214 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 214 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 11852 "./SAFARI_PITSI.c"
   mctc1 = coords_neg(mcposaProgress);
@@ -11870,11 +11870,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaProgress, mctr1);
   rot_mul(mcrotaReactorbeam, mctr1, mcrotrReactorbeam);
   mcposaReactorbeam = coords_set(
-#line 217 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 217 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 217 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 217 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 217 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 217 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 11879 "./SAFARI_PITSI.c"
   mctc1 = coords_sub(mcposaProgress, mcposaReactorbeam);
@@ -11890,22 +11890,22 @@ printf ("------------------\n\n");
 
   SIG_MESSAGE("Prim_axes (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 221 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 221 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     (0)*DEG2RAD,
-#line 221 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 221 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     (mcipport_takeoff)*DEG2RAD,
-#line 221 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 221 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     (0)*DEG2RAD);
 #line 11899 "./SAFARI_PITSI.c"
   rot_mul(mctr1, mcrotaReactorbeam, mcrotaPrim_axes);
   rot_transpose(mcrotaReactorbeam, mctr1);
   rot_mul(mcrotaPrim_axes, mctr1, mcrotrPrim_axes);
   mctc1 = coords_set(
-#line 220 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 220 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 220 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 220 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 220 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 220 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     5.140);
 #line 11910 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaReactorbeam, mctr1);
@@ -11921,65 +11921,65 @@ printf ("------------------\n\n");
     /* Component Source. */
   /* Setting parameters for component Source. */
   SIG_MESSAGE("Source (Init:SetPar)");
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccSource_flux_file, "NULL" ? "NULL" : "", 16384); else mccSource_flux_file[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccSource_xdiv_file, "NULL" ? "NULL" : "", 16384); else mccSource_xdiv_file[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccSource_ydiv_file, "NULL" ? "NULL" : "", 16384); else mccSource_ydiv_file[0]='\0';
-#line 227 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 227 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_radius = 0.0905;
-#line 227 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 227 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_dist = 2.86805;
-#line 227 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 227 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_focus_xw = 0.1;
-#line 227 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 227 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_focus_yh = 0.05;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_focus_aw = 0;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_focus_ah = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_E0 = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_dE = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_lambda0 = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_dlambda = 0;
-#line 228 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 228 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_I1 = 0;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_yheight = 0.1;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_xwidth = 0.1;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_verbose = 0;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_T1 = 0;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_flux_file_perAA = 0;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_flux_file_log = 0;
-#line 228 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 228 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_Lmin = mcipsource_lam_min;
-#line 228 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 228 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_Lmax = mcipsource_lam_max;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_Emin = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_Emax = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_T2 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_I2 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_T3 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_I3 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_zdepth = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSource_target_index = + 1;
 #line 11984 "./SAFARI_PITSI.c"
 
@@ -11993,11 +11993,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaPrim_axes, mctr1);
   rot_mul(mcrotaSource, mctr1, mcrotrSource);
   mctc1 = coords_set(
-#line 230 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 230 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 230 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 230 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 230 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 230 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 12002 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaReactorbeam, mctr1);
@@ -12013,25 +12013,25 @@ printf ("------------------\n\n");
     /* Component PSD_Source. */
   /* Setting parameters for component PSD_Source. */
   SIG_MESSAGE("PSD_Source (Init:SetPar)");
-#line 233 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 233 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Source_nx = 100;
-#line 233 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 233 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Source_ny = 100;
-#line 233 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 233 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("PSD_Source") strncpy(mccPSD_Source_filename, "PSD_Source" ? "PSD_Source" : "", 16384); else mccPSD_Source_filename[0]='\0';
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Source_xmin = -0.1;
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Source_xmax = 0.1;
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Source_ymin = -0.1;
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Source_ymax = 0.1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Source_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Source_yheight = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Source_restore_neutron = 0;
 #line 12036 "./SAFARI_PITSI.c"
 
@@ -12045,11 +12045,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaSource, mctr1);
   rot_mul(mcrotaPSD_Source, mctr1, mcrotrPSD_Source);
   mctc1 = coords_set(
-#line 236 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 236 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 236 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 236 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 236 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 236 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 12054 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaReactorbeam, mctr1);
@@ -12065,27 +12065,27 @@ printf ("------------------\n\n");
     /* Component LAM_Source. */
   /* Setting parameters for component LAM_Source. */
   SIG_MESSAGE("LAM_Source (Init:SetPar)");
-#line 240 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 240 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("LAM_Source.out") strncpy(mccLAM_Source_filename, "LAM_Source.out" ? "LAM_Source.out" : "", 16384); else mccLAM_Source_filename[0]='\0';
-#line 241 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 241 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_Source_xmin = -0.1;
-#line 241 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 241 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_Source_xmax = 0.1;
-#line 241 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 241 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_Source_ymin = -0.1;
-#line 241 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 241 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_Source_ymax = 0.1;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_Source_xwidth = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_Source_yheight = 0;
-#line 239 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 239 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_Source_Lmin = mcipsource_lam_min;
-#line 239 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 239 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_Source_Lmax = mcipsource_lam_max;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_Source_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_Source_nowritefile = 0;
 #line 12090 "./SAFARI_PITSI.c"
 
@@ -12099,11 +12099,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaPSD_Source, mctr1);
   rot_mul(mcrotaLAM_Source, mctr1, mcrotrLAM_Source);
   mctc1 = coords_set(
-#line 243 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 243 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 243 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 243 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 243 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 243 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 12108 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaReactorbeam, mctr1);
@@ -12119,19 +12119,19 @@ printf ("------------------\n\n");
     /* Component Window_before_filter. */
   /* Setting parameters for component Window_before_filter. */
   SIG_MESSAGE("Window_before_filter (Init:SetPar)");
-#line 248 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 248 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccWindow_before_filter_xmin = -0.1;
-#line 248 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 248 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccWindow_before_filter_xmax = 0.1;
-#line 248 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 248 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccWindow_before_filter_ymin = -0.1;
-#line 248 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 248 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccWindow_before_filter_ymax = 0.1;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccWindow_before_filter_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccWindow_before_filter_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccWindow_before_filter_yheight = 0;
 #line 12136 "./SAFARI_PITSI.c"
 
@@ -12145,11 +12145,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaLAM_Source, mctr1);
   rot_mul(mcrotaWindow_before_filter, mctr1, mcrotrWindow_before_filter);
   mctc1 = coords_set(
-#line 250 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 250 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 250 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 250 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 250 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 250 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     3.24045);
 #line 12154 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaReactorbeam, mctr1);
@@ -12165,27 +12165,27 @@ printf ("------------------\n\n");
     /* Component Sapphire_filter. */
   /* Setting parameters for component Sapphire_filter. */
   SIG_MESSAGE("Sapphire_filter (Init:SetPar)");
-#line 257 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 257 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("Al2O3_sapphire.trm") strncpy(mccSapphire_filter_filename, "Al2O3_sapphire.trm" ? "Al2O3_sapphire.trm" : "", 16384); else mccSapphire_filter_filename[0]='\0';
-#line 257 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 257 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("multiply") strncpy(mccSapphire_filter_options, "multiply" ? "multiply" : "", 16384); else mccSapphire_filter_options[0]='\0';
-#line 258 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 258 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSapphire_filter_xmin = -0.053975;
-#line 258 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 258 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSapphire_filter_xmax = 0.053975;
-#line 258 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 258 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSapphire_filter_ymin = -0.0381;
-#line 258 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 258 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSapphire_filter_ymax = 0.0381;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSapphire_filter_xwidth = 0;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSapphire_filter_yheight = 0;
-#line 258 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 258 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSapphire_filter_thickness = 3.125;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSapphire_filter_scaling = 1;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSapphire_filter_verbose = 0;
 #line 12190 "./SAFARI_PITSI.c"
 
@@ -12199,11 +12199,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaWindow_before_filter, mctr1);
   rot_mul(mcrotaSapphire_filter, mctr1, mcrotrSapphire_filter);
   mctc1 = coords_set(
-#line 260 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 260 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 260 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 260 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 260 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 260 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 12208 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaWindow_before_filter, mctr1);
@@ -12219,19 +12219,19 @@ printf ("------------------\n\n");
     /* Component Window_after_filter. */
   /* Setting parameters for component Window_after_filter. */
   SIG_MESSAGE("Window_after_filter (Init:SetPar)");
-#line 263 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 263 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccWindow_after_filter_xmin = -0.05;
-#line 263 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 263 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccWindow_after_filter_xmax = 0.05;
-#line 263 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 263 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccWindow_after_filter_ymin = -0.032005;
-#line 263 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 263 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccWindow_after_filter_ymax = 0.032005;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccWindow_after_filter_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccWindow_after_filter_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccWindow_after_filter_yheight = 0;
 #line 12236 "./SAFARI_PITSI.c"
 
@@ -12245,11 +12245,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaSapphire_filter, mctr1);
   rot_mul(mcrotaWindow_after_filter, mctr1, mcrotrWindow_after_filter);
   mctc1 = coords_set(
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0.15876);
 #line 12254 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaSapphire_filter, mctr1);
@@ -12265,27 +12265,27 @@ printf ("------------------\n\n");
     /* Component LAM_After_sapphire. */
   /* Setting parameters for component LAM_After_sapphire. */
   SIG_MESSAGE("LAM_After_sapphire (Init:SetPar)");
-#line 269 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 269 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("LAM_After_sapphire.out") strncpy(mccLAM_After_sapphire_filename, "LAM_After_sapphire.out" ? "LAM_After_sapphire.out" : "", 16384); else mccLAM_After_sapphire_filename[0]='\0';
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_After_sapphire_xmin = -0.1;
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_After_sapphire_xmax = 0.1;
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_After_sapphire_ymin = -0.1;
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_After_sapphire_ymax = 0.1;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_After_sapphire_xwidth = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_After_sapphire_yheight = 0;
-#line 268 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 268 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_After_sapphire_Lmin = mcipsource_lam_min;
-#line 268 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 268 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_After_sapphire_Lmax = mcipsource_lam_max;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_After_sapphire_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_After_sapphire_nowritefile = 0;
 #line 12290 "./SAFARI_PITSI.c"
 
@@ -12299,11 +12299,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaWindow_after_filter, mctr1);
   rot_mul(mcrotaLAM_After_sapphire, mctr1, mcrotrLAM_After_sapphire);
   mctc1 = coords_set(
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 12308 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaWindow_after_filter, mctr1);
@@ -12319,25 +12319,25 @@ printf ("------------------\n\n");
     /* Component PSD_After_sapphire. */
   /* Setting parameters for component PSD_After_sapphire. */
   SIG_MESSAGE("PSD_After_sapphire (Init:SetPar)");
-#line 276 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 276 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_sapphire_nx = 100;
-#line 276 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 276 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_sapphire_ny = 100;
-#line 276 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 276 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("PSD_After_sapphire") strncpy(mccPSD_After_sapphire_filename, "PSD_After_sapphire" ? "PSD_After_sapphire" : "", 16384); else mccPSD_After_sapphire_filename[0]='\0';
-#line 278 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 278 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_sapphire_xmin = -0.1;
-#line 278 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 278 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_sapphire_xmax = 0.1;
-#line 278 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 278 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_sapphire_ymin = -0.1;
-#line 278 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 278 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_sapphire_ymax = 0.1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_sapphire_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_sapphire_yheight = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_sapphire_restore_neutron = 0;
 #line 12342 "./SAFARI_PITSI.c"
 
@@ -12351,11 +12351,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaLAM_After_sapphire, mctr1);
   rot_mul(mcrotaPSD_After_sapphire, mctr1, mcrotrPSD_After_sapphire);
   mctc1 = coords_set(
-#line 280 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 280 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 280 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 280 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 280 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 280 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 12360 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaWindow_after_filter, mctr1);
@@ -12371,19 +12371,19 @@ printf ("------------------\n\n");
     /* Component HighResOutlet. */
   /* Setting parameters for component HighResOutlet. */
   SIG_MESSAGE("HighResOutlet (Init:SetPar)");
-#line 284 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 284 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccHighResOutlet_xmin = -0.0325;
-#line 284 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 284 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccHighResOutlet_xmax = 0.0325;
-#line 284 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 284 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccHighResOutlet_ymin = -0.05;
-#line 284 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 284 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccHighResOutlet_ymax = 0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccHighResOutlet_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccHighResOutlet_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccHighResOutlet_yheight = 0;
 #line 12388 "./SAFARI_PITSI.c"
 
@@ -12397,11 +12397,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaPSD_After_sapphire, mctr1);
   rot_mul(mcrotaHighResOutlet, mctr1, mcrotrHighResOutlet);
   mctc1 = coords_set(
-#line 286 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 286 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 286 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 286 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 286 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 286 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     4.84055);
 #line 12406 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaReactorbeam, mctr1);
@@ -12417,19 +12417,19 @@ printf ("------------------\n\n");
     /* Component HighIntensityOutlet. */
   /* Setting parameters for component HighIntensityOutlet. */
   SIG_MESSAGE("HighIntensityOutlet (Init:SetPar)");
-#line 289 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 289 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccHighIntensityOutlet_xmin = -0.05;
-#line 289 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 289 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccHighIntensityOutlet_xmax = 0.05;
-#line 289 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 289 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccHighIntensityOutlet_ymin = -0.05;
-#line 289 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 289 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccHighIntensityOutlet_ymax = 0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccHighIntensityOutlet_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccHighIntensityOutlet_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccHighIntensityOutlet_yheight = 0;
 #line 12434 "./SAFARI_PITSI.c"
 
@@ -12443,11 +12443,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaHighResOutlet, mctr1);
   rot_mul(mcrotaHighIntensityOutlet, mctr1, mcrotrHighIntensityOutlet);
   mctc1 = coords_set(
-#line 291 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 291 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 291 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 291 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 291 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 291 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     4.84055);
 #line 12452 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaReactorbeam, mctr1);
@@ -12463,25 +12463,25 @@ printf ("------------------\n\n");
     /* Component PSD_After_Outlet. */
   /* Setting parameters for component PSD_After_Outlet. */
   SIG_MESSAGE("PSD_After_Outlet (Init:SetPar)");
-#line 294 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 294 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_Outlet_nx = 100;
-#line 294 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 294 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_Outlet_ny = 100;
-#line 294 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 294 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("PSD_After_Outlet") strncpy(mccPSD_After_Outlet_filename, "PSD_After_Outlet" ? "PSD_After_Outlet" : "", 16384); else mccPSD_After_Outlet_filename[0]='\0';
-#line 296 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 296 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_Outlet_xmin = -0.1;
-#line 296 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 296 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_Outlet_xmax = 0.1;
-#line 296 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 296 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_Outlet_ymin = -0.1;
-#line 296 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 296 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_Outlet_ymax = 0.1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_Outlet_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_Outlet_yheight = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_Outlet_restore_neutron = 0;
 #line 12486 "./SAFARI_PITSI.c"
 
@@ -12495,11 +12495,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaHighIntensityOutlet, mctr1);
   rot_mul(mcrotaPSD_After_Outlet, mctr1, mcrotrPSD_After_Outlet);
   mctc1 = coords_set(
-#line 298 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 298 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 298 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 298 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 298 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 298 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     4.84055);
 #line 12504 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaReactorbeam, mctr1);
@@ -12518,22 +12518,22 @@ printf ("------------------\n\n");
 
   SIG_MESSAGE("Mono_axis (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 304 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 304 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     (0)*DEG2RAD,
-#line 304 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 304 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     (mcipmono_takeoff / 2.0)*DEG2RAD,
-#line 304 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 304 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     (0)*DEG2RAD);
 #line 12527 "./SAFARI_PITSI.c"
   rot_mul(mctr1, mcrotaReactorbeam, mcrotaMono_axis);
   rot_transpose(mcrotaPSD_After_Outlet, mctr1);
   rot_mul(mcrotaMono_axis, mctr1, mcrotrMono_axis);
   mctc1 = coords_set(
-#line 303 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 303 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0 + mcipmono_dx,
-#line 303 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 303 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0 + mcipmono_dy,
-#line 303 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 303 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     5.140 + mcipmono_dz);
 #line 12538 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaReactorbeam, mctr1);
@@ -12549,45 +12549,45 @@ printf ("------------------\n\n");
     /* Component Blade_1. */
   /* Setting parameters for component Blade_1. */
   SIG_MESSAGE("Blade_1 (Init:SetPar)");
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_1_reflect, "NULL" ? "NULL" : "", 16384); else mccBlade_1_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_1_transmit, "NULL" ? "NULL" : "", 16384); else mccBlade_1_transmit[0]='\0';
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_1_zwidth = 0.22 / 51.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_1_yheight = 0.1395 / 9.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_1_gap = 0.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_1_NH = 51;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_1_NV = 9;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_1_mosaich = mcipmono_mosh;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_1_mosaicv = mcipmono_mosv;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_1_r0 = 1.0;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_1_t0 = 1.0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_1_Q = 1.8734;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_1_RV = mcipmono_r_v;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_1_RH = mcipmono_r_h;
-#line 310 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 310 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_1_DM = mono_d;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_1_mosaic = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_1_width = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_1_height = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_1_verbose = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_1_order = 0;
 #line 12592 "./SAFARI_PITSI.c"
 
@@ -12601,11 +12601,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaMono_axis, mctr1);
   rot_mul(mcrotaBlade_1, mctr1, mcrotrBlade_1);
   mctc1 = coords_set(
-#line 312 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 312 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     - start_wafer_pos,
-#line 312 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 312 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 312 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 312 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 12610 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaMono_axis, mctr1);
@@ -12621,45 +12621,45 @@ printf ("------------------\n\n");
     /* Component Blade_2. */
   /* Setting parameters for component Blade_2. */
   SIG_MESSAGE("Blade_2 (Init:SetPar)");
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_2_reflect, "NULL" ? "NULL" : "", 16384); else mccBlade_2_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_2_transmit, "NULL" ? "NULL" : "", 16384); else mccBlade_2_transmit[0]='\0';
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_2_zwidth = 0.22 / 51.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_2_yheight = 0.1395 / 9.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_2_gap = 0.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_2_NH = 51;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_2_NV = 9;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_2_mosaich = mcipmono_mosh;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_2_mosaicv = mcipmono_mosv;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_2_r0 = 1.0;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_2_t0 = 1.0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_2_Q = 1.8734;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_2_RV = mcipmono_r_v;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_2_RH = mcipmono_r_h;
-#line 310 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 310 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_2_DM = mono_d;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_2_mosaic = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_2_width = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_2_height = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_2_verbose = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_2_order = 0;
 #line 12664 "./SAFARI_PITSI.c"
 
@@ -12673,11 +12673,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaBlade_1, mctr1);
   rot_mul(mcrotaBlade_2, mctr1, mcrotrBlade_2);
   mctc1 = coords_set(
-#line 317 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 317 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     wafer_d,
-#line 317 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 317 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 317 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 317 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 12682 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaBlade_1, mctr1);
@@ -12693,45 +12693,45 @@ printf ("------------------\n\n");
     /* Component Blade_3. */
   /* Setting parameters for component Blade_3. */
   SIG_MESSAGE("Blade_3 (Init:SetPar)");
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_3_reflect, "NULL" ? "NULL" : "", 16384); else mccBlade_3_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_3_transmit, "NULL" ? "NULL" : "", 16384); else mccBlade_3_transmit[0]='\0';
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_3_zwidth = 0.22 / 51.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_3_yheight = 0.1395 / 9.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_3_gap = 0.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_3_NH = 51;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_3_NV = 9;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_3_mosaich = mcipmono_mosh;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_3_mosaicv = mcipmono_mosv;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_3_r0 = 1.0;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_3_t0 = 1.0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_3_Q = 1.8734;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_3_RV = mcipmono_r_v;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_3_RH = mcipmono_r_h;
-#line 310 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 310 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_3_DM = mono_d;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_3_mosaic = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_3_width = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_3_height = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_3_verbose = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_3_order = 0;
 #line 12736 "./SAFARI_PITSI.c"
 
@@ -12745,11 +12745,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaBlade_2, mctr1);
   rot_mul(mcrotaBlade_3, mctr1, mcrotrBlade_3);
   mctc1 = coords_set(
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     wafer_d,
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 12754 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaBlade_2, mctr1);
@@ -12765,45 +12765,45 @@ printf ("------------------\n\n");
     /* Component Blade_4. */
   /* Setting parameters for component Blade_4. */
   SIG_MESSAGE("Blade_4 (Init:SetPar)");
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_4_reflect, "NULL" ? "NULL" : "", 16384); else mccBlade_4_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_4_transmit, "NULL" ? "NULL" : "", 16384); else mccBlade_4_transmit[0]='\0';
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_4_zwidth = 0.22 / 51.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_4_yheight = 0.1395 / 9.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_4_gap = 0.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_4_NH = 51;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_4_NV = 9;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_4_mosaich = mcipmono_mosh;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_4_mosaicv = mcipmono_mosv;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_4_r0 = 1.0;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_4_t0 = 1.0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_4_Q = 1.8734;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_4_RV = mcipmono_r_v;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_4_RH = mcipmono_r_h;
-#line 310 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 310 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_4_DM = mono_d;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_4_mosaic = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_4_width = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_4_height = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_4_verbose = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_4_order = 0;
 #line 12808 "./SAFARI_PITSI.c"
 
@@ -12817,11 +12817,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaBlade_3, mctr1);
   rot_mul(mcrotaBlade_4, mctr1, mcrotrBlade_4);
   mctc1 = coords_set(
-#line 327 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 327 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     wafer_d,
-#line 327 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 327 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 327 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 327 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 12826 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaBlade_3, mctr1);
@@ -12837,45 +12837,45 @@ printf ("------------------\n\n");
     /* Component Blade_5. */
   /* Setting parameters for component Blade_5. */
   SIG_MESSAGE("Blade_5 (Init:SetPar)");
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_5_reflect, "NULL" ? "NULL" : "", 16384); else mccBlade_5_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_5_transmit, "NULL" ? "NULL" : "", 16384); else mccBlade_5_transmit[0]='\0';
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_5_zwidth = 0.22 / 51.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_5_yheight = 0.1395 / 9.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_5_gap = 0.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_5_NH = 51;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_5_NV = 9;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_5_mosaich = mcipmono_mosh;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_5_mosaicv = mcipmono_mosv;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_5_r0 = 1.0;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_5_t0 = 1.0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_5_Q = 1.8734;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_5_RV = mcipmono_r_v;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_5_RH = mcipmono_r_h;
-#line 310 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 310 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_5_DM = mono_d;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_5_mosaic = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_5_width = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_5_height = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_5_verbose = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_5_order = 0;
 #line 12880 "./SAFARI_PITSI.c"
 
@@ -12889,11 +12889,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaBlade_4, mctr1);
   rot_mul(mcrotaBlade_5, mctr1, mcrotrBlade_5);
   mctc1 = coords_set(
-#line 332 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 332 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     wafer_d,
-#line 332 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 332 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 332 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 332 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 12898 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaBlade_4, mctr1);
@@ -12909,45 +12909,45 @@ printf ("------------------\n\n");
     /* Component Blade_6. */
   /* Setting parameters for component Blade_6. */
   SIG_MESSAGE("Blade_6 (Init:SetPar)");
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_6_reflect, "NULL" ? "NULL" : "", 16384); else mccBlade_6_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_6_transmit, "NULL" ? "NULL" : "", 16384); else mccBlade_6_transmit[0]='\0';
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_6_zwidth = 0.22 / 51.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_6_yheight = 0.1395 / 9.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_6_gap = 0.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_6_NH = 51;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_6_NV = 9;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_6_mosaich = mcipmono_mosh;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_6_mosaicv = mcipmono_mosv;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_6_r0 = 1.0;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_6_t0 = 1.0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_6_Q = 1.8734;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_6_RV = mcipmono_r_v;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_6_RH = mcipmono_r_h;
-#line 310 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 310 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_6_DM = mono_d;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_6_mosaic = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_6_width = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_6_height = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_6_verbose = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_6_order = 0;
 #line 12952 "./SAFARI_PITSI.c"
 
@@ -12961,11 +12961,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaBlade_5, mctr1);
   rot_mul(mcrotaBlade_6, mctr1, mcrotrBlade_6);
   mctc1 = coords_set(
-#line 337 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 337 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     wafer_d,
-#line 337 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 337 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 337 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 337 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 12970 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaBlade_5, mctr1);
@@ -12981,45 +12981,45 @@ printf ("------------------\n\n");
     /* Component Blade_7. */
   /* Setting parameters for component Blade_7. */
   SIG_MESSAGE("Blade_7 (Init:SetPar)");
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_7_reflect, "NULL" ? "NULL" : "", 16384); else mccBlade_7_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_7_transmit, "NULL" ? "NULL" : "", 16384); else mccBlade_7_transmit[0]='\0';
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_7_zwidth = 0.22 / 51.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_7_yheight = 0.1395 / 9.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_7_gap = 0.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_7_NH = 51;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_7_NV = 9;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_7_mosaich = mcipmono_mosh;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_7_mosaicv = mcipmono_mosv;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_7_r0 = 1.0;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_7_t0 = 1.0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_7_Q = 1.8734;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_7_RV = mcipmono_r_v;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_7_RH = mcipmono_r_h;
-#line 310 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 310 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_7_DM = mono_d;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_7_mosaic = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_7_width = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_7_height = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_7_verbose = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_7_order = 0;
 #line 13024 "./SAFARI_PITSI.c"
 
@@ -13033,11 +13033,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaBlade_6, mctr1);
   rot_mul(mcrotaBlade_7, mctr1, mcrotrBlade_7);
   mctc1 = coords_set(
-#line 342 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 342 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     wafer_d,
-#line 342 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 342 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 342 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 342 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 13042 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaBlade_6, mctr1);
@@ -13053,45 +13053,45 @@ printf ("------------------\n\n");
     /* Component Blade_8. */
   /* Setting parameters for component Blade_8. */
   SIG_MESSAGE("Blade_8 (Init:SetPar)");
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_8_reflect, "NULL" ? "NULL" : "", 16384); else mccBlade_8_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_8_transmit, "NULL" ? "NULL" : "", 16384); else mccBlade_8_transmit[0]='\0';
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_8_zwidth = 0.22 / 51.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_8_yheight = 0.1395 / 9.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_8_gap = 0.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_8_NH = 51;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_8_NV = 9;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_8_mosaich = mcipmono_mosh;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_8_mosaicv = mcipmono_mosv;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_8_r0 = 1.0;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_8_t0 = 1.0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_8_Q = 1.8734;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_8_RV = mcipmono_r_v;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_8_RH = mcipmono_r_h;
-#line 310 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 310 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_8_DM = mono_d;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_8_mosaic = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_8_width = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_8_height = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_8_verbose = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_8_order = 0;
 #line 13096 "./SAFARI_PITSI.c"
 
@@ -13105,11 +13105,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaBlade_7, mctr1);
   rot_mul(mcrotaBlade_8, mctr1, mcrotrBlade_8);
   mctc1 = coords_set(
-#line 347 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 347 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     wafer_d,
-#line 347 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 347 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 347 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 347 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 13114 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaBlade_7, mctr1);
@@ -13125,45 +13125,45 @@ printf ("------------------\n\n");
     /* Component Blade_9. */
   /* Setting parameters for component Blade_9. */
   SIG_MESSAGE("Blade_9 (Init:SetPar)");
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_9_reflect, "NULL" ? "NULL" : "", 16384); else mccBlade_9_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_9_transmit, "NULL" ? "NULL" : "", 16384); else mccBlade_9_transmit[0]='\0';
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_9_zwidth = 0.22 / 51.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_9_yheight = 0.1395 / 9.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_9_gap = 0.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_9_NH = 51;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_9_NV = 9;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_9_mosaich = mcipmono_mosh;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_9_mosaicv = mcipmono_mosv;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_9_r0 = 1.0;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_9_t0 = 1.0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_9_Q = 1.8734;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_9_RV = mcipmono_r_v;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_9_RH = mcipmono_r_h;
-#line 310 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 310 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_9_DM = mono_d;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_9_mosaic = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_9_width = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_9_height = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_9_verbose = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_9_order = 0;
 #line 13168 "./SAFARI_PITSI.c"
 
@@ -13177,11 +13177,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaBlade_8, mctr1);
   rot_mul(mcrotaBlade_9, mctr1, mcrotrBlade_9);
   mctc1 = coords_set(
-#line 352 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 352 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     wafer_d,
-#line 352 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 352 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 352 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 352 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 13186 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaBlade_8, mctr1);
@@ -13197,45 +13197,45 @@ printf ("------------------\n\n");
     /* Component Blade_10. */
   /* Setting parameters for component Blade_10. */
   SIG_MESSAGE("Blade_10 (Init:SetPar)");
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_10_reflect, "NULL" ? "NULL" : "", 16384); else mccBlade_10_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_10_transmit, "NULL" ? "NULL" : "", 16384); else mccBlade_10_transmit[0]='\0';
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_10_zwidth = 0.22 / 51.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_10_yheight = 0.1395 / 9.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_10_gap = 0.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_10_NH = 51;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_10_NV = 9;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_10_mosaich = mcipmono_mosh;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_10_mosaicv = mcipmono_mosv;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_10_r0 = 1.0;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_10_t0 = 1.0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_10_Q = 1.8734;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_10_RV = mcipmono_r_v;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_10_RH = mcipmono_r_h;
-#line 310 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 310 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_10_DM = mono_d;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_10_mosaic = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_10_width = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_10_height = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_10_verbose = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_10_order = 0;
 #line 13240 "./SAFARI_PITSI.c"
 
@@ -13249,11 +13249,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaBlade_9, mctr1);
   rot_mul(mcrotaBlade_10, mctr1, mcrotrBlade_10);
   mctc1 = coords_set(
-#line 357 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 357 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     wafer_d,
-#line 357 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 357 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 357 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 357 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 13258 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaBlade_9, mctr1);
@@ -13269,45 +13269,45 @@ printf ("------------------\n\n");
     /* Component Blade_11. */
   /* Setting parameters for component Blade_11. */
   SIG_MESSAGE("Blade_11 (Init:SetPar)");
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_11_reflect, "NULL" ? "NULL" : "", 16384); else mccBlade_11_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_11_transmit, "NULL" ? "NULL" : "", 16384); else mccBlade_11_transmit[0]='\0';
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_11_zwidth = 0.22 / 51.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_11_yheight = 0.1395 / 9.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_11_gap = 0.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_11_NH = 51;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_11_NV = 9;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_11_mosaich = mcipmono_mosh;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_11_mosaicv = mcipmono_mosv;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_11_r0 = 1.0;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_11_t0 = 1.0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_11_Q = 1.8734;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_11_RV = mcipmono_r_v;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_11_RH = mcipmono_r_h;
-#line 310 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 310 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_11_DM = mono_d;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_11_mosaic = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_11_width = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_11_height = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_11_verbose = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_11_order = 0;
 #line 13312 "./SAFARI_PITSI.c"
 
@@ -13321,11 +13321,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaBlade_10, mctr1);
   rot_mul(mcrotaBlade_11, mctr1, mcrotrBlade_11);
   mctc1 = coords_set(
-#line 362 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 362 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     wafer_d,
-#line 362 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 362 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 362 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 362 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 13330 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaBlade_10, mctr1);
@@ -13341,45 +13341,45 @@ printf ("------------------\n\n");
     /* Component Blade_12. */
   /* Setting parameters for component Blade_12. */
   SIG_MESSAGE("Blade_12 (Init:SetPar)");
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_12_reflect, "NULL" ? "NULL" : "", 16384); else mccBlade_12_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_12_transmit, "NULL" ? "NULL" : "", 16384); else mccBlade_12_transmit[0]='\0';
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_12_zwidth = 0.22 / 51.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_12_yheight = 0.1395 / 9.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_12_gap = 0.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_12_NH = 51;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_12_NV = 9;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_12_mosaich = mcipmono_mosh;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_12_mosaicv = mcipmono_mosv;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_12_r0 = 1.0;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_12_t0 = 1.0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_12_Q = 1.8734;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_12_RV = mcipmono_r_v;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_12_RH = mcipmono_r_h;
-#line 310 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 310 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_12_DM = mono_d;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_12_mosaic = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_12_width = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_12_height = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_12_verbose = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_12_order = 0;
 #line 13384 "./SAFARI_PITSI.c"
 
@@ -13393,11 +13393,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaBlade_11, mctr1);
   rot_mul(mcrotaBlade_12, mctr1, mcrotrBlade_12);
   mctc1 = coords_set(
-#line 367 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 367 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     wafer_d,
-#line 367 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 367 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 367 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 367 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 13402 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaBlade_11, mctr1);
@@ -13413,45 +13413,45 @@ printf ("------------------\n\n");
     /* Component Blade_13. */
   /* Setting parameters for component Blade_13. */
   SIG_MESSAGE("Blade_13 (Init:SetPar)");
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_13_reflect, "NULL" ? "NULL" : "", 16384); else mccBlade_13_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccBlade_13_transmit, "NULL" ? "NULL" : "", 16384); else mccBlade_13_transmit[0]='\0';
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_13_zwidth = 0.22 / 51.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_13_yheight = 0.1395 / 9.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_13_gap = 0.0;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_13_NH = 51;
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_13_NV = 9;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_13_mosaich = mcipmono_mosh;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_13_mosaicv = mcipmono_mosv;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_13_r0 = 1.0;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_13_t0 = 1.0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_13_Q = 1.8734;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_13_RV = mcipmono_r_v;
-#line 309 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 309 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_13_RH = mcipmono_r_h;
-#line 310 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 310 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_13_DM = mono_d;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_13_mosaic = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_13_width = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_13_height = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_13_verbose = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccBlade_13_order = 0;
 #line 13456 "./SAFARI_PITSI.c"
 
@@ -13465,11 +13465,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaBlade_12, mctr1);
   rot_mul(mcrotaBlade_13, mctr1, mcrotrBlade_13);
   mctc1 = coords_set(
-#line 372 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 372 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     wafer_d,
-#line 372 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 372 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 372 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 372 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 13474 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaBlade_12, mctr1);
@@ -13485,25 +13485,25 @@ printf ("------------------\n\n");
     /* Component PSD_At_sec_shutter. */
   /* Setting parameters for component PSD_At_sec_shutter. */
   SIG_MESSAGE("PSD_At_sec_shutter (Init:SetPar)");
-#line 406 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 406 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_At_sec_shutter_nx = 100;
-#line 406 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 406 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_At_sec_shutter_ny = 100;
-#line 406 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 406 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("PSD_At_sec_shutter.out") strncpy(mccPSD_At_sec_shutter_filename, "PSD_At_sec_shutter.out" ? "PSD_At_sec_shutter.out" : "", 16384); else mccPSD_At_sec_shutter_filename[0]='\0';
-#line 408 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 408 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_At_sec_shutter_xmin = -0.1;
-#line 408 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 408 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_At_sec_shutter_xmax = 0.1;
-#line 408 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 408 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_At_sec_shutter_ymin = -0.1;
-#line 408 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 408 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_At_sec_shutter_ymax = 0.1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_At_sec_shutter_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_At_sec_shutter_yheight = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_At_sec_shutter_restore_neutron = 0;
 #line 13508 "./SAFARI_PITSI.c"
 
@@ -13517,11 +13517,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaBlade_13, mctr1);
   rot_mul(mcrotaPSD_At_sec_shutter, mctr1, mcrotrPSD_At_sec_shutter);
   mctc1 = coords_set(
-#line 410 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 410 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 410 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 410 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 410 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 410 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     chamber_col_start -0.1736);
 #line 13526 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaPrim_axes, mctr1);
@@ -13537,27 +13537,27 @@ printf ("------------------\n\n");
     /* Component LAM_At_sec_shutter. */
   /* Setting parameters for component LAM_At_sec_shutter. */
   SIG_MESSAGE("LAM_At_sec_shutter (Init:SetPar)");
-#line 414 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 414 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("LAM_At_sec_shutter.out") strncpy(mccLAM_At_sec_shutter_filename, "LAM_At_sec_shutter.out" ? "LAM_At_sec_shutter.out" : "", 16384); else mccLAM_At_sec_shutter_filename[0]='\0';
-#line 416 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 416 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_At_sec_shutter_xmin = -0.1;
-#line 416 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 416 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_At_sec_shutter_xmax = 0.1;
-#line 416 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 416 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_At_sec_shutter_ymin = -0.1;
-#line 416 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 416 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_At_sec_shutter_ymax = 0.1;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_At_sec_shutter_xwidth = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_At_sec_shutter_yheight = 0;
-#line 413 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 413 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_At_sec_shutter_Lmin = mcipsource_lam_min;
-#line 413 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 413 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_At_sec_shutter_Lmax = mcipsource_lam_max;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_At_sec_shutter_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccLAM_At_sec_shutter_nowritefile = 0;
 #line 13562 "./SAFARI_PITSI.c"
 
@@ -13571,11 +13571,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaPSD_At_sec_shutter, mctr1);
   rot_mul(mcrotaLAM_At_sec_shutter, mctr1, mcrotrLAM_At_sec_shutter);
   mctc1 = coords_set(
-#line 418 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 418 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 418 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 418 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 418 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 418 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 13580 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaPSD_At_sec_shutter, mctr1);
@@ -13591,19 +13591,19 @@ printf ("------------------\n\n");
     /* Component Inside_chamber_collimator. */
   /* Setting parameters for component Inside_chamber_collimator. */
   SIG_MESSAGE("Inside_chamber_collimator (Init:SetPar)");
-#line 421 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 421 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccInside_chamber_collimator_xmin = -0.021;
-#line 421 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 421 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccInside_chamber_collimator_xmax = 0.021;
-#line 421 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 421 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccInside_chamber_collimator_ymin = -0.0425;
-#line 421 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 421 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccInside_chamber_collimator_ymax = 0.0425;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccInside_chamber_collimator_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccInside_chamber_collimator_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccInside_chamber_collimator_yheight = 0;
 #line 13608 "./SAFARI_PITSI.c"
 
@@ -13617,11 +13617,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaLAM_At_sec_shutter, mctr1);
   rot_mul(mcrotaInside_chamber_collimator, mctr1, mcrotrInside_chamber_collimator);
   mctc1 = coords_set(
-#line 423 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 423 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 423 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 423 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 423 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 423 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     chamber_col_start);
 #line 13626 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaPrim_axes, mctr1);
@@ -13637,25 +13637,25 @@ printf ("------------------\n\n");
     /* Component PSD_After_inside_chamber_collimator. */
   /* Setting parameters for component PSD_After_inside_chamber_collimator. */
   SIG_MESSAGE("PSD_After_inside_chamber_collimator (Init:SetPar)");
-#line 426 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 426 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_inside_chamber_collimator_nx = 100;
-#line 426 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 426 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_inside_chamber_collimator_ny = 100;
-#line 426 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 426 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("PSD_After_inside_chamber_collimator.out") strncpy(mccPSD_After_inside_chamber_collimator_filename, "PSD_After_inside_chamber_collimator.out" ? "PSD_After_inside_chamber_collimator.out" : "", 16384); else mccPSD_After_inside_chamber_collimator_filename[0]='\0';
-#line 428 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 428 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_inside_chamber_collimator_xmin = -0.1;
-#line 428 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 428 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_inside_chamber_collimator_xmax = 0.1;
-#line 428 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 428 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_inside_chamber_collimator_ymin = -0.1;
-#line 428 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 428 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_inside_chamber_collimator_ymax = 0.1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_inside_chamber_collimator_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_inside_chamber_collimator_yheight = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_inside_chamber_collimator_restore_neutron = 0;
 #line 13660 "./SAFARI_PITSI.c"
 
@@ -13669,11 +13669,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaInside_chamber_collimator, mctr1);
   rot_mul(mcrotaPSD_After_inside_chamber_collimator, mctr1, mcrotrPSD_After_inside_chamber_collimator);
   mctc1 = coords_set(
-#line 430 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 430 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 430 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 430 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 430 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 430 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 13678 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaInside_chamber_collimator, mctr1);
@@ -13689,19 +13689,19 @@ printf ("------------------\n\n");
     /* Component Outside_chamber_collimator. */
   /* Setting parameters for component Outside_chamber_collimator. */
   SIG_MESSAGE("Outside_chamber_collimator (Init:SetPar)");
-#line 433 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 433 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccOutside_chamber_collimator_xmin = -1 * outside_chamber_collimator_w / 2.0;
-#line 433 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 433 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccOutside_chamber_collimator_xmax = outside_chamber_collimator_w / 2.0;
-#line 434 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 434 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccOutside_chamber_collimator_ymin = -1 * outside_chamber_collimator_h / 2.0;
-#line 434 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 434 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccOutside_chamber_collimator_ymax = outside_chamber_collimator_h / 2.0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccOutside_chamber_collimator_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccOutside_chamber_collimator_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccOutside_chamber_collimator_yheight = 0;
 #line 13706 "./SAFARI_PITSI.c"
 
@@ -13715,11 +13715,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaPSD_After_inside_chamber_collimator, mctr1);
   rot_mul(mcrotaOutside_chamber_collimator, mctr1, mcrotrOutside_chamber_collimator);
   mctc1 = coords_set(
-#line 436 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 436 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 436 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 436 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 436 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 436 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     chamber_col_length);
 #line 13724 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaInside_chamber_collimator, mctr1);
@@ -13735,25 +13735,25 @@ printf ("------------------\n\n");
     /* Component PSD_Outside_chamber_collimator_1. */
   /* Setting parameters for component PSD_Outside_chamber_collimator_1. */
   SIG_MESSAGE("PSD_Outside_chamber_collimator_1 (Init:SetPar)");
-#line 439 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 439 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Outside_chamber_collimator_1_nx = 100;
-#line 439 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 439 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Outside_chamber_collimator_1_ny = 100;
-#line 439 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 439 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("PSD_Outside_chamber_collimator_1.out") strncpy(mccPSD_Outside_chamber_collimator_1_filename, "PSD_Outside_chamber_collimator_1.out" ? "PSD_Outside_chamber_collimator_1.out" : "", 16384); else mccPSD_Outside_chamber_collimator_1_filename[0]='\0';
-#line 441 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 441 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Outside_chamber_collimator_1_xmin = -0.1;
-#line 441 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 441 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Outside_chamber_collimator_1_xmax = 0.1;
-#line 441 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 441 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Outside_chamber_collimator_1_ymin = -0.1;
-#line 441 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 441 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Outside_chamber_collimator_1_ymax = 0.1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Outside_chamber_collimator_1_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Outside_chamber_collimator_1_yheight = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Outside_chamber_collimator_1_restore_neutron = 0;
 #line 13758 "./SAFARI_PITSI.c"
 
@@ -13767,11 +13767,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaOutside_chamber_collimator, mctr1);
   rot_mul(mcrotaPSD_Outside_chamber_collimator_1, mctr1, mcrotrPSD_Outside_chamber_collimator_1);
   mctc1 = coords_set(
-#line 443 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 443 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 443 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 443 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 443 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 443 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 13776 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaOutside_chamber_collimator, mctr1);
@@ -13787,25 +13787,25 @@ printf ("------------------\n\n");
     /* Component PSD_Outside_chamber_collimator. */
   /* Setting parameters for component PSD_Outside_chamber_collimator. */
   SIG_MESSAGE("PSD_Outside_chamber_collimator (Init:SetPar)");
-#line 459 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 459 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Outside_chamber_collimator_nx = 100;
-#line 459 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 459 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Outside_chamber_collimator_ny = 100;
-#line 459 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 459 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("PSD_Outside_chamber_collimator.out") strncpy(mccPSD_Outside_chamber_collimator_filename, "PSD_Outside_chamber_collimator.out" ? "PSD_Outside_chamber_collimator.out" : "", 16384); else mccPSD_Outside_chamber_collimator_filename[0]='\0';
-#line 461 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 461 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Outside_chamber_collimator_xmin = -0.1;
-#line 461 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 461 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Outside_chamber_collimator_xmax = 0.1;
-#line 461 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 461 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Outside_chamber_collimator_ymin = -0.1;
-#line 461 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 461 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Outside_chamber_collimator_ymax = 0.1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Outside_chamber_collimator_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Outside_chamber_collimator_yheight = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Outside_chamber_collimator_restore_neutron = 0;
 #line 13810 "./SAFARI_PITSI.c"
 
@@ -13819,11 +13819,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaPSD_Outside_chamber_collimator_1, mctr1);
   rot_mul(mcrotaPSD_Outside_chamber_collimator, mctr1, mcrotrPSD_Outside_chamber_collimator);
   mctc1 = coords_set(
-#line 462 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 462 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 462 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 462 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 462 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 462 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     chamber_col_start + chamber_col_length);
 #line 13828 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaPrim_axes, mctr1);
@@ -13839,19 +13839,19 @@ printf ("------------------\n\n");
     /* Component Incident_slit_h. */
   /* Setting parameters for component Incident_slit_h. */
   SIG_MESSAGE("Incident_slit_h (Init:SetPar)");
-#line 468 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 468 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccIncident_slit_h_xmin = inc_slit_xmin_h;
-#line 468 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 468 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccIncident_slit_h_xmax = inc_slit_xmax_h;
-#line 468 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 468 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccIncident_slit_h_ymin = inc_slit_ymin;
-#line 468 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 468 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccIncident_slit_h_ymax = inc_slit_ymax;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccIncident_slit_h_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccIncident_slit_h_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccIncident_slit_h_yheight = 0;
 #line 13856 "./SAFARI_PITSI.c"
 
@@ -13865,11 +13865,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaPSD_Outside_chamber_collimator, mctr1);
   rot_mul(mcrotaIncident_slit_h, mctr1, mcrotrIncident_slit_h);
   mctc1 = coords_set(
-#line 469 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 469 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     mcipinc_slit_dx,
-#line 469 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 469 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 469 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 469 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     mcipmono_to_cor - mcipinc_slit_to_cor - mcipinc_slit_sep);
 #line 13874 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaPrim_axes, mctr1);
@@ -13885,19 +13885,19 @@ printf ("------------------\n\n");
     /* Component Incident_slit_w. */
   /* Setting parameters for component Incident_slit_w. */
   SIG_MESSAGE("Incident_slit_w (Init:SetPar)");
-#line 472 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 472 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccIncident_slit_w_xmin = inc_slit_xmin;
-#line 472 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 472 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccIncident_slit_w_xmax = inc_slit_xmax;
-#line 472 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 472 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccIncident_slit_w_ymin = inc_slit_ymin_w;
-#line 472 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 472 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccIncident_slit_w_ymax = inc_slit_ymax_w;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccIncident_slit_w_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccIncident_slit_w_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccIncident_slit_w_yheight = 0;
 #line 13902 "./SAFARI_PITSI.c"
 
@@ -13911,11 +13911,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaIncident_slit_h, mctr1);
   rot_mul(mcrotaIncident_slit_w, mctr1, mcrotrIncident_slit_w);
   mctc1 = coords_set(
-#line 473 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 473 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     mcipinc_slit_dx,
-#line 473 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 473 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 473 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 473 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     mcipmono_to_cor - mcipinc_slit_to_cor);
 #line 13920 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaPrim_axes, mctr1);
@@ -13931,25 +13931,25 @@ printf ("------------------\n\n");
     /* Component PSD_After_Incident_slit_w. */
   /* Setting parameters for component PSD_After_Incident_slit_w. */
   SIG_MESSAGE("PSD_After_Incident_slit_w (Init:SetPar)");
-#line 476 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 476 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_Incident_slit_w_nx = 100;
-#line 476 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 476 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_Incident_slit_w_ny = 100;
-#line 476 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 476 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("PSD_After_Incident_slit_w.out") strncpy(mccPSD_After_Incident_slit_w_filename, "PSD_After_Incident_slit_w.out" ? "PSD_After_Incident_slit_w.out" : "", 16384); else mccPSD_After_Incident_slit_w_filename[0]='\0';
-#line 478 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 478 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_Incident_slit_w_xmin = -0.1;
-#line 478 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 478 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_Incident_slit_w_xmax = 0.1;
-#line 478 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 478 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_Incident_slit_w_ymin = -0.1;
-#line 478 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 478 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_Incident_slit_w_ymax = 0.1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_Incident_slit_w_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_Incident_slit_w_yheight = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_After_Incident_slit_w_restore_neutron = 0;
 #line 13954 "./SAFARI_PITSI.c"
 
@@ -13963,11 +13963,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaIncident_slit_w, mctr1);
   rot_mul(mcrotaPSD_After_Incident_slit_w, mctr1, mcrotrPSD_After_Incident_slit_w);
   mctc1 = coords_set(
-#line 479 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 479 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 479 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 479 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 479 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 479 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 13972 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaIncident_slit_w, mctr1);
@@ -13994,11 +13994,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaPSD_After_Incident_slit_w, mctr1);
   rot_mul(mcrotaCenter_of_rotation, mctr1, mcrotrCenter_of_rotation);
   mctc1 = coords_set(
-#line 482 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 482 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 482 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 482 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 482 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 482 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     mcipmono_to_cor);
 #line 14003 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaPrim_axes, mctr1);
@@ -14017,22 +14017,22 @@ printf ("------------------\n\n");
 
   SIG_MESSAGE("Sample_rotation (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 490 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 490 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     (0)*DEG2RAD,
-#line 490 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 490 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     (mcipsample_dom)*DEG2RAD,
-#line 490 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 490 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     (0)*DEG2RAD);
 #line 14026 "./SAFARI_PITSI.c"
   rot_mul(mctr1, mcrotaCenter_of_rotation, mcrotaSample_rotation);
   rot_transpose(mcrotaCenter_of_rotation, mctr1);
   rot_mul(mcrotaSample_rotation, mctr1, mcrotrSample_rotation);
   mctc1 = coords_set(
-#line 489 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 489 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 489 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 489 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 489 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 489 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 14037 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaCenter_of_rotation, mctr1);
@@ -14059,11 +14059,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaSample_rotation, mctr1);
   rot_mul(mcrotaSample_location, mctr1, mcrotrSample_location);
   mctc1 = coords_set(
-#line 493 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 493 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     mcipsample_dx,
-#line 493 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 493 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     mcipsample_dy,
-#line 493 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 493 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     mcipsample_dz);
 #line 14068 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaSample_rotation, mctr1);
@@ -14079,25 +14079,25 @@ printf ("------------------\n\n");
     /* Component PSD_Center_of_rotation. */
   /* Setting parameters for component PSD_Center_of_rotation. */
   SIG_MESSAGE("PSD_Center_of_rotation (Init:SetPar)");
-#line 497 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 497 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Center_of_rotation_nx = 100;
-#line 497 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 497 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Center_of_rotation_ny = 100;
-#line 497 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 497 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("PSD_Center_of_rotation") strncpy(mccPSD_Center_of_rotation_filename, "PSD_Center_of_rotation" ? "PSD_Center_of_rotation" : "", 16384); else mccPSD_Center_of_rotation_filename[0]='\0';
-#line 499 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 499 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Center_of_rotation_xmin = -0.035;
-#line 499 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 499 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Center_of_rotation_xmax = 0.035;
-#line 499 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 499 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Center_of_rotation_ymin = -0.035;
-#line 499 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 499 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Center_of_rotation_ymax = 0.035;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Center_of_rotation_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Center_of_rotation_yheight = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Center_of_rotation_restore_neutron = 0;
 #line 14102 "./SAFARI_PITSI.c"
 
@@ -14111,11 +14111,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaSample_location, mctr1);
   rot_mul(mcrotaPSD_Center_of_rotation, mctr1, mcrotrPSD_Center_of_rotation);
   mctc1 = coords_set(
-#line 500 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 500 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 500 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 500 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 500 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 500 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 14120 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaCenter_of_rotation, mctr1);
@@ -14131,33 +14131,33 @@ printf ("------------------\n\n");
     /* Component DIV_Center_of_rotation. */
   /* Setting parameters for component DIV_Center_of_rotation. */
   SIG_MESSAGE("DIV_Center_of_rotation (Init:SetPar)");
-#line 503 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 503 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("DIV_Center_of_rotation") strncpy(mccDIV_Center_of_rotation_filename, "DIV_Center_of_rotation" ? "DIV_Center_of_rotation" : "", 16384); else mccDIV_Center_of_rotation_filename[0]='\0';
-#line 505 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 505 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccDIV_Center_of_rotation_xmin = -0.035;
-#line 505 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 505 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccDIV_Center_of_rotation_xmax = 0.035;
-#line 505 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 505 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccDIV_Center_of_rotation_ymin = -0.035;
-#line 505 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 505 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccDIV_Center_of_rotation_ymax = 0.035;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccDIV_Center_of_rotation_xwidth = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccDIV_Center_of_rotation_yheight = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccDIV_Center_of_rotation_maxdiv_h = 2;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccDIV_Center_of_rotation_maxdiv_v = 2;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccDIV_Center_of_rotation_restore_neutron = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccDIV_Center_of_rotation_nx = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccDIV_Center_of_rotation_ny = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccDIV_Center_of_rotation_nz = 1;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccDIV_Center_of_rotation_nowritefile = 0;
 #line 14162 "./SAFARI_PITSI.c"
 
@@ -14171,11 +14171,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaPSD_Center_of_rotation, mctr1);
   rot_mul(mcrotaDIV_Center_of_rotation, mctr1, mcrotrDIV_Center_of_rotation);
   mctc1 = coords_set(
-#line 506 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 506 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 506 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 506 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 506 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 506 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 14180 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaCenter_of_rotation, mctr1);
@@ -14191,59 +14191,59 @@ printf ("------------------\n\n");
     /* Component Sample. */
   /* Setting parameters for component Sample. */
   SIG_MESSAGE("Sample (Init:SetPar)");
-#line 518 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 518 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("Fe.laz") strncpy(mccSample_reflections, "Fe.laz" ? "Fe.laz" : "", 16384); else mccSample_reflections[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("NULL") strncpy(mccSample_geometry, "NULL" ? "NULL" : "", 16384); else mccSample_geometry[0]='\0';
-#line 518 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 518 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_radius = 0.006;
-#line 519 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 519 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_yheight = 0.05;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_xwidth = 0;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_zdepth = 0;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_thickness = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_pack = 1;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_Vc = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_sigma_abs = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_sigma_inc = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_delta_d_d = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_p_inc = 0.1;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_p_transmit = 0.1;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_DW = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_nb_atoms = 1;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_d_omega = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_d_phi = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_tth_sign = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_p_interact = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_concentric = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_density = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_weight = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_barns = 1;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_Strain = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_focus_flip = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccSample_target_index = 0;
 #line 14248 "./SAFARI_PITSI.c"
 
@@ -14257,11 +14257,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaDIV_Center_of_rotation, mctr1);
   rot_mul(mcrotaSample, mctr1, mcrotrSample);
   mctc1 = coords_set(
-#line 520 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 520 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 520 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 520 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 520 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 520 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 14266 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaSample_location, mctr1);
@@ -14280,22 +14280,22 @@ printf ("------------------\n\n");
 
   SIG_MESSAGE("Det_axis (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 549 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 549 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     (0)*DEG2RAD,
-#line 549 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 549 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     (mcipdet_takeoff)*DEG2RAD,
-#line 549 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 549 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     (0)*DEG2RAD);
 #line 14289 "./SAFARI_PITSI.c"
   rot_mul(mctr1, mcrotaCenter_of_rotation, mcrotaDet_axis);
   rot_transpose(mcrotaSample, mctr1);
   rot_mul(mcrotaDet_axis, mctr1, mcrotrDet_axis);
   mctc1 = coords_set(
-#line 548 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 548 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 548 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 548 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 548 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 548 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 14300 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaCenter_of_rotation, mctr1);
@@ -14314,22 +14314,22 @@ printf ("------------------\n\n");
 
   SIG_MESSAGE("Det_axis_2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 553 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 553 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     (0)*DEG2RAD,
-#line 553 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 553 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     (det_cover_angle)*DEG2RAD,
-#line 553 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 553 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     (0)*DEG2RAD);
 #line 14323 "./SAFARI_PITSI.c"
   rot_mul(mctr1, mcrotaDet_axis, mcrotaDet_axis_2);
   rot_transpose(mcrotaDet_axis, mctr1);
   rot_mul(mcrotaDet_axis_2, mctr1, mcrotrDet_axis_2);
   mctc1 = coords_set(
-#line 552 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 552 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 552 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 552 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 552 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 552 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 14334 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaDet_axis, mctr1);
@@ -14348,22 +14348,22 @@ printf ("------------------\n\n");
 
   SIG_MESSAGE("Det_axis_3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 557 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 557 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     (0)*DEG2RAD,
-#line 557 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 557 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     (det_cover_angle)*DEG2RAD,
-#line 557 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 557 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     (0)*DEG2RAD);
 #line 14357 "./SAFARI_PITSI.c"
   rot_mul(mctr1, mcrotaDet_axis_2, mcrotaDet_axis_3);
   rot_transpose(mcrotaDet_axis_2, mctr1);
   rot_mul(mcrotaDet_axis_3, mctr1, mcrotrDet_axis_3);
   mctc1 = coords_set(
-#line 556 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 556 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 556 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 556 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 556 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 556 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 14368 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaDet_axis_2, mctr1);
@@ -14382,22 +14382,22 @@ printf ("------------------\n\n");
 
   SIG_MESSAGE("Det_axis_4 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 561 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 561 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     (0)*DEG2RAD,
-#line 561 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 561 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     (det_cover_angle)*DEG2RAD,
-#line 561 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 561 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     (0)*DEG2RAD);
 #line 14391 "./SAFARI_PITSI.c"
   rot_mul(mctr1, mcrotaDet_axis_3, mcrotaDet_axis_4);
   rot_transpose(mcrotaDet_axis_3, mctr1);
   rot_mul(mcrotaDet_axis_4, mctr1, mcrotrDet_axis_4);
   mctc1 = coords_set(
-#line 560 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 560 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 560 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 560 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 560 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 560 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 14402 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaDet_axis_3, mctr1);
@@ -14413,31 +14413,31 @@ printf ("------------------\n\n");
     /* Component RadColl. */
   /* Setting parameters for component RadColl. */
   SIG_MESSAGE("RadColl (Init:SetPar)");
-#line 568 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 568 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccRadColl_xwidth = 0.006096;
-#line 568 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 568 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccRadColl_yheight = 0.147;
-#line 568 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 568 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccRadColl_length = 0.0863;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccRadColl_divergence = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccRadColl_transmission = 1;
-#line 568 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 568 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccRadColl_theta_min = -15.625;
-#line 568 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 568 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccRadColl_theta_max = 15.625 * 7;
-#line 568 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 568 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccRadColl_nchan = 35 * 4;
-#line 568 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 568 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccRadColl_radius = 0.20066;
-#line 568 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 568 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccRadColl_nslit = 35 * 4;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccRadColl_roc = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccRadColl_verbose = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccRadColl_approx = 0;
 #line 14442 "./SAFARI_PITSI.c"
 
@@ -14451,11 +14451,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaDet_axis_4, mctr1);
   rot_mul(mcrotaRadColl, mctr1, mcrotrRadColl);
   mctc1 = coords_set(
-#line 569 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 569 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 569 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 569 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 569 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 569 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0);
 #line 14460 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaDet_axis, mctr1);
@@ -14471,25 +14471,25 @@ printf ("------------------\n\n");
     /* Component PSD_Detector. */
   /* Setting parameters for component PSD_Detector. */
   SIG_MESSAGE("PSD_Detector (Init:SetPar)");
-#line 584 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 584 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_nx = 330;
-#line 584 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 584 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_ny = 15;
-#line 584 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 584 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("PSD_Detector") strncpy(mccPSD_Detector_filename, "PSD_Detector" ? "PSD_Detector" : "", 16384); else mccPSD_Detector_filename[0]='\0';
-#line 585 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 585 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_xmin = -1 * det_width / 2.0;
-#line 585 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 585 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_xmax = det_width / 2.0;
-#line 585 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 585 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_ymin = -1 * det_height / 2.0;
-#line 585 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 585 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_ymax = det_height / 2.0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_yheight = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_restore_neutron = 0;
 #line 14494 "./SAFARI_PITSI.c"
 
@@ -14503,11 +14503,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaRadColl, mctr1);
   rot_mul(mcrotaPSD_Detector, mctr1, mcrotrPSD_Detector);
   mctc1 = coords_set(
-#line 586 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 586 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 586 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 586 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 586 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 586 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     mcipcor_to_det);
 #line 14512 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaDet_axis, mctr1);
@@ -14523,25 +14523,25 @@ printf ("------------------\n\n");
     /* Component PSD_Detector_2. */
   /* Setting parameters for component PSD_Detector_2. */
   SIG_MESSAGE("PSD_Detector_2 (Init:SetPar)");
-#line 584 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 584 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_2_nx = 330;
-#line 584 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 584 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_2_ny = 15;
-#line 590 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 590 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("PSD_Detector_2") strncpy(mccPSD_Detector_2_filename, "PSD_Detector_2" ? "PSD_Detector_2" : "", 16384); else mccPSD_Detector_2_filename[0]='\0';
-#line 585 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 585 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_2_xmin = -1 * det_width / 2.0;
-#line 585 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 585 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_2_xmax = det_width / 2.0;
-#line 585 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 585 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_2_ymin = -1 * det_height / 2.0;
-#line 585 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 585 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_2_ymax = det_height / 2.0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_2_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_2_yheight = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_2_restore_neutron = 0;
 #line 14546 "./SAFARI_PITSI.c"
 
@@ -14555,11 +14555,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaPSD_Detector, mctr1);
   rot_mul(mcrotaPSD_Detector_2, mctr1, mcrotrPSD_Detector_2);
   mctc1 = coords_set(
-#line 591 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 591 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 591 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 591 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 591 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 591 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     mcipcor_to_det);
 #line 14564 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaDet_axis_2, mctr1);
@@ -14575,25 +14575,25 @@ printf ("------------------\n\n");
     /* Component PSD_Detector_3. */
   /* Setting parameters for component PSD_Detector_3. */
   SIG_MESSAGE("PSD_Detector_3 (Init:SetPar)");
-#line 584 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 584 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_3_nx = 330;
-#line 584 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 584 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_3_ny = 15;
-#line 595 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 595 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("PSD_Detector_3") strncpy(mccPSD_Detector_3_filename, "PSD_Detector_3" ? "PSD_Detector_3" : "", 16384); else mccPSD_Detector_3_filename[0]='\0';
-#line 585 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 585 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_3_xmin = -1 * det_width / 2.0;
-#line 585 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 585 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_3_xmax = det_width / 2.0;
-#line 585 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 585 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_3_ymin = -1 * det_height / 2.0;
-#line 585 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 585 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_3_ymax = det_height / 2.0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_3_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_3_yheight = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_3_restore_neutron = 0;
 #line 14598 "./SAFARI_PITSI.c"
 
@@ -14607,11 +14607,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaPSD_Detector_2, mctr1);
   rot_mul(mcrotaPSD_Detector_3, mctr1, mcrotrPSD_Detector_3);
   mctc1 = coords_set(
-#line 596 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 596 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 596 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 596 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 596 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 596 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     mcipcor_to_det);
 #line 14616 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaDet_axis_3, mctr1);
@@ -14627,25 +14627,25 @@ printf ("------------------\n\n");
     /* Component PSD_Detector_4. */
   /* Setting parameters for component PSD_Detector_4. */
   SIG_MESSAGE("PSD_Detector_4 (Init:SetPar)");
-#line 584 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 584 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_4_nx = 330;
-#line 584 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 584 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_4_ny = 15;
-#line 600 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 600 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   if("PSD_Detector_4") strncpy(mccPSD_Detector_4_filename, "PSD_Detector_4" ? "PSD_Detector_4" : "", 16384); else mccPSD_Detector_4_filename[0]='\0';
-#line 585 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 585 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_4_xmin = -1 * det_width / 2.0;
-#line 585 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 585 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_4_xmax = det_width / 2.0;
-#line 585 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 585 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_4_ymin = -1 * det_height / 2.0;
-#line 585 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 585 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_4_ymax = det_height / 2.0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_4_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_4_yheight = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
   mccPSD_Detector_4_restore_neutron = 0;
 #line 14650 "./SAFARI_PITSI.c"
 
@@ -14659,11 +14659,11 @@ printf ("------------------\n\n");
   rot_transpose(mcrotaPSD_Detector_3, mctr1);
   rot_mul(mcrotaPSD_Detector_4, mctr1, mcrotrPSD_Detector_4);
   mctc1 = coords_set(
-#line 601 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 601 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 601 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 601 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     0,
-#line 601 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 601 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     mcipcor_to_det);
 #line 14668 "./SAFARI_PITSI.c"
   rot_transpose(mcrotaDet_axis_4, mctr1);
@@ -28677,7 +28677,7 @@ int target_index = mccSample_target_index;
 #line 28608 "./SAFARI_PITSI.c"
 /* 'Sample=PowderN()' component instance extend code */
     SIG_MESSAGE("Sample (Trace:Extend)");
-#line 523 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
+#line 523 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr"
     if (!SCATTERED) ABSORB;
 #line 28613 "./SAFARI_PITSI.c"
 }   /* End of Sample=PowderN() SETTING parameter declarations. */

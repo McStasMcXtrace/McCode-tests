@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr (Test_StatisticalChopper)
- * Date:       Wed Nov 20 00:53:03 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr (Test_StatisticalChopper)
+ * Date:       Tue Feb 25 21:07:47 2020
  * File:       ./Test_StatisticalChopper.c
  * Compile:    cc -o Test_StatisticalChopper.out ./Test_StatisticalChopper.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Test_StatisticalChopper";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -12187,13 +12187,13 @@ void mcinit(void) {
     /* Component base. */
   /* Setting parameters for component base. */
   SIG_MESSAGE("base (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("NULL") strncpy(mccbase_profile, "NULL" ? "NULL" : "", 16384); else mccbase_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccbase_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccbase_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccbase_minutes = 0;
 #line 12198 "./Test_StatisticalChopper.c"
 
@@ -12205,11 +12205,11 @@ void mcinit(void) {
 #line 12205 "./Test_StatisticalChopper.c"
   rot_copy(mcrotrbase, mcrotabase);
   mcposabase = coords_set(
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
     0,
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
     0,
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
     0);
 #line 12214 "./Test_StatisticalChopper.c"
   mctc1 = coords_neg(mcposabase);
@@ -12222,31 +12222,31 @@ void mcinit(void) {
     /* Component source1. */
   /* Setting parameters for component source1. */
   SIG_MESSAGE("source1 (Init:SetPar)");
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccsource1_radius = 0.1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccsource1_yheight = 0.026;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccsource1_xwidth = 0.026;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccsource1_dist = 1.2;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccsource1_focus_xw = 0.005;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccsource1_focus_yh = 0.05;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccsource1_E0 = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccsource1_dE = 0;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccsource1_lambda0 = mciplambda;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccsource1_dlambda = 0.00001;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccsource1_flux = 1;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccsource1_gauss = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccsource1_target_index = + 1;
 #line 12251 "./Test_StatisticalChopper.c"
 
@@ -12260,11 +12260,11 @@ void mcinit(void) {
   rot_transpose(mcrotabase, mctr1);
   rot_mul(mcrotasource1, mctr1, mcrotrsource1);
   mctc1 = coords_set(
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
     0,
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
     0,
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
     .001);
 #line 12269 "./Test_StatisticalChopper.c"
   rot_transpose(mcrotabase, mctr1);
@@ -12280,47 +12280,47 @@ void mcinit(void) {
     /* Component before_stat_chop. */
   /* Setting parameters for component before_stat_chop. */
   SIG_MESSAGE("before_stat_chop (Init:SetPar)");
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccbefore_stat_chop_xwidth = 0.11;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccbefore_stat_chop_yheight = 0.11;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccbefore_stat_chop_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccbefore_stat_chop_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccbefore_stat_chop_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccbefore_stat_chop_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccbefore_stat_chop_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccbefore_stat_chop_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccbefore_stat_chop_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccbefore_stat_chop_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccbefore_stat_chop_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccbefore_stat_chop_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccbefore_stat_chop_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccbefore_stat_chop_radius = 0;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("auto time bins=1000") strncpy(mccbefore_stat_chop_options, "auto time bins=1000" ? "auto time bins=1000" : "", 16384); else mccbefore_stat_chop_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("NULL") strncpy(mccbefore_stat_chop_filename, "NULL" ? "NULL" : "", 16384); else mccbefore_stat_chop_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("NULL") strncpy(mccbefore_stat_chop_geometry, "NULL" ? "NULL" : "", 16384); else mccbefore_stat_chop_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("NULL") strncpy(mccbefore_stat_chop_username1, "NULL" ? "NULL" : "", 16384); else mccbefore_stat_chop_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("NULL") strncpy(mccbefore_stat_chop_username2, "NULL" ? "NULL" : "", 16384); else mccbefore_stat_chop_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("NULL") strncpy(mccbefore_stat_chop_username3, "NULL" ? "NULL" : "", 16384); else mccbefore_stat_chop_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccbefore_stat_chop_nowritefile = 0;
 #line 12325 "./Test_StatisticalChopper.c"
 
@@ -12334,11 +12334,11 @@ void mcinit(void) {
   rot_transpose(mcrotasource1, mctr1);
   rot_mul(mcrotabefore_stat_chop, mctr1, mcrotrbefore_stat_chop);
   mctc1 = coords_set(
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
     0,
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
     0,
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
     0);
 #line 12343 "./Test_StatisticalChopper.c"
   rot_transpose(mcrotasource1, mctr1);
@@ -12354,27 +12354,27 @@ void mcinit(void) {
     /* Component chop1. */
   /* Setting parameters for component chop1. */
   SIG_MESSAGE("chop1 (Init:SetPar)");
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccchop1_radius = 0.5;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccchop1_yheight = 0;
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccchop1_nu = 1487.0 * 60 / 255;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccchop1_jitter = 0;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccchop1_delay = 0;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccchop1_isfirst = 0;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccchop1_abs_out = 1;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccchop1_phase = 0;
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccchop1_verbose = 1;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccchop1_n_pulse = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("NULL") strncpy(mccchop1_sequence, "NULL" ? "NULL" : "", 16384); else mccchop1_sequence[0]='\0';
 #line 12379 "./Test_StatisticalChopper.c"
 
@@ -12388,11 +12388,11 @@ void mcinit(void) {
   rot_transpose(mcrotabefore_stat_chop, mctr1);
   rot_mul(mcrotachop1, mctr1, mcrotrchop1);
   mctc1 = coords_set(
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
     0,
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
     0,
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
     1);
 #line 12397 "./Test_StatisticalChopper.c"
   rot_transpose(mcrotabefore_stat_chop, mctr1);
@@ -12408,47 +12408,47 @@ void mcinit(void) {
     /* Component after_stat_chop. */
   /* Setting parameters for component after_stat_chop. */
   SIG_MESSAGE("after_stat_chop (Init:SetPar)");
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccafter_stat_chop_xwidth = 0.11;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccafter_stat_chop_yheight = 0.11;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccafter_stat_chop_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccafter_stat_chop_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccafter_stat_chop_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccafter_stat_chop_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccafter_stat_chop_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccafter_stat_chop_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccafter_stat_chop_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccafter_stat_chop_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccafter_stat_chop_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccafter_stat_chop_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccafter_stat_chop_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccafter_stat_chop_radius = 0;
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("auto time bins=1001") strncpy(mccafter_stat_chop_options, "auto time bins=1001" ? "auto time bins=1001" : "", 16384); else mccafter_stat_chop_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("NULL") strncpy(mccafter_stat_chop_filename, "NULL" ? "NULL" : "", 16384); else mccafter_stat_chop_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("NULL") strncpy(mccafter_stat_chop_geometry, "NULL" ? "NULL" : "", 16384); else mccafter_stat_chop_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("NULL") strncpy(mccafter_stat_chop_username1, "NULL" ? "NULL" : "", 16384); else mccafter_stat_chop_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("NULL") strncpy(mccafter_stat_chop_username2, "NULL" ? "NULL" : "", 16384); else mccafter_stat_chop_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("NULL") strncpy(mccafter_stat_chop_username3, "NULL" ? "NULL" : "", 16384); else mccafter_stat_chop_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccafter_stat_chop_nowritefile = 0;
 #line 12453 "./Test_StatisticalChopper.c"
 
@@ -12462,11 +12462,11 @@ void mcinit(void) {
   rot_transpose(mcrotachop1, mctr1);
   rot_mul(mcrotaafter_stat_chop, mctr1, mcrotrafter_stat_chop);
   mctc1 = coords_set(
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
     0,
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
     0,
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
     0.01);
 #line 12471 "./Test_StatisticalChopper.c"
   rot_transpose(mcrotachop1, mctr1);
@@ -12482,61 +12482,61 @@ void mcinit(void) {
     /* Component Sample. */
   /* Setting parameters for component Sample. */
   SIG_MESSAGE("Sample (Init:SetPar)");
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("Na2Ca3Al2F14.laz") strncpy(mccSample_Sqw_coh, "Na2Ca3Al2F14.laz" ? "Na2Ca3Al2F14.laz" : "", 16384); else mccSample_Sqw_coh[0]='\0';
-#line 270 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 270 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if(0) strncpy(mccSample_Sqw_inc, 0 ? 0 : "", 16384); else mccSample_Sqw_inc[0]='\0';
-#line 270 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 270 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if(0) strncpy(mccSample_geometry, 0 ? 0 : "", 16384); else mccSample_geometry[0]='\0';
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccSample_radius = 0;
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccSample_thickness = 0;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccSample_xwidth = .005;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccSample_yheight = .05;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccSample_zdepth = 2e-3;
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccSample_threshold = 1e-20;
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccSample_order = 0;
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccSample_T = 0;
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccSample_verbose = 1;
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccSample_d_phi = atan2 ( 0.1 , 2 ) * RAD2DEG;
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccSample_concentric = 0;
-#line 274 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 274 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccSample_rho = 0;
-#line 274 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 274 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccSample_sigma_abs = 0;
-#line 274 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 274 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccSample_sigma_coh = 0;
-#line 274 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 274 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccSample_sigma_inc = 0;
-#line 274 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 274 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccSample_classical = -1;
-#line 275 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 275 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccSample_powder_Dd = 0;
-#line 275 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 275 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccSample_powder_DW = 0;
-#line 275 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 275 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccSample_powder_Vc = 0;
-#line 275 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 275 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccSample_density = 0;
-#line 275 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 275 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccSample_weight = 0;
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccSample_p_interact = 0.99;
-#line 276 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 276 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccSample_norm = -1;
-#line 276 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 276 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccSample_powder_barns = 1;
-#line 276 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 276 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("Frommhold") strncpy(mccSample_quantum_correction, "Frommhold" ? "Frommhold" : "", 16384); else mccSample_quantum_correction[0]='\0';
 #line 12541 "./Test_StatisticalChopper.c"
 
@@ -12550,11 +12550,11 @@ void mcinit(void) {
   rot_transpose(mcrotaafter_stat_chop, mctr1);
   rot_mul(mcrotaSample, mctr1, mcrotrSample);
   mctc1 = coords_set(
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
     0,
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
     0,
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
     .2);
 #line 12559 "./Test_StatisticalChopper.c"
   rot_transpose(mcrotaafter_stat_chop, mctr1);
@@ -12570,51 +12570,51 @@ void mcinit(void) {
     /* Component ChopMon2. */
   /* Setting parameters for component ChopMon2. */
   SIG_MESSAGE("ChopMon2 (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccChopMon2_xwidth = 0;
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccChopMon2_yheight = 0.11;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccChopMon2_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccChopMon2_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccChopMon2_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccChopMon2_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccChopMon2_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccChopMon2_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccChopMon2_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccChopMon2_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccChopMon2_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccChopMon2_max = 1e40;
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccChopMon2_restore_neutron = 1;
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccChopMon2_radius = 2;
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("banana auto time bins=500, y bins=100") strncpy(mccChopMon2_options, "banana auto time bins=500, y bins=100" ? "banana auto time bins=500, y bins=100" : "", 16384); else mccChopMon2_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("NULL") strncpy(mccChopMon2_filename, "NULL" ? "NULL" : "", 16384); else mccChopMon2_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("NULL") strncpy(mccChopMon2_geometry, "NULL" ? "NULL" : "", 16384); else mccChopMon2_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("NULL") strncpy(mccChopMon2_username1, "NULL" ? "NULL" : "", 16384); else mccChopMon2_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("NULL") strncpy(mccChopMon2_username2, "NULL" ? "NULL" : "", 16384); else mccChopMon2_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("NULL") strncpy(mccChopMon2_username3, "NULL" ? "NULL" : "", 16384); else mccChopMon2_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccChopMon2_nowritefile = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccChopMon2_tmin = 0.0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mccChopMon2_tmax = 0.0;
 #line 12619 "./Test_StatisticalChopper.c"
 
@@ -12628,11 +12628,11 @@ void mcinit(void) {
   rot_transpose(mcrotaSample, mctr1);
   rot_mul(mcrotaChopMon2, mctr1, mcrotrChopMon2);
   mctc1 = coords_set(
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
     0,
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
     0,
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
     0);
 #line 12637 "./Test_StatisticalChopper.c"
   rot_transpose(mcrotaSample, mctr1);
@@ -12648,47 +12648,47 @@ void mcinit(void) {
     /* Component time_mon2. */
   /* Setting parameters for component time_mon2. */
   SIG_MESSAGE("time_mon2 (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mcctime_mon2_xwidth = 0;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mcctime_mon2_yheight = 0.11;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mcctime_mon2_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mcctime_mon2_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mcctime_mon2_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mcctime_mon2_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mcctime_mon2_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mcctime_mon2_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mcctime_mon2_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mcctime_mon2_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mcctime_mon2_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mcctime_mon2_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mcctime_mon2_restore_neutron = 0;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mcctime_mon2_radius = 2.1;
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("banana, auto time,bins=1002") strncpy(mcctime_mon2_options, "banana, auto time,bins=1002" ? "banana, auto time,bins=1002" : "", 16384); else mcctime_mon2_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("NULL") strncpy(mcctime_mon2_filename, "NULL" ? "NULL" : "", 16384); else mcctime_mon2_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("NULL") strncpy(mcctime_mon2_geometry, "NULL" ? "NULL" : "", 16384); else mcctime_mon2_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("NULL") strncpy(mcctime_mon2_username1, "NULL" ? "NULL" : "", 16384); else mcctime_mon2_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("NULL") strncpy(mcctime_mon2_username2, "NULL" ? "NULL" : "", 16384); else mcctime_mon2_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if("NULL") strncpy(mcctime_mon2_username3, "NULL" ? "NULL" : "", 16384); else mcctime_mon2_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   mcctime_mon2_nowritefile = 0;
 #line 12693 "./Test_StatisticalChopper.c"
 
@@ -12702,11 +12702,11 @@ void mcinit(void) {
   rot_transpose(mcrotaChopMon2, mctr1);
   rot_mul(mcrotatime_mon2, mctr1, mcrotrtime_mon2);
   mctc1 = coords_set(
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
     0,
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
     0,
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
     0);
 #line 12711 "./Test_StatisticalChopper.c"
   rot_transpose(mcrotaChopMon2, mctr1);
@@ -14211,7 +14211,7 @@ int target_index = mccsource1_target_index;
 #line 14211 "./Test_StatisticalChopper.c"
 /* 'source1=Source_simple()' component instance extend code */
     SIG_MESSAGE("source1 (Trace:Extend)");
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   t=randpm1()*255/60/1487;
 #line 14216 "./Test_StatisticalChopper.c"
 }   /* End of source1=Source_simple() SETTING parameter declarations. */
@@ -15680,7 +15680,7 @@ if (SCATTERED) {
 #line 15680 "./Test_StatisticalChopper.c"
 /* 'Sample=Isotropic_Sqw()' component instance extend code */
     SIG_MESSAGE("Sample (Trace:Extend)");
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr"
   if (!SCATTERED) ABSORB;
 #line 15685 "./Test_StatisticalChopper.c"
 }   /* End of Sample=Isotropic_Sqw() SETTING parameter declarations. */

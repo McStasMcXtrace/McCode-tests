@@ -1,10 +1,10 @@
 McStas simulation description file for Test_pol_tabled.
-Date:    Wed Nov 20 01:18:52 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 22:00:54 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: Test_pol_tabled
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr
   Parameters:  MF(string)
   Trace_enabled: yes
   Default_main: yes
@@ -14,43 +14,43 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574210123
+  Seed: 1582691066
   Directory: 1
   Nodes: 10
   Param: MF=flipfield.dat
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_0d
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: pol_0
   position: 0 0 2
   title: Polarisation monitor m=(0 1 0) pol_0
   Ncount: 10000000
-  statistics: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
-  signal: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
-  values: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ
+  statistics: None
+  signal: None
+  values: 10 1e-06 1e+07
   xylimits: 0 0 0 0 0 0
   variables: I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_2d(20, 21)
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: polx_0
   position: 0 0 1
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: polx_0.dat
-  statistics: X0=4.9999; dX=2.87805; Y0=0; dY=0;
-  signal: Min=0; Max=0.00252125; Mean=0.000119423;
+  statistics: X0=4.99823; dX=2.8788; Y0=0; dY=0;
+  signal: Min=0; Max=0.00251887; Mean=0.000119423;
   values: 0.0501575 1.58612e-05 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -63,16 +63,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_2d(20, 21)
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: poly_0
   position: 0 0 1
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: poly_0.dat
-  statistics: X0=4.9999; dX=2.87805; Y0=0.952381; dY=0;
-  signal: Min=0; Max=0.00252125; Mean=0.000119423;
+  statistics: X0=4.99823; dX=2.8788; Y0=0.952381; dY=0;
+  signal: Min=0; Max=0.00251887; Mean=0.000119423;
   values: 0.0501575 1.58612e-05 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -85,16 +85,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_2d(20, 21)
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: polz_0
   position: 0 0 1
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: polz_0.dat
-  statistics: X0=4.9999; dX=2.87805; Y0=0; dY=0;
-  signal: Min=0; Max=0.00252125; Mean=0.000119423;
+  statistics: X0=4.99823; dX=2.8788; Y0=0; dY=0;
+  signal: Min=0; Max=0.00251887; Mean=0.000119423;
   values: 0.0501575 1.58612e-05 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -107,16 +107,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_1d(20)
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: lmon_0
   position: 0 0 1
   title: Wavelength monitor
   Ncount: 10000000
   filename: lmon_0.dat
-  statistics: X0=4.9999; dX=2.87805;
-  signal: Min=0.00245785; Max=0.00252125; Mean=0.00250787;
+  statistics: X0=4.99823; dX=2.8788;
+  signal: Min=0.0024623; Max=0.00251887; Mean=0.00250787;
   values: 0.0501575 1.58612e-05 1e+07
   xvar: L
   yvar: (I,I_err)
@@ -127,16 +127,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_2d(20, 21)
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: polx_1
   position: 0 0 1
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: polx_1.dat
-  statistics: X0=4.9999; dX=2.87805; Y0=0; dY=0;
-  signal: Min=0; Max=0.00252125; Mean=0.000119423;
+  statistics: X0=4.99823; dX=2.8788; Y0=0; dY=0;
+  signal: Min=0; Max=0.00251887; Mean=0.000119423;
   values: 0.0501575 1.58612e-05 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -149,16 +149,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_2d(20, 21)
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: poly_1
   position: 0 0 1
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: poly_1.dat
-  statistics: X0=4.9999; dX=2.87805; Y0=0.952381; dY=0;
-  signal: Min=0; Max=0.00252125; Mean=0.000119423;
+  statistics: X0=4.99823; dX=2.8788; Y0=0.952381; dY=0;
+  signal: Min=0; Max=0.00251887; Mean=0.000119423;
   values: 0.0501575 1.58612e-05 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -171,16 +171,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_2d(20, 21)
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: polz_1
   position: 0 0 1
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: polz_1.dat
-  statistics: X0=4.9999; dX=2.87805; Y0=0; dY=0;
-  signal: Min=0; Max=0.00252125; Mean=0.000119423;
+  statistics: X0=4.99823; dX=2.8788; Y0=0; dY=0;
+  signal: Min=0; Max=0.00251887; Mean=0.000119423;
   values: 0.0501575 1.58612e-05 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -193,16 +193,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_2d(20, 21)
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: polx_2
   position: 0 0 1.25
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: polx_2.dat
-  statistics: X0=4.9999; dX=2.87805; Y0=0.516296; dY=0.272609;
-  signal: Min=0; Max=0.00252125; Mean=0.000119423;
+  statistics: X0=4.99823; dX=2.8788; Y0=0.516129; dY=0.2727;
+  signal: Min=0; Max=0.00251887; Mean=0.000119423;
   values: 0.0501575 1.58612e-05 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -215,16 +215,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_2d(20, 21)
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: poly_2
   position: 0 0 1.25
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: poly_2.dat
-  statistics: X0=4.9999; dX=2.87805; Y0=0.78368; dY=0.175226;
-  signal: Min=0; Max=0.00252125; Mean=0.000119423;
+  statistics: X0=4.99823; dX=2.8788; Y0=0.783749; dY=0.175254;
+  signal: Min=0; Max=0.00251887; Mean=0.000119423;
   values: 0.0501575 1.58612e-05 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -237,16 +237,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_2d(20, 21)
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: polz_2
   position: 0 0 1.25
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: polz_2.dat
-  statistics: X0=4.9999; dX=2.87805; Y0=0; dY=0;
-  signal: Min=0; Max=0.00252125; Mean=0.000119423;
+  statistics: X0=4.99823; dX=2.8788; Y0=0; dY=0;
+  signal: Min=0; Max=0.00251887; Mean=0.000119423;
   values: 0.0501575 1.58612e-05 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -259,16 +259,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_2d(20, 21)
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: polx_3
   position: 0 0 1.5
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: polx_3.dat
-  statistics: X0=4.9999; dX=2.87805; Y0=0.71748; dY=0.281555;
-  signal: Min=0; Max=0.00251697; Mean=0.000119423;
+  statistics: X0=4.99823; dX=2.8788; Y0=0.71728; dY=0.281651;
+  signal: Min=0; Max=0.00251724; Mean=0.000119423;
   values: 0.0501575 1.58612e-05 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -281,16 +281,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_2d(20, 21)
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: poly_3
   position: 0 0 1.5
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: poly_3.dat
-  statistics: X0=4.9999; dX=2.87805; Y0=0.314107; dY=0.535573;
-  signal: Min=0; Max=0.00252125; Mean=0.000119423;
+  statistics: X0=4.99823; dX=2.8788; Y0=0.314359; dY=0.535657;
+  signal: Min=0; Max=0.00251858; Mean=0.000119423;
   values: 0.0501575 1.58612e-05 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -303,16 +303,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_2d(20, 21)
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: polz_3
   position: 0 0 1.5
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: polz_3.dat
-  statistics: X0=4.9999; dX=2.87805; Y0=0; dY=0;
-  signal: Min=0; Max=0.00252125; Mean=0.000119423;
+  statistics: X0=4.99823; dX=2.8788; Y0=0; dY=0;
+  signal: Min=0; Max=0.00251887; Mean=0.000119423;
   values: 0.0501575 1.58612e-05 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -325,16 +325,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_2d(20, 21)
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: polx_4
   position: 0 0 1.75
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: polx_4.dat
-  statistics: X0=4.9999; dX=2.87805; Y0=0.51605; dY=0.272642;
-  signal: Min=0; Max=0.00252125; Mean=0.000119423;
+  statistics: X0=4.99823; dX=2.8788; Y0=0.51588; dY=0.272729;
+  signal: Min=0; Max=0.00251887; Mean=0.000119423;
   values: 0.0501575 1.58612e-05 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -347,16 +347,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_2d(20, 21)
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: poly_4
   position: 0 0 1.75
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: poly_4.dat
-  statistics: X0=4.9999; dX=2.87805; Y0=0.783846; dY=0.1751;
-  signal: Min=0; Max=0.00252125; Mean=0.000119423;
+  statistics: X0=4.99823; dX=2.8788; Y0=0.783916; dY=0.175127;
+  signal: Min=0; Max=0.00251887; Mean=0.000119423;
   values: 0.0501575 1.58612e-05 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -369,16 +369,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_2d(20, 21)
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: polz_4
   position: 0 0 1.75
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: polz_4.dat
-  statistics: X0=4.9999; dX=2.87805; Y0=0; dY=0;
-  signal: Min=0; Max=0.00252125; Mean=0.000119423;
+  statistics: X0=4.99823; dX=2.8788; Y0=0; dY=0;
+  signal: Min=0; Max=0.00251887; Mean=0.000119423;
   values: 0.0501575 1.58612e-05 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -391,16 +391,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_2d(20, 21)
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: polx_5
   position: 0 0 2
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: polx_5.dat
-  statistics: X0=4.9999; dX=2.87805; Y0=0; dY=0;
-  signal: Min=0; Max=0.00252125; Mean=0.000119423;
+  statistics: X0=4.99823; dX=2.8788; Y0=0; dY=0;
+  signal: Min=0; Max=0.00251887; Mean=0.000119423;
   values: 0.0501575 1.58612e-05 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -413,16 +413,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_2d(20, 21)
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: poly_5
   position: 0 0 2
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: poly_5.dat
-  statistics: X0=4.9999; dX=2.87805; Y0=0.952381; dY=0;
-  signal: Min=0; Max=0.00252125; Mean=0.000119423;
+  statistics: X0=4.99823; dX=2.8788; Y0=0.952381; dY=0;
+  signal: Min=0; Max=0.00251887; Mean=0.000119423;
   values: 0.0501575 1.58612e-05 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -435,16 +435,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_2d(20, 21)
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: polz_5
   position: 0 0 2
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: polz_5.dat
-  statistics: X0=4.9999; dX=2.87805; Y0=0; dY=0;
-  signal: Min=0; Max=0.00252125; Mean=0.000119423;
+  statistics: X0=4.99823; dX=2.8788; Y0=0; dY=0;
+  signal: Min=0; Max=0.00251887; Mean=0.000119423;
   values: 0.0501575 1.58612e-05 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -457,16 +457,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_2d(20, 21)
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: polx_6
   position: 0 0 2.5
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: polx_6.dat
-  statistics: X0=4.9999; dX=2.87805; Y0=0; dY=0;
-  signal: Min=0; Max=0.00252125; Mean=0.000119423;
+  statistics: X0=4.99823; dX=2.8788; Y0=0; dY=0;
+  signal: Min=0; Max=0.00251887; Mean=0.000119423;
   values: 0.0501575 1.58612e-05 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -479,16 +479,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_2d(20, 21)
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: poly_6
   position: 0 0 2.5
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: poly_6.dat
-  statistics: X0=4.9999; dX=2.87805; Y0=0.952381; dY=0;
-  signal: Min=0; Max=0.00252125; Mean=0.000119423;
+  statistics: X0=4.99823; dX=2.8788; Y0=0.952381; dY=0;
+  signal: Min=0; Max=0.00251887; Mean=0.000119423;
   values: 0.0501575 1.58612e-05 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -501,16 +501,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_2d(20, 21)
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: polz_6
   position: 0 0 2.5
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: polz_6.dat
-  statistics: X0=4.9999; dX=2.87805; Y0=0; dY=0;
-  signal: Min=0; Max=0.00252125; Mean=0.000119423;
+  statistics: X0=4.99823; dX=2.8788; Y0=0; dY=0;
+  signal: Min=0; Max=0.00251887; Mean=0.000119423;
   values: 0.0501575 1.58612e-05 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -523,31 +523,31 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_0d
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: pol_6
   position: 0 0 2.5
   title: Polarisation monitor m=(0 1 0) pol_6
   Ncount: 10000000
-  statistics: 8; dY=0.281555;
-  signal: 0119423;
-  values: 
+  statistics: None
+  signal: None
+  values: 10 1e-06 1e+07
   xylimits: 0 0 0 0 0 0
   variables: I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:24:52 2019 (1574209492)
+  Date: Tue Feb 25 22:16:23 2020 (1582665383)
   type: array_1d(20)
-  Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+  Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
   component: lmon_6
   position: 0 0 2.5
   title: Wavelength monitor
   Ncount: 10000000
   filename: lmon_6.dat
-  statistics: X0=4.9999; dX=2.87805;
-  signal: Min=0.00245785; Max=0.00252125; Mean=0.00250787;
+  statistics: X0=4.99823; dX=2.8788;
+  signal: Min=0.0024623; Max=0.00251887; Mean=0.00250787;
   values: 0.0501575 1.58612e-05 1e+07
   xvar: L
   yvar: (I,I_err)

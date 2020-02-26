@@ -1,10 +1,10 @@
 McStas simulation description file for TAS1_C1_Tilt.
-Date:    Tue Dec  3 18:16:53 2019
-Program: McStas 2.5 - Dec. 03, 2019
+Date:    Tue Feb 25 22:18:02 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: TAS1_C1_Tilt
   File: 1/mccode
-  Source: /zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-2/linup-2.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/linup-2/linup-2.instr
   Parameters:  PHM(double) TTM(double) C1(double) OMC1(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Dec. 03, 2019
-  Instrument: /zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-2/linup-2.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/linup-2/linup-2.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1575407316
+  Seed: 1582693489
   Directory: 1
   Nodes: 10
   Param: PHM=-37.077
@@ -29,17 +29,17 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Tue Dec  3 18:16:54 2019 (1575393414)
+  Date: Tue Feb 25 22:18:05 2020 (1582665485)
   type: array_1d(35)
-  Source: TAS1_C1_Tilt (/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-2/linup-2.instr)
+  Source: TAS1_C1_Tilt (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/linup-2/linup-2.instr)
   component: emon1
   position: -1.44189 0 3.97346
   title: Energy monitor
   Ncount: 10000000
   filename: linup_2.emon
-  statistics: X0=20.1483; dX=0.167742;
-  signal: Min=0; Max=7.7361e-05; Mean=2.49851e-05;
-  values: 0.000874479 1.90637e-06 259423
+  statistics: X0=20.1478; dX=0.167485;
+  signal: Min=0; Max=7.81252e-05; Mean=2.50481e-05;
+  values: 0.000876684 1.90987e-06 259764
   xvar: E
   yvar: (I,I_err)
   xlabel: Energy [meV]
@@ -49,16 +49,16 @@ begin data
 end data
 
 begin data
-  Date: Tue Dec  3 18:16:54 2019 (1575393414)
+  Date: Tue Feb 25 22:18:05 2020 (1582665485)
   type: array_0d
-  Source: TAS1_C1_Tilt (/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-2/linup-2.instr)
+  Source: TAS1_C1_Tilt (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/linup-2/linup-2.instr)
   component: sng
   position: -1.5236 0 3.99689
   title: Single monitor sng
   Ncount: 10000000
   statistics: None
   signal: None
-  values: 0.000404565 1.29187e-06 120800
+  values: 0.000406661 1.2963e-06 121238
   xylimits: 0 0 0 0 0 0
   variables: I I_err N
 end data

@@ -2,64 +2,82 @@ INFO: Using directory: "1"
 INFO: Using existing c-file: ./ILL_H22_D1B.c
 INFO: Using existing binary: ./ILL_H22_D1B.out
 INFO: ===
-INFO: Using system default number of mpirun -np processes
-[1574208144.343499] [n-62-23-6:21341:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3149.66
-[1574208144.344105] [n-62-23-6:21342:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3134.96
-[1574208144.345323] [n-62-23-6:21341:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208144.345339] [n-62-23-6:21341:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208144.345616] [n-62-23-6:21342:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208144.345632] [n-62-23-6:21342:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-23-14:14184] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:14184] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:14184] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582662192.125234] [n-62-23-14:14190:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3257.84
+[1582662192.129177] [n-62-23-14:14190:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662192.129196] [n-62-23-14:14190:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 --------------------------------------------------------------------------
 Initialization of MXM library failed.
 
   Error: Input/output error
 
 --------------------------------------------------------------------------
-[1574208144.347244] [n-62-23-6:21341:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208144.347259] [n-62-23-6:21341:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208144.347487] [n-62-23-6:21342:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208144.347501] [n-62-23-6:21342:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208144.351548] [n-62-23-6:21343:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3115.82
-[1574208144.353021] [n-62-23-6:21343:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208144.353038] [n-62-23-6:21343:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208144.354806] [n-62-23-6:21343:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208144.354820] [n-62-23-6:21343:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208144.355230] [n-62-23-6:21345:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.29
-[1574208144.356794] [n-62-23-6:21345:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208144.356810] [n-62-23-6:21345:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208144.357578] [n-62-23-6:21344:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.29
-[1574208144.358721] [n-62-23-6:21345:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208144.358736] [n-62-23-6:21345:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208144.358930] [n-62-23-6:21346:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.29
-[1574208144.359442] [n-62-23-6:21344:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208144.359458] [n-62-23-6:21344:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208144.360393] [n-62-23-6:21346:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208144.360409] [n-62-23-6:21346:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208144.361421] [n-62-23-6:21344:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208144.361436] [n-62-23-6:21344:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208144.362260] [n-62-23-6:21346:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208144.362275] [n-62-23-6:21346:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208144.402253] [n-62-23-3:20782:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3167.77
-[1574208144.402253] [n-62-23-3:20783:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3167.77
-[1574208144.402253] [n-62-23-3:20784:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3167.77
-[1574208144.402253] [n-62-23-3:20785:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3167.77
-[1574208144.406446] [n-62-23-3:20782:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208144.406462] [n-62-23-3:20782:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208144.406445] [n-62-23-3:20783:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208144.406462] [n-62-23-3:20783:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208144.406445] [n-62-23-3:20784:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208144.406445] [n-62-23-3:20785:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208144.406462] [n-62-23-3:20785:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208144.406609] [n-62-23-3:20784:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208144.408673] [n-62-23-3:20785:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208144.408699] [n-62-23-3:20785:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208144.408685] [n-62-23-3:20783:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208144.408701] [n-62-23-3:20783:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208144.408684] [n-62-23-3:20784:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208144.408697] [n-62-23-3:20784:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208144.408686] [n-62-23-3:20782:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208144.408701] [n-62-23-3:20782:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'ILL_H22_D1B' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+[1582662192.133664] [n-62-23-14:14190:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662192.133683] [n-62-23-14:14190:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662192.139038] [n-62-23-14:14191:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3257.84
+[1582662192.141406] [n-62-23-14:14191:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662192.141435] [n-62-23-14:14191:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662192.147264] [n-62-23-14:14191:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662192.147281] [n-62-23-14:14191:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662192.150788] [n-62-23-14:14193:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3257.84
+[1582662192.151699] [n-62-23-14:14192:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3257.84
+[1582662192.152422] [n-62-23-14:14193:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662192.152438] [n-62-23-14:14193:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662192.153464] [n-62-23-14:14192:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662192.153482] [n-62-23-14:14192:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662192.155646] [n-62-23-14:14192:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662192.155700] [n-62-23-14:14192:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662192.155732] [n-62-23-14:14193:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662192.155748] [n-62-23-14:14193:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662192.160452] [n-62-23-14:14195:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3257.84
+[1582662192.161600] [n-62-23-14:14197:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3257.84
+[1582662192.163579] [n-62-23-14:14197:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662192.163594] [n-62-23-14:14197:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662192.163904] [n-62-23-14:14195:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662192.163921] [n-62-23-14:14195:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662192.165800] [n-62-23-14:14197:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662192.165815] [n-62-23-14:14197:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662192.166618] [n-62-23-14:14195:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662192.166638] [n-62-23-14:14195:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662192.170158] [n-62-23-14:14198:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3257.84
+[1582662192.170741] [n-62-23-14:14194:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3257.84
+[1582662192.171634] [n-62-23-14:14199:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3257.84
+[1582662192.171865] [n-62-23-14:14198:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662192.171920] [n-62-23-14:14198:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662192.172431] [n-62-23-14:14194:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662192.172447] [n-62-23-14:14194:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662192.173196] [n-62-23-14:14199:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662192.173212] [n-62-23-14:14199:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662192.174374] [n-62-23-14:14198:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662192.174389] [n-62-23-14:14198:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662192.174504] [n-62-23-14:14194:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662192.174518] [n-62-23-14:14194:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662192.174713] [n-62-23-14:14196:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3257.84
+[1582662192.175287] [n-62-23-14:14199:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662192.175303] [n-62-23-14:14199:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662192.176535] [n-62-23-14:14196:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662192.176552] [n-62-23-14:14196:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662192.178621] [n-62-23-14:14196:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662192.178649] [n-62-23-14:14196:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'ILL_H22_D1B' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
+Instrument: ILL_H22_D1B (H22@ILL thermal guide).
+Instrument: ILL_H22_D1B (H22@ILL thermal guide).
+ILL_H22_D1B: Detailed D1B configuration
+Instrument: ILL_H22_D1B (H22@ILL thermal guide).
+* Incoming beam: lambda=2.52 [Angs] EI=12.88 [meV]  KI=2.493 [Angs-1] Vi=1569.85 [m/s]
+* Monochromator:  DM=3.348 [Angs] RV=2.2 [m] curved, take-off THETA_M=22.11 [deg]
+* Sample: 'Na2Ca3Al2F14.laz' in Al cryostat.
+Instrument: ILL_H22_D1B (H22@ILL thermal guide).
+ILL_H22_D1B: Detailed D1B configuration
+* Incoming beam: lambda=2.52 [Angs] EI=12.88 [meV]  KI=2.493 [Angs-1] Vi=1569.85 [m/s]
+ILL_H22_D1B: Detailed D1B configuration
+* Incoming beam: lambda=2.52 [Angs] EI=12.88 [meV]  KI=2.493 [Angs-1] Vi=1569.85 [m/s]
+* Monochromator:  DM=3.348 [Angs] RV=2.2 [m] curved, take-off THETA_M=22.11 [deg]
+* Sample: 'Na2Ca3Al2F14.laz' in Al cryostat.
+* Monochromator:  DM=3.348 [Angs] RV=2.2 [m] curved, take-off THETA_M=22.11 [deg]
+* Sample: 'Na2Ca3Al2F14.laz' in Al cryostat.
 Instrument: ILL_H22_D1B (H22@ILL thermal guide).
 Instrument: ILL_H22_D1B (H22@ILL thermal guide).
 ILL_H22_D1B: Detailed D1B configuration
@@ -69,32 +87,16 @@ ILL_H22_D1B: Detailed D1B configuration
 ILL_H22_D1B: Detailed D1B configuration
 * Incoming beam: lambda=2.52 [Angs] EI=12.88 [meV]  KI=2.493 [Angs-1] Vi=1569.85 [m/s]
 * Monochromator:  DM=3.348 [Angs] RV=2.2 [m] curved, take-off THETA_M=22.11 [deg]
-* Sample: 'Na2Ca3Al2F14.laz' in Al cryostat.
 [ILL_H22_D1B] Initialize
 [ILL_H22_D1B] Initialize
-Instrument: ILL_H22_D1B (H22@ILL thermal guide).
-ILL_H22_D1B: Detailed D1B configuration
-* Incoming beam: lambda=2.52 [Angs] EI=12.88 [meV]  KI=2.493 [Angs-1] Vi=1569.85 [m/s]
-* Monochromator:  DM=3.348 [Angs] RV=2.2 [m] curved, take-off THETA_M=22.11 [deg]
-* Sample: 'Na2Ca3Al2F14.laz' in Al cryostat.
-Instrument: ILL_H22_D1B (H22@ILL thermal guide).
-ILL_H22_D1B: Detailed D1B configuration
-* Incoming beam: lambda=2.52 [Angs] EI=12.88 [meV]  KI=2.493 [Angs-1] Vi=1569.85 [m/s]
-* Monochromator:  DM=3.348 [Angs] RV=2.2 [m] curved, take-off THETA_M=22.11 [deg]
-* Sample: 'Na2Ca3Al2F14.laz' in Al cryostat.
-Instrument: ILL_H22_D1B (H22@ILL thermal guide).
-ILL_H22_D1B: Detailed D1B configuration
-* Incoming beam: lambda=2.52 [Angs] EI=12.88 [meV]  KI=2.493 [Angs-1] Vi=1569.85 [m/s]
-* Monochromator:  DM=3.348 [Angs] RV=2.2 [m] curved, take-off THETA_M=22.11 [deg]
 * Sample: 'Na2Ca3Al2F14.laz' in Al cryostat.
 [ILL_H22_D1B] Initialize
 Instrument: ILL_H22_D1B (H22@ILL thermal guide).
+Instrument: ILL_H22_D1B (H22@ILL thermal guide).
 ILL_H22_D1B: Detailed D1B configuration
 * Incoming beam: lambda=2.52 [Angs] EI=12.88 [meV]  KI=2.493 [Angs-1] Vi=1569.85 [m/s]
 * Monochromator:  DM=3.348 [Angs] RV=2.2 [m] curved, take-off THETA_M=22.11 [deg]
 * Sample: 'Na2Ca3Al2F14.laz' in Al cryostat.
-[ILL_H22_D1B] Initialize
-[ILL_H22_D1B] Initialize
 [ILL_H22_D1B] Initialize
 Source_gen: component Thermal (square 0.14 x 0.22)
             focusing distance dist=3.18 area=0.038 x 0.2
@@ -103,12 +105,36 @@ Source_gen: component Thermal (square 0.14 x 0.22)
   Flux is dPhi/dlambda in [n/s/cm2].
 Monitor_nD: GuideOut_dxdy is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
+ILL_H22_D1B: Detailed D1B configuration
+* Incoming beam: lambda=2.52 [Angs] EI=12.88 [meV]  KI=2.493 [Angs-1] Vi=1569.85 [m/s]
+* Monochromator:  DM=3.348 [Angs] RV=2.2 [m] curved, take-off THETA_M=22.11 [deg]
+* Sample: 'Na2Ca3Al2F14.laz' in Al cryostat.
+Instrument: ILL_H22_D1B (H22@ILL thermal guide).
+ILL_H22_D1B: Detailed D1B configuration
+* Incoming beam: lambda=2.52 [Angs] EI=12.88 [meV]  KI=2.493 [Angs-1] Vi=1569.85 [m/s]
+* Monochromator:  DM=3.348 [Angs] RV=2.2 [m] curved, take-off THETA_M=22.11 [deg]
+* Sample: 'Na2Ca3Al2F14.laz' in Al cryostat.
+ILL_H22_D1B: Detailed D1B configuration
+* Incoming beam: lambda=2.52 [Angs] EI=12.88 [meV]  KI=2.493 [Angs-1] Vi=1569.85 [m/s]
+* Monochromator:  DM=3.348 [Angs] RV=2.2 [m] curved, take-off THETA_M=22.11 [deg]
+* Sample: 'Na2Ca3Al2F14.laz' in Al cryostat.
 Monitor_nD: D2B_Mono_Dx is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
+[ILL_H22_D1B] Initialize
+[ILL_H22_D1B] Initialize
+Instrument: ILL_H22_D1B (H22@ILL thermal guide).
+[ILL_H22_D1B] Initialize
+ILL_H22_D1B: Detailed D1B configuration
+* Incoming beam: lambda=2.52 [Angs] EI=12.88 [meV]  KI=2.493 [Angs-1] Vi=1569.85 [m/s]
+* Monochromator:  DM=3.348 [Angs] RV=2.2 [m] curved, take-off THETA_M=22.11 [deg]
+* Sample: 'Na2Ca3Al2F14.laz' in Al cryostat.
 Monitor_nD: monitor_D1B is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
 PowderN: Cryo_1: Concentric mode - remember to include the 'opposite' copy of this component !
 WARNING  The equivalent, 'opposite' comp should have concentric=0
+[ILL_H22_D1B] Initialize
+[ILL_H22_D1B] Initialize
+[ILL_H22_D1B] Initialize
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
 Table from file 'Al.laz' (block 1) is 26 x 18 (x=1:8), constant step. interpolation: linear
   '# TITLE *Aluminum-Al-[FM3-M] Miller, H.P.jr.;DuMond, J.W.M.[1942] at 298 K; ...'
@@ -117,30 +143,6 @@ PowderN: Cryo_1: Read 26 reflections from file 'Al.laz'
 PowderN: Cryo_1: Vc=66.4 [Angs] sigma_abs=0.924 [barn] sigma_inc=0.0328 [barn] reflections=Al.laz
 PowderN: Cryo_2: Concentric mode - remember to include the 'opposite' copy of this component !
 WARNING  The equivalent, 'opposite' comp should have concentric=0
-Instrument: ILL_H22_D1B (H22@ILL thermal guide).
-ILL_H22_D1B: Detailed D1B configuration
-* Incoming beam: lambda=2.52 [Angs] EI=12.88 [meV]  KI=2.493 [Angs-1] Vi=1569.85 [m/s]
-* Monochromator:  DM=3.348 [Angs] RV=2.2 [m] curved, take-off THETA_M=22.11 [deg]
-* Sample: 'Na2Ca3Al2F14.laz' in Al cryostat.
-Instrument: ILL_H22_D1B (H22@ILL thermal guide).
-ILL_H22_D1B: Detailed D1B configuration
-* Incoming beam: lambda=2.52 [Angs] EI=12.88 [meV]  KI=2.493 [Angs-1] Vi=1569.85 [m/s]
-* Monochromator:  DM=3.348 [Angs] RV=2.2 [m] curved, take-off THETA_M=22.11 [deg]
-* Sample: 'Na2Ca3Al2F14.laz' in Al cryostat.
-Instrument: ILL_H22_D1B (H22@ILL thermal guide).
-ILL_H22_D1B: Detailed D1B configuration
-* Incoming beam: lambda=2.52 [Angs] EI=12.88 [meV]  KI=2.493 [Angs-1] Vi=1569.85 [m/s]
-* Monochromator:  DM=3.348 [Angs] RV=2.2 [m] curved, take-off THETA_M=22.11 [deg]
-* Sample: 'Na2Ca3Al2F14.laz' in Al cryostat.
-Instrument: ILL_H22_D1B (H22@ILL thermal guide).
-ILL_H22_D1B: Detailed D1B configuration
-* Incoming beam: lambda=2.52 [Angs] EI=12.88 [meV]  KI=2.493 [Angs-1] Vi=1569.85 [m/s]
-* Monochromator:  DM=3.348 [Angs] RV=2.2 [m] curved, take-off THETA_M=22.11 [deg]
-* Sample: 'Na2Ca3Al2F14.laz' in Al cryostat.
-[ILL_H22_D1B] Initialize
-[ILL_H22_D1B] Initialize
-[ILL_H22_D1B] Initialize
-[ILL_H22_D1B] Initialize
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
 Table from file 'Al.laz' (block 1) is 26 x 18 (x=1:8), constant step. interpolation: linear
   '# TITLE *Aluminum-Al-[FM3-M] Miller, H.P.jr.;DuMond, J.W.M.[1942] at 298 K; ...'
@@ -157,15 +159,7 @@ PowderN: Cryo_3: Read 26 reflections from file 'Al.laz'
 PowderN: Cryo_3: Vc=66.4 [Angs] sigma_abs=0.924 [barn] sigma_inc=0.0328 [barn] reflections=Al.laz
 PowderN: Cryo_4: Concentric mode - remember to include the 'opposite' copy of this component !
 WARNING  The equivalent, 'opposite' comp should have concentric=0
-Exact_radial_coll: collimador_radial: foil thickness is 0.1 [millimeter]
-                  opening each  input slit [2.27:90] [millimeter]
-                  opening each output slit [2.97:90] [millimeter]
-                  divergence per channel is 94.8501 [min] 
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
-Exact_radial_coll: collimador_radial: foil thickness is 0.1 [millimeter]
-                  opening each  input slit [2.27:90] [millimeter]
-                  opening each output slit [2.97:90] [millimeter]
-                  divergence per channel is 94.8501 [min] 
 Table from file 'Al.laz' (block 1) is 26 x 18 (x=1:8), constant step. interpolation: linear
   '# TITLE *Aluminum-Al-[FM3-M] Miller, H.P.jr.;DuMond, J.W.M.[1942] at 298 K; ...'
 PowderN: Cryo_4: Reading 26 rows from Al.laz
@@ -199,14 +193,6 @@ Exact_radial_coll: collimador_radial: foil thickness is 0.1 [millimeter]
                   opening each  input slit [2.27:90] [millimeter]
                   opening each output slit [2.97:90] [millimeter]
                   divergence per channel is 94.8501 [min] 
-Exact_radial_coll: collimador_radial: foil thickness is 0.1 [millimeter]
-                  opening each  input slit [2.27:90] [millimeter]
-                  opening each output slit [2.97:90] [millimeter]
-                  divergence per channel is 94.8501 [min] 
-Exact_radial_coll: collimador_radial: foil thickness is 0.1 [millimeter]
-                  opening each  input slit [2.27:90] [millimeter]
-                  opening each output slit [2.97:90] [millimeter]
-                  divergence per channel is 94.8501 [min] 
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
 Table from file 'Al.laz' (block 1) is 26 x 18 (x=1:8), constant step. interpolation: linear
   '# TITLE *Aluminum-Al-[FM3-M] Miller, H.P.jr.;DuMond, J.W.M.[1942] at 298 K; ...'
@@ -233,51 +219,67 @@ Exact_radial_coll: collimador_radial: foil thickness is 0.1 [millimeter]
                   opening each  input slit [2.27:90] [millimeter]
                   opening each output slit [2.97:90] [millimeter]
                   divergence per channel is 94.8501 [min] 
-[n-62-23-6:21331] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-6:21331] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+Exact_radial_coll: collimador_radial: foil thickness is 0.1 [millimeter]
+                  opening each  input slit [2.27:90] [millimeter]
+                  opening each output slit [2.97:90] [millimeter]
+                  divergence per channel is 94.8501 [min] 
+Exact_radial_coll: collimador_radial: foil thickness is 0.1 [millimeter]
+                  opening each  input slit [2.27:90] [millimeter]
+                  opening each output slit [2.97:90] [millimeter]
+                  divergence per channel is 94.8501 [min] 
+Exact_radial_coll: collimador_radial: foil thickness is 0.1 [millimeter]
+                  opening each  input slit [2.27:90] [millimeter]
+                  opening each output slit [2.97:90] [millimeter]
+                  divergence per channel is 94.8501 [min] 
+Exact_radial_coll: collimador_radial: foil thickness is 0.1 [millimeter]
+                  opening each  input slit [2.27:90] [millimeter]
+                  opening each output slit [2.97:90] [millimeter]
+                  divergence per channel is 94.8501 [min] 
+[n-62-23-14:14184] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-14:14184] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
 
-Trace ETA 12 [s] % 91 
-Trace ETA 11 [s] % 94 
-Trace ETA 12 [s] % 89 
-Trace ETA 12 [s] % 91 
-Trace ETA 11 [s] % 91 
-Trace ETA 11 [s] % 93 
-Trace ETA 11 [s] % 94 
-Trace ETA 11 [s] % 93 
-Trace ETA 12 [s] % 90 
-Trace ETA 12 [s] % 91 90 95 95 95 95 95 95 95 95 95 95 
-Finally [ILL_H22_D1B: 1]. Time: 11 [s] 
 
-Finally [ILL_H22_D1B: 1]. Time: 11 [s] 
+Trace ETA 24 [s] % 44 
 
-Finally [ILL_H22_D1B: 1]. Time: 11 [s] 
 
-Finally [ILL_H22_D1B: 1]. Time: 11 [s] 
+Trace ETA 22 [s] % 49 
+Trace ETA 22 [s] % 49 
+Trace ETA 36 [s] % 30 
+Trace ETA 36 [s] % 30 Trace ETA 24 [s] % 45 
+Trace ETA 36 [s] % 30 
+Trace ETA 36 [s] % 30 Trace ETA 36 [s] % 30 Trace ETA 35 [s] % 30 45 50 50 50 50 55 55 35 35 35 35 35 35 55 60 55 60 40 40 60 40 40 40 40 60 65 65 45 45 65 70 65 45 45 45 45 70 50 50 70 75 70 50 55 50 55 50 50 75 75 80 60 60 80 85 75 55 55 55 55 80 65 65 85 90 80 60 60 70 60 60 70 85 90 95 75 75 95 85 65 65 65 65 90 80 80 90 70 70 85 95 85 70 70 90 90 95 75 75 75 75 95 95 
+Finally [ILL_H22_D1B: 1]. Time: 28 [s] 
 
-Finally [ILL_H22_D1B: 1]. Time: 12 [s] 
+80 Finally [ILL_H22_D1B: 1]. Time: 28 [s] 
+80 
+Finally [ILL_H22_D1B: 1]. Time: 28 [s] 
+80 80 85 85 85 85 90 95 90 90 90 
+Finally [ILL_H22_D1B: 1]. Time: 31 [s] 
+95 95 95 
+Finally [ILL_H22_D1B: 1]. Time: 32 [s] 
 
-Finally [ILL_H22_D1B: 1]. Time: 12 [s] 
+Finally [ILL_H22_D1B: 1]. Time: 32 [s] 
 
-Finally [ILL_H22_D1B: 1]. Time: 12 [s] 
+Finally [ILL_H22_D1B: 1]. Time: 32 [s] 
 
 Save [ILL_H22_D1B]
-Detector: GuideOut_xy_I=3.24694e+07 GuideOut_xy_ERR=49614.2 GuideOut_xy_N=1.58362e+06 "GuideOut_xy_1574208144.x_y"
+Detector: GuideOut_xy_I=3.24558e+07 GuideOut_xy_ERR=49587.6 GuideOut_xy_N=1.58352e+06 "GuideOut_xy_1582662192.x_y"
 
-Finally [ILL_H22_D1B: 1]. Time: 12 [s] 
-Detector: GuideOut_dxdy_I=3.24694e+07 GuideOut_dxdy_ERR=49614.2 GuideOut_dxdy_N=1.58358e+06 "GuideOut_dxdy_1574208144.hd_vd"
-Detector: GuideOut_Phic_I=0 GuideOut_Phic_ERR=0 GuideOut_Phic_N=0 "GuideOut_Phic"
-Detector: GuideOut_L_I=3.24691e+07 GuideOut_L_ERR=49613.9 GuideOut_L_N=1.58359e+06 "GuideOut_L_1574208144.L"
-Detector: D2B_Mono_Dx_I=3.14952e+07 D2B_Mono_Dx_ERR=48936.2 D2B_Mono_Dx_N=1.47368e+06 "D2B_Mono_Dx_1574208144.hd"
-Detector: D1B_monitor_shutter_I=3.48895e+08 D1B_monitor_shutter_ERR=408862 D1B_monitor_shutter_N=1.39374e+06 "D1B_monitor_shutter_1574208144.x_y"
-Detector: monitor_D1B_I=1.12075e+08 monitor_D1B_ERR=132601 monitor_D1B_N=1.30819e+06 "monitor_D1B_1574208144.L"
-Detector: PSD_D1B_I=1.12078e+08 PSD_D1B_ERR=132603 PSD_D1B_N=1.30824e+06 "PSD_D1B_1574208144.x_y"
-Detector: D1B_BananaTheta_I=5290.16 D1B_BananaTheta_ERR=40.8661 D1B_BananaTheta_N=69555 "D1B_BananaTheta_1574208144.th"
+Finally [ILL_H22_D1B: 1]. Time: 32 [s] 
+Detector: GuideOut_dxdy_I=3.24558e+07 GuideOut_dxdy_ERR=49587.6 GuideOut_dxdy_N=1.58347e+06 "GuideOut_dxdy_1582662192.hd_vd"
+Detector: GuideOut_Phic_I=4.54707e+07 GuideOut_Phic_ERR=69461.8 GuideOut_Phic_N=1.58348e+06 "GuideOut_Phic"
+Detector: GuideOut_L_I=3.24555e+07 GuideOut_L_ERR=49587.4 GuideOut_L_N=1.58348e+06 "GuideOut_L_1582662192.L"
+Detector: D2B_Mono_Dx_I=3.14839e+07 D2B_Mono_Dx_ERR=48907.9 D2B_Mono_Dx_N=1.47375e+06 "D2B_Mono_Dx_1582662192.hd"
+Detector: D1B_monitor_shutter_I=3.47212e+08 D1B_monitor_shutter_ERR=407636 D1B_monitor_shutter_N=1.3879e+06 "D1B_monitor_shutter_1582662192.x_y"
+Detector: monitor_D1B_I=1.11436e+08 monitor_D1B_ERR=132129 monitor_D1B_N=1.30211e+06 "monitor_D1B_1582662192.L"
+Detector: PSD_D1B_I=1.11437e+08 PSD_D1B_ERR=132129 PSD_D1B_N=1.30213e+06 "PSD_D1B_1582662192.x_y"
+Detector: D1B_BananaTheta_I=5211.78 D1B_BananaTheta_ERR=40.4243 D1B_BananaTheta_N=69104 "D1B_BananaTheta_1582662192.th"
 
-Finally [ILL_H22_D1B: 1]. Time: 12 [s] 
-Detector: D1B_BananaTheta_Sample_I=5128.63 D1B_BananaTheta_Sample_ERR=40.4928 D1B_BananaTheta_Sample_N=59138 "D1B_BananaTheta_Sample_1574208144.th"
+Finally [ILL_H22_D1B: 1]. Time: 32 [s] 
+Detector: D1B_BananaTheta_Sample_I=5046.84 D1B_BananaTheta_Sample_ERR=40.0437 D1B_BananaTheta_Sample_N=58708 "D1B_BananaTheta_Sample_1582662192.th"
 
-Finally [ILL_H22_D1B: 1]. Time: 12 [s] 
+Finally [ILL_H22_D1B: 1]. Time: 32 [s] 
 PowderN: Sample: Info: you may highly improve the computation efficiency by using
     SPLIT 61 COMPONENT Sample=PowderN(...)
-  in the instrument description /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr.
-INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr in dataset 1
+  in the instrument description /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr.
+INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr in dataset 1

@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr (Histogrammer)
- * Date:       Wed Nov 20 00:14:20 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr (Histogrammer)
+ * Date:       Tue Feb 25 20:26:07 2020
  * File:       ./Histogrammer.c
  * Compile:    cc -o Histogrammer.out ./Histogrammer.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Histogrammer";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -11742,7 +11742,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define bufsize mcipbufsize
 #define xwidth mcipxwidth
 #define yheight mcipyheight
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
    int file_mode;
    char *emptyfile = "";
    char *VirtualI_filename;
@@ -12358,7 +12358,7 @@ void mcinit(void) {
 #define bufsize mcipbufsize
 #define xwidth mcipxwidth
 #define yheight mcipyheight
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
 {
    file_mode = MODE;
    /* Set all filenames empty */
@@ -12422,13 +12422,13 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccOrigin_minutes = 0;
 #line 12433 "./Histogrammer.c"
 
@@ -12440,11 +12440,11 @@ void mcinit(void) {
 #line 12440 "./Histogrammer.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
     0,
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
     0,
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
     0);
 #line 12449 "./Histogrammer.c"
   mctc1 = coords_neg(mcposaOrigin);
@@ -12457,13 +12457,13 @@ void mcinit(void) {
     /* Component Virtualinput. */
   /* Setting parameters for component Virtualinput. */
   SIG_MESSAGE("Virtualinput (Init:SetPar)");
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   if(VirtualI_filename) strncpy(mccVirtualinput_filename, VirtualI_filename ? VirtualI_filename : "", 16384); else mccVirtualinput_filename[0]='\0';
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccVirtualinput_verbose = 0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccVirtualinput_repeat_count = 1;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccVirtualinput_smooth = 1;
 #line 12468 "./Histogrammer.c"
 
@@ -12477,11 +12477,11 @@ void mcinit(void) {
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotaVirtualinput, mctr1, mcrotrVirtualinput);
   mctc1 = coords_set(
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
     0,
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
     0,
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
     0);
 #line 12486 "./Histogrammer.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -12497,11 +12497,11 @@ void mcinit(void) {
     /* Component VITESSinput. */
   /* Setting parameters for component VITESSinput. */
   SIG_MESSAGE("VITESSinput (Init:SetPar)");
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   if(Vitess_filename) strncpy(mccVITESSinput_filename, Vitess_filename ? Vitess_filename : "", 16384); else mccVITESSinput_filename[0]='\0';
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccVITESSinput_bufsize = mcipbufsize;
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccVITESSinput_repeat_count = 1;
 #line 12506 "./Histogrammer.c"
 
@@ -12515,11 +12515,11 @@ void mcinit(void) {
   rot_transpose(mcrotaVirtualinput, mctr1);
   rot_mul(mcrotaVITESSinput, mctr1, mcrotrVITESSinput);
   mctc1 = coords_set(
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
     0,
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
     0,
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
     0);
 #line 12524 "./Histogrammer.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -12535,23 +12535,23 @@ void mcinit(void) {
     /* Component MCNPinput. */
   /* Setting parameters for component MCNPinput. */
   SIG_MESSAGE("MCNPinput (Init:SetPar)");
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   if(MCNP_filename) strncpy(mccMCNPinput_filename, MCNP_filename ? MCNP_filename : "", 16384); else mccMCNPinput_filename[0]='\0';
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   if("translate rotate rescale") strncpy(mccMCNPinput_autocenter, "translate rotate rescale" ? "translate rotate rescale" : "", 16384); else mccMCNPinput_autocenter[0]='\0';
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccMCNPinput_repeat_count = 1;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccMCNPinput_verbose = 1;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccMCNPinput_intensity = 0;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccMCNPinput_MCNP_ANALYSE = 10000;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccMCNPinput_surface_id = -1;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccMCNPinput_nps = 0;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccMCNPinput_smooth = 1;
 #line 12556 "./Histogrammer.c"
 
@@ -12565,11 +12565,11 @@ void mcinit(void) {
   rot_transpose(mcrotaVITESSinput, mctr1);
   rot_mul(mcrotaMCNPinput, mctr1, mcrotrMCNPinput);
   mctc1 = coords_set(
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
     0,
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
     0,
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
     0);
 #line 12574 "./Histogrammer.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -12585,25 +12585,25 @@ void mcinit(void) {
     /* Component TRIPOLI4input. */
   /* Setting parameters for component TRIPOLI4input. */
   SIG_MESSAGE("TRIPOLI4input (Init:SetPar)");
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   if(Tripoli_filename) strncpy(mccTRIPOLI4input_filename, Tripoli_filename ? Tripoli_filename : "", 16384); else mccTRIPOLI4input_filename[0]='\0';
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   if("translate rotate rescale") strncpy(mccTRIPOLI4input_autocenter, "translate rotate rescale" ? "translate rotate rescale" : "", 16384); else mccTRIPOLI4input_autocenter[0]='\0';
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccTRIPOLI4input_repeat_count = 1;
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccTRIPOLI4input_verbose = 1;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccTRIPOLI4input_intensity = 1;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccTRIPOLI4input_T4_ANALYSE = 10000;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccTRIPOLI4input_radius = 0;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccTRIPOLI4input_T4_ANALYSE_EMIN = 0;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccTRIPOLI4input_T4_ANALYSE_EMAX = 0;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccTRIPOLI4input_smooth = 1;
 #line 12608 "./Histogrammer.c"
 
@@ -12617,11 +12617,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMCNPinput, mctr1);
   rot_mul(mcrotaTRIPOLI4input, mctr1, mcrotrTRIPOLI4input);
   mctc1 = coords_set(
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
     0,
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
     0,
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
     0);
 #line 12626 "./Histogrammer.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -12637,47 +12637,47 @@ void mcinit(void) {
     /* Component Monitor. */
   /* Setting parameters for component Monitor. */
   SIG_MESSAGE("Monitor (Init:SetPar)");
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccMonitor_xwidth = mcipxwidth;
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccMonitor_yheight = mcipyheight;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccMonitor_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccMonitor_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccMonitor_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccMonitor_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccMonitor_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccMonitor_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccMonitor_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccMonitor_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccMonitor_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccMonitor_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccMonitor_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccMonitor_radius = 0;
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   if(mcipoptions) strncpy(mccMonitor_options, mcipoptions ? mcipoptions : "", 16384); else mccMonitor_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   if("NULL") strncpy(mccMonitor_filename, "NULL" ? "NULL" : "", 16384); else mccMonitor_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   if("NULL") strncpy(mccMonitor_geometry, "NULL" ? "NULL" : "", 16384); else mccMonitor_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   if("NULL") strncpy(mccMonitor_username1, "NULL" ? "NULL" : "", 16384); else mccMonitor_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   if("NULL") strncpy(mccMonitor_username2, "NULL" ? "NULL" : "", 16384); else mccMonitor_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   if("NULL") strncpy(mccMonitor_username3, "NULL" ? "NULL" : "", 16384); else mccMonitor_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
   mccMonitor_nowritefile = 0;
 #line 12682 "./Histogrammer.c"
 
@@ -12691,11 +12691,11 @@ void mcinit(void) {
   rot_transpose(mcrotaTRIPOLI4input, mctr1);
   rot_mul(mcrotaMonitor, mctr1, mcrotrMonitor);
   mctc1 = coords_set(
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
     0,
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
     0,
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Histogrammer/Histogrammer.instr"
     0);
 #line 12700 "./Histogrammer.c"
   rot_transpose(mcrotaOrigin, mctr1);

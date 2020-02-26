@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr (ESS_BEER_MCPL)
- * Date:       Wed Nov 20 00:11:16 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr (ESS_BEER_MCPL)
+ * Date:       Tue Feb 25 20:22:55 2020
  * File:       ./ESS_BEER_MCPL.c
  * Compile:    cc -o ESS_BEER_MCPL.out ./ESS_BEER_MCPL.c  -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
  * CFLAGS= -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "ESS_BEER_MCPL";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -10233,7 +10233,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define ptra mcipptra
 #define strain mcipstrain
 #define ustrain mcipustrain
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   double tof;
   double scX,scY, scZ, scP;
   char optSGV1[256],optSGV2[256]; 
@@ -11701,7 +11701,7 @@ void mcinit(void) {
 #define ptra mcipptra
 #define strain mcipstrain
 #define ustrain mcipustrain
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
 {
 double hm = 2*PI*K2V; // h/m_n
 printf("Using the input file: %s\n", input);
@@ -11838,13 +11838,13 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccOrigin_minutes = 0;
 #line 11849 "./ESS_BEER_MCPL.c"
 
@@ -11856,11 +11856,11 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
 #line 11856 "./ESS_BEER_MCPL.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0);
 #line 11865 "./ESS_BEER_MCPL.c"
   mctc1 = coords_neg(mcposaOrigin);
@@ -11873,23 +11873,23 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
     /* Component src. */
   /* Setting parameters for component src. */
   SIG_MESSAGE("src (Init:SetPar)");
-#line 214 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 214 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if(mcipinput) strncpy(mccsrc_filename, mcipinput ? mcipinput : "", 16384); else mccsrc_filename[0]='\0';
-#line 214 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 214 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsrc_polarisationuse = 0;
-#line 214 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 214 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsrc_verbose = 0;
-#line 214 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 214 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsrc_Emin = Emin;
-#line 214 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 214 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsrc_Emax = Emax;
-#line 214 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 214 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsrc_repeat_count = mciprepetition;
-#line 214 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 214 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsrc_E_smear = 0;
-#line 214 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 214 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsrc_pos_smear = 0.0001;
-#line 214 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 214 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsrc_dir_smear = 0.001;
 #line 11894 "./ESS_BEER_MCPL.c"
 
@@ -11903,11 +11903,11 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotasrc, mctr1, mcrotrsrc);
   mctc1 = coords_set(
-#line 215 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 215 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 215 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 215 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 215 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 215 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0);
 #line 11912 "./ESS_BEER_MCPL.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -11923,25 +11923,25 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
     /* Component xymon. */
   /* Setting parameters for component xymon. */
   SIG_MESSAGE("xymon (Init:SetPar)");
-#line 218 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 218 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccxymon_nx = 100;
-#line 219 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 219 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccxymon_ny = 100;
-#line 220 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 220 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("xymon.dat") strncpy(mccxymon_filename, "xymon.dat" ? "xymon.dat" : "", 16384); else mccxymon_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccxymon_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccxymon_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccxymon_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccxymon_ymax = 0.05;
-#line 221 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 221 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccxymon_xwidth = 0.01;
-#line 222 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 222 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccxymon_yheight = 0.01;
-#line 223 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 223 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccxymon_restore_neutron = 1;
 #line 11946 "./ESS_BEER_MCPL.c"
 
@@ -11955,11 +11955,11 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
   rot_transpose(mcrotasrc, mctr1);
   rot_mul(mcrotaxymon, mctr1, mcrotrxymon);
   mctc1 = coords_set(
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 224 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 224 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 224 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0.001);
 #line 11964 "./ESS_BEER_MCPL.c"
   rot_transpose(mcrotasrc, mctr1);
@@ -11975,27 +11975,27 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
     /* Component lmon. */
   /* Setting parameters for component lmon. */
   SIG_MESSAGE("lmon (Init:SetPar)");
-#line 228 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 228 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("lmon.dat") strncpy(mcclmon_filename, "lmon.dat" ? "lmon.dat" : "", 16384); else mcclmon_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcclmon_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcclmon_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcclmon_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcclmon_ymax = 0.05;
-#line 229 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 229 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcclmon_xwidth = 0.05;
-#line 230 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 230 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcclmon_yheight = 0.05;
-#line 231 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 231 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcclmon_Lmin = Lmin;
-#line 232 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 232 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcclmon_Lmax = Lmax;
-#line 233 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 233 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcclmon_restore_neutron = 1;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcclmon_nowritefile = 0;
 #line 12000 "./ESS_BEER_MCPL.c"
 
@@ -12009,11 +12009,11 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
   rot_transpose(mcrotaxymon, mctr1);
   rot_mul(mcrotalmon, mctr1, mcrotrlmon);
   mctc1 = coords_set(
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0.002);
 #line 12018 "./ESS_BEER_MCPL.c"
   rot_transpose(mcrotasrc, mctr1);
@@ -12029,25 +12029,25 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
     /* Component hdiv_mon. */
   /* Setting parameters for component hdiv_mon. */
   SIG_MESSAGE("hdiv_mon (Init:SetPar)");
-#line 237 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 237 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("hdiv.dat") strncpy(mcchdiv_mon_filename, "hdiv.dat" ? "hdiv.dat" : "", 16384); else mcchdiv_mon_filename[0]='\0';
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcchdiv_mon_xmin = -0.05;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcchdiv_mon_xmax = 0.05;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcchdiv_mon_ymin = -0.05;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcchdiv_mon_ymax = 0.05;
-#line 237 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 237 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcchdiv_mon_xwidth = 0.05;
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcchdiv_mon_yheight = 0.05;
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcchdiv_mon_h_maxdiv = 0.5;
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcchdiv_mon_restore_neutron = 1;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcchdiv_mon_nowritefile = 0;
 #line 12052 "./ESS_BEER_MCPL.c"
 
@@ -12061,11 +12061,11 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
   rot_transpose(mcrotalmon, mctr1);
   rot_mul(mcrotahdiv_mon, mctr1, mcrotrhdiv_mon);
   mctc1 = coords_set(
-#line 239 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 239 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 239 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 239 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 239 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 239 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0.003);
 #line 12070 "./ESS_BEER_MCPL.c"
   rot_transpose(mcrotasrc, mctr1);
@@ -12081,27 +12081,27 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
     /* Component toflam. */
   /* Setting parameters for component toflam. */
   SIG_MESSAGE("toflam (Init:SetPar)");
-#line 244 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 244 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("toflam.dat") strncpy(mcctoflam_filename, "toflam.dat" ? "toflam.dat" : "", 16384); else mcctoflam_filename[0]='\0';
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcctoflam_xmin = -0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcctoflam_xmax = 0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcctoflam_ymin = -0.05;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcctoflam_ymax = 0.05;
-#line 244 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 244 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcctoflam_xwidth = 0.05;
-#line 244 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 244 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcctoflam_yheight = 0.05;
-#line 245 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 245 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcctoflam_Lmin = 1.9;
-#line 245 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 245 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcctoflam_Lmax = 2.1;
-#line 245 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 245 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcctoflam_restore_neutron = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcctoflam_nowritefile = 0;
 #line 12106 "./ESS_BEER_MCPL.c"
 
@@ -12115,11 +12115,11 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
   rot_transpose(mcrotahdiv_mon, mctr1);
   rot_mul(mcrotatoflam, mctr1, mcrotrtoflam);
   mctc1 = coords_set(
-#line 246 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 246 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 246 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 246 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 246 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 246 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0.003);
 #line 12124 "./ESS_BEER_MCPL.c"
   rot_transpose(mcrotasrc, mctr1);
@@ -12138,22 +12138,22 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
 
   SIG_MESSAGE("Sample_axis (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 253 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 253 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     (0)*DEG2RAD,
-#line 253 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 253 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     (0)*DEG2RAD,
-#line 253 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 253 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     (0)*DEG2RAD);
 #line 12147 "./ESS_BEER_MCPL.c"
   rot_mul(mctr1, mcrotasrc, mcrotaSample_axis);
   rot_transpose(mcrotatoflam, mctr1);
   rot_mul(mcrotaSample_axis, mctr1, mcrotrSample_axis);
   mctc1 = coords_set(
-#line 252 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 252 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 252 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 252 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 252 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 252 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0.04);
 #line 12158 "./ESS_BEER_MCPL.c"
   rot_transpose(mcrotasrc, mctr1);
@@ -12172,22 +12172,22 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
 
   SIG_MESSAGE("Detector_arm (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 258 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 258 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     (0)*DEG2RAD,
-#line 258 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 258 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     (90)*DEG2RAD,
-#line 258 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 258 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     (0)*DEG2RAD);
 #line 12181 "./ESS_BEER_MCPL.c"
   rot_mul(mctr1, mcrotaSample_axis, mcrotaDetector_arm);
   rot_transpose(mcrotaSample_axis, mctr1);
   rot_mul(mcrotaDetector_arm, mctr1, mcrotrDetector_arm);
   mctc1 = coords_set(
-#line 257 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 257 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 257 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 257 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 257 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 257 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0);
 #line 12192 "./ESS_BEER_MCPL.c"
   rot_transpose(mcrotaSample_axis, mctr1);
@@ -12203,80 +12203,80 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
     /* Component sample. */
   /* Setting parameters for component sample. */
   SIG_MESSAGE("sample (Init:SetPar)");
-#line 262 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 262 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if(mcippwdfile) strncpy(mccsample_reflections, mcippwdfile ? mcippwdfile : "", 16384); else mccsample_reflections[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("NULL") strncpy(mccsample_geometry, "NULL" ? "NULL" : "", 16384); else mccsample_geometry[0]='\0';
-#line 264 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 264 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_radius = 0.0035;
-#line 263 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 263 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_yheight = 0.05;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_xwidth = 0;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_zdepth = 0;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_thickness = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_pack = 1;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_Vc = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_sigma_abs = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_sigma_inc = 0;
-#line 274 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 274 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_delta_d_d = mcipustrain * 1e-6;
-#line 272 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 272 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_p_inc = mcippinc;
-#line 271 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 271 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_p_transmit = mcipptra;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_DW = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_nb_atoms = 1;
-#line 265 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 265 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_d_omega = col_ang;
-#line 266 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 266 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_d_phi = col_angv;
-#line 267 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 267 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_tth_sign = 1;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_p_interact = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_concentric = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_density = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_weight = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_barns = 1;
-#line 273 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 273 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_Strain = mcipstrain * 1e-6;
-#line 275 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 275 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_focus_flip = 0;
-#line 276 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 276 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccsample_target_index = 1;
 #line 12260 "./ESS_BEER_MCPL.c"
 
   SIG_MESSAGE("sample (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 278 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 278 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     (0)*DEG2RAD,
-#line 278 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 278 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     (mcipomega)*DEG2RAD,
-#line 278 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 278 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     (mcipchi)*DEG2RAD);
 #line 12270 "./ESS_BEER_MCPL.c"
   rot_mul(mctr1, mcrotaSample_axis, mcrotasample);
   rot_transpose(mcrotaDetector_arm, mctr1);
   rot_mul(mcrotasample, mctr1, mcrotrsample);
   mctc1 = coords_set(
-#line 277 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 277 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 277 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 277 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 277 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 277 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0);
 #line 12281 "./ESS_BEER_MCPL.c"
   rot_transpose(mcrotaSample_axis, mctr1);
@@ -12292,19 +12292,19 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
     /* Component col_mask. */
   /* Setting parameters for component col_mask. */
   SIG_MESSAGE("col_mask (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcccol_mask_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcccol_mask_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcccol_mask_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcccol_mask_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcccol_mask_radius = 0;
-#line 295 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 295 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcccol_mask_xwidth = mask_w;
-#line 295 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 295 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mcccol_mask_yheight = mask_h;
 #line 12309 "./ESS_BEER_MCPL.c"
 
@@ -12318,11 +12318,11 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
   rot_transpose(mcrotasample, mctr1);
   rot_mul(mcrotacol_mask, mctr1, mcrotrcol_mask);
   mctc1 = coords_set(
-#line 296 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 296 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 296 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 296 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 296 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 296 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     mask_dist);
 #line 12327 "./ESS_BEER_MCPL.c"
   rot_transpose(mcrotaDetector_arm, mctr1);
@@ -12338,23 +12338,23 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
     /* Component rad2. */
   /* Setting parameters for component rad2. */
   SIG_MESSAGE("rad2 (Init:SetPar)");
-#line 299 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 299 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccrad2_theta_min = - col_ang * 0.5;
-#line 300 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 300 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccrad2_theta_max = col_ang * 0.5;
-#line 301 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 301 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccrad2_nslit = col_ns;
-#line 302 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 302 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccrad2_radius = col_rad;
-#line 303 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 303 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccrad2_length = col_len;
-#line 304 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 304 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccrad2_h_in = col_h1;
-#line 305 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 305 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccrad2_h_out = col_h2;
-#line 306 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 306 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccrad2_d = col_d;
-#line 307 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 307 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccrad2_verbose = 1;
 #line 12359 "./ESS_BEER_MCPL.c"
 
@@ -12368,11 +12368,11 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
   rot_transpose(mcrotacol_mask, mctr1);
   rot_mul(mcrotarad2, mctr1, mcrotrrad2);
   mctc1 = coords_set(
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 308 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 308 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0);
 #line 12377 "./ESS_BEER_MCPL.c"
   rot_transpose(mcrotaDetector_arm, mctr1);
@@ -12388,47 +12388,47 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
     /* Component MonNDXZ. */
   /* Setting parameters for component MonNDXZ. */
   SIG_MESSAGE("MonNDXZ (Init:SetPar)");
-#line 311 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 311 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDXZ_xwidth = 2;
-#line 311 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 311 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDXZ_yheight = 2;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDXZ_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDXZ_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDXZ_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDXZ_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDXZ_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDXZ_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDXZ_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDXZ_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDXZ_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDXZ_max = 1e40;
-#line 314 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 314 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDXZ_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDXZ_radius = 0;
-#line 312 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 312 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if(optSGV2) strncpy(mccMonNDXZ_options, optSGV2 ? optSGV2 : "", 16384); else mccMonNDXZ_options[0]='\0';
-#line 313 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 313 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("SGV_xz.dat") strncpy(mccMonNDXZ_filename, "SGV_xz.dat" ? "SGV_xz.dat" : "", 16384); else mccMonNDXZ_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("NULL") strncpy(mccMonNDXZ_geometry, "NULL" ? "NULL" : "", 16384); else mccMonNDXZ_geometry[0]='\0';
-#line 312 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 312 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("X, mm") strncpy(mccMonNDXZ_username1, "X, mm" ? "X, mm" : "", 16384); else mccMonNDXZ_username1[0]='\0';
-#line 312 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 312 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("Z, mm") strncpy(mccMonNDXZ_username2, "Z, mm" ? "Z, mm" : "", 16384); else mccMonNDXZ_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("NULL") strncpy(mccMonNDXZ_username3, "NULL" ? "NULL" : "", 16384); else mccMonNDXZ_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDXZ_nowritefile = 0;
 #line 12433 "./ESS_BEER_MCPL.c"
 
@@ -12442,11 +12442,11 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
   rot_transpose(mcrotarad2, mctr1);
   rot_mul(mcrotaMonNDXZ, mctr1, mcrotrMonNDXZ);
   mctc1 = coords_set(
-#line 315 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 315 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 315 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 315 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 315 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 315 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     col_rad + col_len + 0.01);
 #line 12451 "./ESS_BEER_MCPL.c"
   rot_transpose(mcrotaDetector_arm, mctr1);
@@ -12462,47 +12462,47 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
     /* Component MonNDX. */
   /* Setting parameters for component MonNDX. */
   SIG_MESSAGE("MonNDX (Init:SetPar)");
-#line 318 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 318 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDX_xwidth = 2;
-#line 318 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 318 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDX_yheight = 2;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDX_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDX_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDX_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDX_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDX_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDX_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDX_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDX_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDX_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDX_max = 1e40;
-#line 321 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 321 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDX_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDX_radius = 0;
-#line 319 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 319 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if(optSGV1) strncpy(mccMonNDX_options, optSGV1 ? optSGV1 : "", 16384); else mccMonNDX_options[0]='\0';
-#line 320 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 320 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("SGV_x.dat") strncpy(mccMonNDX_filename, "SGV_x.dat" ? "SGV_x.dat" : "", 16384); else mccMonNDX_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("NULL") strncpy(mccMonNDX_geometry, "NULL" ? "NULL" : "", 16384); else mccMonNDX_geometry[0]='\0';
-#line 319 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 319 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("X, mm") strncpy(mccMonNDX_username1, "X, mm" ? "X, mm" : "", 16384); else mccMonNDX_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("NULL") strncpy(mccMonNDX_username2, "NULL" ? "NULL" : "", 16384); else mccMonNDX_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("NULL") strncpy(mccMonNDX_username3, "NULL" ? "NULL" : "", 16384); else mccMonNDX_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDX_nowritefile = 0;
 #line 12507 "./ESS_BEER_MCPL.c"
 
@@ -12516,11 +12516,11 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
   rot_transpose(mcrotaMonNDXZ, mctr1);
   rot_mul(mcrotaMonNDX, mctr1, mcrotrMonNDX);
   mctc1 = coords_set(
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     col_rad + col_len + 0.01);
 #line 12525 "./ESS_BEER_MCPL.c"
   rot_transpose(mcrotaDetector_arm, mctr1);
@@ -12536,47 +12536,47 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
     /* Component MonNDY. */
   /* Setting parameters for component MonNDY. */
   SIG_MESSAGE("MonNDY (Init:SetPar)");
-#line 325 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 325 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDY_xwidth = 2;
-#line 325 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 325 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDY_yheight = 2;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDY_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDY_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDY_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDY_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDY_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDY_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDY_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDY_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDY_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDY_max = 1e40;
-#line 328 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 328 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDY_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDY_radius = 0;
-#line 326 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 326 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if(optSGV1) strncpy(mccMonNDY_options, optSGV1 ? optSGV1 : "", 16384); else mccMonNDY_options[0]='\0';
-#line 327 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 327 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("SGV_y.dat") strncpy(mccMonNDY_filename, "SGV_y.dat" ? "SGV_y.dat" : "", 16384); else mccMonNDY_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("NULL") strncpy(mccMonNDY_geometry, "NULL" ? "NULL" : "", 16384); else mccMonNDY_geometry[0]='\0';
-#line 326 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 326 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("Y, mm") strncpy(mccMonNDY_username1, "Y, mm" ? "Y, mm" : "", 16384); else mccMonNDY_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("NULL") strncpy(mccMonNDY_username2, "NULL" ? "NULL" : "", 16384); else mccMonNDY_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("NULL") strncpy(mccMonNDY_username3, "NULL" ? "NULL" : "", 16384); else mccMonNDY_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDY_nowritefile = 0;
 #line 12581 "./ESS_BEER_MCPL.c"
 
@@ -12590,11 +12590,11 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
   rot_transpose(mcrotaMonNDX, mctr1);
   rot_mul(mcrotaMonNDY, mctr1, mcrotrMonNDY);
   mctc1 = coords_set(
-#line 329 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 329 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 329 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 329 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 329 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 329 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     col_rad + col_len + 0.01);
 #line 12599 "./ESS_BEER_MCPL.c"
   rot_transpose(mcrotaDetector_arm, mctr1);
@@ -12610,47 +12610,47 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
     /* Component MonNDZ. */
   /* Setting parameters for component MonNDZ. */
   SIG_MESSAGE("MonNDZ (Init:SetPar)");
-#line 332 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 332 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDZ_xwidth = 2;
-#line 332 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 332 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDZ_yheight = 2;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDZ_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDZ_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDZ_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDZ_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDZ_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDZ_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDZ_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDZ_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDZ_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDZ_max = 1e40;
-#line 335 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 335 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDZ_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDZ_radius = 0;
-#line 333 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 333 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if(optSGV1) strncpy(mccMonNDZ_options, optSGV1 ? optSGV1 : "", 16384); else mccMonNDZ_options[0]='\0';
-#line 334 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 334 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("SGV_z.dat") strncpy(mccMonNDZ_filename, "SGV_z.dat" ? "SGV_z.dat" : "", 16384); else mccMonNDZ_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("NULL") strncpy(mccMonNDZ_geometry, "NULL" ? "NULL" : "", 16384); else mccMonNDZ_geometry[0]='\0';
-#line 333 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 333 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("Z, mm") strncpy(mccMonNDZ_username1, "Z, mm" ? "Z, mm" : "", 16384); else mccMonNDZ_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("NULL") strncpy(mccMonNDZ_username2, "NULL" ? "NULL" : "", 16384); else mccMonNDZ_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("NULL") strncpy(mccMonNDZ_username3, "NULL" ? "NULL" : "", 16384); else mccMonNDZ_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccMonNDZ_nowritefile = 0;
 #line 12655 "./ESS_BEER_MCPL.c"
 
@@ -12664,11 +12664,11 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
   rot_transpose(mcrotaMonNDY, mctr1);
   rot_mul(mcrotaMonNDZ, mctr1, mcrotrMonNDZ);
   mctc1 = coords_set(
-#line 336 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 336 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 336 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 336 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 336 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 336 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     col_rad + col_len + 0.01);
 #line 12673 "./ESS_BEER_MCPL.c"
   rot_transpose(mcrotaDetector_arm, mctr1);
@@ -12684,49 +12684,49 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
     /* Component dhklmon. */
   /* Setting parameters for component dhklmon. */
   SIG_MESSAGE("dhklmon (Init:SetPar)");
-#line 344 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 344 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("dhkl.dat") strncpy(mccdhklmon_filename, "dhkl.dat" ? "dhkl.dat" : "", 16384); else mccdhklmon_filename[0]='\0';
-#line 347 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 347 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccdhklmon_radius = 2;
-#line 345 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 345 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccdhklmon_yheight = 1.0;
-#line 346 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 346 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccdhklmon_zdepth = 0.01;
-#line 348 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 348 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccdhklmon_amin = det_th1;
-#line 349 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 349 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccdhklmon_amax = det_th2;
-#line 350 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 350 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccdhklmon_d_min = det_d1;
-#line 351 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 351 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccdhklmon_d_max = det_d2;
-#line 352 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 352 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccdhklmon_time0 = det_t0;
-#line 353 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 353 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccdhklmon_Linst = det_Linst;
-#line 354 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 354 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccdhklmon_Lc = det_Lc;
-#line 355 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 355 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccdhklmon_res_x = 0.002;
-#line 356 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 356 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccdhklmon_res_y = 0.005;
-#line 357 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 357 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccdhklmon_res_t = 1e-6;
-#line 358 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 358 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccdhklmon_mu = 1.0;
-#line 362 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 362 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccdhklmon_mod_shift = mcipmod_shift;
-#line 359 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 359 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccdhklmon_modulation = det_modulation;
-#line 360 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 360 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccdhklmon_mod_dt = det_mod_dt;
-#line 361 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 361 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccdhklmon_mod_twidth = det_mod_twidth;
-#line 363 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 363 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if(dhklTable) strncpy(mccdhklmon_mod_d0_table, dhklTable ? dhklTable : "", 16384); else mccdhklmon_mod_d0_table[0]='\0';
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccdhklmon_verbose = 0;
-#line 364 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 364 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccdhklmon_restore_neutron = 1;
 #line 12731 "./ESS_BEER_MCPL.c"
 
@@ -12740,11 +12740,11 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
   rot_transpose(mcrotaMonNDZ, mctr1);
   rot_mul(mcrotadhklmon, mctr1, mcrotrdhklmon);
   mctc1 = coords_set(
-#line 365 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 365 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 365 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 365 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 365 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 365 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0);
 #line 12749 "./ESS_BEER_MCPL.c"
   rot_transpose(mcrotaSample_axis, mctr1);
@@ -12760,23 +12760,23 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
     /* Component psdtof. */
   /* Setting parameters for component psdtof. */
   SIG_MESSAGE("psdtof (Init:SetPar)");
-#line 369 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 369 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("tof_theta.dat") strncpy(mccpsdtof_filename, "tof_theta.dat" ? "tof_theta.dat" : "", 16384); else mccpsdtof_filename[0]='\0';
-#line 370 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 370 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccpsdtof_radius = 2;
-#line 370 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 370 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccpsdtof_yheight = 1;
-#line 370 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 370 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccpsdtof_tmin = tof -40e3;
-#line 370 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 370 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccpsdtof_tmax = tof + 40e3;
-#line 371 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 371 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccpsdtof_amin = det_th1;
-#line 371 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 371 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccpsdtof_amax = det_th2;
-#line 371 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 371 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccpsdtof_restore_neutron = 1;
-#line 371 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 371 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccpsdtof_verbose = 0;
 #line 12781 "./ESS_BEER_MCPL.c"
 
@@ -12790,11 +12790,11 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
   rot_transpose(mcrotadhklmon, mctr1);
   rot_mul(mcrotapsdtof, mctr1, mcrotrpsdtof);
   mctc1 = coords_set(
-#line 372 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 372 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 372 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 372 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 372 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 372 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0);
 #line 12799 "./ESS_BEER_MCPL.c"
   rot_transpose(mcrotaSample_axis, mctr1);
@@ -12810,23 +12810,23 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
     /* Component psdtofDetail. */
   /* Setting parameters for component psdtofDetail. */
   SIG_MESSAGE("psdtofDetail (Init:SetPar)");
-#line 376 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 376 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   if("tof_theta_detail.dat") strncpy(mccpsdtofDetail_filename, "tof_theta_detail.dat" ? "tof_theta_detail.dat" : "", 16384); else mccpsdtofDetail_filename[0]='\0';
-#line 377 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 377 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccpsdtofDetail_radius = 2;
-#line 377 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 377 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccpsdtofDetail_yheight = 1;
-#line 377 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 377 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccpsdtofDetail_tmin = 100e3;
-#line 377 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 377 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccpsdtofDetail_tmax = 110e3;
-#line 378 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 378 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccpsdtofDetail_amin = 75;
-#line 378 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 378 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccpsdtofDetail_amax = 80;
-#line 378 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 378 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccpsdtofDetail_restore_neutron = 1;
-#line 378 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 378 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
   mccpsdtofDetail_verbose = 0;
 #line 12831 "./ESS_BEER_MCPL.c"
 
@@ -12840,11 +12840,11 @@ printf("Selected energy range: %g to %g meV\n", Emin, Emax);
   rot_transpose(mcrotapsdtof, mctr1);
   rot_mul(mcrotapsdtofDetail, mctr1, mcrotrpsdtofDetail);
   mctc1 = coords_set(
-#line 379 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 379 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 379 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 379 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0,
-#line 379 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 379 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
     0);
 #line 12849 "./ESS_BEER_MCPL.c"
   rot_transpose(mcrotaSample_axis, mctr1);
@@ -16228,7 +16228,7 @@ int target_index = mccsample_target_index;
 #line 16228 "./ESS_BEER_MCPL.c"
 /* 'sample=PowderN()' component instance extend code */
     SIG_MESSAGE("sample (Trace:Extend)");
-#line 280 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
+#line 280 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr"
 if ((filt>-1) && (line_info.itype!=filt)) {
  ABSORB; 
 }

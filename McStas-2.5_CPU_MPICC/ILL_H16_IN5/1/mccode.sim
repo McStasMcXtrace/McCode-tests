@@ -1,10 +1,10 @@
 McStas simulation description file for ILL_H16_IN5.
-Date:    Wed Nov 20 01:01:50 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:21:47 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: ILL_H16_IN5
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H16_IN5/ILL_H16_IN5.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H16_IN5/ILL_H16_IN5.instr
   Parameters:  lambda(double) dlambda(double) m(double) speed(double) ratio(double) housing(string) coh(string) inc(string) thickness(double) height(double) radius(double) order(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H16_IN5/ILL_H16_IN5.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H16_IN5/ILL_H16_IN5.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574228842
+  Seed: 1582675598
   Directory: 1
   Nodes: 10
   Param: lambda=4.5
@@ -37,17 +37,17 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:01:52 2019 (1574208112)
+  Date: Tue Feb 25 21:21:55 2020 (1582662115)
   type: array_2d(20, 20)
-  Source: ILL_H16_IN5 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H16_IN5/ILL_H16_IN5.instr)
+  Source: ILL_H16_IN5 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H16_IN5/ILL_H16_IN5.instr)
   component: GuideOut_xy
   position: 0.138922 0 33.3108
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: GuideOut_xy_1574208110.x_y
-  statistics: X0=-0.000564655; dX=0.00861327; Y0=-3.82914e-05; dY=0.057222;
-  signal: Min=231759; Max=341819; Mean=287919;
-  values: 1.15168e+08 206961 1.24441e+06
+  filename: GuideOut_xy_1582662107.x_y
+  statistics: X0=-0.000557708; dX=0.00860894; Y0=-0.000203298; dY=0.0572551;
+  signal: Min=234314; Max=338912; Mean=288158;
+  values: 1.15263e+08 207045 1.24615e+06
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -59,55 +59,54 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:01:52 2019 (1574208112)
+  Date: Tue Feb 25 21:21:55 2020 (1582662115)
   type: array_2d(20, 20)
-  Source: ILL_H16_IN5 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H16_IN5/ILL_H16_IN5.instr)
+  Source: ILL_H16_IN5 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H16_IN5/ILL_H16_IN5.instr)
   component: GuideOut_dxdy
   position: 0.138922 0 33.3108
   title:  Intensity Divergence Divergence Monitor (Square) per bin
   Ncount: 10000000
-  filename: GuideOut_dxdy_1574208110.hd_vd
-  statistics: X0=0.00803873; dX=0.231682; Y0=-1.1443e-05; dY=0.26481;
-  signal: Min=8.18599e-105; Max=1.45772e+06; Mean=287919;
-  values: 1.15168e+08 206961 1.24438e+06
+  filename: GuideOut_dxdy_1582662107.hd_vd
+  statistics: X0=0.00897163; dX=0.231716; Y0=-0.000382407; dY=0.264816;
+  signal: Min=3.10612e-106; Max=1.48955e+06; Mean=288158;
+  values: 1.15263e+08 207045 1.24612e+06
   xvar: Hor.
   yvar: Vert.
   xlabel: Hor. Divergence [deg]
   ylabel: Vert. Divergence [deg]
   zvar: I
   zlabel: Signal per bin
-  xylimits: -0.930669 0.933761 -0.935638 0.935689
+  xylimits: -0.931089 0.935265 -0.935416 0.935285
   variables: I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:01:52 2019 (1574208112)
+  Date: Tue Feb 25 21:21:55 2020 (1582662115)
   type: array_0d
-  Source: ILL_H16_IN5 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H16_IN5/ILL_H16_IN5.instr)
+  Source: ILL_H16_IN5 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H16_IN5/ILL_H16_IN5.instr)
   component: GuideOut_Phic
   position: 0.138922 0 33.3108
   title:  Intensity Monitor (Square)
   Ncount: 10000000
-  statistics: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ1.15168e+08 206961 1.24438e+06
-  signal: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ4¥•w
-Èí¿gmB^áí?R`‘^¾ğí¿Åc´W)ñí?
-  values: 
+  statistics: None
+  signal: None
+  values: 2.88413e+08 517978 1.24613e+06
   xylimits: 0 0 0 0 0 0
   variables: I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:01:52 2019 (1574208112)
+  Date: Tue Feb 25 21:21:55 2020 (1582662115)
   type: array_1d(20)
-  Source: ILL_H16_IN5 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H16_IN5/ILL_H16_IN5.instr)
+  Source: ILL_H16_IN5 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H16_IN5/ILL_H16_IN5.instr)
   component: GuideOut_L
   position: 0.138922 0 33.3108
   title: Wavelength [Angs] monitor
   Ncount: 10000000
-  filename: GuideOut_L_1574208110.L
+  filename: GuideOut_L_1582662107.L
   statistics: X0=4.5; dX=0;
-  signal: Min=0; Max=1.15167e+08; Mean=5.75834e+06;
-  values: 1.15167e+08 206960 1.24439e+06
+  signal: Min=0; Max=1.15263e+08; Mean=5.76314e+06;
+  values: 1.15263e+08 207045 1.24613e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
@@ -117,37 +116,37 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:01:52 2019 (1574208112)
+  Date: Tue Feb 25 21:21:55 2020 (1582662115)
   type: array_1d(20)
-  Source: ILL_H16_IN5 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H16_IN5/ILL_H16_IN5.instr)
+  Source: ILL_H16_IN5 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H16_IN5/ILL_H16_IN5.instr)
   component: Det_sample_t
   position: 0.283102 0 47.7792
   title: TOF [s] monitor
   Ncount: 10000000
-  filename: Det_sample_t_1574208110.t
-  statistics: X0=0.0162357; dX=2.91837e-05;
-  signal: Min=113033; Max=3.46683e+06; Mean=1.65702e+06;
-  values: 3.31404e+07 278431 25982
+  filename: Det_sample_t_1582662107.t
+  statistics: X0=0.0162334; dX=2.72343e-05;
+  signal: Min=75953.6; Max=3.29724e+06; Mean=1.65343e+06;
+  values: 3.30686e+07 278007 25948
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.0161591 0.0163115
+  xlimits: 0.0161627 0.0163064
   variables: t I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:01:52 2019 (1574208112)
+  Date: Tue Feb 25 21:21:55 2020 (1582662115)
   type: array_2d(100, 100)
-  Source: ILL_H16_IN5 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H16_IN5/ILL_H16_IN5.instr)
+  Source: ILL_H16_IN5 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H16_IN5/ILL_H16_IN5.instr)
   component: Det_ideal_ay
   position: 0.285491 0 48.019
   title:  Intensity Angle Position Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: Det_ideal_ay_1574208110.th_y
-  statistics: X0=45.2534; dX=21.5187; Y0=0.00981145; dY=0.824049;
-  signal: Min=0; Max=2387.05; Mean=122.488;
-  values: 1.22488e+06 5397.94 93774
+  filename: Det_ideal_ay_1582662107.th_y
+  statistics: X0=45.179; dX=21.5802; Y0=-0.00553786; dY=0.823835;
+  signal: Min=0; Max=2383.72; Mean=121.645;
+  values: 1.21645e+06 5372.86 93602
   xvar: Longitude
   yvar: y
   xlabel: Longitude [deg]
@@ -159,17 +158,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:01:53 2019 (1574208113)
+  Date: Tue Feb 25 21:21:55 2020 (1582662115)
   type: array_2d(384, 128)
-  Source: ILL_H16_IN5 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H16_IN5/ILL_H16_IN5.instr)
+  Source: ILL_H16_IN5 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H16_IN5/ILL_H16_IN5.instr)
   component: Det_PSD
   position: 0.285491 0 48.019
   title: PSD Detector
   Ncount: 10000000
   filename: in5det.dat
-  statistics: X0=3.1745; dX=1.51965; Y0=0.0107402; dY=0.836353;
-  signal: Min=0; Max=737.736; Mean=24.3746;
-  values: 1.19806e+06 5890.92 81525
+  statistics: X0=3.17071; dX=1.51234; Y0=-0.00207938; dY=0.834078;
+  signal: Min=0; Max=779.363; Mean=24.1818;
+  values: 1.18858e+06 5855.67 81557
   xvar: X
   yvar: Y
   xlabel: X position [m]
@@ -181,21 +180,21 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:01:53 2019 (1574208113)
+  Date: Tue Feb 25 21:21:55 2020 (1582662115)
   type: array_1d(50)
-  Source: ILL_H16_IN5 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H16_IN5/ILL_H16_IN5.instr)
+  Source: ILL_H16_IN5 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H16_IN5/ILL_H16_IN5.instr)
   component: in5_t
   position: 0.285491 0 48.019
   title: TOF [s] monitor
   Ncount: 10000000
-  filename: in5_t_1574208110.t
-  statistics: X0=0.0211083; dX=0.000132352;
-  signal: Min=0; Max=1.82422e+06; Mean=46653;
-  values: 2.33265e+06 11477.6 204986
+  filename: in5_t_1582662107.t
+  statistics: X0=0.021144; dX=0.000126199;
+  signal: Min=0; Max=1.86557e+06; Mean=46423.8;
+  values: 2.32119e+06 11388.7 204801
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.0164442 0.0305886
+  xlimits: 0.0164571 0.0306516
   variables: t I I_err N
 end data

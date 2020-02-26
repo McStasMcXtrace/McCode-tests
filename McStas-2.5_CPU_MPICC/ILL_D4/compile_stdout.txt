@@ -1,11 +1,27 @@
-      [1574205301.551248] [n-62-23-6:30443:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3372.68
-[1574205301.552465] [n-62-23-6:30443:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574205301.552468] [n-62-23-6:30443:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574205301.554278] [n-62-23-6:30443:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574205301.554281] [n-62-23-6:30443:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: No output directory specified (--dir)
+INFO: Using directory: "ILL_D4_20200225_202641"
+INFO: Regenerating c-file: ILL_D4.c
+Info:    Defining SPLIT from Monok=Monochromator_curved() to END in instrument ILL_D4
+Info:    Defining SPLIT from Sample=Isotropic_Sqw() to END in instrument ILL_D4
+CFLAGS=
+      INFO: Recompiling: ./ILL_D4.out
+INFO: ===
+[n-62-23-14:00562] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:00562] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582658807.931033] [n-62-23-14:561  :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3375.93
+[1582658807.932594] [n-62-23-14:561  :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582658807.932597] [n-62-23-14:561  :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1582658807.935208] [n-62-23-14:561  :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582658807.935211] [n-62-23-14:561  :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 begin instrument: ILL_D4
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_D4/ILL_D4.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_D4/ILL_D4.instr
   Parameters:  lambda(double) DM(double) sample(string) RV(double) L1(double) L2(double) L3(double) verbose(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +30,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_D4/ILL_D4.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_D4/ILL_D4.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1574235744
+  Seed: 1582659368
   Directory: .
   Param: lambda=0.7
   Param: DM=1.807
@@ -31,17 +47,3 @@ begin simulation: .
   Param: verbose=1
 end simulation
 info!
-INFO: No output directory specified (--dir)
-INFO: Using directory: "ILL_D4_20191120_001454"
-INFO: Regenerating c-file: ILL_D4.c
-Info:    Defining SPLIT from Monok=Monochromator_curved() to END in instrument ILL_D4
-Info:    Defining SPLIT from Sample=Isotropic_Sqw() to END in instrument ILL_D4
-CFLAGS=
-INFO: Recompiling: ./ILL_D4.out
-INFO: ===
---------------------------------------------------------------------------
-Initialization of MXM library failed.
-
-  Error: Input/output error
-
---------------------------------------------------------------------------

@@ -1,11 +1,11 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Nov. 19, 2019
-# Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr
+# Creator: McStas 2.5 - Feb. 24, 2020
+# Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr
 # Ncount: 1000000
 # Trace: no
 # Gravitation: no
-# Seed: 1574231536
+# Seed: 1582679195
 # Directory: 1
 # Nodes: 10
 # Param: TT=-30
@@ -18,17 +18,17 @@
 # Param: PHA6=2
 # Param: PHA7=3
 # Param: TTA=4
-# Date: Wed Nov 20 01:05:41 2019 (1574208341)
+# Date: Tue Feb 25 21:30:26 2020 (1582662626)
 # type: array_2d(7, 1000)
-# Source: ISIS_Prisma2 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr)
+# Source: ISIS_Prisma2 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr)
 # component: Detector
 # position: -0.377674 0 9.71705
 # title:  Intensity Mono blade Time_Of_Flight Monitor (Square) per bin
 # Ncount: 10000000
 # filename: prisma2.tof
-# statistics: X0=0.428574; dX=0.00273155; Y0=5; dY=5.96046e-08;
-# signal: Min=0; Max=7.49614e-08; Mean=1.07088e-11;
-# values: 7.49615e-08 6.27234e-11 2.68321e+06
+# statistics: X0=0.428572; dX=0.000772726; Y0=5; dY=0;
+# signal: Min=0; Max=7.49904e-08; Mean=1.07129e-11;
+# values: 7.49904e-08 6.27674e-11 2.68316e+06
 # xvar: Mono
 # yvar: TOF
 # xlabel: Mono blade
@@ -38,7 +38,7 @@
 # xylimits: 0 6 0 10000
 # variables: I I_err N
 # Data [Detector/prisma2.tof] I:
-7.496136714e-08 0 4.075091055e-15 8.27769208e-14 0 0 0 
+7.499042051e-08 0 0 6.771868156e-15 0 0 0 
 0 0 0 0 0 0 0 
 0 0 0 0 0 0 0 
 0 0 0 0 0 0 0 
@@ -1039,7 +1039,7 @@
 0 0 0 0 0 0 0 
 0 0 0 0 0 0 0 
 # Errors [Detector/prisma2.tof] I_err:
-6.272335203e-11 0 2.901566267e-15 6.832309079e-14 0 0 0 
+6.276736708e-11 0 0 6.771868156e-15 0 0 0 
 0 0 0 0 0 0 0 
 0 0 0 0 0 0 0 
 0 0 0 0 0 0 0 
@@ -2040,7 +2040,7 @@
 0 0 0 0 0 0 0 
 0 0 0 0 0 0 0 
 # Events [Detector/prisma2.tof] N:
-2683204 0 2 2 0 0 0 
+2683155 0 0 1 0 0 0 
 0 0 0 0 0 0 0 
 0 0 0 0 0 0 0 
 0 0 0 0 0 0 0 

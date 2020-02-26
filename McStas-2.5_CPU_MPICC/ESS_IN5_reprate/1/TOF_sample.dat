@@ -1,11 +1,11 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Nov. 19, 2019
-# Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr
+# Creator: McStas 2.5 - Feb. 24, 2020
+# Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr
 # Ncount: 1000000
 # Trace: no
 # Gravitation: no
-# Seed: 1574226575
+# Seed: 1582672815
 # Directory: 1
 # Nodes: 10
 # Param: Lmin=4.9
@@ -55,17 +55,17 @@
 # Param: RES_DE=0.5
 # Param: port=30
 # Param: cold=0.95
-# Date: Wed Nov 20 00:59:05 2019 (1574207945)
+# Date: Tue Feb 25 21:14:43 2020 (1582661683)
 # type: array_1d(500)
-# Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+# Source: ESS_IN5_reprate (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
 # component: TOFsample_zoom
 # position: 0 0 102.175
 # title: Time-of-flight monitor
 # Ncount: 10000000
 # filename: TOF_sample.dat
-# statistics: X0=130176; dX=0;
-# signal: Min=0; Max=403995; Mean=807.99;
-# values: 403995 102977 25
+# statistics: X0=130176; dX=0.00195312;
+# signal: Min=0; Max=364458; Mean=728.915;
+# values: 364458 102274 21
 # xvar: t
 # yvar: (I,I_err)
 # xlabel: Time-of-flight [\gms]
@@ -327,7 +327,7 @@
 129575.8771 0 0 0 
 129775.8771 0 0 0 
 129975.8771 0 0 0 
-130175.8771 403995.0457 102976.5838 25 
+130175.8771 364457.6885 102274.008 21 
 130375.8771 0 0 0 
 130575.8771 0 0 0 
 130775.8771 0 0 0 

@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr (Vout_test)
- * Date:       Wed Nov 20 00:56:49 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr (Vout_test)
+ * Date:       Tue Feb 25 21:11:58 2020
  * File:       ./Vout_test.c
  * Compile:    cc -o Vout_test.out ./Vout_test.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Vout_test";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -7637,13 +7637,13 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccOrigin_minutes = 0;
 #line 7648 "./Vout_test.c"
 
@@ -7655,11 +7655,11 @@ void mcinit(void) {
 #line 7655 "./Vout_test.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
     0,
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
     0,
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
     0);
 #line 7664 "./Vout_test.c"
   mctc1 = coords_neg(mcposaOrigin);
@@ -7672,31 +7672,31 @@ void mcinit(void) {
     /* Component Src. */
   /* Setting parameters for component Src. */
   SIG_MESSAGE("Src (Init:SetPar)");
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccSrc_radius = 0.1;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccSrc_yheight = 0;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccSrc_xwidth = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccSrc_dist = 1;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccSrc_focus_xw = 0.1;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccSrc_focus_yh = 0.1;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccSrc_E0 = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccSrc_dE = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccSrc_lambda0 = 10;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccSrc_dlambda = 1;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccSrc_flux = 1;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccSrc_gauss = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccSrc_target_index = + 1;
 #line 7701 "./Vout_test.c"
 
@@ -7710,11 +7710,11 @@ void mcinit(void) {
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotaSrc, mctr1, mcrotrSrc);
   mctc1 = coords_set(
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
     0,
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
     0,
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
     0);
 #line 7719 "./Vout_test.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -7730,9 +7730,9 @@ void mcinit(void) {
     /* Component Vout. */
   /* Setting parameters for component Vout. */
   SIG_MESSAGE("Vout (Init:SetPar)");
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   if(mcipVoutfile) strncpy(mccVout_filename, mcipVoutfile ? mcipVoutfile : "", 16384); else mccVout_filename[0]='\0';
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccVout_bufsize = 0;
 #line 7737 "./Vout_test.c"
 
@@ -7746,11 +7746,11 @@ void mcinit(void) {
   rot_transpose(mcrotaSrc, mctr1);
   rot_mul(mcrotaVout, mctr1, mcrotrVout);
   mctc1 = coords_set(
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
     0,
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
     0,
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
     0);
 #line 7755 "./Vout_test.c"
   rot_transpose(mcrotaSrc, mctr1);
@@ -7766,25 +7766,25 @@ void mcinit(void) {
     /* Component PSD. */
   /* Setting parameters for component PSD. */
   SIG_MESSAGE("PSD (Init:SetPar)");
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccPSD_nx = 90;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccPSD_ny = 90;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   if("PSD.dat") strncpy(mccPSD_filename, "PSD.dat" ? "PSD.dat" : "", 16384); else mccPSD_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccPSD_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccPSD_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccPSD_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccPSD_ymax = 0.05;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccPSD_xwidth = 0.1;
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccPSD_yheight = 0.1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
   mccPSD_restore_neutron = 1;
 #line 7789 "./Vout_test.c"
 
@@ -7798,11 +7798,11 @@ void mcinit(void) {
   rot_transpose(mcrotaVout, mctr1);
   rot_mul(mcrotaPSD, mctr1, mcrotrPSD);
   mctc1 = coords_set(
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
     0,
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
     0,
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vout_test/Vout_test.instr"
     1);
 #line 7807 "./Vout_test.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -8514,7 +8514,7 @@ MCNUM bufsize = mccVout_bufsize;
   Vars.csz = sz;
   Vars.ct  = t;
 
-  pp = Monitor_nD_Trace(&DEFS, &Vars);
+  pp = Monitor_nD_Trace(&DEFS, &Vars, _particle);
 
   SCATTER;
 }

@@ -1,10 +1,10 @@
 McStas simulation description file for ILL_H22_VIVALDI.
-Date:    Wed Nov 20 01:02:37 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:23:45 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: ILL_H22_VIVALDI
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_VIVALDI/ILL_H22_VIVALDI.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_VIVALDI/ILL_H22_VIVALDI.instr
   Parameters:  lambda(double) dlambda(double) crystal(string) container(string) verbose(double) m(double) mip(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_VIVALDI/ILL_H22_VIVALDI.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_VIVALDI/ILL_H22_VIVALDI.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574229602
+  Seed: 1582676544
   Directory: 1
   Nodes: 10
   Param: lambda=3
@@ -32,17 +32,17 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:02:51 2019 (1574208171)
+  Date: Tue Feb 25 21:24:25 2020 (1582662265)
   type: array_2d(20, 20)
-  Source: ILL_H22_VIVALDI (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_VIVALDI/ILL_H22_VIVALDI.instr)
+  Source: ILL_H22_VIVALDI (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_VIVALDI/ILL_H22_VIVALDI.instr)
   component: GuideOut_xy
   position: -0.13977 0 92.585
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: GuideOut_xy_1574208157.x_y
-  statistics: X0=0.000200314; dX=0.00865783; Y0=2.27105e-05; dY=0.0576544;
-  signal: Min=4.53978e+06; Max=6.3484e+06; Mean=5.34114e+06;
-  values: 2.13645e+09 5.81607e+06 2.14367e+06
+  filename: GuideOut_xy_1582662225.x_y
+  statistics: X0=0.000240664; dX=0.00865072; Y0=-0.000132096; dY=0.0576651;
+  signal: Min=4.37142e+06; Max=6.33351e+06; Mean=5.35896e+06;
+  values: 2.14358e+09 5.83984e+06 2.14306e+06
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -54,54 +54,54 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:02:51 2019 (1574208171)
+  Date: Tue Feb 25 21:24:25 2020 (1582662265)
   type: array_2d(20, 20)
-  Source: ILL_H22_VIVALDI (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_VIVALDI/ILL_H22_VIVALDI.instr)
+  Source: ILL_H22_VIVALDI (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_VIVALDI/ILL_H22_VIVALDI.instr)
   component: GuideOut_dxdy
   position: -0.13977 0 92.585
   title:  Intensity Divergence Divergence Monitor (Square) per bin
   Ncount: 10000000
-  filename: GuideOut_dxdy_1574208157.hd_vd
-  statistics: X0=0.00759682; dX=0.199488; Y0=0.00113021; dY=0.248953;
-  signal: Min=0; Max=2.187e+08; Mean=5.34114e+06;
-  values: 2.13645e+09 5.81607e+06 2.14362e+06
+  filename: GuideOut_dxdy_1582662225.hd_vd
+  statistics: X0=0.00889027; dX=0.199498; Y0=0.00153079; dY=0.248788;
+  signal: Min=0; Max=2.2137e+08; Mean=5.35896e+06;
+  values: 2.14358e+09 5.83984e+06 2.14298e+06
   xvar: Hor.
   yvar: Vert.
   xlabel: Hor. Divergence [deg]
   ylabel: Vert. Divergence [deg]
   zvar: I
   zlabel: Signal per bin
-  xylimits: -1.75041 1.76847 -1.78045 1.78387
+  xylimits: -1.75058 1.77577 -1.78146 1.78152
   variables: I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:02:51 2019 (1574208171)
+  Date: Tue Feb 25 21:24:25 2020 (1582662265)
   type: array_0d
-  Source: ILL_H22_VIVALDI (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_VIVALDI/ILL_H22_VIVALDI.instr)
+  Source: ILL_H22_VIVALDI (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_VIVALDI/ILL_H22_VIVALDI.instr)
   component: GuideOut_Phic
   position: -0.13977 0 92.585
   title:  Intensity Monitor (Square)
   Ncount: 10000000
-  statistics: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ2.13645e+09 5.81607e+06 2.14362e+06
-  signal: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿYùÏ—¬ü¿döä¥Kü?‹¢O<·|ü¿H›‹\¹Šü?
-  values: 
+  statistics: None
+  signal: None
+  values: 2.70728e+09 5.23729e+06 2.14299e+06
   xylimits: 0 0 0 0 0 0
   variables: I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:02:51 2019 (1574208171)
+  Date: Tue Feb 25 21:24:25 2020 (1582662265)
   type: array_1d(20)
-  Source: ILL_H22_VIVALDI (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_VIVALDI/ILL_H22_VIVALDI.instr)
+  Source: ILL_H22_VIVALDI (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_VIVALDI/ILL_H22_VIVALDI.instr)
   component: GuideOut_L
   position: -0.13977 0 92.585
   title: Wavelength [Angs] monitor
   Ncount: 10000000
-  filename: GuideOut_L_1574208157.L
-  statistics: X0=2.36902; dX=1.04776;
-  signal: Min=0; Max=9.95228e+08; Mean=1.02228e+08;
-  values: 2.04455e+09 5.58415e+06 2.13278e+06
+  filename: GuideOut_L_1582662225.L
+  statistics: X0=2.36829; dX=1.04761;
+  signal: Min=0; Max=9.97124e+08; Mean=1.0232e+08;
+  values: 2.04641e+09 5.59435e+06 2.13218e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
@@ -111,57 +111,57 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:02:51 2019 (1574208171)
+  Date: Tue Feb 25 21:24:25 2020 (1582662265)
   type: array_1d(20)
-  Source: ILL_H22_VIVALDI (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_VIVALDI/ILL_H22_VIVALDI.instr)
+  Source: ILL_H22_VIVALDI (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_VIVALDI/ILL_H22_VIVALDI.instr)
   component: D2B_Mono_Dx
   position: -0.140569 0 92.8349
   title: Hor. Divergence [deg] monitor
   Ncount: 10000000
-  filename: D2B_Mono_Dx_1574208157.hd
-  statistics: X0=0.00440435; dX=0.20059;
-  signal: Min=0; Max=6.59631e+08; Mean=9.94088e+07;
-  values: 1.98818e+09 5.53379e+06 1.92898e+06
+  filename: D2B_Mono_Dx_1582662225.hd
+  statistics: X0=0.00515622; dX=0.200222;
+  signal: Min=0; Max=6.58169e+08; Mean=9.95186e+07;
+  values: 1.99037e+09 5.54401e+06 1.92856e+06
   xvar: hd
   yvar: (I,I_err)
   xlabel: Hor. Divergence [deg]
   ylabel: Intensity [n/s/cm2/bin]
-  xlimits: -1.75041 1.76847
+  xlimits: -1.75058 1.76718
   variables: hd I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:02:51 2019 (1574208171)
+  Date: Tue Feb 25 21:24:25 2020 (1582662265)
   type: array_1d(20)
-  Source: ILL_H22_VIVALDI (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_VIVALDI/ILL_H22_VIVALDI.instr)
+  Source: ILL_H22_VIVALDI (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_VIVALDI/ILL_H22_VIVALDI.instr)
   component: SALSA_Mono_Dx
   position: -0.172785 0 102.92
   title: Hor. Divergence [deg] monitor
   Ncount: 10000000
-  filename: SALSA_Mono_Dx_1574208157.hd
-  statistics: X0=-0.000806342; dX=0.191582;
-  signal: Min=0; Max=6.23563e+08; Mean=9.21901e+07;
-  values: 1.8438e+09 5.37211e+06 1.58848e+06
+  filename: SALSA_Mono_Dx_1582662225.hd
+  statistics: X0=0.00110521; dX=0.191262;
+  signal: Min=0; Max=6.33739e+08; Mean=9.22914e+07;
+  values: 1.84583e+09 5.38276e+06 1.58691e+06
   xvar: hd
   yvar: (I,I_err)
   xlabel: Hor. Divergence [deg]
   ylabel: Intensity [n/s/cm2/bin]
-  xlimits: -1.74761 1.74035
+  xlimits: -1.74538 1.7488
   variables: hd I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:02:51 2019 (1574208171)
+  Date: Tue Feb 25 21:24:25 2020 (1582662265)
   type: array_2d(180, 180)
-  Source: ILL_H22_VIVALDI (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_VIVALDI/ILL_H22_VIVALDI.instr)
+  Source: ILL_H22_VIVALDI (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_VIVALDI/ILL_H22_VIVALDI.instr)
   component: PSD_Vivaldi
   position: -0.191153 0 108.67
   title:  Intensity Angle Position Monitor (Cylinder) [out] per bin
   Ncount: 10000000
-  filename: PSD_Vivaldi_1574208157.th_y
-  statistics: X0=-0.873256; dX=118.632; Y0=-0.00340887; dY=0.0631933;
-  signal: Min=0; Max=1.60861e+06; Mean=8273.35;
-  values: 2.68056e+08 2.48429e+06 278028
+  filename: PSD_Vivaldi_1582662225.th_y
+  statistics: X0=0.19301; dX=118.425; Y0=-0.0032627; dY=0.0662357;
+  signal: Min=0; Max=2.18773e+06; Mean=8327.29;
+  values: 2.69804e+08 2.46458e+06 277890
   xvar: Longitude
   yvar: y
   xlabel: Longitude [deg]

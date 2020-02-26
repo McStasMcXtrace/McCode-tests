@@ -1,10 +1,10 @@
 McStas simulation description file for ILL_H113.
-Date:    Wed Nov 20 01:00:14 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:17:35 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: ILL_H113
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H113/ILL_H113.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H113/ILL_H113.instr
   Parameters:  m(double) lambda(double) dlambda(double) mip(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H113/ILL_H113.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H113/ILL_H113.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574227823
+  Seed: 1582674395
   Directory: 1
   Nodes: 10
   Param: m=2
@@ -29,17 +29,17 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:00:41 2019 (1574208041)
+  Date: Tue Feb 25 21:18:54 2020 (1582661934)
   type: array_2d(20, 20)
-  Source: ILL_H113 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H113/ILL_H113.instr)
+  Source: ILL_H113 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H113/ILL_H113.instr)
   component: GuideOut_xy
   position: -0.35898 0 79.1085
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: GuideOut_xy_1574208014.x_y
-  statistics: X0=-0.000394768; dX=0.0172902; Y0=-2.32762e-05; dY=0.0576481;
-  signal: Min=1.61661e+07; Max=2.01742e+07; Mean=1.79505e+07;
-  values: 7.18019e+09 1.19979e+07 5.22451e+06
+  filename: GuideOut_xy_1582661855.x_y
+  statistics: X0=-0.000396711; dX=0.0172622; Y0=-8.18013e-05; dY=0.0576228;
+  signal: Min=1.5824e+07; Max=2.04932e+07; Mean=1.8007e+07;
+  values: 7.2028e+09 1.20169e+07 5.22724e+06
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -51,54 +51,54 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:00:41 2019 (1574208041)
+  Date: Tue Feb 25 21:18:54 2020 (1582661934)
   type: array_2d(20, 20)
-  Source: ILL_H113 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H113/ILL_H113.instr)
+  Source: ILL_H113 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H113/ILL_H113.instr)
   component: GuideOut_dxdy
   position: -0.35898 0 79.1085
   title:  Intensity Divergence Divergence Monitor (Square) per bin
   Ncount: 10000000
-  filename: GuideOut_dxdy_1574208014.hd_vd
-  statistics: X0=0.00436241; dX=0.49326; Y0=-0.00551787; dY=0.537502;
-  signal: Min=2.38018e-76; Max=5.95818e+08; Mean=1.79505e+07;
-  values: 7.18019e+09 1.19979e+07 5.22437e+06
+  filename: GuideOut_dxdy_1582661855.hd_vd
+  statistics: X0=-0.00455779; dX=0.492537; Y0=0.00372493; dY=0.537999;
+  signal: Min=2.74868e-65; Max=5.94221e+08; Mean=1.8007e+07;
+  values: 7.2028e+09 1.20169e+07 5.22699e+06
   xvar: Hor.
   yvar: Vert.
   xlabel: Hor. Divergence [deg]
   ylabel: Vert. Divergence [deg]
   zvar: I
   zlabel: Signal per bin
-  xylimits: -2.85123 2.84485 -4.73662 4.72554
+  xylimits: -2.8532 2.83029 -4.72053 4.72536
   variables: I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:00:41 2019 (1574208041)
+  Date: Tue Feb 25 21:18:54 2020 (1582661934)
   type: array_0d
-  Source: ILL_H113 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H113/ILL_H113.instr)
+  Source: ILL_H113 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H113/ILL_H113.instr)
   component: GuideOut_Phic
   position: -0.35898 0 79.1085
   title:  Intensity Monitor (Square)
   Ncount: 10000000
-  statistics: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ7.18019e+09 1.19979e+07 5.22437e+06
-  signal: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿO‰RTÏÀE±a(?Â@´¦jÿKòÀoé§Òóæ@
-  values: 
+  statistics: None
+  signal: None
+  values: 2.37796e+10 2.80017e+07 5.227e+06
   xylimits: 0 0 0 0 0 0
   variables: I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:00:41 2019 (1574208041)
+  Date: Tue Feb 25 21:18:54 2020 (1582661934)
   type: array_1d(20)
-  Source: ILL_H113 (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H113/ILL_H113.instr)
+  Source: ILL_H113 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H113/ILL_H113.instr)
   component: GuideOut_L
   position: -0.35898 0 79.1085
   title: Wavelength [Angs] monitor
   Ncount: 10000000
-  filename: GuideOut_L_1574208014.L
-  statistics: X0=5.94346; dX=3.20154;
-  signal: Min=0; Max=1.23337e+09; Mean=3.58863e+08;
-  values: 7.17727e+09 1.19939e+07 5.22289e+06
+  filename: GuideOut_L_1582661855.L
+  statistics: X0=5.93999; dX=3.19838;
+  signal: Min=0; Max=1.22913e+09; Mean=3.60014e+08;
+  values: 7.20028e+09 1.20134e+07 5.2255e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]

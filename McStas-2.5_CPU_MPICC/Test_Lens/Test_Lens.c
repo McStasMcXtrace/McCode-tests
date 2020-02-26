@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr (Test_Lens)
- * Date:       Wed Nov 20 00:50:04 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr (Test_Lens)
+ * Date:       Tue Feb 25 21:04:41 2020
  * File:       ./Test_Lens.c
  * Compile:    cc -o Test_Lens.out ./Test_Lens.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Test_Lens";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -14013,13 +14013,13 @@ void mcinit(void) {
     /* Component base. */
   /* Setting parameters for component base. */
   SIG_MESSAGE("base (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccbase_profile, "NULL" ? "NULL" : "", 16384); else mccbase_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccbase_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccbase_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccbase_minutes = 0;
 #line 14024 "./Test_Lens.c"
 
@@ -14031,11 +14031,11 @@ void mcinit(void) {
 #line 14031 "./Test_Lens.c"
   rot_copy(mcrotrbase, mcrotabase);
   mcposabase = coords_set(
-#line 32 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 32 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 32 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 32 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 32 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 32 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0);
 #line 14040 "./Test_Lens.c"
   mctc1 = coords_neg(mcposabase);
@@ -14048,25 +14048,25 @@ void mcinit(void) {
     /* Component source1. */
   /* Setting parameters for component source1. */
   SIG_MESSAGE("source1 (Init:SetPar)");
-#line 35 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 35 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccsource1_xwidth = 0.026;
-#line 35 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 35 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccsource1_yheight = 0.026;
-#line 36 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 36 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccsource1_focus_aw = 0.00001;
-#line 36 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 36 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccsource1_focus_ah = 0.00001;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccsource1_E0 = 0.0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccsource1_dE = 0.0;
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccsource1_lambda0 = mciplambda;
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccsource1_dlambda = 0.00001;
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccsource1_gauss = 0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccsource1_flux = 1;
 #line 14071 "./Test_Lens.c"
 
@@ -14080,11 +14080,11 @@ void mcinit(void) {
   rot_transpose(mcrotabase, mctr1);
   rot_mul(mcrotasource1, mctr1, mcrotrsource1);
   mctc1 = coords_set(
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     .001);
 #line 14089 "./Test_Lens.c"
   rot_transpose(mcrotabase, mctr1);
@@ -14100,41 +14100,41 @@ void mcinit(void) {
     /* Component L11. */
   /* Setting parameters for component L11. */
   SIG_MESSAGE("L11 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_geometry, 0 ? 0 : "", 16384); else mccL11_geometry[0]='\0';
 #line 14139 "./Test_Lens.c"
 
@@ -14148,11 +14148,11 @@ void mcinit(void) {
   rot_transpose(mcrotasource1, mctr1);
   rot_mul(mcrotaL11, mctr1, mcrotrL11);
   mctc1 = coords_set(
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     .20);
 #line 14157 "./Test_Lens.c"
   rot_transpose(mcrotasource1, mctr1);
@@ -14168,41 +14168,41 @@ void mcinit(void) {
     /* Component L11_4. */
   /* Setting parameters for component L11_4. */
   SIG_MESSAGE("L11_4 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_4_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_4_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_4_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_4_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_4_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_4_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_4_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_4_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_4_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_4_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_4_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_4_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_4_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_4_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_4_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_4_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_4_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_4_geometry, 0 ? 0 : "", 16384); else mccL11_4_geometry[0]='\0';
 #line 14207 "./Test_Lens.c"
 
@@ -14216,11 +14216,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11, mctr1);
   rot_mul(mcrotaL11_4, mctr1, mcrotrL11_4);
   mctc1 = coords_set(
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 14225 "./Test_Lens.c"
   rot_transpose(mcrotaL11, mctr1);
@@ -14236,41 +14236,41 @@ void mcinit(void) {
     /* Component L11_5. */
   /* Setting parameters for component L11_5. */
   SIG_MESSAGE("L11_5 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_5_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_5_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_5_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_5_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_5_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_5_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_5_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_5_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_5_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_5_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_5_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_5_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_5_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_5_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_5_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_5_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_5_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_5_geometry, 0 ? 0 : "", 16384); else mccL11_5_geometry[0]='\0';
 #line 14275 "./Test_Lens.c"
 
@@ -14284,11 +14284,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_4, mctr1);
   rot_mul(mcrotaL11_5, mctr1, mcrotrL11_5);
   mctc1 = coords_set(
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 14293 "./Test_Lens.c"
   rot_transpose(mcrotaL11_4, mctr1);
@@ -14304,41 +14304,41 @@ void mcinit(void) {
     /* Component L11_6. */
   /* Setting parameters for component L11_6. */
   SIG_MESSAGE("L11_6 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_6_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_6_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_6_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_6_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_6_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_6_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_6_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_6_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_6_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_6_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_6_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_6_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_6_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_6_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_6_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_6_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_6_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_6_geometry, 0 ? 0 : "", 16384); else mccL11_6_geometry[0]='\0';
 #line 14343 "./Test_Lens.c"
 
@@ -14352,11 +14352,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_5, mctr1);
   rot_mul(mcrotaL11_6, mctr1, mcrotrL11_6);
   mctc1 = coords_set(
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 14361 "./Test_Lens.c"
   rot_transpose(mcrotaL11_5, mctr1);
@@ -14372,41 +14372,41 @@ void mcinit(void) {
     /* Component L11_7. */
   /* Setting parameters for component L11_7. */
   SIG_MESSAGE("L11_7 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_7_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_7_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_7_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_7_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_7_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_7_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_7_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_7_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_7_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_7_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_7_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_7_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_7_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_7_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_7_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_7_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_7_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_7_geometry, 0 ? 0 : "", 16384); else mccL11_7_geometry[0]='\0';
 #line 14411 "./Test_Lens.c"
 
@@ -14420,11 +14420,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_6, mctr1);
   rot_mul(mcrotaL11_7, mctr1, mcrotrL11_7);
   mctc1 = coords_set(
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 14429 "./Test_Lens.c"
   rot_transpose(mcrotaL11_6, mctr1);
@@ -14440,41 +14440,41 @@ void mcinit(void) {
     /* Component L11_8. */
   /* Setting parameters for component L11_8. */
   SIG_MESSAGE("L11_8 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_8_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_8_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_8_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_8_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_8_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_8_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_8_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_8_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_8_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_8_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_8_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_8_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_8_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_8_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_8_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_8_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_8_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_8_geometry, 0 ? 0 : "", 16384); else mccL11_8_geometry[0]='\0';
 #line 14479 "./Test_Lens.c"
 
@@ -14488,11 +14488,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_7, mctr1);
   rot_mul(mcrotaL11_8, mctr1, mcrotrL11_8);
   mctc1 = coords_set(
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 14497 "./Test_Lens.c"
   rot_transpose(mcrotaL11_7, mctr1);
@@ -14508,41 +14508,41 @@ void mcinit(void) {
     /* Component L11_9. */
   /* Setting parameters for component L11_9. */
   SIG_MESSAGE("L11_9 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_9_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_9_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_9_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_9_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_9_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_9_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_9_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_9_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_9_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_9_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_9_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_9_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_9_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_9_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_9_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_9_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_9_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_9_geometry, 0 ? 0 : "", 16384); else mccL11_9_geometry[0]='\0';
 #line 14547 "./Test_Lens.c"
 
@@ -14556,11 +14556,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_8, mctr1);
   rot_mul(mcrotaL11_9, mctr1, mcrotrL11_9);
   mctc1 = coords_set(
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 14565 "./Test_Lens.c"
   rot_transpose(mcrotaL11_8, mctr1);
@@ -14576,41 +14576,41 @@ void mcinit(void) {
     /* Component L11_10. */
   /* Setting parameters for component L11_10. */
   SIG_MESSAGE("L11_10 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_10_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_10_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_10_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_10_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_10_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_10_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_10_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_10_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_10_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_10_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_10_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_10_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_10_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_10_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_10_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_10_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_10_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_10_geometry, 0 ? 0 : "", 16384); else mccL11_10_geometry[0]='\0';
 #line 14615 "./Test_Lens.c"
 
@@ -14624,11 +14624,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_9, mctr1);
   rot_mul(mcrotaL11_10, mctr1, mcrotrL11_10);
   mctc1 = coords_set(
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 14633 "./Test_Lens.c"
   rot_transpose(mcrotaL11_9, mctr1);
@@ -14644,41 +14644,41 @@ void mcinit(void) {
     /* Component L11_11. */
   /* Setting parameters for component L11_11. */
   SIG_MESSAGE("L11_11 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_11_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_11_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_11_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_11_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_11_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_11_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_11_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_11_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_11_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_11_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_11_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_11_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_11_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_11_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_11_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_11_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_11_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_11_geometry, 0 ? 0 : "", 16384); else mccL11_11_geometry[0]='\0';
 #line 14683 "./Test_Lens.c"
 
@@ -14692,11 +14692,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_10, mctr1);
   rot_mul(mcrotaL11_11, mctr1, mcrotrL11_11);
   mctc1 = coords_set(
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 14701 "./Test_Lens.c"
   rot_transpose(mcrotaL11_10, mctr1);
@@ -14712,41 +14712,41 @@ void mcinit(void) {
     /* Component L11_12. */
   /* Setting parameters for component L11_12. */
   SIG_MESSAGE("L11_12 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_12_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_12_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_12_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_12_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_12_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_12_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_12_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_12_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_12_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_12_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_12_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_12_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_12_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_12_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_12_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_12_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_12_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_12_geometry, 0 ? 0 : "", 16384); else mccL11_12_geometry[0]='\0';
 #line 14751 "./Test_Lens.c"
 
@@ -14760,11 +14760,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_11, mctr1);
   rot_mul(mcrotaL11_12, mctr1, mcrotrL11_12);
   mctc1 = coords_set(
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 14769 "./Test_Lens.c"
   rot_transpose(mcrotaL11_11, mctr1);
@@ -14780,41 +14780,41 @@ void mcinit(void) {
     /* Component L11_13. */
   /* Setting parameters for component L11_13. */
   SIG_MESSAGE("L11_13 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_13_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_13_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_13_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_13_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_13_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_13_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_13_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_13_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_13_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_13_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_13_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_13_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_13_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_13_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_13_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_13_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_13_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_13_geometry, 0 ? 0 : "", 16384); else mccL11_13_geometry[0]='\0';
 #line 14819 "./Test_Lens.c"
 
@@ -14828,11 +14828,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_12, mctr1);
   rot_mul(mcrotaL11_13, mctr1, mcrotrL11_13);
   mctc1 = coords_set(
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 14837 "./Test_Lens.c"
   rot_transpose(mcrotaL11_12, mctr1);
@@ -14848,41 +14848,41 @@ void mcinit(void) {
     /* Component L11_14. */
   /* Setting parameters for component L11_14. */
   SIG_MESSAGE("L11_14 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_14_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_14_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_14_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_14_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_14_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_14_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_14_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_14_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_14_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_14_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_14_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_14_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_14_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_14_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_14_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_14_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_14_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_14_geometry, 0 ? 0 : "", 16384); else mccL11_14_geometry[0]='\0';
 #line 14887 "./Test_Lens.c"
 
@@ -14896,11 +14896,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_13, mctr1);
   rot_mul(mcrotaL11_14, mctr1, mcrotrL11_14);
   mctc1 = coords_set(
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 14905 "./Test_Lens.c"
   rot_transpose(mcrotaL11_13, mctr1);
@@ -14916,41 +14916,41 @@ void mcinit(void) {
     /* Component L11_15. */
   /* Setting parameters for component L11_15. */
   SIG_MESSAGE("L11_15 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_15_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_15_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_15_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_15_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_15_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_15_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_15_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_15_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_15_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_15_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_15_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_15_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_15_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_15_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_15_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_15_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_15_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_15_geometry, 0 ? 0 : "", 16384); else mccL11_15_geometry[0]='\0';
 #line 14955 "./Test_Lens.c"
 
@@ -14964,11 +14964,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_14, mctr1);
   rot_mul(mcrotaL11_15, mctr1, mcrotrL11_15);
   mctc1 = coords_set(
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 14973 "./Test_Lens.c"
   rot_transpose(mcrotaL11_14, mctr1);
@@ -14984,41 +14984,41 @@ void mcinit(void) {
     /* Component L11_16. */
   /* Setting parameters for component L11_16. */
   SIG_MESSAGE("L11_16 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_16_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_16_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_16_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_16_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_16_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_16_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_16_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_16_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_16_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_16_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_16_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_16_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_16_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_16_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_16_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_16_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_16_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_16_geometry, 0 ? 0 : "", 16384); else mccL11_16_geometry[0]='\0';
 #line 15023 "./Test_Lens.c"
 
@@ -15032,11 +15032,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_15, mctr1);
   rot_mul(mcrotaL11_16, mctr1, mcrotrL11_16);
   mctc1 = coords_set(
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 15041 "./Test_Lens.c"
   rot_transpose(mcrotaL11_15, mctr1);
@@ -15052,41 +15052,41 @@ void mcinit(void) {
     /* Component L11_17. */
   /* Setting parameters for component L11_17. */
   SIG_MESSAGE("L11_17 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_17_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_17_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_17_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_17_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_17_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_17_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_17_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_17_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_17_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_17_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_17_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_17_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_17_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_17_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_17_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_17_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_17_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_17_geometry, 0 ? 0 : "", 16384); else mccL11_17_geometry[0]='\0';
 #line 15091 "./Test_Lens.c"
 
@@ -15100,11 +15100,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_16, mctr1);
   rot_mul(mcrotaL11_17, mctr1, mcrotrL11_17);
   mctc1 = coords_set(
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 15109 "./Test_Lens.c"
   rot_transpose(mcrotaL11_16, mctr1);
@@ -15120,41 +15120,41 @@ void mcinit(void) {
     /* Component L11_18. */
   /* Setting parameters for component L11_18. */
   SIG_MESSAGE("L11_18 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_18_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_18_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_18_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_18_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_18_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_18_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_18_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_18_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_18_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_18_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_18_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_18_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_18_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_18_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_18_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_18_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_18_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_18_geometry, 0 ? 0 : "", 16384); else mccL11_18_geometry[0]='\0';
 #line 15159 "./Test_Lens.c"
 
@@ -15168,11 +15168,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_17, mctr1);
   rot_mul(mcrotaL11_18, mctr1, mcrotrL11_18);
   mctc1 = coords_set(
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 15177 "./Test_Lens.c"
   rot_transpose(mcrotaL11_17, mctr1);
@@ -15188,41 +15188,41 @@ void mcinit(void) {
     /* Component L11_19. */
   /* Setting parameters for component L11_19. */
   SIG_MESSAGE("L11_19 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_19_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_19_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_19_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_19_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_19_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_19_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_19_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_19_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_19_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_19_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_19_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_19_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_19_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_19_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_19_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_19_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_19_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_19_geometry, 0 ? 0 : "", 16384); else mccL11_19_geometry[0]='\0';
 #line 15227 "./Test_Lens.c"
 
@@ -15236,11 +15236,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_18, mctr1);
   rot_mul(mcrotaL11_19, mctr1, mcrotrL11_19);
   mctc1 = coords_set(
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 15245 "./Test_Lens.c"
   rot_transpose(mcrotaL11_18, mctr1);
@@ -15256,41 +15256,41 @@ void mcinit(void) {
     /* Component L11_20. */
   /* Setting parameters for component L11_20. */
   SIG_MESSAGE("L11_20 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_20_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_20_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_20_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_20_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_20_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_20_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_20_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_20_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_20_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_20_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_20_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_20_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_20_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_20_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_20_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_20_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_20_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_20_geometry, 0 ? 0 : "", 16384); else mccL11_20_geometry[0]='\0';
 #line 15295 "./Test_Lens.c"
 
@@ -15304,11 +15304,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_19, mctr1);
   rot_mul(mcrotaL11_20, mctr1, mcrotrL11_20);
   mctc1 = coords_set(
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 15313 "./Test_Lens.c"
   rot_transpose(mcrotaL11_19, mctr1);
@@ -15324,41 +15324,41 @@ void mcinit(void) {
     /* Component L11_21. */
   /* Setting parameters for component L11_21. */
   SIG_MESSAGE("L11_21 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_21_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_21_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_21_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_21_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_21_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_21_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_21_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_21_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_21_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_21_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_21_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_21_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_21_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_21_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_21_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_21_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_21_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_21_geometry, 0 ? 0 : "", 16384); else mccL11_21_geometry[0]='\0';
 #line 15363 "./Test_Lens.c"
 
@@ -15372,11 +15372,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_20, mctr1);
   rot_mul(mcrotaL11_21, mctr1, mcrotrL11_21);
   mctc1 = coords_set(
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 15381 "./Test_Lens.c"
   rot_transpose(mcrotaL11_20, mctr1);
@@ -15392,41 +15392,41 @@ void mcinit(void) {
     /* Component L11_22. */
   /* Setting parameters for component L11_22. */
   SIG_MESSAGE("L11_22 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_22_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_22_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_22_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_22_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_22_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_22_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_22_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_22_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_22_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_22_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_22_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_22_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_22_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_22_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_22_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_22_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_22_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_22_geometry, 0 ? 0 : "", 16384); else mccL11_22_geometry[0]='\0';
 #line 15431 "./Test_Lens.c"
 
@@ -15440,11 +15440,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_21, mctr1);
   rot_mul(mcrotaL11_22, mctr1, mcrotrL11_22);
   mctc1 = coords_set(
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 15449 "./Test_Lens.c"
   rot_transpose(mcrotaL11_21, mctr1);
@@ -15460,41 +15460,41 @@ void mcinit(void) {
     /* Component L11_23. */
   /* Setting parameters for component L11_23. */
   SIG_MESSAGE("L11_23 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_23_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_23_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_23_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_23_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_23_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_23_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_23_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_23_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_23_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_23_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_23_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_23_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_23_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_23_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_23_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_23_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_23_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_23_geometry, 0 ? 0 : "", 16384); else mccL11_23_geometry[0]='\0';
 #line 15499 "./Test_Lens.c"
 
@@ -15508,11 +15508,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_22, mctr1);
   rot_mul(mcrotaL11_23, mctr1, mcrotrL11_23);
   mctc1 = coords_set(
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 15517 "./Test_Lens.c"
   rot_transpose(mcrotaL11_22, mctr1);
@@ -15528,41 +15528,41 @@ void mcinit(void) {
     /* Component L11_24. */
   /* Setting parameters for component L11_24. */
   SIG_MESSAGE("L11_24 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_24_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_24_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_24_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_24_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_24_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_24_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_24_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_24_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_24_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_24_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_24_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_24_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_24_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_24_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_24_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_24_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_24_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_24_geometry, 0 ? 0 : "", 16384); else mccL11_24_geometry[0]='\0';
 #line 15567 "./Test_Lens.c"
 
@@ -15576,11 +15576,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_23, mctr1);
   rot_mul(mcrotaL11_24, mctr1, mcrotrL11_24);
   mctc1 = coords_set(
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 15585 "./Test_Lens.c"
   rot_transpose(mcrotaL11_23, mctr1);
@@ -15596,41 +15596,41 @@ void mcinit(void) {
     /* Component L11_25. */
   /* Setting parameters for component L11_25. */
   SIG_MESSAGE("L11_25 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_25_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_25_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_25_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_25_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_25_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_25_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_25_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_25_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_25_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_25_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_25_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_25_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_25_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_25_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_25_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_25_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_25_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_25_geometry, 0 ? 0 : "", 16384); else mccL11_25_geometry[0]='\0';
 #line 15635 "./Test_Lens.c"
 
@@ -15644,11 +15644,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_24, mctr1);
   rot_mul(mcrotaL11_25, mctr1, mcrotrL11_25);
   mctc1 = coords_set(
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 15653 "./Test_Lens.c"
   rot_transpose(mcrotaL11_24, mctr1);
@@ -15664,41 +15664,41 @@ void mcinit(void) {
     /* Component L11_26. */
   /* Setting parameters for component L11_26. */
   SIG_MESSAGE("L11_26 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_26_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_26_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_26_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_26_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_26_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_26_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_26_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_26_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_26_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_26_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_26_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_26_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_26_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_26_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_26_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_26_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_26_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_26_geometry, 0 ? 0 : "", 16384); else mccL11_26_geometry[0]='\0';
 #line 15703 "./Test_Lens.c"
 
@@ -15712,11 +15712,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_25, mctr1);
   rot_mul(mcrotaL11_26, mctr1, mcrotrL11_26);
   mctc1 = coords_set(
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 15721 "./Test_Lens.c"
   rot_transpose(mcrotaL11_25, mctr1);
@@ -15732,41 +15732,41 @@ void mcinit(void) {
     /* Component L11_27. */
   /* Setting parameters for component L11_27. */
   SIG_MESSAGE("L11_27 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_27_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_27_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_27_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_27_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_27_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_27_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_27_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_27_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_27_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_27_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_27_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_27_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_27_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_27_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_27_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_27_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_27_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_27_geometry, 0 ? 0 : "", 16384); else mccL11_27_geometry[0]='\0';
 #line 15771 "./Test_Lens.c"
 
@@ -15780,11 +15780,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_26, mctr1);
   rot_mul(mcrotaL11_27, mctr1, mcrotrL11_27);
   mctc1 = coords_set(
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 15789 "./Test_Lens.c"
   rot_transpose(mcrotaL11_26, mctr1);
@@ -15800,41 +15800,41 @@ void mcinit(void) {
     /* Component L11_28. */
   /* Setting parameters for component L11_28. */
   SIG_MESSAGE("L11_28 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_28_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_28_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_28_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_28_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_28_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_28_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_28_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_28_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_28_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_28_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_28_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_28_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_28_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_28_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_28_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_28_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_28_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_28_geometry, 0 ? 0 : "", 16384); else mccL11_28_geometry[0]='\0';
 #line 15839 "./Test_Lens.c"
 
@@ -15848,11 +15848,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_27, mctr1);
   rot_mul(mcrotaL11_28, mctr1, mcrotrL11_28);
   mctc1 = coords_set(
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 15857 "./Test_Lens.c"
   rot_transpose(mcrotaL11_27, mctr1);
@@ -15868,41 +15868,41 @@ void mcinit(void) {
     /* Component L11_29. */
   /* Setting parameters for component L11_29. */
   SIG_MESSAGE("L11_29 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_29_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_29_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_29_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_29_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_29_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_29_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_29_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_29_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_29_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_29_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_29_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_29_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_29_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_29_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_29_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_29_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_29_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_29_geometry, 0 ? 0 : "", 16384); else mccL11_29_geometry[0]='\0';
 #line 15907 "./Test_Lens.c"
 
@@ -15916,11 +15916,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_28, mctr1);
   rot_mul(mcrotaL11_29, mctr1, mcrotrL11_29);
   mctc1 = coords_set(
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 15925 "./Test_Lens.c"
   rot_transpose(mcrotaL11_28, mctr1);
@@ -15936,41 +15936,41 @@ void mcinit(void) {
     /* Component L11_30. */
   /* Setting parameters for component L11_30. */
   SIG_MESSAGE("L11_30 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_30_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_30_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_30_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_30_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_30_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_30_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_30_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_30_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_30_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_30_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_30_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_30_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_30_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_30_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_30_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_30_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_30_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_30_geometry, 0 ? 0 : "", 16384); else mccL11_30_geometry[0]='\0';
 #line 15975 "./Test_Lens.c"
 
@@ -15984,11 +15984,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_29, mctr1);
   rot_mul(mcrotaL11_30, mctr1, mcrotrL11_30);
   mctc1 = coords_set(
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 15993 "./Test_Lens.c"
   rot_transpose(mcrotaL11_29, mctr1);
@@ -16004,41 +16004,41 @@ void mcinit(void) {
     /* Component L11_31. */
   /* Setting parameters for component L11_31. */
   SIG_MESSAGE("L11_31 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_31_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_31_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_31_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_31_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_31_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_31_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_31_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_31_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_31_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_31_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_31_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_31_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_31_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_31_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_31_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_31_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_31_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_31_geometry, 0 ? 0 : "", 16384); else mccL11_31_geometry[0]='\0';
 #line 16043 "./Test_Lens.c"
 
@@ -16052,11 +16052,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_30, mctr1);
   rot_mul(mcrotaL11_31, mctr1, mcrotrL11_31);
   mctc1 = coords_set(
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 16061 "./Test_Lens.c"
   rot_transpose(mcrotaL11_30, mctr1);
@@ -16072,41 +16072,41 @@ void mcinit(void) {
     /* Component L11_32. */
   /* Setting parameters for component L11_32. */
   SIG_MESSAGE("L11_32 (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_32_r1 = 0.025;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_32_r2 = 0.025;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_32_focus1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_32_focus2 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_32_phiy1 = 0;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_32_phiy2 = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_32_thickness = 0.0005;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_32_radius = 0.025;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_32_sigma_coh = 11.74;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_32_sigma_inc = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_32_sigma_abs = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_32_density = 3.148;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_32_weight = 62.3018;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_32_p_interact = 0.01;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_32_focus_aw = 10;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_32_focus_ah = 10;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccL11_32_RMS = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if(0) strncpy(mccL11_32_geometry, 0 ? 0 : "", 16384); else mccL11_32_geometry[0]='\0';
 #line 16111 "./Test_Lens.c"
 
@@ -16120,11 +16120,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_31, mctr1);
   rot_mul(mcrotaL11_32, mctr1, mcrotrL11_32);
   mctc1 = coords_set(
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.0071987);
 #line 16129 "./Test_Lens.c"
   rot_transpose(mcrotaL11_31, mctr1);
@@ -16140,47 +16140,47 @@ void mcinit(void) {
     /* Component PSD_mon. */
   /* Setting parameters for component PSD_mon. */
   SIG_MESSAGE("PSD_mon (Init:SetPar)");
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_xwidth = 0.01;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_yheight = 0.01;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_zmax = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_bins = 100;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_max = 1e40;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_radius = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("x y, auto, per cm2") strncpy(mccPSD_mon_options, "x y, auto, per cm2" ? "x y, auto, per cm2" : "", 16384); else mccPSD_mon_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_filename, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_geometry, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_username1, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_username2, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_username3, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_nowritefile = 0;
 #line 16185 "./Test_Lens.c"
 
@@ -16194,11 +16194,11 @@ void mcinit(void) {
   rot_transpose(mcrotaL11_32, mctr1);
   rot_mul(mcrotaPSD_mon, mctr1, mcrotrPSD_mon);
   mctc1 = coords_set(
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     mcipposition_PSD);
 #line 16203 "./Test_Lens.c"
   rot_transpose(mcrotaL11_32, mctr1);
@@ -16214,47 +16214,47 @@ void mcinit(void) {
     /* Component PSD_mon_34. */
   /* Setting parameters for component PSD_mon_34. */
   SIG_MESSAGE("PSD_mon_34 (Init:SetPar)");
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_34_xwidth = 0.01;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_34_yheight = 0.01;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_34_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_34_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_34_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_34_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_34_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_34_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_34_zmax = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_34_bins = 100;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_34_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_34_max = 1e40;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_34_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_34_radius = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("x y, auto, per cm2") strncpy(mccPSD_mon_34_options, "x y, auto, per cm2" ? "x y, auto, per cm2" : "", 16384); else mccPSD_mon_34_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_34_filename, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_34_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_34_geometry, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_34_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_34_username1, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_34_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_34_username2, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_34_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_34_username3, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_34_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_34_nowritefile = 0;
 #line 16259 "./Test_Lens.c"
 
@@ -16268,11 +16268,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPSD_mon, mctr1);
   rot_mul(mcrotaPSD_mon_34, mctr1, mcrotrPSD_mon_34);
   mctc1 = coords_set(
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.1);
 #line 16277 "./Test_Lens.c"
   rot_transpose(mcrotaPSD_mon, mctr1);
@@ -16288,47 +16288,47 @@ void mcinit(void) {
     /* Component PSD_mon_35. */
   /* Setting parameters for component PSD_mon_35. */
   SIG_MESSAGE("PSD_mon_35 (Init:SetPar)");
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_35_xwidth = 0.01;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_35_yheight = 0.01;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_35_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_35_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_35_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_35_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_35_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_35_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_35_zmax = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_35_bins = 100;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_35_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_35_max = 1e40;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_35_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_35_radius = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("x y, auto, per cm2") strncpy(mccPSD_mon_35_options, "x y, auto, per cm2" ? "x y, auto, per cm2" : "", 16384); else mccPSD_mon_35_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_35_filename, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_35_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_35_geometry, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_35_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_35_username1, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_35_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_35_username2, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_35_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_35_username3, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_35_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_35_nowritefile = 0;
 #line 16333 "./Test_Lens.c"
 
@@ -16342,11 +16342,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPSD_mon_34, mctr1);
   rot_mul(mcrotaPSD_mon_35, mctr1, mcrotrPSD_mon_35);
   mctc1 = coords_set(
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.1);
 #line 16351 "./Test_Lens.c"
   rot_transpose(mcrotaPSD_mon_34, mctr1);
@@ -16362,47 +16362,47 @@ void mcinit(void) {
     /* Component PSD_mon_36. */
   /* Setting parameters for component PSD_mon_36. */
   SIG_MESSAGE("PSD_mon_36 (Init:SetPar)");
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_36_xwidth = 0.01;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_36_yheight = 0.01;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_36_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_36_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_36_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_36_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_36_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_36_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_36_zmax = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_36_bins = 100;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_36_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_36_max = 1e40;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_36_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_36_radius = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("x y, auto, per cm2") strncpy(mccPSD_mon_36_options, "x y, auto, per cm2" ? "x y, auto, per cm2" : "", 16384); else mccPSD_mon_36_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_36_filename, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_36_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_36_geometry, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_36_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_36_username1, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_36_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_36_username2, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_36_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_36_username3, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_36_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_36_nowritefile = 0;
 #line 16407 "./Test_Lens.c"
 
@@ -16416,11 +16416,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPSD_mon_35, mctr1);
   rot_mul(mcrotaPSD_mon_36, mctr1, mcrotrPSD_mon_36);
   mctc1 = coords_set(
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.1);
 #line 16425 "./Test_Lens.c"
   rot_transpose(mcrotaPSD_mon_35, mctr1);
@@ -16436,47 +16436,47 @@ void mcinit(void) {
     /* Component PSD_mon_37. */
   /* Setting parameters for component PSD_mon_37. */
   SIG_MESSAGE("PSD_mon_37 (Init:SetPar)");
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_37_xwidth = 0.01;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_37_yheight = 0.01;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_37_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_37_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_37_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_37_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_37_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_37_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_37_zmax = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_37_bins = 100;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_37_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_37_max = 1e40;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_37_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_37_radius = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("x y, auto, per cm2") strncpy(mccPSD_mon_37_options, "x y, auto, per cm2" ? "x y, auto, per cm2" : "", 16384); else mccPSD_mon_37_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_37_filename, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_37_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_37_geometry, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_37_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_37_username1, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_37_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_37_username2, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_37_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_37_username3, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_37_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_37_nowritefile = 0;
 #line 16481 "./Test_Lens.c"
 
@@ -16490,11 +16490,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPSD_mon_36, mctr1);
   rot_mul(mcrotaPSD_mon_37, mctr1, mcrotrPSD_mon_37);
   mctc1 = coords_set(
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.1);
 #line 16499 "./Test_Lens.c"
   rot_transpose(mcrotaPSD_mon_36, mctr1);
@@ -16510,47 +16510,47 @@ void mcinit(void) {
     /* Component PSD_mon_38. */
   /* Setting parameters for component PSD_mon_38. */
   SIG_MESSAGE("PSD_mon_38 (Init:SetPar)");
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_38_xwidth = 0.01;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_38_yheight = 0.01;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_38_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_38_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_38_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_38_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_38_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_38_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_38_zmax = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_38_bins = 100;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_38_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_38_max = 1e40;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_38_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_38_radius = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("x y, auto, per cm2") strncpy(mccPSD_mon_38_options, "x y, auto, per cm2" ? "x y, auto, per cm2" : "", 16384); else mccPSD_mon_38_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_38_filename, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_38_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_38_geometry, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_38_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_38_username1, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_38_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_38_username2, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_38_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_38_username3, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_38_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_38_nowritefile = 0;
 #line 16555 "./Test_Lens.c"
 
@@ -16564,11 +16564,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPSD_mon_37, mctr1);
   rot_mul(mcrotaPSD_mon_38, mctr1, mcrotrPSD_mon_38);
   mctc1 = coords_set(
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.1);
 #line 16573 "./Test_Lens.c"
   rot_transpose(mcrotaPSD_mon_37, mctr1);
@@ -16584,47 +16584,47 @@ void mcinit(void) {
     /* Component PSD_mon_39. */
   /* Setting parameters for component PSD_mon_39. */
   SIG_MESSAGE("PSD_mon_39 (Init:SetPar)");
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_39_xwidth = 0.01;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_39_yheight = 0.01;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_39_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_39_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_39_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_39_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_39_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_39_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_39_zmax = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_39_bins = 100;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_39_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_39_max = 1e40;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_39_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_39_radius = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("x y, auto, per cm2") strncpy(mccPSD_mon_39_options, "x y, auto, per cm2" ? "x y, auto, per cm2" : "", 16384); else mccPSD_mon_39_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_39_filename, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_39_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_39_geometry, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_39_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_39_username1, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_39_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_39_username2, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_39_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_39_username3, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_39_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_39_nowritefile = 0;
 #line 16629 "./Test_Lens.c"
 
@@ -16638,11 +16638,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPSD_mon_38, mctr1);
   rot_mul(mcrotaPSD_mon_39, mctr1, mcrotrPSD_mon_39);
   mctc1 = coords_set(
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.1);
 #line 16647 "./Test_Lens.c"
   rot_transpose(mcrotaPSD_mon_38, mctr1);
@@ -16658,47 +16658,47 @@ void mcinit(void) {
     /* Component PSD_mon_40. */
   /* Setting parameters for component PSD_mon_40. */
   SIG_MESSAGE("PSD_mon_40 (Init:SetPar)");
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_40_xwidth = 0.01;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_40_yheight = 0.01;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_40_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_40_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_40_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_40_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_40_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_40_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_40_zmax = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_40_bins = 100;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_40_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_40_max = 1e40;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_40_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_40_radius = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("x y, auto, per cm2") strncpy(mccPSD_mon_40_options, "x y, auto, per cm2" ? "x y, auto, per cm2" : "", 16384); else mccPSD_mon_40_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_40_filename, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_40_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_40_geometry, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_40_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_40_username1, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_40_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_40_username2, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_40_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_40_username3, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_40_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_40_nowritefile = 0;
 #line 16703 "./Test_Lens.c"
 
@@ -16712,11 +16712,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPSD_mon_39, mctr1);
   rot_mul(mcrotaPSD_mon_40, mctr1, mcrotrPSD_mon_40);
   mctc1 = coords_set(
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.1);
 #line 16721 "./Test_Lens.c"
   rot_transpose(mcrotaPSD_mon_39, mctr1);
@@ -16732,47 +16732,47 @@ void mcinit(void) {
     /* Component PSD_mon_41. */
   /* Setting parameters for component PSD_mon_41. */
   SIG_MESSAGE("PSD_mon_41 (Init:SetPar)");
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_41_xwidth = 0.01;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_41_yheight = 0.01;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_41_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_41_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_41_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_41_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_41_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_41_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_41_zmax = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_41_bins = 100;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_41_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_41_max = 1e40;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_41_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_41_radius = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("x y, auto, per cm2") strncpy(mccPSD_mon_41_options, "x y, auto, per cm2" ? "x y, auto, per cm2" : "", 16384); else mccPSD_mon_41_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_41_filename, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_41_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_41_geometry, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_41_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_41_username1, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_41_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_41_username2, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_41_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_41_username3, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_41_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_41_nowritefile = 0;
 #line 16777 "./Test_Lens.c"
 
@@ -16786,11 +16786,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPSD_mon_40, mctr1);
   rot_mul(mcrotaPSD_mon_41, mctr1, mcrotrPSD_mon_41);
   mctc1 = coords_set(
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.1);
 #line 16795 "./Test_Lens.c"
   rot_transpose(mcrotaPSD_mon_40, mctr1);
@@ -16806,47 +16806,47 @@ void mcinit(void) {
     /* Component PSD_mon_42. */
   /* Setting parameters for component PSD_mon_42. */
   SIG_MESSAGE("PSD_mon_42 (Init:SetPar)");
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_42_xwidth = 0.01;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_42_yheight = 0.01;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_42_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_42_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_42_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_42_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_42_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_42_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_42_zmax = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_42_bins = 100;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_42_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_42_max = 1e40;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_42_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_42_radius = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("x y, auto, per cm2") strncpy(mccPSD_mon_42_options, "x y, auto, per cm2" ? "x y, auto, per cm2" : "", 16384); else mccPSD_mon_42_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_42_filename, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_42_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_42_geometry, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_42_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_42_username1, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_42_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_42_username2, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_42_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_42_username3, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_42_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_42_nowritefile = 0;
 #line 16851 "./Test_Lens.c"
 
@@ -16860,11 +16860,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPSD_mon_41, mctr1);
   rot_mul(mcrotaPSD_mon_42, mctr1, mcrotrPSD_mon_42);
   mctc1 = coords_set(
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.1);
 #line 16869 "./Test_Lens.c"
   rot_transpose(mcrotaPSD_mon_41, mctr1);
@@ -16880,47 +16880,47 @@ void mcinit(void) {
     /* Component PSD_mon_43. */
   /* Setting parameters for component PSD_mon_43. */
   SIG_MESSAGE("PSD_mon_43 (Init:SetPar)");
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_43_xwidth = 0.01;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_43_yheight = 0.01;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_43_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_43_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_43_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_43_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_43_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_43_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_43_zmax = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_43_bins = 100;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_43_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_43_max = 1e40;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_43_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_43_radius = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("x y, auto, per cm2") strncpy(mccPSD_mon_43_options, "x y, auto, per cm2" ? "x y, auto, per cm2" : "", 16384); else mccPSD_mon_43_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_43_filename, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_43_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_43_geometry, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_43_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_43_username1, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_43_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_43_username2, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_43_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_43_username3, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_43_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_43_nowritefile = 0;
 #line 16925 "./Test_Lens.c"
 
@@ -16934,11 +16934,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPSD_mon_42, mctr1);
   rot_mul(mcrotaPSD_mon_43, mctr1, mcrotrPSD_mon_43);
   mctc1 = coords_set(
-#line 142 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 142 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 142 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 142 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 142 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 142 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.1);
 #line 16943 "./Test_Lens.c"
   rot_transpose(mcrotaPSD_mon_42, mctr1);
@@ -16954,47 +16954,47 @@ void mcinit(void) {
     /* Component PSD_mon_44. */
   /* Setting parameters for component PSD_mon_44. */
   SIG_MESSAGE("PSD_mon_44 (Init:SetPar)");
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_44_xwidth = 0.01;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_44_yheight = 0.01;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_44_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_44_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_44_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_44_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_44_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_44_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_44_zmax = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_44_bins = 100;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_44_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_44_max = 1e40;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_44_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_44_radius = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("x y, auto, per cm2") strncpy(mccPSD_mon_44_options, "x y, auto, per cm2" ? "x y, auto, per cm2" : "", 16384); else mccPSD_mon_44_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_44_filename, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_44_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_44_geometry, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_44_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_44_username1, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_44_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_44_username2, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_44_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_44_username3, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_44_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_44_nowritefile = 0;
 #line 16999 "./Test_Lens.c"
 
@@ -17008,11 +17008,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPSD_mon_43, mctr1);
   rot_mul(mcrotaPSD_mon_44, mctr1, mcrotrPSD_mon_44);
   mctc1 = coords_set(
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.1);
 #line 17017 "./Test_Lens.c"
   rot_transpose(mcrotaPSD_mon_43, mctr1);
@@ -17028,47 +17028,47 @@ void mcinit(void) {
     /* Component PSD_mon_45. */
   /* Setting parameters for component PSD_mon_45. */
   SIG_MESSAGE("PSD_mon_45 (Init:SetPar)");
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_45_xwidth = 0.01;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_45_yheight = 0.01;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_45_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_45_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_45_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_45_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_45_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_45_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_45_zmax = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_45_bins = 100;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_45_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_45_max = 1e40;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_45_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_45_radius = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("x y, auto, per cm2") strncpy(mccPSD_mon_45_options, "x y, auto, per cm2" ? "x y, auto, per cm2" : "", 16384); else mccPSD_mon_45_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_45_filename, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_45_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_45_geometry, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_45_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_45_username1, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_45_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_45_username2, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_45_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_45_username3, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_45_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_45_nowritefile = 0;
 #line 17073 "./Test_Lens.c"
 
@@ -17082,11 +17082,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPSD_mon_44, mctr1);
   rot_mul(mcrotaPSD_mon_45, mctr1, mcrotrPSD_mon_45);
   mctc1 = coords_set(
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.1);
 #line 17091 "./Test_Lens.c"
   rot_transpose(mcrotaPSD_mon_44, mctr1);
@@ -17102,47 +17102,47 @@ void mcinit(void) {
     /* Component PSD_mon_46. */
   /* Setting parameters for component PSD_mon_46. */
   SIG_MESSAGE("PSD_mon_46 (Init:SetPar)");
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_46_xwidth = 0.01;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_46_yheight = 0.01;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_46_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_46_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_46_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_46_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_46_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_46_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_46_zmax = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_46_bins = 100;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_46_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_46_max = 1e40;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_46_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_46_radius = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("x y, auto, per cm2") strncpy(mccPSD_mon_46_options, "x y, auto, per cm2" ? "x y, auto, per cm2" : "", 16384); else mccPSD_mon_46_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_46_filename, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_46_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_46_geometry, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_46_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_46_username1, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_46_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_46_username2, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_46_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_46_username3, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_46_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_46_nowritefile = 0;
 #line 17147 "./Test_Lens.c"
 
@@ -17156,11 +17156,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPSD_mon_45, mctr1);
   rot_mul(mcrotaPSD_mon_46, mctr1, mcrotrPSD_mon_46);
   mctc1 = coords_set(
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.1);
 #line 17165 "./Test_Lens.c"
   rot_transpose(mcrotaPSD_mon_45, mctr1);
@@ -17176,47 +17176,47 @@ void mcinit(void) {
     /* Component PSD_mon_47. */
   /* Setting parameters for component PSD_mon_47. */
   SIG_MESSAGE("PSD_mon_47 (Init:SetPar)");
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_47_xwidth = 0.01;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_47_yheight = 0.01;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_47_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_47_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_47_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_47_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_47_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_47_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_47_zmax = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_47_bins = 100;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_47_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_47_max = 1e40;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_47_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_47_radius = 0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("x y, auto, per cm2") strncpy(mccPSD_mon_47_options, "x y, auto, per cm2" ? "x y, auto, per cm2" : "", 16384); else mccPSD_mon_47_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_47_filename, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_47_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_47_geometry, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_47_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_47_username1, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_47_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_47_username2, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_47_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   if("NULL") strncpy(mccPSD_mon_47_username3, "NULL" ? "NULL" : "", 16384); else mccPSD_mon_47_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
   mccPSD_mon_47_nowritefile = 0;
 #line 17221 "./Test_Lens.c"
 
@@ -17230,11 +17230,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPSD_mon_46, mctr1);
   rot_mul(mcrotaPSD_mon_47, mctr1, mcrotrPSD_mon_47);
   mctc1 = coords_set(
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0,
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Lens/Test_Lens.instr"
     0.1);
 #line 17239 "./Test_Lens.c"
   rot_transpose(mcrotaPSD_mon_46, mctr1);

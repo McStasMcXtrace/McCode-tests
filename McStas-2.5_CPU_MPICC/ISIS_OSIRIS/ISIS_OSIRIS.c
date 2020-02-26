@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr (ISIS_OSIRIS)
- * Date:       Wed Nov 20 00:41:45 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr (ISIS_OSIRIS)
+ * Date:       Tue Feb 25 20:57:04 2020
  * File:       ./ISIS_OSIRIS.c
  * Compile:    cc -o ISIS_OSIRIS.out ./ISIS_OSIRIS.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "ISIS_OSIRIS";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -8843,6 +8843,13 @@ double  sigma_a; /* Absorption cross section per atom (barns) */
 #include <mcstas-r.h>
 #endif
 
+/*Redefine MAGNET_OFF to also clear the magnetic field stack.*/
+#undef MAGNET_OFF
+#define MAGNET_OFF \
+  do { \
+    mcMagnet = 0; \
+    mcmagnet_pop_all(); \
+  } while(0)
 
 typedef int mcmagnet_field_func (double, double, double, double, double *, double *, double *, void *);
 typedef void mcmagnet_prec_func (double, double, double, double, double, double, double, double*, double*, double*, double, Coords, Rotation);
@@ -8880,7 +8887,7 @@ void mc_pol_set_angular_accuracy(double);
   do { \
     mcMagneticField=NULL; \
     mcMagnetData=NULL; \
-    MAGNET_OFF; \
+    mcMagnet=0; \
   } while (0);
 
 #define mcmagnet_set_active(mcmagnet_new) \
@@ -8918,6 +8925,7 @@ void *mcmagnet_init_par_backend(int dummy, ...);
 int mcmagnet_get_field(double x, double y, double z, double t, double *bx,double *by, double *bz, void *dummy);
 void *mcmagnet_push(mcmagnet_field_func *func,  Rotation *magnet_rot, Coords *magnet_pos, int stopbit, void * prms);
 void *mcmagnet_pop(void);
+void *mcmagnet_pop_all(void);
 
 /*example functions for magnetic fields*/
 int const_magnetic_field(double x, double y, double z, double t, double *bx, double *by, double *bz, void *data);
@@ -9813,7 +9821,7 @@ void *mcmagnet_push(mcmagnet_field_func *func,  Rotation *magnet_rot, Coords *ma
   mcmagnet_pack(stack[0],func,magnet_rot,magnet_pos,stopbit,prms);
   mcmagnet_set_active(stack[0]);
   if(stack[0] && stack[0]->func){
-    MAGNET_ON;
+    mcMagnet=1;
   }
   return (void *) stack[0];
 }
@@ -9829,11 +9837,19 @@ void *mcmagnet_pop(void) {
   stack[MCMAGNET_STACKSIZE-1]=NULL;
   mcmagnet_set_active(stack[0]);
   if(stack[0] && stack[0]->func){
-    MAGNET_ON;
+    mcMagnet=1;
   }else{
-    MAGNET_OFF;
+    mcMagnet=0;
   }
   return (void*) t;
+}
+
+void *mcmagnet_pop_all(void){
+  void *t=mcmagnet_pop();
+  while (t!=NULL){
+    t=mcmagnet_pop();
+  }
+  return NULL;
 }
 
 void mcmagnet_free_stack(void){
@@ -10177,7 +10193,7 @@ double GetConstantField(double mc_pol_length, double mc_pol_lambda,
 
 /* end of regular pol-lib.c */
 
-#line 10180 "./ISIS_OSIRIS.c"
+#line 10196 "./ISIS_OSIRIS.c"
 
 /* Instrument parameters. */
 MCNUM mcipLAMBDA;
@@ -10201,7 +10217,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define LAMBDA mcipLAMBDA
 #define DLAMBDA mcipDLAMBDA
 #define GUIDEREFLECTIVITY mcipGUIDEREFLECTIVITY
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   double calcAlpha(double length, double radius) {
     // calculate angle of arm after curved guide
     return RAD2DEG * length/radius;
@@ -10285,7 +10301,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 
   // Variable to help classify hits from different analyzer crystals
   int groupNumber = 0;
-#line 10288 "./ISIS_OSIRIS.c"
+#line 10304 "./ISIS_OSIRIS.c"
 #undef GUIDEREFLECTIVITY
 #undef DLAMBDA
 #undef LAMBDA
@@ -11169,7 +11185,7 @@ int mcctofDetector_nowritefile;
 
   int TargetStation;
   double CurrentWeight;
-#line 11172 "./ISIS_OSIRIS.c"
+#line 11188 "./ISIS_OSIRIS.c"
 #undef verbose
 #undef target_index
 #undef Lmax
@@ -11229,7 +11245,7 @@ double TOF_N[nt];
 double TOF_p[nt];
 double TOF_p2[nt];
 double t_min, t_max, delta_t;
-#line 11232 "./ISIS_OSIRIS.c"
+#line 11248 "./ISIS_OSIRIS.c"
 #undef nowritefile
 #undef restore_neutron
 #undef dt
@@ -11283,7 +11299,7 @@ double t_min, t_max, delta_t;
 #line 57 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../monitors/L_monitor.comp"
 double L_N[nL];
 double L_p[nL], L_p2[nL];
-#line 11286 "./ISIS_OSIRIS.c"
+#line 11302 "./ISIS_OSIRIS.c"
 #undef nowritefile
 #undef restore_neutron
 #undef Lmax
@@ -11324,7 +11340,7 @@ double L_p[nL], L_p2[nL];
   DArray2d PSD_N;
   DArray2d PSD_p;
   DArray2d PSD_p2;
-#line 11327 "./ISIS_OSIRIS.c"
+#line 11343 "./ISIS_OSIRIS.c"
 #undef restore_neutron
 #undef yheight
 #undef xwidth
@@ -11360,7 +11376,7 @@ double L_p[nL], L_p2[nL];
 #define W mccguide_straight_1_W
 #line 69 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Guide.comp"
 t_Table pTable;
-#line 11363 "./ISIS_OSIRIS.c"
+#line 11379 "./ISIS_OSIRIS.c"
 #undef W
 #undef m
 #undef alpha
@@ -11409,7 +11425,7 @@ t_Table pTable;
 #define verbose mccchopper1_verbose
 #line 66 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/DiskChopper.comp"
 double Tg,To,delta_y,height,omega;
-#line 11412 "./ISIS_OSIRIS.c"
+#line 11428 "./ISIS_OSIRIS.c"
 #undef verbose
 #undef xwidth
 #undef phase
@@ -11472,7 +11488,7 @@ double Tg,To,delta_y,height,omega;
 #define verbose mccchopper2_verbose
 #line 66 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/DiskChopper.comp"
 double Tg,To,delta_y,height,omega;
-#line 11475 "./ISIS_OSIRIS.c"
+#line 11491 "./ISIS_OSIRIS.c"
 #undef verbose
 #undef xwidth
 #undef phase
@@ -11529,7 +11545,7 @@ double Tg,To,delta_y,height,omega;
 #define W mccguide_straight_2_W
 #line 69 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Guide.comp"
 t_Table pTable;
-#line 11532 "./ISIS_OSIRIS.c"
+#line 11548 "./ISIS_OSIRIS.c"
 #undef W
 #undef m
 #undef alpha
@@ -11572,7 +11588,7 @@ t_Table pTable;
 #define W mccguide_super_W
 #line 69 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Guide.comp"
 t_Table pTable;
-#line 11575 "./ISIS_OSIRIS.c"
+#line 11591 "./ISIS_OSIRIS.c"
 #undef W
 #undef m
 #undef alpha
@@ -11619,7 +11635,7 @@ t_Table pTable;
 #line 57 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../monitors/L_monitor.comp"
 double L_N[nL];
 double L_p[nL], L_p2[nL];
-#line 11622 "./ISIS_OSIRIS.c"
+#line 11638 "./ISIS_OSIRIS.c"
 #undef nowritefile
 #undef restore_neutron
 #undef Lmax
@@ -11660,7 +11676,7 @@ double L_p[nL], L_p2[nL];
   DArray2d PSD_N;
   DArray2d PSD_p;
   DArray2d PSD_p2;
-#line 11663 "./ISIS_OSIRIS.c"
+#line 11679 "./ISIS_OSIRIS.c"
 #undef restore_neutron
 #undef yheight
 #undef xwidth
@@ -11715,7 +11731,7 @@ double L_p[nL], L_p2[nL];
   struct StructVarsInc VarsInc;
   off_struct offdata;
 
-#line 11718 "./ISIS_OSIRIS.c"
+#line 11734 "./ISIS_OSIRIS.c"
 #undef order
 #undef concentric
 #undef Vc
@@ -11785,7 +11801,7 @@ double L_p[nL], L_p2[nL];
   struct StructVarsInc VarsInc;
   off_struct offdata;
 
-#line 11788 "./ISIS_OSIRIS.c"
+#line 11804 "./ISIS_OSIRIS.c"
 #undef order
 #undef concentric
 #undef Vc
@@ -11855,7 +11871,7 @@ double L_p[nL], L_p2[nL];
   struct StructVarsInc VarsInc;
   off_struct offdata;
 
-#line 11858 "./ISIS_OSIRIS.c"
+#line 11874 "./ISIS_OSIRIS.c"
 #undef order
 #undef concentric
 #undef Vc
@@ -11944,7 +11960,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 11947 "./ISIS_OSIRIS.c"
+#line 11963 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -11990,7 +12006,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 11993 "./ISIS_OSIRIS.c"
+#line 12009 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -12036,7 +12052,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 12039 "./ISIS_OSIRIS.c"
+#line 12055 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -12082,7 +12098,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 12085 "./ISIS_OSIRIS.c"
+#line 12101 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -12128,7 +12144,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 12131 "./ISIS_OSIRIS.c"
+#line 12147 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -12174,7 +12190,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 12177 "./ISIS_OSIRIS.c"
+#line 12193 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -12220,7 +12236,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 12223 "./ISIS_OSIRIS.c"
+#line 12239 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -12266,7 +12282,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 12269 "./ISIS_OSIRIS.c"
+#line 12285 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -12312,7 +12328,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 12315 "./ISIS_OSIRIS.c"
+#line 12331 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -12358,7 +12374,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 12361 "./ISIS_OSIRIS.c"
+#line 12377 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -12404,7 +12420,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 12407 "./ISIS_OSIRIS.c"
+#line 12423 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -12450,7 +12466,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 12453 "./ISIS_OSIRIS.c"
+#line 12469 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -12496,7 +12512,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 12499 "./ISIS_OSIRIS.c"
+#line 12515 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -12542,7 +12558,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 12545 "./ISIS_OSIRIS.c"
+#line 12561 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -12588,7 +12604,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 12591 "./ISIS_OSIRIS.c"
+#line 12607 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -12634,7 +12650,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 12637 "./ISIS_OSIRIS.c"
+#line 12653 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -12680,7 +12696,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 12683 "./ISIS_OSIRIS.c"
+#line 12699 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -12726,7 +12742,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 12729 "./ISIS_OSIRIS.c"
+#line 12745 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -12772,7 +12788,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 12775 "./ISIS_OSIRIS.c"
+#line 12791 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -12818,7 +12834,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 12821 "./ISIS_OSIRIS.c"
+#line 12837 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -12864,7 +12880,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 12867 "./ISIS_OSIRIS.c"
+#line 12883 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -12910,7 +12926,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 12913 "./ISIS_OSIRIS.c"
+#line 12929 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -12956,7 +12972,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 12959 "./ISIS_OSIRIS.c"
+#line 12975 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -13002,7 +13018,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 13005 "./ISIS_OSIRIS.c"
+#line 13021 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -13048,7 +13064,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 13051 "./ISIS_OSIRIS.c"
+#line 13067 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -13094,7 +13110,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 13097 "./ISIS_OSIRIS.c"
+#line 13113 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -13140,7 +13156,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 13143 "./ISIS_OSIRIS.c"
+#line 13159 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -13186,7 +13202,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 13189 "./ISIS_OSIRIS.c"
+#line 13205 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -13232,7 +13248,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 13235 "./ISIS_OSIRIS.c"
+#line 13251 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -13278,7 +13294,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 13281 "./ISIS_OSIRIS.c"
+#line 13297 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -13324,7 +13340,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 13327 "./ISIS_OSIRIS.c"
+#line 13343 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -13370,7 +13386,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 13373 "./ISIS_OSIRIS.c"
+#line 13389 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -13416,7 +13432,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 13419 "./ISIS_OSIRIS.c"
+#line 13435 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -13462,7 +13478,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 13465 "./ISIS_OSIRIS.c"
+#line 13481 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -13508,7 +13524,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 13511 "./ISIS_OSIRIS.c"
+#line 13527 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -13554,7 +13570,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 13557 "./ISIS_OSIRIS.c"
+#line 13573 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -13600,7 +13616,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 13603 "./ISIS_OSIRIS.c"
+#line 13619 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -13646,7 +13662,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 13649 "./ISIS_OSIRIS.c"
+#line 13665 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -13692,7 +13708,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 13695 "./ISIS_OSIRIS.c"
+#line 13711 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -13738,7 +13754,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 13741 "./ISIS_OSIRIS.c"
+#line 13757 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -13796,7 +13812,7 @@ double FM; /* Unit cell magnetic structure factor */
 #line 57 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../monitors/L_monitor.comp"
 double L_N[nL];
 double L_p[nL], L_p2[nL];
-#line 13799 "./ISIS_OSIRIS.c"
+#line 13815 "./ISIS_OSIRIS.c"
 #undef nowritefile
 #undef restore_neutron
 #undef Lmax
@@ -13837,7 +13853,7 @@ double L_p[nL], L_p2[nL];
   DArray2d PSD_N;
   DArray2d PSD_p;
   DArray2d PSD_p2;
-#line 13840 "./ISIS_OSIRIS.c"
+#line 13856 "./ISIS_OSIRIS.c"
 #undef restore_neutron
 #undef yheight
 #undef xwidth
@@ -13883,7 +13899,7 @@ double TOF_N[nt];
 double TOF_p[nt];
 double TOF_p2[nt];
 double t_min, t_max, delta_t;
-#line 13886 "./ISIS_OSIRIS.c"
+#line 13902 "./ISIS_OSIRIS.c"
 #undef nowritefile
 #undef restore_neutron
 #undef dt
@@ -14064,7 +14080,7 @@ void mcinit(void) {
 #define LAMBDA mcipLAMBDA
 #define DLAMBDA mcipDLAMBDA
 #define GUIDEREFLECTIVITY mcipGUIDEREFLECTIVITY
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
 {
 
   DMODTARGET = DMODGUIDE+DSTRAIGHTGUIDE1+DCHOPPER1+DCURVEDGUIDE1+
@@ -14090,7 +14106,7 @@ void mcinit(void) {
 	 CHOPPER2OMEGA, CHOPPER2WINDOW);
 
 }
-#line 14093 "./ISIS_OSIRIS.c"
+#line 14109 "./ISIS_OSIRIS.c"
 #undef GUIDEREFLECTIVITY
 #undef DLAMBDA
 #undef LAMBDA
@@ -14117,16 +14133,16 @@ void mcinit(void) {
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 14120 "./ISIS_OSIRIS.c"
+#line 14136 "./ISIS_OSIRIS.c"
   rot_copy(mcrotrarmStart, mcrotaarmStart);
   mcposaarmStart = coords_set(
-#line 161 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 161 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 161 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 161 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 161 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 161 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0);
-#line 14129 "./ISIS_OSIRIS.c"
+#line 14145 "./ISIS_OSIRIS.c"
   mctc1 = coords_neg(mcposaarmStart);
   mcposrarmStart = rot_apply(mcrotaarmStart, mctc1);
   mcDEBUG_COMPONENT("armStart", mcposaarmStart, mcrotaarmStart)
@@ -14137,51 +14153,51 @@ void mcinit(void) {
     /* Component isis_mod. */
   /* Setting parameters for component isis_mod. */
   SIG_MESSAGE("isis_mod (Init:SetPar)");
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 164 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccisis_mod_Emin = - LAMBDAMIN;
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 164 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccisis_mod_Emax = - LAMBDAMAX;
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 164 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccisis_mod_dist = DMODGUIDE;
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccisis_mod_focus_xw = GUIDEWIDTH;
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccisis_mod_focus_yh = GUIDEHEIGHT;
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccisis_mod_xwidth = MODSIZEX;
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccisis_mod_yheight = MODSIZEY;
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccisis_mod_CAngle = 0.0;
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccisis_mod_SAC = 1;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccisis_mod_Lmin = 0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccisis_mod_Lmax = 0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccisis_mod_target_index = + 1;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccisis_mod_verbose = 0;
-#line 14166 "./ISIS_OSIRIS.c"
+#line 14182 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("isis_mod (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 14173 "./ISIS_OSIRIS.c"
+#line 14189 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmStart, mcrotaisis_mod);
   rot_transpose(mcrotaarmStart, mctr1);
   rot_mul(mcrotaisis_mod, mctr1, mcrotrisis_mod);
   mctc1 = coords_set(
-#line 167 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 167 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 167 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0);
-#line 14184 "./ISIS_OSIRIS.c"
+#line 14200 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmStart, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaisis_mod = coords_add(mcposaarmStart, mctc2);
@@ -14195,49 +14211,49 @@ void mcinit(void) {
     /* Component tofSource. */
   /* Setting parameters for component tofSource. */
   SIG_MESSAGE("tofSource (Init:SetPar)");
-#line 170 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 170 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   if("tofSource.dat") strncpy(mcctofSource_filename, "tofSource.dat" ? "tofSource.dat" : "", 16384); else mcctofSource_filename[0]='\0';
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcctofSource_xmin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcctofSource_xmax = 0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcctofSource_ymin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcctofSource_ymax = 0.05;
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcctofSource_xwidth = 0.20;
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcctofSource_yheight = 0.20;
-#line 170 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 170 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcctofSource_tmin = 0;
-#line 170 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 170 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcctofSource_tmax = 2000;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcctofSource_dt = 1.0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcctofSource_restore_neutron = 0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcctofSource_nowritefile = 0;
-#line 14222 "./ISIS_OSIRIS.c"
+#line 14238 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("tofSource (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 14229 "./ISIS_OSIRIS.c"
+#line 14245 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaisis_mod, mcrotatofSource);
   rot_transpose(mcrotaisis_mod, mctr1);
   rot_mul(mcrotatofSource, mctr1, mcrotrtofSource);
   mctc1 = coords_set(
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 172 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 172 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 172 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0);
-#line 14240 "./ISIS_OSIRIS.c"
+#line 14256 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaisis_mod, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposatofSource = coords_add(mcposaisis_mod, mctc2);
@@ -14257,18 +14273,18 @@ void mcinit(void) {
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 14260 "./ISIS_OSIRIS.c"
+#line 14276 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmStart, mcrotaarmStraight1);
   rot_transpose(mcrotatofSource, mctr1);
   rot_mul(mcrotaarmStraight1, mctr1, mcrotrarmStraight1);
   mctc1 = coords_set(
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     DMODGUIDE);
-#line 14271 "./ISIS_OSIRIS.c"
+#line 14287 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmStart, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaarmStraight1 = coords_add(mcposaarmStart, mctc2);
@@ -14282,47 +14298,47 @@ void mcinit(void) {
     /* Component lamStart. */
   /* Setting parameters for component lamStart. */
   SIG_MESSAGE("lamStart (Init:SetPar)");
-#line 182 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 182 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   if("lambdaStart.dat") strncpy(mcclamStart_filename, "lambdaStart.dat" ? "lambdaStart.dat" : "", 16384); else mcclamStart_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamStart_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamStart_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamStart_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamStart_ymax = 0.05;
-#line 183 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 183 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamStart_xwidth = 0.10;
-#line 183 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 183 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamStart_yheight = 0.10;
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 184 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamStart_Lmin = 0.98 * LAMBDAMIN;
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 184 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamStart_Lmax = 1.02 * LAMBDAMAX;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamStart_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamStart_nowritefile = 0;
-#line 14307 "./ISIS_OSIRIS.c"
+#line 14323 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("lamStart (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 14314 "./ISIS_OSIRIS.c"
+#line 14330 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmStraight1, mcrotalamStart);
   rot_transpose(mcrotaarmStraight1, mctr1);
   rot_mul(mcrotalamStart, mctr1, mcrotrlamStart);
   mctc1 = coords_set(
-#line 185 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 185 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 185 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 185 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 185 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 185 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0);
-#line 14325 "./ISIS_OSIRIS.c"
+#line 14341 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmStraight1, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposalamStart = coords_add(mcposaarmStraight1, mctc2);
@@ -14336,45 +14352,45 @@ void mcinit(void) {
     /* Component psdStart. */
   /* Setting parameters for component psdStart. */
   SIG_MESSAGE("psdStart (Init:SetPar)");
-#line 188 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 188 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdStart_nx = 60;
-#line 188 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 188 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdStart_ny = 60;
-#line 188 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 188 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   if("psdStart.dat") strncpy(mccpsdStart_filename, "psdStart.dat" ? "psdStart.dat" : "", 16384); else mccpsdStart_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdStart_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdStart_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdStart_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdStart_ymax = 0.05;
-#line 189 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 189 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdStart_xwidth = 0.10;
-#line 189 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 189 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdStart_yheight = 0.10;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdStart_restore_neutron = 0;
-#line 14359 "./ISIS_OSIRIS.c"
+#line 14375 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("psdStart (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 14366 "./ISIS_OSIRIS.c"
+#line 14382 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmStraight1, mcrotapsdStart);
   rot_transpose(mcrotalamStart, mctr1);
   rot_mul(mcrotapsdStart, mctr1, mcrotrpsdStart);
   mctc1 = coords_set(
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0);
-#line 14377 "./ISIS_OSIRIS.c"
+#line 14393 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmStraight1, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposapsdStart = coords_add(mcposaarmStraight1, mctc2);
@@ -14388,47 +14404,47 @@ void mcinit(void) {
     /* Component guide_straight_1. */
   /* Setting parameters for component guide_straight_1. */
   SIG_MESSAGE("guide_straight_1 (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   if(0) strncpy(mccguide_straight_1_reflect, 0 ? 0 : "", 16384); else mccguide_straight_1_reflect[0]='\0';
-#line 193 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 193 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_straight_1_w1 = GUIDEWIDTH;
-#line 193 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 193 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_straight_1_h1 = GUIDEHEIGHT;
-#line 194 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 194 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_straight_1_w2 = GUIDEWIDTH;
-#line 194 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 194 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_straight_1_h2 = GUIDEHEIGHT;
-#line 195 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 195 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_straight_1_l = DSTRAIGHTGUIDE1;
-#line 195 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 195 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_straight_1_R0 = mcipGUIDEREFLECTIVITY;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_straight_1_Qc = 0.0219;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_straight_1_alpha = 6.07;
-#line 195 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 195 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_straight_1_m = 2.0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_straight_1_W = 0.003;
-#line 14413 "./ISIS_OSIRIS.c"
+#line 14429 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("guide_straight_1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 14420 "./ISIS_OSIRIS.c"
+#line 14436 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmStraight1, mcrotaguide_straight_1);
   rot_transpose(mcrotapsdStart, mctr1);
   rot_mul(mcrotaguide_straight_1, mctr1, mcrotrguide_straight_1);
   mctc1 = coords_set(
-#line 196 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 196 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 196 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 196 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 196 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 196 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0);
-#line 14431 "./ISIS_OSIRIS.c"
+#line 14447 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmStraight1, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaguide_straight_1 = coords_add(mcposaarmStraight1, mctc2);
@@ -14448,18 +14464,18 @@ void mcinit(void) {
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 14451 "./ISIS_OSIRIS.c"
+#line 14467 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmStraight1, mcrotaarmChopper1);
   rot_transpose(mcrotaguide_straight_1, mctr1);
   rot_mul(mcrotaarmChopper1, mctr1, mcrotrarmChopper1);
   mctc1 = coords_set(
-#line 202 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 202 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 202 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 202 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 202 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 202 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     DSTRAIGHTGUIDE1);
-#line 14462 "./ISIS_OSIRIS.c"
+#line 14478 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmStraight1, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaarmChopper1 = coords_add(mcposaarmStraight1, mctc2);
@@ -14473,51 +14489,51 @@ void mcinit(void) {
     /* Component chopper1. */
   /* Setting parameters for component chopper1. */
   SIG_MESSAGE("chopper1 (Init:SetPar)");
-#line 222 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 222 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper1_theta_0 = CHOPPER1WINDOW;
-#line 222 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 222 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper1_radius = CHOPPERRADIUS;
-#line 222 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 222 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper1_yheight = CHOPPERHEIGHT;
-#line 223 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 223 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper1_nu = CHOPPER1OMEGA / ( 2 * PI );
-#line 223 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 223 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper1_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper1_jitter = 0;
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 224 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper1_delay = calcT0 ( mcipLAMBDA , DMODGUIDE + DSTRAIGHTGUIDE1 );
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper1_isfirst = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper1_n_pulse = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper1_abs_out = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper1_phase = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper1_xwidth = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper1_verbose = 0;
-#line 14502 "./ISIS_OSIRIS.c"
+#line 14518 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("chopper1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 14509 "./ISIS_OSIRIS.c"
+#line 14525 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmChopper1, mcrotachopper1);
   rot_transpose(mcrotaarmChopper1, mctr1);
   rot_mul(mcrotachopper1, mctr1, mcrotrchopper1);
   mctc1 = coords_set(
-#line 225 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 225 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 225 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 225 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 225 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 225 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0);
-#line 14520 "./ISIS_OSIRIS.c"
+#line 14536 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmChopper1, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposachopper1 = coords_add(mcposaarmChopper1, mctc2);
@@ -14537,18 +14553,18 @@ void mcinit(void) {
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 14540 "./ISIS_OSIRIS.c"
+#line 14556 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmChopper1, mcrotaarmCurved1);
   rot_transpose(mcrotachopper1, mctr1);
   rot_mul(mcrotaarmCurved1, mctr1, mcrotrarmCurved1);
   mctc1 = coords_set(
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     DCHOPPER1);
-#line 14551 "./ISIS_OSIRIS.c"
+#line 14567 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmChopper1, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaarmCurved1 = coords_add(mcposaarmChopper1, mctc2);
@@ -14562,43 +14578,43 @@ void mcinit(void) {
     /* Component guide_curved1. */
   /* Setting parameters for component guide_curved1. */
   SIG_MESSAGE("guide_curved1 (Init:SetPar)");
-#line 252 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 252 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_curved1_w1 = GUIDEWIDTH;
-#line 252 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 252 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_curved1_h1 = GUIDEHEIGHT;
-#line 252 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 252 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_curved1_l = DCURVEDGUIDE1;
-#line 253 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 253 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_curved1_R0 = mcipGUIDEREFLECTIVITY;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_curved1_Qc = 0.0218;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_curved1_alpha = 4.38;
-#line 252 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 252 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_curved1_m = 2.0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_curved1_W = 0.003;
-#line 253 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 253 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_curved1_curvature = CURVERADIUS;
-#line 14583 "./ISIS_OSIRIS.c"
+#line 14599 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("guide_curved1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 14590 "./ISIS_OSIRIS.c"
+#line 14606 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmCurved1, mcrotaguide_curved1);
   rot_transpose(mcrotaarmCurved1, mctr1);
   rot_mul(mcrotaguide_curved1, mctr1, mcrotrguide_curved1);
   mctc1 = coords_set(
-#line 254 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 254 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 254 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 254 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 254 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 254 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0);
-#line 14601 "./ISIS_OSIRIS.c"
+#line 14617 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmCurved1, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaguide_curved1 = coords_add(mcposaarmCurved1, mctc2);
@@ -14615,24 +14631,24 @@ void mcinit(void) {
 
   SIG_MESSAGE("armChopper2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 261 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 261 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 261 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 261 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (calcAlpha ( DCURVEDGUIDE1 , CURVERADIUS ))*DEG2RAD,
-#line 261 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 261 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD);
-#line 14624 "./ISIS_OSIRIS.c"
+#line 14640 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmCurved1, mcrotaarmChopper2);
   rot_transpose(mcrotaguide_curved1, mctr1);
   rot_mul(mcrotaarmChopper2, mctr1, mcrotrarmChopper2);
   mctc1 = coords_set(
-#line 260 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 260 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     calcX ( DCURVEDGUIDE1 , CURVERADIUS ),
-#line 260 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 260 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 260 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 260 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     calcZ ( DCURVEDGUIDE1 , CURVERADIUS ));
-#line 14635 "./ISIS_OSIRIS.c"
+#line 14651 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmCurved1, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaarmChopper2 = coords_add(mcposaarmCurved1, mctc2);
@@ -14646,51 +14662,51 @@ void mcinit(void) {
     /* Component chopper2. */
   /* Setting parameters for component chopper2. */
   SIG_MESSAGE("chopper2 (Init:SetPar)");
-#line 281 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 281 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper2_theta_0 = CHOPPER2WINDOW;
-#line 281 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 281 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper2_radius = CHOPPERRADIUS;
-#line 281 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 281 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper2_yheight = CHOPPERHEIGHT;
-#line 282 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 282 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper2_nu = CHOPPER2OMEGA / ( 2 * PI );
-#line 282 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 282 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper2_nslit = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper2_jitter = 0;
-#line 283 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 283 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper2_delay = calcT0 ( mcipLAMBDA , DMODGUIDE + DSTRAIGHTGUIDE1 + DCHOPPER1 + DCURVEDGUIDE1 );
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper2_isfirst = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper2_n_pulse = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper2_abs_out = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper2_phase = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper2_xwidth = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccchopper2_verbose = 0;
-#line 14675 "./ISIS_OSIRIS.c"
+#line 14691 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("chopper2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 14682 "./ISIS_OSIRIS.c"
+#line 14698 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmChopper2, mcrotachopper2);
   rot_transpose(mcrotaarmChopper2, mctr1);
   rot_mul(mcrotachopper2, mctr1, mcrotrchopper2);
   mctc1 = coords_set(
-#line 284 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 284 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 284 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 284 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 284 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 284 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0);
-#line 14693 "./ISIS_OSIRIS.c"
+#line 14709 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmChopper2, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposachopper2 = coords_add(mcposaarmChopper2, mctc2);
@@ -14710,18 +14726,18 @@ void mcinit(void) {
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 14713 "./ISIS_OSIRIS.c"
+#line 14729 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmChopper2, mcrotaarmCurved2);
   rot_transpose(mcrotachopper2, mctr1);
   rot_mul(mcrotaarmCurved2, mctr1, mcrotrarmCurved2);
   mctc1 = coords_set(
-#line 298 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 298 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 298 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 298 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 298 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 298 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     DCHOPPER2);
-#line 14724 "./ISIS_OSIRIS.c"
+#line 14740 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmChopper2, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaarmCurved2 = coords_add(mcposaarmChopper2, mctc2);
@@ -14735,43 +14751,43 @@ void mcinit(void) {
     /* Component guide_curved2. */
   /* Setting parameters for component guide_curved2. */
   SIG_MESSAGE("guide_curved2 (Init:SetPar)");
-#line 312 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 312 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_curved2_w1 = GUIDEWIDTH;
-#line 312 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 312 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_curved2_h1 = GUIDEHEIGHT;
-#line 312 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 312 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_curved2_l = DCURVEDGUIDE2;
-#line 313 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 313 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_curved2_R0 = mcipGUIDEREFLECTIVITY;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_curved2_Qc = 0.0218;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_curved2_alpha = 4.38;
-#line 313 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 313 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_curved2_m = 2.0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_curved2_W = 0.003;
-#line 313 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 313 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_curved2_curvature = CURVERADIUS;
-#line 14756 "./ISIS_OSIRIS.c"
+#line 14772 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("guide_curved2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 14763 "./ISIS_OSIRIS.c"
+#line 14779 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmCurved2, mcrotaguide_curved2);
   rot_transpose(mcrotaarmCurved2, mctr1);
   rot_mul(mcrotaguide_curved2, mctr1, mcrotrguide_curved2);
   mctc1 = coords_set(
-#line 314 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 314 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 314 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 314 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 314 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 314 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0);
-#line 14774 "./ISIS_OSIRIS.c"
+#line 14790 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmCurved2, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaguide_curved2 = coords_add(mcposaarmCurved2, mctc2);
@@ -14788,24 +14804,24 @@ void mcinit(void) {
 
   SIG_MESSAGE("armStraight2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (calcAlpha ( DCURVEDGUIDE2 , CURVERADIUS ))*DEG2RAD,
-#line 322 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 322 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD);
-#line 14797 "./ISIS_OSIRIS.c"
+#line 14813 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmCurved2, mcrotaarmStraight2);
   rot_transpose(mcrotaguide_curved2, mctr1);
   rot_mul(mcrotaarmStraight2, mctr1, mcrotrarmStraight2);
   mctc1 = coords_set(
-#line 321 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 321 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     calcX ( DCURVEDGUIDE2 , CURVERADIUS ),
-#line 321 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 321 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 321 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 321 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     calcZ ( DCURVEDGUIDE2 , CURVERADIUS ));
-#line 14808 "./ISIS_OSIRIS.c"
+#line 14824 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmCurved2, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaarmStraight2 = coords_add(mcposaarmCurved2, mctc2);
@@ -14819,47 +14835,47 @@ void mcinit(void) {
     /* Component guide_straight_2. */
   /* Setting parameters for component guide_straight_2. */
   SIG_MESSAGE("guide_straight_2 (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   if(0) strncpy(mccguide_straight_2_reflect, 0 ? 0 : "", 16384); else mccguide_straight_2_reflect[0]='\0';
-#line 336 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 336 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_straight_2_w1 = GUIDEWIDTH;
-#line 336 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 336 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_straight_2_h1 = GUIDEHEIGHT;
-#line 337 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 337 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_straight_2_w2 = GUIDEWIDTH;
-#line 337 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 337 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_straight_2_h2 = GUIDEHEIGHT;
-#line 338 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 338 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_straight_2_l = DSTRAIGHTGUIDE2;
-#line 338 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 338 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_straight_2_R0 = mcipGUIDEREFLECTIVITY;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_straight_2_Qc = 0.0219;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_straight_2_alpha = 6.07;
-#line 338 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 338 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_straight_2_m = 2.0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_straight_2_W = 0.003;
-#line 14844 "./ISIS_OSIRIS.c"
+#line 14860 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("guide_straight_2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 14851 "./ISIS_OSIRIS.c"
+#line 14867 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmStraight2, mcrotaguide_straight_2);
   rot_transpose(mcrotaarmStraight2, mctr1);
   rot_mul(mcrotaguide_straight_2, mctr1, mcrotrguide_straight_2);
   mctc1 = coords_set(
-#line 339 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 339 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 339 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 339 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 339 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 339 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0);
-#line 14862 "./ISIS_OSIRIS.c"
+#line 14878 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmStraight2, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaguide_straight_2 = coords_add(mcposaarmStraight2, mctc2);
@@ -14879,18 +14895,18 @@ void mcinit(void) {
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 14882 "./ISIS_OSIRIS.c"
+#line 14898 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmStraight2, mcrotaarmSuper);
   rot_transpose(mcrotaguide_straight_2, mctr1);
   rot_mul(mcrotaarmSuper, mctr1, mcrotrarmSuper);
   mctc1 = coords_set(
-#line 347 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 347 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 347 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 347 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 347 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 347 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     DSTRAIGHTGUIDE2);
-#line 14893 "./ISIS_OSIRIS.c"
+#line 14909 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmStraight2, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaarmSuper = coords_add(mcposaarmStraight2, mctc2);
@@ -14904,47 +14920,47 @@ void mcinit(void) {
     /* Component guide_super. */
   /* Setting parameters for component guide_super. */
   SIG_MESSAGE("guide_super (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   if(0) strncpy(mccguide_super_reflect, 0 ? 0 : "", 16384); else mccguide_super_reflect[0]='\0';
-#line 361 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 361 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_super_w1 = GUIDEWIDTH;
-#line 361 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 361 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_super_h1 = GUIDEHEIGHT;
-#line 362 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 362 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_super_w2 = GUIDEENDWIDTH;
-#line 362 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 362 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_super_h2 = GUIDEENDHEIGHT;
-#line 363 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 363 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_super_l = DSUPERGUIDE;
-#line 363 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 363 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_super_R0 = mcipGUIDEREFLECTIVITY;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_super_Qc = 0.0219;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_super_alpha = 6.07;
-#line 363 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 363 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_super_m = 3.6;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccguide_super_W = 0.003;
-#line 14929 "./ISIS_OSIRIS.c"
+#line 14945 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("guide_super (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 14936 "./ISIS_OSIRIS.c"
+#line 14952 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmSuper, mcrotaguide_super);
   rot_transpose(mcrotaarmSuper, mctr1);
   rot_mul(mcrotaguide_super, mctr1, mcrotrguide_super);
   mctc1 = coords_set(
-#line 364 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 364 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 364 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 364 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 364 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 364 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0);
-#line 14947 "./ISIS_OSIRIS.c"
+#line 14963 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmSuper, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaguide_super = coords_add(mcposaarmSuper, mctc2);
@@ -14964,18 +14980,18 @@ void mcinit(void) {
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 14967 "./ISIS_OSIRIS.c"
+#line 14983 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmSuper, mcrotaarmTarget);
   rot_transpose(mcrotaguide_super, mctr1);
   rot_mul(mcrotaarmTarget, mctr1, mcrotrarmTarget);
   mctc1 = coords_set(
-#line 371 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 371 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 371 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 371 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 371 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 371 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     DSUPERGUIDE + DGUIDETARGET);
-#line 14978 "./ISIS_OSIRIS.c"
+#line 14994 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmSuper, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaarmTarget = coords_add(mcposaarmSuper, mctc2);
@@ -14989,47 +15005,47 @@ void mcinit(void) {
     /* Component lamTarget. */
   /* Setting parameters for component lamTarget. */
   SIG_MESSAGE("lamTarget (Init:SetPar)");
-#line 378 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 378 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   if("lambdaTarget.dat") strncpy(mcclamTarget_filename, "lambdaTarget.dat" ? "lambdaTarget.dat" : "", 16384); else mcclamTarget_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamTarget_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamTarget_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamTarget_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamTarget_ymax = 0.05;
-#line 379 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 379 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamTarget_xwidth = 0.10;
-#line 379 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 379 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamTarget_yheight = 0.10;
-#line 380 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 380 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamTarget_Lmin = 0.98 * LAMBDAMIN;
-#line 380 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 380 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamTarget_Lmax = 1.02 * LAMBDAMAX;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamTarget_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamTarget_nowritefile = 0;
-#line 15014 "./ISIS_OSIRIS.c"
+#line 15030 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("lamTarget (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 15021 "./ISIS_OSIRIS.c"
+#line 15037 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmTarget, mcrotalamTarget);
   rot_transpose(mcrotaarmTarget, mctr1);
   rot_mul(mcrotalamTarget, mctr1, mcrotrlamTarget);
   mctc1 = coords_set(
-#line 381 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 381 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 381 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 381 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 381 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 381 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0);
-#line 15032 "./ISIS_OSIRIS.c"
+#line 15048 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmTarget, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposalamTarget = coords_add(mcposaarmTarget, mctc2);
@@ -15043,45 +15059,45 @@ void mcinit(void) {
     /* Component psdTarget. */
   /* Setting parameters for component psdTarget. */
   SIG_MESSAGE("psdTarget (Init:SetPar)");
-#line 384 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 384 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdTarget_nx = 100;
-#line 384 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 384 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdTarget_ny = 100;
-#line 384 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 384 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   if("psdTarget.dat") strncpy(mccpsdTarget_filename, "psdTarget.dat" ? "psdTarget.dat" : "", 16384); else mccpsdTarget_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdTarget_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdTarget_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdTarget_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdTarget_ymax = 0.05;
-#line 385 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 385 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdTarget_xwidth = 0.10;
-#line 385 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 385 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdTarget_yheight = 0.10;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdTarget_restore_neutron = 0;
-#line 15066 "./ISIS_OSIRIS.c"
+#line 15082 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("psdTarget (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 15073 "./ISIS_OSIRIS.c"
+#line 15089 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmTarget, mcrotapsdTarget);
   rot_transpose(mcrotalamTarget, mctr1);
   rot_mul(mcrotapsdTarget, mctr1, mcrotrpsdTarget);
   mctc1 = coords_set(
-#line 386 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 386 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 386 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 386 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 386 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 386 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0);
-#line 15084 "./ISIS_OSIRIS.c"
+#line 15100 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmTarget, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposapsdTarget = coords_add(mcposaarmTarget, mctc2);
@@ -15095,77 +15111,77 @@ void mcinit(void) {
     /* Component vsample1. */
   /* Setting parameters for component vsample1. */
   SIG_MESSAGE("vsample1 (Init:SetPar)");
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   if(0) strncpy(mccvsample1_geometry, 0 ? 0 : "", 16384); else mccvsample1_geometry[0]='\0';
-#line 389 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 389 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_radius = 0.02;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_xwidth = 0;
-#line 390 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 390 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_yheight = VANADIUMHEIGHT;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_zdepth = 0;
-#line 389 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 389 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_thickness = 0.00004;
-#line 391 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 391 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_target_x = - ANARADIUS;
-#line 391 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 391 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_target_y = 0;
-#line 391 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 391 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_target_z = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_focus_r = 0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_focus_xw = 0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_focus_yh = 0;
-#line 392 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 392 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_focus_aw = 0.7;
-#line 392 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 392 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_focus_ah = 30.0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_target_index = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_pack = 1;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_p_interact = 1;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_f_QE = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_gamma = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_Etrans = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_deltaE = 0;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_sigma_abs = 5.08;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_sigma_inc = 5.08;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_Vc = 13.827;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_concentric = 0;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample1_order = 0;
-#line 15150 "./ISIS_OSIRIS.c"
+#line 15166 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("vsample1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 15157 "./ISIS_OSIRIS.c"
+#line 15173 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmTarget, mcrotavsample1);
   rot_transpose(mcrotapsdTarget, mctr1);
   rot_mul(mcrotavsample1, mctr1, mcrotrvsample1);
   mctc1 = coords_set(
-#line 393 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 393 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 393 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 393 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 393 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 393 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0);
-#line 15168 "./ISIS_OSIRIS.c"
+#line 15184 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmTarget, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposavsample1 = coords_add(mcposaarmTarget, mctc2);
@@ -15179,77 +15195,77 @@ void mcinit(void) {
     /* Component vsample2. */
   /* Setting parameters for component vsample2. */
   SIG_MESSAGE("vsample2 (Init:SetPar)");
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   if(0) strncpy(mccvsample2_geometry, 0 ? 0 : "", 16384); else mccvsample2_geometry[0]='\0';
-#line 396 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 396 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_radius = 0.016;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_xwidth = 0;
-#line 397 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 397 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_yheight = VANADIUMHEIGHT;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_zdepth = 0;
-#line 396 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 396 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_thickness = 0.00004;
-#line 398 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 398 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_target_x = - ANARADIUS;
-#line 398 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 398 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_target_y = 0;
-#line 398 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 398 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_target_z = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_focus_r = 0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_focus_xw = 0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_focus_yh = 0;
-#line 399 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 399 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_focus_aw = 0.7;
-#line 399 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 399 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_focus_ah = 30.0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_target_index = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_pack = 1;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_p_interact = 1;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_f_QE = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_gamma = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_Etrans = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_deltaE = 0;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_sigma_abs = 5.08;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_sigma_inc = 5.08;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_Vc = 13.827;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_concentric = 0;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample2_order = 0;
-#line 15234 "./ISIS_OSIRIS.c"
+#line 15250 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("vsample2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 15241 "./ISIS_OSIRIS.c"
+#line 15257 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmTarget, mcrotavsample2);
   rot_transpose(mcrotavsample1, mctr1);
   rot_mul(mcrotavsample2, mctr1, mcrotrvsample2);
   mctc1 = coords_set(
-#line 400 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 400 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 400 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 400 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 400 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 400 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0);
-#line 15252 "./ISIS_OSIRIS.c"
+#line 15268 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmTarget, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposavsample2 = coords_add(mcposaarmTarget, mctc2);
@@ -15263,77 +15279,77 @@ void mcinit(void) {
     /* Component vsample3. */
   /* Setting parameters for component vsample3. */
   SIG_MESSAGE("vsample3 (Init:SetPar)");
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   if(0) strncpy(mccvsample3_geometry, 0 ? 0 : "", 16384); else mccvsample3_geometry[0]='\0';
-#line 403 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 403 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_radius = 0.01;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_xwidth = 0;
-#line 404 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 404 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_yheight = VANADIUMHEIGHT;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_zdepth = 0;
-#line 403 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 403 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_thickness = 0.00004;
-#line 405 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 405 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_target_x = - ANARADIUS;
-#line 405 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 405 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_target_y = 0;
-#line 405 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 405 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_target_z = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_focus_r = 0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_focus_xw = 0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_focus_yh = 0;
-#line 406 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 406 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_focus_aw = 0.7;
-#line 406 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 406 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_focus_ah = 30.0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_target_index = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_pack = 1;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_p_interact = 1;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_f_QE = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_gamma = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_Etrans = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_deltaE = 0;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_sigma_abs = 5.08;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_sigma_inc = 5.08;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_Vc = 13.827;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_concentric = 0;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccvsample3_order = 0;
-#line 15318 "./ISIS_OSIRIS.c"
+#line 15334 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("vsample3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 15325 "./ISIS_OSIRIS.c"
+#line 15341 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmTarget, mcrotavsample3);
   rot_transpose(mcrotavsample2, mctr1);
   rot_mul(mcrotavsample3, mctr1, mcrotrvsample3);
   mctc1 = coords_set(
-#line 407 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 407 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 407 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 407 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 407 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 407 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0);
-#line 15336 "./ISIS_OSIRIS.c"
+#line 15352 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmTarget, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposavsample3 = coords_add(mcposaarmTarget, mctc2);
@@ -15347,39 +15363,39 @@ void mcinit(void) {
     /* Component beamStop. */
   /* Setting parameters for component beamStop. */
   SIG_MESSAGE("beamStop (Init:SetPar)");
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccbeamStop_xmin = -0.05;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccbeamStop_xmax = 0.05;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccbeamStop_ymin = -0.05;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccbeamStop_ymax = 0.05;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccbeamStop_xwidth = 0;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccbeamStop_yheight = 0;
-#line 411 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 411 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccbeamStop_radius = 0.1;
-#line 15364 "./ISIS_OSIRIS.c"
+#line 15380 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("beamStop (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 15371 "./ISIS_OSIRIS.c"
+#line 15387 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmTarget, mcrotabeamStop);
   rot_transpose(mcrotavsample3, mctr1);
   rot_mul(mcrotabeamStop, mctr1, mcrotrbeamStop);
   mctc1 = coords_set(
-#line 412 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 412 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 412 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 412 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 412 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 412 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.1);
-#line 15382 "./ISIS_OSIRIS.c"
+#line 15398 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmTarget, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposabeamStop = coords_add(mcposaarmTarget, mctc2);
@@ -15396,24 +15412,24 @@ void mcinit(void) {
 
   SIG_MESSAGE("armAnalyzer (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 416 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 416 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 416 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 416 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-90)*DEG2RAD,
-#line 416 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 416 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD);
-#line 15405 "./ISIS_OSIRIS.c"
+#line 15421 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmTarget, mcrotaarmAnalyzer);
   rot_transpose(mcrotabeamStop, mctr1);
   rot_mul(mcrotaarmAnalyzer, mctr1, mcrotrarmAnalyzer);
   mctc1 = coords_set(
-#line 415 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 415 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 415 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 415 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 415 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 415 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0);
-#line 15416 "./ISIS_OSIRIS.c"
+#line 15432 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmTarget, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaarmAnalyzer = coords_add(mcposaarmTarget, mctc2);
@@ -15427,48 +15443,48 @@ void mcinit(void) {
     /* Component graphite_analyser0. */
   /* Setting parameters for component graphite_analyser0. */
   SIG_MESSAGE("graphite_analyser0 (Init:SetPar)");
-#line 439 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 439 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser0_zwidth = ANAWIDTH;
-#line 439 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 439 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser0_yheight = ANAHEIGHT;
-#line 439 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 439 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser0_mosaic = ANAMOSAIC;
-#line 440 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 440 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser0_dspread = 0.0025;
-#line 440 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 440 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser0_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser0_DM = 0;
-#line 440 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 440 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser0_pThreshold = 0.001;
-#line 440 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 440 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser0_Rup = 1.0;
-#line 440 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 440 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser0_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser0_debug = 0;
-#line 15450 "./ISIS_OSIRIS.c"
+#line 15466 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser0 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 442 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 442 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 442 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 442 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 442 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 442 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (8.928)*DEG2RAD);
-#line 15460 "./ISIS_OSIRIS.c"
+#line 15476 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser0);
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   rot_mul(mcrotagraphite_analyser0, mctr1, mcrotrgraphite_analyser0);
   mctc1 = coords_set(
-#line 441 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 441 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 441 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 441 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     -0.195,
-#line 441 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 441 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.899629);
-#line 15471 "./ISIS_OSIRIS.c"
+#line 15487 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser0 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -15482,48 +15498,48 @@ void mcinit(void) {
     /* Component graphite_analyser1. */
   /* Setting parameters for component graphite_analyser1. */
   SIG_MESSAGE("graphite_analyser1 (Init:SetPar)");
-#line 450 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 450 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser1_zwidth = ANAWIDTH;
-#line 450 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 450 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser1_yheight = ANAHEIGHT;
-#line 450 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 450 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser1_mosaic = ANAMOSAIC;
-#line 451 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 451 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser1_dspread = 0.0025;
-#line 451 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 451 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser1_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser1_DM = 0;
-#line 451 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 451 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser1_pThreshold = 0.001;
-#line 451 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 451 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser1_Rup = 1.0;
-#line 451 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 451 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser1_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser1_debug = 0;
-#line 15505 "./ISIS_OSIRIS.c"
+#line 15521 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 453 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 453 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 453 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 453 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 453 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 453 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (8.928)*DEG2RAD);
-#line 15515 "./ISIS_OSIRIS.c"
+#line 15531 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser1);
   rot_transpose(mcrotagraphite_analyser0, mctr1);
   rot_mul(mcrotagraphite_analyser1, mctr1, mcrotrgraphite_analyser1);
   mctc1 = coords_set(
-#line 452 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 452 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 452 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 452 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     -0.185,
-#line 452 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 452 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.9012);
-#line 15526 "./ISIS_OSIRIS.c"
+#line 15542 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser1 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -15537,48 +15553,48 @@ void mcinit(void) {
     /* Component graphite_analyser2. */
   /* Setting parameters for component graphite_analyser2. */
   SIG_MESSAGE("graphite_analyser2 (Init:SetPar)");
-#line 461 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 461 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser2_zwidth = ANAWIDTH;
-#line 461 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 461 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser2_yheight = ANAHEIGHT;
-#line 461 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 461 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser2_mosaic = ANAMOSAIC;
-#line 462 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 462 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser2_dspread = 0.0025;
-#line 462 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 462 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser2_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser2_DM = 0;
-#line 462 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 462 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser2_pThreshold = 0.001;
-#line 462 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 462 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser2_Rup = 1.0;
-#line 462 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 462 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser2_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser2_debug = 0;
-#line 15560 "./ISIS_OSIRIS.c"
+#line 15576 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 464 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 464 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 464 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 464 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 464 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 464 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (8.1305)*DEG2RAD);
-#line 15570 "./ISIS_OSIRIS.c"
+#line 15586 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser2);
   rot_transpose(mcrotagraphite_analyser1, mctr1);
   rot_mul(mcrotagraphite_analyser2, mctr1, mcrotrgraphite_analyser2);
   mctc1 = coords_set(
-#line 463 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 463 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 463 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 463 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     -0.175,
-#line 463 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 463 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.902637);
-#line 15581 "./ISIS_OSIRIS.c"
+#line 15597 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser2 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -15592,48 +15608,48 @@ void mcinit(void) {
     /* Component graphite_analyser3. */
   /* Setting parameters for component graphite_analyser3. */
   SIG_MESSAGE("graphite_analyser3 (Init:SetPar)");
-#line 472 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 472 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser3_zwidth = ANAWIDTH;
-#line 472 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 472 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser3_yheight = ANAHEIGHT;
-#line 472 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 472 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser3_mosaic = ANAMOSAIC;
-#line 473 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 473 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser3_dspread = 0.0025;
-#line 473 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 473 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser3_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser3_DM = 0;
-#line 473 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 473 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser3_pThreshold = 0.001;
-#line 473 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 473 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser3_Rup = 1.0;
-#line 473 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 473 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser3_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser3_debug = 0;
-#line 15615 "./ISIS_OSIRIS.c"
+#line 15631 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 475 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 475 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 475 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 475 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 475 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 475 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (7.062)*DEG2RAD);
-#line 15625 "./ISIS_OSIRIS.c"
+#line 15641 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser3);
   rot_transpose(mcrotagraphite_analyser2, mctr1);
   rot_mul(mcrotagraphite_analyser3, mctr1, mcrotrgraphite_analyser3);
   mctc1 = coords_set(
-#line 474 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 474 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 474 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 474 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     -0.165,
-#line 474 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 474 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.903887);
-#line 15636 "./ISIS_OSIRIS.c"
+#line 15652 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser3 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -15647,48 +15663,48 @@ void mcinit(void) {
     /* Component graphite_analyser4. */
   /* Setting parameters for component graphite_analyser4. */
   SIG_MESSAGE("graphite_analyser4 (Init:SetPar)");
-#line 483 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 483 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser4_zwidth = ANAWIDTH;
-#line 483 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 483 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser4_yheight = ANAHEIGHT;
-#line 483 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 483 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser4_mosaic = ANAMOSAIC;
-#line 484 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 484 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser4_dspread = 0.0025;
-#line 484 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 484 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser4_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser4_DM = 0;
-#line 484 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 484 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser4_pThreshold = 0.001;
-#line 484 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 484 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser4_Rup = 1.0;
-#line 484 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 484 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser4_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser4_debug = 0;
-#line 15670 "./ISIS_OSIRIS.c"
+#line 15686 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser4 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 486 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 486 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 486 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 486 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 486 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 486 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (6.791)*DEG2RAD);
-#line 15680 "./ISIS_OSIRIS.c"
+#line 15696 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser4);
   rot_transpose(mcrotagraphite_analyser3, mctr1);
   rot_mul(mcrotagraphite_analyser4, mctr1, mcrotrgraphite_analyser4);
   mctc1 = coords_set(
-#line 485 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 485 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 485 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 485 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     -0.155,
-#line 485 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 485 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.905081);
-#line 15691 "./ISIS_OSIRIS.c"
+#line 15707 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser4 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -15702,48 +15718,48 @@ void mcinit(void) {
     /* Component graphite_analyser5. */
   /* Setting parameters for component graphite_analyser5. */
   SIG_MESSAGE("graphite_analyser5 (Init:SetPar)");
-#line 494 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 494 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser5_zwidth = ANAWIDTH;
-#line 494 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 494 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser5_yheight = ANAHEIGHT;
-#line 494 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 494 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser5_mosaic = ANAMOSAIC;
-#line 495 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 495 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser5_dspread = 0.0025;
-#line 495 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 495 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser5_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser5_DM = 0;
-#line 495 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 495 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser5_pThreshold = 0.001;
-#line 495 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 495 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser5_Rup = 1.0;
-#line 495 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 495 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser5_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser5_debug = 0;
-#line 15725 "./ISIS_OSIRIS.c"
+#line 15741 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser5 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 497 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 497 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 497 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 497 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 497 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 497 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (5.898)*DEG2RAD);
-#line 15735 "./ISIS_OSIRIS.c"
+#line 15751 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser5);
   rot_transpose(mcrotagraphite_analyser4, mctr1);
   rot_mul(mcrotagraphite_analyser5, mctr1, mcrotrgraphite_analyser5);
   mctc1 = coords_set(
-#line 496 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 496 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 496 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 496 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     -0.145,
-#line 496 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 496 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.906123);
-#line 15746 "./ISIS_OSIRIS.c"
+#line 15762 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser5 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -15757,48 +15773,48 @@ void mcinit(void) {
     /* Component graphite_analyser6. */
   /* Setting parameters for component graphite_analyser6. */
   SIG_MESSAGE("graphite_analyser6 (Init:SetPar)");
-#line 505 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 505 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser6_zwidth = ANAWIDTH;
-#line 505 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 505 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser6_yheight = ANAHEIGHT;
-#line 505 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 505 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser6_mosaic = ANAMOSAIC;
-#line 506 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 506 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser6_dspread = 0.0025;
-#line 506 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 506 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser6_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser6_DM = 0;
-#line 506 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 506 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser6_pThreshold = 0.001;
-#line 506 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 506 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser6_Rup = 1.0;
-#line 506 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 506 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser6_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser6_debug = 0;
-#line 15780 "./ISIS_OSIRIS.c"
+#line 15796 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser6 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 508 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 508 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 508 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 508 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 508 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 508 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (4.8325)*DEG2RAD);
-#line 15790 "./ISIS_OSIRIS.c"
+#line 15806 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser6);
   rot_transpose(mcrotagraphite_analyser5, mctr1);
   rot_mul(mcrotagraphite_analyser6, mctr1, mcrotrgraphite_analyser6);
   mctc1 = coords_set(
-#line 507 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 507 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 507 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 507 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     -0.135,
-#line 507 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 507 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.90698);
-#line 15801 "./ISIS_OSIRIS.c"
+#line 15817 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser6 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -15812,48 +15828,48 @@ void mcinit(void) {
     /* Component graphite_analyser7. */
   /* Setting parameters for component graphite_analyser7. */
   SIG_MESSAGE("graphite_analyser7 (Init:SetPar)");
-#line 516 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 516 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser7_zwidth = ANAWIDTH;
-#line 516 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 516 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser7_yheight = ANAHEIGHT;
-#line 516 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 516 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser7_mosaic = ANAMOSAIC;
-#line 517 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 517 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser7_dspread = 0.0025;
-#line 517 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 517 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser7_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser7_DM = 0;
-#line 517 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 517 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser7_pThreshold = 0.001;
-#line 517 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 517 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser7_Rup = 1.0;
-#line 517 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 517 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser7_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser7_debug = 0;
-#line 15835 "./ISIS_OSIRIS.c"
+#line 15851 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser7 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 519 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 519 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 519 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 519 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 519 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 519 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (4.66)*DEG2RAD);
-#line 15845 "./ISIS_OSIRIS.c"
+#line 15861 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser7);
   rot_transpose(mcrotagraphite_analyser6, mctr1);
   rot_mul(mcrotagraphite_analyser7, mctr1, mcrotrgraphite_analyser7);
   mctc1 = coords_set(
-#line 518 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 518 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 518 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 518 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     -0.125,
-#line 518 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 518 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.907797);
-#line 15856 "./ISIS_OSIRIS.c"
+#line 15872 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser7 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -15867,48 +15883,48 @@ void mcinit(void) {
     /* Component graphite_analyser8. */
   /* Setting parameters for component graphite_analyser8. */
   SIG_MESSAGE("graphite_analyser8 (Init:SetPar)");
-#line 527 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 527 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser8_zwidth = ANAWIDTH;
-#line 527 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 527 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser8_yheight = ANAHEIGHT;
-#line 527 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 527 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser8_mosaic = ANAMOSAIC;
-#line 528 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 528 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser8_dspread = 0.0025;
-#line 528 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 528 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser8_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser8_DM = 0;
-#line 528 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 528 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser8_pThreshold = 0.001;
-#line 528 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 528 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser8_Rup = 1.0;
-#line 528 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 528 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser8_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser8_debug = 0;
-#line 15890 "./ISIS_OSIRIS.c"
+#line 15906 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser8 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 530 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 530 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 530 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 530 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 530 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 530 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (3.6815)*DEG2RAD);
-#line 15900 "./ISIS_OSIRIS.c"
+#line 15916 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser8);
   rot_transpose(mcrotagraphite_analyser7, mctr1);
   rot_mul(mcrotagraphite_analyser8, mctr1, mcrotrgraphite_analyser8);
   mctc1 = coords_set(
-#line 529 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 529 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 529 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 529 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     -0.115,
-#line 529 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 529 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.90845);
-#line 15911 "./ISIS_OSIRIS.c"
+#line 15927 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser8 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -15922,48 +15938,48 @@ void mcinit(void) {
     /* Component graphite_analyser9. */
   /* Setting parameters for component graphite_analyser9. */
   SIG_MESSAGE("graphite_analyser9 (Init:SetPar)");
-#line 538 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 538 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser9_zwidth = ANAWIDTH;
-#line 538 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 538 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser9_yheight = ANAHEIGHT;
-#line 538 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 538 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser9_mosaic = ANAMOSAIC;
-#line 539 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 539 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser9_dspread = 0.0025;
-#line 539 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 539 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser9_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser9_DM = 0;
-#line 539 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 539 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser9_pThreshold = 0.001;
-#line 539 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 539 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser9_Rup = 1.0;
-#line 539 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 539 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser9_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser9_debug = 0;
-#line 15945 "./ISIS_OSIRIS.c"
+#line 15961 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser9 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 541 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 541 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 541 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 541 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 541 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 541 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (2.6165)*DEG2RAD);
-#line 15955 "./ISIS_OSIRIS.c"
+#line 15971 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser9);
   rot_transpose(mcrotagraphite_analyser8, mctr1);
   rot_mul(mcrotagraphite_analyser9, mctr1, mcrotrgraphite_analyser9);
   mctc1 = coords_set(
-#line 540 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 540 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 540 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 540 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     -0.105,
-#line 540 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 540 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.908918);
-#line 15966 "./ISIS_OSIRIS.c"
+#line 15982 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser9 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -15977,48 +15993,48 @@ void mcinit(void) {
     /* Component graphite_analyser10. */
   /* Setting parameters for component graphite_analyser10. */
   SIG_MESSAGE("graphite_analyser10 (Init:SetPar)");
-#line 549 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 549 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser10_zwidth = ANAWIDTH;
-#line 549 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 549 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser10_yheight = ANAHEIGHT;
-#line 549 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 549 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser10_mosaic = ANAMOSAIC;
-#line 550 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 550 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser10_dspread = 0.0025;
-#line 550 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 550 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser10_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser10_DM = 0;
-#line 550 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 550 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser10_pThreshold = 0.001;
-#line 550 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 550 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser10_Rup = 1.0;
-#line 550 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 550 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser10_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser10_debug = 0;
-#line 16000 "./ISIS_OSIRIS.c"
+#line 16016 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser10 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 552 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 552 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 552 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 552 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 552 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 552 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (2.53)*DEG2RAD);
-#line 16010 "./ISIS_OSIRIS.c"
+#line 16026 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser10);
   rot_transpose(mcrotagraphite_analyser9, mctr1);
   rot_mul(mcrotagraphite_analyser10, mctr1, mcrotrgraphite_analyser10);
   mctc1 = coords_set(
-#line 551 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 551 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 551 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 551 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     -0.095,
-#line 551 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 551 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.90936);
-#line 16021 "./ISIS_OSIRIS.c"
+#line 16037 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser10 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -16032,48 +16048,48 @@ void mcinit(void) {
     /* Component graphite_analyser11. */
   /* Setting parameters for component graphite_analyser11. */
   SIG_MESSAGE("graphite_analyser11 (Init:SetPar)");
-#line 560 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 560 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser11_zwidth = ANAWIDTH;
-#line 560 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 560 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser11_yheight = ANAHEIGHT;
-#line 560 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 560 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser11_mosaic = ANAMOSAIC;
-#line 561 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 561 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser11_dspread = 0.0025;
-#line 561 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 561 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser11_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser11_DM = 0;
-#line 561 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 561 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser11_pThreshold = 0.001;
-#line 561 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 561 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser11_Rup = 1.0;
-#line 561 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 561 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser11_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser11_debug = 0;
-#line 16055 "./ISIS_OSIRIS.c"
+#line 16071 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser11 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 563 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 563 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 563 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 563 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 563 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 563 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (1.465)*DEG2RAD);
-#line 16065 "./ISIS_OSIRIS.c"
+#line 16081 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser11);
   rot_transpose(mcrotagraphite_analyser10, mctr1);
   rot_mul(mcrotagraphite_analyser11, mctr1, mcrotrgraphite_analyser11);
   mctc1 = coords_set(
-#line 562 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 562 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 562 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 562 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     -0.085,
-#line 562 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 562 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.909628);
-#line 16076 "./ISIS_OSIRIS.c"
+#line 16092 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser11 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -16087,48 +16103,48 @@ void mcinit(void) {
     /* Component graphite_analyser12. */
   /* Setting parameters for component graphite_analyser12. */
   SIG_MESSAGE("graphite_analyser12 (Init:SetPar)");
-#line 571 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 571 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser12_zwidth = ANAWIDTH;
-#line 571 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 571 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser12_yheight = ANAHEIGHT;
-#line 571 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 571 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser12_mosaic = ANAMOSAIC;
-#line 572 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 572 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser12_dspread = 0.0025;
-#line 572 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 572 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser12_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser12_DM = 0;
-#line 572 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 572 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser12_pThreshold = 0.001;
-#line 572 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 572 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser12_Rup = 1.0;
-#line 572 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 572 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser12_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser12_debug = 0;
-#line 16110 "./ISIS_OSIRIS.c"
+#line 16126 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser12 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 574 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 574 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 574 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 574 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 574 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 574 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0.4)*DEG2RAD);
-#line 16120 "./ISIS_OSIRIS.c"
+#line 16136 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser12);
   rot_transpose(mcrotagraphite_analyser11, mctr1);
   rot_mul(mcrotagraphite_analyser12, mctr1, mcrotrgraphite_analyser12);
   mctc1 = coords_set(
-#line 573 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 573 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 573 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 573 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     -0.075,
-#line 573 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 573 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.90971);
-#line 16131 "./ISIS_OSIRIS.c"
+#line 16147 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser12 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -16142,48 +16158,48 @@ void mcinit(void) {
     /* Component graphite_analyser13. */
   /* Setting parameters for component graphite_analyser13. */
   SIG_MESSAGE("graphite_analyser13 (Init:SetPar)");
-#line 582 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 582 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser13_zwidth = ANAWIDTH;
-#line 582 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 582 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser13_yheight = ANAHEIGHT;
-#line 582 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 582 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser13_mosaic = ANAMOSAIC;
-#line 583 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 583 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser13_dspread = 0.0025;
-#line 583 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 583 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser13_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser13_DM = 0;
-#line 583 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 583 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser13_pThreshold = 0.001;
-#line 583 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 583 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser13_Rup = 1.0;
-#line 583 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 583 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser13_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser13_debug = 0;
-#line 16165 "./ISIS_OSIRIS.c"
+#line 16181 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser13 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 585 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 585 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 585 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 585 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 585 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 585 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0.339)*DEG2RAD);
-#line 16175 "./ISIS_OSIRIS.c"
+#line 16191 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser13);
   rot_transpose(mcrotagraphite_analyser12, mctr1);
   rot_mul(mcrotagraphite_analyser13, mctr1, mcrotrgraphite_analyser13);
   mctc1 = coords_set(
-#line 584 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 584 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 584 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 584 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     -0.065,
-#line 584 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 584 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.90977);
-#line 16186 "./ISIS_OSIRIS.c"
+#line 16202 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser13 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -16197,48 +16213,48 @@ void mcinit(void) {
     /* Component graphite_analyser14. */
   /* Setting parameters for component graphite_analyser14. */
   SIG_MESSAGE("graphite_analyser14 (Init:SetPar)");
-#line 593 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 593 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser14_zwidth = ANAWIDTH;
-#line 593 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 593 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser14_yheight = ANAHEIGHT;
-#line 593 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 593 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser14_mosaic = ANAMOSAIC;
-#line 594 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 594 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser14_dspread = 0.0025;
-#line 594 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 594 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser14_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser14_DM = 0;
-#line 594 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 594 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser14_pThreshold = 0.001;
-#line 594 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 594 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser14_Rup = 1.0;
-#line 594 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 594 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser14_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser14_debug = 0;
-#line 16220 "./ISIS_OSIRIS.c"
+#line 16236 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser14 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 596 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 596 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 596 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 596 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 596 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 596 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-0.724)*DEG2RAD);
-#line 16230 "./ISIS_OSIRIS.c"
+#line 16246 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser14);
   rot_transpose(mcrotagraphite_analyser13, mctr1);
   rot_mul(mcrotagraphite_analyser14, mctr1, mcrotrgraphite_analyser14);
   mctc1 = coords_set(
-#line 595 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 595 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 595 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 595 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     -0.055,
-#line 595 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 595 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.909655);
-#line 16241 "./ISIS_OSIRIS.c"
+#line 16257 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser14 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -16252,48 +16268,48 @@ void mcinit(void) {
     /* Component graphite_analyser15. */
   /* Setting parameters for component graphite_analyser15. */
   SIG_MESSAGE("graphite_analyser15 (Init:SetPar)");
-#line 604 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 604 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser15_zwidth = ANAWIDTH;
-#line 604 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 604 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser15_yheight = ANAHEIGHT;
-#line 604 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 604 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser15_mosaic = ANAMOSAIC;
-#line 605 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 605 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser15_dspread = 0.0025;
-#line 605 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 605 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser15_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser15_DM = 0;
-#line 605 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 605 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser15_pThreshold = 0.001;
-#line 605 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 605 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser15_Rup = 1.0;
-#line 605 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 605 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser15_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser15_debug = 0;
-#line 16275 "./ISIS_OSIRIS.c"
+#line 16291 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser15 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 607 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 607 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 607 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 607 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 607 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 607 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-1.726)*DEG2RAD);
-#line 16285 "./ISIS_OSIRIS.c"
+#line 16301 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser15);
   rot_transpose(mcrotagraphite_analyser14, mctr1);
   rot_mul(mcrotagraphite_analyser15, mctr1, mcrotrgraphite_analyser15);
   mctc1 = coords_set(
-#line 606 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 606 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 606 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 606 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     -0.045,
-#line 606 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 606 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.909363);
-#line 16296 "./ISIS_OSIRIS.c"
+#line 16312 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser15 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -16307,48 +16323,48 @@ void mcinit(void) {
     /* Component graphite_analyser16. */
   /* Setting parameters for component graphite_analyser16. */
   SIG_MESSAGE("graphite_analyser16 (Init:SetPar)");
-#line 615 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 615 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser16_zwidth = ANAWIDTH;
-#line 615 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 615 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser16_yheight = ANAHEIGHT;
-#line 615 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 615 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser16_mosaic = ANAMOSAIC;
-#line 616 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 616 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser16_dspread = 0.0025;
-#line 616 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 616 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser16_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser16_DM = 0;
-#line 616 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 616 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser16_pThreshold = 0.001;
-#line 616 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 616 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser16_Rup = 1.0;
-#line 616 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 616 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser16_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser16_debug = 0;
-#line 16330 "./ISIS_OSIRIS.c"
+#line 16346 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser16 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 618 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 618 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 618 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 618 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 618 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 618 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-1.854)*DEG2RAD);
-#line 16340 "./ISIS_OSIRIS.c"
+#line 16356 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser16);
   rot_transpose(mcrotagraphite_analyser15, mctr1);
   rot_mul(mcrotagraphite_analyser16, mctr1, mcrotrgraphite_analyser16);
   mctc1 = coords_set(
-#line 617 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 617 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 617 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 617 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     -0.035,
-#line 617 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 617 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.909041);
-#line 16351 "./ISIS_OSIRIS.c"
+#line 16367 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser16 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -16362,48 +16378,48 @@ void mcinit(void) {
     /* Component graphite_analyser17. */
   /* Setting parameters for component graphite_analyser17. */
   SIG_MESSAGE("graphite_analyser17 (Init:SetPar)");
-#line 626 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 626 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser17_zwidth = ANAWIDTH;
-#line 626 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 626 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser17_yheight = ANAHEIGHT;
-#line 626 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 626 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser17_mosaic = ANAMOSAIC;
-#line 627 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 627 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser17_dspread = 0.0025;
-#line 627 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 627 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser17_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser17_DM = 0;
-#line 627 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 627 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser17_pThreshold = 0.001;
-#line 627 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 627 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser17_Rup = 1.0;
-#line 627 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 627 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser17_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser17_debug = 0;
-#line 16385 "./ISIS_OSIRIS.c"
+#line 16401 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser17 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 629 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 629 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 629 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 629 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 629 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 629 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-2.9185)*DEG2RAD);
-#line 16395 "./ISIS_OSIRIS.c"
+#line 16411 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser17);
   rot_transpose(mcrotagraphite_analyser16, mctr1);
   rot_mul(mcrotagraphite_analyser17, mctr1, mcrotrgraphite_analyser17);
   mctc1 = coords_set(
-#line 628 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 628 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 628 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 628 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     -0.025,
-#line 628 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 628 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.908542);
-#line 16406 "./ISIS_OSIRIS.c"
+#line 16422 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser17 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -16417,48 +16433,48 @@ void mcinit(void) {
     /* Component graphite_analyser18. */
   /* Setting parameters for component graphite_analyser18. */
   SIG_MESSAGE("graphite_analyser18 (Init:SetPar)");
-#line 637 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 637 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser18_zwidth = ANAWIDTH;
-#line 637 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 637 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser18_yheight = ANAHEIGHT;
-#line 637 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 637 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser18_mosaic = ANAMOSAIC;
-#line 638 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 638 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser18_dspread = 0.0025;
-#line 638 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 638 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser18_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser18_DM = 0;
-#line 638 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 638 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser18_pThreshold = 0.001;
-#line 638 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 638 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser18_Rup = 1.0;
-#line 638 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 638 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser18_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser18_debug = 0;
-#line 16440 "./ISIS_OSIRIS.c"
+#line 16456 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser18 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 640 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 640 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 640 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 640 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 640 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 640 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-3.855)*DEG2RAD);
-#line 16450 "./ISIS_OSIRIS.c"
+#line 16466 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser18);
   rot_transpose(mcrotagraphite_analyser17, mctr1);
   rot_mul(mcrotagraphite_analyser18, mctr1, mcrotrgraphite_analyser18);
   mctc1 = coords_set(
-#line 639 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 639 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 639 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 639 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     -0.015,
-#line 639 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 639 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.907878);
-#line 16461 "./ISIS_OSIRIS.c"
+#line 16477 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser18 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -16472,48 +16488,48 @@ void mcinit(void) {
     /* Component graphite_analyser19. */
   /* Setting parameters for component graphite_analyser19. */
   SIG_MESSAGE("graphite_analyser19 (Init:SetPar)");
-#line 648 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 648 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser19_zwidth = ANAWIDTH;
-#line 648 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 648 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser19_yheight = ANAHEIGHT;
-#line 648 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 648 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser19_mosaic = ANAMOSAIC;
-#line 649 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 649 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser19_dspread = 0.0025;
-#line 649 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 649 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser19_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser19_DM = 0;
-#line 649 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 649 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser19_pThreshold = 0.001;
-#line 649 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 649 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser19_Rup = 1.0;
-#line 649 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 649 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser19_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser19_debug = 0;
-#line 16495 "./ISIS_OSIRIS.c"
+#line 16511 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser19 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 651 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 651 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 651 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 651 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 651 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 651 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-4.0525)*DEG2RAD);
-#line 16505 "./ISIS_OSIRIS.c"
+#line 16521 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser19);
   rot_transpose(mcrotagraphite_analyser18, mctr1);
   rot_mul(mcrotagraphite_analyser19, mctr1, mcrotrgraphite_analyser19);
   mctc1 = coords_set(
-#line 650 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 650 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 650 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 650 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     -0.005,
-#line 650 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 650 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.907171);
-#line 16516 "./ISIS_OSIRIS.c"
+#line 16532 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser19 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -16527,48 +16543,48 @@ void mcinit(void) {
     /* Component graphite_analyser20. */
   /* Setting parameters for component graphite_analyser20. */
   SIG_MESSAGE("graphite_analyser20 (Init:SetPar)");
-#line 659 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 659 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser20_zwidth = ANAWIDTH;
-#line 659 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 659 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser20_yheight = ANAHEIGHT;
-#line 659 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 659 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser20_mosaic = ANAMOSAIC;
-#line 660 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 660 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser20_dspread = 0.0025;
-#line 660 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 660 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser20_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser20_DM = 0;
-#line 660 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 660 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser20_pThreshold = 0.001;
-#line 660 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 660 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser20_Rup = 1.0;
-#line 660 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 660 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser20_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser20_debug = 0;
-#line 16550 "./ISIS_OSIRIS.c"
+#line 16566 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser20 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 662 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 662 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 662 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 662 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 662 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 662 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-5.1175)*DEG2RAD);
-#line 16560 "./ISIS_OSIRIS.c"
+#line 16576 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser20);
   rot_transpose(mcrotagraphite_analyser19, mctr1);
   rot_mul(mcrotagraphite_analyser20, mctr1, mcrotrgraphite_analyser20);
   mctc1 = coords_set(
-#line 661 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 661 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 661 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 661 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.005,
-#line 661 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 661 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.906285);
-#line 16571 "./ISIS_OSIRIS.c"
+#line 16587 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser20 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -16582,48 +16598,48 @@ void mcinit(void) {
     /* Component graphite_analyser21. */
   /* Setting parameters for component graphite_analyser21. */
   SIG_MESSAGE("graphite_analyser21 (Init:SetPar)");
-#line 670 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 670 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser21_zwidth = ANAWIDTH;
-#line 670 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 670 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser21_yheight = ANAHEIGHT;
-#line 670 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 670 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser21_mosaic = ANAMOSAIC;
-#line 671 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 671 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser21_dspread = 0.0025;
-#line 671 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 671 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser21_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser21_DM = 0;
-#line 671 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 671 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser21_pThreshold = 0.001;
-#line 671 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 671 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser21_Rup = 1.0;
-#line 671 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 671 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser21_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser21_debug = 0;
-#line 16605 "./ISIS_OSIRIS.c"
+#line 16621 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser21 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 673 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 673 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 673 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 673 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 673 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 673 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-5.985)*DEG2RAD);
-#line 16615 "./ISIS_OSIRIS.c"
+#line 16631 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser21);
   rot_transpose(mcrotagraphite_analyser20, mctr1);
   rot_mul(mcrotagraphite_analyser21, mctr1, mcrotrgraphite_analyser21);
   mctc1 = coords_set(
-#line 672 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 672 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 672 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 672 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.015,
-#line 672 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 672 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.905246);
-#line 16626 "./ISIS_OSIRIS.c"
+#line 16642 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser21 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -16637,48 +16653,48 @@ void mcinit(void) {
     /* Component graphite_analyser22. */
   /* Setting parameters for component graphite_analyser22. */
   SIG_MESSAGE("graphite_analyser22 (Init:SetPar)");
-#line 681 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 681 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser22_zwidth = ANAWIDTH;
-#line 681 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 681 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser22_yheight = ANAHEIGHT;
-#line 681 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 681 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser22_mosaic = ANAMOSAIC;
-#line 682 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 682 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser22_dspread = 0.0025;
-#line 682 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 682 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser22_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser22_DM = 0;
-#line 682 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 682 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser22_pThreshold = 0.001;
-#line 682 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 682 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser22_Rup = 1.0;
-#line 682 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 682 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser22_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser22_debug = 0;
-#line 16660 "./ISIS_OSIRIS.c"
+#line 16676 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser22 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 684 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 684 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 684 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 684 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 684 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 684 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-6.2575)*DEG2RAD);
-#line 16670 "./ISIS_OSIRIS.c"
+#line 16686 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser22);
   rot_transpose(mcrotagraphite_analyser21, mctr1);
   rot_mul(mcrotagraphite_analyser22, mctr1, mcrotrgraphite_analyser22);
   mctc1 = coords_set(
-#line 683 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 683 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 683 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 683 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.025,
-#line 683 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 683 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.904153);
-#line 16681 "./ISIS_OSIRIS.c"
+#line 16697 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser22 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -16692,48 +16708,48 @@ void mcinit(void) {
     /* Component graphite_analyser23. */
   /* Setting parameters for component graphite_analyser23. */
   SIG_MESSAGE("graphite_analyser23 (Init:SetPar)");
-#line 692 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 692 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser23_zwidth = ANAWIDTH;
-#line 692 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 692 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser23_yheight = ANAHEIGHT;
-#line 692 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 692 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser23_mosaic = ANAMOSAIC;
-#line 693 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 693 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser23_dspread = 0.0025;
-#line 693 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 693 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser23_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser23_DM = 0;
-#line 693 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 693 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser23_pThreshold = 0.001;
-#line 693 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 693 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser23_Rup = 1.0;
-#line 693 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 693 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser23_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser23_debug = 0;
-#line 16715 "./ISIS_OSIRIS.c"
+#line 16731 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser23 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 695 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 695 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 695 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 695 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 695 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 695 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-7.325)*DEG2RAD);
-#line 16725 "./ISIS_OSIRIS.c"
+#line 16741 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser23);
   rot_transpose(mcrotagraphite_analyser22, mctr1);
   rot_mul(mcrotagraphite_analyser23, mctr1, mcrotrgraphite_analyser23);
   mctc1 = coords_set(
-#line 694 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 694 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 694 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 694 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.035,
-#line 694 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 694 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.902877);
-#line 16736 "./ISIS_OSIRIS.c"
+#line 16752 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser23 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -16747,48 +16763,48 @@ void mcinit(void) {
     /* Component graphite_analyser24. */
   /* Setting parameters for component graphite_analyser24. */
   SIG_MESSAGE("graphite_analyser24 (Init:SetPar)");
-#line 703 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 703 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser24_zwidth = ANAWIDTH;
-#line 703 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 703 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser24_yheight = ANAHEIGHT;
-#line 703 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 703 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser24_mosaic = ANAMOSAIC;
-#line 704 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 704 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser24_dspread = 0.0025;
-#line 704 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 704 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser24_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser24_DM = 0;
-#line 704 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 704 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser24_pThreshold = 0.001;
-#line 704 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 704 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser24_Rup = 1.0;
-#line 704 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 704 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser24_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser24_debug = 0;
-#line 16770 "./ISIS_OSIRIS.c"
+#line 16786 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser24 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 706 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 706 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 706 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 706 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 706 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 706 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-8.12)*DEG2RAD);
-#line 16780 "./ISIS_OSIRIS.c"
+#line 16796 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser24);
   rot_transpose(mcrotagraphite_analyser23, mctr1);
   rot_mul(mcrotagraphite_analyser24, mctr1, mcrotrgraphite_analyser24);
   mctc1 = coords_set(
-#line 705 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 705 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 705 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 705 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.045,
-#line 705 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 705 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.901459);
-#line 16791 "./ISIS_OSIRIS.c"
+#line 16807 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser24 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -16802,48 +16818,48 @@ void mcinit(void) {
     /* Component graphite_analyser25. */
   /* Setting parameters for component graphite_analyser25. */
   SIG_MESSAGE("graphite_analyser25 (Init:SetPar)");
-#line 714 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 714 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser25_zwidth = ANAWIDTH;
-#line 714 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 714 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser25_yheight = ANAHEIGHT;
-#line 714 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 714 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser25_mosaic = ANAMOSAIC;
-#line 715 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 715 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser25_dspread = 0.0025;
-#line 715 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 715 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser25_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser25_DM = 0;
-#line 715 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 715 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser25_pThreshold = 0.001;
-#line 715 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 715 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser25_Rup = 1.0;
-#line 715 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 715 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser25_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser25_debug = 0;
-#line 16825 "./ISIS_OSIRIS.c"
+#line 16841 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser25 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 717 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 717 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 717 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 717 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 717 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 717 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-8.4745)*DEG2RAD);
-#line 16835 "./ISIS_OSIRIS.c"
+#line 16851 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser25);
   rot_transpose(mcrotagraphite_analyser24, mctr1);
   rot_mul(mcrotagraphite_analyser25, mctr1, mcrotrgraphite_analyser25);
   mctc1 = coords_set(
-#line 716 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 716 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 716 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 716 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.055,
-#line 716 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 716 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.899973);
-#line 16846 "./ISIS_OSIRIS.c"
+#line 16862 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser25 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -16857,48 +16873,48 @@ void mcinit(void) {
     /* Component graphite_analyser26. */
   /* Setting parameters for component graphite_analyser26. */
   SIG_MESSAGE("graphite_analyser26 (Init:SetPar)");
-#line 725 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 725 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser26_zwidth = ANAWIDTH;
-#line 725 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 725 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser26_yheight = ANAHEIGHT;
-#line 725 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 725 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser26_mosaic = ANAMOSAIC;
-#line 726 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 726 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser26_dspread = 0.0025;
-#line 726 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 726 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser26_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser26_DM = 0;
-#line 726 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 726 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser26_pThreshold = 0.001;
-#line 726 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 726 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser26_Rup = 1.0;
-#line 726 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 726 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser26_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser26_debug = 0;
-#line 16880 "./ISIS_OSIRIS.c"
+#line 16896 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser26 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 728 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 728 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 728 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 728 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 728 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 728 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-9.5425)*DEG2RAD);
-#line 16890 "./ISIS_OSIRIS.c"
+#line 16906 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser26);
   rot_transpose(mcrotagraphite_analyser25, mctr1);
   rot_mul(mcrotagraphite_analyser26, mctr1, mcrotrgraphite_analyser26);
   mctc1 = coords_set(
-#line 727 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 727 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 727 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 727 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.065,
-#line 727 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 727 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.898303);
-#line 16901 "./ISIS_OSIRIS.c"
+#line 16917 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser26 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -16912,48 +16928,48 @@ void mcinit(void) {
     /* Component graphite_analyser27. */
   /* Setting parameters for component graphite_analyser27. */
   SIG_MESSAGE("graphite_analyser27 (Init:SetPar)");
-#line 736 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 736 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser27_zwidth = ANAWIDTH;
-#line 736 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 736 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser27_yheight = ANAHEIGHT;
-#line 736 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 736 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser27_mosaic = ANAMOSAIC;
-#line 737 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 737 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser27_dspread = 0.0025;
-#line 737 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 737 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser27_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser27_DM = 0;
-#line 737 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 737 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser27_pThreshold = 0.001;
-#line 737 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 737 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser27_Rup = 1.0;
-#line 737 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 737 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser27_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser27_debug = 0;
-#line 16935 "./ISIS_OSIRIS.c"
+#line 16951 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser27 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 739 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 739 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 739 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 739 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 739 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 739 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-10.256)*DEG2RAD);
-#line 16945 "./ISIS_OSIRIS.c"
+#line 16961 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser27);
   rot_transpose(mcrotagraphite_analyser26, mctr1);
   rot_mul(mcrotagraphite_analyser27, mctr1, mcrotrgraphite_analyser27);
   mctc1 = coords_set(
-#line 738 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 738 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 738 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 738 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.075,
-#line 738 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 738 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.8965);
-#line 16956 "./ISIS_OSIRIS.c"
+#line 16972 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser27 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -16967,48 +16983,48 @@ void mcinit(void) {
     /* Component graphite_analyser28. */
   /* Setting parameters for component graphite_analyser28. */
   SIG_MESSAGE("graphite_analyser28 (Init:SetPar)");
-#line 747 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 747 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser28_zwidth = ANAWIDTH;
-#line 747 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 747 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser28_yheight = ANAHEIGHT;
-#line 747 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 747 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser28_mosaic = ANAMOSAIC;
-#line 748 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 748 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser28_dspread = 0.0025;
-#line 748 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 748 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser28_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser28_DM = 0;
-#line 748 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 748 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser28_pThreshold = 0.001;
-#line 748 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 748 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser28_Rup = 1.0;
-#line 748 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 748 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser28_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser28_debug = 0;
-#line 16990 "./ISIS_OSIRIS.c"
+#line 17006 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser28 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 750 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 750 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 750 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 750 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 750 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 750 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-10.704)*DEG2RAD);
-#line 17000 "./ISIS_OSIRIS.c"
+#line 17016 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser28);
   rot_transpose(mcrotagraphite_analyser27, mctr1);
   rot_mul(mcrotagraphite_analyser28, mctr1, mcrotrgraphite_analyser28);
   mctc1 = coords_set(
-#line 749 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 749 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 749 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 749 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.085,
-#line 749 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 749 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.894614);
-#line 17011 "./ISIS_OSIRIS.c"
+#line 17027 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser28 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -17022,48 +17038,48 @@ void mcinit(void) {
     /* Component graphite_analyser29. */
   /* Setting parameters for component graphite_analyser29. */
   SIG_MESSAGE("graphite_analyser29 (Init:SetPar)");
-#line 758 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 758 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser29_zwidth = ANAWIDTH;
-#line 758 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 758 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser29_yheight = ANAHEIGHT;
-#line 758 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 758 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser29_mosaic = ANAMOSAIC;
-#line 759 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 759 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser29_dspread = 0.0025;
-#line 759 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 759 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser29_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser29_DM = 0;
-#line 759 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 759 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser29_pThreshold = 0.001;
-#line 759 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 759 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser29_Rup = 1.0;
-#line 759 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 759 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser29_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser29_debug = 0;
-#line 17045 "./ISIS_OSIRIS.c"
+#line 17061 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser29 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 761 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 761 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 761 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 761 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 761 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 761 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-11.768)*DEG2RAD);
-#line 17055 "./ISIS_OSIRIS.c"
+#line 17071 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser29);
   rot_transpose(mcrotagraphite_analyser28, mctr1);
   rot_mul(mcrotagraphite_analyser29, mctr1, mcrotrgraphite_analyser29);
   mctc1 = coords_set(
-#line 760 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 760 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 760 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 760 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.095,
-#line 760 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 760 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.892542);
-#line 17066 "./ISIS_OSIRIS.c"
+#line 17082 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser29 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -17077,48 +17093,48 @@ void mcinit(void) {
     /* Component graphite_analyser30. */
   /* Setting parameters for component graphite_analyser30. */
   SIG_MESSAGE("graphite_analyser30 (Init:SetPar)");
-#line 769 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 769 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser30_zwidth = ANAWIDTH;
-#line 769 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 769 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser30_yheight = ANAHEIGHT;
-#line 769 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 769 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser30_mosaic = ANAMOSAIC;
-#line 770 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 770 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser30_dspread = 0.0025;
-#line 770 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 770 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser30_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser30_DM = 0;
-#line 770 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 770 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser30_pThreshold = 0.001;
-#line 770 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 770 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser30_Rup = 1.0;
-#line 770 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 770 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser30_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser30_debug = 0;
-#line 17100 "./ISIS_OSIRIS.c"
+#line 17116 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser30 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 772 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 772 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 772 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 772 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 772 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 772 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-12.384)*DEG2RAD);
-#line 17110 "./ISIS_OSIRIS.c"
+#line 17126 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser30);
   rot_transpose(mcrotagraphite_analyser29, mctr1);
   rot_mul(mcrotagraphite_analyser30, mctr1, mcrotrgraphite_analyser30);
   mctc1 = coords_set(
-#line 771 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 771 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 771 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 771 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.105,
-#line 771 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 771 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.890353);
-#line 17121 "./ISIS_OSIRIS.c"
+#line 17137 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser30 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -17132,48 +17148,48 @@ void mcinit(void) {
     /* Component graphite_analyser31. */
   /* Setting parameters for component graphite_analyser31. */
   SIG_MESSAGE("graphite_analyser31 (Init:SetPar)");
-#line 780 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 780 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser31_zwidth = ANAWIDTH;
-#line 780 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 780 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser31_yheight = ANAHEIGHT;
-#line 780 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 780 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser31_mosaic = ANAMOSAIC;
-#line 781 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 781 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser31_dspread = 0.0025;
-#line 781 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 781 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser31_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser31_DM = 0;
-#line 781 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 781 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser31_pThreshold = 0.001;
-#line 781 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 781 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser31_Rup = 1.0;
-#line 781 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 781 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser31_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser31_debug = 0;
-#line 17155 "./ISIS_OSIRIS.c"
+#line 17171 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser31 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 783 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 783 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 783 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 783 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 783 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 783 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-12.948)*DEG2RAD);
-#line 17165 "./ISIS_OSIRIS.c"
+#line 17181 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser31);
   rot_transpose(mcrotagraphite_analyser30, mctr1);
   rot_mul(mcrotagraphite_analyser31, mctr1, mcrotrgraphite_analyser31);
   mctc1 = coords_set(
-#line 782 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 782 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 782 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 782 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.115,
-#line 782 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 782 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.88806);
-#line 17176 "./ISIS_OSIRIS.c"
+#line 17192 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser31 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -17187,48 +17203,48 @@ void mcinit(void) {
     /* Component graphite_analyser32. */
   /* Setting parameters for component graphite_analyser32. */
   SIG_MESSAGE("graphite_analyser32 (Init:SetPar)");
-#line 791 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 791 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser32_zwidth = ANAWIDTH;
-#line 791 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 791 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser32_yheight = ANAHEIGHT;
-#line 791 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 791 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser32_mosaic = ANAMOSAIC;
-#line 792 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 792 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser32_dspread = 0.0025;
-#line 792 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 792 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser32_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser32_DM = 0;
-#line 792 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 792 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser32_pThreshold = 0.001;
-#line 792 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 792 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser32_Rup = 1.0;
-#line 792 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 792 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser32_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser32_debug = 0;
-#line 17210 "./ISIS_OSIRIS.c"
+#line 17226 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser32 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 794 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 794 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 794 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 794 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 794 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 794 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-14.015)*DEG2RAD);
-#line 17220 "./ISIS_OSIRIS.c"
+#line 17236 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser32);
   rot_transpose(mcrotagraphite_analyser31, mctr1);
   rot_mul(mcrotagraphite_analyser32, mctr1, mcrotrgraphite_analyser32);
   mctc1 = coords_set(
-#line 793 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 793 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 793 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 793 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.125,
-#line 793 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 793 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.885575);
-#line 17231 "./ISIS_OSIRIS.c"
+#line 17247 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser32 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -17242,48 +17258,48 @@ void mcinit(void) {
     /* Component graphite_analyser33. */
   /* Setting parameters for component graphite_analyser33. */
   SIG_MESSAGE("graphite_analyser33 (Init:SetPar)");
-#line 802 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 802 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser33_zwidth = ANAWIDTH;
-#line 802 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 802 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser33_yheight = ANAHEIGHT;
-#line 802 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 802 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser33_mosaic = ANAMOSAIC;
-#line 803 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 803 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser33_dspread = 0.0025;
-#line 803 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 803 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser33_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser33_DM = 0;
-#line 803 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 803 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser33_pThreshold = 0.001;
-#line 803 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 803 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser33_Rup = 1.0;
-#line 803 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 803 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser33_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser33_debug = 0;
-#line 17265 "./ISIS_OSIRIS.c"
+#line 17281 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser33 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 805 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 805 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 805 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 805 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 805 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 805 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-14.518)*DEG2RAD);
-#line 17275 "./ISIS_OSIRIS.c"
+#line 17291 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser33);
   rot_transpose(mcrotagraphite_analyser32, mctr1);
   rot_mul(mcrotagraphite_analyser33, mctr1, mcrotrgraphite_analyser33);
   mctc1 = coords_set(
-#line 804 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 804 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 804 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 804 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.135,
-#line 804 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 804 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.882991);
-#line 17286 "./ISIS_OSIRIS.c"
+#line 17302 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser33 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -17297,48 +17313,48 @@ void mcinit(void) {
     /* Component graphite_analyser34. */
   /* Setting parameters for component graphite_analyser34. */
   SIG_MESSAGE("graphite_analyser34 (Init:SetPar)");
-#line 813 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 813 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser34_zwidth = ANAWIDTH;
-#line 813 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 813 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser34_yheight = ANAHEIGHT;
-#line 813 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 813 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser34_mosaic = ANAMOSAIC;
-#line 814 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 814 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser34_dspread = 0.0025;
-#line 814 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 814 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser34_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser34_DM = 0;
-#line 814 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 814 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser34_pThreshold = 0.001;
-#line 814 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 814 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser34_Rup = 1.0;
-#line 814 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 814 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser34_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser34_debug = 0;
-#line 17320 "./ISIS_OSIRIS.c"
+#line 17336 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser34 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 816 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 816 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 816 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 816 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 816 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 816 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-15.2215)*DEG2RAD);
-#line 17330 "./ISIS_OSIRIS.c"
+#line 17346 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser34);
   rot_transpose(mcrotagraphite_analyser33, mctr1);
   rot_mul(mcrotagraphite_analyser34, mctr1, mcrotrgraphite_analyser34);
   mctc1 = coords_set(
-#line 815 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 815 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 815 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 815 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.145,
-#line 815 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 815 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.880194);
-#line 17341 "./ISIS_OSIRIS.c"
+#line 17357 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser34 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -17352,48 +17368,48 @@ void mcinit(void) {
     /* Component graphite_analyser35. */
   /* Setting parameters for component graphite_analyser35. */
   SIG_MESSAGE("graphite_analyser35 (Init:SetPar)");
-#line 824 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 824 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser35_zwidth = ANAWIDTH;
-#line 824 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 824 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser35_yheight = ANAHEIGHT;
-#line 824 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 824 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser35_mosaic = ANAMOSAIC;
-#line 825 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 825 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser35_dspread = 0.0025;
-#line 825 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 825 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser35_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser35_DM = 0;
-#line 825 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 825 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser35_pThreshold = 0.001;
-#line 825 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 825 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser35_Rup = 1.0;
-#line 825 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 825 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser35_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser35_debug = 0;
-#line 17375 "./ISIS_OSIRIS.c"
+#line 17391 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser35 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 827 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 827 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 827 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 827 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 827 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 827 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-16.2955)*DEG2RAD);
-#line 17385 "./ISIS_OSIRIS.c"
+#line 17401 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser35);
   rot_transpose(mcrotagraphite_analyser34, mctr1);
   rot_mul(mcrotagraphite_analyser35, mctr1, mcrotrgraphite_analyser35);
   mctc1 = coords_set(
-#line 826 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 826 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 826 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 826 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.155,
-#line 826 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 826 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.877283);
-#line 17396 "./ISIS_OSIRIS.c"
+#line 17412 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser35 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -17407,48 +17423,48 @@ void mcinit(void) {
     /* Component graphite_analyser36. */
   /* Setting parameters for component graphite_analyser36. */
   SIG_MESSAGE("graphite_analyser36 (Init:SetPar)");
-#line 835 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 835 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser36_zwidth = ANAWIDTH;
-#line 835 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 835 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser36_yheight = ANAHEIGHT;
-#line 835 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 835 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser36_mosaic = ANAMOSAIC;
-#line 836 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 836 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser36_dspread = 0.0025;
-#line 836 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 836 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser36_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser36_DM = 0;
-#line 836 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 836 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser36_pThreshold = 0.001;
-#line 836 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 836 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser36_Rup = 1.0;
-#line 836 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 836 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser36_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser36_debug = 0;
-#line 17430 "./ISIS_OSIRIS.c"
+#line 17446 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser36 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 838 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 838 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 838 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 838 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 838 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 838 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-16.666)*DEG2RAD);
-#line 17440 "./ISIS_OSIRIS.c"
+#line 17456 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser36);
   rot_transpose(mcrotagraphite_analyser35, mctr1);
   rot_mul(mcrotagraphite_analyser36, mctr1, mcrotrgraphite_analyser36);
   mctc1 = coords_set(
-#line 837 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 837 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 837 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 837 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.165,
-#line 837 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 837 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.874375);
-#line 17451 "./ISIS_OSIRIS.c"
+#line 17467 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser36 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -17462,48 +17478,48 @@ void mcinit(void) {
     /* Component graphite_analyser37. */
   /* Setting parameters for component graphite_analyser37. */
   SIG_MESSAGE("graphite_analyser37 (Init:SetPar)");
-#line 846 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 846 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser37_zwidth = ANAWIDTH;
-#line 846 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 846 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser37_yheight = ANAHEIGHT;
-#line 846 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 846 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser37_mosaic = ANAMOSAIC;
-#line 847 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 847 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser37_dspread = 0.0025;
-#line 847 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 847 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser37_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser37_DM = 0;
-#line 847 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 847 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser37_pThreshold = 0.001;
-#line 847 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 847 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser37_Rup = 1.0;
-#line 847 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 847 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser37_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser37_debug = 0;
-#line 17485 "./ISIS_OSIRIS.c"
+#line 17501 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser37 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 849 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 849 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 849 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 849 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 849 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 849 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-17.5315)*DEG2RAD);
-#line 17495 "./ISIS_OSIRIS.c"
+#line 17511 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser37);
   rot_transpose(mcrotagraphite_analyser36, mctr1);
   rot_mul(mcrotagraphite_analyser37, mctr1, mcrotrgraphite_analyser37);
   mctc1 = coords_set(
-#line 848 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 848 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 848 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 848 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.175,
-#line 848 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 848 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.871225);
-#line 17506 "./ISIS_OSIRIS.c"
+#line 17522 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser37 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -17517,48 +17533,48 @@ void mcinit(void) {
     /* Component graphite_analyser38. */
   /* Setting parameters for component graphite_analyser38. */
   SIG_MESSAGE("graphite_analyser38 (Init:SetPar)");
-#line 857 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 857 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser38_zwidth = ANAWIDTH;
-#line 857 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 857 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser38_yheight = ANAHEIGHT;
-#line 857 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 857 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser38_mosaic = ANAMOSAIC;
-#line 858 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 858 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser38_dspread = 0.0025;
-#line 858 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 858 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser38_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser38_DM = 0;
-#line 858 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 858 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser38_pThreshold = 0.001;
-#line 858 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 858 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser38_Rup = 1.0;
-#line 858 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 858 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser38_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser38_debug = 0;
-#line 17540 "./ISIS_OSIRIS.c"
+#line 17556 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser38 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 860 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 860 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 860 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 860 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 860 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 860 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-18.604)*DEG2RAD);
-#line 17550 "./ISIS_OSIRIS.c"
+#line 17566 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser38);
   rot_transpose(mcrotagraphite_analyser37, mctr1);
   rot_mul(mcrotagraphite_analyser38, mctr1, mcrotrgraphite_analyser38);
   mctc1 = coords_set(
-#line 859 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 859 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 859 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 859 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.185,
-#line 859 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 859 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.867897);
-#line 17561 "./ISIS_OSIRIS.c"
+#line 17577 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser38 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -17572,48 +17588,48 @@ void mcinit(void) {
     /* Component graphite_analyser39. */
   /* Setting parameters for component graphite_analyser39. */
   SIG_MESSAGE("graphite_analyser39 (Init:SetPar)");
-#line 868 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 868 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser39_zwidth = ANAWIDTH;
-#line 868 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 868 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser39_yheight = ANAHEIGHT;
-#line 868 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 868 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser39_mosaic = ANAMOSAIC;
-#line 869 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 869 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser39_dspread = 0.0025;
-#line 869 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 869 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser39_Q = ANAQ;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser39_DM = 0;
-#line 869 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 869 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser39_pThreshold = 0.001;
-#line 869 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 869 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser39_Rup = 1.0;
-#line 869 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 869 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser39_Rdown = 1.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccgraphite_analyser39_debug = 0;
-#line 17595 "./ISIS_OSIRIS.c"
+#line 17611 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("graphite_analyser39 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 871 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 871 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 871 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 871 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (90)*DEG2RAD,
-#line 871 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 871 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (-18.811)*DEG2RAD);
-#line 17605 "./ISIS_OSIRIS.c"
+#line 17621 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotagraphite_analyser39);
   rot_transpose(mcrotagraphite_analyser38, mctr1);
   rot_mul(mcrotagraphite_analyser39, mctr1, mcrotrgraphite_analyser39);
   mctc1 = coords_set(
-#line 870 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 870 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 870 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 870 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.195,
-#line 870 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 870 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0.864474);
-#line 17616 "./ISIS_OSIRIS.c"
+#line 17632 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposagraphite_analyser39 = coords_add(mcposaarmAnalyzer, mctc2);
@@ -17630,24 +17646,24 @@ void mcinit(void) {
 
   SIG_MESSAGE("armHelp (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 895 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 895 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 895 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 895 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (180)*DEG2RAD,
-#line 895 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 895 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD);
-#line 17639 "./ISIS_OSIRIS.c"
+#line 17655 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmAnalyzer, mcrotaarmHelp);
   rot_transpose(mcrotagraphite_analyser39, mctr1);
   rot_mul(mcrotaarmHelp, mctr1, mcrotrarmHelp);
   mctc1 = coords_set(
-#line 894 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 894 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 894 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 894 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 894 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 894 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     ANARADIUS);
-#line 17650 "./ISIS_OSIRIS.c"
+#line 17666 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmAnalyzer, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaarmHelp = coords_add(mcposaarmAnalyzer, mctc2);
@@ -17664,24 +17680,24 @@ void mcinit(void) {
 
   SIG_MESSAGE("armDetector (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 899 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 899 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (2.0 * 4.6526)*DEG2RAD,
-#line 899 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 899 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD,
-#line 899 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 899 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     (0)*DEG2RAD);
-#line 17673 "./ISIS_OSIRIS.c"
+#line 17689 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmHelp, mcrotaarmDetector);
   rot_transpose(mcrotaarmHelp, mctr1);
   rot_mul(mcrotaarmDetector, mctr1, mcrotrarmDetector);
   mctc1 = coords_set(
-#line 898 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 898 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 898 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 898 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 898 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 898 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0);
-#line 17684 "./ISIS_OSIRIS.c"
+#line 17700 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmHelp, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaarmDetector = coords_add(mcposaarmHelp, mctc2);
@@ -17695,47 +17711,47 @@ void mcinit(void) {
     /* Component lamDetector. */
   /* Setting parameters for component lamDetector. */
   SIG_MESSAGE("lamDetector (Init:SetPar)");
-#line 902 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 902 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   if("lambdaDetector.dat") strncpy(mcclamDetector_filename, "lambdaDetector.dat" ? "lambdaDetector.dat" : "", 16384); else mcclamDetector_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamDetector_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamDetector_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamDetector_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamDetector_ymax = 0.05;
-#line 903 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 903 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamDetector_xwidth = 0.10;
-#line 903 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 903 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamDetector_yheight = 0.10;
-#line 904 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 904 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamDetector_Lmin = 0.99 * mcipLAMBDA;
-#line 904 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 904 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamDetector_Lmax = 1.01 * mcipLAMBDA;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamDetector_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcclamDetector_nowritefile = 0;
-#line 17720 "./ISIS_OSIRIS.c"
+#line 17736 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("lamDetector (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 17727 "./ISIS_OSIRIS.c"
+#line 17743 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmDetector, mcrotalamDetector);
   rot_transpose(mcrotaarmDetector, mctr1);
   rot_mul(mcrotalamDetector, mctr1, mcrotrlamDetector);
   mctc1 = coords_set(
-#line 905 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 905 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 905 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 905 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 905 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 905 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     DETECTORDISTANCE);
-#line 17738 "./ISIS_OSIRIS.c"
+#line 17754 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmDetector, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposalamDetector = coords_add(mcposaarmDetector, mctc2);
@@ -17749,45 +17765,45 @@ void mcinit(void) {
     /* Component psdDetector. */
   /* Setting parameters for component psdDetector. */
   SIG_MESSAGE("psdDetector (Init:SetPar)");
-#line 908 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 908 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdDetector_nx = 50;
-#line 908 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 908 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdDetector_ny = 50;
-#line 908 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 908 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   if("psdDetector.dat") strncpy(mccpsdDetector_filename, "psdDetector.dat" ? "psdDetector.dat" : "", 16384); else mccpsdDetector_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdDetector_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdDetector_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdDetector_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdDetector_ymax = 0.05;
-#line 909 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 909 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdDetector_xwidth = 0.10;
-#line 909 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 909 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdDetector_yheight = 0.10;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mccpsdDetector_restore_neutron = 0;
-#line 17772 "./ISIS_OSIRIS.c"
+#line 17788 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("psdDetector (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 17779 "./ISIS_OSIRIS.c"
+#line 17795 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmDetector, mcrotapsdDetector);
   rot_transpose(mcrotalamDetector, mctr1);
   rot_mul(mcrotapsdDetector, mctr1, mcrotrpsdDetector);
   mctc1 = coords_set(
-#line 910 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 910 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 910 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 910 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 910 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 910 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     DETECTORDISTANCE);
-#line 17790 "./ISIS_OSIRIS.c"
+#line 17806 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmDetector, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposapsdDetector = coords_add(mcposaarmDetector, mctc2);
@@ -17801,49 +17817,49 @@ void mcinit(void) {
     /* Component tofDetector. */
   /* Setting parameters for component tofDetector. */
   SIG_MESSAGE("tofDetector (Init:SetPar)");
-#line 944 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 944 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   if("tofDetector.dat") strncpy(mcctofDetector_filename, "tofDetector.dat" ? "tofDetector.dat" : "", 16384); else mcctofDetector_filename[0]='\0';
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcctofDetector_xmin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcctofDetector_xmax = 0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcctofDetector_ymin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcctofDetector_ymax = 0.05;
-#line 945 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 945 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcctofDetector_xwidth = 0.10;
-#line 945 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 945 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcctofDetector_yheight = 0.10;
-#line 942 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 942 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcctofDetector_tmin = calcT0 ( mcipLAMBDA , DMODTARGET + ANARADIUS + DETECTORDISTANCE -1.5 ) * 1e6;
-#line 943 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 943 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcctofDetector_tmax = calcT0 ( mcipLAMBDA , DMODTARGET + ANARADIUS + DETECTORDISTANCE + 1.5 ) * 1e6;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcctofDetector_dt = 1.0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcctofDetector_restore_neutron = 0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   mcctofDetector_nowritefile = 0;
-#line 17828 "./ISIS_OSIRIS.c"
+#line 17844 "./ISIS_OSIRIS.c"
 
   SIG_MESSAGE("tofDetector (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 17835 "./ISIS_OSIRIS.c"
+#line 17851 "./ISIS_OSIRIS.c"
   rot_mul(mctr1, mcrotaarmDetector, mcrotatofDetector);
   rot_transpose(mcrotapsdDetector, mctr1);
   rot_mul(mcrotatofDetector, mctr1, mcrotrtofDetector);
   mctc1 = coords_set(
-#line 946 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 946 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 946 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 946 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     0,
-#line 946 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 946 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
     DETECTORDISTANCE);
-#line 17846 "./ISIS_OSIRIS.c"
+#line 17862 "./ISIS_OSIRIS.c"
   rot_transpose(mcrotaarmDetector, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposatofDetector = coords_add(mcposaarmDetector, mctc2);
@@ -18113,7 +18129,7 @@ void mcinit(void) {
   }
   
 }
-#line 18116 "./ISIS_OSIRIS.c"
+#line 18132 "./ISIS_OSIRIS.c"
 #undef verbose
 #undef target_index
 #undef Lmax
@@ -18202,7 +18218,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
      t_max=nt*dt+tmin;
     }
 }
-#line 18205 "./ISIS_OSIRIS.c"
+#line 18221 "./ISIS_OSIRIS.c"
 #undef nowritefile
 #undef restore_neutron
 #undef dt
@@ -18270,7 +18286,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
       L_p2[i] = 0;
     }
 }
-#line 18273 "./ISIS_OSIRIS.c"
+#line 18289 "./ISIS_OSIRIS.c"
 #undef nowritefile
 #undef restore_neutron
 #undef Lmax
@@ -18333,7 +18349,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
     }
   }
 }
-#line 18336 "./ISIS_OSIRIS.c"
+#line 18352 "./ISIS_OSIRIS.c"
 #undef restore_neutron
 #undef yheight
 #undef xwidth
@@ -18387,7 +18403,7 @@ if (mcgravitation) fprintf(stderr,"WARNING: Guide: %s: "
       exit(-1); }
   }
 }
-#line 18390 "./ISIS_OSIRIS.c"
+#line 18406 "./ISIS_OSIRIS.c"
 #undef W
 #undef m
 #undef alpha
@@ -18492,7 +18508,7 @@ if (yheight == 0) {
           nslit, theta_0*RAD2DEG, height, xwidth, delta_y);
       }
 }
-#line 18495 "./ISIS_OSIRIS.c"
+#line 18511 "./ISIS_OSIRIS.c"
 #undef verbose
 #undef xwidth
 #undef phase
@@ -18539,7 +18555,7 @@ if (mcgravitation) fprintf(stderr,"WARNING: Guide_curved: %s: "
     "Use Guide_gravity.\n",
     NAME_CURRENT_COMP);
 }
-#line 18542 "./ISIS_OSIRIS.c"
+#line 18558 "./ISIS_OSIRIS.c"
 #undef curvature
 #undef W
 #undef m
@@ -18641,7 +18657,7 @@ if (yheight == 0) {
           nslit, theta_0*RAD2DEG, height, xwidth, delta_y);
       }
 }
-#line 18644 "./ISIS_OSIRIS.c"
+#line 18660 "./ISIS_OSIRIS.c"
 #undef verbose
 #undef xwidth
 #undef phase
@@ -18688,7 +18704,7 @@ if (mcgravitation) fprintf(stderr,"WARNING: Guide_curved: %s: "
     "Use Guide_gravity.\n",
     NAME_CURRENT_COMP);
 }
-#line 18691 "./ISIS_OSIRIS.c"
+#line 18707 "./ISIS_OSIRIS.c"
 #undef curvature
 #undef W
 #undef m
@@ -18741,7 +18757,7 @@ if (mcgravitation) fprintf(stderr,"WARNING: Guide: %s: "
       exit(-1); }
   }
 }
-#line 18744 "./ISIS_OSIRIS.c"
+#line 18760 "./ISIS_OSIRIS.c"
 #undef W
 #undef m
 #undef alpha
@@ -18797,7 +18813,7 @@ if (mcgravitation) fprintf(stderr,"WARNING: Guide: %s: "
       exit(-1); }
   }
 }
-#line 18800 "./ISIS_OSIRIS.c"
+#line 18816 "./ISIS_OSIRIS.c"
 #undef W
 #undef m
 #undef alpha
@@ -18858,7 +18874,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
       L_p2[i] = 0;
     }
 }
-#line 18861 "./ISIS_OSIRIS.c"
+#line 18877 "./ISIS_OSIRIS.c"
 #undef nowritefile
 #undef restore_neutron
 #undef Lmax
@@ -18921,7 +18937,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
     }
   }
 }
-#line 18924 "./ISIS_OSIRIS.c"
+#line 18940 "./ISIS_OSIRIS.c"
 #undef restore_neutron
 #undef yheight
 #undef xwidth
@@ -19047,7 +19063,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
   );
 
 }
-#line 19050 "./ISIS_OSIRIS.c"
+#line 19066 "./ISIS_OSIRIS.c"
 #undef order
 #undef concentric
 #undef Vc
@@ -19188,7 +19204,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
   );
 
 }
-#line 19191 "./ISIS_OSIRIS.c"
+#line 19207 "./ISIS_OSIRIS.c"
 #undef order
 #undef concentric
 #undef Vc
@@ -19329,7 +19345,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
   );
 
 }
-#line 19332 "./ISIS_OSIRIS.c"
+#line 19348 "./ISIS_OSIRIS.c"
 #undef order
 #undef concentric
 #undef Vc
@@ -19382,7 +19398,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
   if (xmin == 0 && xmax == 0 && ymin == 0 & ymax == 0 && radius == 0)
   { fprintf(stderr,"Beamstop: %s: Error: give geometry\n", NAME_CURRENT_COMP); exit(-1); }
 }
-#line 19385 "./ISIS_OSIRIS.c"
+#line 19401 "./ISIS_OSIRIS.c"
 #undef radius
 #undef yheight
 #undef xwidth
@@ -19437,7 +19453,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 19440 "./ISIS_OSIRIS.c"
+#line 19456 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -19497,7 +19513,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 19500 "./ISIS_OSIRIS.c"
+#line 19516 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -19557,7 +19573,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 19560 "./ISIS_OSIRIS.c"
+#line 19576 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -19617,7 +19633,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 19620 "./ISIS_OSIRIS.c"
+#line 19636 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -19677,7 +19693,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 19680 "./ISIS_OSIRIS.c"
+#line 19696 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -19737,7 +19753,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 19740 "./ISIS_OSIRIS.c"
+#line 19756 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -19797,7 +19813,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 19800 "./ISIS_OSIRIS.c"
+#line 19816 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -19857,7 +19873,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 19860 "./ISIS_OSIRIS.c"
+#line 19876 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -19917,7 +19933,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 19920 "./ISIS_OSIRIS.c"
+#line 19936 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -19977,7 +19993,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 19980 "./ISIS_OSIRIS.c"
+#line 19996 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -20037,7 +20053,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 20040 "./ISIS_OSIRIS.c"
+#line 20056 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -20097,7 +20113,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 20100 "./ISIS_OSIRIS.c"
+#line 20116 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -20157,7 +20173,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 20160 "./ISIS_OSIRIS.c"
+#line 20176 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -20217,7 +20233,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 20220 "./ISIS_OSIRIS.c"
+#line 20236 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -20277,7 +20293,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 20280 "./ISIS_OSIRIS.c"
+#line 20296 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -20337,7 +20353,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 20340 "./ISIS_OSIRIS.c"
+#line 20356 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -20397,7 +20413,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 20400 "./ISIS_OSIRIS.c"
+#line 20416 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -20457,7 +20473,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 20460 "./ISIS_OSIRIS.c"
+#line 20476 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -20517,7 +20533,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 20520 "./ISIS_OSIRIS.c"
+#line 20536 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -20577,7 +20593,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 20580 "./ISIS_OSIRIS.c"
+#line 20596 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -20637,7 +20653,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 20640 "./ISIS_OSIRIS.c"
+#line 20656 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -20697,7 +20713,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 20700 "./ISIS_OSIRIS.c"
+#line 20716 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -20757,7 +20773,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 20760 "./ISIS_OSIRIS.c"
+#line 20776 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -20817,7 +20833,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 20820 "./ISIS_OSIRIS.c"
+#line 20836 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -20877,7 +20893,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 20880 "./ISIS_OSIRIS.c"
+#line 20896 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -20937,7 +20953,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 20940 "./ISIS_OSIRIS.c"
+#line 20956 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -20997,7 +21013,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 21000 "./ISIS_OSIRIS.c"
+#line 21016 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -21057,7 +21073,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 21060 "./ISIS_OSIRIS.c"
+#line 21076 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -21117,7 +21133,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 21120 "./ISIS_OSIRIS.c"
+#line 21136 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -21177,7 +21193,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 21180 "./ISIS_OSIRIS.c"
+#line 21196 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -21237,7 +21253,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 21240 "./ISIS_OSIRIS.c"
+#line 21256 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -21297,7 +21313,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 21300 "./ISIS_OSIRIS.c"
+#line 21316 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -21357,7 +21373,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 21360 "./ISIS_OSIRIS.c"
+#line 21376 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -21417,7 +21433,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 21420 "./ISIS_OSIRIS.c"
+#line 21436 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -21477,7 +21493,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 21480 "./ISIS_OSIRIS.c"
+#line 21496 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -21537,7 +21553,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 21540 "./ISIS_OSIRIS.c"
+#line 21556 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -21597,7 +21613,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 21600 "./ISIS_OSIRIS.c"
+#line 21616 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -21657,7 +21673,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 21660 "./ISIS_OSIRIS.c"
+#line 21676 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -21717,7 +21733,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 21720 "./ISIS_OSIRIS.c"
+#line 21736 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -21777,7 +21793,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 21780 "./ISIS_OSIRIS.c"
+#line 21796 "./ISIS_OSIRIS.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -21844,7 +21860,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
       L_p2[i] = 0;
     }
 }
-#line 21847 "./ISIS_OSIRIS.c"
+#line 21863 "./ISIS_OSIRIS.c"
 #undef nowritefile
 #undef restore_neutron
 #undef Lmax
@@ -21907,7 +21923,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
     }
   }
 }
-#line 21910 "./ISIS_OSIRIS.c"
+#line 21926 "./ISIS_OSIRIS.c"
 #undef restore_neutron
 #undef yheight
 #undef xwidth
@@ -21982,7 +21998,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
      t_max=nt*dt+tmin;
     }
 }
-#line 21985 "./ISIS_OSIRIS.c"
+#line 22001 "./ISIS_OSIRIS.c"
 #undef nowritefile
 #undef restore_neutron
 #undef dt
@@ -22296,7 +22312,7 @@ MCNUM verbose = mccisis_mod_verbose;
   
   p=w_focus*Ival*CurrentWeight/Nsim;
 }
-#line 22299 "./ISIS_OSIRIS.c"
+#line 22315 "./ISIS_OSIRIS.c"
 }   /* End of isis_mod=ISIS_moderator() SETTING parameter declarations. */
 #undef CurrentWeight
 #undef TargetStation
@@ -22454,7 +22470,7 @@ int nowritefile = mcctofSource_nowritefile;
       RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
     }
 }
-#line 22457 "./ISIS_OSIRIS.c"
+#line 22473 "./ISIS_OSIRIS.c"
 }   /* End of tofSource=TOF_monitor() SETTING parameter declarations. */
 #undef delta_t
 #undef t_max
@@ -22707,7 +22723,7 @@ int nowritefile = mcclamStart_nowritefile;
       RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
     }
 }
-#line 22710 "./ISIS_OSIRIS.c"
+#line 22726 "./ISIS_OSIRIS.c"
 }   /* End of lamStart=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -22845,7 +22861,7 @@ MCNUM restore_neutron = mccpsdStart_restore_neutron;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 22848 "./ISIS_OSIRIS.c"
+#line 22864 "./ISIS_OSIRIS.c"
 }   /* End of psdStart=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -23073,7 +23089,7 @@ MCNUM W = mccguide_straight_1_W;
     SCATTER;
   }
 }
-#line 23076 "./ISIS_OSIRIS.c"
+#line 23092 "./ISIS_OSIRIS.c"
 }   /* End of guide_straight_1=Guide() SETTING parameter declarations. */
 #undef pTable
 #undef mccompcurname
@@ -23338,7 +23354,7 @@ if (( mcipLAMBDA > 0 ))
     SCATTER;
 
 }
-#line 23340 "./ISIS_OSIRIS.c"
+#line 23356 "./ISIS_OSIRIS.c"
 }   /* End of chopper1=DiskChopper() SETTING parameter declarations. */
 #undef omega
 #undef height
@@ -23625,7 +23641,7 @@ MCNUM curvature = mccguide_curved1_curvature;
     SCATTER;
   }
 }
-#line 23627 "./ISIS_OSIRIS.c"
+#line 23643 "./ISIS_OSIRIS.c"
 }   /* End of guide_curved1=Guide_curved() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -23889,7 +23905,7 @@ if (( mcipLAMBDA > 0 ))
     SCATTER;
 
 }
-#line 23890 "./ISIS_OSIRIS.c"
+#line 23906 "./ISIS_OSIRIS.c"
 }   /* End of chopper2=DiskChopper() SETTING parameter declarations. */
 #undef omega
 #undef height
@@ -24176,7 +24192,7 @@ MCNUM curvature = mccguide_curved2_curvature;
     SCATTER;
   }
 }
-#line 24177 "./ISIS_OSIRIS.c"
+#line 24193 "./ISIS_OSIRIS.c"
 }   /* End of guide_curved2=Guide_curved() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -24504,7 +24520,7 @@ MCNUM W = mccguide_straight_2_W;
     SCATTER;
   }
 }
-#line 24505 "./ISIS_OSIRIS.c"
+#line 24521 "./ISIS_OSIRIS.c"
 }   /* End of guide_straight_2=Guide() SETTING parameter declarations. */
 #undef pTable
 #undef mccompcurname
@@ -24833,7 +24849,7 @@ MCNUM W = mccguide_super_W;
     SCATTER;
   }
 }
-#line 24834 "./ISIS_OSIRIS.c"
+#line 24850 "./ISIS_OSIRIS.c"
 }   /* End of guide_super=Guide() SETTING parameter declarations. */
 #undef pTable
 #undef mccompcurname
@@ -24941,9 +24957,9 @@ mcnlp)
 #define mccompcurindex 20
 /* 'armTarget=Arm()' component instance extend code */
     SIG_MESSAGE("armTarget (Trace:Extend)");
-#line 374 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 374 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   probTarget = rand01();
-#line 24944 "./ISIS_OSIRIS.c"
+#line 24960 "./ISIS_OSIRIS.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -25088,7 +25104,7 @@ if (( mcipLAMBDA == 0 ))
       RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
     }
 }
-#line 25088 "./ISIS_OSIRIS.c"
+#line 25104 "./ISIS_OSIRIS.c"
 }   /* End of lamTarget=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -25229,7 +25245,7 @@ if (( mcipLAMBDA == 0 ))
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 25228 "./ISIS_OSIRIS.c"
+#line 25244 "./ISIS_OSIRIS.c"
 }   /* End of psdTarget=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -25575,7 +25591,7 @@ if (( mcipLAMBDA > 0 && probTarget < 1.0 / 3.0 ))
     } /* end if intersect */
   } while (intersect); /* end do (intersect) (multiple scattering loop) */
 }
-#line 25573 "./ISIS_OSIRIS.c"
+#line 25589 "./ISIS_OSIRIS.c"
 }   /* End of vsample1=Incoherent() SETTING parameter declarations. */
 #undef offdata
 #undef VarsInc
@@ -25920,7 +25936,7 @@ if (( mcipLAMBDA > 0 && probTarget >= 1.0 / 3.0 && probTarget < 2.0 / 3.0 ))
     } /* end if intersect */
   } while (intersect); /* end do (intersect) (multiple scattering loop) */
 }
-#line 25917 "./ISIS_OSIRIS.c"
+#line 25933 "./ISIS_OSIRIS.c"
 }   /* End of vsample2=Incoherent() SETTING parameter declarations. */
 #undef offdata
 #undef VarsInc
@@ -26265,7 +26281,7 @@ if (( mcipLAMBDA > 0 && probTarget >= 2.0 / 3.0 ))
     } /* end if intersect */
   } while (intersect); /* end do (intersect) (multiple scattering loop) */
 }
-#line 26261 "./ISIS_OSIRIS.c"
+#line 26277 "./ISIS_OSIRIS.c"
 }   /* End of vsample3=Incoherent() SETTING parameter declarations. */
 #undef offdata
 #undef VarsInc
@@ -26392,7 +26408,7 @@ MCNUM radius = mccbeamStop_radius;
     else
       RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
 }
-#line 26388 "./ISIS_OSIRIS.c"
+#line 26404 "./ISIS_OSIRIS.c"
 }   /* End of beamStop=Beamstop() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -26499,10 +26515,10 @@ mcnlp)
 #define mccompcurindex 27
 /* 'armAnalyzer=Arm()' component instance extend code */
     SIG_MESSAGE("armAnalyzer (Trace:Extend)");
-#line 419 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 419 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
   // Multiply probability by 3 because we have 3 targets
   p*=3.0;
-#line 26498 "./ISIS_OSIRIS.c"
+#line 26514 "./ISIS_OSIRIS.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -26698,14 +26714,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 26693 "./ISIS_OSIRIS.c"
+#line 26709 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser0=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser0 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 446 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 446 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 0;
-#line 26699 "./ISIS_OSIRIS.c"
+#line 26715 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser0=Monochromator_pol() SETTING parameter declarations. */
@@ -26916,14 +26932,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 26905 "./ISIS_OSIRIS.c"
+#line 26921 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser1=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser1 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 457 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 457 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 0;
-#line 26911 "./ISIS_OSIRIS.c"
+#line 26927 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser1=Monochromator_pol() SETTING parameter declarations. */
@@ -27134,14 +27150,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 27117 "./ISIS_OSIRIS.c"
+#line 27133 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser2=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser2 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 468 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 468 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 0;
-#line 27123 "./ISIS_OSIRIS.c"
+#line 27139 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser2=Monochromator_pol() SETTING parameter declarations. */
@@ -27352,14 +27368,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 27329 "./ISIS_OSIRIS.c"
+#line 27345 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser3=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser3 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 479 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 479 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 0;
-#line 27335 "./ISIS_OSIRIS.c"
+#line 27351 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser3=Monochromator_pol() SETTING parameter declarations. */
@@ -27570,14 +27586,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 27541 "./ISIS_OSIRIS.c"
+#line 27557 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser4=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser4 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 490 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 490 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 0;
-#line 27547 "./ISIS_OSIRIS.c"
+#line 27563 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser4=Monochromator_pol() SETTING parameter declarations. */
@@ -27788,14 +27804,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 27753 "./ISIS_OSIRIS.c"
+#line 27769 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser5=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser5 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 501 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 501 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 0;
-#line 27759 "./ISIS_OSIRIS.c"
+#line 27775 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser5=Monochromator_pol() SETTING parameter declarations. */
@@ -28006,14 +28022,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 27965 "./ISIS_OSIRIS.c"
+#line 27981 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser6=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser6 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 512 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 512 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 0;
-#line 27971 "./ISIS_OSIRIS.c"
+#line 27987 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser6=Monochromator_pol() SETTING parameter declarations. */
@@ -28224,14 +28240,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 28177 "./ISIS_OSIRIS.c"
+#line 28193 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser7=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser7 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 523 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 523 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 0;
-#line 28183 "./ISIS_OSIRIS.c"
+#line 28199 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser7=Monochromator_pol() SETTING parameter declarations. */
@@ -28442,14 +28458,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 28389 "./ISIS_OSIRIS.c"
+#line 28405 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser8=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser8 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 534 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 534 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 0;
-#line 28395 "./ISIS_OSIRIS.c"
+#line 28411 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser8=Monochromator_pol() SETTING parameter declarations. */
@@ -28660,14 +28676,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 28601 "./ISIS_OSIRIS.c"
+#line 28617 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser9=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser9 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 545 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 545 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 0;
-#line 28607 "./ISIS_OSIRIS.c"
+#line 28623 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser9=Monochromator_pol() SETTING parameter declarations. */
@@ -28878,14 +28894,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 28813 "./ISIS_OSIRIS.c"
+#line 28829 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser10=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser10 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 556 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 556 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 1;
-#line 28819 "./ISIS_OSIRIS.c"
+#line 28835 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser10=Monochromator_pol() SETTING parameter declarations. */
@@ -29096,14 +29112,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 29025 "./ISIS_OSIRIS.c"
+#line 29041 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser11=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser11 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 567 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 567 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 1;
-#line 29031 "./ISIS_OSIRIS.c"
+#line 29047 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser11=Monochromator_pol() SETTING parameter declarations. */
@@ -29314,14 +29330,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 29237 "./ISIS_OSIRIS.c"
+#line 29253 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser12=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser12 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 578 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 578 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 1;
-#line 29243 "./ISIS_OSIRIS.c"
+#line 29259 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser12=Monochromator_pol() SETTING parameter declarations. */
@@ -29532,14 +29548,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 29449 "./ISIS_OSIRIS.c"
+#line 29465 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser13=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser13 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 589 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 589 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 1;
-#line 29455 "./ISIS_OSIRIS.c"
+#line 29471 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser13=Monochromator_pol() SETTING parameter declarations. */
@@ -29750,14 +29766,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 29661 "./ISIS_OSIRIS.c"
+#line 29677 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser14=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser14 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 600 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 600 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 1;
-#line 29667 "./ISIS_OSIRIS.c"
+#line 29683 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser14=Monochromator_pol() SETTING parameter declarations. */
@@ -29968,14 +29984,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 29873 "./ISIS_OSIRIS.c"
+#line 29889 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser15=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser15 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 611 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 611 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 1;
-#line 29879 "./ISIS_OSIRIS.c"
+#line 29895 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser15=Monochromator_pol() SETTING parameter declarations. */
@@ -30186,14 +30202,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 30085 "./ISIS_OSIRIS.c"
+#line 30101 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser16=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser16 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 622 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 622 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 1;
-#line 30091 "./ISIS_OSIRIS.c"
+#line 30107 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser16=Monochromator_pol() SETTING parameter declarations. */
@@ -30404,14 +30420,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 30297 "./ISIS_OSIRIS.c"
+#line 30313 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser17=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser17 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 633 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 633 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 1;
-#line 30303 "./ISIS_OSIRIS.c"
+#line 30319 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser17=Monochromator_pol() SETTING parameter declarations. */
@@ -30622,14 +30638,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 30509 "./ISIS_OSIRIS.c"
+#line 30525 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser18=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser18 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 644 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 644 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 1;
-#line 30515 "./ISIS_OSIRIS.c"
+#line 30531 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser18=Monochromator_pol() SETTING parameter declarations. */
@@ -30840,14 +30856,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 30721 "./ISIS_OSIRIS.c"
+#line 30737 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser19=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser19 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 655 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 655 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 1;
-#line 30727 "./ISIS_OSIRIS.c"
+#line 30743 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser19=Monochromator_pol() SETTING parameter declarations. */
@@ -31058,14 +31074,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 30933 "./ISIS_OSIRIS.c"
+#line 30949 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser20=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser20 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 666 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 666 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 2;
-#line 30939 "./ISIS_OSIRIS.c"
+#line 30955 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser20=Monochromator_pol() SETTING parameter declarations. */
@@ -31276,14 +31292,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 31145 "./ISIS_OSIRIS.c"
+#line 31161 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser21=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser21 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 677 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 677 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 2;
-#line 31151 "./ISIS_OSIRIS.c"
+#line 31167 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser21=Monochromator_pol() SETTING parameter declarations. */
@@ -31494,14 +31510,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 31357 "./ISIS_OSIRIS.c"
+#line 31373 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser22=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser22 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 688 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 688 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 2;
-#line 31363 "./ISIS_OSIRIS.c"
+#line 31379 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser22=Monochromator_pol() SETTING parameter declarations. */
@@ -31712,14 +31728,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 31569 "./ISIS_OSIRIS.c"
+#line 31585 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser23=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser23 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 699 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 699 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 2;
-#line 31575 "./ISIS_OSIRIS.c"
+#line 31591 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser23=Monochromator_pol() SETTING parameter declarations. */
@@ -31930,14 +31946,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 31781 "./ISIS_OSIRIS.c"
+#line 31797 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser24=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser24 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 710 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 710 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 2;
-#line 31787 "./ISIS_OSIRIS.c"
+#line 31803 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser24=Monochromator_pol() SETTING parameter declarations. */
@@ -32148,14 +32164,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 31993 "./ISIS_OSIRIS.c"
+#line 32009 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser25=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser25 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 721 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 721 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 2;
-#line 31999 "./ISIS_OSIRIS.c"
+#line 32015 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser25=Monochromator_pol() SETTING parameter declarations. */
@@ -32366,14 +32382,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 32205 "./ISIS_OSIRIS.c"
+#line 32221 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser26=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser26 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 732 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 732 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 2;
-#line 32211 "./ISIS_OSIRIS.c"
+#line 32227 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser26=Monochromator_pol() SETTING parameter declarations. */
@@ -32584,14 +32600,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 32417 "./ISIS_OSIRIS.c"
+#line 32433 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser27=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser27 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 743 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 743 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 2;
-#line 32423 "./ISIS_OSIRIS.c"
+#line 32439 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser27=Monochromator_pol() SETTING parameter declarations. */
@@ -32802,14 +32818,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 32629 "./ISIS_OSIRIS.c"
+#line 32645 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser28=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser28 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 754 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 754 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 2;
-#line 32635 "./ISIS_OSIRIS.c"
+#line 32651 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser28=Monochromator_pol() SETTING parameter declarations. */
@@ -33020,14 +33036,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 32841 "./ISIS_OSIRIS.c"
+#line 32857 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser29=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser29 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 765 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 765 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 2;
-#line 32847 "./ISIS_OSIRIS.c"
+#line 32863 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser29=Monochromator_pol() SETTING parameter declarations. */
@@ -33238,14 +33254,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 33053 "./ISIS_OSIRIS.c"
+#line 33069 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser30=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser30 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 776 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 776 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 3;
-#line 33059 "./ISIS_OSIRIS.c"
+#line 33075 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser30=Monochromator_pol() SETTING parameter declarations. */
@@ -33456,14 +33472,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 33265 "./ISIS_OSIRIS.c"
+#line 33281 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser31=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser31 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 787 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 787 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 3;
-#line 33271 "./ISIS_OSIRIS.c"
+#line 33287 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser31=Monochromator_pol() SETTING parameter declarations. */
@@ -33674,14 +33690,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 33477 "./ISIS_OSIRIS.c"
+#line 33493 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser32=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser32 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 798 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 798 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 3;
-#line 33483 "./ISIS_OSIRIS.c"
+#line 33499 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser32=Monochromator_pol() SETTING parameter declarations. */
@@ -33892,14 +33908,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 33689 "./ISIS_OSIRIS.c"
+#line 33705 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser33=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser33 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 809 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 809 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 3;
-#line 33695 "./ISIS_OSIRIS.c"
+#line 33711 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser33=Monochromator_pol() SETTING parameter declarations. */
@@ -34110,14 +34126,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 33901 "./ISIS_OSIRIS.c"
+#line 33917 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser34=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser34 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 820 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 820 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 3;
-#line 33907 "./ISIS_OSIRIS.c"
+#line 33923 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser34=Monochromator_pol() SETTING parameter declarations. */
@@ -34328,14 +34344,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 34113 "./ISIS_OSIRIS.c"
+#line 34129 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser35=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser35 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 831 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 831 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 3;
-#line 34119 "./ISIS_OSIRIS.c"
+#line 34135 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser35=Monochromator_pol() SETTING parameter declarations. */
@@ -34546,14 +34562,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 34325 "./ISIS_OSIRIS.c"
+#line 34341 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser36=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser36 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 842 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 842 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 3;
-#line 34331 "./ISIS_OSIRIS.c"
+#line 34347 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser36=Monochromator_pol() SETTING parameter declarations. */
@@ -34764,14 +34780,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 34537 "./ISIS_OSIRIS.c"
+#line 34553 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser37=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser37 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 853 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 853 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 3;
-#line 34543 "./ISIS_OSIRIS.c"
+#line 34559 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser37=Monochromator_pol() SETTING parameter declarations. */
@@ -34982,14 +34998,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 34749 "./ISIS_OSIRIS.c"
+#line 34765 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser38=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser38 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 864 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 864 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 3;
-#line 34755 "./ISIS_OSIRIS.c"
+#line 34771 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser38=Monochromator_pol() SETTING parameter declarations. */
@@ -35200,14 +35216,14 @@ if (( mcipLAMBDA > 0 ))
   } /* End intersect the crystal */
 
 }
-#line 34961 "./ISIS_OSIRIS.c"
+#line 34977 "./ISIS_OSIRIS.c"
 /* 'graphite_analyser39=Monochromator_pol()' component instance extend code */
     SIG_MESSAGE("graphite_analyser39 (Trace:Extend)");
 if (( mcipLAMBDA > 0 )) {
 
-#line 875 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
+#line 875 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_OSIRIS/ISIS_OSIRIS.instr"
    groupNumber = 3;
-#line 34967 "./ISIS_OSIRIS.c"
+#line 34983 "./ISIS_OSIRIS.c"
 }
 
 }   /* End of graphite_analyser39=Monochromator_pol() SETTING parameter declarations. */
@@ -35576,7 +35592,7 @@ if (( mcipLAMBDA > 0 ))
       RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
     }
 }
-#line 35331 "./ISIS_OSIRIS.c"
+#line 35347 "./ISIS_OSIRIS.c"
 }   /* End of lamDetector=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -35717,7 +35733,7 @@ if (( mcipLAMBDA > 0 ))
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 35471 "./ISIS_OSIRIS.c"
+#line 35487 "./ISIS_OSIRIS.c"
 }   /* End of psdDetector=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -35867,7 +35883,7 @@ if (( mcipLAMBDA > 0 ))
       RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
     }
 }
-#line 35620 "./ISIS_OSIRIS.c"
+#line 35636 "./ISIS_OSIRIS.c"
 }   /* End of tofDetector=TOF_monitor() SETTING parameter declarations. */
 #undef delta_t
 #undef t_max
@@ -35989,7 +36005,7 @@ int nowritefile = mcctofSource_nowritefile;
         filename);
     }
 }
-#line 35742 "./ISIS_OSIRIS.c"
+#line 35758 "./ISIS_OSIRIS.c"
 }   /* End of tofSource=TOF_monitor() SETTING parameter declarations. */
 #undef delta_t
 #undef t_max
@@ -36035,7 +36051,7 @@ int nowritefile = mcclamStart_nowritefile;
         filename);
     }
 }
-#line 35788 "./ISIS_OSIRIS.c"
+#line 35804 "./ISIS_OSIRIS.c"
 }   /* End of lamStart=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -36075,7 +36091,7 @@ MCNUM restore_neutron = mccpsdStart_restore_neutron;
     &PSD_N[0][0],&PSD_p[0][0],&PSD_p2[0][0],
     filename);
 }
-#line 35828 "./ISIS_OSIRIS.c"
+#line 35844 "./ISIS_OSIRIS.c"
 }   /* End of psdStart=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -36117,7 +36133,7 @@ int nowritefile = mcclamTarget_nowritefile;
         filename);
     }
 }
-#line 35870 "./ISIS_OSIRIS.c"
+#line 35886 "./ISIS_OSIRIS.c"
 }   /* End of lamTarget=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -36157,7 +36173,7 @@ MCNUM restore_neutron = mccpsdTarget_restore_neutron;
     &PSD_N[0][0],&PSD_p[0][0],&PSD_p2[0][0],
     filename);
 }
-#line 35910 "./ISIS_OSIRIS.c"
+#line 35926 "./ISIS_OSIRIS.c"
 }   /* End of psdTarget=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -36199,7 +36215,7 @@ int nowritefile = mcclamDetector_nowritefile;
         filename);
     }
 }
-#line 35952 "./ISIS_OSIRIS.c"
+#line 35968 "./ISIS_OSIRIS.c"
 }   /* End of lamDetector=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -36239,7 +36255,7 @@ MCNUM restore_neutron = mccpsdDetector_restore_neutron;
     &PSD_N[0][0],&PSD_p[0][0],&PSD_p2[0][0],
     filename);
 }
-#line 35992 "./ISIS_OSIRIS.c"
+#line 36008 "./ISIS_OSIRIS.c"
 }   /* End of psdDetector=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -36285,7 +36301,7 @@ int nowritefile = mcctofDetector_nowritefile;
         filename);
     }
 }
-#line 36038 "./ISIS_OSIRIS.c"
+#line 36054 "./ISIS_OSIRIS.c"
 }   /* End of tofDetector=TOF_monitor() SETTING parameter declarations. */
 #undef delta_t
 #undef t_max
@@ -36345,7 +36361,7 @@ MCNUM restore_neutron = mccpsdStart_restore_neutron;
   destroy_darr2d(PSD_p);
   destroy_darr2d(PSD_p2);
 }
-#line 36093 "./ISIS_OSIRIS.c"
+#line 36109 "./ISIS_OSIRIS.c"
 }   /* End of psdStart=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -36427,7 +36443,7 @@ MCNUM restore_neutron = mccpsdTarget_restore_neutron;
   destroy_darr2d(PSD_p);
   destroy_darr2d(PSD_p2);
 }
-#line 36159 "./ISIS_OSIRIS.c"
+#line 36175 "./ISIS_OSIRIS.c"
 }   /* End of psdTarget=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -36608,7 +36624,7 @@ MCNUM restore_neutron = mccpsdDetector_restore_neutron;
   destroy_darr2d(PSD_p);
   destroy_darr2d(PSD_p2);
 }
-#line 36291 "./ISIS_OSIRIS.c"
+#line 36307 "./ISIS_OSIRIS.c"
 }   /* End of psdDetector=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -36652,7 +36668,7 @@ void mcdisplay(void) {
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 36333 "./ISIS_OSIRIS.c"
+#line 36349 "./ISIS_OSIRIS.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -36718,7 +36734,7 @@ MCNUM verbose = mccisis_mod_verbose;
     }
 
 }
-#line 36399 "./ISIS_OSIRIS.c"
+#line 36415 "./ISIS_OSIRIS.c"
 }   /* End of isis_mod=ISIS_moderator() SETTING parameter declarations. */
 #undef CurrentWeight
 #undef TargetStation
@@ -36773,7 +36789,7 @@ int nowritefile = mcctofSource_nowritefile;
                (double)xmin, (double)ymax, 0.0,
                (double)xmin, (double)ymin, 0.0);
 }
-#line 36454 "./ISIS_OSIRIS.c"
+#line 36470 "./ISIS_OSIRIS.c"
 }   /* End of tofSource=TOF_monitor() SETTING parameter declarations. */
 #undef delta_t
 #undef t_max
@@ -36800,7 +36816,7 @@ int nowritefile = mcctofSource_nowritefile;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 36481 "./ISIS_OSIRIS.c"
+#line 36497 "./ISIS_OSIRIS.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -36836,7 +36852,7 @@ int nowritefile = mcclamStart_nowritefile;
                (double)xmin, (double)ymax, 0.0,
                (double)xmin, (double)ymin, 0.0);
 }
-#line 36517 "./ISIS_OSIRIS.c"
+#line 36533 "./ISIS_OSIRIS.c"
 }   /* End of lamStart=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -36875,7 +36891,7 @@ MCNUM restore_neutron = mccpsdStart_restore_neutron;
     (double)xmin, (double)ymax, 0.0,
     (double)xmin, (double)ymin, 0.0);
 }
-#line 36556 "./ISIS_OSIRIS.c"
+#line 36572 "./ISIS_OSIRIS.c"
 }   /* End of psdStart=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -36923,7 +36939,7 @@ MCNUM W = mccguide_straight_1_W;
   line( w1/2.0,  h1/2.0, 0,  w2/2.0,  h2/2.0, (double)l);
   line(-w1/2.0,  h1/2.0, 0, -w2/2.0,  h2/2.0, (double)l);
 }
-#line 36604 "./ISIS_OSIRIS.c"
+#line 36620 "./ISIS_OSIRIS.c"
 }   /* End of guide_straight_1=Guide() SETTING parameter declarations. */
 #undef pTable
 #undef mccompcurname
@@ -36944,7 +36960,7 @@ MCNUM W = mccguide_straight_1_W;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 36625 "./ISIS_OSIRIS.c"
+#line 36641 "./ISIS_OSIRIS.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -37001,7 +37017,7 @@ MCNUM verbose = mccchopper1_verbose;
       radius*sin(tmax),          radius*cos(tmax)-delta_y,          0);
   }
 }
-#line 36682 "./ISIS_OSIRIS.c"
+#line 36698 "./ISIS_OSIRIS.c"
 }   /* End of chopper1=DiskChopper() SETTING parameter declarations. */
 #undef omega
 #undef height
@@ -37026,7 +37042,7 @@ MCNUM verbose = mccchopper1_verbose;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 36707 "./ISIS_OSIRIS.c"
+#line 36723 "./ISIS_OSIRIS.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -37083,7 +37099,7 @@ MCNUM curvature = mccguide_curved1_curvature;
   line(xplot2[n-1],-0.5*h1,zplot2[n-1],xplot2[n-1], 0.5*h1,zplot2[n-1]);
   line(xplot1[n-1],-0.5*h1,zplot1[n-1],xplot2[n-1],-0.5*h1,zplot2[n-1]);
 }
-#line 36764 "./ISIS_OSIRIS.c"
+#line 36780 "./ISIS_OSIRIS.c"
 }   /* End of guide_curved1=Guide_curved() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -37103,7 +37119,7 @@ MCNUM curvature = mccguide_curved1_curvature;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 36784 "./ISIS_OSIRIS.c"
+#line 36800 "./ISIS_OSIRIS.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -37160,7 +37176,7 @@ MCNUM verbose = mccchopper2_verbose;
       radius*sin(tmax),          radius*cos(tmax)-delta_y,          0);
   }
 }
-#line 36841 "./ISIS_OSIRIS.c"
+#line 36857 "./ISIS_OSIRIS.c"
 }   /* End of chopper2=DiskChopper() SETTING parameter declarations. */
 #undef omega
 #undef height
@@ -37185,7 +37201,7 @@ MCNUM verbose = mccchopper2_verbose;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 36866 "./ISIS_OSIRIS.c"
+#line 36882 "./ISIS_OSIRIS.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -37242,7 +37258,7 @@ MCNUM curvature = mccguide_curved2_curvature;
   line(xplot2[n-1],-0.5*h1,zplot2[n-1],xplot2[n-1], 0.5*h1,zplot2[n-1]);
   line(xplot1[n-1],-0.5*h1,zplot1[n-1],xplot2[n-1],-0.5*h1,zplot2[n-1]);
 }
-#line 36923 "./ISIS_OSIRIS.c"
+#line 36939 "./ISIS_OSIRIS.c"
 }   /* End of guide_curved2=Guide_curved() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -37262,7 +37278,7 @@ MCNUM curvature = mccguide_curved2_curvature;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 36943 "./ISIS_OSIRIS.c"
+#line 36959 "./ISIS_OSIRIS.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -37306,7 +37322,7 @@ MCNUM W = mccguide_straight_2_W;
   line( w1/2.0,  h1/2.0, 0,  w2/2.0,  h2/2.0, (double)l);
   line(-w1/2.0,  h1/2.0, 0, -w2/2.0,  h2/2.0, (double)l);
 }
-#line 36987 "./ISIS_OSIRIS.c"
+#line 37003 "./ISIS_OSIRIS.c"
 }   /* End of guide_straight_2=Guide() SETTING parameter declarations. */
 #undef pTable
 #undef mccompcurname
@@ -37327,7 +37343,7 @@ MCNUM W = mccguide_straight_2_W;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 37008 "./ISIS_OSIRIS.c"
+#line 37024 "./ISIS_OSIRIS.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -37371,7 +37387,7 @@ MCNUM W = mccguide_super_W;
   line( w1/2.0,  h1/2.0, 0,  w2/2.0,  h2/2.0, (double)l);
   line(-w1/2.0,  h1/2.0, 0, -w2/2.0,  h2/2.0, (double)l);
 }
-#line 37052 "./ISIS_OSIRIS.c"
+#line 37068 "./ISIS_OSIRIS.c"
 }   /* End of guide_super=Guide() SETTING parameter declarations. */
 #undef pTable
 #undef mccompcurname
@@ -37392,7 +37408,7 @@ MCNUM W = mccguide_super_W;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 37073 "./ISIS_OSIRIS.c"
+#line 37089 "./ISIS_OSIRIS.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -37428,7 +37444,7 @@ int nowritefile = mcclamTarget_nowritefile;
                (double)xmin, (double)ymax, 0.0,
                (double)xmin, (double)ymin, 0.0);
 }
-#line 37109 "./ISIS_OSIRIS.c"
+#line 37125 "./ISIS_OSIRIS.c"
 }   /* End of lamTarget=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -37467,7 +37483,7 @@ MCNUM restore_neutron = mccpsdTarget_restore_neutron;
     (double)xmin, (double)ymax, 0.0,
     (double)xmin, (double)ymin, 0.0);
 }
-#line 37148 "./ISIS_OSIRIS.c"
+#line 37164 "./ISIS_OSIRIS.c"
 }   /* End of psdTarget=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -37528,7 +37544,7 @@ MCNUM order = mccvsample1_order;
       sphere(0,0,0,radius,0);
   }
 }
-#line 37209 "./ISIS_OSIRIS.c"
+#line 37225 "./ISIS_OSIRIS.c"
 }   /* End of vsample1=Incoherent() SETTING parameter declarations. */
 #undef offdata
 #undef VarsInc
@@ -37588,7 +37604,7 @@ MCNUM order = mccvsample2_order;
       sphere(0,0,0,radius,0);
   }
 }
-#line 37269 "./ISIS_OSIRIS.c"
+#line 37285 "./ISIS_OSIRIS.c"
 }   /* End of vsample2=Incoherent() SETTING parameter declarations. */
 #undef offdata
 #undef VarsInc
@@ -37648,7 +37664,7 @@ MCNUM order = mccvsample3_order;
       sphere(0,0,0,radius,0);
   }
 }
-#line 37329 "./ISIS_OSIRIS.c"
+#line 37345 "./ISIS_OSIRIS.c"
 }   /* End of vsample3=Incoherent() SETTING parameter declarations. */
 #undef offdata
 #undef VarsInc
@@ -37682,7 +37698,7 @@ MCNUM radius = mccbeamStop_radius;
                (double)xmin, (double)ymax, 0.0,
                (double)xmin, (double)ymin, 0.0);
 }
-#line 37363 "./ISIS_OSIRIS.c"
+#line 37379 "./ISIS_OSIRIS.c"
 }   /* End of beamStop=Beamstop() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -37702,7 +37718,7 @@ MCNUM radius = mccbeamStop_radius;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 37383 "./ISIS_OSIRIS.c"
+#line 37399 "./ISIS_OSIRIS.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -37734,7 +37750,7 @@ int debug = mccgraphite_analyser0_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 37415 "./ISIS_OSIRIS.c"
+#line 37431 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser0=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -37772,7 +37788,7 @@ int debug = mccgraphite_analyser1_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 37453 "./ISIS_OSIRIS.c"
+#line 37469 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser1=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -37810,7 +37826,7 @@ int debug = mccgraphite_analyser2_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 37491 "./ISIS_OSIRIS.c"
+#line 37507 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser2=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -37848,7 +37864,7 @@ int debug = mccgraphite_analyser3_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 37529 "./ISIS_OSIRIS.c"
+#line 37545 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser3=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -37886,7 +37902,7 @@ int debug = mccgraphite_analyser4_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 37567 "./ISIS_OSIRIS.c"
+#line 37583 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser4=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -37924,7 +37940,7 @@ int debug = mccgraphite_analyser5_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 37605 "./ISIS_OSIRIS.c"
+#line 37621 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser5=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -37962,7 +37978,7 @@ int debug = mccgraphite_analyser6_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 37643 "./ISIS_OSIRIS.c"
+#line 37659 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser6=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38000,7 +38016,7 @@ int debug = mccgraphite_analyser7_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 37681 "./ISIS_OSIRIS.c"
+#line 37697 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser7=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38038,7 +38054,7 @@ int debug = mccgraphite_analyser8_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 37719 "./ISIS_OSIRIS.c"
+#line 37735 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser8=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38076,7 +38092,7 @@ int debug = mccgraphite_analyser9_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 37757 "./ISIS_OSIRIS.c"
+#line 37773 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser9=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38114,7 +38130,7 @@ int debug = mccgraphite_analyser10_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 37795 "./ISIS_OSIRIS.c"
+#line 37811 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser10=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38152,7 +38168,7 @@ int debug = mccgraphite_analyser11_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 37833 "./ISIS_OSIRIS.c"
+#line 37849 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser11=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38190,7 +38206,7 @@ int debug = mccgraphite_analyser12_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 37871 "./ISIS_OSIRIS.c"
+#line 37887 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser12=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38228,7 +38244,7 @@ int debug = mccgraphite_analyser13_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 37909 "./ISIS_OSIRIS.c"
+#line 37925 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser13=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38266,7 +38282,7 @@ int debug = mccgraphite_analyser14_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 37947 "./ISIS_OSIRIS.c"
+#line 37963 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser14=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38304,7 +38320,7 @@ int debug = mccgraphite_analyser15_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 37985 "./ISIS_OSIRIS.c"
+#line 38001 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser15=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38342,7 +38358,7 @@ int debug = mccgraphite_analyser16_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 38023 "./ISIS_OSIRIS.c"
+#line 38039 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser16=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38380,7 +38396,7 @@ int debug = mccgraphite_analyser17_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 38061 "./ISIS_OSIRIS.c"
+#line 38077 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser17=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38418,7 +38434,7 @@ int debug = mccgraphite_analyser18_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 38099 "./ISIS_OSIRIS.c"
+#line 38115 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser18=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38456,7 +38472,7 @@ int debug = mccgraphite_analyser19_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 38137 "./ISIS_OSIRIS.c"
+#line 38153 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser19=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38494,7 +38510,7 @@ int debug = mccgraphite_analyser20_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 38175 "./ISIS_OSIRIS.c"
+#line 38191 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser20=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38532,7 +38548,7 @@ int debug = mccgraphite_analyser21_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 38213 "./ISIS_OSIRIS.c"
+#line 38229 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser21=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38570,7 +38586,7 @@ int debug = mccgraphite_analyser22_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 38251 "./ISIS_OSIRIS.c"
+#line 38267 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser22=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38608,7 +38624,7 @@ int debug = mccgraphite_analyser23_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 38289 "./ISIS_OSIRIS.c"
+#line 38305 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser23=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38646,7 +38662,7 @@ int debug = mccgraphite_analyser24_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 38327 "./ISIS_OSIRIS.c"
+#line 38343 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser24=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38684,7 +38700,7 @@ int debug = mccgraphite_analyser25_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 38365 "./ISIS_OSIRIS.c"
+#line 38381 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser25=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38722,7 +38738,7 @@ int debug = mccgraphite_analyser26_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 38403 "./ISIS_OSIRIS.c"
+#line 38419 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser26=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38760,7 +38776,7 @@ int debug = mccgraphite_analyser27_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 38441 "./ISIS_OSIRIS.c"
+#line 38457 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser27=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38798,7 +38814,7 @@ int debug = mccgraphite_analyser28_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 38479 "./ISIS_OSIRIS.c"
+#line 38495 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser28=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38836,7 +38852,7 @@ int debug = mccgraphite_analyser29_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 38517 "./ISIS_OSIRIS.c"
+#line 38533 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser29=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38874,7 +38890,7 @@ int debug = mccgraphite_analyser30_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 38555 "./ISIS_OSIRIS.c"
+#line 38571 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser30=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38912,7 +38928,7 @@ int debug = mccgraphite_analyser31_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 38593 "./ISIS_OSIRIS.c"
+#line 38609 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser31=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38950,7 +38966,7 @@ int debug = mccgraphite_analyser32_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 38631 "./ISIS_OSIRIS.c"
+#line 38647 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser32=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -38988,7 +39004,7 @@ int debug = mccgraphite_analyser33_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 38669 "./ISIS_OSIRIS.c"
+#line 38685 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser33=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -39026,7 +39042,7 @@ int debug = mccgraphite_analyser34_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 38707 "./ISIS_OSIRIS.c"
+#line 38723 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser34=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -39064,7 +39080,7 @@ int debug = mccgraphite_analyser35_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 38745 "./ISIS_OSIRIS.c"
+#line 38761 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser35=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -39102,7 +39118,7 @@ int debug = mccgraphite_analyser36_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 38783 "./ISIS_OSIRIS.c"
+#line 38799 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser36=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -39140,7 +39156,7 @@ int debug = mccgraphite_analyser37_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 38821 "./ISIS_OSIRIS.c"
+#line 38837 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser37=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -39178,7 +39194,7 @@ int debug = mccgraphite_analyser38_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 38859 "./ISIS_OSIRIS.c"
+#line 38875 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser38=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -39216,7 +39232,7 @@ int debug = mccgraphite_analyser39_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 38897 "./ISIS_OSIRIS.c"
+#line 38913 "./ISIS_OSIRIS.c"
 }   /* End of graphite_analyser39=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -39241,7 +39257,7 @@ int debug = mccgraphite_analyser39_debug;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 38922 "./ISIS_OSIRIS.c"
+#line 38938 "./ISIS_OSIRIS.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -39260,7 +39276,7 @@ int debug = mccgraphite_analyser39_debug;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 38941 "./ISIS_OSIRIS.c"
+#line 38957 "./ISIS_OSIRIS.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -39296,7 +39312,7 @@ int nowritefile = mcclamDetector_nowritefile;
                (double)xmin, (double)ymax, 0.0,
                (double)xmin, (double)ymin, 0.0);
 }
-#line 38977 "./ISIS_OSIRIS.c"
+#line 38993 "./ISIS_OSIRIS.c"
 }   /* End of lamDetector=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -39335,7 +39351,7 @@ MCNUM restore_neutron = mccpsdDetector_restore_neutron;
     (double)xmin, (double)ymax, 0.0,
     (double)xmin, (double)ymin, 0.0);
 }
-#line 39016 "./ISIS_OSIRIS.c"
+#line 39032 "./ISIS_OSIRIS.c"
 }   /* End of psdDetector=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -39379,7 +39395,7 @@ int nowritefile = mcctofDetector_nowritefile;
                (double)xmin, (double)ymax, 0.0,
                (double)xmin, (double)ymin, 0.0);
 }
-#line 39060 "./ISIS_OSIRIS.c"
+#line 39076 "./ISIS_OSIRIS.c"
 }   /* End of tofDetector=TOF_monitor() SETTING parameter declarations. */
 #undef delta_t
 #undef t_max

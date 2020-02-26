@@ -1,17 +1,17 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Nov. 19, 2019
-# Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Mirror/Test_Pol_Mirror.instr
+# Creator: McStas 2.5 - Feb. 24, 2020
+# Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Mirror/Test_Pol_Mirror.instr
 # Ncount: 1000000
 # Trace: no
 # Gravitation: no
-# Seed: 1574241333
+# Seed: 1582689493
 # Directory: 1
 # Nodes: 10
 # Param: mirrorOption=1
-# Date: Wed Nov 20 01:18:13 2019 (1574209093)
+# Date: Tue Feb 25 21:59:44 2020 (1582664384)
 # type: array_1d(30)
-# Source: Test_Pol_Mirror (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Mirror/Test_Pol_Mirror.instr)
+# Source: Test_Pol_Mirror (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Mirror/Test_Pol_Mirror.instr)
 # component: pollambdaMonitorTransmitY
 # position: 0 0 2
 # title: Pol-wavelength monitor

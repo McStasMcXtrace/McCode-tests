@@ -1,6 +1,6 @@
 McStas simulation description file for templateLaue.
-Date:    Mon Dec 16 14:57:00 2019
-Program: McStas 2.5 - Dec. 16, 2019
+Date:    Tue Feb 25 22:19:03 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: templateLaue
   File: 1/mccode
@@ -14,19 +14,19 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Dec. 16, 2019
+  Creator: McStas 2.5 - Feb. 24, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateLaue/templateLaue.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1576522074
+  Seed: 1582694437
   Directory: 1
   Nodes: 10
   Param: reflections=YBaCuO.lau
 end simulation
 
 begin data
-  Date: Mon Dec 16 14:57:02 2019 (1576504622)
+  Date: Tue Feb 25 22:19:06 2020 (1582665546)
   type: array_2d(360, 180)
   Source: templateLaue (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateLaue/templateLaue.instr)
   component: det
@@ -34,9 +34,9 @@ begin data
   title: 4PI PSD monitor
   Ncount: 10000000
   filename: psd.dat
-  statistics: X0=-0.0198251; dX=90.0039; Y0=0.463585; dY=45.8159;
-  signal: Min=0.515633; Max=653945; Mean=201.088;
-  values: 1.30305e+07 18946.7 9.46495e+06
+  statistics: X0=0.229016; dX=90.0574; Y0=0.588162; dY=45.7423;
+  signal: Min=0; Max=653600; Mean=200.782;
+  values: 1.30106e+07 18911.8 9.4647e+06
   xvar: Longitude
   yvar: Lattitude
   xlabel: Longitude [deg]

@@ -1,11 +1,42 @@
-      [1574207691.481958] [n-62-23-6:15690:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3368.92
-[1574207691.483297] [n-62-23-6:15690:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207691.483301] [n-62-23-6:15690:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207691.485229] [n-62-23-6:15690:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207691.485232] [n-62-23-6:15690:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: No output directory specified (--dir)
+INFO: Using directory: "Union_laue_camera_20200225_210946"
+INFO: Regenerating c-file: Union_laue_camera.c
+CFLAGS= -I@MCCODE_LIB@/share/
+      INFO: Recompiling: ./Union_laue_camera.out
+In file included from /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/union/Incoherent_process.comp:65:0:
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../share/Union_functions.c: In function 'write_tagging_tree':
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../share/Union_functions.c:1421:105: warning: passing argument 4 of 'qsort' from incompatible pointer type [-Wincompatible-pointer-types]
+   qsort(total_history.saved_histories,total_history.used_elements,sizeof (struct saved_history_struct), Sample_compare_history_intensities);
+                                                                                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from mccode-r.h:42:0:
+/usr/include/stdlib.h:760:13: note: expected '__compar_fn_t {aka int (*)(const void *, const void *)}' but argument is of type 'int (*)(const struct saved_history_struct *, const struct saved_history_struct *)'
+ extern void qsort (void *__base, size_t __nmemb, size_t __size,
+             ^~~~~
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../share/Union_functions.c:1430:20: warning: passing argument 1 of 'printf_history' from incompatible pointer type [-Wincompatible-pointer-types]
+     printf_history(&total_history.saved_histories[history_iterate]);
+                    ^
+mccode-r.h:201:5: note: in definition of macro 'MPI_MASTER'
+In file included from /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/union/Incoherent_process.comp:65:0:
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../share/Union_functions.c:1251:6: note: expected 'struct dynamic_history_list *' but argument is of type 'struct saved_history_struct *'
+ void printf_history(struct dynamic_history_list *history) {
+      ^~~~~~~~~~~~~~
+INFO: ===
+[n-62-23-14:09166] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:09166] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582661394.254403] [n-62-23-14:9164 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3376.44
+[1582661394.256219] [n-62-23-14:9164 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661394.256223] [n-62-23-14:9164 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1582661394.258926] [n-62-23-14:9164 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661394.258930] [n-62-23-14:9164 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 begin instrument: Union_laue_camera
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_laue_camera/Union_laue_camera.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_laue_camera/Union_laue_camera.instr
   Parameters:  delta_d_d(double) mosaic(double) lam0(double) dlam(double) radius(double) height(double) x_rotation_geometry(double) y_rotation_geometry(double) x_rotation_geometry_ref(double) y_rotation_geometry_ref(double) x_rotation_process(double) y_rotation_process(double) z_rotation_process(double) geometry_interact(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +45,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_laue_camera/Union_laue_camera.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_laue_camera/Union_laue_camera.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1574223381
+  Seed: 1582670558
   Directory: .
   Param: delta_d_d=0.0001
   Param: mosaic=5
@@ -37,32 +68,3 @@ begin simulation: .
   Param: geometry_interact=0
 end simulation
 info!
-INFO: No output directory specified (--dir)
-INFO: Using directory: "Union_laue_camera_20191120_005443"
-INFO: Regenerating c-file: Union_laue_camera.c
-CFLAGS= -I@MCCODE_LIB@/share/
-INFO: Recompiling: ./Union_laue_camera.out
-In file included from /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/union/Incoherent_process.comp:65:0:
-/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../share/Union_functions.c: In function 'write_tagging_tree':
-/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../share/Union_functions.c:1420:105: warning: passing argument 4 of 'qsort' from incompatible pointer type [-Wincompatible-pointer-types]
-   qsort(total_history.saved_histories,total_history.used_elements,sizeof (struct saved_history_struct), Sample_compare_history_intensities);
-                                                                                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In file included from mccode-r.h:42:0:
-/usr/include/stdlib.h:760:13: note: expected '__compar_fn_t {aka int (*)(const void *, const void *)}' but argument is of type 'int (*)(const struct saved_history_struct *, const struct saved_history_struct *)'
- extern void qsort (void *__base, size_t __nmemb, size_t __size,
-             ^~~~~
-/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../share/Union_functions.c:1429:20: warning: passing argument 1 of 'printf_history' from incompatible pointer type [-Wincompatible-pointer-types]
-     printf_history(&total_history.saved_histories[history_iterate]);
-                    ^
-mccode-r.h:201:5: note: in definition of macro 'MPI_MASTER'
-In file included from /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/union/Incoherent_process.comp:65:0:
-/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../share/Union_functions.c:1250:6: note: expected 'struct dynamic_history_list *' but argument is of type 'struct saved_history_struct *'
- void printf_history(struct dynamic_history_list *history) {
-      ^~~~~~~~~~~~~~
-INFO: ===
---------------------------------------------------------------------------
-Initialization of MXM library failed.
-
-  Error: Input/output error
-
---------------------------------------------------------------------------

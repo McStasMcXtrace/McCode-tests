@@ -1,10 +1,10 @@
 McStas simulation description file for Test_Magnetic_Rotation.
-Date:    Wed Nov 20 01:15:56 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:55:16 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: Test_Magnetic_Rotation
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr
   Parameters:  dummy(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,28 +14,28 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574239085
+  Seed: 1582687194
   Directory: 1
   Nodes: 10
   Param: dummy=1
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:16:48 2019 (1574209008)
+  Date: Tue Feb 25 21:57:33 2020 (1582664253)
   type: array_2d(100, 21)
-  Source: Test_Magnetic_Rotation (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr)
+  Source: Test_Magnetic_Rotation (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr)
   component: pollambdaMonitor1x
   position: 0 0 0.75
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: pollambdaMon1x.data
-  statistics: X0=5.00092; dX=2.88067; Y0=0; dY=0;
-  signal: Min=0; Max=3.16872e-05; Mean=1.49281e-06;
+  statistics: X0=4.99981; dX=2.88126; Y0=0; dY=0;
+  signal: Min=0; Max=3.16922e-05; Mean=1.49281e-06;
   values: 0.00313489 9.9134e-07 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -48,16 +48,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:16:48 2019 (1574209008)
+  Date: Tue Feb 25 21:57:33 2020 (1582664253)
   type: array_2d(100, 21)
-  Source: Test_Magnetic_Rotation (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr)
+  Source: Test_Magnetic_Rotation (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr)
   component: pollambdaMonitor1y
   position: 0 0 0.75
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: pollambdaMon1y.data
-  statistics: X0=5.00092; dX=2.88067; Y0=0.952381; dY=1.05367e-08;
-  signal: Min=0; Max=3.16872e-05; Mean=1.49281e-06;
+  statistics: X0=4.99981; dX=2.88126; Y0=0.952381; dY=0;
+  signal: Min=0; Max=3.16922e-05; Mean=1.49281e-06;
   values: 0.00313489 9.9134e-07 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -70,16 +70,16 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:16:48 2019 (1574209008)
+  Date: Tue Feb 25 21:57:33 2020 (1582664253)
   type: array_2d(100, 21)
-  Source: Test_Magnetic_Rotation (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr)
+  Source: Test_Magnetic_Rotation (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr)
   component: pollambdaMonitor1z
   position: 0 0 0.75
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: pollambdaMon1z.data
-  statistics: X0=5.00092; dX=2.88067; Y0=0; dY=0;
-  signal: Min=0; Max=3.16872e-05; Mean=1.49281e-06;
+  statistics: X0=4.99981; dX=2.88126; Y0=0; dY=0;
+  signal: Min=0; Max=3.16922e-05; Mean=1.49281e-06;
   values: 0.00313489 9.9134e-07 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -92,17 +92,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:16:48 2019 (1574209008)
+  Date: Tue Feb 25 21:57:33 2020 (1582664253)
   type: array_1d(100)
-  Source: Test_Magnetic_Rotation (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr)
+  Source: Test_Magnetic_Rotation (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr)
   component: MPLMonNum2X
   position: 0 0 2.5
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: MPLMonNum2X.data
-  statistics: X0=5.44547; dX=2.65112;
-  signal: Min=0.0318635; Max=9.99969; Mean=9.02278;
-  values: 902.278 0.00237373 1e+07
+  statistics: X0=5.44548; dX=2.65111;
+  signal: Min=0.0317805; Max=9.99969; Mean=9.02275;
+  values: 902.275 0.00237273 1e+07
   xvar: Wavelength
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -112,17 +112,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:16:48 2019 (1574209008)
+  Date: Tue Feb 25 21:57:33 2020 (1582664253)
   type: array_1d(100)
-  Source: Test_Magnetic_Rotation (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr)
+  Source: Test_Magnetic_Rotation (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr)
   component: MPLMonNum2Y
   position: 0 0 2.5
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: MPLMonNum2Y.data
-  statistics: X0=-0.444417; dX=0;
-  signal: Min=-3.39829; Max=9.92624; Mean=0.354788;
-  values: 35.4788 0.00445393 1e+07
+  statistics: X0=-0.444026; dX=0;
+  signal: Min=-3.39824; Max=9.92644; Mean=0.354799;
+  values: 35.4799 0.00445169 1e+07
   xvar: Wavelength
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -132,17 +132,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:16:48 2019 (1574209008)
+  Date: Tue Feb 25 21:57:33 2020 (1582664253)
   type: array_1d(100)
-  Source: Test_Magnetic_Rotation (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr)
+  Source: Test_Magnetic_Rotation (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr)
   component: MPLMonNum2Z
   position: 0 0 2.5
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: MPLMonNum2Z.data
-  statistics: X0=2.72131; dX=2.58955;
-  signal: Min=-8.99531; Max=-0.00621865; Mean=-1.73412;
-  values: -173.412 0.00469133 1e+07
+  statistics: X0=2.72127; dX=2.5895;
+  signal: Min=-8.99546; Max=-0.00622533; Mean=-1.73419;
+  values: -173.419 0.00468906 1e+07
   xvar: Wavelength
   yvar: (I,I_err)
   xlabel: Wavelength [AA]

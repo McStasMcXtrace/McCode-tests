@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr (Union_test_absorption_image)
- * Date:       Wed Nov 20 00:55:46 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr (Union_test_absorption_image)
+ * Date:       Tue Feb 25 21:10:48 2020
  * File:       ./Union_test_absorption_image.c
  * Compile:    cc -o Union_test_absorption_image.out ./Union_test_absorption_image.c  -I@MCCODE_LIB@/share/
  * CFLAGS= -I@MCCODE_LIB@/share/
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Union_test_absorption_image";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -8587,7 +8587,7 @@ void initialize_cylinder_geometry_from_main_component(struct geometry_struct *cy
 struct pointer_to_1d_coords_list cylinder_shell_points(struct geometry_struct *geometry,int max_number_of_points) {
   // Function that returns a number (less than max) of points on the geometry surface
   // If used, remember to free the space allocated.
-  int points_per_circle = floor(max_number_of_points/2);
+  int points_per_circle = floor(max_number_of_points/2.0);
   
   struct pointer_to_1d_coords_list cylinder_shell_array;
   cylinder_shell_array.elements = malloc(2*points_per_circle*sizeof(Coords));
@@ -11913,17 +11913,17 @@ void mcinit(void) {
     /* Component Vanadium_incoherent. */
   /* Setting parameters for component Vanadium_incoherent. */
   SIG_MESSAGE("Vanadium_incoherent (Init:SetPar)");
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccVanadium_incoherent_sigma = 2 * 5.08;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccVanadium_incoherent_f_QE = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccVanadium_incoherent_gamma = 0;
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccVanadium_incoherent_packing_factor = 1;
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccVanadium_incoherent_unit_cell_volume = 27.66;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccVanadium_incoherent_interact_fraction = -1;
 #line 11928 "./Union_test_absorption_image.c"
 
@@ -11935,11 +11935,11 @@ void mcinit(void) {
 #line 11935 "./Union_test_absorption_image.c"
   rot_copy(mcrotrVanadium_incoherent, mcrotaVanadium_incoherent);
   mcposaVanadium_incoherent = coords_set(
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 11944 "./Union_test_absorption_image.c"
   mctc1 = coords_neg(mcposaVanadium_incoherent);
@@ -11952,11 +11952,11 @@ void mcinit(void) {
     /* Component Vanadium. */
   /* Setting parameters for component Vanadium. */
   SIG_MESSAGE("Vanadium (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("Vanadium_incoherent") strncpy(mccVanadium_process_string, "Vanadium_incoherent" ? "Vanadium_incoherent" : "", 16384); else mccVanadium_process_string[0]='\0';
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccVanadium_my_absorption = 2 * 5.08 * 100 / 27.66;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccVanadium_absorber = 0;
 #line 11961 "./Union_test_absorption_image.c"
 
@@ -11969,11 +11969,11 @@ void mcinit(void) {
   rot_transpose(mcrotaVanadium_incoherent, mctr1);
   rot_mul(mcrotaVanadium, mctr1, mcrotrVanadium);
   mcposaVanadium = coords_set(
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 11978 "./Union_test_absorption_image.c"
   mctc1 = coords_sub(mcposaVanadium_incoherent, mcposaVanadium);
@@ -11986,17 +11986,17 @@ void mcinit(void) {
     /* Component Al_incoherent. */
   /* Setting parameters for component Al_incoherent. */
   SIG_MESSAGE("Al_incoherent (Init:SetPar)");
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAl_incoherent_sigma = 4 * 0.0082;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAl_incoherent_f_QE = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAl_incoherent_gamma = 0;
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAl_incoherent_packing_factor = 1;
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAl_incoherent_unit_cell_volume = 66.4;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAl_incoherent_interact_fraction = -1;
 #line 12001 "./Union_test_absorption_image.c"
 
@@ -12009,11 +12009,11 @@ void mcinit(void) {
   rot_transpose(mcrotaVanadium, mctr1);
   rot_mul(mcrotaAl_incoherent, mctr1, mcrotrAl_incoherent);
   mcposaAl_incoherent = coords_set(
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 12018 "./Union_test_absorption_image.c"
   mctc1 = coords_sub(mcposaVanadium, mcposaAl_incoherent);
@@ -12026,29 +12026,29 @@ void mcinit(void) {
     /* Component Al_powder. */
   /* Setting parameters for component Al_powder. */
   SIG_MESSAGE("Al_powder (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("Al.laz") strncpy(mccAl_powder_reflections, "Al.laz" ? "Al.laz" : "", 16384); else mccAl_powder_reflections[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAl_powder_packing_factor = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAl_powder_Vc = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAl_powder_delta_d_d = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAl_powder_DW = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAl_powder_nb_atoms = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAl_powder_d_phi = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAl_powder_density = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAl_powder_weight = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAl_powder_barns = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAl_powder_Strain = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAl_powder_interact_fraction = -1;
 #line 12053 "./Union_test_absorption_image.c"
 
@@ -12061,11 +12061,11 @@ void mcinit(void) {
   rot_transpose(mcrotaAl_incoherent, mctr1);
   rot_mul(mcrotaAl_powder, mctr1, mcrotrAl_powder);
   mcposaAl_powder = coords_set(
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 12070 "./Union_test_absorption_image.c"
   mctc1 = coords_sub(mcposaAl_incoherent, mcposaAl_powder);
@@ -12078,11 +12078,11 @@ void mcinit(void) {
     /* Component Al. */
   /* Setting parameters for component Al. */
   SIG_MESSAGE("Al (Init:SetPar)");
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("NULL") strncpy(mccAl_process_string, "NULL" ? "NULL" : "", 16384); else mccAl_process_string[0]='\0';
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAl_my_absorption = 100 * 4 * 0.231 / 66.4;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAl_absorber = 0;
 #line 12087 "./Union_test_absorption_image.c"
 
@@ -12095,11 +12095,11 @@ void mcinit(void) {
   rot_transpose(mcrotaAl_powder, mctr1);
   rot_mul(mcrotaAl, mctr1, mcrotrAl);
   mcposaAl = coords_set(
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 12104 "./Union_test_absorption_image.c"
   mctc1 = coords_sub(mcposaAl_powder, mcposaAl);
@@ -12112,17 +12112,17 @@ void mcinit(void) {
     /* Component Absorber_incoherent. */
   /* Setting parameters for component Absorber_incoherent. */
   SIG_MESSAGE("Absorber_incoherent (Init:SetPar)");
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAbsorber_incoherent_sigma = 2.2;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAbsorber_incoherent_f_QE = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAbsorber_incoherent_gamma = 0;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAbsorber_incoherent_packing_factor = 1;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAbsorber_incoherent_unit_cell_volume = 13.827;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAbsorber_incoherent_interact_fraction = -1;
 #line 12127 "./Union_test_absorption_image.c"
 
@@ -12135,11 +12135,11 @@ void mcinit(void) {
   rot_transpose(mcrotaAl, mctr1);
   rot_mul(mcrotaAbsorber_incoherent, mctr1, mcrotrAbsorber_incoherent);
   mcposaAbsorber_incoherent = coords_set(
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 12144 "./Union_test_absorption_image.c"
   mctc1 = coords_sub(mcposaAl, mcposaAbsorber_incoherent);
@@ -12152,11 +12152,11 @@ void mcinit(void) {
     /* Component Absorber. */
   /* Setting parameters for component Absorber. */
   SIG_MESSAGE("Absorber (Init:SetPar)");
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("NULL") strncpy(mccAbsorber_process_string, "NULL" ? "NULL" : "", 16384); else mccAbsorber_process_string[0]='\0';
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAbsorber_my_absorption = 1000;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccAbsorber_absorber = 1;
 #line 12161 "./Union_test_absorption_image.c"
 
@@ -12169,11 +12169,11 @@ void mcinit(void) {
   rot_transpose(mcrotaAbsorber_incoherent, mctr1);
   rot_mul(mcrotaAbsorber, mctr1, mcrotrAbsorber);
   mcposaAbsorber = coords_set(
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 12178 "./Union_test_absorption_image.c"
   mctc1 = coords_sub(mcposaAbsorber_incoherent, mcposaAbsorber);
@@ -12186,13 +12186,13 @@ void mcinit(void) {
     /* Component a1. */
   /* Setting parameters for component a1. */
   SIG_MESSAGE("a1 (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("NULL") strncpy(mcca1_profile, "NULL" ? "NULL" : "", 16384); else mcca1_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcca1_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcca1_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcca1_minutes = 0;
 #line 12197 "./Union_test_absorption_image.c"
 
@@ -12205,11 +12205,11 @@ void mcinit(void) {
   rot_transpose(mcrotaAbsorber, mctr1);
   rot_mul(mcrotaa1, mctr1, mcrotra1);
   mcposaa1 = coords_set(
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 12214 "./Union_test_absorption_image.c"
   mctc1 = coords_sub(mcposaAbsorber, mcposaa1);
@@ -12222,46 +12222,46 @@ void mcinit(void) {
     /* Component source. */
   /* Setting parameters for component source. */
   SIG_MESSAGE("source (Init:SetPar)");
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsource_xwidth = 0.45;
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsource_yheight = 1.1;
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsource_focus_aw = 0.1;
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsource_focus_ah = 0.1;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsource_E0 = 10;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsource_dE = 0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsource_lambda0 = 0.0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsource_dlambda = 0.0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsource_gauss = 0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsource_flux = 1;
 #line 12245 "./Union_test_absorption_image.c"
 
   SIG_MESSAGE("source (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 12255 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotaa1, mcrotasource);
   rot_transpose(mcrotaa1, mctr1);
   rot_mul(mcrotasource, mctr1, mcrotrsource);
   mctc1 = coords_set(
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0.35,
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 12266 "./Union_test_absorption_image.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -12280,22 +12280,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("beam_center (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 12289 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotaa1, mcrotabeam_center);
   rot_transpose(mcrotasource, mctr1);
   rot_mul(mcrotabeam_center, mctr1, mcrotrbeam_center);
   mctc1 = coords_set(
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     1.4);
 #line 12300 "./Union_test_absorption_image.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -12314,22 +12314,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("drum_center (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 12323 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotabeam_center, mcrotadrum_center);
   rot_transpose(mcrotabeam_center, mctr1);
   rot_mul(mcrotadrum_center, mctr1, mcrotrdrum_center);
   mctc1 = coords_set(
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0.38,
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 12334 "./Union_test_absorption_image.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -12345,62 +12345,62 @@ void mcinit(void) {
     /* Component cryostat_mountin_plate. */
   /* Setting parameters for component cryostat_mountin_plate. */
   SIG_MESSAGE("cryostat_mountin_plate (Init:SetPar)");
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("Al") strncpy(mcccryostat_mountin_plate_material_string, "Al" ? "Al" : "", 16384); else mcccryostat_mountin_plate_material_string[0]='\0';
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_mountin_plate_priority = 7;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_mountin_plate_radius = 0.12;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_mountin_plate_yheight = 0.01;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_mountin_plate_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_mountin_plate_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_mountin_plate_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_mountin_plate_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_mountin_plate_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_mountin_plate_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_mountin_plate_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_mountin_plate_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_mountin_plate_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_mountin_plate_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_mountin_plate_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mcccryostat_mountin_plate_mask_string, 0 ? 0 : "", 16384); else mcccryostat_mountin_plate_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mcccryostat_mountin_plate_mask_setting, 0 ? 0 : "", 16384); else mcccryostat_mountin_plate_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_mountin_plate_number_of_activations = 1;
 #line 12384 "./Union_test_absorption_image.c"
 
   SIG_MESSAGE("cryostat_mountin_plate (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 12394 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotabeam_center, mcrotacryostat_mountin_plate);
   rot_transpose(mcrotadrum_center, mctr1);
   rot_mul(mcrotacryostat_mountin_plate, mctr1, mcrotrcryostat_mountin_plate);
   mctc1 = coords_set(
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     -0.103,
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 12405 "./Union_test_absorption_image.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -12416,62 +12416,62 @@ void mcinit(void) {
     /* Component cryostat_drum_walls. */
   /* Setting parameters for component cryostat_drum_walls. */
   SIG_MESSAGE("cryostat_drum_walls (Init:SetPar)");
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("Al") strncpy(mcccryostat_drum_walls_material_string, "Al" ? "Al" : "", 16384); else mcccryostat_drum_walls_material_string[0]='\0';
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_walls_priority = 8;
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_walls_radius = 0.2;
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_walls_yheight = 0.57;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_walls_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_walls_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_walls_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_walls_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_walls_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_walls_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_walls_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_walls_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_walls_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_walls_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_walls_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mcccryostat_drum_walls_mask_string, 0 ? 0 : "", 16384); else mcccryostat_drum_walls_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mcccryostat_drum_walls_mask_setting, 0 ? 0 : "", 16384); else mcccryostat_drum_walls_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_walls_number_of_activations = 1;
 #line 12455 "./Union_test_absorption_image.c"
 
   SIG_MESSAGE("cryostat_drum_walls (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 12465 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotadrum_center, mcrotacryostat_drum_walls);
   rot_transpose(mcrotacryostat_mountin_plate, mctr1);
   rot_mul(mcrotacryostat_drum_walls, mctr1, mcrotrcryostat_drum_walls);
   mctc1 = coords_set(
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 12476 "./Union_test_absorption_image.c"
   rot_transpose(mcrotadrum_center, mctr1);
@@ -12487,62 +12487,62 @@ void mcinit(void) {
     /* Component cryostat_drum_vacuum. */
   /* Setting parameters for component cryostat_drum_vacuum. */
   SIG_MESSAGE("cryostat_drum_vacuum (Init:SetPar)");
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("Vacuum") strncpy(mcccryostat_drum_vacuum_material_string, "Vacuum" ? "Vacuum" : "", 16384); else mcccryostat_drum_vacuum_material_string[0]='\0';
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_vacuum_priority = 9;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_vacuum_radius = 0.19;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_vacuum_yheight = 0.55;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_vacuum_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_vacuum_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_vacuum_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_vacuum_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_vacuum_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_vacuum_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_vacuum_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_vacuum_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_vacuum_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_vacuum_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_vacuum_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mcccryostat_drum_vacuum_mask_string, 0 ? 0 : "", 16384); else mcccryostat_drum_vacuum_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mcccryostat_drum_vacuum_mask_setting, 0 ? 0 : "", 16384); else mcccryostat_drum_vacuum_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcccryostat_drum_vacuum_number_of_activations = 1;
 #line 12526 "./Union_test_absorption_image.c"
 
   SIG_MESSAGE("cryostat_drum_vacuum (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 12536 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotadrum_center, mcrotacryostat_drum_vacuum);
   rot_transpose(mcrotacryostat_drum_walls, mctr1);
   rot_mul(mcrotacryostat_drum_vacuum, mctr1, mcrotrcryostat_drum_vacuum);
   mctc1 = coords_set(
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 12547 "./Union_test_absorption_image.c"
   rot_transpose(mcrotadrum_center, mctr1);
@@ -12558,62 +12558,62 @@ void mcinit(void) {
     /* Component outer_cryostat_wall. */
   /* Setting parameters for component outer_cryostat_wall. */
   SIG_MESSAGE("outer_cryostat_wall (Init:SetPar)");
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("Al") strncpy(mccouter_cryostat_wall_material_string, "Al" ? "Al" : "", 16384); else mccouter_cryostat_wall_material_string[0]='\0';
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_wall_priority = 10;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_wall_radius = 0.1;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_wall_yheight = 0.2;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_wall_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_wall_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_wall_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_wall_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_wall_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_wall_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_wall_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_wall_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_wall_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_wall_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_wall_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccouter_cryostat_wall_mask_string, 0 ? 0 : "", 16384); else mccouter_cryostat_wall_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccouter_cryostat_wall_mask_setting, 0 ? 0 : "", 16384); else mccouter_cryostat_wall_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_wall_number_of_activations = 1;
 #line 12597 "./Union_test_absorption_image.c"
 
   SIG_MESSAGE("outer_cryostat_wall (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 12607 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotabeam_center, mcrotaouter_cryostat_wall);
   rot_transpose(mcrotacryostat_drum_vacuum, mctr1);
   rot_mul(mcrotaouter_cryostat_wall, mctr1, mcrotrouter_cryostat_wall);
   mctc1 = coords_set(
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 12618 "./Union_test_absorption_image.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -12629,62 +12629,62 @@ void mcinit(void) {
     /* Component outer_cryostat_vacuum. */
   /* Setting parameters for component outer_cryostat_vacuum. */
   SIG_MESSAGE("outer_cryostat_vacuum (Init:SetPar)");
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("Vacuum") strncpy(mccouter_cryostat_vacuum_material_string, "Vacuum" ? "Vacuum" : "", 16384); else mccouter_cryostat_vacuum_material_string[0]='\0';
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_vacuum_priority = 11;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_vacuum_radius = 0.09;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_vacuum_yheight = 0.2;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_vacuum_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_vacuum_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_vacuum_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_vacuum_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_vacuum_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_vacuum_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_vacuum_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_vacuum_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_vacuum_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_vacuum_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_vacuum_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccouter_cryostat_vacuum_mask_string, 0 ? 0 : "", 16384); else mccouter_cryostat_vacuum_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccouter_cryostat_vacuum_mask_setting, 0 ? 0 : "", 16384); else mccouter_cryostat_vacuum_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccouter_cryostat_vacuum_number_of_activations = 1;
 #line 12668 "./Union_test_absorption_image.c"
 
   SIG_MESSAGE("outer_cryostat_vacuum (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 12678 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotabeam_center, mcrotaouter_cryostat_vacuum);
   rot_transpose(mcrotaouter_cryostat_wall, mctr1);
   rot_mul(mcrotaouter_cryostat_vacuum, mctr1, mcrotrouter_cryostat_vacuum);
   mctc1 = coords_set(
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0.01,
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 12689 "./Union_test_absorption_image.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -12700,62 +12700,62 @@ void mcinit(void) {
     /* Component inner_cryostat_wall. */
   /* Setting parameters for component inner_cryostat_wall. */
   SIG_MESSAGE("inner_cryostat_wall (Init:SetPar)");
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("Al") strncpy(mccinner_cryostat_wall_material_string, "Al" ? "Al" : "", 16384); else mccinner_cryostat_wall_material_string[0]='\0';
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_wall_priority = 12;
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_wall_radius = 0.06;
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_wall_yheight = 0.16;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_wall_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_wall_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_wall_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_wall_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_wall_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_wall_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_wall_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_wall_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_wall_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_wall_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_wall_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccinner_cryostat_wall_mask_string, 0 ? 0 : "", 16384); else mccinner_cryostat_wall_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccinner_cryostat_wall_mask_setting, 0 ? 0 : "", 16384); else mccinner_cryostat_wall_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_wall_number_of_activations = 1;
 #line 12739 "./Union_test_absorption_image.c"
 
   SIG_MESSAGE("inner_cryostat_wall (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 12749 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotabeam_center, mcrotainner_cryostat_wall);
   rot_transpose(mcrotaouter_cryostat_vacuum, mctr1);
   rot_mul(mcrotainner_cryostat_wall, mctr1, mcrotrinner_cryostat_wall);
   mctc1 = coords_set(
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0.01,
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 12760 "./Union_test_absorption_image.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -12771,62 +12771,62 @@ void mcinit(void) {
     /* Component inner_cryostat_vacuum. */
   /* Setting parameters for component inner_cryostat_vacuum. */
   SIG_MESSAGE("inner_cryostat_vacuum (Init:SetPar)");
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("Vacuum") strncpy(mccinner_cryostat_vacuum_material_string, "Vacuum" ? "Vacuum" : "", 16384); else mccinner_cryostat_vacuum_material_string[0]='\0';
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_vacuum_priority = 13;
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_vacuum_radius = 0.05;
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_vacuum_yheight = 0.15;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_vacuum_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_vacuum_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_vacuum_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_vacuum_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_vacuum_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_vacuum_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_vacuum_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_vacuum_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_vacuum_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_vacuum_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_vacuum_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccinner_cryostat_vacuum_mask_string, 0 ? 0 : "", 16384); else mccinner_cryostat_vacuum_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccinner_cryostat_vacuum_mask_setting, 0 ? 0 : "", 16384); else mccinner_cryostat_vacuum_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccinner_cryostat_vacuum_number_of_activations = 1;
 #line 12810 "./Union_test_absorption_image.c"
 
   SIG_MESSAGE("inner_cryostat_vacuum (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 12820 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotabeam_center, mcrotainner_cryostat_vacuum);
   rot_transpose(mcrotainner_cryostat_wall, mctr1);
   rot_mul(mcrotainner_cryostat_vacuum, mctr1, mcrotrinner_cryostat_vacuum);
   mctc1 = coords_set(
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0.01,
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 12831 "./Union_test_absorption_image.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -12842,62 +12842,62 @@ void mcinit(void) {
     /* Component sample_stick_walls. */
   /* Setting parameters for component sample_stick_walls. */
   SIG_MESSAGE("sample_stick_walls (Init:SetPar)");
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("Al") strncpy(mccsample_stick_walls_material_string, "Al" ? "Al" : "", 16384); else mccsample_stick_walls_material_string[0]='\0';
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_walls_priority = 14;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_walls_radius = 0.04;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_walls_yheight = 0.605;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_walls_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_walls_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_walls_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_walls_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_walls_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_walls_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_walls_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_walls_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_walls_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_walls_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_walls_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_stick_walls_mask_string, 0 ? 0 : "", 16384); else mccsample_stick_walls_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_stick_walls_mask_setting, 0 ? 0 : "", 16384); else mccsample_stick_walls_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_walls_number_of_activations = 1;
 #line 12881 "./Union_test_absorption_image.c"
 
   SIG_MESSAGE("sample_stick_walls (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 12891 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotabeam_center, mcrotasample_stick_walls);
   rot_transpose(mcrotainner_cryostat_vacuum, mctr1);
   rot_mul(mcrotasample_stick_walls, mctr1, mcrotrsample_stick_walls);
   mctc1 = coords_set(
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0.39,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 12902 "./Union_test_absorption_image.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -12913,62 +12913,62 @@ void mcinit(void) {
     /* Component sample_stick_vacuum. */
   /* Setting parameters for component sample_stick_vacuum. */
   SIG_MESSAGE("sample_stick_vacuum (Init:SetPar)");
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("Vacuum") strncpy(mccsample_stick_vacuum_material_string, "Vacuum" ? "Vacuum" : "", 16384); else mccsample_stick_vacuum_material_string[0]='\0';
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_vacuum_priority = 15;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_vacuum_radius = 0.035;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_vacuum_yheight = 0.64;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_vacuum_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_vacuum_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_vacuum_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_vacuum_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_vacuum_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_vacuum_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_vacuum_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_vacuum_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_vacuum_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_vacuum_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_vacuum_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_stick_vacuum_mask_string, 0 ? 0 : "", 16384); else mccsample_stick_vacuum_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_stick_vacuum_mask_setting, 0 ? 0 : "", 16384); else mccsample_stick_vacuum_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_stick_vacuum_number_of_activations = 1;
 #line 12952 "./Union_test_absorption_image.c"
 
   SIG_MESSAGE("sample_stick_vacuum (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 12962 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotabeam_center, mcrotasample_stick_vacuum);
   rot_transpose(mcrotasample_stick_walls, mctr1);
   rot_mul(mcrotasample_stick_vacuum, mctr1, mcrotrsample_stick_vacuum);
   mctc1 = coords_set(
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0.4,
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 12973 "./Union_test_absorption_image.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -12987,22 +12987,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("sample_rod_bottom (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (45)*DEG2RAD,
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 12996 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotabeam_center, mcrotasample_rod_bottom);
   rot_transpose(mcrotasample_stick_vacuum, mctr1);
   rot_mul(mcrotasample_rod_bottom, mctr1, mcrotrsample_rod_bottom);
   mctc1 = coords_set(
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0.05 + mcipstick_displacement,
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 13007 "./Union_test_absorption_image.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -13018,62 +13018,62 @@ void mcinit(void) {
     /* Component sample_rod. */
   /* Setting parameters for component sample_rod. */
   SIG_MESSAGE("sample_rod (Init:SetPar)");
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("Al") strncpy(mccsample_rod_material_string, "Al" ? "Al" : "", 16384); else mccsample_rod_material_string[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_priority = 25;
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_radius = 0.0075;
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_yheight = 0.7;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_rod_mask_string, 0 ? 0 : "", 16384); else mccsample_rod_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_rod_mask_setting, 0 ? 0 : "", 16384); else mccsample_rod_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_number_of_activations = 1;
 #line 13057 "./Union_test_absorption_image.c"
 
   SIG_MESSAGE("sample_rod (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 13067 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotasample_rod_bottom, mcrotasample_rod);
   rot_transpose(mcrotasample_rod_bottom, mctr1);
   rot_mul(mcrotasample_rod, mctr1, mcrotrsample_rod);
   mctc1 = coords_set(
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0.35,
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 13078 "./Union_test_absorption_image.c"
   rot_transpose(mcrotasample_rod_bottom, mctr1);
@@ -13089,62 +13089,62 @@ void mcinit(void) {
     /* Component sample_rod_collar_1. */
   /* Setting parameters for component sample_rod_collar_1. */
   SIG_MESSAGE("sample_rod_collar_1 (Init:SetPar)");
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("Al") strncpy(mccsample_rod_collar_1_material_string, "Al" ? "Al" : "", 16384); else mccsample_rod_collar_1_material_string[0]='\0';
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_priority = 17;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_radius = 0.034;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_yheight = 0.02;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_rod_collar_1_mask_string, 0 ? 0 : "", 16384); else mccsample_rod_collar_1_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_rod_collar_1_mask_setting, 0 ? 0 : "", 16384); else mccsample_rod_collar_1_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_number_of_activations = 1;
 #line 13128 "./Union_test_absorption_image.c"
 
   SIG_MESSAGE("sample_rod_collar_1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 13138 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotasample_rod_bottom, mcrotasample_rod_collar_1);
   rot_transpose(mcrotasample_rod, mctr1);
   rot_mul(mcrotasample_rod_collar_1, mctr1, mcrotrsample_rod_collar_1);
   mctc1 = coords_set(
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0.048,
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 13149 "./Union_test_absorption_image.c"
   rot_transpose(mcrotasample_rod_bottom, mctr1);
@@ -13160,62 +13160,62 @@ void mcinit(void) {
     /* Component sample_rod_collar_2. */
   /* Setting parameters for component sample_rod_collar_2. */
   SIG_MESSAGE("sample_rod_collar_2 (Init:SetPar)");
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("Al") strncpy(mccsample_rod_collar_2_material_string, "Al" ? "Al" : "", 16384); else mccsample_rod_collar_2_material_string[0]='\0';
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_priority = 18;
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_radius = 0.034;
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_yheight = 0.02;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_rod_collar_2_mask_string, 0 ? 0 : "", 16384); else mccsample_rod_collar_2_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_rod_collar_2_mask_setting, 0 ? 0 : "", 16384); else mccsample_rod_collar_2_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_number_of_activations = 1;
 #line 13199 "./Union_test_absorption_image.c"
 
   SIG_MESSAGE("sample_rod_collar_2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 13209 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotasample_rod_bottom, mcrotasample_rod_collar_2);
   rot_transpose(mcrotasample_rod_collar_1, mctr1);
   rot_mul(mcrotasample_rod_collar_2, mctr1, mcrotrsample_rod_collar_2);
   mctc1 = coords_set(
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0.14,
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 13220 "./Union_test_absorption_image.c"
   rot_transpose(mcrotasample_rod_bottom, mctr1);
@@ -13231,62 +13231,62 @@ void mcinit(void) {
     /* Component sample_rod_collar_3. */
   /* Setting parameters for component sample_rod_collar_3. */
   SIG_MESSAGE("sample_rod_collar_3 (Init:SetPar)");
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("Al") strncpy(mccsample_rod_collar_3_material_string, "Al" ? "Al" : "", 16384); else mccsample_rod_collar_3_material_string[0]='\0';
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_priority = 19;
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_radius = 0.034;
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_yheight = 0.02;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_rod_collar_3_mask_string, 0 ? 0 : "", 16384); else mccsample_rod_collar_3_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_rod_collar_3_mask_setting, 0 ? 0 : "", 16384); else mccsample_rod_collar_3_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_number_of_activations = 1;
 #line 13270 "./Union_test_absorption_image.c"
 
   SIG_MESSAGE("sample_rod_collar_3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 13280 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotasample_rod_bottom, mcrotasample_rod_collar_3);
   rot_transpose(mcrotasample_rod_collar_2, mctr1);
   rot_mul(mcrotasample_rod_collar_3, mctr1, mcrotrsample_rod_collar_3);
   mctc1 = coords_set(
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0.34,
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 13291 "./Union_test_absorption_image.c"
   rot_transpose(mcrotasample_rod_bottom, mctr1);
@@ -13302,62 +13302,62 @@ void mcinit(void) {
     /* Component sample_rod_collar_4. */
   /* Setting parameters for component sample_rod_collar_4. */
   SIG_MESSAGE("sample_rod_collar_4 (Init:SetPar)");
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("Al") strncpy(mccsample_rod_collar_4_material_string, "Al" ? "Al" : "", 16384); else mccsample_rod_collar_4_material_string[0]='\0';
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_priority = 20;
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_radius = 0.034;
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_yheight = 0.02;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_rod_collar_4_mask_string, 0 ? 0 : "", 16384); else mccsample_rod_collar_4_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_rod_collar_4_mask_setting, 0 ? 0 : "", 16384); else mccsample_rod_collar_4_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_number_of_activations = 1;
 #line 13341 "./Union_test_absorption_image.c"
 
   SIG_MESSAGE("sample_rod_collar_4 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 13351 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotasample_rod_bottom, mcrotasample_rod_collar_4);
   rot_transpose(mcrotasample_rod_collar_3, mctr1);
   rot_mul(mcrotasample_rod_collar_4, mctr1, mcrotrsample_rod_collar_4);
   mctc1 = coords_set(
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0.635,
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 13362 "./Union_test_absorption_image.c"
   rot_transpose(mcrotasample_rod_bottom, mctr1);
@@ -13373,62 +13373,62 @@ void mcinit(void) {
     /* Component sample_rod_collar_1_vacuum. */
   /* Setting parameters for component sample_rod_collar_1_vacuum. */
   SIG_MESSAGE("sample_rod_collar_1_vacuum (Init:SetPar)");
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("Vacuum") strncpy(mccsample_rod_collar_1_vacuum_material_string, "Vacuum" ? "Vacuum" : "", 16384); else mccsample_rod_collar_1_vacuum_material_string[0]='\0';
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_vacuum_priority = 21;
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_vacuum_radius = 0.03;
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_vacuum_yheight = 0.016;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_vacuum_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_vacuum_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_vacuum_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_vacuum_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_vacuum_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_vacuum_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_vacuum_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_vacuum_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_vacuum_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_vacuum_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_vacuum_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_rod_collar_1_vacuum_mask_string, 0 ? 0 : "", 16384); else mccsample_rod_collar_1_vacuum_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_rod_collar_1_vacuum_mask_setting, 0 ? 0 : "", 16384); else mccsample_rod_collar_1_vacuum_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_1_vacuum_number_of_activations = 1;
 #line 13412 "./Union_test_absorption_image.c"
 
   SIG_MESSAGE("sample_rod_collar_1_vacuum (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 13422 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotasample_rod_bottom, mcrotasample_rod_collar_1_vacuum);
   rot_transpose(mcrotasample_rod_collar_4, mctr1);
   rot_mul(mcrotasample_rod_collar_1_vacuum, mctr1, mcrotrsample_rod_collar_1_vacuum);
   mctc1 = coords_set(
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0.048 -0.005,
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 13433 "./Union_test_absorption_image.c"
   rot_transpose(mcrotasample_rod_bottom, mctr1);
@@ -13444,62 +13444,62 @@ void mcinit(void) {
     /* Component sample_rod_collar_2_vacuum. */
   /* Setting parameters for component sample_rod_collar_2_vacuum. */
   SIG_MESSAGE("sample_rod_collar_2_vacuum (Init:SetPar)");
-#line 159 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 159 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("Vacuum") strncpy(mccsample_rod_collar_2_vacuum_material_string, "Vacuum" ? "Vacuum" : "", 16384); else mccsample_rod_collar_2_vacuum_material_string[0]='\0';
-#line 159 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 159 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_vacuum_priority = 22;
-#line 159 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 159 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_vacuum_radius = 0.03;
-#line 159 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 159 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_vacuum_yheight = 0.016;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_vacuum_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_vacuum_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_vacuum_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_vacuum_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_vacuum_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_vacuum_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_vacuum_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_vacuum_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_vacuum_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_vacuum_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_vacuum_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_rod_collar_2_vacuum_mask_string, 0 ? 0 : "", 16384); else mccsample_rod_collar_2_vacuum_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_rod_collar_2_vacuum_mask_setting, 0 ? 0 : "", 16384); else mccsample_rod_collar_2_vacuum_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_2_vacuum_number_of_activations = 1;
 #line 13483 "./Union_test_absorption_image.c"
 
   SIG_MESSAGE("sample_rod_collar_2_vacuum (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 161 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 161 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 161 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 161 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 161 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 161 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 13493 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotasample_rod_bottom, mcrotasample_rod_collar_2_vacuum);
   rot_transpose(mcrotasample_rod_collar_1_vacuum, mctr1);
   rot_mul(mcrotasample_rod_collar_2_vacuum, mctr1, mcrotrsample_rod_collar_2_vacuum);
   mctc1 = coords_set(
-#line 160 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 160 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 160 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 160 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0.14 -0.005,
-#line 160 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 160 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 13504 "./Union_test_absorption_image.c"
   rot_transpose(mcrotasample_rod_bottom, mctr1);
@@ -13515,62 +13515,62 @@ void mcinit(void) {
     /* Component sample_rod_collar_3_vacuum. */
   /* Setting parameters for component sample_rod_collar_3_vacuum. */
   SIG_MESSAGE("sample_rod_collar_3_vacuum (Init:SetPar)");
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 164 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("Vacuum") strncpy(mccsample_rod_collar_3_vacuum_material_string, "Vacuum" ? "Vacuum" : "", 16384); else mccsample_rod_collar_3_vacuum_material_string[0]='\0';
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 164 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_vacuum_priority = 23;
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 164 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_vacuum_radius = 0.03;
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 164 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_vacuum_yheight = 0.016;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_vacuum_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_vacuum_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_vacuum_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_vacuum_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_vacuum_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_vacuum_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_vacuum_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_vacuum_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_vacuum_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_vacuum_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_vacuum_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_rod_collar_3_vacuum_mask_string, 0 ? 0 : "", 16384); else mccsample_rod_collar_3_vacuum_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_rod_collar_3_vacuum_mask_setting, 0 ? 0 : "", 16384); else mccsample_rod_collar_3_vacuum_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_3_vacuum_number_of_activations = 1;
 #line 13554 "./Union_test_absorption_image.c"
 
   SIG_MESSAGE("sample_rod_collar_3_vacuum (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 13564 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotasample_rod_bottom, mcrotasample_rod_collar_3_vacuum);
   rot_transpose(mcrotasample_rod_collar_2_vacuum, mctr1);
   rot_mul(mcrotasample_rod_collar_3_vacuum, mctr1, mcrotrsample_rod_collar_3_vacuum);
   mctc1 = coords_set(
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0.34 -0.005,
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 13575 "./Union_test_absorption_image.c"
   rot_transpose(mcrotasample_rod_bottom, mctr1);
@@ -13586,62 +13586,62 @@ void mcinit(void) {
     /* Component sample_rod_collar_4_vacuum. */
   /* Setting parameters for component sample_rod_collar_4_vacuum. */
   SIG_MESSAGE("sample_rod_collar_4_vacuum (Init:SetPar)");
-#line 169 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("Vacuum") strncpy(mccsample_rod_collar_4_vacuum_material_string, "Vacuum" ? "Vacuum" : "", 16384); else mccsample_rod_collar_4_vacuum_material_string[0]='\0';
-#line 169 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_vacuum_priority = 24;
-#line 169 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_vacuum_radius = 0.03;
-#line 169 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_vacuum_yheight = 0.016;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_vacuum_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_vacuum_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_vacuum_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_vacuum_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_vacuum_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_vacuum_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_vacuum_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_vacuum_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_vacuum_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_vacuum_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_vacuum_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_rod_collar_4_vacuum_mask_string, 0 ? 0 : "", 16384); else mccsample_rod_collar_4_vacuum_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_rod_collar_4_vacuum_mask_setting, 0 ? 0 : "", 16384); else mccsample_rod_collar_4_vacuum_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_rod_collar_4_vacuum_number_of_activations = 1;
 #line 13625 "./Union_test_absorption_image.c"
 
   SIG_MESSAGE("sample_rod_collar_4_vacuum (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 13635 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotasample_rod_bottom, mcrotasample_rod_collar_4_vacuum);
   rot_transpose(mcrotasample_rod_collar_3_vacuum, mctr1);
   rot_mul(mcrotasample_rod_collar_4_vacuum, mctr1, mcrotrsample_rod_collar_4_vacuum);
   mctc1 = coords_set(
-#line 170 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 170 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 170 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 170 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0.635 -0.005,
-#line 170 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 170 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 13646 "./Union_test_absorption_image.c"
   rot_transpose(mcrotasample_rod_bottom, mctr1);
@@ -13657,68 +13657,68 @@ void mcinit(void) {
     /* Component sample_holder1. */
   /* Setting parameters for component sample_holder1. */
   SIG_MESSAGE("sample_holder1 (Init:SetPar)");
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("Absorber") strncpy(mccsample_holder1_material_string, "Absorber" ? "Absorber" : "", 16384); else mccsample_holder1_material_string[0]='\0';
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder1_priority = 35;
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder1_xwidth = 0.01;
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder1_yheight = 0.035;
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder1_zdepth = 0.002;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder1_xwidth2 = -1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder1_yheight2 = -1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder1_visualize = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder1_target_index = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder1_target_x = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder1_target_y = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder1_target_z = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder1_focus_aw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder1_focus_ah = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder1_focus_xw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder1_focus_xh = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder1_focus_r = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder1_p_interact = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_holder1_mask_string, 0 ? 0 : "", 16384); else mccsample_holder1_mask_string[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_holder1_mask_setting, 0 ? 0 : "", 16384); else mccsample_holder1_mask_setting[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder1_number_of_activations = 1;
 #line 13702 "./Union_test_absorption_image.c"
 
   SIG_MESSAGE("sample_holder1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 13712 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotasample_rod_bottom, mcrotasample_holder1);
   rot_transpose(mcrotasample_rod_collar_4_vacuum, mctr1);
   rot_mul(mcrotasample_holder1, mctr1, mcrotrsample_holder1);
   mctc1 = coords_set(
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 175 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 175 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     -0.014 + 0.02,
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 175 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 13723 "./Union_test_absorption_image.c"
   rot_transpose(mcrotasample_rod_bottom, mctr1);
@@ -13734,68 +13734,68 @@ void mcinit(void) {
     /* Component sample_holder2. */
   /* Setting parameters for component sample_holder2. */
   SIG_MESSAGE("sample_holder2 (Init:SetPar)");
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("Absorber") strncpy(mccsample_holder2_material_string, "Absorber" ? "Absorber" : "", 16384); else mccsample_holder2_material_string[0]='\0';
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder2_priority = 36;
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder2_xwidth = 0.009;
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder2_yheight = 0.002;
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder2_zdepth = 0.015;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder2_xwidth2 = -1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder2_yheight2 = -1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder2_visualize = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder2_target_index = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder2_target_x = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder2_target_y = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder2_target_z = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder2_focus_aw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder2_focus_ah = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder2_focus_xw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder2_focus_xh = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder2_focus_r = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder2_p_interact = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_holder2_mask_string, 0 ? 0 : "", 16384); else mccsample_holder2_mask_string[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_holder2_mask_setting, 0 ? 0 : "", 16384); else mccsample_holder2_mask_setting[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder2_number_of_activations = 1;
 #line 13779 "./Union_test_absorption_image.c"
 
   SIG_MESSAGE("sample_holder2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 181 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 181 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (10)*DEG2RAD,
-#line 181 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 181 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 181 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 181 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 13789 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotasample_rod_bottom, mcrotasample_holder2);
   rot_transpose(mcrotasample_holder1, mctr1);
   rot_mul(mcrotasample_holder2, mctr1, mcrotrsample_holder2);
   mctc1 = coords_set(
-#line 180 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 180 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 180 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 180 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0.02 + -0.014 -0.01501 + 0.0001 -0.004,
-#line 180 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 180 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0.0075 -0.003 * 0.5);
 #line 13800 "./Union_test_absorption_image.c"
   rot_transpose(mcrotasample_rod_bottom, mctr1);
@@ -13811,68 +13811,68 @@ void mcinit(void) {
     /* Component sample_holder3. */
   /* Setting parameters for component sample_holder3. */
   SIG_MESSAGE("sample_holder3 (Init:SetPar)");
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 184 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("Absorber") strncpy(mccsample_holder3_material_string, "Absorber" ? "Absorber" : "", 16384); else mccsample_holder3_material_string[0]='\0';
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 184 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder3_priority = 37;
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 184 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder3_xwidth = 0.01;
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 184 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder3_yheight = 0.05;
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 184 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder3_zdepth = 0.002;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder3_xwidth2 = -1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder3_yheight2 = -1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder3_visualize = 1;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder3_target_index = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder3_target_x = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder3_target_y = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder3_target_z = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder3_focus_aw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder3_focus_ah = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder3_focus_xw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder3_focus_xh = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder3_focus_r = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder3_p_interact = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_holder3_mask_string, 0 ? 0 : "", 16384); else mccsample_holder3_mask_string[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_holder3_mask_setting, 0 ? 0 : "", 16384); else mccsample_holder3_mask_setting[0]='\0';
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_holder3_number_of_activations = 1;
 #line 13856 "./Union_test_absorption_image.c"
 
   SIG_MESSAGE("sample_holder3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 13866 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotasample_rod_bottom, mcrotasample_holder3);
   rot_transpose(mcrotasample_holder2, mctr1);
   rot_mul(mcrotasample_holder3, mctr1, mcrotrsample_holder3);
   mctc1 = coords_set(
-#line 185 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 185 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 185 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 185 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0.02 -0.014 -0.01501 -0.004 + 0.002 * 0.5 -0.025 + 0.00001 -0.001,
-#line 185 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 185 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0.015 -0.003);
 #line 13877 "./Union_test_absorption_image.c"
   rot_transpose(mcrotasample_rod_bottom, mctr1);
@@ -13888,62 +13888,62 @@ void mcinit(void) {
     /* Component sample. */
   /* Setting parameters for component sample. */
   SIG_MESSAGE("sample (Init:SetPar)");
-#line 189 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 189 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("Vanadium") strncpy(mccsample_material_string, "Vanadium" ? "Vanadium" : "", 16384); else mccsample_material_string[0]='\0';
-#line 189 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 189 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_priority = 38;
-#line 189 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 189 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_radius = 0.008;
-#line 189 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 189 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_yheight = 0.042;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_focus_r = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_p_interact = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_mask_string, 0 ? 0 : "", 16384); else mccsample_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if(0) strncpy(mccsample_mask_setting, 0 ? 0 : "", 16384); else mccsample_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccsample_number_of_activations = 1;
 #line 13927 "./Union_test_absorption_image.c"
 
   SIG_MESSAGE("sample (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 191 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 191 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (-7)*DEG2RAD,
-#line 191 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 191 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 191 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 191 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (32)*DEG2RAD);
 #line 13937 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotasample_holder3, mcrotasample);
   rot_transpose(mcrotasample_holder3, mctr1);
   rot_mul(mcrotasample, mctr1, mcrotrsample);
   mctc1 = coords_set(
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     -0.01,
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     -0.011);
 #line 13948 "./Union_test_absorption_image.c"
   rot_transpose(mcrotasample_holder3, mctr1);
@@ -13959,34 +13959,34 @@ void mcinit(void) {
     /* Component test_sample. */
   /* Setting parameters for component test_sample. */
   SIG_MESSAGE("test_sample (Init:SetPar)");
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcctest_sample_allow_inside_start = 0;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcctest_sample_history_limit = 300000;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcctest_sample_enable_conditionals = 1;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mcctest_sample_inherit_number_of_scattering_events = 0;
 #line 13970 "./Union_test_absorption_image.c"
 
   SIG_MESSAGE("test_sample (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 196 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 196 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 196 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 196 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD,
-#line 196 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 196 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     (0)*DEG2RAD);
 #line 13980 "./Union_test_absorption_image.c"
   rot_mul(mctr1, mcrotabeam_center, mcrotatest_sample);
   rot_transpose(mcrotasample, mctr1);
   rot_mul(mcrotatest_sample, mctr1, mcrotrtest_sample);
   mctc1 = coords_set(
-#line 195 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 195 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 195 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 195 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 195 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 195 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0);
 #line 13991 "./Union_test_absorption_image.c"
   rot_transpose(mcrotabeam_center, mctr1);
@@ -14002,25 +14002,25 @@ void mcinit(void) {
     /* Component screen. */
   /* Setting parameters for component screen. */
   SIG_MESSAGE("screen (Init:SetPar)");
-#line 200 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 200 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccscreen_nx = 500;
-#line 200 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 200 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccscreen_ny = 1200;
-#line 200 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 200 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   if("absoprtion_picture.dat") strncpy(mccscreen_filename, "absoprtion_picture.dat" ? "absoprtion_picture.dat" : "", 16384); else mccscreen_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccscreen_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccscreen_xmax = 0.05;
-#line 199 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 199 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccscreen_ymin = -0.15;
-#line 199 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 199 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccscreen_ymax = 0.85;
-#line 199 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 199 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccscreen_xwidth = 0.4;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccscreen_yheight = 0;
-#line 200 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 200 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
   mccscreen_restore_neutron = 1;
 #line 14025 "./Union_test_absorption_image.c"
 
@@ -14034,11 +14034,11 @@ void mcinit(void) {
   rot_transpose(mcrotatest_sample, mctr1);
   rot_mul(mcrotascreen, mctr1, mcrotrscreen);
   mctc1 = coords_set(
-#line 201 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 201 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 201 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 201 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     0,
-#line 201 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
+#line 201 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_absorption_image/Union_test_absorption_image.instr"
     2);
 #line 14043 "./Union_test_absorption_image.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -19862,7 +19862,7 @@ add_element_to_geometry_list(&global_geometry_list,global_geometry_element);
           printf("Volume.name         [%d]: %s \n",iterate,global_geometry_list.elements[iterate].Volume->name);
           if (global_geometry_list.elements[iterate].Volume->geometry.is_mask_volume == 0) {
           printf("Volume.p_physics.is_vacuum           [%d]: %d \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->is_vacuum);
-          printf("Volume.p_physics.my_absoprtion       [%d]: %f \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->my_a);
+          printf("Volume.p_physics.my_absorption       [%d]: %f \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->my_a);
           printf("Volume.p_physics.number of processes [%d]: %d \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->number_of_processes);
           }
           printf("Volume.geometry.shape                [%d]: %s \n",iterate,global_geometry_list.elements[iterate].Volume->geometry.shape);

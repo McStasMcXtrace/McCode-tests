@@ -1,27 +1,27 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Nov. 19, 2019
-# Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr
+# Creator: McStas 2.5 - Feb. 24, 2020
+# Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr
 # Ncount: 1000000
 # Trace: no
 # Gravitation: no
-# Seed: 1574231892
+# Seed: 1582679640
 # Directory: 1
 # Nodes: 10
 # Param: lambda=3.4
 # Param: chopp_ratio=1
 # Param: DET=-69.9
-# Date: Wed Nov 20 01:05:57 2019 (1574208357)
+# Date: Tue Feb 25 21:30:57 2020 (1582662657)
 # type: array_1d(60)
-# Source: PSI_Focus (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
+# Source: PSI_Focus (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr)
 # component: EMON_SAMPLE
 # position: 1.26859 0 73.3234
 # title: Energy monitor
 # Ncount: 10000000
 # filename: emon_sample.dat
-# statistics: X0=7.08025; dX=0.129195;
-# signal: Min=0; Max=24909.4; Mean=1445.78;
-# values: 86746.6 1467.62 7075
+# statistics: X0=7.06958; dX=0.129731;
+# signal: Min=0; Max=28944.8; Mean=1504.86;
+# values: 90291.8 1508.75 7391
 # xvar: E
 # yvar: (I,I_err)
 # xlabel: Energy [meV]
@@ -45,13 +45,13 @@
 6.402652742 0 0 0 
 6.508577346 0 0 0 
 6.61450195 0 0 0 
-6.720426554 234.4774004 51.37879924 33 
-6.826351158 5294.986058 339.50944 531 
-6.932275762 15178.22979 605.836245 1238 
-7.038200366 24909.41219 787.5851718 2033 
-7.14412497 23249.4259 773.6833767 1921 
-7.250049574 15984.38301 640.8083673 1166 
-7.355974178 1895.64291 200.4933506 153 
+6.720426554 290.2338917 74.69557245 31 
+6.826351158 6305.725789 363.0135525 577 
+6.932275762 16811.40925 657.5140611 1368 
+7.038200366 28944.75987 851.968919 2305 
+7.14412497 20563.79665 732.5276045 1761 
+7.250049574 15645.54277 637.6809361 1163 
+7.355974178 1730.369873 195.8716246 186 
 7.461898782 0 0 0 
 7.567823386 0 0 0 
 7.67374799 0 0 0 

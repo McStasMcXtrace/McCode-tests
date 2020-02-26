@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr (PSI_DMC)
- * Date:       Wed Nov 20 00:44:47 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr (PSI_DMC)
+ * Date:       Tue Feb 25 21:00:31 2020
  * File:       ./PSI_source.c
  * Compile:    cc -o PSI_DMC.out ./PSI_source.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "PSI_DMC";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -5488,7 +5488,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define PACK mcipPACK
 #define Dw mcipDw
 #define BARNS mcipBARNS
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   double mono_q = 1.8734;
   double OMA;  
   double RV;
@@ -5715,7 +5715,7 @@ void mcinit(void) {
 #define PACK mcipPACK
 #define Dw mcipDw
 #define BARNS mcipBARNS
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
 {
   TTM = 2*asin(mono_q*lambda/(4*PI))*RAD2DEG;
   OMA = TTM/2;
@@ -5762,11 +5762,11 @@ void mcinit(void) {
 #line 5762 "./PSI_source.c"
   rot_copy(mcrotrsource_arm, mcrotasource_arm);
   mcposasource_arm = coords_set(
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
     0,
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
     0,
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
     0);
 #line 5771 "./PSI_source.c"
   mctc1 = coords_neg(mcposasource_arm);
@@ -5779,60 +5779,60 @@ void mcinit(void) {
     /* Component source. */
   /* Setting parameters for component source. */
   SIG_MESSAGE("source (Init:SetPar)");
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccsource_size = 0;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccsource_yheight = 0.156;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccsource_xwidth = 0.126;
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccsource_Lmin = mciplambda - ldiff / 2;
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccsource_Lmax = mciplambda + ldiff / 2;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccsource_dist = 1.5;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccsource_focus_xw = 0.02;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccsource_focus_yh = 0.12;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccsource_T1 = 296.16;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccsource_T2 = 40.68;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccsource_T3 = 300;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccsource_I1 = 8.5E11;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccsource_I2 = 5.2E11;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccsource_I3 = 0;
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccsource_target_index = + 1;
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccsource_lambda0 = 0;
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccsource_dlambda = 0;
 #line 5816 "./PSI_source.c"
 
   SIG_MESSAGE("source (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
     (0)*DEG2RAD,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
     (0)*DEG2RAD,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
     (0)*DEG2RAD);
 #line 5826 "./PSI_source.c"
   rot_mul(mctr1, mcrotasource_arm, mcrotasource);
   rot_transpose(mcrotasource_arm, mctr1);
   rot_mul(mcrotasource, mctr1, mcrotrsource);
   mctc1 = coords_set(
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
     0,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
     0,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
     0);
 #line 5837 "./PSI_source.c"
   rot_transpose(mcrotasource_arm, mctr1);
@@ -5848,25 +5848,25 @@ void mcinit(void) {
     /* Component PSDbefore_guides. */
   /* Setting parameters for component PSDbefore_guides. */
   SIG_MESSAGE("PSDbefore_guides (Init:SetPar)");
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccPSDbefore_guides_nx = 128;
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccPSDbefore_guides_ny = 128;
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   if("PSDbefore_guides") strncpy(mccPSDbefore_guides_filename, "PSDbefore_guides" ? "PSDbefore_guides" : "", 16384); else mccPSDbefore_guides_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccPSDbefore_guides_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccPSDbefore_guides_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccPSDbefore_guides_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccPSDbefore_guides_ymax = 0.05;
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccPSDbefore_guides_xwidth = 0.025;
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccPSDbefore_guides_yheight = 0.125;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
   mccPSDbefore_guides_restore_neutron = 0;
 #line 5871 "./PSI_source.c"
 
@@ -5880,11 +5880,11 @@ void mcinit(void) {
   rot_transpose(mcrotasource, mctr1);
   rot_mul(mcrotaPSDbefore_guides, mctr1, mcrotrPSDbefore_guides);
   mctc1 = coords_set(
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
     0,
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
     0,
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_source/PSI_source.instr"
     1.5);
 #line 5889 "./PSI_source.c"
   rot_transpose(mcrotasource_arm, mctr1);

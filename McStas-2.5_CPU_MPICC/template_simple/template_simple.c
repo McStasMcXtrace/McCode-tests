@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/template_simple/template_simple.instr (template_body_simple)
- * Date:       Wed Nov 20 00:58:43 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/template_simple/template_simple.instr (template_simple)
+ * Date:       Tue Feb 25 21:13:54 2020
  * File:       ./template_simple.c
- * Compile:    cc -o template_body_simple.out ./template_simple.c 
+ * Compile:    cc -o template_simple.out ./template_simple.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5342,8 +5342,8 @@ int mctraceenabled = 0;
 #endif
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
-char mcinstrument_name[] = "template_body_simple";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/template_simple/template_simple.instr";
+char mcinstrument_name[] = "template_simple";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/template_simple/template_simple.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -5363,13 +5363,13 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 };
 
 /* User declarations from instrument definition. */
-#define mccompcurname  template_body_simple
+#define mccompcurname  template_simple
 #define mccompcurtype  INSTRUMENT
 #define mccompcurindex 0
-#define mcposatemplate_body_simple coords_set(0,0,0)
+#define mcposatemplate_simple coords_set(0,0,0)
 #define Par1 mcipPar1
 #undef Par1
-#undef mcposatemplate_body_simple
+#undef mcposatemplate_simple
 #undef mccompcurindex
 #undef mccompcurtype
 #undef mccompcurname
@@ -5445,13 +5445,13 @@ MCNUM mcnx, mcny, mcnz, mcnvx, mcnvy, mcnvz, mcnt, mcnsx, mcnsy, mcnsz, mcnp;
 /* end declare */
 
 void mcinit(void) {
-#define mccompcurname  template_body_simple
+#define mccompcurname  template_simple
 #define mccompcurtype  INSTRUMENT
 #define mccompcurindex 0
-#define mcposatemplate_body_simple coords_set(0,0,0)
+#define mcposatemplate_simple coords_set(0,0,0)
 #define Par1 mcipPar1
 #undef Par1
-#undef mcposatemplate_body_simple
+#undef mcposatemplate_simple
 #undef mccompcurindex
 #undef mccompcurtype
 #undef mccompcurname
@@ -5468,13 +5468,13 @@ void mcinit(void) {
     /* Component origin. */
   /* Setting parameters for component origin. */
   SIG_MESSAGE("origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/template_simple/template_simple.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/template_simple/template_simple.instr"
   if("NULL") strncpy(mccorigin_profile, "NULL" ? "NULL" : "", 16384); else mccorigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/template_simple/template_simple.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/template_simple/template_simple.instr"
   mccorigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/template_simple/template_simple.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/template_simple/template_simple.instr"
   mccorigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/template_simple/template_simple.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/template_simple/template_simple.instr"
   mccorigin_minutes = 0;
 #line 5479 "./template_simple.c"
 
@@ -5486,11 +5486,11 @@ void mcinit(void) {
 #line 5486 "./template_simple.c"
   rot_copy(mcrotrorigin, mcrotaorigin);
   mcposaorigin = coords_set(
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/template_simple/template_simple.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/template_simple/template_simple.instr"
     0,
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/template_simple/template_simple.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/template_simple/template_simple.instr"
     0,
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/template_simple/template_simple.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/template_simple/template_simple.instr"
     0);
 #line 5495 "./template_simple.c"
   mctc1 = coords_neg(mcposaorigin);

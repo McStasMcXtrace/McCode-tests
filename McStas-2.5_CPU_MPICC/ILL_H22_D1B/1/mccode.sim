@@ -1,10 +1,10 @@
 McStas simulation description file for ILL_H22_D1B.
-Date:    Wed Nov 20 01:02:24 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:23:12 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: ILL_H22_D1B
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr
   Parameters:  lambda(double) dlambda(double) DM(double) Powder(string) RV(double) L1(double) L2(double) L3(double) TRAS_X(double) TRAS_Z(double) TILT(double) THETA_M(double) R_pitch(double) R_ri(double) R_ro(double) R_h(double) R_ttmin(double) R_ttmax(double) R_present(double) verbose(double) Inc_Cryo(double) Trans_Cryo(double) Trans_Spl(double) Inc_Spl(double) m(double) mip(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574229485
+  Seed: 1582676382
   Directory: 1
   Nodes: 10
   Param: lambda=2.52
@@ -51,17 +51,17 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:02:36 2019 (1574208156)
+  Date: Tue Feb 25 21:23:44 2020 (1582662224)
   type: array_2d(20, 20)
-  Source: ILL_H22_D1B (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr)
+  Source: ILL_H22_D1B (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr)
   component: GuideOut_xy
   position: -0.13977 0 92.585
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: GuideOut_xy_1574208144.x_y
-  statistics: X0=0.000166722; dX=0.00865216; Y0=0.000109424; dY=0.0577014;
-  signal: Min=71075.2; Max=88515.4; Mean=81173.6;
-  values: 3.24694e+07 49614.2 1.58362e+06
+  filename: GuideOut_xy_1582662192.x_y
+  statistics: X0=0.000170879; dX=0.00865786; Y0=-6.52692e-06; dY=0.057726;
+  signal: Min=72661.5; Max=92369.1; Mean=81139.4;
+  values: 3.24558e+07 49587.6 1.58352e+06
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -73,54 +73,54 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:02:36 2019 (1574208156)
+  Date: Tue Feb 25 21:23:44 2020 (1582662224)
   type: array_2d(20, 20)
-  Source: ILL_H22_D1B (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr)
+  Source: ILL_H22_D1B (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr)
   component: GuideOut_dxdy
   position: -0.13977 0 92.585
   title:  Intensity Divergence Divergence Monitor (Square) per bin
   Ncount: 10000000
-  filename: GuideOut_dxdy_1574208144.hd_vd
-  statistics: X0=-0.000918267; dX=0.201243; Y0=0.000168765; dY=0.250454;
-  signal: Min=7.2871e-313; Max=509393; Mean=81173.6;
-  values: 3.24694e+07 49614.2 1.58358e+06
+  filename: GuideOut_dxdy_1582662192.hd_vd
+  statistics: X0=-0.00105449; dX=0.201374; Y0=-0.000202794; dY=0.250712;
+  signal: Min=8.53304e-316; Max=510010; Mean=81139.4;
+  values: 3.24558e+07 49587.6 1.58347e+06
   xvar: Hor.
   yvar: Vert.
   xlabel: Hor. Divergence [deg]
   ylabel: Vert. Divergence [deg]
   zvar: I
   zlabel: Signal per bin
-  xylimits: -0.875042 0.873542 -0.875299 0.875393
+  xylimits: -0.874377 0.872888 -0.875345 0.874796
   variables: I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:02:36 2019 (1574208156)
+  Date: Tue Feb 25 21:23:44 2020 (1582662224)
   type: array_0d
-  Source: ILL_H22_D1B (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr)
+  Source: ILL_H22_D1B (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr)
   component: GuideOut_Phic
   position: -0.13977 0 92.585
   title:  Intensity Monitor (Square)
   Ncount: 10000000
-  statistics: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ3.24694e+07 49614.2 1.58358e+06
-  signal: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿè0=tX
-  values: 
+  statistics: None
+  signal: None
+  values: 4.54707e+07 69461.8 1.58348e+06
   xylimits: 0 0 0 0 0 0
   variables: I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:02:36 2019 (1574208156)
+  Date: Tue Feb 25 21:23:44 2020 (1582662224)
   type: array_1d(20)
-  Source: ILL_H22_D1B (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr)
+  Source: ILL_H22_D1B (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr)
   component: GuideOut_L
   position: -0.13977 0 92.585
   title: Wavelength [Angs] monitor
   Ncount: 10000000
-  filename: GuideOut_L_1574208144.L
+  filename: GuideOut_L_1582662192.L
   statistics: X0=2.5; dX=0;
-  signal: Min=0; Max=3.24691e+07; Mean=1.62345e+06;
-  values: 3.24691e+07 49613.9 1.58359e+06
+  signal: Min=0; Max=3.24555e+07; Mean=1.62278e+06;
+  values: 3.24555e+07 49587.4 1.58348e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
@@ -130,37 +130,37 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:02:36 2019 (1574208156)
+  Date: Tue Feb 25 21:23:44 2020 (1582662224)
   type: array_1d(20)
-  Source: ILL_H22_D1B (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr)
+  Source: ILL_H22_D1B (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr)
   component: D2B_Mono_Dx
   position: -0.140569 0 92.8349
   title: Hor. Divergence [deg] monitor
   Ncount: 10000000
-  filename: D2B_Mono_Dx_1574208144.hd
-  statistics: X0=-0.00113707; dX=0.199502;
-  signal: Min=8.41996e-266; Max=4.74054e+06; Mean=1.57476e+06;
-  values: 3.14952e+07 48936.2 1.47368e+06
+  filename: D2B_Mono_Dx_1582662192.hd
+  statistics: X0=-0.00178213; dX=0.199543;
+  signal: Min=2.14007e-265; Max=4.73942e+06; Mean=1.5742e+06;
+  values: 3.14839e+07 48907.9 1.47375e+06
   xvar: hd
   yvar: (I,I_err)
   xlabel: Hor. Divergence [deg]
   ylabel: Intensity [n/s/cm2/bin]
-  xlimits: -0.875042 0.873542
+  xlimits: -0.874377 0.871629
   variables: hd I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:02:36 2019 (1574208156)
+  Date: Tue Feb 25 21:23:44 2020 (1582662224)
   type: array_2d(50, 50)
-  Source: ILL_H22_D1B (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr)
+  Source: ILL_H22_D1B (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr)
   component: D1B_monitor_shutter
   position: 0.380773 0 93.3741
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: D1B_monitor_shutter_1574208144.x_y
-  statistics: X0=-0.000266706; dX=0.00696336; Y0=3.78389e-05; dY=0.0338608;
-  signal: Min=0; Max=546363; Mean=139558;
-  values: 3.48895e+08 408862 1.39374e+06
+  filename: D1B_monitor_shutter_1582662192.x_y
+  statistics: X0=-0.000227033; dX=0.00695808; Y0=-8.58871e-05; dY=0.0339219;
+  signal: Min=0; Max=554914; Mean=138885;
+  values: 3.47212e+08 407636 1.3879e+06
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -172,37 +172,37 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:02:36 2019 (1574208156)
+  Date: Tue Feb 25 21:23:44 2020 (1582662224)
   type: array_1d(50)
-  Source: ILL_H22_D1B (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr)
+  Source: ILL_H22_D1B (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr)
   component: monitor_D1B
   position: 1.58194 0 94.6164
   title: Wavelength [Angs] monitor
   Ncount: 10000000
-  filename: monitor_D1B_1574208144.L
-  statistics: X0=2.51943; dX=0.0162198;
-  signal: Min=1.48719e+06; Max=2.688e+06; Mean=2.2415e+06;
-  values: 1.12075e+08 132601 1.30819e+06
+  filename: monitor_D1B_1582662192.L
+  statistics: X0=2.51948; dX=0.0162643;
+  signal: Min=1.60628e+06; Max=2.62802e+06; Mean=2.22873e+06;
+  values: 1.11436e+08 132129 1.30211e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
   ylabel: Intensity [n/s/bin]
-  xlimits: 2.49001 2.55
+  xlimits: 2.49 2.55
   variables: L I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:02:36 2019 (1574208156)
+  Date: Tue Feb 25 21:23:44 2020 (1582662224)
   type: array_2d(50, 50)
-  Source: ILL_H22_D1B (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr)
+  Source: ILL_H22_D1B (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr)
   component: PSD_D1B
   position: 1.58194 0 94.6164
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: PSD_D1B_1574208144.x_y
-  statistics: X0=-0.000808665; dX=0.0115469; Y0=3.21311e-05; dY=0.0185274;
-  signal: Min=0; Max=291262; Mean=44831.3;
-  values: 1.12078e+08 132603 1.30824e+06
+  filename: PSD_D1B_1582662192.x_y
+  statistics: X0=-0.000737155; dX=0.0115548; Y0=-2.56417e-06; dY=0.0185126;
+  signal: Min=0; Max=290199; Mean=44575;
+  values: 1.11437e+08 132129 1.30213e+06
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -214,17 +214,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:02:36 2019 (1574208156)
+  Date: Tue Feb 25 21:23:44 2020 (1582662224)
   type: array_1d(1280)
-  Source: ILL_H22_D1B (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr)
+  Source: ILL_H22_D1B (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr)
   component: D1B_BananaTheta
   position: 1.9448 0 94.9916
   title: Longitude [deg] monitor
   Ncount: 10000000
-  filename: D1B_BananaTheta_1574208144.th
-  statistics: X0=-84.1657; dX=26.5128;
-  signal: Min=2.20841e-08; Max=71.8555; Mean=4.13294;
-  values: 5290.16 40.8661 69555
+  filename: D1B_BananaTheta_1582662192.th
+  statistics: X0=-84.6183; dX=26.4854;
+  signal: Min=2.9523e-61; Max=62.1741; Mean=4.07171;
+  values: 5211.78 40.4243 69104
   xvar: th
   yvar: (I,I_err)
   xlabel: Longitude [deg]
@@ -234,17 +234,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:02:36 2019 (1574208156)
+  Date: Tue Feb 25 21:23:44 2020 (1582662224)
   type: array_1d(1280)
-  Source: ILL_H22_D1B (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr)
+  Source: ILL_H22_D1B (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_D1B/ILL_H22_D1B.instr)
   component: D1B_BananaTheta_Sample
   position: 1.9448 0 94.9916
   title: Longitude [deg] monitor
   Ncount: 10000000
-  filename: D1B_BananaTheta_Sample_1574208144.th
-  statistics: X0=-84.131; dX=26.4266;
-  signal: Min=0; Max=71.8555; Mean=4.00674;
-  values: 5128.63 40.4928 59138
+  filename: D1B_BananaTheta_Sample_1582662192.th
+  statistics: X0=-84.4891; dX=26.3647;
+  signal: Min=0; Max=62.1741; Mean=3.94284;
+  values: 5046.84 40.0437 58708
   xvar: th
   yvar: (I,I_err)
   xlabel: Longitude [deg]

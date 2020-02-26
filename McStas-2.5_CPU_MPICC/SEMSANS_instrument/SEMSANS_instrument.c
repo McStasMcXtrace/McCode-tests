@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr (SEMSANS_instrument)
- * Date:       Wed Nov 20 00:46:59 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr (SEMSANS_instrument)
+ * Date:       Tue Feb 25 21:01:29 2020
  * File:       ./SEMSANS_instrument.c
  * Compile:    cc -o SEMSANS_instrument.out ./SEMSANS_instrument.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "SEMSANS_instrument";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -5404,6 +5404,13 @@ void mcdisplay(void);
 #include <mcstas-r.h>
 #endif
 
+/*Redefine MAGNET_OFF to also clear the magnetic field stack.*/
+#undef MAGNET_OFF
+#define MAGNET_OFF \
+  do { \
+    mcMagnet = 0; \
+    mcmagnet_pop_all(); \
+  } while(0)
 
 typedef int mcmagnet_field_func (double, double, double, double, double *, double *, double *, void *);
 typedef void mcmagnet_prec_func (double, double, double, double, double, double, double, double*, double*, double*, double, Coords, Rotation);
@@ -5441,7 +5448,7 @@ void mc_pol_set_angular_accuracy(double);
   do { \
     mcMagneticField=NULL; \
     mcMagnetData=NULL; \
-    MAGNET_OFF; \
+    mcMagnet=0; \
   } while (0);
 
 #define mcmagnet_set_active(mcmagnet_new) \
@@ -5479,6 +5486,7 @@ void *mcmagnet_init_par_backend(int dummy, ...);
 int mcmagnet_get_field(double x, double y, double z, double t, double *bx,double *by, double *bz, void *dummy);
 void *mcmagnet_push(mcmagnet_field_func *func,  Rotation *magnet_rot, Coords *magnet_pos, int stopbit, void * prms);
 void *mcmagnet_pop(void);
+void *mcmagnet_pop_all(void);
 
 /*example functions for magnetic fields*/
 int const_magnetic_field(double x, double y, double z, double t, double *bx, double *by, double *bz, void *data);
@@ -7816,7 +7824,7 @@ void *mcmagnet_push(mcmagnet_field_func *func,  Rotation *magnet_rot, Coords *ma
   mcmagnet_pack(stack[0],func,magnet_rot,magnet_pos,stopbit,prms);
   mcmagnet_set_active(stack[0]);
   if(stack[0] && stack[0]->func){
-    MAGNET_ON;
+    mcMagnet=1;
   }
   return (void *) stack[0];
 }
@@ -7832,11 +7840,19 @@ void *mcmagnet_pop(void) {
   stack[MCMAGNET_STACKSIZE-1]=NULL;
   mcmagnet_set_active(stack[0]);
   if(stack[0] && stack[0]->func){
-    MAGNET_ON;
+    mcMagnet=1;
   }else{
-    MAGNET_OFF;
+    mcMagnet=0;
   }
   return (void*) t;
+}
+
+void *mcmagnet_pop_all(void){
+  void *t=mcmagnet_pop();
+  while (t!=NULL){
+    t=mcmagnet_pop();
+  }
+  return NULL;
 }
 
 void mcmagnet_free_stack(void){
@@ -8182,12 +8198,12 @@ double GetConstantField(double mc_pol_length, double mc_pol_lambda,
 
   double fmax(double, double);
   double fmin(double, double);
-#line 8185 "./SEMSANS_instrument.c"
+#line 8201 "./SEMSANS_instrument.c"
 
 /* Shared user declarations for all components 'Pol_Bfield_stop'. */
 #line 60 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Pol_Bfield_stop.comp"
 
-#line 8190 "./SEMSANS_instrument.c"
+#line 8206 "./SEMSANS_instrument.c"
 
 /* Shared user declarations for all components 'Pol_triafield'. */
 #line 62 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Pol_triafield.comp"
@@ -8202,7 +8218,7 @@ double IntersectWall(double pos, double vel, double wallpos) {
     else 
       return (-wallpos-pos)/vel;
   }
-#line 8205 "./SEMSANS_instrument.c"
+#line 8221 "./SEMSANS_instrument.c"
 
 /* Instrument parameters. */
 MCNUM mciptriacoil_depth;
@@ -8331,9 +8347,9 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define detector_pos mcipdetector_pos
 #define tlow mciptlow
 #define thigh mcipthigh
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
 
-#line 8336 "./SEMSANS_instrument.c"
+#line 8352 "./SEMSANS_instrument.c"
 #undef thigh
 #undef tlow
 #undef detector_pos
@@ -8715,7 +8731,7 @@ double IntermediateCnts;
 time_t StartTime;
 time_t EndTime;
 time_t CurrentTime;
-#line 8718 "./SEMSANS_instrument.c"
+#line 8734 "./SEMSANS_instrument.c"
 #undef minutes
 #undef flag_save
 #undef percent
@@ -8752,7 +8768,7 @@ time_t CurrentTime;
 double pmul, srcArea;
 int square;
 double tx,ty,tz;
-#line 8755 "./SEMSANS_instrument.c"
+#line 8771 "./SEMSANS_instrument.c"
 #undef target_index
 #undef gauss
 #undef flux
@@ -8797,7 +8813,7 @@ double tx,ty,tz;
 #define verbose mccchop1_verbose
 #line 66 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/DiskChopper.comp"
 double Tg,To,delta_y,height,omega;
-#line 8800 "./SEMSANS_instrument.c"
+#line 8816 "./SEMSANS_instrument.c"
 #undef verbose
 #undef xwidth
 #undef phase
@@ -8844,7 +8860,7 @@ double Tg,To,delta_y,height,omega;
 #define verbose mccchop2_verbose
 #line 66 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/DiskChopper.comp"
 double Tg,To,delta_y,height,omega;
-#line 8847 "./SEMSANS_instrument.c"
+#line 8863 "./SEMSANS_instrument.c"
 #undef verbose
 #undef xwidth
 #undef phase
@@ -8878,7 +8894,7 @@ double Tg,To,delta_y,height,omega;
 #define normalize mccpolarizer_normalize
 #line 48 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Set_pol.comp"
 
-#line 8881 "./SEMSANS_instrument.c"
+#line 8897 "./SEMSANS_instrument.c"
 #undef normalize
 #undef randomOn
 #undef pz
@@ -8937,7 +8953,7 @@ double Tg,To,delta_y,height,omega;
   struct {
       int shape;
   } prms;
-#line 8940 "./SEMSANS_instrument.c"
+#line 8956 "./SEMSANS_instrument.c"
 #undef concentric
 #undef geometry
 #undef filename
@@ -8971,7 +8987,7 @@ double Tg,To,delta_y,height,omega;
     struct {
         int shape;
     } prms;
-#line 8974 "./SEMSANS_instrument.c"
+#line 8990 "./SEMSANS_instrument.c"
 #undef radius
 #undef zdepth
 #undef xwidth
@@ -8997,7 +9013,7 @@ double Tg,To,delta_y,height,omega;
   /* Larmor frequency */
   double omegaL;
   double omegaLguide;
-#line 9000 "./SEMSANS_instrument.c"
+#line 9016 "./SEMSANS_instrument.c"
 #undef Bguide
 #undef B
 #undef zdepth
@@ -9036,7 +9052,7 @@ double Tg,To,delta_y,height,omega;
   struct {
       int shape;
   } prms;
-#line 9039 "./SEMSANS_instrument.c"
+#line 9055 "./SEMSANS_instrument.c"
 #undef concentric
 #undef geometry
 #undef filename
@@ -9070,7 +9086,7 @@ double Tg,To,delta_y,height,omega;
     struct {
         int shape;
     } prms;
-#line 9073 "./SEMSANS_instrument.c"
+#line 9089 "./SEMSANS_instrument.c"
 #undef radius
 #undef zdepth
 #undef xwidth
@@ -9108,7 +9124,7 @@ double Tg,To,delta_y,height,omega;
   struct {
       int shape;
   } prms;
-#line 9111 "./SEMSANS_instrument.c"
+#line 9127 "./SEMSANS_instrument.c"
 #undef concentric
 #undef geometry
 #undef filename
@@ -9142,7 +9158,7 @@ double Tg,To,delta_y,height,omega;
     struct {
         int shape;
     } prms;
-#line 9145 "./SEMSANS_instrument.c"
+#line 9161 "./SEMSANS_instrument.c"
 #undef radius
 #undef zdepth
 #undef xwidth
@@ -9168,7 +9184,7 @@ double Tg,To,delta_y,height,omega;
   /* Larmor frequency */
   double omegaL;
   double omegaLguide;
-#line 9171 "./SEMSANS_instrument.c"
+#line 9187 "./SEMSANS_instrument.c"
 #undef Bguide
 #undef B
 #undef zdepth
@@ -9207,7 +9223,7 @@ double Tg,To,delta_y,height,omega;
   struct {
       int shape;
   } prms;
-#line 9210 "./SEMSANS_instrument.c"
+#line 9226 "./SEMSANS_instrument.c"
 #undef concentric
 #undef geometry
 #undef filename
@@ -9241,7 +9257,7 @@ double Tg,To,delta_y,height,omega;
     struct {
         int shape;
     } prms;
-#line 9244 "./SEMSANS_instrument.c"
+#line 9260 "./SEMSANS_instrument.c"
 #undef radius
 #undef zdepth
 #undef xwidth
@@ -9426,7 +9442,7 @@ double TOF_N[nt];
 double TOF_p[nt];
 double TOF_p2[nt];
 double t_min, t_max, delta_t;
-#line 9429 "./SEMSANS_instrument.c"
+#line 9445 "./SEMSANS_instrument.c"
 #undef nowritefile
 #undef restore_neutron
 #undef dt
@@ -9558,11 +9574,11 @@ void mcinit(void) {
 #define detector_pos mcipdetector_pos
 #define tlow mciptlow
 #define thigh mcipthigh
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
 {
 
 }
-#line 9565 "./SEMSANS_instrument.c"
+#line 9581 "./SEMSANS_instrument.c"
 #undef thigh
 #undef tlow
 #undef detector_pos
@@ -9618,31 +9634,31 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccOrigin_minutes = 0;
-#line 9629 "./SEMSANS_instrument.c"
+#line 9645 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("Origin (Init:Place/Rotate)");
   rot_set_rotation(mcrotaOrigin,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9636 "./SEMSANS_instrument.c"
+#line 9652 "./SEMSANS_instrument.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0);
-#line 9645 "./SEMSANS_instrument.c"
+#line 9661 "./SEMSANS_instrument.c"
   mctc1 = coords_neg(mcposaOrigin);
   mcposrOrigin = rot_apply(mcrotaOrigin, mctc1);
   mcDEBUG_COMPONENT("Origin", mcposaOrigin, mcrotaOrigin)
@@ -9653,51 +9669,51 @@ void mcinit(void) {
     /* Component source. */
   /* Setting parameters for component source. */
   SIG_MESSAGE("source (Init:SetPar)");
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccsource_radius = 0;
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccsource_yheight = 2e-3;
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccsource_xwidth = 2e-3;
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccsource_dist = mcipslit_1_pos;
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccsource_focus_xw = 20e-3;
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccsource_focus_yh = 20e-3;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccsource_E0 = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccsource_dE = 0;
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccsource_lambda0 = mcipLambda;
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccsource_dlambda = mcipDLambda;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccsource_flux = 1;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccsource_gauss = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccsource_target_index = + 1;
-#line 9682 "./SEMSANS_instrument.c"
+#line 9698 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("source (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9689 "./SEMSANS_instrument.c"
+#line 9705 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotasource);
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotasource, mctr1, mcrotrsource);
   mctc1 = coords_set(
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0);
-#line 9700 "./SEMSANS_instrument.c"
+#line 9716 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposasource = coords_add(mcposaOrigin, mctc2);
@@ -9711,51 +9727,51 @@ void mcinit(void) {
     /* Component chop1. */
   /* Setting parameters for component chop1. */
   SIG_MESSAGE("chop1 (Init:SetPar)");
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop1_theta_0 = 20;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop1_radius = 0.21;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop1_yheight = 0.21;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop1_nu = 25;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop1_nslit = 2;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop1_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop1_delay = 0;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop1_isfirst = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop1_n_pulse = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop1_abs_out = 1;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop1_phase = -10;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop1_xwidth = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop1_verbose = 0;
-#line 9740 "./SEMSANS_instrument.c"
+#line 9756 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("chop1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9747 "./SEMSANS_instrument.c"
+#line 9763 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotachop1);
   rot_transpose(mcrotasource, mctr1);
   rot_mul(mcrotachop1, mctr1, mcrotrchop1);
   mctc1 = coords_set(
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipchop1_pos);
-#line 9758 "./SEMSANS_instrument.c"
+#line 9774 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposachop1 = coords_add(mcposaOrigin, mctc2);
@@ -9769,51 +9785,51 @@ void mcinit(void) {
     /* Component chop2. */
   /* Setting parameters for component chop2. */
   SIG_MESSAGE("chop2 (Init:SetPar)");
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop2_theta_0 = 20;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop2_radius = 0.21;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop2_yheight = 0.21;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop2_nu = 25;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop2_nslit = 2;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop2_jitter = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop2_delay = 0;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop2_isfirst = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop2_n_pulse = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop2_abs_out = 1;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop2_phase = 20 -10;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop2_xwidth = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccchop2_verbose = 0;
-#line 9798 "./SEMSANS_instrument.c"
+#line 9814 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("chop2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9805 "./SEMSANS_instrument.c"
+#line 9821 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotachop2);
   rot_transpose(mcrotachop1, mctr1);
   rot_mul(mcrotachop2, mctr1, mcrotrchop2);
   mctc1 = coords_set(
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipchop2_pos);
-#line 9816 "./SEMSANS_instrument.c"
+#line 9832 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposachop2 = coords_add(mcposaOrigin, mctc2);
@@ -9827,35 +9843,35 @@ void mcinit(void) {
     /* Component polarizer. */
   /* Setting parameters for component polarizer. */
   SIG_MESSAGE("polarizer (Init:SetPar)");
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccpolarizer_px = 0;
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccpolarizer_py = 1;
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccpolarizer_pz = 0;
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccpolarizer_randomOn = 0;
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccpolarizer_normalize = 0;
-#line 9840 "./SEMSANS_instrument.c"
+#line 9856 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("polarizer (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9847 "./SEMSANS_instrument.c"
+#line 9863 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotapolarizer);
   rot_transpose(mcrotachop2, mctr1);
   rot_mul(mcrotapolarizer, mctr1, mcrotrpolarizer);
   mctc1 = coords_set(
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcippol_pos + 0.5 * mcippol_zdepth);
-#line 9858 "./SEMSANS_instrument.c"
+#line 9874 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposapolarizer = coords_add(mcposaOrigin, mctc2);
@@ -9869,39 +9885,39 @@ void mcinit(void) {
     /* Component slit_1. */
   /* Setting parameters for component slit_1. */
   SIG_MESSAGE("slit_1 (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccslit_1_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccslit_1_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccslit_1_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccslit_1_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccslit_1_radius = 0;
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccslit_1_xwidth = 15e-3;
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccslit_1_yheight = 15e-3;
-#line 9886 "./SEMSANS_instrument.c"
+#line 9902 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("slit_1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9893 "./SEMSANS_instrument.c"
+#line 9909 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaslit_1);
   rot_transpose(mcrotapolarizer, mctr1);
   rot_mul(mcrotaslit_1, mctr1, mcrotrslit_1);
   mctc1 = coords_set(
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipslit_1_pos);
-#line 9904 "./SEMSANS_instrument.c"
+#line 9920 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaslit_1 = coords_add(mcposaOrigin, mctc2);
@@ -9915,37 +9931,37 @@ void mcinit(void) {
     /* Component vcoil1. */
   /* Setting parameters for component vcoil1. */
   SIG_MESSAGE("vcoil1 (Init:SetPar)");
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil1_xwidth = 0.15;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil1_yheight = 0.15;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil1_zdepth = mcipvcoil_zdepth;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil1_rx = 0;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil1_ry = 0;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil1_rz = mcipFLIP * 1;
-#line 9930 "./SEMSANS_instrument.c"
+#line 9946 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("vcoil1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9937 "./SEMSANS_instrument.c"
+#line 9953 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotavcoil1);
   rot_transpose(mcrotaslit_1, mctr1);
   rot_mul(mcrotavcoil1, mctr1, mcrotrvcoil1);
   mctc1 = coords_set(
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipvcoil_12_pos - mcipvcoil_zdepth);
-#line 9948 "./SEMSANS_instrument.c"
+#line 9964 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposavcoil1 = coords_add(mcposaOrigin, mctc2);
@@ -9959,37 +9975,37 @@ void mcinit(void) {
     /* Component vcoil2. */
   /* Setting parameters for component vcoil2. */
   SIG_MESSAGE("vcoil2 (Init:SetPar)");
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil2_xwidth = 0.15;
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil2_yheight = 0.15;
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil2_zdepth = mcipvcoil_zdepth;
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil2_rx = 0;
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil2_ry = 1;
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil2_rz = 0;
-#line 9974 "./SEMSANS_instrument.c"
+#line 9990 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("vcoil2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9981 "./SEMSANS_instrument.c"
+#line 9997 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotavcoil2);
   rot_transpose(mcrotavcoil1, mctr1);
   rot_mul(mcrotavcoil2, mctr1, mcrotrvcoil2);
   mctc1 = coords_set(
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipvcoil_12_pos);
-#line 9992 "./SEMSANS_instrument.c"
+#line 10008 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposavcoil2 = coords_add(mcposaOrigin, mctc2);
@@ -10003,45 +10019,45 @@ void mcinit(void) {
     /* Component Guide_field1. */
   /* Setting parameters for component Guide_field1. */
   SIG_MESSAGE("Guide_field1 (Init:SetPar)");
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field1_xwidth = 0.4;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field1_yheight = 0.4;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field1_zdepth = 0;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field1_radius = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field1_Bx = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field1_By = mcipBguide + mcipBextra;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field1_Bz = 0;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   if("bfield.dat") strncpy(mccGuide_field1_filename, "bfield.dat" ? "bfield.dat" : "", 16384); else mccGuide_field1_filename[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   if(NULL) strncpy(mccGuide_field1_geometry, NULL ? NULL : "", 16384); else mccGuide_field1_geometry[0]='\0';
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field1_concentric = 1;
-#line 10026 "./SEMSANS_instrument.c"
+#line 10042 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("Guide_field1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10033 "./SEMSANS_instrument.c"
+#line 10049 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaGuide_field1);
   rot_transpose(mcrotavcoil2, mctr1);
   rot_mul(mcrotaGuide_field1, mctr1, mcrotrGuide_field1);
   mctc1 = coords_set(
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipGuide1_pos);
-#line 10044 "./SEMSANS_instrument.c"
+#line 10060 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuide_field1 = coords_add(mcposaOrigin, mctc2);
@@ -10055,35 +10071,35 @@ void mcinit(void) {
     /* Component Guide_field1_cp. */
   /* Setting parameters for component Guide_field1_cp. */
   SIG_MESSAGE("Guide_field1_cp (Init:SetPar)");
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   if("") strncpy(mccGuide_field1_cp_geometry, "" ? "" : "", 16384); else mccGuide_field1_cp_geometry[0]='\0';
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field1_cp_yheight = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field1_cp_xwidth = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field1_cp_zdepth = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field1_cp_radius = 0;
-#line 10068 "./SEMSANS_instrument.c"
+#line 10084 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("Guide_field1_cp (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10075 "./SEMSANS_instrument.c"
+#line 10091 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaGuide_field1_cp);
   rot_transpose(mcrotaGuide_field1, mctr1);
   rot_mul(mcrotaGuide_field1_cp, mctr1, mcrotrGuide_field1_cp);
   mctc1 = coords_set(
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipGuide1_pos + mcipGuide1_depth);
-#line 10086 "./SEMSANS_instrument.c"
+#line 10102 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuide_field1_cp = coords_add(mcposaOrigin, mctc2);
@@ -10097,35 +10113,35 @@ void mcinit(void) {
     /* Component triacoil_1. */
   /* Setting parameters for component triacoil_1. */
   SIG_MESSAGE("triacoil_1 (Init:SetPar)");
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mcctriacoil_1_xwidth = mciptriacoil_width;
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mcctriacoil_1_yheight = mciptriacoil_height;
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mcctriacoil_1_zdepth = 2 * mciptriacoil_depth;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mcctriacoil_1_B = mcipBt1;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mcctriacoil_1_Bguide = mcipBguide;
-#line 10110 "./SEMSANS_instrument.c"
+#line 10126 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("triacoil_1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10117 "./SEMSANS_instrument.c"
+#line 10133 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotatriacoil_1);
   rot_transpose(mcrotaGuide_field1_cp, mctr1);
   rot_mul(mcrotatriacoil_1, mctr1, mcrotrtriacoil_1);
   mctc1 = coords_set(
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mciptriacoil_1_pos - mciptriacoil_depth);
-#line 10128 "./SEMSANS_instrument.c"
+#line 10144 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposatriacoil_1 = coords_add(mcposaOrigin, mctc2);
@@ -10139,45 +10155,45 @@ void mcinit(void) {
     /* Component Guide_field2. */
   /* Setting parameters for component Guide_field2. */
   SIG_MESSAGE("Guide_field2 (Init:SetPar)");
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field2_xwidth = 0.4;
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field2_yheight = 0.4;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field2_zdepth = 0;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field2_radius = 0;
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field2_Bx = 0;
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field2_By = mcipBguide;
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field2_Bz = 0;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   if("bfield.dat") strncpy(mccGuide_field2_filename, "bfield.dat" ? "bfield.dat" : "", 16384); else mccGuide_field2_filename[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   if(NULL) strncpy(mccGuide_field2_geometry, NULL ? NULL : "", 16384); else mccGuide_field2_geometry[0]='\0';
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field2_concentric = 1;
-#line 10162 "./SEMSANS_instrument.c"
+#line 10178 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("Guide_field2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10169 "./SEMSANS_instrument.c"
+#line 10185 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaGuide_field2);
   rot_transpose(mcrotatriacoil_1, mctr1);
   rot_mul(mcrotaGuide_field2, mctr1, mcrotrGuide_field2);
   mctc1 = coords_set(
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipGuide2_pos);
-#line 10180 "./SEMSANS_instrument.c"
+#line 10196 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuide_field2 = coords_add(mcposaOrigin, mctc2);
@@ -10191,35 +10207,35 @@ void mcinit(void) {
     /* Component Guide_field2_cp. */
   /* Setting parameters for component Guide_field2_cp. */
   SIG_MESSAGE("Guide_field2_cp (Init:SetPar)");
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   if("") strncpy(mccGuide_field2_cp_geometry, "" ? "" : "", 16384); else mccGuide_field2_cp_geometry[0]='\0';
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field2_cp_yheight = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field2_cp_xwidth = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field2_cp_zdepth = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field2_cp_radius = 0;
-#line 10204 "./SEMSANS_instrument.c"
+#line 10220 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("Guide_field2_cp (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10211 "./SEMSANS_instrument.c"
+#line 10227 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaGuide_field2_cp);
   rot_transpose(mcrotaGuide_field2, mctr1);
   rot_mul(mcrotaGuide_field2_cp, mctr1, mcrotrGuide_field2_cp);
   mctc1 = coords_set(
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipGuide2_pos + mcipGuide2_depth + mcipflippos);
-#line 10222 "./SEMSANS_instrument.c"
+#line 10238 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuide_field2_cp = coords_add(mcposaOrigin, mctc2);
@@ -10233,37 +10249,37 @@ void mcinit(void) {
     /* Component vcoil3. */
   /* Setting parameters for component vcoil3. */
   SIG_MESSAGE("vcoil3 (Init:SetPar)");
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil3_xwidth = 0.15;
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil3_yheight = 0.15;
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil3_zdepth = mcipvcoil_zdepth;
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil3_rx = 0;
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil3_ry = 0;
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil3_rz = 1;
-#line 10248 "./SEMSANS_instrument.c"
+#line 10264 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("vcoil3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10255 "./SEMSANS_instrument.c"
+#line 10271 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotavcoil3);
   rot_transpose(mcrotaGuide_field2_cp, mctr1);
   rot_mul(mcrotavcoil3, mctr1, mcrotrvcoil3);
   mctc1 = coords_set(
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipvcoil_34_pos - mcipvcoil_zdepth + mcipflippos);
-#line 10266 "./SEMSANS_instrument.c"
+#line 10282 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposavcoil3 = coords_add(mcposaOrigin, mctc2);
@@ -10277,37 +10293,37 @@ void mcinit(void) {
     /* Component vcoil4. */
   /* Setting parameters for component vcoil4. */
   SIG_MESSAGE("vcoil4 (Init:SetPar)");
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil4_xwidth = 0.15;
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil4_yheight = 0.15;
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil4_zdepth = mcipvcoil_zdepth;
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil4_rx = 0;
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil4_ry = 0;
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil4_rz = 1;
-#line 10292 "./SEMSANS_instrument.c"
+#line 10308 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("vcoil4 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10299 "./SEMSANS_instrument.c"
+#line 10315 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotavcoil4);
   rot_transpose(mcrotavcoil3, mctr1);
   rot_mul(mcrotavcoil4, mctr1, mcrotrvcoil4);
   mctc1 = coords_set(
-#line 152 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 152 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 152 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 152 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 152 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 152 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipvcoil_34_pos + mcipflippos);
-#line 10310 "./SEMSANS_instrument.c"
+#line 10326 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposavcoil4 = coords_add(mcposaOrigin, mctc2);
@@ -10321,45 +10337,45 @@ void mcinit(void) {
     /* Component Guide_field3. */
   /* Setting parameters for component Guide_field3. */
   SIG_MESSAGE("Guide_field3 (Init:SetPar)");
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field3_xwidth = 0.4;
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field3_yheight = 0.4;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field3_zdepth = 0;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field3_radius = 0;
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field3_Bx = 0;
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field3_By = mcipBguide;
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field3_Bz = 0;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   if("bfield.dat") strncpy(mccGuide_field3_filename, "bfield.dat" ? "bfield.dat" : "", 16384); else mccGuide_field3_filename[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   if(NULL) strncpy(mccGuide_field3_geometry, NULL ? NULL : "", 16384); else mccGuide_field3_geometry[0]='\0';
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field3_concentric = 1;
-#line 10344 "./SEMSANS_instrument.c"
+#line 10360 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("Guide_field3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10351 "./SEMSANS_instrument.c"
+#line 10367 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaGuide_field3);
   rot_transpose(mcrotavcoil4, mctr1);
   rot_mul(mcrotaGuide_field3, mctr1, mcrotrGuide_field3);
   mctc1 = coords_set(
-#line 157 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 157 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 157 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 157 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 157 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 157 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipGuide3_pos + mcipflippos);
-#line 10362 "./SEMSANS_instrument.c"
+#line 10378 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuide_field3 = coords_add(mcposaOrigin, mctc2);
@@ -10373,35 +10389,35 @@ void mcinit(void) {
     /* Component Guide_field3_cp. */
   /* Setting parameters for component Guide_field3_cp. */
   SIG_MESSAGE("Guide_field3_cp (Init:SetPar)");
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   if("") strncpy(mccGuide_field3_cp_geometry, "" ? "" : "", 16384); else mccGuide_field3_cp_geometry[0]='\0';
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field3_cp_yheight = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field3_cp_xwidth = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field3_cp_zdepth = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field3_cp_radius = 0;
-#line 10386 "./SEMSANS_instrument.c"
+#line 10402 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("Guide_field3_cp (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10393 "./SEMSANS_instrument.c"
+#line 10409 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaGuide_field3_cp);
   rot_transpose(mcrotaGuide_field3, mctr1);
   rot_mul(mcrotaGuide_field3_cp, mctr1, mcrotrGuide_field3_cp);
   mctc1 = coords_set(
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipGuide3_pos + mcipGuide3_depth);
-#line 10404 "./SEMSANS_instrument.c"
+#line 10420 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuide_field3_cp = coords_add(mcposaOrigin, mctc2);
@@ -10415,35 +10431,35 @@ void mcinit(void) {
     /* Component triacoil_2. */
   /* Setting parameters for component triacoil_2. */
   SIG_MESSAGE("triacoil_2 (Init:SetPar)");
-#line 167 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mcctriacoil_2_xwidth = mciptriacoil_width;
-#line 167 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mcctriacoil_2_yheight = mciptriacoil_height;
-#line 167 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mcctriacoil_2_zdepth = 2 * mciptriacoil_depth;
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mcctriacoil_2_B = mcipBt2;
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mcctriacoil_2_Bguide = mcipBguide;
-#line 10428 "./SEMSANS_instrument.c"
+#line 10444 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("triacoil_2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10435 "./SEMSANS_instrument.c"
+#line 10451 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotatriacoil_2);
   rot_transpose(mcrotaGuide_field3_cp, mctr1);
   rot_mul(mcrotatriacoil_2, mctr1, mcrotrtriacoil_2);
   mctc1 = coords_set(
-#line 169 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 169 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 169 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mciptriacoil_2_pos - mciptriacoil_depth);
-#line 10446 "./SEMSANS_instrument.c"
+#line 10462 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposatriacoil_2 = coords_add(mcposaOrigin, mctc2);
@@ -10457,45 +10473,45 @@ void mcinit(void) {
     /* Component Guide_field4. */
   /* Setting parameters for component Guide_field4. */
   SIG_MESSAGE("Guide_field4 (Init:SetPar)");
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field4_xwidth = 0.4;
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field4_yheight = 0.4;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field4_zdepth = 0;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field4_radius = 0;
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field4_Bx = 0;
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field4_By = mcipBguide;
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field4_Bz = 0;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   if("bfield.dat") strncpy(mccGuide_field4_filename, "bfield.dat" ? "bfield.dat" : "", 16384); else mccGuide_field4_filename[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   if(NULL) strncpy(mccGuide_field4_geometry, NULL ? NULL : "", 16384); else mccGuide_field4_geometry[0]='\0';
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field4_concentric = 1;
-#line 10480 "./SEMSANS_instrument.c"
+#line 10496 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("Guide_field4 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10487 "./SEMSANS_instrument.c"
+#line 10503 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaGuide_field4);
   rot_transpose(mcrotatriacoil_2, mctr1);
   rot_mul(mcrotaGuide_field4, mctr1, mcrotrGuide_field4);
   mctc1 = coords_set(
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipGuide4_pos);
-#line 10498 "./SEMSANS_instrument.c"
+#line 10514 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuide_field4 = coords_add(mcposaOrigin, mctc2);
@@ -10509,35 +10525,35 @@ void mcinit(void) {
     /* Component Guide_field4_cp. */
   /* Setting parameters for component Guide_field4_cp. */
   SIG_MESSAGE("Guide_field4_cp (Init:SetPar)");
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   if("") strncpy(mccGuide_field4_cp_geometry, "" ? "" : "", 16384); else mccGuide_field4_cp_geometry[0]='\0';
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field4_cp_yheight = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field4_cp_xwidth = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field4_cp_zdepth = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGuide_field4_cp_radius = 0;
-#line 10522 "./SEMSANS_instrument.c"
+#line 10538 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("Guide_field4_cp (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10529 "./SEMSANS_instrument.c"
+#line 10545 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaGuide_field4_cp);
   rot_transpose(mcrotaGuide_field4, mctr1);
   rot_mul(mcrotaGuide_field4_cp, mctr1, mcrotrGuide_field4_cp);
   mctc1 = coords_set(
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipGuide4_pos + mcipGuide4_depth);
-#line 10540 "./SEMSANS_instrument.c"
+#line 10556 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuide_field4_cp = coords_add(mcposaOrigin, mctc2);
@@ -10551,37 +10567,37 @@ void mcinit(void) {
     /* Component vcoil5. */
   /* Setting parameters for component vcoil5. */
   SIG_MESSAGE("vcoil5 (Init:SetPar)");
-#line 183 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 183 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil5_xwidth = 0.15;
-#line 183 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 183 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil5_yheight = 0.15;
-#line 183 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 183 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil5_zdepth = mcipvcoil_zdepth;
-#line 183 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 183 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil5_rx = 0;
-#line 183 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 183 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil5_ry = 1;
-#line 183 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 183 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil5_rz = 0;
-#line 10566 "./SEMSANS_instrument.c"
+#line 10582 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("vcoil5 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10573 "./SEMSANS_instrument.c"
+#line 10589 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotavcoil5);
   rot_transpose(mcrotaGuide_field4_cp, mctr1);
   rot_mul(mcrotavcoil5, mctr1, mcrotrvcoil5);
   mctc1 = coords_set(
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 184 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 184 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 184 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 184 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipvcoil_56_pos - mcipvcoil_zdepth);
-#line 10584 "./SEMSANS_instrument.c"
+#line 10600 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposavcoil5 = coords_add(mcposaOrigin, mctc2);
@@ -10595,37 +10611,37 @@ void mcinit(void) {
     /* Component vcoil6. */
   /* Setting parameters for component vcoil6. */
   SIG_MESSAGE("vcoil6 (Init:SetPar)");
-#line 188 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 188 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil6_xwidth = 0.15;
-#line 188 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 188 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil6_yheight = 0.15;
-#line 188 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 188 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil6_zdepth = mcipvcoil_zdepth;
-#line 188 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 188 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil6_rx = 0;
-#line 188 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 188 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil6_ry = 0;
-#line 188 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 188 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccvcoil6_rz = 1;
-#line 10610 "./SEMSANS_instrument.c"
+#line 10626 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("vcoil6 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10617 "./SEMSANS_instrument.c"
+#line 10633 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotavcoil6);
   rot_transpose(mcrotavcoil5, mctr1);
   rot_mul(mcrotavcoil6, mctr1, mcrotrvcoil6);
   mctc1 = coords_set(
-#line 189 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 189 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 189 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 189 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 189 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 189 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipvcoil_56_pos);
-#line 10628 "./SEMSANS_instrument.c"
+#line 10644 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposavcoil6 = coords_add(mcposaOrigin, mctc2);
@@ -10639,39 +10655,39 @@ void mcinit(void) {
     /* Component slit_2. */
   /* Setting parameters for component slit_2. */
   SIG_MESSAGE("slit_2 (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccslit_2_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccslit_2_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccslit_2_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccslit_2_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccslit_2_radius = 0;
-#line 193 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 193 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccslit_2_xwidth = 15e-3;
-#line 193 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 193 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccslit_2_yheight = 15e-3;
-#line 10656 "./SEMSANS_instrument.c"
+#line 10672 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("slit_2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10663 "./SEMSANS_instrument.c"
+#line 10679 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaslit_2);
   rot_transpose(mcrotavcoil6, mctr1);
   rot_mul(mcrotaslit_2, mctr1, mcrotrslit_2);
   mctc1 = coords_set(
-#line 194 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 194 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 194 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 194 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 194 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 194 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipslit_2_pos);
-#line 10674 "./SEMSANS_instrument.c"
+#line 10690 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaslit_2 = coords_add(mcposaOrigin, mctc2);
@@ -10685,31 +10701,31 @@ void mcinit(void) {
     /* Component analyser. */
   /* Setting parameters for component analyser. */
   SIG_MESSAGE("analyser (Init:SetPar)");
-#line 197 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 197 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccanalyser_mx = 0;
-#line 197 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 197 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccanalyser_my = 1;
-#line 197 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 197 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccanalyser_mz = 0;
-#line 10694 "./SEMSANS_instrument.c"
+#line 10710 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("analyser (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10701 "./SEMSANS_instrument.c"
+#line 10717 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaanalyser);
   rot_transpose(mcrotaslit_2, mctr1);
   rot_mul(mcrotaanalyser, mctr1, mcrotranalyser);
   mctc1 = coords_set(
-#line 198 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 198 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 198 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 198 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 198 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 198 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipanalyser_pos);
-#line 10712 "./SEMSANS_instrument.c"
+#line 10728 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaanalyser = coords_add(mcposaOrigin, mctc2);
@@ -10723,39 +10739,39 @@ void mcinit(void) {
     /* Component GratingSlit1_1. */
   /* Setting parameters for component GratingSlit1_1. */
   SIG_MESSAGE("GratingSlit1_1 (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_1_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_1_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_1_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_1_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_1_radius = 0;
-#line 202 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 202 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_1_xwidth = mcipgrating_w;
-#line 202 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 202 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_1_yheight = 5e-3;
-#line 10740 "./SEMSANS_instrument.c"
+#line 10756 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("GratingSlit1_1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10747 "./SEMSANS_instrument.c"
+#line 10763 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaGratingSlit1_1);
   rot_transpose(mcrotaanalyser, mctr1);
   rot_mul(mcrotaGratingSlit1_1, mctr1, mcrotrGratingSlit1_1);
   mctc1 = coords_set(
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     -2.0 * mcipgrating_w - 2.0 * mcipgrating_a,
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipgrating_pos);
-#line 10758 "./SEMSANS_instrument.c"
+#line 10774 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGratingSlit1_1 = coords_add(mcposaOrigin, mctc2);
@@ -10769,39 +10785,39 @@ void mcinit(void) {
     /* Component GratingSlit1_2. */
   /* Setting parameters for component GratingSlit1_2. */
   SIG_MESSAGE("GratingSlit1_2 (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_2_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_2_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_2_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_2_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_2_radius = 0;
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_2_xwidth = mcipgrating_w;
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_2_yheight = 5e-3;
-#line 10786 "./SEMSANS_instrument.c"
+#line 10802 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("GratingSlit1_2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10793 "./SEMSANS_instrument.c"
+#line 10809 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaGratingSlit1_2);
   rot_transpose(mcrotaGratingSlit1_1, mctr1);
   rot_mul(mcrotaGratingSlit1_2, mctr1, mcrotrGratingSlit1_2);
   mctc1 = coords_set(
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     -1.0 * mcipgrating_w - 1.0 * mcipgrating_a,
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipgrating_pos);
-#line 10804 "./SEMSANS_instrument.c"
+#line 10820 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGratingSlit1_2 = coords_add(mcposaOrigin, mctc2);
@@ -10815,39 +10831,39 @@ void mcinit(void) {
     /* Component GratingSlit1_3. */
   /* Setting parameters for component GratingSlit1_3. */
   SIG_MESSAGE("GratingSlit1_3 (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_3_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_3_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_3_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_3_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_3_radius = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_3_xwidth = mcipgrating_w;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_3_yheight = 5e-3;
-#line 10832 "./SEMSANS_instrument.c"
+#line 10848 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("GratingSlit1_3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10839 "./SEMSANS_instrument.c"
+#line 10855 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaGratingSlit1_3);
   rot_transpose(mcrotaGratingSlit1_2, mctr1);
   rot_mul(mcrotaGratingSlit1_3, mctr1, mcrotrGratingSlit1_3);
   mctc1 = coords_set(
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipgrating_pos);
-#line 10850 "./SEMSANS_instrument.c"
+#line 10866 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGratingSlit1_3 = coords_add(mcposaOrigin, mctc2);
@@ -10861,39 +10877,39 @@ void mcinit(void) {
     /* Component GratingSlit1_4. */
   /* Setting parameters for component GratingSlit1_4. */
   SIG_MESSAGE("GratingSlit1_4 (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_4_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_4_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_4_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_4_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_4_radius = 0;
-#line 214 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 214 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_4_xwidth = mcipgrating_w;
-#line 214 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 214 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_4_yheight = 5e-3;
-#line 10878 "./SEMSANS_instrument.c"
+#line 10894 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("GratingSlit1_4 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10885 "./SEMSANS_instrument.c"
+#line 10901 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaGratingSlit1_4);
   rot_transpose(mcrotaGratingSlit1_3, mctr1);
   rot_mul(mcrotaGratingSlit1_4, mctr1, mcrotrGratingSlit1_4);
   mctc1 = coords_set(
-#line 215 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 215 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     1.0 * mcipgrating_w + 1.0 * mcipgrating_a,
-#line 215 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 215 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 215 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 215 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipgrating_pos);
-#line 10896 "./SEMSANS_instrument.c"
+#line 10912 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGratingSlit1_4 = coords_add(mcposaOrigin, mctc2);
@@ -10907,39 +10923,39 @@ void mcinit(void) {
     /* Component GratingSlit1_5. */
   /* Setting parameters for component GratingSlit1_5. */
   SIG_MESSAGE("GratingSlit1_5 (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_5_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_5_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_5_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_5_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_5_radius = 0;
-#line 218 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 218 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_5_xwidth = mcipgrating_w;
-#line 218 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 218 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccGratingSlit1_5_yheight = 5e-3;
-#line 10924 "./SEMSANS_instrument.c"
+#line 10940 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("GratingSlit1_5 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10931 "./SEMSANS_instrument.c"
+#line 10947 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaGratingSlit1_5);
   rot_transpose(mcrotaGratingSlit1_4, mctr1);
   rot_mul(mcrotaGratingSlit1_5, mctr1, mcrotrGratingSlit1_5);
   mctc1 = coords_set(
-#line 219 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 219 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     2.0 * mcipgrating_w + 2.0 * mcipgrating_a,
-#line 219 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 219 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 219 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 219 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipgrating_pos);
-#line 10942 "./SEMSANS_instrument.c"
+#line 10958 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGratingSlit1_5 = coords_add(mcposaOrigin, mctc2);
@@ -10953,49 +10969,49 @@ void mcinit(void) {
     /* Component TOF_det. */
   /* Setting parameters for component TOF_det. */
   SIG_MESSAGE("TOF_det (Init:SetPar)");
-#line 239 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 239 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   if("TOF_det") strncpy(mccTOF_det_filename, "TOF_det" ? "TOF_det" : "", 16384); else mccTOF_det_filename[0]='\0';
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccTOF_det_xmin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccTOF_det_xmax = 0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccTOF_det_ymin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccTOF_det_ymax = 0.05;
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccTOF_det_xwidth = 0.05;
-#line 238 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 238 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccTOF_det_yheight = 0.05;
-#line 239 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 239 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccTOF_det_tmin = mciptlow;
-#line 239 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 239 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccTOF_det_tmax = mcipthigh;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccTOF_det_dt = 1.0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccTOF_det_restore_neutron = 0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
   mccTOF_det_nowritefile = 0;
-#line 10980 "./SEMSANS_instrument.c"
+#line 10996 "./SEMSANS_instrument.c"
 
   SIG_MESSAGE("TOF_det (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10987 "./SEMSANS_instrument.c"
+#line 11003 "./SEMSANS_instrument.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaTOF_det);
   rot_transpose(mcrotaGratingSlit1_5, mctr1);
   rot_mul(mcrotaTOF_det, mctr1, mcrotrTOF_det);
   mctc1 = coords_set(
-#line 240 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 240 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 240 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 240 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     0,
-#line 240 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
+#line 240 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr"
     mcipdetector_pos);
-#line 10998 "./SEMSANS_instrument.c"
+#line 11014 "./SEMSANS_instrument.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaTOF_det = coords_add(mcposaOrigin, mctc2);
@@ -11032,7 +11048,7 @@ fprintf(stdout, "[%s] Initialize\n", mcinstrument_name);
     percent=1e5*100.0/mcget_ncount();
   }
 }
-#line 11035 "./SEMSANS_instrument.c"
+#line 11051 "./SEMSANS_instrument.c"
 #undef minutes
 #undef flag_save
 #undef percent
@@ -11126,7 +11142,7 @@ if (radius && !yheight && !xwidth ) {
       exit(0);
   }
 }
-#line 11129 "./SEMSANS_instrument.c"
+#line 11145 "./SEMSANS_instrument.c"
 #undef target_index
 #undef gauss
 #undef flux
@@ -11232,7 +11248,7 @@ if (yheight == 0) {
           nslit, theta_0*RAD2DEG, height, xwidth, delta_y);
       }
 }
-#line 11235 "./SEMSANS_instrument.c"
+#line 11251 "./SEMSANS_instrument.c"
 #undef verbose
 #undef xwidth
 #undef phase
@@ -11340,7 +11356,7 @@ if (yheight == 0) {
           nslit, theta_0*RAD2DEG, height, xwidth, delta_y);
       }
 }
-#line 11343 "./SEMSANS_instrument.c"
+#line 11359 "./SEMSANS_instrument.c"
 #undef verbose
 #undef xwidth
 #undef phase
@@ -11391,7 +11407,7 @@ if (yheight == 0) {
            NAME_CURRENT_COMP, px, py, pz);
   }
 }
-#line 11394 "./SEMSANS_instrument.c"
+#line 11410 "./SEMSANS_instrument.c"
 #undef normalize
 #undef randomOn
 #undef pz
@@ -11433,7 +11449,7 @@ if (xwidth > 0)  {
     { fprintf(stderr,"Slit: %s: Warning: Running with CLOSED slit - is this intentional?? \n", NAME_CURRENT_COMP); }
 
 }
-#line 11436 "./SEMSANS_instrument.c"
+#line 11452 "./SEMSANS_instrument.c"
 #undef yheight
 #undef xwidth
 #undef radius
@@ -11465,7 +11481,7 @@ double rr=scalar_prod(rx,ry,rz,rx,ry,rz);
     rz=rz/sqrt(rr);
   }
 }
-#line 11468 "./SEMSANS_instrument.c"
+#line 11484 "./SEMSANS_instrument.c"
 #undef rz
 #undef ry
 #undef rx
@@ -11496,7 +11512,7 @@ double rr=scalar_prod(rx,ry,rz,rx,ry,rz);
     rz=rz/sqrt(rr);
   }
 }
-#line 11499 "./SEMSANS_instrument.c"
+#line 11515 "./SEMSANS_instrument.c"
 #undef rz
 #undef ry
 #undef rx
@@ -11583,7 +11599,7 @@ double rr=scalar_prod(rx,ry,rz,rx,ry,rz);
   }
 
 }
-#line 11586 "./SEMSANS_instrument.c"
+#line 11602 "./SEMSANS_instrument.c"
 #undef concentric
 #undef geometry
 #undef filename
@@ -11632,7 +11648,7 @@ double rr=scalar_prod(rx,ry,rz,rx,ry,rz);
         prms.shape=NONE;
     }
 }
-#line 11635 "./SEMSANS_instrument.c"
+#line 11651 "./SEMSANS_instrument.c"
 #undef radius
 #undef zdepth
 #undef xwidth
@@ -11673,7 +11689,7 @@ double rr=scalar_prod(rx,ry,rz,rx,ry,rz);
   omegaL	  = -1.832472e8 * (B - Bguide); // B and Bguide is in Tesla
   omegaLguide = -1.832472e8 * Bguide;       // Bguide is in Tesla
 }
-#line 11676 "./SEMSANS_instrument.c"
+#line 11692 "./SEMSANS_instrument.c"
 #undef Bguide
 #undef B
 #undef zdepth
@@ -11761,7 +11777,7 @@ double rr=scalar_prod(rx,ry,rz,rx,ry,rz);
   }
 
 }
-#line 11764 "./SEMSANS_instrument.c"
+#line 11780 "./SEMSANS_instrument.c"
 #undef concentric
 #undef geometry
 #undef filename
@@ -11810,7 +11826,7 @@ double rr=scalar_prod(rx,ry,rz,rx,ry,rz);
         prms.shape=NONE;
     }
 }
-#line 11813 "./SEMSANS_instrument.c"
+#line 11829 "./SEMSANS_instrument.c"
 #undef radius
 #undef zdepth
 #undef xwidth
@@ -11841,7 +11857,7 @@ double rr=scalar_prod(rx,ry,rz,rx,ry,rz);
     rz=rz/sqrt(rr);
   }
 }
-#line 11844 "./SEMSANS_instrument.c"
+#line 11860 "./SEMSANS_instrument.c"
 #undef rz
 #undef ry
 #undef rx
@@ -11872,7 +11888,7 @@ double rr=scalar_prod(rx,ry,rz,rx,ry,rz);
     rz=rz/sqrt(rr);
   }
 }
-#line 11875 "./SEMSANS_instrument.c"
+#line 11891 "./SEMSANS_instrument.c"
 #undef rz
 #undef ry
 #undef rx
@@ -11959,7 +11975,7 @@ double rr=scalar_prod(rx,ry,rz,rx,ry,rz);
   }
 
 }
-#line 11962 "./SEMSANS_instrument.c"
+#line 11978 "./SEMSANS_instrument.c"
 #undef concentric
 #undef geometry
 #undef filename
@@ -12008,7 +12024,7 @@ double rr=scalar_prod(rx,ry,rz,rx,ry,rz);
         prms.shape=NONE;
     }
 }
-#line 12011 "./SEMSANS_instrument.c"
+#line 12027 "./SEMSANS_instrument.c"
 #undef radius
 #undef zdepth
 #undef xwidth
@@ -12049,7 +12065,7 @@ double rr=scalar_prod(rx,ry,rz,rx,ry,rz);
   omegaL	  = -1.832472e8 * (B - Bguide); // B and Bguide is in Tesla
   omegaLguide = -1.832472e8 * Bguide;       // Bguide is in Tesla
 }
-#line 12052 "./SEMSANS_instrument.c"
+#line 12068 "./SEMSANS_instrument.c"
 #undef Bguide
 #undef B
 #undef zdepth
@@ -12137,7 +12153,7 @@ double rr=scalar_prod(rx,ry,rz,rx,ry,rz);
   }
 
 }
-#line 12140 "./SEMSANS_instrument.c"
+#line 12156 "./SEMSANS_instrument.c"
 #undef concentric
 #undef geometry
 #undef filename
@@ -12186,7 +12202,7 @@ double rr=scalar_prod(rx,ry,rz,rx,ry,rz);
         prms.shape=NONE;
     }
 }
-#line 12189 "./SEMSANS_instrument.c"
+#line 12205 "./SEMSANS_instrument.c"
 #undef radius
 #undef zdepth
 #undef xwidth
@@ -12217,7 +12233,7 @@ double rr=scalar_prod(rx,ry,rz,rx,ry,rz);
     rz=rz/sqrt(rr);
   }
 }
-#line 12220 "./SEMSANS_instrument.c"
+#line 12236 "./SEMSANS_instrument.c"
 #undef rz
 #undef ry
 #undef rx
@@ -12248,7 +12264,7 @@ double rr=scalar_prod(rx,ry,rz,rx,ry,rz);
     rz=rz/sqrt(rr);
   }
 }
-#line 12251 "./SEMSANS_instrument.c"
+#line 12267 "./SEMSANS_instrument.c"
 #undef rz
 #undef ry
 #undef rx
@@ -12291,7 +12307,7 @@ if (xwidth > 0)  {
     { fprintf(stderr,"Slit: %s: Warning: Running with CLOSED slit - is this intentional?? \n", NAME_CURRENT_COMP); }
 
 }
-#line 12294 "./SEMSANS_instrument.c"
+#line 12310 "./SEMSANS_instrument.c"
 #undef yheight
 #undef xwidth
 #undef radius
@@ -12329,7 +12345,7 @@ if (mx==1 && my==1 && mz==1) {
   
   NORM(mx,my,mz);
 }
-#line 12332 "./SEMSANS_instrument.c"
+#line 12348 "./SEMSANS_instrument.c"
 #undef mz
 #undef my
 #undef mx
@@ -12369,7 +12385,7 @@ if (xwidth > 0)  {
     { fprintf(stderr,"Slit: %s: Warning: Running with CLOSED slit - is this intentional?? \n", NAME_CURRENT_COMP); }
 
 }
-#line 12372 "./SEMSANS_instrument.c"
+#line 12388 "./SEMSANS_instrument.c"
 #undef yheight
 #undef xwidth
 #undef radius
@@ -12413,7 +12429,7 @@ if (xwidth > 0)  {
     { fprintf(stderr,"Slit: %s: Warning: Running with CLOSED slit - is this intentional?? \n", NAME_CURRENT_COMP); }
 
 }
-#line 12416 "./SEMSANS_instrument.c"
+#line 12432 "./SEMSANS_instrument.c"
 #undef yheight
 #undef xwidth
 #undef radius
@@ -12457,7 +12473,7 @@ if (xwidth > 0)  {
     { fprintf(stderr,"Slit: %s: Warning: Running with CLOSED slit - is this intentional?? \n", NAME_CURRENT_COMP); }
 
 }
-#line 12460 "./SEMSANS_instrument.c"
+#line 12476 "./SEMSANS_instrument.c"
 #undef yheight
 #undef xwidth
 #undef radius
@@ -12501,7 +12517,7 @@ if (xwidth > 0)  {
     { fprintf(stderr,"Slit: %s: Warning: Running with CLOSED slit - is this intentional?? \n", NAME_CURRENT_COMP); }
 
 }
-#line 12504 "./SEMSANS_instrument.c"
+#line 12520 "./SEMSANS_instrument.c"
 #undef yheight
 #undef xwidth
 #undef radius
@@ -12545,7 +12561,7 @@ if (xwidth > 0)  {
     { fprintf(stderr,"Slit: %s: Warning: Running with CLOSED slit - is this intentional?? \n", NAME_CURRENT_COMP); }
 
 }
-#line 12548 "./SEMSANS_instrument.c"
+#line 12564 "./SEMSANS_instrument.c"
 #undef yheight
 #undef xwidth
 #undef radius
@@ -12614,7 +12630,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
      t_max=nt*dt+tmin;
     }
 }
-#line 12617 "./SEMSANS_instrument.c"
+#line 12633 "./SEMSANS_instrument.c"
 #undef nowritefile
 #undef restore_neutron
 #undef dt
@@ -12793,7 +12809,7 @@ MCNUM minutes = mccOrigin_minutes;
     if (flag_save) mcsave(NULL);
   }
 }
-#line 12796 "./SEMSANS_instrument.c"
+#line 12812 "./SEMSANS_instrument.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -12964,7 +12980,7 @@ int target_index = mccsource_target_index;
  vy=v*dy/rf;
  vx=v*dx/rf;
 }
-#line 12967 "./SEMSANS_instrument.c"
+#line 12983 "./SEMSANS_instrument.c"
 }   /* End of source=Source_simple() SETTING parameter declarations. */
 #undef srcArea
 #undef square
@@ -13125,7 +13141,7 @@ MCNUM verbose = mccchop1_verbose;
     SCATTER;
 
 }
-#line 13128 "./SEMSANS_instrument.c"
+#line 13144 "./SEMSANS_instrument.c"
 }   /* End of chop1=DiskChopper() SETTING parameter declarations. */
 #undef omega
 #undef height
@@ -13288,7 +13304,7 @@ MCNUM verbose = mccchop2_verbose;
     SCATTER;
 
 }
-#line 13291 "./SEMSANS_instrument.c"
+#line 13307 "./SEMSANS_instrument.c"
 }   /* End of chop2=DiskChopper() SETTING parameter declarations. */
 #undef omega
 #undef height
@@ -13435,7 +13451,7 @@ MCNUM normalize = mccpolarizer_normalize;
 
   SCATTER;
 }
-#line 13438 "./SEMSANS_instrument.c"
+#line 13454 "./SEMSANS_instrument.c"
 }   /* End of polarizer=Set_pol() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -13559,7 +13575,7 @@ MCNUM yheight = mccslit_1_yheight;
     else
         SCATTER;
 }
-#line 13562 "./SEMSANS_instrument.c"
+#line 13578 "./SEMSANS_instrument.c"
 }   /* End of slit_1=Slit() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -13696,7 +13712,7 @@ MCNUM rz = mccvcoil1_rz;
   SCATTERED;
 
 }
-#line 13699 "./SEMSANS_instrument.c"
+#line 13715 "./SEMSANS_instrument.c"
 }   /* End of vcoil1=Pol_pi_2_rotator() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -13833,7 +13849,7 @@ MCNUM rz = mccvcoil2_rz;
   SCATTERED;
 
 }
-#line 13836 "./SEMSANS_instrument.c"
+#line 13852 "./SEMSANS_instrument.c"
 }   /* End of vcoil2=Pol_pi_2_rotator() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -14023,7 +14039,7 @@ MCNUM concentric = mccGuide_field1_concentric;
         mcmagnet_pop();
     }
 }
-#line 14026 "./SEMSANS_instrument.c"
+#line 14042 "./SEMSANS_instrument.c"
 }   /* End of Guide_field1=Pol_Bfield() SETTING parameter declarations. */
 #undef prms
 #undef parPtr
@@ -14171,7 +14187,7 @@ MCNUM radius = mccGuide_field1_cp_radius;
     }
     mcmagnet_pop();
 }
-#line 14174 "./SEMSANS_instrument.c"
+#line 14190 "./SEMSANS_instrument.c"
 }   /* End of Guide_field1_cp=Pol_Bfield_stop() SETTING parameter declarations. */
 #undef prms
 #undef mccompcurname
@@ -14340,7 +14356,7 @@ MCNUM Bguide = mcctriacoil_1_Bguide;
   sz = cos(omegaL*deltaTtria)*sz_in2 - sin(omegaL*deltaTtria)*sx_in2;
   sx = sin(omegaL*deltaTtria)*sz_in2 + cos(omegaL*deltaTtria)*sx_in2;
 }
-#line 14343 "./SEMSANS_instrument.c"
+#line 14359 "./SEMSANS_instrument.c"
 }   /* End of triacoil_1=Pol_triafield() SETTING parameter declarations. */
 #undef omegaLguide
 #undef omegaL
@@ -14532,7 +14548,7 @@ MCNUM concentric = mccGuide_field2_concentric;
         mcmagnet_pop();
     }
 }
-#line 14535 "./SEMSANS_instrument.c"
+#line 14551 "./SEMSANS_instrument.c"
 }   /* End of Guide_field2=Pol_Bfield() SETTING parameter declarations. */
 #undef prms
 #undef parPtr
@@ -14680,7 +14696,7 @@ MCNUM radius = mccGuide_field2_cp_radius;
     }
     mcmagnet_pop();
 }
-#line 14683 "./SEMSANS_instrument.c"
+#line 14699 "./SEMSANS_instrument.c"
 }   /* End of Guide_field2_cp=Pol_Bfield_stop() SETTING parameter declarations. */
 #undef prms
 #undef mccompcurname
@@ -14818,7 +14834,7 @@ MCNUM rz = mccvcoil3_rz;
   SCATTERED;
 
 }
-#line 14821 "./SEMSANS_instrument.c"
+#line 14837 "./SEMSANS_instrument.c"
 }   /* End of vcoil3=Pol_pi_2_rotator() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -14955,7 +14971,7 @@ MCNUM rz = mccvcoil4_rz;
   SCATTERED;
 
 }
-#line 14958 "./SEMSANS_instrument.c"
+#line 14974 "./SEMSANS_instrument.c"
 }   /* End of vcoil4=Pol_pi_2_rotator() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -15145,7 +15161,7 @@ MCNUM concentric = mccGuide_field3_concentric;
         mcmagnet_pop();
     }
 }
-#line 15148 "./SEMSANS_instrument.c"
+#line 15164 "./SEMSANS_instrument.c"
 }   /* End of Guide_field3=Pol_Bfield() SETTING parameter declarations. */
 #undef prms
 #undef parPtr
@@ -15293,7 +15309,7 @@ MCNUM radius = mccGuide_field3_cp_radius;
     }
     mcmagnet_pop();
 }
-#line 15296 "./SEMSANS_instrument.c"
+#line 15312 "./SEMSANS_instrument.c"
 }   /* End of Guide_field3_cp=Pol_Bfield_stop() SETTING parameter declarations. */
 #undef prms
 #undef mccompcurname
@@ -15462,7 +15478,7 @@ MCNUM Bguide = mcctriacoil_2_Bguide;
   sz = cos(omegaL*deltaTtria)*sz_in2 - sin(omegaL*deltaTtria)*sx_in2;
   sx = sin(omegaL*deltaTtria)*sz_in2 + cos(omegaL*deltaTtria)*sx_in2;
 }
-#line 15465 "./SEMSANS_instrument.c"
+#line 15481 "./SEMSANS_instrument.c"
 }   /* End of triacoil_2=Pol_triafield() SETTING parameter declarations. */
 #undef omegaLguide
 #undef omegaL
@@ -15654,7 +15670,7 @@ MCNUM concentric = mccGuide_field4_concentric;
         mcmagnet_pop();
     }
 }
-#line 15657 "./SEMSANS_instrument.c"
+#line 15673 "./SEMSANS_instrument.c"
 }   /* End of Guide_field4=Pol_Bfield() SETTING parameter declarations. */
 #undef prms
 #undef parPtr
@@ -15802,7 +15818,7 @@ MCNUM radius = mccGuide_field4_cp_radius;
     }
     mcmagnet_pop();
 }
-#line 15805 "./SEMSANS_instrument.c"
+#line 15821 "./SEMSANS_instrument.c"
 }   /* End of Guide_field4_cp=Pol_Bfield_stop() SETTING parameter declarations. */
 #undef prms
 #undef mccompcurname
@@ -15940,7 +15956,7 @@ MCNUM rz = mccvcoil5_rz;
   SCATTERED;
 
 }
-#line 15943 "./SEMSANS_instrument.c"
+#line 15959 "./SEMSANS_instrument.c"
 }   /* End of vcoil5=Pol_pi_2_rotator() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -16077,7 +16093,7 @@ MCNUM rz = mccvcoil6_rz;
   SCATTERED;
 
 }
-#line 16080 "./SEMSANS_instrument.c"
+#line 16096 "./SEMSANS_instrument.c"
 }   /* End of vcoil6=Pol_pi_2_rotator() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -16201,7 +16217,7 @@ MCNUM yheight = mccslit_2_yheight;
     else
         SCATTER;
 }
-#line 16204 "./SEMSANS_instrument.c"
+#line 16220 "./SEMSANS_instrument.c"
 }   /* End of slit_2=Slit() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -16320,7 +16336,7 @@ MCNUM mz = mccanalyser_mz;
   sx=mx;sy=my;sz=mz;
   SCATTER;
 }
-#line 16323 "./SEMSANS_instrument.c"
+#line 16339 "./SEMSANS_instrument.c"
 }   /* End of analyser=Analyser_ideal() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -16449,7 +16465,7 @@ MCNUM yheight = mccGratingSlit1_1_yheight;
     else
         SCATTER;
 }
-#line 16452 "./SEMSANS_instrument.c"
+#line 16468 "./SEMSANS_instrument.c"
 }   /* End of GratingSlit1_1=Slit() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -16585,7 +16601,7 @@ MCNUM yheight = mccGratingSlit1_2_yheight;
     else
         SCATTER;
 }
-#line 16585 "./SEMSANS_instrument.c"
+#line 16601 "./SEMSANS_instrument.c"
 }   /* End of GratingSlit1_2=Slit() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -16721,7 +16737,7 @@ MCNUM yheight = mccGratingSlit1_3_yheight;
     else
         SCATTER;
 }
-#line 16718 "./SEMSANS_instrument.c"
+#line 16734 "./SEMSANS_instrument.c"
 }   /* End of GratingSlit1_3=Slit() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -16857,7 +16873,7 @@ MCNUM yheight = mccGratingSlit1_4_yheight;
     else
         SCATTER;
 }
-#line 16851 "./SEMSANS_instrument.c"
+#line 16867 "./SEMSANS_instrument.c"
 }   /* End of GratingSlit1_4=Slit() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -16993,7 +17009,7 @@ MCNUM yheight = mccGratingSlit1_5_yheight;
     else
         SCATTER;
 }
-#line 16984 "./SEMSANS_instrument.c"
+#line 17000 "./SEMSANS_instrument.c"
 }   /* End of GratingSlit1_5=Slit() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -17147,7 +17163,7 @@ int nowritefile = mccTOF_det_nowritefile;
       RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
     }
 }
-#line 17135 "./SEMSANS_instrument.c"
+#line 17151 "./SEMSANS_instrument.c"
 }   /* End of TOF_det=TOF_monitor() SETTING parameter declarations. */
 #undef delta_t
 #undef t_max
@@ -17263,7 +17279,7 @@ MCNUM minutes = mccOrigin_minutes;
 
   }
 }
-#line 17251 "./SEMSANS_instrument.c"
+#line 17267 "./SEMSANS_instrument.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -17310,7 +17326,7 @@ int nowritefile = mccTOF_det_nowritefile;
         filename);
     }
 }
-#line 17298 "./SEMSANS_instrument.c"
+#line 17314 "./SEMSANS_instrument.c"
 }   /* End of TOF_det=TOF_monitor() SETTING parameter declarations. */
 #undef delta_t
 #undef t_max
@@ -17357,7 +17373,7 @@ MCNUM minutes = mccOrigin_minutes;
     fprintf(stdout, "%g [min] ", difftime(NowTime,StartTime)/60.0);
   fprintf(stdout, "\n");
 }
-#line 17345 "./SEMSANS_instrument.c"
+#line 17361 "./SEMSANS_instrument.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -17491,7 +17507,7 @@ MCNUM minutes = mccOrigin_minutes;
 {
   
 }
-#line 17449 "./SEMSANS_instrument.c"
+#line 17465 "./SEMSANS_instrument.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -17540,7 +17556,7 @@ int target_index = mccsource_target_index;
     dashed_line(0,0,0, -focus_xw/2+tx, focus_yh/2+ty,tz, 4);
   }
 }
-#line 17498 "./SEMSANS_instrument.c"
+#line 17514 "./SEMSANS_instrument.c"
 }   /* End of source=Source_simple() SETTING parameter declarations. */
 #undef srcArea
 #undef square
@@ -17601,7 +17617,7 @@ MCNUM verbose = mccchop1_verbose;
       radius*sin(tmax),          radius*cos(tmax)-delta_y,          0);
   }
 }
-#line 17559 "./SEMSANS_instrument.c"
+#line 17575 "./SEMSANS_instrument.c"
 }   /* End of chop1=DiskChopper() SETTING parameter declarations. */
 #undef omega
 #undef height
@@ -17664,7 +17680,7 @@ MCNUM verbose = mccchop2_verbose;
       radius*sin(tmax),          radius*cos(tmax)-delta_y,          0);
   }
 }
-#line 17622 "./SEMSANS_instrument.c"
+#line 17638 "./SEMSANS_instrument.c"
 }   /* End of chop2=DiskChopper() SETTING parameter declarations. */
 #undef omega
 #undef height
@@ -17695,7 +17711,7 @@ MCNUM normalize = mccpolarizer_normalize;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 17653 "./SEMSANS_instrument.c"
+#line 17669 "./SEMSANS_instrument.c"
 }   /* End of polarizer=Set_pol() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -17738,7 +17754,7 @@ MCNUM yheight = mccslit_1_yheight;
     circle("xy",0,0,0,radius);
   }
 }
-#line 17696 "./SEMSANS_instrument.c"
+#line 17712 "./SEMSANS_instrument.c"
 }   /* End of slit_1=Slit() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -17763,7 +17779,7 @@ MCNUM rz = mccvcoil1_rz;
       (double)xwidth,(double)yheight,(double)zdepth);
 
 }
-#line 17721 "./SEMSANS_instrument.c"
+#line 17737 "./SEMSANS_instrument.c"
 }   /* End of vcoil1=Pol_pi_2_rotator() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -17788,7 +17804,7 @@ MCNUM rz = mccvcoil2_rz;
       (double)xwidth,(double)yheight,(double)zdepth);
 
 }
-#line 17746 "./SEMSANS_instrument.c"
+#line 17762 "./SEMSANS_instrument.c"
 }   /* End of vcoil2=Pol_pi_2_rotator() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -17841,7 +17857,7 @@ MCNUM concentric = mccGuide_field1_concentric;
             break;
     }
 }
-#line 17799 "./SEMSANS_instrument.c"
+#line 17815 "./SEMSANS_instrument.c"
 }   /* End of Guide_field1=Pol_Bfield() SETTING parameter declarations. */
 #undef prms
 #undef parPtr
@@ -17890,7 +17906,7 @@ MCNUM radius = mccGuide_field1_cp_radius;
             break;
     }
 }
-#line 17848 "./SEMSANS_instrument.c"
+#line 17864 "./SEMSANS_instrument.c"
 }   /* End of Guide_field1_cp=Pol_Bfield_stop() SETTING parameter declarations. */
 #undef prms
 #undef mccompcurname
@@ -17917,7 +17933,7 @@ MCNUM Bguide = mcctriacoil_1_Bguide;
   
   box(0, 0, 0, xwidth, yheight, zdepth);
 }
-#line 17875 "./SEMSANS_instrument.c"
+#line 17891 "./SEMSANS_instrument.c"
 }   /* End of triacoil_1=Pol_triafield() SETTING parameter declarations. */
 #undef omegaLguide
 #undef omegaL
@@ -17972,7 +17988,7 @@ MCNUM concentric = mccGuide_field2_concentric;
             break;
     }
 }
-#line 17930 "./SEMSANS_instrument.c"
+#line 17946 "./SEMSANS_instrument.c"
 }   /* End of Guide_field2=Pol_Bfield() SETTING parameter declarations. */
 #undef prms
 #undef parPtr
@@ -18021,7 +18037,7 @@ MCNUM radius = mccGuide_field2_cp_radius;
             break;
     }
 }
-#line 17979 "./SEMSANS_instrument.c"
+#line 17995 "./SEMSANS_instrument.c"
 }   /* End of Guide_field2_cp=Pol_Bfield_stop() SETTING parameter declarations. */
 #undef prms
 #undef mccompcurname
@@ -18047,7 +18063,7 @@ MCNUM rz = mccvcoil3_rz;
       (double)xwidth,(double)yheight,(double)zdepth);
 
 }
-#line 18005 "./SEMSANS_instrument.c"
+#line 18021 "./SEMSANS_instrument.c"
 }   /* End of vcoil3=Pol_pi_2_rotator() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -18072,7 +18088,7 @@ MCNUM rz = mccvcoil4_rz;
       (double)xwidth,(double)yheight,(double)zdepth);
 
 }
-#line 18030 "./SEMSANS_instrument.c"
+#line 18046 "./SEMSANS_instrument.c"
 }   /* End of vcoil4=Pol_pi_2_rotator() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -18125,7 +18141,7 @@ MCNUM concentric = mccGuide_field3_concentric;
             break;
     }
 }
-#line 18083 "./SEMSANS_instrument.c"
+#line 18099 "./SEMSANS_instrument.c"
 }   /* End of Guide_field3=Pol_Bfield() SETTING parameter declarations. */
 #undef prms
 #undef parPtr
@@ -18174,7 +18190,7 @@ MCNUM radius = mccGuide_field3_cp_radius;
             break;
     }
 }
-#line 18132 "./SEMSANS_instrument.c"
+#line 18148 "./SEMSANS_instrument.c"
 }   /* End of Guide_field3_cp=Pol_Bfield_stop() SETTING parameter declarations. */
 #undef prms
 #undef mccompcurname
@@ -18201,7 +18217,7 @@ MCNUM Bguide = mcctriacoil_2_Bguide;
   
   box(0, 0, 0, xwidth, yheight, zdepth);
 }
-#line 18159 "./SEMSANS_instrument.c"
+#line 18175 "./SEMSANS_instrument.c"
 }   /* End of triacoil_2=Pol_triafield() SETTING parameter declarations. */
 #undef omegaLguide
 #undef omegaL
@@ -18256,7 +18272,7 @@ MCNUM concentric = mccGuide_field4_concentric;
             break;
     }
 }
-#line 18214 "./SEMSANS_instrument.c"
+#line 18230 "./SEMSANS_instrument.c"
 }   /* End of Guide_field4=Pol_Bfield() SETTING parameter declarations. */
 #undef prms
 #undef parPtr
@@ -18305,7 +18321,7 @@ MCNUM radius = mccGuide_field4_cp_radius;
             break;
     }
 }
-#line 18263 "./SEMSANS_instrument.c"
+#line 18279 "./SEMSANS_instrument.c"
 }   /* End of Guide_field4_cp=Pol_Bfield_stop() SETTING parameter declarations. */
 #undef prms
 #undef mccompcurname
@@ -18331,7 +18347,7 @@ MCNUM rz = mccvcoil5_rz;
       (double)xwidth,(double)yheight,(double)zdepth);
 
 }
-#line 18289 "./SEMSANS_instrument.c"
+#line 18305 "./SEMSANS_instrument.c"
 }   /* End of vcoil5=Pol_pi_2_rotator() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -18356,7 +18372,7 @@ MCNUM rz = mccvcoil6_rz;
       (double)xwidth,(double)yheight,(double)zdepth);
 
 }
-#line 18314 "./SEMSANS_instrument.c"
+#line 18330 "./SEMSANS_instrument.c"
 }   /* End of vcoil6=Pol_pi_2_rotator() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -18399,7 +18415,7 @@ MCNUM yheight = mccslit_2_yheight;
     circle("xy",0,0,0,radius);
   }
 }
-#line 18357 "./SEMSANS_instrument.c"
+#line 18373 "./SEMSANS_instrument.c"
 }   /* End of slit_2=Slit() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -18436,7 +18452,7 @@ MCNUM mz = mccanalyser_mz;
   line(0.2*mx,0.2*my,0.2*mz,0.18*(mx*cos2+mz*sin2),0.18*my,0.18*(-mx*sin2+mz*cos2));
   line(0.2*mx,0.2*my,0.2*mz,0.18*mx,0.18*(my*cos2+mz*sin2),0.18*(-my*sin2+mz*cos2));
 }
-#line 18394 "./SEMSANS_instrument.c"
+#line 18410 "./SEMSANS_instrument.c"
 }   /* End of analyser=Analyser_ideal() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -18479,7 +18495,7 @@ MCNUM yheight = mccGratingSlit1_1_yheight;
     circle("xy",0,0,0,radius);
   }
 }
-#line 18437 "./SEMSANS_instrument.c"
+#line 18453 "./SEMSANS_instrument.c"
 }   /* End of GratingSlit1_1=Slit() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -18522,7 +18538,7 @@ MCNUM yheight = mccGratingSlit1_2_yheight;
     circle("xy",0,0,0,radius);
   }
 }
-#line 18480 "./SEMSANS_instrument.c"
+#line 18496 "./SEMSANS_instrument.c"
 }   /* End of GratingSlit1_2=Slit() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -18565,7 +18581,7 @@ MCNUM yheight = mccGratingSlit1_3_yheight;
     circle("xy",0,0,0,radius);
   }
 }
-#line 18523 "./SEMSANS_instrument.c"
+#line 18539 "./SEMSANS_instrument.c"
 }   /* End of GratingSlit1_3=Slit() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -18608,7 +18624,7 @@ MCNUM yheight = mccGratingSlit1_4_yheight;
     circle("xy",0,0,0,radius);
   }
 }
-#line 18566 "./SEMSANS_instrument.c"
+#line 18582 "./SEMSANS_instrument.c"
 }   /* End of GratingSlit1_4=Slit() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -18651,7 +18667,7 @@ MCNUM yheight = mccGratingSlit1_5_yheight;
     circle("xy",0,0,0,radius);
   }
 }
-#line 18609 "./SEMSANS_instrument.c"
+#line 18625 "./SEMSANS_instrument.c"
 }   /* End of GratingSlit1_5=Slit() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -18692,7 +18708,7 @@ int nowritefile = mccTOF_det_nowritefile;
                (double)xmin, (double)ymax, 0.0,
                (double)xmin, (double)ymin, 0.0);
 }
-#line 18650 "./SEMSANS_instrument.c"
+#line 18666 "./SEMSANS_instrument.c"
 }   /* End of TOF_det=TOF_monitor() SETTING parameter declarations. */
 #undef delta_t
 #undef t_max

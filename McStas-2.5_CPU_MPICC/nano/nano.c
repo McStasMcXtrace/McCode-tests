@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/nano/nano.instr (Minimal)
- * Date:       Wed Nov 20 00:57:40 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/nano/nano.instr (Minimal)
+ * Date:       Tue Feb 25 21:12:47 2020
  * File:       ./nano.c
  * Compile:    cc -o Minimal.out ./nano.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Minimal";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/nano/nano.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/nano/nano.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -5505,11 +5505,11 @@ void mcinit(void) {
 #line 5505 "./nano.c"
   rot_copy(mcrotrarm, mcrotaarm);
   mcposaarm = coords_set(
-#line 6 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/nano/nano.instr"
+#line 6 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/nano/nano.instr"
     0,
-#line 6 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/nano/nano.instr"
+#line 6 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/nano/nano.instr"
     0,
-#line 6 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/nano/nano.instr"
+#line 6 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/nano/nano.instr"
     0);
 #line 5514 "./nano.c"
   mctc1 = coords_neg(mcposaarm);
@@ -5522,31 +5522,31 @@ void mcinit(void) {
     /* Component source. */
   /* Setting parameters for component source. */
   SIG_MESSAGE("source (Init:SetPar)");
-#line 9 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/nano/nano.instr"
+#line 9 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/nano/nano.instr"
   mccsource_radius = 0.02;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/nano/nano.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/nano/nano.instr"
   mccsource_yheight = 0;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/nano/nano.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/nano/nano.instr"
   mccsource_xwidth = 0;
-#line 10 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/nano/nano.instr"
+#line 10 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/nano/nano.instr"
   mccsource_dist = 3;
-#line 11 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/nano/nano.instr"
+#line 11 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/nano/nano.instr"
   mccsource_focus_xw = 0.01;
-#line 12 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/nano/nano.instr"
+#line 12 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/nano/nano.instr"
   mccsource_focus_yh = 0.01;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/nano/nano.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/nano/nano.instr"
   mccsource_E0 = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/nano/nano.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/nano/nano.instr"
   mccsource_dE = 0;
-#line 13 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/nano/nano.instr"
+#line 13 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/nano/nano.instr"
   mccsource_lambda0 = 6.0;
-#line 14 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/nano/nano.instr"
+#line 14 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/nano/nano.instr"
   mccsource_dlambda = 0.05;
-#line 15 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/nano/nano.instr"
+#line 15 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/nano/nano.instr"
   mccsource_flux = 1e8;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/nano/nano.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/nano/nano.instr"
   mccsource_gauss = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/nano/nano.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/nano/nano.instr"
   mccsource_target_index = + 1;
 #line 5551 "./nano.c"
 
@@ -5560,11 +5560,11 @@ void mcinit(void) {
   rot_transpose(mcrotaarm, mctr1);
   rot_mul(mcrotasource, mctr1, mcrotrsource);
   mctc1 = coords_set(
-#line 16 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/nano/nano.instr"
+#line 16 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/nano/nano.instr"
     0,
-#line 16 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/nano/nano.instr"
+#line 16 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/nano/nano.instr"
     0,
-#line 16 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/nano/nano.instr"
+#line 16 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/nano/nano.instr"
     0);
 #line 5569 "./nano.c"
   rot_transpose(mcrotaarm, mctr1);

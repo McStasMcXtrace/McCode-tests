@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr (Union_powder_validation)
- * Date:       Wed Nov 20 00:55:01 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr (Union_powder_validation)
+ * Date:       Tue Feb 25 21:10:03 2020
  * File:       ./Union_powder_validation.c
  * Compile:    cc -o Union_powder_validation.out ./Union_powder_validation.c  -I@MCCODE_LIB@/share/
  * CFLAGS= -I@MCCODE_LIB@/share/
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Union_powder_validation";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -8587,7 +8587,7 @@ void initialize_cylinder_geometry_from_main_component(struct geometry_struct *cy
 struct pointer_to_1d_coords_list cylinder_shell_points(struct geometry_struct *geometry,int max_number_of_points) {
   // Function that returns a number (less than max) of points on the geometry surface
   // If used, remember to free the space allocated.
-  int points_per_circle = floor(max_number_of_points/2);
+  int points_per_circle = floor(max_number_of_points/2.0);
   
   struct pointer_to_1d_coords_list cylinder_shell_array;
   cylinder_shell_array.elements = malloc(2*points_per_circle*sizeof(Coords));
@@ -11036,7 +11036,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define Vc mcipVc
 #define geometry_interact mcipgeometry_interact
 #define incoherent_fraction mcipincoherent_fraction
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
 int single_scattering_flag;
 #line 11041 "./Union_powder_validation.c"
 #undef incoherent_fraction
@@ -12546,17 +12546,17 @@ void mcinit(void) {
     /* Component Incoherent_process. */
   /* Setting parameters for component Incoherent_process. */
   SIG_MESSAGE("Incoherent_process (Init:SetPar)");
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccIncoherent_process_sigma = mcipsigma_inc;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccIncoherent_process_f_QE = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccIncoherent_process_gamma = 0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccIncoherent_process_packing_factor = mcippack;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccIncoherent_process_unit_cell_volume = mcipVc;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccIncoherent_process_interact_fraction = mcipincoherent_fraction;
 #line 12561 "./Union_powder_validation.c"
 
@@ -12568,11 +12568,11 @@ void mcinit(void) {
 #line 12568 "./Union_powder_validation.c"
   rot_copy(mcrotrIncoherent_process, mcrotaIncoherent_process);
   mcposaIncoherent_process = coords_set(
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0);
 #line 12577 "./Union_powder_validation.c"
   mctc1 = coords_neg(mcposaIncoherent_process);
@@ -12585,29 +12585,29 @@ void mcinit(void) {
     /* Component Powder_process. */
   /* Setting parameters for component Powder_process. */
   SIG_MESSAGE("Powder_process (Init:SetPar)");
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if(mcipmaterial_data_file) strncpy(mccPowder_process_reflections, mcipmaterial_data_file ? mcipmaterial_data_file : "", 16384); else mccPowder_process_reflections[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPowder_process_packing_factor = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPowder_process_Vc = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPowder_process_delta_d_d = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPowder_process_DW = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPowder_process_nb_atoms = 1;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPowder_process_d_phi = 30;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPowder_process_density = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPowder_process_weight = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPowder_process_barns = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPowder_process_Strain = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPowder_process_interact_fraction = -1;
 #line 12612 "./Union_powder_validation.c"
 
@@ -12620,11 +12620,11 @@ void mcinit(void) {
   rot_transpose(mcrotaIncoherent_process, mctr1);
   rot_mul(mcrotaPowder_process, mctr1, mcrotrPowder_process);
   mcposaPowder_process = coords_set(
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0);
 #line 12629 "./Union_powder_validation.c"
   mctc1 = coords_sub(mcposaIncoherent_process, mcposaPowder_process);
@@ -12637,11 +12637,11 @@ void mcinit(void) {
     /* Component test_material. */
   /* Setting parameters for component test_material. */
   SIG_MESSAGE("test_material (Init:SetPar)");
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if("Powder_process,Incoherent_process") strncpy(mcctest_material_process_string, "Powder_process,Incoherent_process" ? "Powder_process,Incoherent_process" : "", 16384); else mcctest_material_process_string[0]='\0';
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcctest_material_my_absorption = 100 * mcipsigma_abs / mcipVc * mcippack;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcctest_material_absorber = 0;
 #line 12646 "./Union_powder_validation.c"
 
@@ -12654,11 +12654,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPowder_process, mctr1);
   rot_mul(mcrotatest_material, mctr1, mcrotrtest_material);
   mcposatest_material = coords_set(
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0);
 #line 12663 "./Union_powder_validation.c"
   mctc1 = coords_sub(mcposaPowder_process, mcposatest_material);
@@ -12671,13 +12671,13 @@ void mcinit(void) {
     /* Component a1. */
   /* Setting parameters for component a1. */
   SIG_MESSAGE("a1 (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if("NULL") strncpy(mcca1_profile, "NULL" ? "NULL" : "", 16384); else mcca1_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcca1_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcca1_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcca1_minutes = 0;
 #line 12682 "./Union_powder_validation.c"
 
@@ -12690,11 +12690,11 @@ void mcinit(void) {
   rot_transpose(mcrotatest_material, mctr1);
   rot_mul(mcrotaa1, mctr1, mcrotra1);
   mcposaa1 = coords_set(
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0);
 #line 12699 "./Union_powder_validation.c"
   mctc1 = coords_sub(mcposatest_material, mcposaa1);
@@ -12707,46 +12707,46 @@ void mcinit(void) {
     /* Component source. */
   /* Setting parameters for component source. */
   SIG_MESSAGE("source (Init:SetPar)");
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccsource_xwidth = 0.0005;
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccsource_yheight = 0.0005;
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccsource_focus_aw = 1.5;
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccsource_focus_ah = 1.5;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccsource_E0 = mcipE0;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccsource_dE = mcipdE;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccsource_lambda0 = 0.0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccsource_dlambda = 0.0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccsource_gauss = 0;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccsource_flux = 1E10;
 #line 12730 "./Union_powder_validation.c"
 
   SIG_MESSAGE("source (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     (0)*DEG2RAD,
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     (0)*DEG2RAD,
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     (0)*DEG2RAD);
 #line 12740 "./Union_powder_validation.c"
   rot_mul(mctr1, mcrotaa1, mcrotasource);
   rot_transpose(mcrotaa1, mctr1);
   rot_mul(mcrotasource, mctr1, mcrotrsource);
   mctc1 = coords_set(
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0);
 #line 12751 "./Union_powder_validation.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -12765,22 +12765,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("sample_position (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     (0)*DEG2RAD,
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     (0)*DEG2RAD,
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     (0)*DEG2RAD);
 #line 12774 "./Union_powder_validation.c"
   rot_mul(mctr1, mcrotaa1, mcrotasample_position);
   rot_transpose(mcrotasource, mctr1);
   rot_mul(mcrotasample_position, mctr1, mcrotrsample_position);
   mctc1 = coords_set(
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     1);
 #line 12785 "./Union_powder_validation.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -12796,62 +12796,62 @@ void mcinit(void) {
     /* Component cylinder_sample_union. */
   /* Setting parameters for component cylinder_sample_union. */
   SIG_MESSAGE("cylinder_sample_union (Init:SetPar)");
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if("test_material") strncpy(mcccylinder_sample_union_material_string, "test_material" ? "test_material" : "", 16384); else mcccylinder_sample_union_material_string[0]='\0';
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_union_priority = 1;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_union_radius = mcipsample_radius;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_union_yheight = mcipsample_height;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_union_visualize = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_union_target_index = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_union_target_x = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_union_target_y = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_union_target_z = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_union_focus_aw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_union_focus_ah = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_union_focus_xw = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_union_focus_xh = 0;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_union_focus_r = 0;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_union_p_interact = mcipgeometry_interact;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if(0) strncpy(mcccylinder_sample_union_mask_string, 0 ? 0 : "", 16384); else mcccylinder_sample_union_mask_string[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if(0) strncpy(mcccylinder_sample_union_mask_setting, 0 ? 0 : "", 16384); else mcccylinder_sample_union_mask_setting[0]='\0';
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_union_number_of_activations = 1;
 #line 12835 "./Union_powder_validation.c"
 
   SIG_MESSAGE("cylinder_sample_union (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     (0)*DEG2RAD,
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     (0)*DEG2RAD,
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     (0)*DEG2RAD);
 #line 12845 "./Union_powder_validation.c"
   rot_mul(mctr1, mcrotasample_position, mcrotacylinder_sample_union);
   rot_transpose(mcrotasample_position, mctr1);
   rot_mul(mcrotacylinder_sample_union, mctr1, mcrotrcylinder_sample_union);
   mctc1 = coords_set(
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0);
 #line 12856 "./Union_powder_validation.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -12867,13 +12867,13 @@ void mcinit(void) {
     /* Component test_sample. */
   /* Setting parameters for component test_sample. */
   SIG_MESSAGE("test_sample (Init:SetPar)");
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcctest_sample_allow_inside_start = 0;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcctest_sample_history_limit = 300000;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcctest_sample_enable_conditionals = 1;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcctest_sample_inherit_number_of_scattering_events = 0;
 #line 12878 "./Union_powder_validation.c"
 
@@ -12887,11 +12887,11 @@ void mcinit(void) {
   rot_transpose(mcrotacylinder_sample_union, mctr1);
   rot_mul(mcrotatest_sample, mctr1, mcrotrtest_sample);
   mctc1 = coords_set(
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     1);
 #line 12896 "./Union_powder_validation.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -12907,80 +12907,80 @@ void mcinit(void) {
     /* Component cylinder_sample_powder. */
   /* Setting parameters for component cylinder_sample_powder. */
   SIG_MESSAGE("cylinder_sample_powder (Init:SetPar)");
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if(mcipmaterial_data_file) strncpy(mcccylinder_sample_powder_reflections, mcipmaterial_data_file ? mcipmaterial_data_file : "", 16384); else mcccylinder_sample_powder_reflections[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if("NULL") strncpy(mcccylinder_sample_powder_geometry, "NULL" ? "NULL" : "", 16384); else mcccylinder_sample_powder_geometry[0]='\0';
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_radius = mcipsample_radius;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_yheight = mcipsample_height;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_xwidth = 0;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_zdepth = 0;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_thickness = 0;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_pack = mcippack;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_Vc = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_sigma_abs = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_sigma_inc = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_delta_d_d = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_p_inc = 0.1;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_p_transmit = 0.1;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_DW = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_nb_atoms = 1;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_d_omega = 0;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_d_phi = 30;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_tth_sign = 0;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_p_interact = 0.8;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_concentric = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_density = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_weight = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_barns = 1;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_Strain = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_focus_flip = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mcccylinder_sample_powder_target_index = 0;
 #line 12964 "./Union_powder_validation.c"
 
   SIG_MESSAGE("cylinder_sample_powder (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     (0)*DEG2RAD,
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     (0)*DEG2RAD,
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     (0)*DEG2RAD);
 #line 12974 "./Union_powder_validation.c"
   rot_mul(mctr1, mcrotasample_position, mcrotacylinder_sample_powder);
   rot_transpose(mcrotatest_sample, mctr1);
   rot_mul(mcrotacylinder_sample_powder, mctr1, mcrotrcylinder_sample_powder);
   mctc1 = coords_set(
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0);
 #line 12985 "./Union_powder_validation.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -12996,13 +12996,13 @@ void mcinit(void) {
     /* Component detectors_m4pi. */
   /* Setting parameters for component detectors_m4pi. */
   SIG_MESSAGE("detectors_m4pi (Init:SetPar)");
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if("4Pi_events.dat") strncpy(mccdetectors_m4pi_filename, "4Pi_events.dat" ? "4Pi_events.dat" : "", 16384); else mccdetectors_m4pi_filename[0]='\0';
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccdetectors_m4pi_radius = 1;
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccdetectors_m4pi_restore_neutron = 1;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccdetectors_m4pi_nowritefile = 0;
 #line 13007 "./Union_powder_validation.c"
 
@@ -13016,11 +13016,11 @@ void mcinit(void) {
   rot_transpose(mcrotacylinder_sample_powder, mctr1);
   rot_mul(mcrotadetectors_m4pi, mctr1, mcrotrdetectors_m4pi);
   mctc1 = coords_set(
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0);
 #line 13025 "./Union_powder_validation.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -13036,68 +13036,68 @@ void mcinit(void) {
     /* Component Banana_monitor. */
   /* Setting parameters for component Banana_monitor. */
   SIG_MESSAGE("Banana_monitor (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_xwidth = 0;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_yheight = 0.1;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_max = 1e40;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_restore_neutron = 1;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_radius = 1;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if("banana, theta limits=[20,170], bins=500") strncpy(mccBanana_monitor_options, "banana, theta limits=[20,170], bins=500" ? "banana, theta limits=[20,170], bins=500" : "", 16384); else mccBanana_monitor_options[0]='\0';
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if("banana.dat") strncpy(mccBanana_monitor_filename, "banana.dat" ? "banana.dat" : "", 16384); else mccBanana_monitor_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if("NULL") strncpy(mccBanana_monitor_geometry, "NULL" ? "NULL" : "", 16384); else mccBanana_monitor_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if("NULL") strncpy(mccBanana_monitor_username1, "NULL" ? "NULL" : "", 16384); else mccBanana_monitor_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if("NULL") strncpy(mccBanana_monitor_username2, "NULL" ? "NULL" : "", 16384); else mccBanana_monitor_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if("NULL") strncpy(mccBanana_monitor_username3, "NULL" ? "NULL" : "", 16384); else mccBanana_monitor_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_nowritefile = 0;
 #line 13081 "./Union_powder_validation.c"
 
   SIG_MESSAGE("Banana_monitor (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     (0)*DEG2RAD,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     (0)*DEG2RAD,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     (0)*DEG2RAD);
 #line 13091 "./Union_powder_validation.c"
   rot_mul(mctr1, mcrotasample_position, mcrotaBanana_monitor);
   rot_transpose(mcrotadetectors_m4pi, mctr1);
   rot_mul(mcrotaBanana_monitor, mctr1, mcrotrBanana_monitor);
   mctc1 = coords_set(
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0);
 #line 13102 "./Union_powder_validation.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -13113,68 +13113,68 @@ void mcinit(void) {
     /* Component Banana_monitor_single. */
   /* Setting parameters for component Banana_monitor_single. */
   SIG_MESSAGE("Banana_monitor_single (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_single_xwidth = 0;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_single_yheight = 0.1;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_single_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_single_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_single_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_single_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_single_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_single_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_single_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_single_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_single_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_single_max = 1e40;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_single_restore_neutron = 1;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_single_radius = 1;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if("banana, theta limits=[20,170], bins=500") strncpy(mccBanana_monitor_single_options, "banana, theta limits=[20,170], bins=500" ? "banana, theta limits=[20,170], bins=500" : "", 16384); else mccBanana_monitor_single_options[0]='\0';
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if("banana_single.dat") strncpy(mccBanana_monitor_single_filename, "banana_single.dat" ? "banana_single.dat" : "", 16384); else mccBanana_monitor_single_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if("NULL") strncpy(mccBanana_monitor_single_geometry, "NULL" ? "NULL" : "", 16384); else mccBanana_monitor_single_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if("NULL") strncpy(mccBanana_monitor_single_username1, "NULL" ? "NULL" : "", 16384); else mccBanana_monitor_single_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if("NULL") strncpy(mccBanana_monitor_single_username2, "NULL" ? "NULL" : "", 16384); else mccBanana_monitor_single_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if("NULL") strncpy(mccBanana_monitor_single_username3, "NULL" ? "NULL" : "", 16384); else mccBanana_monitor_single_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccBanana_monitor_single_nowritefile = 0;
 #line 13158 "./Union_powder_validation.c"
 
   SIG_MESSAGE("Banana_monitor_single (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     (0)*DEG2RAD,
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     (0)*DEG2RAD,
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     (0)*DEG2RAD);
 #line 13168 "./Union_powder_validation.c"
   rot_mul(mctr1, mcrotasample_position, mcrotaBanana_monitor_single);
   rot_transpose(mcrotaBanana_monitor, mctr1);
   rot_mul(mcrotaBanana_monitor_single, mctr1, mcrotrBanana_monitor_single);
   mctc1 = coords_set(
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0);
 #line 13179 "./Union_powder_validation.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -13190,23 +13190,23 @@ void mcinit(void) {
     /* Component PSDlin_transmission. */
   /* Setting parameters for component PSDlin_transmission. */
   SIG_MESSAGE("PSDlin_transmission (Init:SetPar)");
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if("Output_transmission_lin.psd") strncpy(mccPSDlin_transmission_filename, "Output_transmission_lin.psd" ? "Output_transmission_lin.psd" : "", 16384); else mccPSDlin_transmission_filename[0]='\0';
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_transmission_xmin = -0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_transmission_xmax = 0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_transmission_ymin = -0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_transmission_ymax = 0.05;
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_transmission_xwidth = 0.1;
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_transmission_yheight = 0.01;
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_transmission_restore_neutron = 1;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_transmission_nowritefile = 0;
 #line 13211 "./Union_powder_validation.c"
 
@@ -13220,11 +13220,11 @@ void mcinit(void) {
   rot_transpose(mcrotaBanana_monitor_single, mctr1);
   rot_mul(mcrotaPSDlin_transmission, mctr1, mcrotrPSDlin_transmission);
   mctc1 = coords_set(
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0.5);
 #line 13229 "./Union_powder_validation.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -13240,25 +13240,25 @@ void mcinit(void) {
     /* Component PSD_transmission. */
   /* Setting parameters for component PSD_transmission. */
   SIG_MESSAGE("PSD_transmission (Init:SetPar)");
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSD_transmission_nx = 100;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSD_transmission_ny = 100;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if("Output_transmission.psd") strncpy(mccPSD_transmission_filename, "Output_transmission.psd" ? "Output_transmission.psd" : "", 16384); else mccPSD_transmission_filename[0]='\0';
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSD_transmission_xmin = -0.05;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSD_transmission_xmax = 0.05;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSD_transmission_ymin = -0.05;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSD_transmission_ymax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSD_transmission_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSD_transmission_yheight = 0;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSD_transmission_restore_neutron = 1;
 #line 13263 "./Union_powder_validation.c"
 
@@ -13272,11 +13272,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPSDlin_transmission, mctr1);
   rot_mul(mcrotaPSD_transmission, mctr1, mcrotrPSD_transmission);
   mctc1 = coords_set(
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0.5);
 #line 13281 "./Union_powder_validation.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -13295,22 +13295,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("scattering_arm (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     (0)*DEG2RAD,
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     (25)*DEG2RAD,
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     (0)*DEG2RAD);
 #line 13304 "./Union_powder_validation.c"
   rot_mul(mctr1, mcrotasample_position, mcrotascattering_arm);
   rot_transpose(mcrotaPSD_transmission, mctr1);
   rot_mul(mcrotascattering_arm, mctr1, mcrotrscattering_arm);
   mctc1 = coords_set(
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0);
 #line 13315 "./Union_powder_validation.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -13326,23 +13326,23 @@ void mcinit(void) {
     /* Component PSDlin_scattering. */
   /* Setting parameters for component PSDlin_scattering. */
   SIG_MESSAGE("PSDlin_scattering (Init:SetPar)");
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if("Output_scattering.psd") strncpy(mccPSDlin_scattering_filename, "Output_scattering.psd" ? "Output_scattering.psd" : "", 16384); else mccPSDlin_scattering_filename[0]='\0';
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_scattering_xmin = -0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_scattering_xmax = 0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_scattering_ymin = -0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_scattering_ymax = 0.05;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_scattering_xwidth = 0.1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_scattering_yheight = 0.05;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_scattering_restore_neutron = 1;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_scattering_nowritefile = 0;
 #line 13347 "./Union_powder_validation.c"
 
@@ -13356,11 +13356,11 @@ void mcinit(void) {
   rot_transpose(mcrotascattering_arm, mctr1);
   rot_mul(mcrotaPSDlin_scattering, mctr1, mcrotrPSDlin_scattering);
   mctc1 = coords_set(
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0.5);
 #line 13365 "./Union_powder_validation.c"
   rot_transpose(mcrotascattering_arm, mctr1);
@@ -13376,23 +13376,23 @@ void mcinit(void) {
     /* Component PSDlin_scattering_single. */
   /* Setting parameters for component PSDlin_scattering_single. */
   SIG_MESSAGE("PSDlin_scattering_single (Init:SetPar)");
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if("Output_scattering_single.psd") strncpy(mccPSDlin_scattering_single_filename, "Output_scattering_single.psd" ? "Output_scattering_single.psd" : "", 16384); else mccPSDlin_scattering_single_filename[0]='\0';
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_scattering_single_xmin = -0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_scattering_single_xmax = 0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_scattering_single_ymin = -0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_scattering_single_ymax = 0.05;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_scattering_single_xwidth = 0.1;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_scattering_single_yheight = 0.05;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_scattering_single_restore_neutron = 1;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_scattering_single_nowritefile = 0;
 #line 13397 "./Union_powder_validation.c"
 
@@ -13406,11 +13406,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPSDlin_scattering, mctr1);
   rot_mul(mcrotaPSDlin_scattering_single, mctr1, mcrotrPSDlin_scattering_single);
   mctc1 = coords_set(
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0.5);
 #line 13415 "./Union_powder_validation.c"
   rot_transpose(mcrotascattering_arm, mctr1);
@@ -13429,22 +13429,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("scattering_arm_2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     (45)*DEG2RAD,
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     (-10)*DEG2RAD,
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     (0)*DEG2RAD);
 #line 13438 "./Union_powder_validation.c"
   rot_mul(mctr1, mcrotasample_position, mcrotascattering_arm_2);
   rot_transpose(mcrotaPSDlin_scattering_single, mctr1);
   rot_mul(mcrotascattering_arm_2, mctr1, mcrotrscattering_arm_2);
   mctc1 = coords_set(
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0);
 #line 13449 "./Union_powder_validation.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -13460,23 +13460,23 @@ void mcinit(void) {
     /* Component PSDlin_scattering_2. */
   /* Setting parameters for component PSDlin_scattering_2. */
   SIG_MESSAGE("PSDlin_scattering_2 (Init:SetPar)");
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   if("Output_scattering_2.psd") strncpy(mccPSDlin_scattering_2_filename, "Output_scattering_2.psd" ? "Output_scattering_2.psd" : "", 16384); else mccPSDlin_scattering_2_filename[0]='\0';
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_scattering_2_xmin = -0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_scattering_2_xmax = 0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_scattering_2_ymin = -0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_scattering_2_ymax = 0.05;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_scattering_2_xwidth = 0.1;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_scattering_2_yheight = 0.05;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_scattering_2_restore_neutron = 1;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
   mccPSDlin_scattering_2_nowritefile = 0;
 #line 13481 "./Union_powder_validation.c"
 
@@ -13490,11 +13490,11 @@ void mcinit(void) {
   rot_transpose(mcrotascattering_arm_2, mctr1);
   rot_mul(mcrotaPSDlin_scattering_2, mctr1, mcrotrPSDlin_scattering_2);
   mctc1 = coords_set(
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0,
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
     0.5);
 #line 13499 "./Union_powder_validation.c"
   rot_transpose(mcrotascattering_arm_2, mctr1);
@@ -14388,7 +14388,7 @@ add_element_to_geometry_list(&global_geometry_list,global_geometry_element);
           printf("Volume.name         [%d]: %s \n",iterate,global_geometry_list.elements[iterate].Volume->name);
           if (global_geometry_list.elements[iterate].Volume->geometry.is_mask_volume == 0) {
           printf("Volume.p_physics.is_vacuum           [%d]: %d \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->is_vacuum);
-          printf("Volume.p_physics.my_absoprtion       [%d]: %f \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->my_a);
+          printf("Volume.p_physics.my_absorption       [%d]: %f \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->my_a);
           printf("Volume.p_physics.number of processes [%d]: %d \n",iterate,global_geometry_list.elements[iterate].Volume->p_physics->number_of_processes);
           }
           printf("Volume.geometry.shape                [%d]: %s \n",iterate,global_geometry_list.elements[iterate].Volume->geometry.shape);
@@ -18224,7 +18224,7 @@ if (( mcipcomp_select == 1 ))
     SIG_MESSAGE("test_sample (Trace:Extend)");
 if (( mcipcomp_select == 1 )) {
 
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
 if (number_of_scattering_events == 1) single_scattering_flag = 1;
 else single_scattering_flag = 0;
 #line 18227 "./Union_powder_validation.c"
@@ -18794,7 +18794,7 @@ if (( mcipcomp_select == 2 ))
     SIG_MESSAGE("cylinder_sample_powder (Trace:Extend)");
 if (( mcipcomp_select == 2 )) {
 
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_powder_validation/Union_powder_validation.instr"
 if (SCATTERED) single_scattering_flag = 1;
 else single_scattering_flag = 0;
 #line 18794 "./Union_powder_validation.c"

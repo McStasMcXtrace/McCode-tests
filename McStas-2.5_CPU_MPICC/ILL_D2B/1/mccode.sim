@@ -1,10 +1,10 @@
 McStas simulation description file for ILL_D2B.
-Date:    Wed Nov 20 00:59:44 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:16:13 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: ILL_D2B
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_D2B/ILL_D2B.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_D2B/ILL_D2B.instr
   Parameters:  lambda(double) DM(double) Powder(string) RV(double) L1(double) L2(double) L3(double) verbose(double) ALPHA1(double) ALPHA2(double) ALPHA3(double) ETA(double) THETA_M(double) TILT(double) SM(double) Dheight(double) coating(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_D2B/ILL_D2B.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_D2B/ILL_D2B.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574227412
+  Seed: 1582673938
   Directory: 1
   Nodes: 10
   Param: lambda=1
@@ -42,61 +42,61 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Wed Nov 20 00:59:46 2019 (1574207986)
+  Date: Tue Feb 25 21:16:20 2020 (1582661780)
   type: array_2d(40, 40)
-  Source: ILL_D2B (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_D2B/ILL_D2B.instr)
+  Source: ILL_D2B (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_D2B/ILL_D2B.instr)
   component: D2B_Mono_XY
   position: 0 0 15.95
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: D2B_Mono_XY_1574207984.x_y
-  statistics: X0=1.23422e-05; dX=0.013177; Y0=-8.75341e-05; dY=0.0852192;
-  signal: Min=754288; Max=1.83264e+06; Mean=1.41604e+06;
-  values: 2.26566e+09 1.79953e+06 1.88203e+06
+  filename: D2B_Mono_XY_1582661773.x_y
+  statistics: X0=-3.55595e-07; dX=0.0131769; Y0=6.39306e-06; dY=0.0851841;
+  signal: Min=715004; Max=1.83846e+06; Mean=1.41684e+06;
+  values: 2.26694e+09 1.79981e+06 1.88322e+06
   xvar: x
   yvar: y
   xlabel: x [m]
   ylabel: y [m]
   zvar: I
   zlabel: Signal per bin
-  xylimits: -0.0249997 0.0249997 -0.149992 0.15
+  xylimits: -0.0249998 0.0249996 -0.149994 0.149997
   variables: I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 00:59:46 2019 (1574207986)
+  Date: Tue Feb 25 21:16:20 2020 (1582661780)
   type: array_2d(40, 40)
-  Source: ILL_D2B (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_D2B/ILL_D2B.instr)
+  Source: ILL_D2B (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_D2B/ILL_D2B.instr)
   component: D2B_ALPHA1_Div
   position: 0 0 15.95
   title:  Intensity Divergence Divergence Monitor (Square) per bin
   Ncount: 10000000
-  filename: D2B_ALPHA1_Div_1574207984.hd_vd
-  statistics: X0=-2.5981e-05; dX=0.104783; Y0=-0.00378724; dY=0.425779;
-  signal: Min=0; Max=4.86867e+06; Mean=1.41605e+06;
-  values: 2.26569e+09 1.79953e+06 1.88204e+06
+  filename: D2B_ALPHA1_Div_1582661773.hd_vd
+  statistics: X0=6.48309e-05; dX=0.104829; Y0=-0.000995703; dY=0.424035;
+  signal: Min=0; Max=4.94936e+06; Mean=1.41686e+06;
+  values: 2.26697e+09 1.79982e+06 1.88323e+06
   xvar: Hor.
   yvar: Vert.
   xlabel: Hor. Divergence [deg]
   ylabel: Vert. Divergence [deg]
   zvar: I
   zlabel: Signal per bin
-  xylimits: -0.299996 0.299983 -0.932704 0.92663
+  xylimits: -0.299991 0.299955 -0.925891 0.92478
   variables: I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 00:59:46 2019 (1574207986)
+  Date: Tue Feb 25 21:16:20 2020 (1582661780)
   type: array_1d(40)
-  Source: ILL_D2B (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_D2B/ILL_D2B.instr)
+  Source: ILL_D2B (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_D2B/ILL_D2B.instr)
   component: D2B_Mono_Lambda
   position: 0 0 15.95
   title: Wavelength [Angs] monitor
   Ncount: 10000000
-  filename: D2B_Mono_Lambda_1574207984.L
-  statistics: X0=1.00004; dX=0.00576866;
-  signal: Min=5.56811e+07; Max=5.75655e+07; Mean=5.66422e+07;
-  values: 2.26569e+09 1.79954e+06 1.88206e+06
+  filename: D2B_Mono_Lambda_1582661773.L
+  statistics: X0=1.00004; dX=0.00576893;
+  signal: Min=5.56332e+07; Max=5.75548e+07; Mean=5.66744e+07;
+  values: 2.26698e+09 1.79982e+06 1.88325e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
@@ -106,59 +106,59 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 00:59:46 2019 (1574207986)
+  Date: Tue Feb 25 21:16:20 2020 (1582661780)
   type: array_2d(40, 40)
-  Source: ILL_D2B (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_D2B/ILL_D2B.instr)
+  Source: ILL_D2B (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_D2B/ILL_D2B.instr)
   component: D2B_ALPHA2_Div
   position: 1.85616 0 14.1938
   title:  Intensity Divergence Divergence Monitor (Square) per bin
   Ncount: 10000000
-  filename: D2B_ALPHA2_Div_1574207984.hd_vd
-  statistics: X0=-0.00118173; dX=0.0706078; Y0=0.0178735; dY=1.80913;
-  signal: Min=0; Max=19727.9; Mean=5644.18;
-  values: 9.0307e+06 30458.8 120269
+  filename: D2B_ALPHA2_Div_1582661773.hd_vd
+  statistics: X0=-0.00143814; dX=0.0704345; Y0=0.061632; dY=1.74654;
+  signal: Min=0; Max=19496.7; Mean=5608.31;
+  values: 8.97329e+06 30402.4 119263
   xvar: Hor.
   yvar: Vert.
   xlabel: Hor. Divergence [deg]
   ylabel: Vert. Divergence [deg]
   zvar: I
   zlabel: Signal per bin
-  xylimits: -0.183316 0.183298 -3.60769 3.63742
+  xylimits: -0.183329 0.183184 -3.48282 3.57854
   variables: I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 00:59:46 2019 (1574207986)
+  Date: Tue Feb 25 21:16:20 2020 (1582661780)
   type: array_1d(40)
-  Source: ILL_D2B (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_D2B/ILL_D2B.instr)
+  Source: ILL_D2B (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_D2B/ILL_D2B.instr)
   component: D2B_Sample_Lambda
   position: 1.85616 0 14.1938
   title: Wavelength [Angs] monitor
   Ncount: 10000000
-  filename: D2B_Sample_Lambda_1574207984.L
-  statistics: X0=0.999971; dX=0.00044701;
-  signal: Min=826.633; Max=542351; Mean=225781;
-  values: 9.03125e+06 30460.1 120258
+  filename: D2B_Sample_Lambda_1582661773.L
+  statistics: X0=0.999999; dX=0.00044199;
+  signal: Min=1077.82; Max=549986; Mean=224345;
+  values: 8.9738e+06 30403.5 119242
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.998581 1.00132
+  xlimits: 0.998626 1.00135
   variables: L I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 00:59:46 2019 (1574207986)
+  Date: Tue Feb 25 21:16:20 2020 (1582661780)
   type: array_1d(3200)
-  Source: ILL_D2B (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_D2B/ILL_D2B.instr)
+  Source: ILL_D2B (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_D2B/ILL_D2B.instr)
   component: D2B_BananaTheta
   position: 1.8703 0 14.1797
   title: Angle [deg] monitor
   Ncount: 10000000
-  filename: D2B_BananaTheta_1574207984.A
-  statistics: X0=77.7734; dX=44.7038;
-  signal: Min=0.124573; Max=56.9311; Mean=6.73946;
-  values: 21566.3 184.537 228964
+  filename: D2B_BananaTheta_1582661773.A
+  statistics: X0=78.8115; dX=44.5616;
+  signal: Min=0.390849; Max=49.5322; Mean=6.84103;
+  values: 21891.3 190.951 227187
   xvar: A
   yvar: (I,I_err)
   xlabel: Angle [deg]
@@ -168,17 +168,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 00:59:46 2019 (1574207986)
+  Date: Tue Feb 25 21:16:20 2020 (1582661780)
   type: array_1d(3200)
-  Source: ILL_D2B (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_D2B/ILL_D2B.instr)
+  Source: ILL_D2B (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_D2B/ILL_D2B.instr)
   component: D2B_BananaThetaCenter
   position: 1.8703 0 14.1797
   title: Angle [deg] monitor
   Ncount: 10000000
-  filename: D2B_BananaThetaCenter_1574207984.A
-  statistics: X0=77.0457; dX=44.2476;
-  signal: Min=4.77445e-05; Max=33.0943; Mean=2.2359;
-  values: 7154.89 105.65 78044
+  filename: D2B_BananaThetaCenter_1582661773.A
+  statistics: X0=78.8956; dX=44.0922;
+  signal: Min=0; Max=31.6017; Mean=2.32;
+  values: 7424.01 112.533 77299
   xvar: A
   yvar: (I,I_err)
   xlabel: Angle [deg]
@@ -188,17 +188,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 00:59:46 2019 (1574207986)
+  Date: Tue Feb 25 21:16:20 2020 (1582661780)
   type: array_2d(320, 25)
-  Source: ILL_D2B (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_D2B/ILL_D2B.instr)
+  Source: ILL_D2B (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_D2B/ILL_D2B.instr)
   component: D2B_BananaPSD
   position: 1.8703 0 14.1797
   title:  Intensity Angle Position Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: D2B_BananaPSD_1574207984.th_y
-  statistics: X0=-77.2056; dX=43.2581; Y0=-0.00116625; dY=0.084977;
-  signal: Min=0; Max=32.6037; Mean=1.76886;
-  values: 14150.9 166.129 164396
+  filename: D2B_BananaPSD_1582661773.th_y
+  statistics: X0=-75.7207; dX=43.253; Y0=3.04241e-05; dY=0.0842141;
+  signal: Min=0; Max=38.204; Mean=1.80151;
+  values: 14412.1 175.843 162551
   xvar: Longitude
   yvar: y
   xlabel: Longitude [deg]

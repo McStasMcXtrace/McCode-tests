@@ -1,24 +1,24 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Nov. 19, 2019
-# Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr
+# Creator: McStas 2.5 - Feb. 24, 2020
+# Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr
 # Ncount: 1000000
 # Trace: no
 # Gravitation: no
-# Seed: 1574210123
+# Seed: 1582691066
 # Directory: 1
 # Nodes: 10
 # Param: MF=flipfield.dat
-# Date: Wed Nov 20 01:24:52 2019 (1574209492)
+# Date: Tue Feb 25 22:16:23 2020 (1582665383)
 # type: array_0d
-# Source: Test_pol_tabled (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
+# Source: Test_pol_tabled (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_pol_tabled/Test_pol_tabled.instr)
 # component: pol_6
 # position: 0 0 2.5
 # title: Polarisation monitor m=(0 1 0) pol_6
 # Ncount: 10000000
-# statistics: 8; dY=0.281555;
-# signal: 0119423;
-# values: 
+# statistics: None
+# signal: None
+# values: 10 1e-06 1e+07
 # xylimits: 0 0 0 0 0 0
 # variables: I I_err N
-0 0 0
+10 1e-06 1e+07

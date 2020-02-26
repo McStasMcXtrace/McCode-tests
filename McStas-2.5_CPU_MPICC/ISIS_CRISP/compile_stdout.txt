@@ -1,16 +1,15 @@
-info!
 INFO: No output directory specified (--dir)
-INFO: Using directory: "ISIS_CRISP_20191120_004113"
+INFO: Using directory: "ISIS_CRISP_20200225_205632"
 INFO: Regenerating c-file: ISIS_CRISP.c
 Info:    'ISIS_moderator' is a contributed component.
 Info:    'Multilayer_Sample' is a contributed component.
-Warning: Using DEFINITION parameter of component Multilayer_Sample() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr:145
+Warning: Using DEFINITION parameter of component Multilayer_Sample() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr:145
   sldPar={ 0.0 , 6.35e-6 }
-Warning: Using DEFINITION parameter of component Multilayer_Sample() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr:145
+Warning: Using DEFINITION parameter of component Multilayer_Sample() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr:145
   dPar={ 0.0 }
-Warning: Using DEFINITION parameter of component Multilayer_Sample() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr:145
+Warning: Using DEFINITION parameter of component Multilayer_Sample() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr:145
   sigmaPar={ 5.0 }
-Warning: Using DEFINITION parameter of component Multilayer_Sample() (potential syntax error) at line /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr:145
+Warning: Using DEFINITION parameter of component Multilayer_Sample() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_CRISP/ISIS_CRISP.instr:145
   focus_xw=2 * tend
 Warning: Component isis_source=ISIS_moderator(string Face) definition parameter
          may be changed into a setting parameter to avoid
@@ -19,3 +18,4 @@ CFLAGS= -lgsl -lgslcblas -L@MCCODE_LIB@/miniconda3/lib -I@MCCODE_LIB@/miniconda3
 INFO: Recompiling: ./ISIS_CRISP.out
 INFO: ===
 ./ISIS_CRISP.out: error while loading shared libraries: libgsl.so.23: cannot open shared object file: No such file or directory
+info!

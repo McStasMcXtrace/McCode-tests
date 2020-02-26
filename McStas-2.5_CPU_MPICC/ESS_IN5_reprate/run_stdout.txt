@@ -2,85 +2,81 @@ INFO: Using directory: "1"
 INFO: Using existing c-file: ./ESS_IN5_reprate.c
 INFO: Using existing binary: ./ESS_IN5_reprate.out
 INFO: ===
-INFO: Using system default number of mpirun -np processes
-[1574207938.323081] [n-62-23-6:18637:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3261.94
-[1574207938.323651] [n-62-23-6:18638:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3261.94
-[1574207938.324527] [n-62-23-6:18637:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207938.324543] [n-62-23-6:18637:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-23-14:11146] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:11146] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:11146] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582661664.840123] [n-62-23-14:11151:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3266.38
+[1582661664.841887] [n-62-23-14:11151:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661664.841905] [n-62-23-14:11151:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 --------------------------------------------------------------------------
 Initialization of MXM library failed.
 
   Error: Input/output error
 
 --------------------------------------------------------------------------
-[1574207938.325186] [n-62-23-6:18638:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207938.325203] [n-62-23-6:18638:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207938.326413] [n-62-23-6:18637:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207938.326429] [n-62-23-6:18637:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207938.327038] [n-62-23-6:18638:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207938.327065] [n-62-23-6:18638:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207938.333564] [n-62-23-6:18639:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3104.71
-[1574207938.335159] [n-62-23-6:18640:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3104.71
-[1574207938.335654] [n-62-23-6:18639:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207938.335670] [n-62-23-6:18639:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207938.336180] [n-62-23-6:18641:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3106.42
-[1574207938.336524] [n-62-23-6:18640:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207938.336541] [n-62-23-6:18640:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207938.337523] [n-62-23-6:18641:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207938.337539] [n-62-23-6:18641:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207938.337606] [n-62-23-6:18639:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207938.337621] [n-62-23-6:18639:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207938.338301] [n-62-23-6:18640:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207938.338315] [n-62-23-6:18640:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207938.339306] [n-62-23-6:18641:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207938.339320] [n-62-23-6:18641:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207938.361285] [n-62-23-6:18642:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.12
-[1574207938.363007] [n-62-23-6:18642:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207938.363025] [n-62-23-6:18642:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207938.364913] [n-62-23-6:18642:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207938.364927] [n-62-23-6:18642:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207938.440186] [n-62-23-3:19416:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3474.36
-[1574207938.440191] [n-62-23-3:19417:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3474.36
-[1574207938.440190] [n-62-23-3:19418:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3474.36
-[1574207938.440198] [n-62-23-3:19419:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3474.36
-[1574207938.450480] [n-62-23-3:19416:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207938.450497] [n-62-23-3:19416:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207938.450480] [n-62-23-3:19417:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207938.450480] [n-62-23-3:19418:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207938.450497] [n-62-23-3:19418:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207938.450480] [n-62-23-3:19419:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207938.450496] [n-62-23-3:19419:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207938.450628] [n-62-23-3:19417:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207938.453067] [n-62-23-3:19418:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207938.453080] [n-62-23-3:19418:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207938.453064] [n-62-23-3:19416:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207938.453068] [n-62-23-3:19419:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207938.453081] [n-62-23-3:19419:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207938.453069] [n-62-23-3:19417:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207938.453082] [n-62-23-3:19417:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207938.453127] [n-62-23-3:19416:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'ESS_IN5_reprate' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+[1582661664.845261] [n-62-23-14:11151:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661664.845277] [n-62-23-14:11151:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582661664.850412] [n-62-23-14:11152:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3266.38
+[1582661664.852643] [n-62-23-14:11152:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661664.852660] [n-62-23-14:11152:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582661664.854903] [n-62-23-14:11152:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661664.854918] [n-62-23-14:11152:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582661664.860254] [n-62-23-14:11153:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3266.38
+[1582661664.862181] [n-62-23-14:11153:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661664.862196] [n-62-23-14:11153:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582661664.864706] [n-62-23-14:11153:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661664.864723] [n-62-23-14:11153:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582661664.869130] [n-62-23-14:11154:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3266.38
+[1582661664.870926] [n-62-23-14:11154:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661664.870947] [n-62-23-14:11154:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582661664.871678] [n-62-23-14:11155:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3266.38
+[1582661664.873077] [n-62-23-14:11154:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661664.873093] [n-62-23-14:11154:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582661664.873241] [n-62-23-14:11155:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661664.873255] [n-62-23-14:11155:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582661664.873778] [n-62-23-14:11156:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3266.38
+[1582661664.875465] [n-62-23-14:11155:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661664.875481] [n-62-23-14:11155:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582661664.875735] [n-62-23-14:11156:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661664.875789] [n-62-23-14:11156:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582661664.877976] [n-62-23-14:11156:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661664.878023] [n-62-23-14:11156:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582661664.878644] [n-62-23-14:11157:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3266.38
+[1582661664.878622] [n-62-23-14:11158:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3266.38
+[1582661664.880441] [n-62-23-14:11158:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661664.880458] [n-62-23-14:11158:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582661664.881149] [n-62-23-14:11157:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661664.881165] [n-62-23-14:11157:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582661664.882711] [n-62-23-14:11160:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3266.38
+[1582661664.883231] [n-62-23-14:11158:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661664.883257] [n-62-23-14:11158:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582661664.884885] [n-62-23-14:11160:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661664.884901] [n-62-23-14:11160:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582661664.885526] [n-62-23-14:11157:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661664.885541] [n-62-23-14:11157:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582661664.887295] [n-62-23-14:11160:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661664.887312] [n-62-23-14:11160:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582661664.890694] [n-62-23-14:11159:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3266.38
+[1582661664.892357] [n-62-23-14:11159:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661664.892374] [n-62-23-14:11159:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582661664.894371] [n-62-23-14:11159:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661664.894386] [n-62-23-14:11159:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'ESS_IN5_reprate' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
 [ESS_IN5_reprate] Initialize
 [ESS_IN5_reprate] Initialize
 DiskChopper: FOchop2 WARNING: chopper frequency is 0!
 DiskChopper: Fastchop1 WARNING: chopper frequency is 0!
 DiskChopper: FOchop2 WARNING: chopper frequency is 0!
 DiskChopper: Fastchop1 WARNING: chopper frequency is 0!
-[ESS_IN5_reprate] Initialize
-[ESS_IN5_reprate] Initialize
-[ESS_IN5_reprate] Initialize
-[ESS_IN5_reprate] Initialize
+DiskChopper: FOchop2 WARNING: chopper frequency is 0!
+DiskChopper: Fastchop1 WARNING: chopper frequency is 0!
 [ESS_IN5_reprate] Initialize
 [ESS_IN5_reprate] Initialize
 DiskChopper: FOchop2 WARNING: chopper frequency is 0!
 DiskChopper: Fastchop1 WARNING: chopper frequency is 0!
-DiskChopper: FOchop2 WARNING: chopper frequency is 0!
-DiskChopper: Fastchop1 WARNING: chopper frequency is 0!
 [ESS_IN5_reprate] Initialize
-DiskChopper: FOchop2 WARNING: chopper frequency is 0!
-DiskChopper: Fastchop1 WARNING: chopper frequency is 0!
-DiskChopper: FOchop2 WARNING: chopper frequency is 0!
-DiskChopper: Fastchop1 WARNING: chopper frequency is 0!
+[ESS_IN5_reprate] Initialize
+[ESS_IN5_reprate] Initialize
 DiskChopper: FOchop2 WARNING: chopper frequency is 0!
 DiskChopper: Fastchop1 WARNING: chopper frequency is 0!
 DiskChopper: FOchop2 WARNING: chopper frequency is 0!
@@ -90,96 +86,107 @@ DiskChopper: Fastchop1 WARNING: chopper frequency is 0!
 [ESS_IN5_reprate] Initialize
 DiskChopper: FOchop2 WARNING: chopper frequency is 0!
 DiskChopper: Fastchop1 WARNING: chopper frequency is 0!
-[n-62-23-6:18627] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-6:18627] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
-<E> : 3.24714 meV , E-width : 0.00944353 meV 
+[ESS_IN5_reprate] Initialize
+DiskChopper: FOchop2 WARNING: chopper frequency is 0!
+DiskChopper: Fastchop1 WARNING: chopper frequency is 0!
+[ESS_IN5_reprate] Initialize
+DiskChopper: FOchop2 WARNING: chopper frequency is 0!
+DiskChopper: Fastchop1 WARNING: chopper frequency is 0!
+[n-62-23-14:11146] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-14:11146] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
 
-Warning: 37354 events were removed in Component[3] TOFmoderator_zoom=TOF_monitor()
+Trace ETA 12 [s] % 88 
+Trace ETA 12 [s] % 88 
+Trace ETA 18 [s] % 59 60 90 90 
+
+Trace ETA 17 [s] % 63 
+Trace ETA 17 [s] % 62 
+Trace ETA 11 [s] % 93 
+Trace ETA 11 [s] % 96 
+
+Trace ETA 18 [s] % 59 Trace ETA 17 [s] % 64 Trace ETA 17 [s] % 64 60 <E> : 3.27181 meV , E-width : 0.0166115 meV 
+
+Finally [ESS_IN5_reprate: 1]. Time: 12 [s] 
+Warning: 37360 events were removed in Component[3] TOFmoderator_zoom=TOF_monitor()
          (negative time, miss next components, rounding errors, Nan, Inf).
-Finally [ESS_IN5_reprate: 1]. Time: 6 [s] 
-<E> : 3.3005 meV , E-width : 0.0179642 meV 
+70 70 70 70 70 70 80 80 80 80 80 90 90 90 80 90 <E> : 3.27995 meV , E-width : 0 meV 
 
-Finally [ESS_IN5_reprate: 1]. Time: 6 [s] 
-Warning: 37212 events were removed in Component[3] TOFmoderator_zoom=TOF_monitor()
+Warning: 37400 events were removed in Component[3] TOFmoderator_zoom=TOF_monitor()
          (negative time, miss next components, rounding errors, Nan, Inf).
-<E> : 3.28315 meV , E-width : 0.0249949 meV 
+Finally [ESS_IN5_reprate: 1]. Time: 15 [s] 
+90 <E> : 3.3135 meV , E-width : 0.0144232 meV 
 
-Finally [ESS_IN5_reprate: 1]. Time: 6 [s] 
-Warning: 37273 events were removed in Component[3] TOFmoderator_zoom=TOF_monitor()
+Finally [ESS_IN5_reprate: 1]. Time: 15 [s] 
+Warning: 37604 events were removed in Component[3] TOFmoderator_zoom=TOF_monitor()
          (negative time, miss next components, rounding errors, Nan, Inf).
-<E> : 3.31671 meV , E-width : 0.00226629 meV 
+90 <E> : 3.23796 meV , E-width : 0.000306004 meV 
 
-Finally [ESS_IN5_reprate: 1]. Time: 6 [s] 
-Warning: 37311 events were removed in Component[3] TOFmoderator_zoom=TOF_monitor()
+Finally [ESS_IN5_reprate: 1]. Time: 18 [s] 
+Warning: 37251 events were removed in Component[3] TOFmoderator_zoom=TOF_monitor()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+<E> : 3.28019 meV , E-width : 0.0263668 meV 
+<E> : 3.27659 meV , E-width : 0.0145599 meV 
+
+Finally [ESS_IN5_reprate: 1]. Time: 17 [s] 
+
+Warning: 37102 events were removed in Component[3] TOFmoderator_zoom=TOF_monitor()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+Warning: 37176 events were removed in Component[3] TOFmoderator_zoom=TOF_monitor()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+Finally [ESS_IN5_reprate: 1]. Time: 17 [s] 
+<E> : 3.2584 meV , E-width : 0 meV 
+
+Finally [ESS_IN5_reprate: 1]. Time: 17 [s] 
+Warning: 37352 events were removed in Component[3] TOFmoderator_zoom=TOF_monitor()
          (negative time, miss next components, rounding errors, Nan, Inf).
 
 Save [ESS_IN5_reprate]
-Detector: TOFmoderator_zoom_I=1.46652e+11 TOFmoderator_zoom_ERR=6.66016e+07 TOFmoderator_zoom_N=9.62757e+06 "TOFmoderator_zoom.dat"
-Detector: TOFmoderator_I=1.46653e+11 TOFmoderator_ERR=6.66021e+07 TOFmoderator_N=9.62759e+06 "TOFmoderator.dat"
-Detector: Lmon_guistart_I=1.46653e+11 Lmon_guistart_ERR=6.66021e+07 Lmon_guistart_N=9.62759e+06 "Lmon_guistart.dat"
-Detector: Lmon_normalize_I=1.37107e+11 Lmon_normalize_ERR=6.44084e+07 Lmon_normalize_N=8.99846e+06 "Lmon_guistart_normalize.dat"
-Detector: Lmonslow1_I=5.66434e+10 Lmonslow1_ERR=3.94054e+07 Lmonslow1_N=4.65573e+06 "Lmonslow1.dat"
-Detector: PSDslow1_I=9.38765e+10 PSDslow1_ERR=5.07129e+07 PSDslow1_N=7.96667e+06 "PSDslow1.dat"
-<E> : 3.25793 meV , E-width : 0.0165904 meV 
+Detector: TOFmoderator_zoom_I=1.46643e+11 TOFmoderator_zoom_ERR=6.65834e+07 TOFmoderator_zoom_N=9.62677e+06 "TOFmoderator_zoom.dat"
+Detector: TOFmoderator_I=1.46644e+11 TOFmoderator_ERR=6.65842e+07 TOFmoderator_N=9.62679e+06 "TOFmoderator.dat"
+Detector: Lmon_guistart_I=1.46644e+11 Lmon_guistart_ERR=6.65842e+07 Lmon_guistart_N=9.62679e+06 "Lmon_guistart.dat"
+Detector: Lmon_normalize_I=1.37092e+11 Lmon_normalize_ERR=6.43936e+07 Lmon_normalize_N=8.99791e+06 "Lmon_guistart_normalize.dat"
+Detector: Lmonslow1_I=5.65849e+10 Lmonslow1_ERR=3.93681e+07 Lmonslow1_N=4.65558e+06 "Lmonslow1.dat"
+Detector: PSDslow1_I=9.38504e+10 PSDslow1_ERR=5.06819e+07 PSDslow1_N=7.96762e+06 "PSDslow1.dat"
 
-Finally [ESS_IN5_reprate: 1]. Time: 6 [s] 
-Warning: 37345 events were removed in Component[3] TOFmoderator_zoom=TOF_monitor()
+Finally [ESS_IN5_reprate: 1]. Time: 17 [s] 
+Warning: 37201 events were removed in Component[3] TOFmoderator_zoom=TOF_monitor()
          (negative time, miss next components, rounding errors, Nan, Inf).
-Warning: No neutron could reach Component[46] detectorarm
-Warning: No neutron could reach Component[47] TOFdetector
-Warning: No neutron could reach Component[48] TOFdetector_zoom
-Warning: No neutron could reach Component[49] Edetector
-Warning: No neutron could reach Component[50] TOF2Edetector
-Detector: TOFLmon1_I=4.71852e+10 TOFLmon1_ERR=3.5966e+07 TOFLmon1_N=3.85294e+06 "TOFLmon1.dat"
-Detector: Lmon_afterslow1_I=5.66434e+10 Lmon_afterslow1_ERR=3.94054e+07 Lmon_afterslow1_N=4.65573e+06 "Lmon_afterslow1.dat"
-Detector: PSD_afterslow1_I=9.38765e+10 PSD_afterslow1_ERR=5.07129e+07 PSD_afterslow1_N=7.96667e+06 "PSD_afterslow1.dat"
-Detector: Lmon_slow2_I=3.79428e+10 Lmon_slow2_ERR=3.06357e+07 Lmon_slow2_N=3.7968e+06 "Lmon_slow2.dat"
-Detector: PSD_afterslow2_I=6.22558e+10 PSD_afterslow2_ERR=3.92745e+07 PSD_afterslow2_N=6.27803e+06 "PSD_afterslow2.dat"
-Detector: Lmon_afterslow2_I=3.7976e+10 Lmon_afterslow2_ERR=3.06441e+07 Lmon_afterslow2_N=3.80549e+06 "Lmon_afterslow2.dat"
-Detector: TOFL_afterslow2_I=3.17226e+10 TOFL_afterslow2_ERR=2.79977e+07 TOFL_afterslow2_N=3.17371e+06 "TOFL_afterslow2.dat"
-Detector: Lmon_beforeballistic_I=3.04013e+10 Lmon_beforeballistic_ERR=2.72137e+07 Lmon_beforeballistic_N=3.30224e+06 "Lmon_before_ballistic.dat"
-
-Finally [ESS_IN5_reprate: 1]. Time: 6 [s] 
-Warning: 37189 events were removed in Component[3] TOFmoderator_zoom=TOF_monitor()
-         (negative time, miss next components, rounding errors, Nan, Inf).
-Detector: PSD_beforeballistic_I=5.99621e+10 PSD_beforeballistic_ERR=3.82026e+07 PSD_beforeballistic_N=6.52318e+06 "PSD_beforeballistic.dat"
-<E> : 3.27307 meV , E-width : 0.0280881 meV 
-
-Finally [ESS_IN5_reprate: 1]. Time: 6 [s] 
-Warning: 37359 events were removed in Component[3] TOFmoderator_zoom=TOF_monitor()
-         (negative time, miss next components, rounding errors, Nan, Inf).
-Detector: Lmonfast2_I=3.27722e+10 Lmonfast2_ERR=2.81866e+07 Lmonfast2_N=4.16766e+06 "Lmonfast2.dat"
-Detector: Lmonfast2_zoom_I=3.27722e+10 Lmonfast2_zoom_ERR=2.81866e+07 Lmonfast2_zoom_N=4.16766e+06 "Lmonfast2_zoom.dat"
-<E> : 3.25326 meV , E-width : 0 meV 
-
-Finally [ESS_IN5_reprate: 1]. Time: 6 [s] 
-Warning: 36758 events were removed in Component[3] TOFmoderator_zoom=TOF_monitor()
-         (negative time, miss next components, rounding errors, Nan, Inf).
-Detector: TOFLfast2_I=3.27722e+10 TOFLfast2_ERR=2.81866e+07 TOFLfast2_N=4.16766e+06 "TOFLfast2.dat"
-Detector: TOFLfast2zoom_I=1.29514e+10 TOFLfast2zoom_ERR=1.77587e+07 TOFLfast2zoom_N=1.6485e+06 "TOFLfast2_zoom.dat"
-Detector: PSDfast2_I=3.27722e+10 PSDfast2_ERR=2.81866e+07 PSDfast2_N=4.16766e+06 "PSDfast2.dat"
-Detector: TOFfast2_zoom_I=5.03148e+06 TOFfast2_zoom_ERR=337751 TOFfast2_zoom_N=748 "TOF_fast2.dat"
-Detector: Lmon_afterfast2_I=5.03148e+06 Lmon_afterfast2_ERR=337751 Lmon_afterfast2_N=748 "Lmon_afterfast2.dat"
-Detector: TOFL_afterfast2_I=5.03148e+06 TOFL_afterfast2_ERR=337751 TOFL_afterfast2_N=748 "TOF_afterfast2.dat"
-Detector: TOFL_afterfast2_zoom_I=5.03148e+06 TOFL_afterfast2_zoom_ERR=337751 TOFL_afterfast2_zoom_N=748 "TOFL_afterfast2_zoom.dat"
-Detector: PSD_afterfast2_I=5.03148e+06 PSD_afterfast2_ERR=337751 PSD_afterfast2_N=748 "PSD_afterfast2.dat"
-Detector: Lmon_guideend_I=1.34009e+06 Lmon_guideend_ERR=175065 Lmon_guideend_N=156 "Lmon_guideend.dat"
-<E> : 3.30814 meV , E-width : 4.21468e-08 meV 
-
-Finally [ESS_IN5_reprate: 1]. Time: 7 [s] 
-Warning: 37338 events were removed in Component[3] TOFmoderator_zoom=TOF_monitor()
-         (negative time, miss next components, rounding errors, Nan, Inf).
-Detector: PSDsample_I=1.34009e+06 PSDsample_ERR=175067 PSDsample_N=153 "PSDsample.dat"
-Detector: TOFsample_zoom_I=403995 TOFsample_zoom_ERR=102977 TOFsample_zoom_N=25 "TOF_sample.dat"
-Detector: Esample_I=403995 Esample_ERR=102977 Esample_N=25 "Esample.dat"
-<E> : 3.27099 meV , E-width : 4.21468e-08 meV 
-Detector: Lmon_sample_zoom_I=403995 Lmon_sample_zoom_ERR=102977 Lmon_sample_zoom_N=25 "LMON_sample_zoom.dat"
+Detector: TOFLmon1_I=4.71293e+10 TOFLmon1_ERR=3.59302e+07 TOFLmon1_N=3.85151e+06 "TOFLmon1.dat"
+Detector: Lmon_afterslow1_I=5.6585e+10 Lmon_afterslow1_ERR=3.93681e+07 Lmon_afterslow1_N=4.65557e+06 "Lmon_afterslow1.dat"
+Detector: PSD_afterslow1_I=9.38504e+10 PSD_afterslow1_ERR=5.06819e+07 PSD_afterslow1_N=7.96762e+06 "PSD_afterslow1.dat"
+Detector: Lmon_slow2_I=3.78963e+10 Lmon_slow2_ERR=3.06021e+07 Lmon_slow2_N=3.79496e+06 "Lmon_slow2.dat"
+Detector: PSD_afterslow2_I=6.21674e+10 PSD_afterslow2_ERR=3.92201e+07 PSD_afterslow2_N=6.27562e+06 "PSD_afterslow2.dat"
+Detector: Lmon_afterslow2_I=3.7929e+10 Lmon_afterslow2_ERR=3.06092e+07 Lmon_afterslow2_N=3.80381e+06 "Lmon_afterslow2.dat"
+Detector: TOFL_afterslow2_I=3.16986e+10 TOFL_afterslow2_ERR=2.7978e+07 TOFL_afterslow2_N=3.171e+06 "TOFL_afterslow2.dat"
+Detector: Lmon_beforeballistic_I=3.03811e+10 Lmon_beforeballistic_ERR=2.71859e+07 Lmon_beforeballistic_N=3.30402e+06 "Lmon_before_ballistic.dat"
+Detector: PSD_beforeballistic_I=5.98941e+10 PSD_beforeballistic_ERR=3.81667e+07 PSD_beforeballistic_N=6.5208e+06 "PSD_beforeballistic.dat"
+Detector: Lmonfast2_I=3.27535e+10 Lmonfast2_ERR=2.81793e+07 Lmonfast2_N=4.1645e+06 "Lmonfast2.dat"
+Detector: Lmonfast2_zoom_I=3.27535e+10 Lmonfast2_zoom_ERR=2.81793e+07 Lmonfast2_zoom_N=4.1645e+06 "Lmonfast2_zoom.dat"
+Detector: TOFLfast2_I=3.27535e+10 TOFLfast2_ERR=2.81793e+07 TOFLfast2_N=4.1645e+06 "TOFLfast2.dat"
+Detector: TOFLfast2zoom_I=1.29469e+10 TOFLfast2zoom_ERR=1.77602e+07 TOFLfast2zoom_N=1.64674e+06 "TOFLfast2_zoom.dat"
+Detector: PSDfast2_I=3.27535e+10 PSDfast2_ERR=2.81793e+07 PSDfast2_N=4.1645e+06 "PSDfast2.dat"
+Detector: TOFfast2_zoom_I=5.19778e+06 TOFfast2_zoom_ERR=356982 TOFfast2_zoom_N=700 "TOF_fast2.dat"
+Detector: Lmon_afterfast2_I=5.19778e+06 Lmon_afterfast2_ERR=356982 Lmon_afterfast2_N=700 "Lmon_afterfast2.dat"
+Detector: TOFL_afterfast2_I=5.19778e+06 TOFL_afterfast2_ERR=356982 TOFL_afterfast2_N=700 "TOF_afterfast2.dat"
+Detector: TOFL_afterfast2_zoom_I=5.19778e+06 TOFL_afterfast2_zoom_ERR=356982 TOFL_afterfast2_zoom_N=700 "TOFL_afterfast2_zoom.dat"
+Detector: PSD_afterfast2_I=5.19778e+06 PSD_afterfast2_ERR=356982 PSD_afterfast2_N=700 "PSD_afterfast2.dat"
+Detector: Lmon_guideend_I=1.62044e+06 Lmon_guideend_ERR=202796 Lmon_guideend_N=168 "Lmon_guideend.dat"
+Detector: PSDsample_I=1.62044e+06 PSDsample_ERR=202797 PSDsample_N=167 "PSDsample.dat"
+Detector: TOFsample_zoom_I=364458 TOFsample_zoom_ERR=102274 TOFsample_zoom_N=21 "TOF_sample.dat"
+<E> : 3.25391 meV , E-width : 0.00268363 meV 
+Detector: Esample_I=364458 Esample_ERR=102274 Esample_N=21 "Esample.dat"
+<E> : 3.26462 meV , E-width : 0 meV 
+Detector: Lmon_sample_zoom_I=364458 Lmon_sample_zoom_ERR=102274 Lmon_sample_zoom_N=21 "LMON_sample_zoom.dat"
 Detector: TOFdetector_I=0 TOFdetector_ERR=0 TOFdetector_N=0 "TOF.dat"
 Detector: TOFdetector_zoom_I=0 TOFdetector_zoom_ERR=0 TOFdetector_zoom_N=0 "TOF_zoom.dat"
 Detector: Edetector_I=0 Edetector_ERR=0 Edetector_N=0 "Edet.dat"
-Detector: TOF2Edetector_I=0 TOF2Edetector_ERR=0 TOF2Edetector_N=0 "TOF2E.dat"
 
-Finally [ESS_IN5_reprate: 1]. Time: 7 [s] 
-Warning: 37272 events were removed in Component[3] TOFmoderator_zoom=TOF_monitor()
+Finally [ESS_IN5_reprate: 1]. Time: 18 [s] 
+Detector: TOF2Edetector_I=0 TOF2Edetector_ERR=0 TOF2Edetector_N=0 "TOF2E.dat"
+Warning: 37208 events were removed in Component[3] TOFmoderator_zoom=TOF_monitor()
          (negative time, miss next components, rounding errors, Nan, Inf).
-INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr in dataset 1
+
+Finally [ESS_IN5_reprate: 1]. Time: 19 [s] 
+Warning: 37557 events were removed in Component[3] TOFmoderator_zoom=TOF_monitor()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr in dataset 1

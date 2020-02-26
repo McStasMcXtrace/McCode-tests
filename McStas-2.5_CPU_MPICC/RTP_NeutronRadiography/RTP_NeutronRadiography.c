@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr (RTP_NeutronRadiography)
- * Date:       Wed Nov 20 00:46:07 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr (RTP_NeutronRadiography)
+ * Date:       Tue Feb 25 21:00:52 2020
  * File:       ./RTP_NeutronRadiography.c
  * Compile:    cc -o RTP_NeutronRadiography.out ./RTP_NeutronRadiography.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "RTP_NeutronRadiography";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -10285,7 +10285,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define mcposaRTP_NeutronRadiography coords_set(0,0,0)
 #define theta mciptheta
 #define phi mcipphi
-#line 36 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 36 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   double sample_scattered=0;
 #line 10290 "./RTP_NeutronRadiography.c"
 #undef phi
@@ -11429,13 +11429,13 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccOrigin_minutes = 0;
 #line 11440 "./RTP_NeutronRadiography.c"
 
@@ -11447,11 +11447,11 @@ void mcinit(void) {
 #line 11447 "./RTP_NeutronRadiography.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0);
 #line 11456 "./RTP_NeutronRadiography.c"
   mctc1 = coords_neg(mcposaOrigin);
@@ -11464,65 +11464,65 @@ void mcinit(void) {
     /* Component source. */
   /* Setting parameters for component source. */
   SIG_MESSAGE("source (Init:SetPar)");
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mccsource_flux_file, "NULL" ? "NULL" : "", 16384); else mccsource_flux_file[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mccsource_xdiv_file, "NULL" ? "NULL" : "", 16384); else mccsource_xdiv_file[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mccsource_ydiv_file, "NULL" ? "NULL" : "", 16384); else mccsource_ydiv_file[0]='\0';
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_radius = .154 / 2;
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_dist = 1.16 + 1.50;
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_focus_xw = .07;
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_focus_yh = .07;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_focus_aw = 0;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_focus_ah = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_E0 = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_dE = 0;
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_lambda0 = 5;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_dlambda = 4.5;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_I1 = 2.79e12 / 25;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_yheight = 0.1;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_xwidth = 0.1;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_verbose = 0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_T1 = 300;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_flux_file_perAA = 0;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_flux_file_log = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_Lmin = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_Lmax = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_Emin = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_Emax = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_T2 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_I2 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_T3 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_I3 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_zdepth = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsource_target_index = + 1;
 #line 11527 "./RTP_NeutronRadiography.c"
 
@@ -11536,11 +11536,11 @@ void mcinit(void) {
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotasource, mctr1, mcrotrsource);
   mctc1 = coords_set(
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0);
 #line 11545 "./RTP_NeutronRadiography.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -11556,27 +11556,27 @@ void mcinit(void) {
     /* Component CoarseCollimator1. */
   /* Setting parameters for component CoarseCollimator1. */
   SIG_MESSAGE("CoarseCollimator1 (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if(0) strncpy(mccCoarseCollimator1_reflect, 0 ? 0 : "", 16384); else mccCoarseCollimator1_reflect[0]='\0';
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccCoarseCollimator1_w1 = .154;
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccCoarseCollimator1_h1 = .154;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccCoarseCollimator1_w2 = 0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccCoarseCollimator1_h2 = 0;
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccCoarseCollimator1_l = 1.16125;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccCoarseCollimator1_R0 = 0.99;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccCoarseCollimator1_Qc = 0.0219;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccCoarseCollimator1_alpha = 6.07;
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccCoarseCollimator1_m = 0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccCoarseCollimator1_W = 0.003;
 #line 11581 "./RTP_NeutronRadiography.c"
 
@@ -11590,11 +11590,11 @@ void mcinit(void) {
   rot_transpose(mcrotasource, mctr1);
   rot_mul(mcrotaCoarseCollimator1, mctr1, mcrotrCoarseCollimator1);
   mctc1 = coords_set(
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     .01);
 #line 11599 "./RTP_NeutronRadiography.c"
   rot_transpose(mcrotasource, mctr1);
@@ -11610,27 +11610,27 @@ void mcinit(void) {
     /* Component CoarseCollimator2. */
   /* Setting parameters for component CoarseCollimator2. */
   SIG_MESSAGE("CoarseCollimator2 (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if(0) strncpy(mccCoarseCollimator2_reflect, 0 ? 0 : "", 16384); else mccCoarseCollimator2_reflect[0]='\0';
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccCoarseCollimator2_w1 = .2;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccCoarseCollimator2_h1 = .2;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccCoarseCollimator2_w2 = 0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccCoarseCollimator2_h2 = 0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccCoarseCollimator2_l = 1.5;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccCoarseCollimator2_R0 = 0.99;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccCoarseCollimator2_Qc = 0.0219;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccCoarseCollimator2_alpha = 6.07;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccCoarseCollimator2_m = 0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccCoarseCollimator2_W = 0.003;
 #line 11635 "./RTP_NeutronRadiography.c"
 
@@ -11644,11 +11644,11 @@ void mcinit(void) {
   rot_transpose(mcrotaCoarseCollimator1, mctr1);
   rot_mul(mcrotaCoarseCollimator2, mctr1, mcrotrCoarseCollimator2);
   mctc1 = coords_set(
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     1.16125 + 0.003);
 #line 11653 "./RTP_NeutronRadiography.c"
   rot_transpose(mcrotaCoarseCollimator1, mctr1);
@@ -11664,47 +11664,47 @@ void mcinit(void) {
     /* Component lmon. */
   /* Setting parameters for component lmon. */
   SIG_MESSAGE("lmon (Init:SetPar)");
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mcclmon_xwidth = .2;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mcclmon_yheight = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mcclmon_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mcclmon_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mcclmon_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mcclmon_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mcclmon_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mcclmon_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mcclmon_zmax = 0;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mcclmon_bins = 50;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mcclmon_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mcclmon_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mcclmon_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mcclmon_radius = 0;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("slit disk, auto wavelength") strncpy(mcclmon_options, "slit disk, auto wavelength" ? "slit disk, auto wavelength" : "", 16384); else mcclmon_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mcclmon_filename, "NULL" ? "NULL" : "", 16384); else mcclmon_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mcclmon_geometry, "NULL" ? "NULL" : "", 16384); else mcclmon_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mcclmon_username1, "NULL" ? "NULL" : "", 16384); else mcclmon_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mcclmon_username2, "NULL" ? "NULL" : "", 16384); else mcclmon_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mcclmon_username3, "NULL" ? "NULL" : "", 16384); else mcclmon_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mcclmon_nowritefile = 0;
 #line 11709 "./RTP_NeutronRadiography.c"
 
@@ -11718,11 +11718,11 @@ void mcinit(void) {
   rot_transpose(mcrotaCoarseCollimator2, mctr1);
   rot_mul(mcrotalmon, mctr1, mcrotrlmon);
   mctc1 = coords_set(
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     1.5 + 0.01);
 #line 11727 "./RTP_NeutronRadiography.c"
   rot_transpose(mcrotaCoarseCollimator2, mctr1);
@@ -11749,11 +11749,11 @@ void mcinit(void) {
   rot_transpose(mcrotalmon, mctr1);
   rot_mul(mcrotasample_position, mctr1, mcrotrsample_position);
   mctc1 = coords_set(
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     .4);
 #line 11758 "./RTP_NeutronRadiography.c"
   rot_transpose(mcrotalmon, mctr1);
@@ -11772,22 +11772,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("sample_position_rotated (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     (mcipphi)*DEG2RAD,
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     (0)*DEG2RAD,
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     (mciptheta)*DEG2RAD);
 #line 11781 "./RTP_NeutronRadiography.c"
   rot_mul(mctr1, mcrotasample_position, mcrotasample_position_rotated);
   rot_transpose(mcrotasample_position, mctr1);
   rot_mul(mcrotasample_position_rotated, mctr1, mcrotrsample_position_rotated);
   mctc1 = coords_set(
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0);
 #line 11792 "./RTP_NeutronRadiography.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -11803,59 +11803,59 @@ void mcinit(void) {
     /* Component sample_outer1. */
   /* Setting parameters for component sample_outer1. */
   SIG_MESSAGE("sample_outer1 (Init:SetPar)");
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("Fe.laz") strncpy(mccsample_outer1_reflections, "Fe.laz" ? "Fe.laz" : "", 16384); else mccsample_outer1_reflections[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mccsample_outer1_geometry, "NULL" ? "NULL" : "", 16384); else mccsample_outer1_geometry[0]='\0';
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_radius = .03 / 2;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_yheight = 0.05;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_xwidth = 0;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_zdepth = 0;
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_thickness = 0.01 / 2;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_pack = 1;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_Vc = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_sigma_abs = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_sigma_inc = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_delta_d_d = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_p_inc = 0.1;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_p_transmit = 0.1;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_DW = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_nb_atoms = 1;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_d_omega = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_d_phi = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_tth_sign = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_p_interact = 0;
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_concentric = 1;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_density = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_weight = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_barns = 1;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_Strain = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_focus_flip = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer1_target_index = 0;
 #line 11860 "./RTP_NeutronRadiography.c"
 
@@ -11869,11 +11869,11 @@ void mcinit(void) {
   rot_transpose(mcrotasample_position_rotated, mctr1);
   rot_mul(mcrotasample_outer1, mctr1, mcrotrsample_outer1);
   mctc1 = coords_set(
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0);
 #line 11878 "./RTP_NeutronRadiography.c"
   rot_transpose(mcrotasample_position_rotated, mctr1);
@@ -11889,59 +11889,59 @@ void mcinit(void) {
     /* Component sample_inner. */
   /* Setting parameters for component sample_inner. */
   SIG_MESSAGE("sample_inner (Init:SetPar)");
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("Cu.laz") strncpy(mccsample_inner_reflections, "Cu.laz" ? "Cu.laz" : "", 16384); else mccsample_inner_reflections[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mccsample_inner_geometry, "NULL" ? "NULL" : "", 16384); else mccsample_inner_geometry[0]='\0';
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_radius = .02 / 2;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_yheight = 0.04;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_xwidth = 0;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_zdepth = 0;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_thickness = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_pack = 1;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_Vc = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_sigma_abs = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_sigma_inc = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_delta_d_d = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_p_inc = 0.1;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_p_transmit = 0.1;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_DW = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_nb_atoms = 1;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_d_omega = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_d_phi = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_tth_sign = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_p_interact = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_concentric = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_density = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_weight = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_barns = 1;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_Strain = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_focus_flip = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_inner_target_index = 0;
 #line 11946 "./RTP_NeutronRadiography.c"
 
@@ -11955,11 +11955,11 @@ void mcinit(void) {
   rot_transpose(mcrotasample_outer1, mctr1);
   rot_mul(mcrotasample_inner, mctr1, mcrotrsample_inner);
   mctc1 = coords_set(
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0);
 #line 11964 "./RTP_NeutronRadiography.c"
   rot_transpose(mcrotasample_position_rotated, mctr1);
@@ -11975,59 +11975,59 @@ void mcinit(void) {
     /* Component sample_outer2. */
   /* Setting parameters for component sample_outer2. */
   SIG_MESSAGE("sample_outer2 (Init:SetPar)");
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("Fe.laz") strncpy(mccsample_outer2_reflections, "Fe.laz" ? "Fe.laz" : "", 16384); else mccsample_outer2_reflections[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mccsample_outer2_geometry, "NULL" ? "NULL" : "", 16384); else mccsample_outer2_geometry[0]='\0';
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_radius = .03 / 2;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_yheight = 0.05;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_xwidth = 0;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_zdepth = 0;
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_thickness = 0.01 / 2;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_pack = 1;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_Vc = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_sigma_abs = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_sigma_inc = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_delta_d_d = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_p_inc = 0.1;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_p_transmit = 0.1;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_DW = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_nb_atoms = 1;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_d_omega = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_d_phi = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_tth_sign = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_p_interact = 0;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_concentric = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_density = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_weight = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_barns = 1;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_Strain = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_focus_flip = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccsample_outer2_target_index = 0;
 #line 12032 "./RTP_NeutronRadiography.c"
 
@@ -12041,11 +12041,11 @@ void mcinit(void) {
   rot_transpose(mcrotasample_inner, mctr1);
   rot_mul(mcrotasample_outer2, mctr1, mcrotrsample_outer2);
   mctc1 = coords_set(
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0);
 #line 12050 "./RTP_NeutronRadiography.c"
   rot_transpose(mcrotasample_position_rotated, mctr1);
@@ -12061,47 +12061,47 @@ void mcinit(void) {
     /* Component image_plate_ideal. */
   /* Setting parameters for component image_plate_ideal. */
   SIG_MESSAGE("image_plate_ideal (Init:SetPar)");
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_ideal_xwidth = .3;
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_ideal_yheight = .3;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_ideal_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_ideal_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_ideal_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_ideal_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_ideal_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_ideal_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_ideal_zmax = 0;
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_ideal_bins = 1000;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_ideal_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_ideal_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_ideal_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_ideal_radius = 0;
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("x y") strncpy(mccimage_plate_ideal_options, "x y" ? "x y" : "", 16384); else mccimage_plate_ideal_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mccimage_plate_ideal_filename, "NULL" ? "NULL" : "", 16384); else mccimage_plate_ideal_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mccimage_plate_ideal_geometry, "NULL" ? "NULL" : "", 16384); else mccimage_plate_ideal_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mccimage_plate_ideal_username1, "NULL" ? "NULL" : "", 16384); else mccimage_plate_ideal_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mccimage_plate_ideal_username2, "NULL" ? "NULL" : "", 16384); else mccimage_plate_ideal_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mccimage_plate_ideal_username3, "NULL" ? "NULL" : "", 16384); else mccimage_plate_ideal_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_ideal_nowritefile = 0;
 #line 12106 "./RTP_NeutronRadiography.c"
 
@@ -12115,11 +12115,11 @@ void mcinit(void) {
   rot_transpose(mcrotasample_outer2, mctr1);
   rot_mul(mcrotaimage_plate_ideal, mctr1, mcrotrimage_plate_ideal);
   mctc1 = coords_set(
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     .1);
 #line 12124 "./RTP_NeutronRadiography.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -12135,47 +12135,47 @@ void mcinit(void) {
     /* Component image_plate_eff. */
   /* Setting parameters for component image_plate_eff. */
   SIG_MESSAGE("image_plate_eff (Init:SetPar)");
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_eff_xwidth = .3;
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_eff_yheight = .3;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_eff_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_eff_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_eff_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_eff_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_eff_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_eff_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_eff_zmax = 0;
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_eff_bins = 1000;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_eff_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_eff_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_eff_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_eff_radius = 0;
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("x y") strncpy(mccimage_plate_eff_options, "x y" ? "x y" : "", 16384); else mccimage_plate_eff_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mccimage_plate_eff_filename, "NULL" ? "NULL" : "", 16384); else mccimage_plate_eff_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mccimage_plate_eff_geometry, "NULL" ? "NULL" : "", 16384); else mccimage_plate_eff_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mccimage_plate_eff_username1, "NULL" ? "NULL" : "", 16384); else mccimage_plate_eff_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mccimage_plate_eff_username2, "NULL" ? "NULL" : "", 16384); else mccimage_plate_eff_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mccimage_plate_eff_username3, "NULL" ? "NULL" : "", 16384); else mccimage_plate_eff_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_eff_nowritefile = 0;
 #line 12180 "./RTP_NeutronRadiography.c"
 
@@ -12189,11 +12189,11 @@ void mcinit(void) {
   rot_transpose(mcrotaimage_plate_ideal, mctr1);
   rot_mul(mcrotaimage_plate_eff, mctr1, mcrotrimage_plate_eff);
   mctc1 = coords_set(
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     .1 + 1e-3);
 #line 12198 "./RTP_NeutronRadiography.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -12209,47 +12209,47 @@ void mcinit(void) {
     /* Component image_plate_scattered. */
   /* Setting parameters for component image_plate_scattered. */
   SIG_MESSAGE("image_plate_scattered (Init:SetPar)");
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_scattered_xwidth = .3;
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_scattered_yheight = .3;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_scattered_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_scattered_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_scattered_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_scattered_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_scattered_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_scattered_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_scattered_zmax = 0;
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_scattered_bins = 1000;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_scattered_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_scattered_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_scattered_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_scattered_radius = 0;
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("x y") strncpy(mccimage_plate_scattered_options, "x y" ? "x y" : "", 16384); else mccimage_plate_scattered_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mccimage_plate_scattered_filename, "NULL" ? "NULL" : "", 16384); else mccimage_plate_scattered_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mccimage_plate_scattered_geometry, "NULL" ? "NULL" : "", 16384); else mccimage_plate_scattered_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mccimage_plate_scattered_username1, "NULL" ? "NULL" : "", 16384); else mccimage_plate_scattered_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mccimage_plate_scattered_username2, "NULL" ? "NULL" : "", 16384); else mccimage_plate_scattered_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if("NULL") strncpy(mccimage_plate_scattered_username3, "NULL" ? "NULL" : "", 16384); else mccimage_plate_scattered_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccimage_plate_scattered_nowritefile = 0;
 #line 12254 "./RTP_NeutronRadiography.c"
 
@@ -12263,11 +12263,11 @@ void mcinit(void) {
   rot_transpose(mcrotaimage_plate_eff, mctr1);
   rot_mul(mcrotaimage_plate_scattered, mctr1, mcrotrimage_plate_scattered);
   mctc1 = coords_set(
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     .1 + 1e-3);
 #line 12272 "./RTP_NeutronRadiography.c"
   rot_transpose(mcrotasample_position, mctr1);
@@ -12283,17 +12283,17 @@ void mcinit(void) {
     /* Component reactor. */
   /* Setting parameters for component reactor. */
   SIG_MESSAGE("reactor (Init:SetPar)");
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   if(0) strncpy(mccreactor_geometry, 0 ? 0 : "", 16384); else mccreactor_geometry[0]='\0';
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccreactor_radius = .7 / 2;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccreactor_xwidth = 0;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccreactor_yheight = .4;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccreactor_zdepth = 0;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   mccreactor_thickness = 0;
 #line 12298 "./RTP_NeutronRadiography.c"
 
@@ -12307,11 +12307,11 @@ void mcinit(void) {
   rot_transpose(mcrotaimage_plate_scattered, mctr1);
   rot_mul(mcrotareactor, mctr1, mcrotrreactor);
   mctc1 = coords_set(
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     0,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     -.35);
 #line 12316 "./RTP_NeutronRadiography.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -15715,7 +15715,7 @@ mcnlp)
 #define mccompcurindex 7
 /* 'sample_position_rotated=Arm()' component instance extend code */
     SIG_MESSAGE("sample_position_rotated (Trace:Extend)");
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     sample_scattered=0;
 #line 15720 "./RTP_NeutronRadiography.c"
 #undef mccompcurname
@@ -16167,7 +16167,7 @@ int target_index = mccsample_outer1_target_index;
 #line 16167 "./RTP_NeutronRadiography.c"
 /* 'sample_outer1=PowderN()' component instance extend code */
     SIG_MESSAGE("sample_outer1 (Trace:Extend)");
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     if (SCATTERED) sample_scattered+=SCATTERED;
 #line 16172 "./RTP_NeutronRadiography.c"
 }   /* End of sample_outer1=PowderN() SETTING parameter declarations. */
@@ -16624,7 +16624,7 @@ int target_index = mccsample_inner_target_index;
 #line 16624 "./RTP_NeutronRadiography.c"
 /* 'sample_inner=PowderN()' component instance extend code */
     SIG_MESSAGE("sample_inner (Trace:Extend)");
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     if (SCATTERED) sample_scattered+=SCATTERED;
 #line 16629 "./RTP_NeutronRadiography.c"
 }   /* End of sample_inner=PowderN() SETTING parameter declarations. */
@@ -17081,7 +17081,7 @@ int target_index = mccsample_outer2_target_index;
 #line 17081 "./RTP_NeutronRadiography.c"
 /* 'sample_outer2=PowderN()' component instance extend code */
     SIG_MESSAGE("sample_outer2 (Trace:Extend)");
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
     if (SCATTERED) sample_scattered+=SCATTERED;
 #line 17086 "./RTP_NeutronRadiography.c"
 }   /* End of sample_outer2=PowderN() SETTING parameter declarations. */
@@ -17393,7 +17393,7 @@ int nowritefile = mccimage_plate_ideal_nowritefile;
 #line 17393 "./RTP_NeutronRadiography.c"
 /* 'image_plate_ideal=Monitor_nD()' component instance extend code */
     SIG_MESSAGE("image_plate_ideal (Trace:Extend)");
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/RTP_NeutronRadiography/RTP_NeutronRadiography.instr"
   /* take into account ZnS scintillator efficiency */
   double eff=0.5;
   double v=sqrt(vx*vx+vy*vy+vz*vz);

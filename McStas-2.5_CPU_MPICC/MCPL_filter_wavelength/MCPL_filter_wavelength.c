@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr (MCPL_filter_wavelength)
- * Date:       Wed Nov 20 00:43:52 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr (MCPL_filter_wavelength)
+ * Date:       Tue Feb 25 20:59:12 2020
  * File:       ./MCPL_filter_wavelength.c
  * Compile:    cc -o MCPL_filter_wavelength.out ./MCPL_filter_wavelength.c  -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
  * CFLAGS= -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "MCPL_filter_wavelength";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -9773,7 +9773,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define max mcipmax
 #define min mcipmin
 #define bins mcipbins
-#line 33 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 33 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   double Wavelength;
   char monopts1[128];
   char monopts2[128];
@@ -10235,7 +10235,7 @@ void mcinit(void) {
 #define max mcipmax
 #define min mcipmin
 #define bins mcipbins
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
 {
   sprintf(monopts1,"previous lambda limits=[%g %g] bins=%i",min, wavelength, bins);
   sprintf(monopts2,"previous lambda limits=[%g %g] bins=%i",wavelength, max, bins);
@@ -10264,13 +10264,13 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccOrigin_minutes = 0;
 #line 10275 "./MCPL_filter_wavelength.c"
 
@@ -10282,11 +10282,11 @@ void mcinit(void) {
 #line 10282 "./MCPL_filter_wavelength.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
     0,
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
     0,
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
     0);
 #line 10291 "./MCPL_filter_wavelength.c"
   mctc1 = coords_neg(mcposaOrigin);
@@ -10299,23 +10299,23 @@ void mcinit(void) {
     /* Component MCPLinput. */
   /* Setting parameters for component MCPLinput. */
   SIG_MESSAGE("MCPLinput (Init:SetPar)");
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   if(mcipMCPLfile) strncpy(mccMCPLinput_filename, mcipMCPLfile ? mcipMCPLfile : "", 16384); else mccMCPLinput_filename[0]='\0';
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccMCPLinput_polarisationuse = 1;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccMCPLinput_verbose = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccMCPLinput_Emin = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccMCPLinput_Emax = FLT_MAX;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccMCPLinput_repeat_count = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccMCPLinput_E_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccMCPLinput_pos_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccMCPLinput_dir_smear = 0;
 #line 10320 "./MCPL_filter_wavelength.c"
 
@@ -10329,11 +10329,11 @@ void mcinit(void) {
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotaMCPLinput, mctr1, mcrotrMCPLinput);
   mctc1 = coords_set(
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
     0,
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
     0,
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
     0);
 #line 10338 "./MCPL_filter_wavelength.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -10360,11 +10360,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMCPLinput, mctr1);
   rot_mul(mcrotaCalc, mctr1, mcrotrCalc);
   mctc1 = coords_set(
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
     0,
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
     0,
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
     0);
 #line 10369 "./MCPL_filter_wavelength.c"
   rot_transpose(mcrotaMCPLinput, mctr1);
@@ -10380,13 +10380,13 @@ void mcinit(void) {
     /* Component MCPLlow. */
   /* Setting parameters for component MCPLlow. */
   SIG_MESSAGE("MCPLlow (Init:SetPar)");
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   if("L_low") strncpy(mccMCPLlow_filename, "L_low" ? "L_low" : "", 16384); else mccMCPLlow_filename[0]='\0';
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   if("") strncpy(mccMCPLlow_userflagcomment, "" ? "" : "", 16384); else mccMCPLlow_userflagcomment[0]='\0';
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccMCPLlow_merge_mpi = 1;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccMCPLlow_keep_mpi_unmerged = 0;
 #line 10391 "./MCPL_filter_wavelength.c"
 
@@ -10400,11 +10400,11 @@ void mcinit(void) {
   rot_transpose(mcrotaCalc, mctr1);
   rot_mul(mcrotaMCPLlow, mctr1, mcrotrMCPLlow);
   mctc1 = coords_set(
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
     0,
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
     0,
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
     0);
 #line 10409 "./MCPL_filter_wavelength.c"
   rot_transpose(mcrotaCalc, mctr1);
@@ -10420,13 +10420,13 @@ void mcinit(void) {
     /* Component MCPLhigh. */
   /* Setting parameters for component MCPLhigh. */
   SIG_MESSAGE("MCPLhigh (Init:SetPar)");
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   if("L_high") strncpy(mccMCPLhigh_filename, "L_high" ? "L_high" : "", 16384); else mccMCPLhigh_filename[0]='\0';
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   if("") strncpy(mccMCPLhigh_userflagcomment, "" ? "" : "", 16384); else mccMCPLhigh_userflagcomment[0]='\0';
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccMCPLhigh_merge_mpi = 1;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccMCPLhigh_keep_mpi_unmerged = 0;
 #line 10431 "./MCPL_filter_wavelength.c"
 
@@ -10440,11 +10440,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMCPLlow, mctr1);
   rot_mul(mcrotaMCPLhigh, mctr1, mcrotrMCPLhigh);
   mctc1 = coords_set(
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
     0,
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
     0,
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
     0);
 #line 10449 "./MCPL_filter_wavelength.c"
   rot_transpose(mcrotaMCPLlow, mctr1);
@@ -10460,47 +10460,47 @@ void mcinit(void) {
     /* Component Llow. */
   /* Setting parameters for component Llow. */
   SIG_MESSAGE("Llow (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLlow_xwidth = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLlow_yheight = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLlow_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLlow_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLlow_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLlow_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLlow_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLlow_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLlow_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLlow_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLlow_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLlow_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLlow_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLlow_radius = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   if(monopts1) strncpy(mccLlow_options, monopts1 ? monopts1 : "", 16384); else mccLlow_options[0]='\0';
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   if("L_low") strncpy(mccLlow_filename, "L_low" ? "L_low" : "", 16384); else mccLlow_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   if("NULL") strncpy(mccLlow_geometry, "NULL" ? "NULL" : "", 16384); else mccLlow_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   if("NULL") strncpy(mccLlow_username1, "NULL" ? "NULL" : "", 16384); else mccLlow_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   if("NULL") strncpy(mccLlow_username2, "NULL" ? "NULL" : "", 16384); else mccLlow_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   if("NULL") strncpy(mccLlow_username3, "NULL" ? "NULL" : "", 16384); else mccLlow_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLlow_nowritefile = 0;
 #line 10505 "./MCPL_filter_wavelength.c"
 
@@ -10514,11 +10514,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMCPLhigh, mctr1);
   rot_mul(mcrotaLlow, mctr1, mcrotrLlow);
   mctc1 = coords_set(
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
     0,
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
     0,
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
     0);
 #line 10523 "./MCPL_filter_wavelength.c"
   rot_transpose(mcrotaMCPLhigh, mctr1);
@@ -10534,47 +10534,47 @@ void mcinit(void) {
     /* Component Lhigh. */
   /* Setting parameters for component Lhigh. */
   SIG_MESSAGE("Lhigh (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLhigh_xwidth = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLhigh_yheight = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLhigh_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLhigh_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLhigh_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLhigh_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLhigh_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLhigh_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLhigh_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLhigh_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLhigh_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLhigh_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLhigh_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLhigh_radius = 0;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   if(monopts2) strncpy(mccLhigh_options, monopts2 ? monopts2 : "", 16384); else mccLhigh_options[0]='\0';
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   if("L_high") strncpy(mccLhigh_filename, "L_high" ? "L_high" : "", 16384); else mccLhigh_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   if("NULL") strncpy(mccLhigh_geometry, "NULL" ? "NULL" : "", 16384); else mccLhigh_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   if("NULL") strncpy(mccLhigh_username1, "NULL" ? "NULL" : "", 16384); else mccLhigh_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   if("NULL") strncpy(mccLhigh_username2, "NULL" ? "NULL" : "", 16384); else mccLhigh_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   if("NULL") strncpy(mccLhigh_username3, "NULL" ? "NULL" : "", 16384); else mccLhigh_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   mccLhigh_nowritefile = 0;
 #line 10579 "./MCPL_filter_wavelength.c"
 
@@ -10588,11 +10588,11 @@ void mcinit(void) {
   rot_transpose(mcrotaLlow, mctr1);
   rot_mul(mcrotaLhigh, mctr1, mcrotrLhigh);
   mctc1 = coords_set(
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
     0,
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
     0,
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
     0);
 #line 10597 "./MCPL_filter_wavelength.c"
   rot_transpose(mcrotaLlow, mctr1);
@@ -11845,7 +11845,7 @@ mcnlp)
 #define mccompcurindex 3
 /* 'Calc=Arm()' component instance extend code */
     SIG_MESSAGE("Calc (Trace:Extend)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_wavelength/MCPL_filter_wavelength.instr"
   Wavelength = (2*PI/V2K)/sqrt(vx*vx + vy*vy + vz*vz);
 #line 11850 "./MCPL_filter_wavelength.c"
 #undef mccompcurname

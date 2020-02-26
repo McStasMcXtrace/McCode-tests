@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr (Test_Magnon_bcc_2D)
- * Date:       Wed Nov 20 00:51:15 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr (Test_Magnon_bcc_2D)
+ * Date:       Tue Feb 25 21:05:53 2020
  * File:       ./Test_Magnon_bcc_2D.c
  * Compile:    cc -o Test_Magnon_bcc_2D.out ./Test_Magnon_bcc_2D.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Test_Magnon_bcc_2D";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -8699,7 +8699,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define FerroMagnet mcipFerroMagnet
 #define Verbose mcipVerbose
 #define imultiplier mcipimultiplier
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   double Samplechoice;
 #line 8704 "./Test_Magnon_bcc_2D.c"
 #undef imultiplier
@@ -9248,13 +9248,13 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccOrigin_minutes = 0;
 #line 9259 "./Test_Magnon_bcc_2D.c"
 
@@ -9266,11 +9266,11 @@ void mcinit(void) {
 #line 9266 "./Test_Magnon_bcc_2D.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
     0,
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
     0,
-#line 43 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 43 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
     0);
 #line 9275 "./Test_Magnon_bcc_2D.c"
   mctc1 = coords_neg(mcposaOrigin);
@@ -9283,31 +9283,31 @@ void mcinit(void) {
     /* Component source. */
   /* Setting parameters for component source. */
   SIG_MESSAGE("source (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccsource_radius = 0.02;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccsource_yheight = 0;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccsource_xwidth = 0;
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccsource_dist = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccsource_focus_xw = 0.01;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccsource_focus_yh = 0.01;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccsource_E0 = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccsource_dE = 0;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccsource_lambda0 = mciplambda;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccsource_dlambda = mcipdlambda;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccsource_flux = 1e12;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccsource_gauss = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccsource_target_index = 1;
 #line 9312 "./Test_Magnon_bcc_2D.c"
 
@@ -9320,11 +9320,11 @@ void mcinit(void) {
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotasource, mctr1, mcrotrsource);
   mcposasource = coords_set(
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
     0,
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
     0,
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
     0);
 #line 9329 "./Test_Magnon_bcc_2D.c"
   mctc1 = coords_sub(mcposaOrigin, mcposasource);
@@ -9337,72 +9337,72 @@ void mcinit(void) {
     /* Component Magnon. */
   /* Setting parameters for component Magnon. */
   SIG_MESSAGE("Magnon (Init:SetPar)");
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccMagnon_radius = 0.02;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccMagnon_yheight = 0.03;
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccMagnon_sigma_abs = 0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccMagnon_sigma_inc = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccMagnon_a = mcipaa;
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccMagnon_FM = mcipFerroMagnet;
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccMagnon_J1 = mcipsample_J;
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccMagnon_J2 = 0;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccMagnon_D = 0.0;
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccMagnon_s = 1;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccMagnon_DW = 1;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccMagnon_T = mcipTT;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccMagnon_target_x = 0;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccMagnon_target_y = 0;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccMagnon_target_z = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccMagnon_target_index = 0;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccMagnon_F2 = 1;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccMagnon_focus_r = 0;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccMagnon_focus_xw = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccMagnon_focus_yh = 0;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccMagnon_focus_aw = 180;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccMagnon_focus_ah = 0.1;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccMagnon_verbose = mcipVerbose;
 #line 9386 "./Test_Magnon_bcc_2D.c"
 
   SIG_MESSAGE("Magnon (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
     (0)*DEG2RAD,
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
     (mcipRotation)*DEG2RAD,
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
     (0)*DEG2RAD);
 #line 9396 "./Test_Magnon_bcc_2D.c"
   rot_mul(mctr1, mcrotasource, mcrotaMagnon);
   rot_transpose(mcrotasource, mctr1);
   rot_mul(mcrotaMagnon, mctr1, mcrotrMagnon);
   mctc1 = coords_set(
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
     0,
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
     0,
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
     5.1);
 #line 9407 "./Test_Magnon_bcc_2D.c"
   rot_transpose(mcrotasource, mctr1);
@@ -9418,94 +9418,94 @@ void mcinit(void) {
     /* Component Lattice. */
   /* Setting parameters for component Lattice. */
   SIG_MESSAGE("Lattice (Init:SetPar)");
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   if("BCC_fake.lau") strncpy(mccLattice_reflections, "BCC_fake.lau" ? "BCC_fake.lau" : "", 16384); else mccLattice_reflections[0]='\0';
-#line 282 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 282 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   if(0) strncpy(mccLattice_geometry, 0 ? 0 : "", 16384); else mccLattice_geometry[0]='\0';
-#line 283 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 283 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_xwidth = 0;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_yheight = 0.03;
-#line 283 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 283 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_zdepth = 0;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_radius = 0.02;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_delta_d_d = 1e-3;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_mosaic = 30;
-#line 284 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 284 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_mosaic_a = -1;
-#line 284 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 284 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_mosaic_b = -1;
-#line 284 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 284 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_mosaic_c = -1;
-#line 285 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 285 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_recip_cell = 0;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_barns = 1;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_ax = - mcipaa;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_ay = 0;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_az = 0;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_bx = 0;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_by = 0;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_bz = mcipaa;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_cx = 0;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_cy = mcipaa;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_cz = 0;
-#line 289 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 289 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_p_transmit = 0.001;
-#line 289 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 289 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_sigma_abs = 0;
-#line 289 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 289 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_sigma_inc = 0;
-#line 290 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 290 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_aa = 0;
-#line 290 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 290 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_bb = 0;
-#line 290 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 290 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_cc = 0;
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_order = 1;
-#line 290 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 290 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_RX = 0;
-#line 290 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 290 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_RY = 0;
-#line 290 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 290 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_powder = 0;
-#line 290 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 290 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_PG = 0;
-#line 291 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 291 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccLattice_deltak = 1e-6;
 #line 9489 "./Test_Magnon_bcc_2D.c"
 
   SIG_MESSAGE("Lattice (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
     (0)*DEG2RAD,
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
     (mcipRotation)*DEG2RAD,
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
     (0)*DEG2RAD);
 #line 9499 "./Test_Magnon_bcc_2D.c"
   rot_mul(mctr1, mcrotasource, mcrotaLattice);
   rot_transpose(mcrotaMagnon, mctr1);
   rot_mul(mcrotaLattice, mctr1, mcrotrLattice);
   mctc1 = coords_set(
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
     0,
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
     0,
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
     5.1);
 #line 9510 "./Test_Magnon_bcc_2D.c"
   rot_transpose(mcrotasource, mctr1);
@@ -9532,11 +9532,11 @@ void mcinit(void) {
   rot_transpose(mcrotaLattice, mctr1);
   rot_mul(mcrotaSqqw, mctr1, mcrotrSqqw);
   mctc1 = coords_set(
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
     0,
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
     0,
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
     0);
 #line 9541 "./Test_Magnon_bcc_2D.c"
   rot_transpose(mcrotaMagnon, mctr1);
@@ -9552,13 +9552,13 @@ void mcinit(void) {
     /* Component det. */
   /* Setting parameters for component det. */
   SIG_MESSAGE("det (Init:SetPar)");
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   if("psd") strncpy(mccdet_filename, "psd" ? "psd" : "", 16384); else mccdet_filename[0]='\0';
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccdet_radius = 2.1;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccdet_restore_neutron = 0;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   mccdet_nowritefile = 0;
 #line 9563 "./Test_Magnon_bcc_2D.c"
 
@@ -9572,11 +9572,11 @@ void mcinit(void) {
   rot_transpose(mcrotaSqqw, mctr1);
   rot_mul(mcrotadet, mctr1, mcrotrdet);
   mctc1 = coords_set(
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
     0,
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
     0,
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
     0);
 #line 9581 "./Test_Magnon_bcc_2D.c"
   rot_transpose(mcrotaMagnon, mctr1);
@@ -10439,7 +10439,7 @@ int target_index = mccsource_target_index;
 #line 10439 "./Test_Magnon_bcc_2D.c"
 /* 'source=Source_simple()' component instance extend code */
     SIG_MESSAGE("source (Trace:Extend)");
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
   Samplechoice=rand01();
 #line 10444 "./Test_Magnon_bcc_2D.c"
 }   /* End of source=Source_simple() SETTING parameter declarations. */
@@ -10711,7 +10711,7 @@ if (( mcipinelastic > 0 && Samplechoice < mcipinelastic ))
     SIG_MESSAGE("Magnon (Trace:Extend)");
 if (( mcipinelastic > 0 && Samplechoice < mcipinelastic )) {
 
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
    p/=mcipinelastic;
    p*=mcipimultiplier;
 #line 10715 "./Test_Magnon_bcc_2D.c"
@@ -11215,7 +11215,7 @@ if (( mcipinelastic < 1 && Samplechoice >= mcipinelastic ))
     SIG_MESSAGE("Lattice (Trace:Extend)");
 if (( mcipinelastic < 1 && Samplechoice >= mcipinelastic )) {
 
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnon_bcc_2D/Test_Magnon_bcc_2D.instr"
    p/=(1-mcipinelastic);
    // Remove direct beam
    if(!SCATTERED) ABSORB;

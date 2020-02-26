@@ -1,11 +1,28 @@
-      [1574205309.924171] [n-62-23-6:30500:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3383.62
-[1574205309.925646] [n-62-23-6:30500:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574205309.925649] [n-62-23-6:30500:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574205309.927572] [n-62-23-6:30500:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574205309.927575] [n-62-23-6:30500:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: No output directory specified (--dir)
+INFO: Using directory: "ILL_H10_IN8_20200225_202648"
+INFO: Regenerating c-file: ILL_H10_IN8.c
+Info:    Defining SPLIT from PG1Xtal=Monochromator_curved() to END in instrument ILL_H10_IN8
+Info:    Defining SPLIT from Sample_Cradle=Monitor_nD() to END in instrument ILL_H10_IN8
+Info:    Defining SPLIT from PG2Xtal=Monochromator_curved() to END in instrument ILL_H10_IN8
+CFLAGS=
+      INFO: Recompiling: ./ILL_H10_IN8.out
+INFO: ===
+[n-62-23-14:00607] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:00607] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582658816.373410] [n-62-23-14:606  :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3365.16
+[1582658816.375212] [n-62-23-14:606  :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582658816.375216] [n-62-23-14:606  :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1582658816.377988] [n-62-23-14:606  :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582658816.377991] [n-62-23-14:606  :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 begin instrument: ILL_H10_IN8
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H10_IN8/ILL_H10_IN8.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H10_IN8/ILL_H10_IN8.instr
   Parameters:  KF(double) KI(double) QM(double) EN(double) verbose(double) WM(double) HM(double) RMH(double) RMV(double) DM(double) NHM(double) NVM(double) WA(double) HA(double) RAH(double) RAV(double) DA(double) NHA(double) NVA(double) L1(double) ALF1(double) ALF2(double) ALF3(double) ALF4(double) BET1(double) BET2(double) BET3(double) BET4(double) EI(double) EF(double) QH(double) QK(double) QL(double) KFIX(double) FX(double) L2(double) L3(double) L4(double) SM(double) SS(double) SA(double) ETAM(double) ETAA(double) AS(double) BS(double) CS(double) AA(double) BB(double) CC(double) AX(double) AY(double) AZ(double) BX(double) BY(double) BZ(double) A1(double) A2(double) A3(double) A4(double) A5(double) A6(double) Sqw_coh(string) Sqw_inc(string) radius(double) thickness(double) height(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +31,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H10_IN8/ILL_H10_IN8.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H10_IN8/ILL_H10_IN8.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1574235809
+  Seed: 1582659422
   Directory: .
   Param: KF=5
   Param: KI=0
@@ -89,18 +106,3 @@ begin simulation: .
   Param: height=0.05
 end simulation
 info!
-INFO: No output directory specified (--dir)
-INFO: Using directory: "ILL_H10_IN8_20191120_001501"
-INFO: Regenerating c-file: ILL_H10_IN8.c
-Info:    Defining SPLIT from PG1Xtal=Monochromator_curved() to END in instrument ILL_H10_IN8
-Info:    Defining SPLIT from Sample_Cradle=Monitor_nD() to END in instrument ILL_H10_IN8
-Info:    Defining SPLIT from PG2Xtal=Monochromator_curved() to END in instrument ILL_H10_IN8
-CFLAGS=
-INFO: Recompiling: ./ILL_H10_IN8.out
-INFO: ===
---------------------------------------------------------------------------
-Initialization of MXM library failed.
-
-  Error: Input/output error
-
---------------------------------------------------------------------------

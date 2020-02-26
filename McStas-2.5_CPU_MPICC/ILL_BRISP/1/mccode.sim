@@ -1,10 +1,10 @@
 McStas simulation description file for ILL_BRISP.
-Date:    Wed Nov 20 00:59:35 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:15:50 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: ILL_BRISP
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr
   Parameters:  DM(double) coh(string) inc(string) container(string) LSD(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574227290
+  Seed: 1582673790
   Directory: 1
   Nodes: 10
   Param: DM=3.355
@@ -30,37 +30,37 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Wed Nov 20 00:59:42 2019 (1574207982)
+  Date: Tue Feb 25 21:16:12 2020 (1582661772)
   type: array_1d(20)
-  Source: ILL_BRISP (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr)
+  Source: ILL_BRISP (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr)
   component: LmonokOUT
   position: -5.97064e-17 4.07239 7.51598
   title: Wavelength [Angs] monitor
   Ncount: 10000000
-  filename: LmonokOUT_1574207975.L
-  statistics: X0=2.01753; dX=0.0114631;
-  signal: Min=2.75835e+07; Max=3.1371e+07; Mean=3.00834e+07;
-  values: 6.01667e+08 214160 1.00913e+07
+  filename: LmonokOUT_1582661750.L
+  statistics: X0=2.01751; dX=0.0114621;
+  signal: Min=2.73293e+07; Max=3.15653e+07; Mean=3.01521e+07;
+  values: 6.03042e+08 214484 1.01046e+07
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
   ylabel: Intensity [n/s/bin]
-  xlimits: 1.99757 2.03791
+  xlimits: 1.99756 2.03791
   variables: L I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 00:59:42 2019 (1574207982)
+  Date: Tue Feb 25 21:16:12 2020 (1582661772)
   type: array_2d(20, 20)
-  Source: ILL_BRISP (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr)
+  Source: ILL_BRISP (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr)
   component: Monitor1
   position: -6.00576e-17 4.07239 7.52598
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: Monitor1_1574207975.x_y
-  statistics: X0=9.10615e-07; dX=0.0158515; Y0=-0.000162119; dY=0.0159301;
-  signal: Min=515470; Max=1.99555e+06; Mean=1.50259e+06;
-  values: 6.01035e+08 214062 1.00772e+07
+  filename: Monitor1_1582661750.x_y
+  statistics: X0=-1.04801e-05; dX=0.0158561; Y0=-0.000180282; dY=0.0159359;
+  signal: Min=498107; Max=2.0086e+06; Mean=1.50594e+06;
+  values: 6.02375e+08 214379 1.00901e+07
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -72,37 +72,37 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 00:59:42 2019 (1574207982)
+  Date: Tue Feb 25 21:16:12 2020 (1582661772)
   type: array_1d(100)
-  Source: ILL_BRISP (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr)
+  Source: ILL_BRISP (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr)
   component: DC_OUT_T
   position: -6.77844e-17 4.07239 7.74598
   title: TOF [s] monitor
   Ncount: 10000000
-  filename: DC_OUT_T_1574207975.t
-  statistics: X0=9.99521e-05; dX=0.000274923;
-  signal: Min=7072.16; Max=4.05586e+06; Mean=1.94703e+06;
-  values: 1.94703e+08 70438.3 9.72722e+06
+  filename: DC_OUT_T_1582661750.t
+  statistics: X0=9.17203e-05; dX=0.000272709;
+  signal: Min=6331.68; Max=4.07906e+06; Mean=1.95134e+06;
+  values: 1.95134e+08 70542.1 9.73926e+06
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: -0.000633592 0.000834772
+  xlimits: -0.000637691 0.000822301
   variables: t I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 00:59:42 2019 (1574207982)
+  Date: Tue Feb 25 21:16:12 2020 (1582661772)
   type: array_2d(50, 50)
-  Source: ILL_BRISP (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr)
+  Source: ILL_BRISP (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr)
   component: HC_OUT_PSD
   position: -1.66124e-16 4.07239 10.546
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: HC_OUT_PSD_1574207975.x_y
-  statistics: X0=-6.6634e-05; dX=0.0124737; Y0=-3.66724e-05; dY=0.0122613;
-  signal: Min=0; Max=39271.6; Mean=7897.45;
-  values: 1.97436e+07 24008.7 720705
+  filename: HC_OUT_PSD_1582661750.x_y
+  statistics: X0=-8.1524e-05; dX=0.012497; Y0=-2.01797e-05; dY=0.0122893;
+  signal: Min=0; Max=40227.2; Mean=7929.18;
+  values: 1.98229e+07 24063.3 723118
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -114,37 +114,37 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 00:59:42 2019 (1574207982)
+  Date: Tue Feb 25 21:16:12 2020 (1582661772)
   type: array_1d(20)
-  Source: ILL_BRISP (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr)
+  Source: ILL_BRISP (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr)
   component: FC_OUT_T
   position: -2.01597e-16 4.07239 11.556
   title: TOF [s] monitor
   Ncount: 10000000
-  filename: FC_OUT_T_1574207975.t
-  statistics: X0=0.00216253; dX=4.80201e-06;
-  signal: Min=49.9972; Max=3337.34; Mean=1734.99;
-  values: 34699.8 73.2448 239417
+  filename: FC_OUT_T_1582661750.t
+  statistics: X0=0.00216251; dX=4.8982e-06;
+  signal: Min=57.4892; Max=3382.49; Mean=1741.94;
+  values: 34838.8 73.4084 240207
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.00214969 0.00217533
+  xlimits: 0.00214945 0.00217556
   variables: t I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 00:59:42 2019 (1574207982)
+  Date: Tue Feb 25 21:16:12 2020 (1582661772)
   type: array_2d(20, 20)
-  Source: ILL_BRISP (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr)
+  Source: ILL_BRISP (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr)
   component: SampleXY
   position: -2.29694e-16 4.07239 12.356
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: SampleXY_1574207975.x_y
-  statistics: X0=2.26345e-05; dX=0.00793204; Y0=0.00115021; dY=0.0072196;
-  signal: Min=0.318779; Max=11.988; Mean=7.0652;
-  values: 2826.08 6.946 177079
+  filename: SampleXY_1582661750.x_y
+  statistics: X0=1.3099e-05; dX=0.00793304; Y0=0.00115742; dY=0.00721878;
+  signal: Min=0.333749; Max=11.6695; Mean=7.08572;
+  values: 2834.29 6.95574 177554
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -156,17 +156,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 00:59:42 2019 (1574207982)
+  Date: Tue Feb 25 21:16:12 2020 (1582661772)
   type: array_2d(50, 50)
-  Source: ILL_BRISP (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr)
+  Source: ILL_BRISP (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr)
   component: Detector
   position: -3.88092e-16 4.07239 16.866
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: Detector_1574207975.x_y
-  statistics: X0=-0.00177068; dX=0.539367; Y0=-0.000991886; dY=0.308121;
-  signal: Min=0; Max=0.0280452; Mean=0.012672;
-  values: 31.6801 0.131397 69446
+  filename: Detector_1582661750.x_y
+  statistics: X0=0.0020058; dX=0.537974; Y0=0.000659077; dY=0.308868;
+  signal: Min=0; Max=0.0237456; Mean=0.0127738;
+  values: 31.9345 0.131239 69835
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -178,17 +178,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 00:59:42 2019 (1574207982)
+  Date: Tue Feb 25 21:16:12 2020 (1582661772)
   type: array_1d(50)
-  Source: ILL_BRISP (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr)
+  Source: ILL_BRISP (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr)
   component: Detector_Q
   position: -3.88443e-16 4.07239 16.876
   title: Q transfer [Angs-1] monitor
   Ncount: 10000000
-  filename: Detector_Q_1574207975.U1
-  statistics: X0=0.393792; dX=0.158271;
-  signal: Min=0; Max=2.28999; Mean=0.631851;
-  values: 31.5926 0.131215 69257
+  filename: Detector_Q_1582661750.U1
+  statistics: X0=0.393059; dX=0.158029;
+  signal: Min=0; Max=2.25551; Mean=0.63672;
+  values: 31.836 0.131032 69623
   xvar: U1
   yvar: (I,I_err)
   xlabel: Q transfer [Angs-1]
@@ -198,37 +198,37 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 00:59:42 2019 (1574207982)
+  Date: Tue Feb 25 21:16:12 2020 (1582661772)
   type: array_1d(50)
-  Source: ILL_BRISP (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr)
+  Source: ILL_BRISP (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr)
   component: Detector_E
   position: -3.88794e-16 4.07239 16.886
   title: Energy transfer [meV] monitor
   Ncount: 10000000
-  filename: Detector_E_1574207975.U1
-  statistics: X0=0.00516531; dX=0.222296;
-  signal: Min=0.50992; Max=0.721981; Mean=0.629988;
-  values: 31.4994 0.131028 69048
+  filename: Detector_E_1582661750.U1
+  statistics: X0=0.00392351; dX=0.223673;
+  signal: Min=0.514498; Max=0.743456; Mean=0.634561;
+  values: 31.728 0.13081 69394
   xvar: U1
   yvar: (I,I_err)
   xlabel: Energy transfer [meV]
   ylabel: Intensity [n/s/bin]
-  xlimits: -0.395898 0.407845
+  xlimits: -0.395875 0.407836
   variables: U1 I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 00:59:43 2019 (1574207983)
+  Date: Tue Feb 25 21:16:12 2020 (1582661772)
   type: array_2d(50, 50)
-  Source: ILL_BRISP (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr)
+  Source: ILL_BRISP (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr)
   component: Detector_QE
   position: -3.89145e-16 4.07239 16.896
   title:  Intensity Q transfer [Angs-1] Energy transfer [meV] Monitor (Square) per bin
   Ncount: 10000000
-  filename: Detector_QE_1574207975.U1_U2
-  statistics: X0=0.392787; dX=0.157907; Y0=0.0057482; dY=0.206075;
-  signal: Min=0; Max=1.13831; Mean=0.012563;
-  values: 31.4074 0.130846 68836
+  filename: Detector_QE_1582661750.U1_U2
+  statistics: X0=0.391767; dX=0.157454; Y0=0.00529178; dY=0.206414;
+  signal: Min=0; Max=1.11673; Mean=0.012647;
+  values: 31.6174 0.130584 69157
   xvar: Q
   yvar: Energy
   xlabel: Q transfer [Angs-1]

@@ -1,11 +1,11 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Nov. 19, 2019
-# Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1A/ILL_H22_D1A.instr
+# Creator: McStas 2.5 - Feb. 24, 2020
+# Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_D1A/ILL_H22_D1A.instr
 # Ncount: 1000000
 # Trace: no
 # Gravitation: no
-# Seed: 1574229360
+# Seed: 1582676215
 # Directory: 1
 # Nodes: 10
 # Param: lambda=1.911
@@ -16,16 +16,16 @@
 # Param: container=V.laz
 # Param: m=2
 # Param: mip=2
-# Date: Wed Nov 20 01:02:23 2019 (1574208143)
+# Date: Tue Feb 25 21:23:11 2020 (1582662191)
 # type: array_0d
-# Source: ILL_H22_D1A (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H22_D1A/ILL_H22_D1A.instr)
+# Source: ILL_H22_D1A (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H22_D1A/ILL_H22_D1A.instr)
 # component: GuideOut_Phic
 # position: -0.13977 0 92.585
 # title:  Intensity Monitor (Square)
 # Ncount: 10000000
-# statistics: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ5.4376e+07 104848 952214
-# signal: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿXb ŸGå¿|`V4˜6å?7ø©Õ¶Lå¿k¬ 1ÏOå?
-# values: 
+# statistics: None
+# signal: None
+# values: 5.77128e+07 111317 950225
 # xylimits: 0 0 0 0 0 0
 # variables: I I_err N
-0 0 0
+5.77128e+07 111317 950225

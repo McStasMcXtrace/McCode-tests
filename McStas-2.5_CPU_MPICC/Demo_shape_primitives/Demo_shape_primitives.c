@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr (Demo_shape_primitives)
- * Date:       Wed Nov 20 00:11:05 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr (Demo_shape_primitives)
+ * Date:       Tue Feb 25 20:22:42 2020
  * File:       ./Demo_shape_primitives.c
  * Compile:    cc -o Demo_shape_primitives.out ./Demo_shape_primitives.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Demo_shape_primitives";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -8006,13 +8006,13 @@ void mcinit(void) {
     /* Component origin. */
   /* Setting parameters for component origin. */
   SIG_MESSAGE("origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
   if("NULL") strncpy(mccorigin_profile, "NULL" ? "NULL" : "", 16384); else mccorigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
   mccorigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
   mccorigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
   mccorigin_minutes = 0;
 #line 8017 "./Demo_shape_primitives.c"
 
@@ -8024,11 +8024,11 @@ void mcinit(void) {
 #line 8024 "./Demo_shape_primitives.c"
   rot_copy(mcrotrorigin, mcrotaorigin);
   mcposaorigin = coords_set(
-#line 36 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 36 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
     0,
-#line 36 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 36 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
     0,
-#line 36 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 36 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
     0);
 #line 8033 "./Demo_shape_primitives.c"
   mctc1 = coords_neg(mcposaorigin);
@@ -8041,17 +8041,17 @@ void mcinit(void) {
     /* Component shape0. */
   /* Setting parameters for component shape0. */
   SIG_MESSAGE("shape0 (Init:SetPar)");
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
   if(0) strncpy(mccshape0_geometry, 0 ? 0 : "", 16384); else mccshape0_geometry[0]='\0';
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
   mccshape0_radius = 0.5;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
   mccshape0_xwidth = 0;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
   mccshape0_yheight = 0;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
   mccshape0_zdepth = 0;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
   mccshape0_thickness = 0;
 #line 8056 "./Demo_shape_primitives.c"
 
@@ -8065,11 +8065,11 @@ void mcinit(void) {
   rot_transpose(mcrotaorigin, mctr1);
   rot_mul(mcrotashape0, mctr1, mcrotrshape0);
   mctc1 = coords_set(
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
     0,
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
     0,
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
     .5);
 #line 8074 "./Demo_shape_primitives.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -8085,17 +8085,17 @@ void mcinit(void) {
     /* Component shape1. */
   /* Setting parameters for component shape1. */
   SIG_MESSAGE("shape1 (Init:SetPar)");
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
   if(0) strncpy(mccshape1_geometry, 0 ? 0 : "", 16384); else mccshape1_geometry[0]='\0';
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
   mccshape1_radius = 0.5;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
   mccshape1_xwidth = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
   mccshape1_yheight = 0.5;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
   mccshape1_zdepth = 0;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
   mccshape1_thickness = 0;
 #line 8100 "./Demo_shape_primitives.c"
 
@@ -8109,11 +8109,11 @@ void mcinit(void) {
   rot_transpose(mcrotashape0, mctr1);
   rot_mul(mcrotashape1, mctr1, mcrotrshape1);
   mctc1 = coords_set(
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
     0,
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
     0,
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
     1);
 #line 8118 "./Demo_shape_primitives.c"
   rot_transpose(mcrotashape0, mctr1);
@@ -8129,17 +8129,17 @@ void mcinit(void) {
     /* Component shape2. */
   /* Setting parameters for component shape2. */
   SIG_MESSAGE("shape2 (Init:SetPar)");
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
   if(0) strncpy(mccshape2_geometry, 0 ? 0 : "", 16384); else mccshape2_geometry[0]='\0';
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
   mccshape2_radius = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
   mccshape2_xwidth = 0.25;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
   mccshape2_yheight = 0.8;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
   mccshape2_zdepth = 0.1234;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
   mccshape2_thickness = 0;
 #line 8144 "./Demo_shape_primitives.c"
 
@@ -8153,11 +8153,11 @@ void mcinit(void) {
   rot_transpose(mcrotashape1, mctr1);
   rot_mul(mcrotashape2, mctr1, mcrotrshape2);
   mctc1 = coords_set(
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
     0,
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
     0,
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Demo_shape_primitives/Demo_shape_primitives.instr"
     1);
 #line 8162 "./Demo_shape_primitives.c"
   rot_transpose(mcrotashape1, mctr1);

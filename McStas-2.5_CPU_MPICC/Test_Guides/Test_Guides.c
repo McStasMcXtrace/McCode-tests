@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr (Test_Guides)
- * Date:       Wed Nov 20 00:49:44 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr (Test_Guides)
+ * Date:       Tue Feb 25 21:04:21 2020
  * File:       ./Test_Guides.c
  * Compile:    cc -o Test_Guides.out ./Test_Guides.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Test_Guides";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -10929,6 +10929,1034 @@ double guide_elliptical_handleReflection(double x0, double y0, double z0,
 #endif
 #line 10930 "./Test_Guides.c"
 
+/* Shared user declarations for all components 'Guide_anyshape_r'. */
+#line 86 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Guide_anyshape_r.comp"
+/*******************************************************************************
+*
+* McStas, neutron ray-tracing package
+*         Copyright (C) 1997-2008, All rights reserved
+*         Risoe National Laboratory, Roskilde, Denmark
+*         Institut Laue Langevin, Grenoble, France
+*
+* Runtime: share/interoff.h
+*
+* %Identification
+* Written by: Reynald Arnerin
+* Date:    Jun 12, 2008
+* Release: 
+* Version: 
+*
+* Object File Format intersection header for McStas. Requires the qsort function.
+*
+* Such files may be obtained with e.g.
+*   qhull < points.xyz Qx Qv Tv o > points.off
+* where points.xyz has format:
+*   3
+*   <nb_points>
+*   <x> <y> <z>
+*   ...
+* The resulting file should have its first line being changed from '3' into 'OFF'.
+* It can then be displayed with geomview.
+* A similar, but somewhat older solution is to use 'powercrust' with e.g.
+*   powercrust -i points.xyz
+* which will generate a 'pc.off' file to be renamed as suited.
+*
+*******************************************************************************/
+
+#ifndef R_INTEROFF_LIB_H
+#define R_INTEROFF_LIB_H "$Revision$"
+
+#ifndef EPSILON
+#define EPSILON 1e-13
+#endif
+
+#define OFF_INTERSECT_MAX 100
+
+//#include <float.h>
+
+#define N_VERTEX_DISPLAYED    200000
+
+typedef struct r_intersection {
+	MCNUM time;  	  //time of the intersection
+	Coords v;	      //intersection point
+	Coords normal;  //normal vector of the surface intersected
+	short in_out;	  //1 if the ray enters the volume, -1 otherwise
+	short edge;	    //1 if the intersection is on the boundary of the polygon, and error is possible
+	unsigned long index; // index of the face
+} r_intersection;
+
+typedef struct r_polygon {
+  MCNUM* p;       //vertices of the polygon in adjacent order, this way : x1 | y1 | z1 | x2 | y2 | z2 ...
+  int npol;       //number of vertices
+  Coords normal;
+} r_polygon;
+
+typedef struct r_off_struct {
+    long vtxSize;
+    long polySize;
+    long faceSize;
+    Coords* vtxArray;
+    Coords* normalArray;
+    unsigned long* faceArray;
+    unsigned long* facepropsArray;
+    char *filename;
+    int mantidflag;
+    long mantidoffset;
+    intersection intersects[OFF_INTERSECT_MAX]; // After a call to r_off_intersect_all contains the list of intersections.
+    int nextintersect;                 // 'Next' intersection (first t>0) solution after call to r_off_intersect_all
+    int numintersect;               // Number of intersections after call to r_off_intersect_all
+} r_off_struct;
+
+/*******************************************************************************
+* long r_off_init(  char *offfile, double xwidth, double yheight, double zdepth, r_off_struct* data)
+* ACTION: read an OFF file, optionally center object and rescale, initialize OFF data structure
+* INPUT: 'offfile' OFF file to read
+*        'xwidth,yheight,zdepth' if given as non-zero, apply bounding box. 
+*           Specifying only one of these will also use the same ratio on all axes
+*        'notcenter' center the object to the (0,0,0) position in local frame when set to zero
+* RETURN: number of polyhedra and 'data' OFF structure 
+*******************************************************************************/
+long r_off_init(  char *offfile, double xwidth, double yheight, double zdepth, 
+                int notcenter, r_off_struct* data);
+
+/*******************************************************************************
+* int r_off_intersect_all(double* t0, double* t3, 
+     Coords *n0, Coords *n3,
+     unsigned long *fi0, unsigned long *fi3,
+     double x, double y, double z, 
+     double vx, double vy, double vz, 
+     r_off_struct *data )
+* ACTION: computes intersection of neutron trajectory with an object. 
+* INPUT:  x,y,z and vx,vy,vz are the position and velocity of the neutron
+*         data points to the OFF data structure
+* RETURN: the number of polyhedra which trajectory intersects
+*         t0 and t3 are the smallest incoming and outgoing intersection times
+*         n0 and n3 are the corresponding normal vectors to the surface
+*         data is the full OFF structure, including a list intersection type
+*******************************************************************************/
+int r_off_intersect_all(double* t0, double* t3, 
+     Coords *n0, Coords *n3,
+     unsigned long *faceindex0, unsigned long *faceindex3,
+     double x, double y, double z, 
+     double vx, double vy, double vz, 
+     r_off_struct *data );
+
+/*******************************************************************************
+* int r_off_intersect(double* t0, double* t3, 
+     Coords *n0, Coords *n3,
+     unsigned long *faceindex0, unsigned long *faceindex3,
+     double x, double y, double z, 
+     double vx, double vy, double vz, 
+     r_off_struct data )
+* ACTION: computes intersection of neutron trajectory with an object. 
+* INPUT:  x,y,z and vx,vy,vz are the position and velocity of the neutron
+*         data points to the OFF data structure
+* RETURN: the number of polyhedra which trajectory intersects
+*         t0 and t3 are the smallest incoming and outgoing intersection times
+*         n0 and n3 are the corresponding normal vectors to the surface
+*******************************************************************************/
+int r_off_intersect(double* t0, double* t3, 
+     Coords *n0, Coords *n3,
+     unsigned long *faceindex0, unsigned long *faceindex3,
+     double x, double y, double z, 
+     double vx, double vy, double vz, 
+     r_off_struct data );
+
+/*****************************************************************************
+* int r_off_intersectx(double* l0, double* l3, 
+     Coords *n0, Coords *n3,
+     unsigned long *faceindex0, unsigned long *faceindex3,
+     double x, double y, double z, 
+     double kx, double ky, double kz, 
+     r_off_struct data )
+* ACTION: computes intersection of an xray trajectory with an object.
+* INPUT:  x,y,z and kx,ky,kz, are spatial coordinates and wavevector of the x-ray
+*         respectively. data points to the OFF data structure.
+* RETURN: the number of polyhedra the trajectory intersects
+*         l0 and l3 are the smallest incoming and outgoing intersection lengths
+*         n0 and n3 are the corresponding normal vectors to the surface
+*******************************************************************************/
+int r_off_x_intersect(double *l0,double *l3,
+     Coords *n0, Coords *n3,
+     unsigned long *faceindex0, unsigned long *faceindex3,
+     double x,  double y,  double z, 
+     double kx, double ky, double kz, 
+     r_off_struct data );
+
+/*******************************************************************************
+* void r_off_display(r_off_struct data)
+* ACTION: display up to N_VERTEX_DISPLAYED points from the object
+*******************************************************************************/
+void r_off_display(r_off_struct);
+
+#endif
+
+/* end of r-interoff-lib.h */
+/*******************************************************************************
+*
+* McStas, neutron ray-tracing package
+*         Copyright (C) 1997-2008, All rights reserved
+*         Risoe National Laboratory, Roskilde, Denmark
+*         Institut Laue Langevin, Grenoble, France
+*
+* Runtime: share/r-interoff-lib.c
+*
+* %Identification
+* Written by: Reynald Arnerin
+* Date:    Jun 12, 2008
+* Origin: ILL
+* Release: $Revision$
+* Version: McStas X.Y
+*
+* Revision to read optional face color values from off files
+* by: Peter Link
+* Date: Mar 10, 2017
+*  
+* Object File Format intersection library for McStas. Requires the qsort function.
+*
+* Such files may be obtained with e.g.
+*   qhull < points.xyz Qx Qv Tv o > points.off
+* where points.xyz has format (it supports comments):
+*   3
+*   <nb_points>
+*   <x> <y> <z>
+*   ...
+* The resulting file should have its first line being changed from '3' into 'OFF'.
+* It can then be displayed with geomview.
+* A similar, but somewhat older solution is to use 'powercrust' with e.g.
+*   powercrust -i points.xyz
+* which will generate a 'pc.off' file to be renamed as suited.
+*
+*******************************************************************************/
+
+#ifndef R_INTEROFF_LIB_H
+#include "r-interoff-lib.h"
+#endif
+
+double r_off_F(double x, double y,double z,double A,double B,double C,double D) {
+  return ( A*x + B*y + C*z + D );
+}
+
+char r_off_sign(double a) {
+  if (a<0)       return(-1);
+  else if (a==0) return(0);
+  else           return(1);
+}
+
+// r_off_normal ******************************************************************
+//gives the normal vector of p
+void r_off_normal(Coords* n, r_polygon p)
+{
+  //using Newell method
+  int i=0,j=0;
+  n->x=0;n->y=0;n->z=0;
+  for (i = 0, j = p.npol-1; i < p.npol; j = i++)
+  {
+    MCNUM x1=p.p[3*i],
+          y1=p.p[3*i+1],
+          z1=p.p[3*i+2];
+    MCNUM x2=p.p[3*j],
+          y2=p.p[3*j+1],
+          z2=p.p[3*j+2];
+    // n is the cross product of v1*v2
+    n->x += (y1 - y2) * (z1 + z2);
+    n->y += (z1 - z2) * (x1 + x2);
+    n->z += (x1 - x2) * (y1 + y2);
+  }
+} /* r_off_normal */
+
+// r_off_pnpoly ******************************************************************
+//based on http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html
+//return 0 if the vertex is out
+//    1 if it is in
+//   -1 if on the boundary
+int r_off_pnpoly(r_polygon p, Coords v)
+{
+  int i=0, c = 0;
+  MCNUM minx=FLT_MAX,maxx=-FLT_MAX,miny=FLT_MAX,maxy=-FLT_MAX,minz=FLT_MAX,maxz=-FLT_MAX;
+  MCNUM rangex=0,rangey=0,rangez=0;
+
+  int pol2dx=0,pol2dy=1;          //2d restriction of the poly
+  MCNUM x=v.x,y=v.y;
+
+
+  //take the most relevant 2D projection (prevent from instability)
+  for (i=0; i<p.npol; ++i)
+  {
+    if (p.p[3*i]<minx)   minx=p.p[3*i];
+    if (p.p[3*i]>maxx)   maxx=p.p[3*i];
+    if (p.p[3*i+1]<miny) miny=p.p[3*i+1];
+    if (p.p[3*i+1]>maxy) maxy=p.p[3*i+1];
+    if (p.p[3*i+2]<minz) minz=p.p[3*i+2];
+    if (p.p[3*i+2]>maxz) maxz=p.p[3*i+2];
+  }
+  rangex=maxx-minx;
+  rangey=maxy-miny;
+  rangez=maxz-minz;
+
+  if (rangex<rangez)
+  {
+    if (rangex<rangey) {
+      pol2dx=2;
+      x=v.z;
+    } else {
+      pol2dy=2;
+      y=v.z;
+    }
+  }
+  else if (rangey<rangez) {
+    pol2dy=2;
+    y=v.z;
+  }
+
+  //trace rays and test number of intersection
+  int j;
+  for (i = 0, j = p.npol-1; i < p.npol; j = i++) {
+    if (((((p.p[3*i+pol2dy])<=y) && (y<(p.p[3*j+pol2dy]))) ||
+         (((p.p[3*j+pol2dy])<=y) && (y<(p.p[3*i+pol2dy])))) &&
+        (x < ( (p.p[3*j+pol2dx] - p.p[3*i+pol2dx]) * (y - p.p[3*i+pol2dy])
+             / (p.p[3*j+pol2dy] - p.p[3*i+pol2dy]) + p.p[3*i+pol2dx]) ))
+      c = !c;
+
+    if (((fabs(p.p[3*i+pol2dy]-y)<=EPSILON) || ((fabs(p.p[3*j+pol2dy]-y)<=EPSILON))) &&
+        fabs(x -((p.p[3*j+pol2dx] - p.p[3*i+pol2dx]) * (y - p.p[3*i+pol2dy])
+          / (p.p[3*j+pol2dy] - p.p[3*i+pol2dy]) + p.p[3*i+pol2dx])) < EPSILON)
+    {
+      //the point lies on the edge
+      c=-1;
+      break;
+    }
+  }
+
+  return c;
+} /* r_off_pnpoly */
+
+// r_off_intersectPoly ***********************************************************
+//gives the intersection vertex between ray [a,b) and polygon p and its parametric value on (a b)
+//based on http://geometryalgorithms.com/Archive/algorithm_0105/algorithm_0105.htm
+int r_off_intersectPoly(r_intersection *inter, Coords a, Coords b, r_polygon p)
+{
+  //direction vector of [a,b]
+  Coords dir = {b.x-a.x, b.y-a.y, b.z-a.z};
+
+  //the normal vector to the polygon
+  Coords normale=p.normal;
+  //r_off_normal(&normale, p); done at the init stage
+
+  //direction vector from a to a vertex of the polygon
+  Coords w0 = {a.x-p.p[0], a.y-p.p[1], a.z-p.p[2]};
+
+  //scalar product
+  MCNUM nw0  =-scalar_prod(normale.x,normale.y,normale.z,w0.x,w0.y,w0.z);
+  MCNUM ndir = scalar_prod(normale.x,normale.y,normale.z,dir.x,dir.y,dir.z);
+  inter->time = inter->edge = inter->in_out=0;
+  inter->v = inter->normal = coords_set(0,0,1);
+
+  if (fabs(ndir) < EPSILON)    // ray is parallel to polygon plane
+  {
+    if (nw0 == 0)              // ray lies in polygon plane (infinite number of solution)
+      return 0;
+    else return 0;             // ray disjoint from plane (no solution)
+  }
+
+  // get intersect point of ray with polygon plane
+  inter->time = nw0 / ndir;            //parametric value the point on line (a,b)
+
+  inter->v = coords_set(a.x + inter->time * dir.x,// intersect point of ray and plane
+    a.y + inter->time * dir.y,
+    a.z + inter->time * dir.z);
+
+  int res=r_off_pnpoly(p,inter->v);
+
+  inter->edge=(res==-1);
+  if (ndir<0)
+    inter->in_out=1;  //the negative dot product means we enter the surface
+  else
+    inter->in_out=-1;
+
+  inter->normal=p.normal;
+
+  return res;         //true if the intersection point lies inside the poly
+} /* r_off_intersectPoly */
+
+
+// r_off_getBlocksIndex **********************************************************
+/*reads the indexes at the beginning of the off file as this :
+line 1  OFF
+line 2  nbVertex nbFaces nbEdges
+*/
+FILE *r_off_getBlocksIndex(char* filename, long* vtxSize, long* polySize )
+{
+  FILE* f = Open_File(filename,"r", NULL); /* from read_table-lib: FILE *Open_File(char *name, char *Mode, char *path) */
+  if (!f) return (f);
+  
+  char line[CHAR_BUF_LENGTH];
+  char *ret=0;
+  *vtxSize = *polySize = 0;
+
+  /* **************** start to read the file header */
+  /* OFF file:
+     'OFF' or '3'
+   */
+
+  ret=fgets(line,CHAR_BUF_LENGTH , f);// line 1 = "OFF"
+  if (ret == NULL)
+  {
+    fprintf(stderr, "Error: Can not read 1st line in file %s (interoff/off_getBlocksIndex)\n", filename);
+    exit(1);
+  }
+
+  if (strncmp(line,"OFF",3) && strncmp(line,"3",1) && strncmp(line,"ply",1))
+  {
+    fprintf(stderr, "Error: %s is probably not an OFF, NOFF or PLY file (interoff/off_getBlocksIndex).\n"
+                    "       Requires first line to be 'OFF', '3' or 'ply'.\n",filename);
+    fclose(f);
+    return(NULL);
+  }
+
+  if (!strncmp(line,"OFF",3) || !strncmp(line,"3",1)) {
+    do  /* OFF file: skip # comments which may be there */
+    {
+      ret=fgets(line,CHAR_BUF_LENGTH , f);
+      if (ret == NULL)
+      {
+        fprintf(stderr, "Error: Can not read line in file %s (interoff/off_getBlocksIndex)\n", filename);
+        exit(1);
+      }
+    } while (line[0]=='#');
+    //line = nblines of vertex,faces and edges arrays
+    sscanf(line,"%lu %lu",vtxSize,polySize);
+  } else {
+    do  /* PLY file: read all lines until find 'end_header'
+           and locate 'element faces' and 'element vertex' */
+    {
+      ret=fgets(line,CHAR_BUF_LENGTH , f);
+      if (ret == NULL)
+      {
+        fprintf(stderr, "Error: Can not read line in file %s (interoff/off_getBlocksIndex)\n", filename);
+        exit(1);
+      }
+      if (!strncmp(line,"element face",12))
+        sscanf(line,"element face %lu",polySize);
+      else if (!strncmp(line,"element vertex",14))
+        sscanf(line,"element vertex %lu",vtxSize);
+      else if (!strncmp(line,"format binary",13))
+        exit(fprintf(stderr,
+          "Error: Can not read binary PLY file %s, only 'format ascii' (interoff/off_getBlocksIndex)\n%s\n",
+          filename, line));
+    } while (strncmp(line,"end_header",10));
+  }
+  
+  /* The FILE is left opened ready to read 'vtxSize' vertices (vtxSize *3 numbers)
+     and then polySize polygons (rows) */
+
+  return(f);
+} /* r_off_getBlocksIndex */
+
+// r_off_init_planes *************************************************************
+//gives the equations of 2 perpandicular planes of [ab]
+void r_off_init_planes(Coords a, Coords b,
+  MCNUM* A1, MCNUM* C1, MCNUM* D1, MCNUM *A2, MCNUM* B2, MCNUM* C2, MCNUM* D2)
+{
+  //direction vector of [a b]
+  Coords dir={b.x-a.x, b.y-a.y, b.z-a.z};
+
+  //the plane parallel to the 'y' is computed with the normal vector of the projection of [ab] on plane 'xz'
+  *A1= dir.z;
+  *C1=-dir.x;
+  if(*A1!=0 || *C1!=0)
+    *D1=-(a.x)*(*A1)-(a.z)*(*C1);
+  else
+  {
+    //the plane does not support the vector, take the one parallel to 'z''
+    *A1=1;
+    //B1=dir.x=0
+    *D1=-(a.x);
+  }
+  //the plane parallel to the 'x' is computed with the normal vector of the projection of [ab] on plane 'yz'
+  *B2= dir.z;
+  *C2=-dir.y;
+  *A2= 0;
+  if (*B2==0 && *C2==0)
+  {
+    //the plane does not support the vector, take the one parallel to 'z'
+    *B2=1;
+    //B1=dir.x=0
+    *D2=-(a.y);
+  }
+  else {
+    if (dir.z==0)
+    {
+      //the planes are the same, take the one parallel to 'z'
+      *A2= dir.y;
+      *B2=-dir.x;
+      *D2=-(a.x)*(*A2)-(a.y)*(*B2);
+    }
+    else
+      *D2=-(a.y)**B2-(a.z)**C2;
+  }
+} /* r_off_init_planes */
+
+// r_off_clip_3D_mod *************************************************************
+int r_off_clip_3D_mod(r_intersection* t, Coords a, Coords b,
+  Coords* vtxArray, unsigned long vtxSize, unsigned long* faceArray,
+  unsigned long faceSize, Coords* normalArray)
+{
+  MCNUM A1=0, C1=0, D1=0, A2=0, B2=0, C2=0, D2=0;      //perpendicular plane equations to [a,b]
+  r_off_init_planes(a, b, &A1, &C1, &D1, &A2, &B2, &C2, &D2);
+
+  int t_size=0;
+  //unsigned long vtxSize=vtxTable.rows, faceSize=faceTable.columns;  //Size of the corresponding tables
+  char sg[vtxSize];  //array telling if vertex is left or right of the plane
+  MCNUM popol[3*CHAR_BUF_LENGTH];
+  unsigned long i=0,indPoly=0;
+  for (i=0; i < vtxSize; ++i)
+  {
+    sg[i]=r_off_sign(r_off_F(vtxArray[i].x,vtxArray[i].y,vtxArray[i].z,A1,0,C1,D1));
+  }
+
+  //exploring the polygons :
+  i=indPoly=0;
+  while (i<faceSize)
+  {
+    r_polygon pol;
+    pol.npol  = faceArray[i];                //nb vertex of polygon
+    pol.p     = popol;
+    pol.normal= coords_set(0,0,1);
+    unsigned long indVertP1=faceArray[++i];  //polygon's first vertex index in vtxTable
+    int j=1;
+    while (j<pol.npol)
+    {
+      //polygon's j-th vertex index in vtxTable
+      if (sg[indVertP1]!=sg[faceArray[i+j]]) //if the plane intersect the polygon
+        break;
+
+      ++j;
+    }
+
+    if (j<pol.npol)          //ok, let's test with the second plane
+    {
+      char sg1=r_off_sign(r_off_F(vtxArray[indVertP1].x,vtxArray[indVertP1].y,vtxArray[indVertP1].z,A2,B2,C2,D2));//tells if vertex is left or right of the plane
+
+      j=1;
+      while (j<pol.npol)
+      {
+        //unsigned long indVertPi=faceArray[i+j];  //polyg's j-th vertex index in vtxTable
+        Coords vertPi=vtxArray[faceArray[i+j]];
+        if (sg1!=r_off_sign(r_off_F(vertPi.x,vertPi.y,vertPi.z,A2,B2,C2,D2)))//if the plane intersect the polygon
+          break;
+        ++j;
+      }
+      if (j<pol.npol)
+      {
+        if (t_size>CHAR_BUF_LENGTH)
+        {
+          fprintf(stderr, "Warning: number of intersection exceeded (%d) (interoff-lib/off_clip_3D_mod)\n", CHAR_BUF_LENGTH);
+            return (t_size);
+        }
+        //both planes intersect the polygon, let's find the intersection point
+        //our polygon :
+        int k;
+        for (k=0; k<pol.npol; ++k)
+        {
+          Coords vertPk=vtxArray[faceArray[i+k]];
+          pol.p[3*k]  =vertPk.x;
+          pol.p[3*k+1]=vertPk.y;
+          pol.p[3*k+2]=vertPk.z;
+        }
+        pol.normal=normalArray[indPoly];
+        r_intersection x;
+        if (r_off_intersectPoly(&x, a, b, pol))
+        {
+          x.index = indPoly;
+          t[t_size++]=x;
+        }
+      } /* if (j<pol.npol) */
+    } /* if (j<pol.npol) */
+    i += pol.npol;
+    indPoly++;
+  } /* while i<faceSize */
+  return t_size;
+} /* r_off_clip_3D_mod */
+
+
+// r_off_compare *****************************************************************
+int r_off_compare (void const *a, void const *b)
+{
+   r_intersection const *pa = a;
+   r_intersection const *pb = b;
+
+   return r_off_sign(pa->time - pb->time);
+} /* r_off_compare */
+
+// r_off_cleanDouble *************************************************************
+//given an array of intersections throw those which appear several times
+//returns 1 if there is a possibility of error
+int r_off_cleanDouble(r_intersection* t, int* t_size)
+{
+  int i=1;
+  r_intersection prev=t[0];
+  while (i<*t_size)
+  {
+    int j=i;
+    //for each intersection with the same time
+    while (j<*t_size && fabs(prev.time-t[j].time)<EPSILON)
+    {
+      //if the intersection is the exact same erase it
+      if (prev.in_out==t[j].in_out)
+      {
+        int k;
+        for (k=j+1; k<*t_size; ++k)
+        {
+          t[k-1]=t[k];
+        }
+        *t_size-=1;
+      }
+      else
+        ++j;
+    }
+    prev=t[i];
+    ++i;
+
+  }
+  return 1;
+} /* r_off_cleanDouble */
+
+// r_off_cleanInOut **************************************************************
+//given an array of intesections throw those which enter and exit in the same time
+//Meaning the ray passes very close to the volume
+//returns 1 if there is a possibility of error
+int r_off_cleanInOut(r_intersection* t, int* t_size)
+{
+  int i=1;
+  r_intersection prev=t[0];
+  while (i<*t_size)
+  {
+    //if two intersection have the same time but one enters and the other exits erase both
+    //(such intersections must be adjacent in the array : run r_off_cleanDouble before)
+    if (fabs(prev.time-t[i].time)<EPSILON && prev.in_out!=t[i].in_out)
+    {
+      int j=0;
+      for (j=i+1; j<*t_size; ++j)
+      {
+        t[j-2]=t[j];
+      }
+      *t_size-=2;
+      prev=t[i-1];
+    }
+    else
+    {
+      prev=t[i];
+      ++i;
+    }
+  }
+  return (*t_size);
+} /* r_off_cleanInOut */
+
+/* PUBLIC functions ******************************************************** */
+
+/*******************************************************************************
+* long r_off_init(  char *offfile, double xwidth, double yheight, double zdepth, r_off_struct* data)
+* ACTION: read an OFF file, optionally center object and rescale, initialize OFF data structure
+* INPUT: 'offfile' OFF file to read
+*        'xwidth,yheight,zdepth' if given as non-zero, apply bounding box.
+*           Specifying only one of these will also use the same ratio on all axes
+*        'notcenter' center the object to the (0,0,0) position in local frame when set to zero
+* RETURN: number of polyhedra and 'data' OFF structure
+*******************************************************************************/
+long r_off_init(  char *offfile, double xwidth, double yheight, double zdepth,
+                int notcenter, r_off_struct* data)
+{
+  // data to be initialized
+  long    vtxSize =0, polySize=0, i=0, ret=0, faceSize=0;
+  Coords* vtxArray        =NULL;
+  Coords* normalArray     =NULL;
+  unsigned long* faceArray=NULL;
+  unsigned long* facepropsArray=NULL;  /* PL: added to hold keys to the table of supermirror m-values */
+  FILE*   f               =NULL; /* the FILE with vertices and polygons */
+  double minx=FLT_MAX,maxx=-FLT_MAX,miny=FLT_MAX,maxy=-FLT_MAX,minz=FLT_MAX,maxz=-FLT_MAX;
+
+  // get the indexes
+  if (!data) return(0);
+  
+  MPI_MASTER(
+  printf("Loading geometry file (OFF/PLY): %s\n", offfile);
+  );
+  
+  f=r_off_getBlocksIndex(offfile,&vtxSize,&polySize);
+  if (!f) return(0);
+  
+  // read vertex table = [x y z | x y z | ...] =================================
+  // now we read the vertices as 'vtxSize*3' numbers and store it in vtxArray 
+  MPI_MASTER(
+  printf("  Number of vertices: %ld\n", vtxSize);
+  );
+  vtxArray   = malloc(vtxSize*sizeof(Coords));
+  if (!vtxArray) return(0);
+  i=0;
+  while (i<vtxSize && ~feof(f))
+  {
+    double x,y,z;
+    ret=fscanf(f, "%lg%lg%lg", &x,&y,&z);
+    if (!ret) { 
+      // invalid line: we skip it (probably a comment)
+      char line[CHAR_BUF_LENGTH];
+      fgets(line, CHAR_BUF_LENGTH, f);
+      continue; 
+    }
+    if (ret != 3) {
+      fprintf(stderr, "Error: can not read [xyz] coordinates for vertex %li in file %s (interoff/off_init). Read %i values.\n", 
+        i, offfile, ret);
+      exit(2);
+    }
+    vtxArray[i].x=x;
+    vtxArray[i].y=y;
+    vtxArray[i].z=z;
+
+    //bounding box
+    if (vtxArray[i].x<minx) minx=vtxArray[i].x;
+    if (vtxArray[i].x>maxx) maxx=vtxArray[i].x;
+    if (vtxArray[i].y<miny) miny=vtxArray[i].y;
+    if (vtxArray[i].y>maxy) maxy=vtxArray[i].y;
+    if (vtxArray[i].z<minz) minz=vtxArray[i].z;
+    if (vtxArray[i].z>maxz) maxz=vtxArray[i].z;
+    i++; // inquire next vertex
+  }
+
+  // resizing and repositioning params
+  double centerx=0, centery=0, centerz=0;
+  if (!notcenter) {
+    centerx=(minx+maxx)*0.5;
+    centery=(miny+maxy)*0.5;
+    centerz=(minz+maxz)*0.5;
+  }
+
+  double rangex=-minx+maxx,
+         rangey=-miny+maxy,
+         rangez=-minz+maxz;
+
+  double ratiox=1,ratioy=1,ratioz=1;
+
+  if (xwidth && rangex)
+  {
+    ratiox=xwidth/rangex;
+    ratioy=ratiox;
+    ratioz=ratiox;
+  }
+
+  if (yheight && rangey)
+  {
+    ratioy=yheight/rangey;
+    if(!xwidth)  ratiox=ratioy;
+    ratioz=ratioy;
+  }
+
+  if (zdepth && rangez)
+  {
+    ratioz=zdepth/rangez;
+    if(!xwidth)  ratiox=ratioz;
+    if(!yheight) ratioy=ratioz;
+  }
+
+  rangex *= ratiox;
+  rangey *= ratioy;
+  rangez *= ratioz;
+
+  //center and resize the object
+  for (i=0; i<vtxSize; ++i)
+  {
+    vtxArray[i].x=(vtxArray[i].x-centerx)*ratiox+(!notcenter ? 0 : centerx);
+    vtxArray[i].y=(vtxArray[i].y-centery)*ratioy+(!notcenter ? 0 : centery);
+    vtxArray[i].z=(vtxArray[i].z-centerz)*ratioz+(!notcenter ? 0 : centerz);
+  }
+  
+  // read face table = [nbvertex v1 v2 vn | nbvertex v1 v2 vn ...] =============
+  MPI_MASTER(
+  printf("  Number of polygons: %ld\n", polySize);
+  );
+  normalArray= malloc(polySize*sizeof(Coords));
+  faceArray  = malloc(polySize*10*sizeof(unsigned long)); // we assume polygons have less than 9 vertices
+  facepropsArray = malloc(polySize*sizeof(unsigned long)); // array to hold the index of the face properties table
+  
+  if (!normalArray || !faceArray) return(0);
+  
+  // fill faces
+  faceSize=0;
+  i=0; // there will be polysize number of faces!
+  while (i<polySize && ~feof(f)) {
+    int  nbVertex=0, j=0;
+    // read the length of this polygon
+    ret=fscanf(f, "%d", &nbVertex);
+    if (!ret) { 
+      // invalid line: we skip it (probably a comment)
+      char line[CHAR_BUF_LENGTH];
+      fgets(line, CHAR_BUF_LENGTH, f);
+      continue; 
+    }
+    if (ret != 1) {
+      fprintf(stderr, "Error: can not read polygon %i length in file %s (interoff/off_init)\n", 
+        i, offfile);
+      exit(3);
+    }
+    if (faceSize > polySize*10) {
+      fprintf(stderr, "Error: %li exceeded allocated polygon array[%li] in file %s (interoff/off_init)\n", 
+        faceSize, polySize*10, offfile);
+    }
+    faceArray[faceSize++] = nbVertex; // length of the polygon/face
+    // then read the vertex ID's
+    for (j=0; j<nbVertex; j++) {
+      double vtx=0;
+      fscanf(f, "%lg", &vtx);
+      faceArray[faceSize++] = vtx;   // add vertices index after length of polygon
+    }
+    /* PL: to add the mirror properties use the optional color map index of the faces in the off-file definition,
+       i.e. read one more integer on the line!
+       this way will not work for files which do not have exactly this format
+       it would be better to replace the original fscanf by reading the full line and interpreting it afterwards. 
+     */  
+    int mirrorprops=0;
+    fscanf(f, "%d", &mirrorprops);
+    facepropsArray[i] = mirrorprops;
+    i++;
+  }
+
+  // precomputes normals
+  long indNormal=0;//index in polyArray
+  i=0;    //index in faceArray
+  while (i<faceSize)
+  {
+    int    nbVertex=faceArray[i];//nb of vertices of this polygon
+    double vertices[3*nbVertex];
+    int j;
+
+    for (j=0; j<nbVertex; ++j)
+    {
+      unsigned long indVertPj=faceArray[i+j+1];
+      vertices[3*j]  =vtxArray[indVertPj].x;
+      vertices[3*j+1]=vtxArray[indVertPj].y;
+      vertices[3*j+2]=vtxArray[indVertPj].z;
+    }
+
+    r_polygon p;
+    p.p   =vertices;
+    p.npol=nbVertex;
+    r_off_normal(&(p.normal),p);
+
+    normalArray[indNormal]=p.normal;
+
+    i += nbVertex+1;
+    indNormal++;
+
+  }
+  
+  MPI_MASTER(
+  if (ratiox!=ratioy || ratiox!=ratioz || ratioy!=ratioz)
+    printf("Warning: Aspect ratio of the geometry %s was modified.\n"
+           "         If you want to keep the original proportions, specifiy only one of the dimensions.\n",
+           offfile);
+  if ( xwidth==0 && yheight==0 && zdepth==0 ) {
+    printf("Warning: Neither xwidth, yheight or zdepth are defined.\n"
+	   "           The file-defined (non-scaled) geometry the OFF geometry %s will be applied!\n", 
+           offfile);
+  }
+  printf("  Bounding box dimensions for geometry %s:\n", offfile);
+  printf("    Length=%f (%.3f%%)\n", rangex, ratiox*100);
+  printf("    Width= %f (%.3f%%)\n", rangey, ratioy*100);
+  printf("    Depth= %f (%.3f%%)\n", rangez, ratioz*100);
+  );
+
+  data->vtxArray   = vtxArray;
+  data->normalArray= normalArray;
+  data->faceArray  = faceArray;
+  data->facepropsArray  = facepropsArray;
+  data->vtxSize    = vtxSize;
+  data->polySize   = polySize;
+  data->faceSize   = faceSize;
+  data->filename   = offfile;
+  return(polySize);
+} /* r_off_init */
+
+/*******************************************************************************
+* int r_off_intersect_all(double* t0, double* t3,
+     Coords *n0, Coords *n3,
+     unsigned long *faceindex0, unsigned long *faceindex3,
+     double x, double y, double z,
+     double vx, double vy, double vz,
+     r_off_struct *data )
+* ACTION: computes intersection of neutron trajectory with an object.
+* INPUT:  x,y,z and vx,vy,vz are the position and velocity of the neutron
+*         data points to the OFF data structure
+* RETURN: the number of polyhedra which trajectory intersects
+*         t0 and t3 are the smallest incoming and outgoing intersection times
+*         n0 and n3 are the corresponding normal vectors to the surface
+* PL:     faceindex0 and faceindex3 are the corresponding indices of the face
+*         data is the full OFF structure, including a list intersection type
+*******************************************************************************/
+int r_off_intersect_all(double* t0, double* t3,
+     Coords *n0, Coords *n3,
+     unsigned long *faceindex0, unsigned long *faceindex3,
+     double x,  double y,  double z,
+     double vx, double vy, double vz,
+     r_off_struct *data )
+{
+    Coords A={x, y, z};
+    Coords B={x+vx, y+vy, z+vz};
+    int t_size=r_off_clip_3D_mod(data->intersects, A, B,
+      data->vtxArray, data->vtxSize, data->faceArray, data->faceSize, data->normalArray );
+    /* t_size is the number of found intersections */
+    qsort(data->intersects, t_size, sizeof(r_intersection),  r_off_compare);
+    r_off_cleanDouble(data->intersects, &t_size);
+    r_off_cleanInOut(data->intersects,  &t_size);
+
+    /*find intersections "closest" to 0 (favouring positive ones)*/
+    if(t_size>0){
+      int i=0;
+      if(t_size>1) {
+        for (i=1; i < t_size-1; i++){
+          if (data->intersects[i-1].time > 0 && data->intersects[i].time > 0)
+            break;
+        }
+	
+	data->nextintersect=i-1;
+	data->numintersect=t_size;
+
+        if (t0) *t0 = data->intersects[i-1].time;
+        if (n0) *n0 = data->intersects[i-1].normal;
+        if (t3) *t3 = data->intersects[i].time;
+        if (n3) *n3 = data->intersects[i].normal;
+        // PL: added this to get a hand on the index of the reflecting face / polygon id
+        if (faceindex0) *faceindex0 = data->intersects[i-1].index;
+        if (faceindex3) *faceindex3 = data->intersects[i].index;        
+      } else {
+        if (t0) *t0 = data->intersects[0].time; 	 
+	    if (n0) *n0 = data->intersects[0].normal;
+        if (faceindex0) *faceindex0 = data->intersects[0].index;
+       
+      }
+      /* should also return t[0].index and t[i].index as polygon ID */
+      return t_size;
+    }
+    return 0;
+} /* r_off_intersect */
+
+/*******************************************************************************
+* int r_off_intersect(double* t0, double* t3,
+     Coords *n0, Coords *n3,
+     unsigned long *faceindex0, unsigned long *faceindex3,
+     double x, double y, double z,
+     double vx, double vy, double vz,
+     r_off_struct data )
+* ACTION: computes intersection of neutron trajectory with an object.
+* INPUT:  x,y,z and vx,vy,vz are the position and velocity of the neutron
+*         data points to the OFF data structure
+* RETURN: the number of polyhedra which trajectory intersects
+*         t0 and t3 are the smallest incoming and outgoing intersection times
+*         n0 and n3 are the corresponding normal vectors to the surface
+* PL:     faceindex0 and faceindex3 are the corresponding indices of the face
+*******************************************************************************/
+int r_off_intersect(double* t0, double* t3,
+     Coords *n0, Coords *n3,
+     unsigned long *faceindex0, unsigned long *faceindex3,
+     double x,  double y,  double z,
+     double vx, double vy, double vz,
+     r_off_struct data )
+{
+  return r_off_intersect_all(t0, t3, n0, n3, faceindex0, faceindex3, x, y, z, vx, vy, vz, &data );
+} /* r_off_intersect */
+
+/*****************************************************************************
+* int r_off_x_intersect(double* l0, double* l3,
+     Coords *n0, Coords *n3,
+     unsigned long *faceindex0, unsigned long *faceindex3,
+     double x, double y, double z,
+     double kx, double ky, double kz,
+     r_off_struct data )
+* ACTION: computes intersection of an xray trajectory with an object.
+* INPUT:  x,y,z and kx,ky,kz, are spatial coordinates and wavevector of the x-ray
+*         respectively. data points to the OFF data structure.
+* RETURN: the number of polyhedra the trajectory intersects
+*         l0 and l3 are the smallest incoming and outgoing intersection lengths
+*         n0 and n3 are the corresponding normal vectors to the surface
+* PL:     faceindex0 and faceindex3 are the corresponding indices of the face
+*******************************************************************************/
+int r_off_x_intersect(double *l0,double *l3,
+     Coords *n0, Coords *n3,
+     unsigned long *faceindex0, unsigned long *faceindex3,
+     double x,  double y,  double z,
+     double kx, double ky, double kz,
+     r_off_struct data )
+{
+  /*This function simply reformats and calls off_intersect (as for neutrons)
+   *by normalizing the wavevector - this will yield the intersection lengths
+   *in m*/
+  double jx,jy,jz,invk;
+  int n;
+  invk=1/sqrt(scalar_prod(kx,ky,kz,kx,ky,kz));
+  jx=kx*invk;jy=ky*invk;jz=kz*invk;
+  n=r_off_intersect(l0,l3,n0,n3,faceindex0,faceindex3,x,y,z,jx,jy,jz,data);
+  return n;
+}
+
+
+/*******************************************************************************
+* void off_display(r_off_struct data)
+* ACTION: display up to N_VERTEX_DISPLAYED polygons from the object
+*******************************************************************************/
+void r_off_display(r_off_struct data)
+{
+  unsigned int i;
+  double ratio=(double)(N_VERTEX_DISPLAYED)/(double)data.faceSize;
+  unsigned int pixel=0;
+  for (i=0; i<data.faceSize-1; i++) {
+    int j;
+    int nbVertex = data.faceArray[i];
+    double x0,y0,z0;
+    x0 = data.vtxArray[data.faceArray[i+1]].x;
+    y0 = data.vtxArray[data.faceArray[i+1]].y;
+    z0 = data.vtxArray[data.faceArray[i+1]].z;
+    double x1=x0,y1=y0,z1=z0;
+    double cmx=0,cmy=0,cmz=0;
+    
+    int drawthis = rand01() < ratio;
+    // First pass, calculate center of mass location...
+    for (j=1; j<=nbVertex; j++) {
+      cmx = cmx+data.vtxArray[data.faceArray[i+j]].x;
+      cmy = cmy+data.vtxArray[data.faceArray[i+j]].y;
+      cmz = cmz+data.vtxArray[data.faceArray[i+j]].z;
+    }
+    cmx /= nbVertex;
+    cmy /= nbVertex;
+    cmz /= nbVertex;
+    
+    char pixelinfo[1024];    
+    sprintf(pixelinfo, "%u,%u,%u,%i,%g,%g,%g,%g,%g,%g", data.mantidoffset+pixel, data.mantidoffset, data.mantidoffset+data.polySize-1, nbVertex, cmx, cmy, cmz, x1-cmx, y1-cmy, z1-cmz);
+    for (j=2; j<=nbVertex; j++) {
+      double x2,y2,z2;
+      x2 = data.vtxArray[data.faceArray[i+j]].x;
+      y2 = data.vtxArray[data.faceArray[i+j]].y;
+      z2 = data.vtxArray[data.faceArray[i+j]].z;
+      sprintf(pixelinfo, "%s,%g,%g,%g", pixelinfo, x2-cmx, y2-cmy, z2-cmz); 
+      if (ratio > 1 || drawthis) {
+	mcdis_line(x1,y1,z1,x2,y2,z2);
+      }
+      x1 = x2; y1 = y2; z1 = z2;
+    }
+    if (ratio > 1 || drawthis) {
+	mcdis_line(x1,y1,z1,x0,y0,z0);
+      }
+    if (data.mantidflag) {
+      printf("MANTID_PIXEL: %s\n", pixelinfo);
+      pixel++;
+    }
+    i += nbVertex;
+  }
+} /* r_off_display */
+
+/* end of r-inter-lib.c */
+
+
+#line 11958 "./Test_Guides.c"
+
 /* Instrument parameters. */
 int mcipGuide;
 
@@ -10945,9 +11973,9 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define mccompcurindex 0
 #define mcposaTest_Guides coords_set(0,0,0)
 #define Guide mcipGuide
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
-  int Flag_anyshape_scatter;
-#line 10950 "./Test_Guides.c"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  int Flag_anyshape_scatter, Flag_anyshape_r_scatter;
+#line 11978 "./Test_Guides.c"
 #undef Guide
 #undef mcposaTest_Guides
 #undef mccompcurindex
@@ -10956,17 +11984,17 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 
 /* neutron state table at each component input (local coords) */
 /* [x, y, z, vx, vy, vz, t, sx, sy, sz, p] */
-MCNUM mccomp_storein[11*17];
+MCNUM mccomp_storein[11*20];
 /* Components position table (absolute and relative coords) */
-Coords mccomp_posa[17];
-Coords mccomp_posr[17];
+Coords mccomp_posa[20];
+Coords mccomp_posr[20];
 /* Counter for each comp to check for inactive ones */
-MCNUM  mcNCounter[17];
-MCNUM  mcPCounter[17];
-MCNUM  mcP2Counter[17];
-#define mcNUMCOMP 16 /* number of components */
+MCNUM  mcNCounter[20];
+MCNUM  mcPCounter[20];
+MCNUM  mcP2Counter[20];
+#define mcNUMCOMP 19 /* number of components */
 /* Counter for PROP ABSORB */
-MCNUM  mcAbsorbProp[17];
+MCNUM  mcAbsorbProp[20];
 /* Flag true when previous component acted on the neutron (SCATTER) */
 MCNUM mcScattered=0;
 /* Flag true when neutron should be restored (RESTORE) */
@@ -11237,11 +12265,43 @@ MCNUM mccGuideH_mleft;
 MCNUM mccGuideH_mright;
 MCNUM mccGuideH_G;
 
-/* Definition parameters for component 'Monitor2_xy' [15]. */
+/* Setting parameters for component 'GuideAr_prefix' [15]. */
+MCNUM mccGuideAr_prefix_xmin;
+MCNUM mccGuideAr_prefix_xmax;
+MCNUM mccGuideAr_prefix_ymin;
+MCNUM mccGuideAr_prefix_ymax;
+MCNUM mccGuideAr_prefix_radius;
+MCNUM mccGuideAr_prefix_xwidth;
+MCNUM mccGuideAr_prefix_yheight;
+
+/* Definition parameters for component 'GuideAr' [16]. */
+#define mccGuideAr_geometry "Guide_r.off" /* declared as a string. May produce warnings at compile */
+/* Setting parameters for component 'GuideAr' [16]. */
+MCNUM mccGuideAr_xwidth;
+MCNUM mccGuideAr_yheight;
+MCNUM mccGuideAr_zdepth;
+MCNUM mccGuideAr_center;
+MCNUM mccGuideAr_transmit;
+MCNUM mccGuideAr_R0;
+MCNUM mccGuideAr_Qc;
+MCNUM mccGuideAr_alpha;
+MCNUM mccGuideAr_m;
+MCNUM mccGuideAr_W;
+
+/* Setting parameters for component 'GuideAr_sufffix' [17]. */
+MCNUM mccGuideAr_sufffix_xmin;
+MCNUM mccGuideAr_sufffix_xmax;
+MCNUM mccGuideAr_sufffix_ymin;
+MCNUM mccGuideAr_sufffix_ymax;
+MCNUM mccGuideAr_sufffix_radius;
+MCNUM mccGuideAr_sufffix_xwidth;
+MCNUM mccGuideAr_sufffix_yheight;
+
+/* Definition parameters for component 'Monitor2_xy' [18]. */
 #define mccMonitor2_xy_user1 FLT_MAX
 #define mccMonitor2_xy_user2 FLT_MAX
 #define mccMonitor2_xy_user3 FLT_MAX
-/* Setting parameters for component 'Monitor2_xy' [15]. */
+/* Setting parameters for component 'Monitor2_xy' [18]. */
 MCNUM mccMonitor2_xy_xwidth;
 MCNUM mccMonitor2_xy_yheight;
 MCNUM mccMonitor2_xy_zdepth;
@@ -11289,7 +12349,7 @@ double IntermediateCnts;
 time_t StartTime;
 time_t EndTime;
 time_t CurrentTime;
-#line 11292 "./Test_Guides.c"
+#line 12352 "./Test_Guides.c"
 #undef minutes
 #undef flag_save
 #undef percent
@@ -11373,7 +12433,7 @@ time_t CurrentTime;
   double pTable_dymin;
   double pTable_dymax;
 
-#line 11376 "./Test_Guides.c"
+#line 12436 "./Test_Guides.c"
 #undef target_index
 #undef zdepth
 #undef I3
@@ -11462,7 +12522,7 @@ time_t CurrentTime;
   MonitornD_Variables_type Vars;
   MCDETECTOR detector;
   off_struct offdata;
-#line 11465 "./Test_Guides.c"
+#line 12525 "./Test_Guides.c"
 #undef nowritefile
 #undef username3
 #undef username2
@@ -11521,7 +12581,7 @@ time_t CurrentTime;
 #define W mccGuide1_W
 #line 70 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Guide.comp"
 t_Table pTable;
-#line 11524 "./Test_Guides.c"
+#line 12584 "./Test_Guides.c"
 #undef W
 #undef m
 #undef alpha
@@ -11576,7 +12636,7 @@ double w2c;
 double ww, hh;
 double whalf, hhalf;
 double lwhalf, lhhalf;
-#line 11579 "./Test_Guides.c"
+#line 12639 "./Test_Guides.c"
 #undef phase
 #undef nu
 #undef my
@@ -11652,7 +12712,7 @@ double lwhalf, lhhalf;
 #line 335 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Guide_gravity.comp"
   Gravity_guide_Vars_type GVars;
   t_Table pTable;
-#line 11655 "./Test_Guides.c"
+#line 12715 "./Test_Guides.c"
 #undef reflect
 #undef phase
 #undef nu
@@ -11733,7 +12793,7 @@ double lwhalf, lhhalf;
 #define wavy_xy mccGuideW_wavy_xy
 #line 77 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Guide_wavy.comp"
 double whalf,hhalf, lwhalf, lhhalf, norm_nv, norm_nh, f_h, f_v, eta_z, eta_xy;
-#line 11736 "./Test_Guides.c"
+#line 12796 "./Test_Guides.c"
 #undef wavy_xy
 #undef wavy_z
 #undef W4
@@ -11834,7 +12894,7 @@ double whalf,hhalf, lwhalf, lhhalf, norm_nv, norm_nh, f_h, f_v, eta_z, eta_xy;
 	double Circ;
 	double *dynamicalSegLength;
 
-#line 11837 "./Test_Guides.c"
+#line 12897 "./Test_Guides.c"
 #undef curvature
 #undef enableGravity
 #undef verbose
@@ -11928,7 +12988,7 @@ double whalf,hhalf, lwhalf, lhhalf, norm_nv, norm_nh, f_h, f_v, eta_z, eta_xy;
 #line 96 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Guide_anyshape.comp"
 off_struct offdata;
 t_Table pTable;
-#line 11931 "./Test_Guides.c"
+#line 12991 "./Test_Guides.c"
 #undef W
 #undef m
 #undef alpha
@@ -11993,7 +13053,7 @@ t_Table pTable;
 #define G mccGuideH_G
 #line 238 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Guide_honeycomb.comp"
   Honeycomb_guide_Vars_type GVars;
-#line 11996 "./Test_Guides.c"
+#line 13056 "./Test_Guides.c"
 #undef G
 #undef mright
 #undef mleft
@@ -12016,10 +13076,92 @@ t_Table pTable;
 #undef mccompcurtype
 #undef mccompcurindex
 
-/* User declarations for component 'Monitor2_xy' [15]. */
+/* User declarations for component 'GuideAr_prefix' [15]. */
+#define mccompcurname  GuideAr_prefix
+#define mccompcurtype  Slit
+#define mccompcurindex 15
+#define xmin mccGuideAr_prefix_xmin
+#define xmax mccGuideAr_prefix_xmax
+#define ymin mccGuideAr_prefix_ymin
+#define ymax mccGuideAr_prefix_ymax
+#define radius mccGuideAr_prefix_radius
+#define xwidth mccGuideAr_prefix_xwidth
+#define yheight mccGuideAr_prefix_yheight
+#undef yheight
+#undef xwidth
+#undef radius
+#undef ymax
+#undef ymin
+#undef xmax
+#undef xmin
+#undef mccompcurname
+#undef mccompcurtype
+#undef mccompcurindex
+
+/* User declarations for component 'GuideAr' [16]. */
+#define mccompcurname  GuideAr
+#define mccompcurtype  Guide_anyshape_r
+#define mccompcurindex 16
+#define geometry mccGuideAr_geometry
+#define offdata mccGuideAr_offdata
+#define use_file_coatings mccGuideAr_use_file_coatings
+#define xwidth mccGuideAr_xwidth
+#define yheight mccGuideAr_yheight
+#define zdepth mccGuideAr_zdepth
+#define center mccGuideAr_center
+#define transmit mccGuideAr_transmit
+#define R0 mccGuideAr_R0
+#define Qc mccGuideAr_Qc
+#define alpha mccGuideAr_alpha
+#define m mccGuideAr_m
+#define W mccGuideAr_W
+#line 93 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Guide_anyshape_r.comp"
+r_off_struct offdata;
+int use_file_coatings;
+#line 13121 "./Test_Guides.c"
+#undef W
+#undef m
+#undef alpha
+#undef Qc
+#undef R0
+#undef transmit
+#undef center
+#undef zdepth
+#undef yheight
+#undef xwidth
+#undef use_file_coatings
+#undef offdata
+#undef geometry
+#undef mccompcurname
+#undef mccompcurtype
+#undef mccompcurindex
+
+/* User declarations for component 'GuideAr_sufffix' [17]. */
+#define mccompcurname  GuideAr_sufffix
+#define mccompcurtype  Slit
+#define mccompcurindex 17
+#define xmin mccGuideAr_sufffix_xmin
+#define xmax mccGuideAr_sufffix_xmax
+#define ymin mccGuideAr_sufffix_ymin
+#define ymax mccGuideAr_sufffix_ymax
+#define radius mccGuideAr_sufffix_radius
+#define xwidth mccGuideAr_sufffix_xwidth
+#define yheight mccGuideAr_sufffix_yheight
+#undef yheight
+#undef xwidth
+#undef radius
+#undef ymax
+#undef ymin
+#undef xmax
+#undef xmin
+#undef mccompcurname
+#undef mccompcurtype
+#undef mccompcurindex
+
+/* User declarations for component 'Monitor2_xy' [18]. */
 #define mccompcurname  Monitor2_xy
 #define mccompcurtype  Monitor_nD
-#define mccompcurindex 15
+#define mccompcurindex 18
 #define user1 mccMonitor2_xy_user1
 #define user2 mccMonitor2_xy_user2
 #define user3 mccMonitor2_xy_user3
@@ -12053,7 +13195,7 @@ t_Table pTable;
   MonitornD_Variables_type Vars;
   MCDETECTOR detector;
   off_struct offdata;
-#line 12056 "./Test_Guides.c"
+#line 13198 "./Test_Guides.c"
 #undef nowritefile
 #undef username3
 #undef username2
@@ -12114,6 +13256,12 @@ Coords mcposaGuideA_sufffix, mcposrGuideA_sufffix;
 Rotation mcrotaGuideA_sufffix, mcrotrGuideA_sufffix;
 Coords mcposaGuideH, mcposrGuideH;
 Rotation mcrotaGuideH, mcrotrGuideH;
+Coords mcposaGuideAr_prefix, mcposrGuideAr_prefix;
+Rotation mcrotaGuideAr_prefix, mcrotrGuideAr_prefix;
+Coords mcposaGuideAr, mcposrGuideAr;
+Rotation mcrotaGuideAr, mcrotrGuideAr;
+Coords mcposaGuideAr_sufffix, mcposrGuideAr_sufffix;
+Rotation mcrotaGuideAr_sufffix, mcrotrGuideAr_sufffix;
 Coords mcposaMonitor2_xy, mcposrMonitor2_xy;
 Rotation mcrotaMonitor2_xy, mcrotrMonitor2_xy;
 
@@ -12127,7 +13275,7 @@ void mcinit(void) {
 #define mccompcurindex 0
 #define mcposaTest_Guides coords_set(0,0,0)
 #define Guide mcipGuide
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
 {
   switch (Guide) {
   case 1:
@@ -12146,9 +13294,12 @@ void mcinit(void) {
     printf("Using Guide_anyshape\n"); break;
   case 8:
     printf("Using Guide_honeycomb\n"); break;
+  case 9:
+    printf("Using Guide_r_anyshape\n"); break;
   }
+  
 }
-#line 12151 "./Test_Guides.c"
+#line 13302 "./Test_Guides.c"
 #undef Guide
 #undef mcposaTest_Guides
 #undef mccompcurindex
@@ -12167,31 +13318,31 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccOrigin_minutes = 0;
-#line 12178 "./Test_Guides.c"
+#line 13329 "./Test_Guides.c"
 
   SIG_MESSAGE("Origin (Init:Place/Rotate)");
   rot_set_rotation(mcrotaOrigin,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 12185 "./Test_Guides.c"
+#line 13336 "./Test_Guides.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0);
-#line 12194 "./Test_Guides.c"
+#line 13345 "./Test_Guides.c"
   mctc1 = coords_neg(mcposaOrigin);
   mcposrOrigin = rot_apply(mcrotaOrigin, mctc1);
   mcDEBUG_COMPONENT("Origin", mcposaOrigin, mcrotaOrigin)
@@ -12202,85 +13353,85 @@ void mcinit(void) {
     /* Component Source. */
   /* Setting parameters for component Source. */
   SIG_MESSAGE("Source (Init:SetPar)");
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if("NULL") strncpy(mccSource_flux_file, "NULL" ? "NULL" : "", 16384); else mccSource_flux_file[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if("NULL") strncpy(mccSource_xdiv_file, "NULL" ? "NULL" : "", 16384); else mccSource_xdiv_file[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if("NULL") strncpy(mccSource_ydiv_file, "NULL" ? "NULL" : "", 16384); else mccSource_ydiv_file[0]='\0';
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_radius = 0.0;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_dist = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_focus_xw = 0.05;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_focus_yh = 0.05;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_focus_aw = 0;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_focus_ah = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_E0 = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_dE = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_lambda0 = 3.39;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_dlambda = 0.3;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_I1 = 1;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_yheight = 0.05;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_xwidth = 0.05;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_verbose = 0;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_T1 = 0;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_flux_file_perAA = 0;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_flux_file_log = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_Lmin = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_Lmax = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_Emin = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_Emax = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_T2 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_I2 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_T3 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_I3 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_zdepth = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccSource_target_index = + 1;
-#line 12265 "./Test_Guides.c"
+#line 13416 "./Test_Guides.c"
 
   SIG_MESSAGE("Source (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 12272 "./Test_Guides.c"
+#line 13423 "./Test_Guides.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaSource);
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotaSource, mctr1, mcrotrSource);
   mctc1 = coords_set(
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0);
-#line 12283 "./Test_Guides.c"
+#line 13434 "./Test_Guides.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaSource = coords_add(mcposaOrigin, mctc2);
@@ -12294,67 +13445,67 @@ void mcinit(void) {
     /* Component Monitor1_xt. */
   /* Setting parameters for component Monitor1_xt. */
   SIG_MESSAGE("Monitor1_xt (Init:SetPar)");
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor1_xt_xwidth = 0.05;
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor1_xt_yheight = 0.05;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor1_xt_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor1_xt_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor1_xt_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor1_xt_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor1_xt_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor1_xt_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor1_xt_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor1_xt_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor1_xt_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor1_xt_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor1_xt_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor1_xt_radius = 0;
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if("x y") strncpy(mccMonitor1_xt_options, "x y" ? "x y" : "", 16384); else mccMonitor1_xt_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if("NULL") strncpy(mccMonitor1_xt_filename, "NULL" ? "NULL" : "", 16384); else mccMonitor1_xt_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if("NULL") strncpy(mccMonitor1_xt_geometry, "NULL" ? "NULL" : "", 16384); else mccMonitor1_xt_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if("NULL") strncpy(mccMonitor1_xt_username1, "NULL" ? "NULL" : "", 16384); else mccMonitor1_xt_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if("NULL") strncpy(mccMonitor1_xt_username2, "NULL" ? "NULL" : "", 16384); else mccMonitor1_xt_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if("NULL") strncpy(mccMonitor1_xt_username3, "NULL" ? "NULL" : "", 16384); else mccMonitor1_xt_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor1_xt_nowritefile = 0;
-#line 12339 "./Test_Guides.c"
+#line 13490 "./Test_Guides.c"
 
   SIG_MESSAGE("Monitor1_xt (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 12346 "./Test_Guides.c"
+#line 13497 "./Test_Guides.c"
   rot_mul(mctr1, mcrotaSource, mcrotaMonitor1_xt);
   rot_transpose(mcrotaSource, mctr1);
   rot_mul(mcrotaMonitor1_xt, mctr1, mcrotrMonitor1_xt);
   mctc1 = coords_set(
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     1);
-#line 12357 "./Test_Guides.c"
+#line 13508 "./Test_Guides.c"
   rot_transpose(mcrotaSource, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMonitor1_xt = coords_add(mcposaSource, mctc2);
@@ -12374,18 +13525,18 @@ void mcinit(void) {
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 12377 "./Test_Guides.c"
+#line 13528 "./Test_Guides.c"
   rot_mul(mctr1, mcrotaMonitor1_xt, mcrotaGuide_Position);
   rot_transpose(mcrotaMonitor1_xt, mctr1);
   rot_mul(mcrotaGuide_Position, mctr1, mcrotrGuide_Position);
   mctc1 = coords_set(
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0.1);
-#line 12388 "./Test_Guides.c"
+#line 13539 "./Test_Guides.c"
   rot_transpose(mcrotaMonitor1_xt, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuide_Position = coords_add(mcposaMonitor1_xt, mctc2);
@@ -12399,47 +13550,47 @@ void mcinit(void) {
     /* Component Guide1. */
   /* Setting parameters for component Guide1. */
   SIG_MESSAGE("Guide1 (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if(0) strncpy(mccGuide1_reflect, 0 ? 0 : "", 16384); else mccGuide1_reflect[0]='\0';
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuide1_w1 = 0.05;
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuide1_h1 = 0.05;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuide1_w2 = 0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuide1_h2 = 0;
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuide1_l = 1.0;
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuide1_R0 = 0.99;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuide1_Qc = 0.0219;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuide1_alpha = 6.07;
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuide1_m = 1;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuide1_W = 0.003;
-#line 12424 "./Test_Guides.c"
+#line 13575 "./Test_Guides.c"
 
   SIG_MESSAGE("Guide1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 12431 "./Test_Guides.c"
+#line 13582 "./Test_Guides.c"
   rot_mul(mctr1, mcrotaGuide_Position, mcrotaGuide1);
   rot_transpose(mcrotaGuide_Position, mctr1);
   rot_mul(mcrotaGuide1, mctr1, mcrotrGuide1);
   mctc1 = coords_set(
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0);
-#line 12442 "./Test_Guides.c"
+#line 13593 "./Test_Guides.c"
   rot_transpose(mcrotaGuide_Position, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuide1 = coords_add(mcposaGuide_Position, mctc2);
@@ -12453,65 +13604,65 @@ void mcinit(void) {
     /* Component GuideC. */
   /* Setting parameters for component GuideC. */
   SIG_MESSAGE("GuideC (Init:SetPar)");
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideC_w1 = 0.05;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideC_h1 = 0.05;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideC_w2 = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideC_h2 = 0;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideC_l = 1.0;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideC_R0 = 0.99;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideC_Qc = 0;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideC_alpha = 0;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideC_m = 1;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideC_nslit = 1;
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideC_d = 0;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideC_Qcx = 0.0218;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideC_Qcy = 0.0218;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideC_alphax = 4.38;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideC_alphay = 4.38;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideC_W = 0.003;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideC_mx = 1;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideC_my = 1;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideC_nu = 0;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideC_phase = 0;
-#line 12496 "./Test_Guides.c"
+#line 13647 "./Test_Guides.c"
 
   SIG_MESSAGE("GuideC (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 12503 "./Test_Guides.c"
+#line 13654 "./Test_Guides.c"
   rot_mul(mctr1, mcrotaGuide_Position, mcrotaGuideC);
   rot_transpose(mcrotaGuide1, mctr1);
   rot_mul(mcrotaGuideC, mctr1, mcrotrGuideC);
   mctc1 = coords_set(
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0);
-#line 12514 "./Test_Guides.c"
+#line 13665 "./Test_Guides.c"
   rot_transpose(mcrotaGuide_Position, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuideC = coords_add(mcposaGuide_Position, mctc2);
@@ -12525,93 +13676,93 @@ void mcinit(void) {
     /* Component GuideG. */
   /* Setting parameters for component GuideG. */
   SIG_MESSAGE("GuideG (Init:SetPar)");
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_w1 = 0.05;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_h1 = 0.05;
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_w2 = 0;
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_h2 = 0;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_l = 1.0;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_R0 = 0.99;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_Qc = 0.0218;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_alpha = 4.38;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_m = 1;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_W = 0.003;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_nslit = 1;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_d = 0;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_mleft = -1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_mright = -1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_mtop = -1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_mbottom = -1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_nhslit = 1;
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_G = 0;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_aleft = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_aright = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_atop = -1;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_abottom = -1;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_wavy = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_wavy_z = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_wavy_tb = 0;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_wavy_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_chamfers = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_chamfers_z = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_chamfers_lr = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_chamfers_tb = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_nelements = 1;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_nu = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideG_phase = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if("NULL") strncpy(mccGuideG_reflect, "NULL" ? "NULL" : "", 16384); else mccGuideG_reflect[0]='\0';
-#line 12596 "./Test_Guides.c"
+#line 13747 "./Test_Guides.c"
 
   SIG_MESSAGE("GuideG (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 12603 "./Test_Guides.c"
+#line 13754 "./Test_Guides.c"
   rot_mul(mctr1, mcrotaGuide_Position, mcrotaGuideG);
   rot_transpose(mcrotaGuideC, mctr1);
   rot_mul(mcrotaGuideG, mctr1, mcrotrGuideG);
   mctc1 = coords_set(
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0);
-#line 12614 "./Test_Guides.c"
+#line 13765 "./Test_Guides.c"
   rot_transpose(mcrotaGuide_Position, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuideG = coords_add(mcposaGuide_Position, mctc2);
@@ -12625,73 +13776,73 @@ void mcinit(void) {
     /* Component GuideW. */
   /* Setting parameters for component GuideW. */
   SIG_MESSAGE("GuideW (Init:SetPar)");
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideW_w1 = 0.05;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideW_h1 = 0.05;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideW_w2 = 0;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideW_h2 = 0;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideW_l = 1.0;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideW_R0 = 0.99;
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideW_Qc = 0.0218;
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideW_alpha = 0;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideW_m = 1;
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideW_W = 0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideW_alpha1 = 4.38;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideW_m1 = 2;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideW_W1 = 0.003;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideW_alpha2 = 4.38;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideW_m2 = 2;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideW_W2 = 0.003;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideW_alpha3 = 4.38;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideW_m3 = 2;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideW_W3 = 0.003;
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideW_alpha4 = 4.38;
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideW_m4 = 2;
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideW_W4 = 0.003;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideW_wavy_z = 0;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideW_wavy_xy = 0;
-#line 12676 "./Test_Guides.c"
+#line 13827 "./Test_Guides.c"
 
   SIG_MESSAGE("GuideW (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 12683 "./Test_Guides.c"
+#line 13834 "./Test_Guides.c"
   rot_mul(mctr1, mcrotaGuide_Position, mcrotaGuideW);
   rot_transpose(mcrotaGuideG, mctr1);
   rot_mul(mcrotaGuideW, mctr1, mcrotrGuideW);
   mctc1 = coords_set(
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0);
-#line 12694 "./Test_Guides.c"
+#line 13845 "./Test_Guides.c"
   rot_transpose(mcrotaGuide_Position, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuideW = coords_add(mcposaGuide_Position, mctc2);
@@ -12705,43 +13856,43 @@ void mcinit(void) {
     /* Component GuideR. */
   /* Setting parameters for component GuideR. */
   SIG_MESSAGE("GuideR (Init:SetPar)");
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideR_w1 = 0.05;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideR_h1 = 0.05;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideR_l = 1.0;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideR_R0 = 0.99;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideR_Qc = 0.0218;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideR_alpha = 4.38;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideR_m = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideR_W = 0.003;
-#line 116 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideR_curvature = 10000;
-#line 12726 "./Test_Guides.c"
+#line 13877 "./Test_Guides.c"
 
   SIG_MESSAGE("GuideR (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 12733 "./Test_Guides.c"
+#line 13884 "./Test_Guides.c"
   rot_mul(mctr1, mcrotaGuide_Position, mcrotaGuideR);
   rot_transpose(mcrotaGuideW, mctr1);
   rot_mul(mcrotaGuideR, mctr1, mcrotrGuideR);
   mctc1 = coords_set(
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0);
-#line 12744 "./Test_Guides.c"
+#line 13895 "./Test_Guides.c"
   rot_transpose(mcrotaGuide_Position, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuideR = coords_add(mcposaGuide_Position, mctc2);
@@ -12755,87 +13906,87 @@ void mcinit(void) {
     /* Component GuideEl. */
   /* Setting parameters for component GuideEl. */
   SIG_MESSAGE("GuideEl (Init:SetPar)");
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_l = 1.0;
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_xwidth = 0.05;
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_yheight = 0.05;
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_linxw = 1e6;
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_loutxw = 1e6;
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_linyh = 1e6;
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_loutyh = 1e6;
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_majorAxisxw = 0;
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_minorAxisxw = 0;
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_majorAxisyh = 0;
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_minorAxisyh = 0;
-#line 167 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_majorAxisoffsetxw = 0;
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_majorAxisoffsetyh = 0;
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if("mid") strncpy(mccGuideEl_dimensionsAt, "mid" ? "mid" : "", 16384); else mccGuideEl_dimensionsAt[0]='\0';
-#line 170 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 170 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if("ellipse") strncpy(mccGuideEl_option, "ellipse" ? "ellipse" : "", 16384); else mccGuideEl_option[0]='\0';
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_R0 = 0.99;
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_Qc = 0.0218;
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_alpha = 6.07;
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_m = 1;
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_W = 0.003;
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 172 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_alpharight = -1;
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 172 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_mright = -1;
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_alphaleft = -1;
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_mleft = -1;
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_alphatop = -1;
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_mtop = -1;
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 175 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_alphabottom = -1;
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 175 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_mbottom = -1;
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if("on") strncpy(mccGuideEl_verbose, "on" ? "on" : "", 16384); else mccGuideEl_verbose[0]='\0';
-#line 177 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 177 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_enableGravity = 1.0;
-#line 178 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 178 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideEl_curvature = 0;
-#line 12820 "./Test_Guides.c"
+#line 13971 "./Test_Guides.c"
 
   SIG_MESSAGE("GuideEl (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 12827 "./Test_Guides.c"
+#line 13978 "./Test_Guides.c"
   rot_mul(mctr1, mcrotaGuide_Position, mcrotaGuideEl);
   rot_transpose(mcrotaGuideR, mctr1);
   rot_mul(mcrotaGuideEl, mctr1, mcrotrGuideEl);
   mctc1 = coords_set(
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0);
-#line 12838 "./Test_Guides.c"
+#line 13989 "./Test_Guides.c"
   rot_transpose(mcrotaGuide_Position, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuideEl = coords_add(mcposaGuide_Position, mctc2);
@@ -12849,39 +14000,39 @@ void mcinit(void) {
     /* Component GuideA_prefix. */
   /* Setting parameters for component GuideA_prefix. */
   SIG_MESSAGE("GuideA_prefix (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideA_prefix_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideA_prefix_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideA_prefix_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideA_prefix_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideA_prefix_radius = 0;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideA_prefix_xwidth = 0.05;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideA_prefix_yheight = 0.05;
-#line 12866 "./Test_Guides.c"
+#line 14017 "./Test_Guides.c"
 
   SIG_MESSAGE("GuideA_prefix (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 12873 "./Test_Guides.c"
+#line 14024 "./Test_Guides.c"
   rot_mul(mctr1, mcrotaGuide_Position, mcrotaGuideA_prefix);
   rot_transpose(mcrotaGuideEl, mctr1);
   rot_mul(mcrotaGuideA_prefix, mctr1, mcrotrGuideA_prefix);
   mctc1 = coords_set(
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     -0.0001);
-#line 12884 "./Test_Guides.c"
+#line 14035 "./Test_Guides.c"
   rot_transpose(mcrotaGuide_Position, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuideA_prefix = coords_add(mcposaGuide_Position, mctc2);
@@ -12895,45 +14046,45 @@ void mcinit(void) {
     /* Component GuideA. */
   /* Setting parameters for component GuideA. */
   SIG_MESSAGE("GuideA (Init:SetPar)");
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideA_xwidth = 0;
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideA_yheight = 0;
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideA_zdepth = 0;
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideA_center = 0;
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideA_transmit = 0;
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideA_R0 = 0.99;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideA_Qc = 0.0219;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideA_alpha = 3;
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideA_m = 1;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideA_W = 0.003;
-#line 12918 "./Test_Guides.c"
+#line 14069 "./Test_Guides.c"
 
   SIG_MESSAGE("GuideA (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 12925 "./Test_Guides.c"
+#line 14076 "./Test_Guides.c"
   rot_mul(mctr1, mcrotaGuide_Position, mcrotaGuideA);
   rot_transpose(mcrotaGuideA_prefix, mctr1);
   rot_mul(mcrotaGuideA, mctr1, mcrotrGuideA);
   mctc1 = coords_set(
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0);
-#line 12936 "./Test_Guides.c"
+#line 14087 "./Test_Guides.c"
   rot_transpose(mcrotaGuide_Position, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuideA = coords_add(mcposaGuide_Position, mctc2);
@@ -12947,39 +14098,39 @@ void mcinit(void) {
     /* Component GuideA_sufffix. */
   /* Setting parameters for component GuideA_sufffix. */
   SIG_MESSAGE("GuideA_sufffix (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideA_sufffix_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideA_sufffix_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideA_sufffix_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideA_sufffix_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideA_sufffix_radius = 0;
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideA_sufffix_xwidth = 0.05;
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideA_sufffix_yheight = 0.05;
-#line 12964 "./Test_Guides.c"
+#line 14115 "./Test_Guides.c"
 
   SIG_MESSAGE("GuideA_sufffix (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 12971 "./Test_Guides.c"
+#line 14122 "./Test_Guides.c"
   rot_mul(mctr1, mcrotaGuide_Position, mcrotaGuideA_sufffix);
   rot_transpose(mcrotaGuideA, mctr1);
   rot_mul(mcrotaGuideA_sufffix, mctr1, mcrotrGuideA_sufffix);
   mctc1 = coords_set(
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 152 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 152 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 152 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     1 + 0.0001);
-#line 12982 "./Test_Guides.c"
+#line 14133 "./Test_Guides.c"
   rot_transpose(mcrotaGuide_Position, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuideA_sufffix = coords_add(mcposaGuide_Position, mctc2);
@@ -12993,59 +14144,59 @@ void mcinit(void) {
     /* Component GuideH. */
   /* Setting parameters for component GuideH. */
   SIG_MESSAGE("GuideH (Init:SetPar)");
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 159 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideH_w1 = 0.05;
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideH_w2 = 0;
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 159 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideH_l = 1.0;
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 159 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideH_R0 = 0.99;
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideH_Qc = 0.0218;
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideH_alpha = 4.38;
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 159 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideH_m = 1;
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideH_W = 0.003;
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideH_nslit = 1;
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 159 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideH_d = 0;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideH_mleftup = -1;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideH_mrightup = -1;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideH_mleftdown = -1;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideH_mrightdown = -1;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideH_mleft = -1;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideH_mright = -1;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccGuideH_G = 0;
-#line 13030 "./Test_Guides.c"
+#line 14181 "./Test_Guides.c"
 
   SIG_MESSAGE("GuideH (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 13037 "./Test_Guides.c"
+#line 14188 "./Test_Guides.c"
   rot_mul(mctr1, mcrotaGuide_Position, mcrotaGuideH);
   rot_transpose(mcrotaGuideA_sufffix, mctr1);
   rot_mul(mcrotaGuideH, mctr1, mcrotrGuideH);
   mctc1 = coords_set(
-#line 157 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 161 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 157 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 161 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 157 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 161 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0);
-#line 13048 "./Test_Guides.c"
+#line 14199 "./Test_Guides.c"
   rot_transpose(mcrotaGuide_Position, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuideH = coords_add(mcposaGuide_Position, mctc2);
@@ -13056,80 +14207,224 @@ void mcinit(void) {
   mccomp_posr[14] = mcposrGuideH;
   mcNCounter[14]  = mcPCounter[14] = mcP2Counter[14] = 0;
   mcAbsorbProp[14]= 0;
+    /* Component GuideAr_prefix. */
+  /* Setting parameters for component GuideAr_prefix. */
+  SIG_MESSAGE("GuideAr_prefix (Init:SetPar)");
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  mccGuideAr_prefix_xmin = 0;
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  mccGuideAr_prefix_xmax = 0;
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  mccGuideAr_prefix_ymin = 0;
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  mccGuideAr_prefix_ymax = 0;
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  mccGuideAr_prefix_radius = 0;
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  mccGuideAr_prefix_xwidth = 0.05;
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  mccGuideAr_prefix_yheight = 0.05;
+#line 14227 "./Test_Guides.c"
+
+  SIG_MESSAGE("GuideAr_prefix (Init:Place/Rotate)");
+  rot_set_rotation(mctr1,
+    (0.0)*DEG2RAD,
+    (0.0)*DEG2RAD,
+    (0.0)*DEG2RAD);
+#line 14234 "./Test_Guides.c"
+  rot_mul(mctr1, mcrotaGuide_Position, mcrotaGuideAr_prefix);
+  rot_transpose(mcrotaGuideH, mctr1);
+  rot_mul(mcrotaGuideAr_prefix, mctr1, mcrotrGuideAr_prefix);
+  mctc1 = coords_set(
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+    0,
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+    0,
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+    -0.0001);
+#line 14245 "./Test_Guides.c"
+  rot_transpose(mcrotaGuide_Position, mctr1);
+  mctc2 = rot_apply(mctr1, mctc1);
+  mcposaGuideAr_prefix = coords_add(mcposaGuide_Position, mctc2);
+  mctc1 = coords_sub(mcposaGuideH, mcposaGuideAr_prefix);
+  mcposrGuideAr_prefix = rot_apply(mcrotaGuideAr_prefix, mctc1);
+  mcDEBUG_COMPONENT("GuideAr_prefix", mcposaGuideAr_prefix, mcrotaGuideAr_prefix)
+  mccomp_posa[15] = mcposaGuideAr_prefix;
+  mccomp_posr[15] = mcposrGuideAr_prefix;
+  mcNCounter[15]  = mcPCounter[15] = mcP2Counter[15] = 0;
+  mcAbsorbProp[15]= 0;
+    /* Component GuideAr. */
+  /* Setting parameters for component GuideAr. */
+  SIG_MESSAGE("GuideAr (Init:SetPar)");
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  mccGuideAr_xwidth = 0;
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  mccGuideAr_yheight = 0;
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  mccGuideAr_zdepth = 0;
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  mccGuideAr_center = 0;
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  mccGuideAr_transmit = 0;
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  mccGuideAr_R0 = 0.99;
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  mccGuideAr_Qc = 0.0219;
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  mccGuideAr_alpha = 0;
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  mccGuideAr_m = 0;
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  mccGuideAr_W = 0;
+#line 14279 "./Test_Guides.c"
+
+  SIG_MESSAGE("GuideAr (Init:Place/Rotate)");
+  rot_set_rotation(mctr1,
+    (0.0)*DEG2RAD,
+    (0.0)*DEG2RAD,
+    (0.0)*DEG2RAD);
+#line 14286 "./Test_Guides.c"
+  rot_mul(mctr1, mcrotaGuide_Position, mcrotaGuideAr);
+  rot_transpose(mcrotaGuideAr_prefix, mctr1);
+  rot_mul(mcrotaGuideAr, mctr1, mcrotrGuideAr);
+  mctc1 = coords_set(
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+    0,
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+    0,
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+    0);
+#line 14297 "./Test_Guides.c"
+  rot_transpose(mcrotaGuide_Position, mctr1);
+  mctc2 = rot_apply(mctr1, mctc1);
+  mcposaGuideAr = coords_add(mcposaGuide_Position, mctc2);
+  mctc1 = coords_sub(mcposaGuideAr_prefix, mcposaGuideAr);
+  mcposrGuideAr = rot_apply(mcrotaGuideAr, mctc1);
+  mcDEBUG_COMPONENT("GuideAr", mcposaGuideAr, mcrotaGuideAr)
+  mccomp_posa[16] = mcposaGuideAr;
+  mccomp_posr[16] = mcposrGuideAr;
+  mcNCounter[16]  = mcPCounter[16] = mcP2Counter[16] = 0;
+  mcAbsorbProp[16]= 0;
+    /* Component GuideAr_sufffix. */
+  /* Setting parameters for component GuideAr_sufffix. */
+  SIG_MESSAGE("GuideAr_sufffix (Init:SetPar)");
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  mccGuideAr_sufffix_xmin = 0;
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  mccGuideAr_sufffix_xmax = 0;
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  mccGuideAr_sufffix_ymin = 0;
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  mccGuideAr_sufffix_ymax = 0;
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  mccGuideAr_sufffix_radius = 0;
+#line 181 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  mccGuideAr_sufffix_xwidth = 0.05;
+#line 181 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  mccGuideAr_sufffix_yheight = 0.05;
+#line 14325 "./Test_Guides.c"
+
+  SIG_MESSAGE("GuideAr_sufffix (Init:Place/Rotate)");
+  rot_set_rotation(mctr1,
+    (0.0)*DEG2RAD,
+    (0.0)*DEG2RAD,
+    (0.0)*DEG2RAD);
+#line 14332 "./Test_Guides.c"
+  rot_mul(mctr1, mcrotaGuide_Position, mcrotaGuideAr_sufffix);
+  rot_transpose(mcrotaGuideAr, mctr1);
+  rot_mul(mcrotaGuideAr_sufffix, mctr1, mcrotrGuideAr_sufffix);
+  mctc1 = coords_set(
+#line 183 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+    0,
+#line 183 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+    0,
+#line 183 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+    1 + 0.0001);
+#line 14343 "./Test_Guides.c"
+  rot_transpose(mcrotaGuide_Position, mctr1);
+  mctc2 = rot_apply(mctr1, mctc1);
+  mcposaGuideAr_sufffix = coords_add(mcposaGuide_Position, mctc2);
+  mctc1 = coords_sub(mcposaGuideAr, mcposaGuideAr_sufffix);
+  mcposrGuideAr_sufffix = rot_apply(mcrotaGuideAr_sufffix, mctc1);
+  mcDEBUG_COMPONENT("GuideAr_sufffix", mcposaGuideAr_sufffix, mcrotaGuideAr_sufffix)
+  mccomp_posa[17] = mcposaGuideAr_sufffix;
+  mccomp_posr[17] = mcposrGuideAr_sufffix;
+  mcNCounter[17]  = mcPCounter[17] = mcP2Counter[17] = 0;
+  mcAbsorbProp[17]= 0;
     /* Component Monitor2_xy. */
   /* Setting parameters for component Monitor2_xy. */
   SIG_MESSAGE("Monitor2_xy (Init:SetPar)");
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor2_xy_xwidth = 0.07;
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor2_xy_yheight = 0.07;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor2_xy_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor2_xy_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor2_xy_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor2_xy_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor2_xy_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor2_xy_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor2_xy_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor2_xy_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor2_xy_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor2_xy_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor2_xy_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor2_xy_radius = 0;
-#line 164 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if("x y") strncpy(mccMonitor2_xy_options, "x y" ? "x y" : "", 16384); else mccMonitor2_xy_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if("NULL") strncpy(mccMonitor2_xy_filename, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if("NULL") strncpy(mccMonitor2_xy_geometry, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if("NULL") strncpy(mccMonitor2_xy_username1, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if("NULL") strncpy(mccMonitor2_xy_username2, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if("NULL") strncpy(mccMonitor2_xy_username3, "NULL" ? "NULL" : "", 16384); else mccMonitor2_xy_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   mccMonitor2_xy_nowritefile = 0;
-#line 13104 "./Test_Guides.c"
+#line 14399 "./Test_Guides.c"
 
   SIG_MESSAGE("Monitor2_xy (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 13111 "./Test_Guides.c"
+#line 14406 "./Test_Guides.c"
   rot_mul(mctr1, mcrotaGuide_Position, mcrotaMonitor2_xy);
-  rot_transpose(mcrotaGuideH, mctr1);
+  rot_transpose(mcrotaGuideAr_sufffix, mctr1);
   rot_mul(mcrotaMonitor2_xy, mctr1, mcrotrMonitor2_xy);
   mctc1 = coords_set(
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 191 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 191 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     0,
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 191 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
     2);
-#line 13122 "./Test_Guides.c"
+#line 14417 "./Test_Guides.c"
   rot_transpose(mcrotaGuide_Position, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMonitor2_xy = coords_add(mcposaGuide_Position, mctc2);
-  mctc1 = coords_sub(mcposaGuideH, mcposaMonitor2_xy);
+  mctc1 = coords_sub(mcposaGuideAr_sufffix, mcposaMonitor2_xy);
   mcposrMonitor2_xy = rot_apply(mcrotaMonitor2_xy, mctc1);
   mcDEBUG_COMPONENT("Monitor2_xy", mcposaMonitor2_xy, mcrotaMonitor2_xy)
-  mccomp_posa[15] = mcposaMonitor2_xy;
-  mccomp_posr[15] = mcposrMonitor2_xy;
-  mcNCounter[15]  = mcPCounter[15] = mcP2Counter[15] = 0;
-  mcAbsorbProp[15]= 0;
+  mccomp_posa[18] = mcposaMonitor2_xy;
+  mccomp_posr[18] = mcposrMonitor2_xy;
+  mcNCounter[18]  = mcPCounter[18] = mcP2Counter[18] = 0;
+  mcAbsorbProp[18]= 0;
   /* Component initializations. */
   /* Initializations for component Origin. */
   SIG_MESSAGE("Origin (Init)");
@@ -13156,7 +14451,7 @@ fprintf(stdout, "[%s] Initialize\n", mcinstrument_name);
     percent=1e5*100.0/mcget_ncount();
   }
 }
-#line 13159 "./Test_Guides.c"
+#line 14454 "./Test_Guides.c"
 #undef minutes
 #undef flag_save
 #undef percent
@@ -13493,7 +14788,7 @@ fprintf(stdout, "[%s] Initialize\n", mcinstrument_name);
       printf("Source_gen: component %s unactivated", NAME_CURRENT_COMP);
   );
 }
-#line 13496 "./Test_Guides.c"
+#line 14791 "./Test_Guides.c"
 #undef target_index
 #undef zdepth
 #undef I3
@@ -13658,7 +14953,7 @@ MPI_MASTER(
 );
 #endif
 }
-#line 13661 "./Test_Guides.c"
+#line 14956 "./Test_Guides.c"
 #undef nowritefile
 #undef username3
 #undef username2
@@ -13730,7 +15025,7 @@ if (mcgravitation) fprintf(stderr,"WARNING: Guide: %s: "
       exit(-1); }
   }
 }
-#line 13733 "./Test_Guides.c"
+#line 15028 "./Test_Guides.c"
 #undef W
 #undef m
 #undef alpha
@@ -13821,7 +15116,7 @@ if (!w2) w2=w1;
         NAME_CURRENT_COMP, nu, phase);
     }
 }
-#line 13824 "./Test_Guides.c"
+#line 15119 "./Test_Guides.c"
 #undef phase
 #undef nu
 #undef my
@@ -13947,7 +15242,7 @@ if (!w2) w2=w1;
   } else printf("Guide_gravity: %s: unactivated (l=0 or nelements=0)\n", NAME_CURRENT_COMP);
 
 }
-#line 13950 "./Test_Guides.c"
+#line 15245 "./Test_Guides.c"
 #undef reflect
 #undef phase
 #undef nu
@@ -14048,7 +15343,7 @@ if (m)     { m1=m2=m3=m4=m; }
     "Use Guide_gravity.\n",
     NAME_CURRENT_COMP);
 }
-#line 14051 "./Test_Guides.c"
+#line 15346 "./Test_Guides.c"
 #undef wavy_xy
 #undef wavy_z
 #undef W4
@@ -14108,7 +15403,7 @@ if (mcgravitation) fprintf(stderr,"WARNING: Guide_curved: %s: "
     "Use Guide_gravity.\n",
     NAME_CURRENT_COMP);
 }
-#line 14111 "./Test_Guides.c"
+#line 15406 "./Test_Guides.c"
 #undef curvature
 #undef W
 #undef m
@@ -14765,7 +16060,7 @@ if (mcgravitation) fprintf(stderr,"WARNING: Guide_curved: %s: "
 	}
 	Circ=2*PI*curvature;
 }
-#line 14768 "./Test_Guides.c"
+#line 16063 "./Test_Guides.c"
 #undef curvature
 #undef enableGravity
 #undef verbose
@@ -14848,7 +16143,7 @@ if (xwidth > 0)  {
     { fprintf(stderr,"Slit: %s: Warning: Running with CLOSED slit - is this intentional?? \n", NAME_CURRENT_COMP); }
 
 }
-#line 14851 "./Test_Guides.c"
+#line 16146 "./Test_Guides.c"
 #undef yheight
 #undef xwidth
 #undef radius
@@ -14892,7 +16187,7 @@ if (xwidth > 0)  {
       Table_Rebin(&pTable);         /* rebin as evenly, increasing array */
   }
 }
-#line 14895 "./Test_Guides.c"
+#line 16190 "./Test_Guides.c"
 #undef W
 #undef m
 #undef alpha
@@ -14943,7 +16238,7 @@ if (xwidth > 0)  {
     { fprintf(stderr,"Slit: %s: Warning: Running with CLOSED slit - is this intentional?? \n", NAME_CURRENT_COMP); }
 
 }
-#line 14946 "./Test_Guides.c"
+#line 16241 "./Test_Guides.c"
 #undef yheight
 #undef xwidth
 #undef radius
@@ -15003,7 +16298,7 @@ if (xwidth > 0)  {
   if (!G) for (i=0; i<7; GVars.A[i++] = 0);
 
 }
-#line 15006 "./Test_Guides.c"
+#line 16301 "./Test_Guides.c"
 #undef G
 #undef mright
 #undef mleft
@@ -15026,11 +16321,148 @@ if (xwidth > 0)  {
 #undef mccompcurtype
 #undef mccompcurindex
 
+  /* Initializations for component GuideAr_prefix. */
+  SIG_MESSAGE("GuideAr_prefix (Init)");
+#define mccompcurname  GuideAr_prefix
+#define mccompcurtype  Slit
+#define mccompcurindex 15
+#define xmin mccGuideAr_prefix_xmin
+#define xmax mccGuideAr_prefix_xmax
+#define ymin mccGuideAr_prefix_ymin
+#define ymax mccGuideAr_prefix_ymax
+#define radius mccGuideAr_prefix_radius
+#define xwidth mccGuideAr_prefix_xwidth
+#define yheight mccGuideAr_prefix_yheight
+#line 50 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Slit.comp"
+{
+if (xwidth > 0)  { 
+  if (!xmin && !xmax) {
+    xmax=xwidth/2;  xmin=-xmax;
+  } else {
+    fprintf(stderr,"Slit: %s: Error: please specify EITHER xmin & xmax or xwidth\n", NAME_CURRENT_COMP); exit(-1);
+  }
+ }
+ if (yheight > 0) { 
+   if (!ymin && !ymax) {
+     ymax=yheight/2; ymin=-ymax; 
+   } else {
+     fprintf(stderr,"Slit: %s: Error: please specify EITHER ymin & ymax or ywidth\n", NAME_CURRENT_COMP); exit(-1);
+   }
+ }
+ if (xmin == 0 && xmax == 0 && ymin == 0 && ymax == 0 && radius == 0)
+    { fprintf(stderr,"Slit: %s: Warning: Running with CLOSED slit - is this intentional?? \n", NAME_CURRENT_COMP); }
+
+}
+#line 16356 "./Test_Guides.c"
+#undef yheight
+#undef xwidth
+#undef radius
+#undef ymax
+#undef ymin
+#undef xmax
+#undef xmin
+#undef mccompcurname
+#undef mccompcurtype
+#undef mccompcurindex
+
+  /* Initializations for component GuideAr. */
+  SIG_MESSAGE("GuideAr (Init)");
+#define mccompcurname  GuideAr
+#define mccompcurtype  Guide_anyshape_r
+#define mccompcurindex 16
+#define geometry mccGuideAr_geometry
+#define offdata mccGuideAr_offdata
+#define use_file_coatings mccGuideAr_use_file_coatings
+#define xwidth mccGuideAr_xwidth
+#define yheight mccGuideAr_yheight
+#define zdepth mccGuideAr_zdepth
+#define center mccGuideAr_center
+#define transmit mccGuideAr_transmit
+#define R0 mccGuideAr_R0
+#define Qc mccGuideAr_Qc
+#define alpha mccGuideAr_alpha
+#define m mccGuideAr_m
+#define W mccGuideAr_W
+#line 98 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Guide_anyshape_r.comp"
+{
+/* initialize OFF object from the file(s) */
+  if (!r_off_init( geometry, xwidth, yheight, zdepth, !center, &offdata )) exit(-1);
+
+  if (m==0 && alpha==0 && W==0) {
+    use_file_coatings = 1;
+    printf("Guide_anyshape_r: %s: All of m, alpha, W assigned 0: \n - We are using H. Jacobsen reflectivity model if m-values are given in %s\n", NAME_CURRENT_COMP, geometry);
+  } else {
+    printf("Guide_anyshape_r: %s:At least one of alpha, W assigned 0: \n m-values are given in %s will be ignored!\n", NAME_CURRENT_COMP, geometry);
+    use_file_coatings = 0;
+  }
+}
+#line 16399 "./Test_Guides.c"
+#undef W
+#undef m
+#undef alpha
+#undef Qc
+#undef R0
+#undef transmit
+#undef center
+#undef zdepth
+#undef yheight
+#undef xwidth
+#undef use_file_coatings
+#undef offdata
+#undef geometry
+#undef mccompcurname
+#undef mccompcurtype
+#undef mccompcurindex
+
+  /* Initializations for component GuideAr_sufffix. */
+  SIG_MESSAGE("GuideAr_sufffix (Init)");
+#define mccompcurname  GuideAr_sufffix
+#define mccompcurtype  Slit
+#define mccompcurindex 17
+#define xmin mccGuideAr_sufffix_xmin
+#define xmax mccGuideAr_sufffix_xmax
+#define ymin mccGuideAr_sufffix_ymin
+#define ymax mccGuideAr_sufffix_ymax
+#define radius mccGuideAr_sufffix_radius
+#define xwidth mccGuideAr_sufffix_xwidth
+#define yheight mccGuideAr_sufffix_yheight
+#line 50 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Slit.comp"
+{
+if (xwidth > 0)  { 
+  if (!xmin && !xmax) {
+    xmax=xwidth/2;  xmin=-xmax;
+  } else {
+    fprintf(stderr,"Slit: %s: Error: please specify EITHER xmin & xmax or xwidth\n", NAME_CURRENT_COMP); exit(-1);
+  }
+ }
+ if (yheight > 0) { 
+   if (!ymin && !ymax) {
+     ymax=yheight/2; ymin=-ymax; 
+   } else {
+     fprintf(stderr,"Slit: %s: Error: please specify EITHER ymin & ymax or ywidth\n", NAME_CURRENT_COMP); exit(-1);
+   }
+ }
+ if (xmin == 0 && xmax == 0 && ymin == 0 && ymax == 0 && radius == 0)
+    { fprintf(stderr,"Slit: %s: Warning: Running with CLOSED slit - is this intentional?? \n", NAME_CURRENT_COMP); }
+
+}
+#line 16449 "./Test_Guides.c"
+#undef yheight
+#undef xwidth
+#undef radius
+#undef ymax
+#undef ymin
+#undef xmax
+#undef xmin
+#undef mccompcurname
+#undef mccompcurtype
+#undef mccompcurindex
+
   /* Initializations for component Monitor2_xy. */
   SIG_MESSAGE("Monitor2_xy (Init)");
 #define mccompcurname  Monitor2_xy
 #define mccompcurtype  Monitor_nD
-#define mccompcurindex 15
+#define mccompcurindex 18
 #define user1 mccMonitor2_xy_user1
 #define user2 mccMonitor2_xy_user2
 #define user3 mccMonitor2_xy_user3
@@ -15139,7 +16571,7 @@ MPI_MASTER(
 );
 #endif
 }
-#line 15142 "./Test_Guides.c"
+#line 16574 "./Test_Guides.c"
 #undef nowritefile
 #undef username3
 #undef username2
@@ -15325,7 +16757,7 @@ MCNUM minutes = mccOrigin_minutes;
     if (flag_save) mcsave(NULL);
   }
 }
-#line 15328 "./Test_Guides.c"
+#line 16760 "./Test_Guides.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -15573,13 +17005,13 @@ int target_index = mccSource_target_index;
     SCATTER;
   }
 }
-#line 15576 "./Test_Guides.c"
+#line 17008 "./Test_Guides.c"
 /* 'Source=Source_gen()' component instance extend code */
     SIG_MESSAGE("Source (Trace:Extend)");
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
 	t = randtriangle()*1e-3;	/* 1 ms triangle time window */
 	Flag_anyshape_scatter=0;
-#line 15582 "./Test_Guides.c"
+#line 17014 "./Test_Guides.c"
 }   /* End of Source=Source_gen() SETTING parameter declarations. */
 #undef pTable_dymax
 #undef pTable_dymin
@@ -15899,7 +17331,7 @@ int nowritefile = mccMonitor1_xt_nowritefile;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 15902 "./Test_Guides.c"
+#line 17334 "./Test_Guides.c"
 }   /* End of Monitor1_xt=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -16237,14 +17669,14 @@ if (( mcipGuide == 1 ))
     SCATTER;
   }
 }
-#line 16239 "./Test_Guides.c"
+#line 17671 "./Test_Guides.c"
 /* 'Guide1=Guide()' component instance extend code */
     SIG_MESSAGE("Guide1 (Trace:Extend)");
 if (( mcipGuide == 1 )) {
 
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if (!SCATTERED) ABSORB;
-#line 16245 "./Test_Guides.c"
+#line 17677 "./Test_Guides.c"
 }
 
 }   /* End of Guide1=Guide() SETTING parameter declarations. */
@@ -16549,14 +17981,14 @@ if (( mcipGuide == 2 ))
       coords_get(RX, &vx, &vy, &vz);
     }
 }
-#line 16548 "./Test_Guides.c"
+#line 17980 "./Test_Guides.c"
 /* 'GuideC=Guide_channeled()' component instance extend code */
     SIG_MESSAGE("GuideC (Trace:Extend)");
 if (( mcipGuide == 2 )) {
 
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if (!SCATTERED) ABSORB;
-#line 16554 "./Test_Guides.c"
+#line 17986 "./Test_Guides.c"
 }
 
 }   /* End of GuideC=Guide_channeled() SETTING parameter declarations. */
@@ -16880,14 +18312,14 @@ if (( mcipGuide == 3 ))
 
   } /* if l */
 }
-#line 16876 "./Test_Guides.c"
+#line 18308 "./Test_Guides.c"
 /* 'GuideG=Guide_gravity()' component instance extend code */
     SIG_MESSAGE("GuideG (Trace:Extend)");
 if (( mcipGuide == 3 )) {
 
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if (!SCATTERED) ABSORB;
-#line 16882 "./Test_Guides.c"
+#line 18314 "./Test_Guides.c"
 }
 
 }   /* End of GuideG=Guide_gravity() SETTING parameter declarations. */
@@ -17200,14 +18632,14 @@ and the rotated bottom normal vector is { -l d_xy,  l + f_v d_z,  f_v + l d_z }
     SCATTER;
   }
 }
-#line 17193 "./Test_Guides.c"
+#line 18625 "./Test_Guides.c"
 /* 'GuideW=Guide_wavy()' component instance extend code */
     SIG_MESSAGE("GuideW (Trace:Extend)");
 if (( mcipGuide == 4 )) {
 
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 116 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if (!SCATTERED) ABSORB;
-#line 17199 "./Test_Guides.c"
+#line 18631 "./Test_Guides.c"
 }
 
 }   /* End of GuideW=Guide_wavy() SETTING parameter declarations. */
@@ -17401,14 +18833,14 @@ if (( mcipGuide == 5 ))
     SCATTER;
   }
 }
-#line 17391 "./Test_Guides.c"
+#line 18823 "./Test_Guides.c"
 /* 'GuideR=Guide_curved()' component instance extend code */
     SIG_MESSAGE("GuideR (Trace:Extend)");
 if (( mcipGuide == 5 )) {
 
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if (!SCATTERED) ABSORB;
-#line 17397 "./Test_Guides.c"
+#line 18829 "./Test_Guides.c"
 }
 
 }   /* End of GuideR=Guide_curved() SETTING parameter declarations. */
@@ -17635,14 +19067,14 @@ if (( mcipGuide == 6 ))
 		ABSORB;
 	
 }
-#line 17622 "./Test_Guides.c"
+#line 19054 "./Test_Guides.c"
 /* 'GuideEl=Elliptic_guide_gravity()' component instance extend code */
     SIG_MESSAGE("GuideEl (Trace:Extend)");
 if (( mcipGuide == 6 )) {
 
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if (!SCATTERED) ABSORB;
-#line 17628 "./Test_Guides.c"
+#line 19060 "./Test_Guides.c"
 }
 
 }   /* End of GuideEl=Elliptic_guide_gravity() SETTING parameter declarations. */
@@ -17786,14 +19218,14 @@ if (( mcipGuide == 7 ))
     else
         SCATTER;
 }
-#line 17770 "./Test_Guides.c"
+#line 19202 "./Test_Guides.c"
 /* 'GuideA_prefix=Slit()' component instance extend code */
     SIG_MESSAGE("GuideA_prefix (Trace:Extend)");
 if (( mcipGuide == 7 )) {
 
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if (SCATTERED) Flag_anyshape_scatter++;
-#line 17776 "./Test_Guides.c"
+#line 19208 "./Test_Guides.c"
 }
 
 }   /* End of GuideA_prefix=Slit() SETTING parameter declarations. */
@@ -17989,14 +19421,14 @@ if (( mcipGuide == 7 ))
   /* end of main loop */
 
 }
-#line 17970 "./Test_Guides.c"
+#line 19402 "./Test_Guides.c"
 /* 'GuideA=Guide_anyshape()' component instance extend code */
     SIG_MESSAGE("GuideA (Trace:Extend)");
 if (( mcipGuide == 7 )) {
 
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if (SCATTERED) Flag_anyshape_scatter++;
-#line 17976 "./Test_Guides.c"
+#line 19408 "./Test_Guides.c"
 }
 
 }   /* End of GuideA=Guide_anyshape() SETTING parameter declarations. */
@@ -18129,15 +19561,15 @@ if (( mcipGuide == 7 ))
     else
         SCATTER;
 }
-#line 18107 "./Test_Guides.c"
+#line 19539 "./Test_Guides.c"
 /* 'GuideA_sufffix=Slit()' component instance extend code */
     SIG_MESSAGE("GuideA_sufffix (Trace:Extend)");
 if (( mcipGuide == 7 )) {
 
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if (SCATTERED) Flag_anyshape_scatter++;
   if (mcipGuide== 7 && !Flag_anyshape_scatter) ABSORB;
-#line 18114 "./Test_Guides.c"
+#line 19546 "./Test_Guides.c"
 }
 
 }   /* End of GuideA_sufffix=Slit() SETTING parameter declarations. */
@@ -18401,14 +19833,14 @@ if (( mcipGuide == 8 ))
   else
     ABSORB;
 }
-#line 18376 "./Test_Guides.c"
+#line 19808 "./Test_Guides.c"
 /* 'GuideH=Guide_honeycomb()' component instance extend code */
     SIG_MESSAGE("GuideH (Trace:Extend)");
 if (( mcipGuide == 8 )) {
 
-#line 159 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+#line 163 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
   if (!SCATTERED) ABSORB;
-#line 18382 "./Test_Guides.c"
+#line 19814 "./Test_Guides.c"
 }
 
 }   /* End of GuideH=Guide_honeycomb() SETTING parameter declarations. */
@@ -18456,7 +19888,486 @@ mcnlsy,
 mcnlsz,
 mcnlp)
 
-  /* TRACE Component Monitor2_xy [15] */
+  /* TRACE Component GuideAr_prefix [15] */
+  mccoordschange(mcposrGuideAr_prefix, mcrotrGuideAr_prefix,
+    &mcnlx,
+    &mcnly,
+    &mcnlz,
+    &mcnlvx,
+    &mcnlvy,
+    &mcnlvz,
+    &mcnlsx,
+    &mcnlsy,
+    &mcnlsz);
+  /* define label inside component GuideAr_prefix (without coords transformations) */
+  mcJumpTrace_GuideAr_prefix:
+  SIG_MESSAGE("GuideAr_prefix (Trace)");
+  mcDEBUG_COMP("GuideAr_prefix")
+  mcDEBUG_STATE(
+    mcnlx,
+    mcnly,
+    mcnlz,
+    mcnlvx,
+    mcnlvy,
+    mcnlvz,
+    mcnlt,
+    mcnlsx,
+    mcnlsy,
+    mcnlsz,
+    mcnlp)
+#define x mcnlx
+#define y mcnly
+#define z mcnlz
+#define vx mcnlvx
+#define vy mcnlvy
+#define vz mcnlvz
+#define t mcnlt
+#define sx mcnlsx
+#define sy mcnlsy
+#define sz mcnlsz
+#define p mcnlp
+
+#define mcabsorbComp mcabsorbCompGuideAr_prefix
+  STORE_NEUTRON(15,
+    mcnlx,
+    mcnly,
+    mcnlz,
+    mcnlvx,
+    mcnlvy,
+    mcnlvz,
+    mcnlt,
+    mcnlsx,
+    mcnlsy,
+    mcnlsz,
+    mcnlp);
+  mcScattered=0;
+  mcRestore=0;
+  mcNCounter[15]++;
+  mcPCounter[15] += p;
+  mcP2Counter[15] += p*p;
+#define mccompcurname  GuideAr_prefix
+#define mccompcurtype  Slit
+#define mccompcurindex 15
+{   /* Declarations of GuideAr_prefix=Slit() SETTING parameters. */
+MCNUM xmin = mccGuideAr_prefix_xmin;
+MCNUM xmax = mccGuideAr_prefix_xmax;
+MCNUM ymin = mccGuideAr_prefix_ymin;
+MCNUM ymax = mccGuideAr_prefix_ymax;
+MCNUM radius = mccGuideAr_prefix_radius;
+MCNUM xwidth = mccGuideAr_prefix_xwidth;
+MCNUM yheight = mccGuideAr_prefix_yheight;
+/* 'GuideAr_prefix=Slit()' component instance has conditional execution */
+if (( mcipGuide == 9 ))
+
+#line 71 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Slit.comp"
+{
+    PROP_Z0;
+    if (((radius == 0) && (x<xmin || x>xmax || y<ymin || y>ymax))
+	|| ((radius != 0) && (x*x + y*y > radius*radius))) {
+      RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
+      ABSORB;
+    }
+    else
+        SCATTER;
+}
+#line 19942 "./Test_Guides.c"
+/* 'GuideAr_prefix=Slit()' component instance extend code */
+    SIG_MESSAGE("GuideAr_prefix (Trace:Extend)");
+if (( mcipGuide == 9 )) {
+
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  if (SCATTERED) Flag_anyshape_r_scatter++;
+#line 19948 "./Test_Guides.c"
+}
+
+}   /* End of GuideAr_prefix=Slit() SETTING parameter declarations. */
+#undef mccompcurname
+#undef mccompcurtype
+#undef mccompcurindex
+  /* Label for restoring  neutron */
+  mcabsorbCompGuideAr_prefix:
+  if (RESTORE) /* restore if needed */
+  { RESTORE_NEUTRON(15,
+      mcnlx,
+      mcnly,
+      mcnlz,
+      mcnlvx,
+      mcnlvy,
+      mcnlvz,
+      mcnlt,
+      mcnlsx,
+      mcnlsy,
+      mcnlsz,
+      mcnlp); }
+#undef mcabsorbComp
+#undef p
+#undef sz
+#undef sy
+#undef sx
+#undef t
+#undef vz
+#undef vy
+#undef vx
+#undef z
+#undef y
+#undef x
+  mcDEBUG_STATE(
+mcnlx,
+mcnly,
+mcnlz,
+mcnlvx,
+mcnlvy,
+mcnlvz,
+mcnlt,
+mcnlsx,
+mcnlsy,
+mcnlsz,
+mcnlp)
+
+  /* TRACE Component GuideAr [16] */
+  mccoordschange(mcposrGuideAr, mcrotrGuideAr,
+    &mcnlx,
+    &mcnly,
+    &mcnlz,
+    &mcnlvx,
+    &mcnlvy,
+    &mcnlvz,
+    &mcnlsx,
+    &mcnlsy,
+    &mcnlsz);
+  /* define label inside component GuideAr (without coords transformations) */
+  mcJumpTrace_GuideAr:
+  SIG_MESSAGE("GuideAr (Trace)");
+  mcDEBUG_COMP("GuideAr")
+  mcDEBUG_STATE(
+    mcnlx,
+    mcnly,
+    mcnlz,
+    mcnlvx,
+    mcnlvy,
+    mcnlvz,
+    mcnlt,
+    mcnlsx,
+    mcnlsy,
+    mcnlsz,
+    mcnlp)
+#define x mcnlx
+#define y mcnly
+#define z mcnlz
+#define vx mcnlvx
+#define vy mcnlvy
+#define vz mcnlvz
+#define t mcnlt
+#define sx mcnlsx
+#define sy mcnlsy
+#define sz mcnlsz
+#define p mcnlp
+
+#define mcabsorbComp mcabsorbCompGuideAr
+  STORE_NEUTRON(16,
+    mcnlx,
+    mcnly,
+    mcnlz,
+    mcnlvx,
+    mcnlvy,
+    mcnlvz,
+    mcnlt,
+    mcnlsx,
+    mcnlsy,
+    mcnlsz,
+    mcnlp);
+  mcScattered=0;
+  mcRestore=0;
+  mcNCounter[16]++;
+  mcPCounter[16] += p;
+  mcP2Counter[16] += p*p;
+#define mccompcurname  GuideAr
+#define mccompcurtype  Guide_anyshape_r
+#define mccompcurindex 16
+#define geometry mccGuideAr_geometry
+#define offdata mccGuideAr_offdata
+#define use_file_coatings mccGuideAr_use_file_coatings
+{   /* Declarations of GuideAr=Guide_anyshape_r() SETTING parameters. */
+MCNUM xwidth = mccGuideAr_xwidth;
+MCNUM yheight = mccGuideAr_yheight;
+MCNUM zdepth = mccGuideAr_zdepth;
+MCNUM center = mccGuideAr_center;
+MCNUM transmit = mccGuideAr_transmit;
+MCNUM R0 = mccGuideAr_R0;
+MCNUM Qc = mccGuideAr_Qc;
+MCNUM alpha = mccGuideAr_alpha;
+MCNUM m = mccGuideAr_m;
+MCNUM W = mccGuideAr_W;
+/* 'GuideAr=Guide_anyshape_r()' component instance has conditional execution */
+if (( mcipGuide == 9 ))
+
+#line 112 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Guide_anyshape_r.comp"
+{
+  int intersect=0;
+  int counter=0;
+  /* main loop for multiple reflections */
+  do {
+    double t0=0, t3=0, dt=0;
+    unsigned long faceindex0=0, faceindex3=0, fi=0;
+    Coords n0, n3, n={0,0,0};
+    /* determine intersections with object; PL: get index of the intersected face */
+    intersect = r_off_intersect(&t0, &t3, &n0, &n3, &faceindex0, &faceindex3,
+       x,y,z, vx, vy, vz, offdata );
+
+    /* get the smallest positive */
+    if (t0 > 0) { dt = t0; n=n0; fi=faceindex0;}
+    if (intersect > 1 && dt <= 0 && t3 > dt) { dt = t3; n=n3; fi=faceindex3;}
+
+    /* exit loop when no intersection forward */
+    if (dt <= 0 || !intersect) break;
+
+    double nx,ny,nz;
+    coords_get(n, &nx, &ny, &nz);
+
+    /* test if the angle is large in case the object has an internal coating */
+    double n2      = nx*nx+ny*ny+nz*nz;
+    double n_dot_v = scalar_prod(vx,vy,vz,nx,ny,nz);
+    double q       = 2*fabs(n_dot_v)*V2K/sqrt(n2);
+
+    /* propagate neutron to reflection point */
+    PROP_DT(dt);
+
+    /* handle surface intersection */
+    double R=0;
+    double m_value = m;
+    if (use_file_coatings == 1) {
+      m_value = offdata.facepropsArray[fi];
+    }
+    double par[] = {R0, Qc, alpha, m_value, W};
+    StdReflecFunc(q, par, &R);
+    
+
+    if (R > 1) {
+      fprintf(stderr,"Guide_anyshape_r: %s: Warning: Reflectivity R=%g > 1 lowered to R=1.\n", NAME_CURRENT_COMP, R);
+      R=1;
+    }
+    /* now handle either probability when transmit or reflect */
+    if (R > 0) {
+      /* when allowing transmission, we should check if indeed we reflect */
+      if (!transmit || (transmit && rand01() < R)) {
+        /* reflect velocity: -q -> -2*n*n.v/|n|^2 */
+        if (!transmit) p *= R;
+        n_dot_v *= 2/n2;
+        vx -= nx*n_dot_v;
+        vy -= ny*n_dot_v;
+        vz -= nz*n_dot_v;
+        SCATTER;
+      } else {
+        if (transmit) {
+          p *= (1-R); /* transmitted beam has non reflected weight */
+        } else ABSORB;
+      }
+    } else {
+      /* R=0: no reflection: absorb or transmit through when allowed */
+      if (!transmit) ABSORB;
+    }
+
+    /* leave surface by a small amount so that next intersection is not the same one */
+    PROP_DT(1e-9);
+  } while (intersect && counter++<CHAR_BUF_LENGTH);
+  /* end of main loop */
+
+}
+#line 20142 "./Test_Guides.c"
+/* 'GuideAr=Guide_anyshape_r()' component instance extend code */
+    SIG_MESSAGE("GuideAr (Trace:Extend)");
+if (( mcipGuide == 9 )) {
+
+#line 178 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  if (SCATTERED) Flag_anyshape_r_scatter++;
+#line 20148 "./Test_Guides.c"
+}
+
+}   /* End of GuideAr=Guide_anyshape_r() SETTING parameter declarations. */
+#undef use_file_coatings
+#undef offdata
+#undef geometry
+#undef mccompcurname
+#undef mccompcurtype
+#undef mccompcurindex
+  /* Label for restoring  neutron */
+  mcabsorbCompGuideAr:
+  if (RESTORE) /* restore if needed */
+  { RESTORE_NEUTRON(16,
+      mcnlx,
+      mcnly,
+      mcnlz,
+      mcnlvx,
+      mcnlvy,
+      mcnlvz,
+      mcnlt,
+      mcnlsx,
+      mcnlsy,
+      mcnlsz,
+      mcnlp); }
+#undef mcabsorbComp
+#undef p
+#undef sz
+#undef sy
+#undef sx
+#undef t
+#undef vz
+#undef vy
+#undef vx
+#undef z
+#undef y
+#undef x
+  mcDEBUG_STATE(
+mcnlx,
+mcnly,
+mcnlz,
+mcnlvx,
+mcnlvy,
+mcnlvz,
+mcnlt,
+mcnlsx,
+mcnlsy,
+mcnlsz,
+mcnlp)
+
+  /* TRACE Component GuideAr_sufffix [17] */
+  mccoordschange(mcposrGuideAr_sufffix, mcrotrGuideAr_sufffix,
+    &mcnlx,
+    &mcnly,
+    &mcnlz,
+    &mcnlvx,
+    &mcnlvy,
+    &mcnlvz,
+    &mcnlsx,
+    &mcnlsy,
+    &mcnlsz);
+  /* define label inside component GuideAr_sufffix (without coords transformations) */
+  mcJumpTrace_GuideAr_sufffix:
+  SIG_MESSAGE("GuideAr_sufffix (Trace)");
+  mcDEBUG_COMP("GuideAr_sufffix")
+  mcDEBUG_STATE(
+    mcnlx,
+    mcnly,
+    mcnlz,
+    mcnlvx,
+    mcnlvy,
+    mcnlvz,
+    mcnlt,
+    mcnlsx,
+    mcnlsy,
+    mcnlsz,
+    mcnlp)
+#define x mcnlx
+#define y mcnly
+#define z mcnlz
+#define vx mcnlvx
+#define vy mcnlvy
+#define vz mcnlvz
+#define t mcnlt
+#define sx mcnlsx
+#define sy mcnlsy
+#define sz mcnlsz
+#define p mcnlp
+
+#define mcabsorbComp mcabsorbCompGuideAr_sufffix
+  STORE_NEUTRON(17,
+    mcnlx,
+    mcnly,
+    mcnlz,
+    mcnlvx,
+    mcnlvy,
+    mcnlvz,
+    mcnlt,
+    mcnlsx,
+    mcnlsy,
+    mcnlsz,
+    mcnlp);
+  mcScattered=0;
+  mcRestore=0;
+  mcNCounter[17]++;
+  mcPCounter[17] += p;
+  mcP2Counter[17] += p*p;
+#define mccompcurname  GuideAr_sufffix
+#define mccompcurtype  Slit
+#define mccompcurindex 17
+{   /* Declarations of GuideAr_sufffix=Slit() SETTING parameters. */
+MCNUM xmin = mccGuideAr_sufffix_xmin;
+MCNUM xmax = mccGuideAr_sufffix_xmax;
+MCNUM ymin = mccGuideAr_sufffix_ymin;
+MCNUM ymax = mccGuideAr_sufffix_ymax;
+MCNUM radius = mccGuideAr_sufffix_radius;
+MCNUM xwidth = mccGuideAr_sufffix_xwidth;
+MCNUM yheight = mccGuideAr_sufffix_yheight;
+/* 'GuideAr_sufffix=Slit()' component instance has conditional execution */
+if (( mcipGuide == 9 ))
+
+#line 71 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Slit.comp"
+{
+    PROP_Z0;
+    if (((radius == 0) && (x<xmin || x>xmax || y<ymin || y>ymax))
+	|| ((radius != 0) && (x*x + y*y > radius*radius))) {
+      RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
+      ABSORB;
+    }
+    else
+        SCATTER;
+}
+#line 20278 "./Test_Guides.c"
+/* 'GuideAr_sufffix=Slit()' component instance extend code */
+    SIG_MESSAGE("GuideAr_sufffix (Trace:Extend)");
+if (( mcipGuide == 9 )) {
+
+#line 185 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr"
+  if (SCATTERED) Flag_anyshape_r_scatter++;
+  if (mcipGuide== 9 && !Flag_anyshape_r_scatter) ABSORB;
+#line 20285 "./Test_Guides.c"
+}
+
+}   /* End of GuideAr_sufffix=Slit() SETTING parameter declarations. */
+#undef mccompcurname
+#undef mccompcurtype
+#undef mccompcurindex
+  /* Label for restoring  neutron */
+  mcabsorbCompGuideAr_sufffix:
+  if (RESTORE) /* restore if needed */
+  { RESTORE_NEUTRON(17,
+      mcnlx,
+      mcnly,
+      mcnlz,
+      mcnlvx,
+      mcnlvy,
+      mcnlvz,
+      mcnlt,
+      mcnlsx,
+      mcnlsy,
+      mcnlsz,
+      mcnlp); }
+#undef mcabsorbComp
+#undef p
+#undef sz
+#undef sy
+#undef sx
+#undef t
+#undef vz
+#undef vy
+#undef vx
+#undef z
+#undef y
+#undef x
+  mcDEBUG_STATE(
+mcnlx,
+mcnly,
+mcnlz,
+mcnlvx,
+mcnlvy,
+mcnlvz,
+mcnlt,
+mcnlsx,
+mcnlsy,
+mcnlsz,
+mcnlp)
+
+  /* TRACE Component Monitor2_xy [18] */
   mccoordschange(mcposrMonitor2_xy, mcrotrMonitor2_xy,
     &mcnlx,
     &mcnly,
@@ -18496,7 +20407,7 @@ mcnlp)
 #define p mcnlp
 
 #define mcabsorbComp mcabsorbCompMonitor2_xy
-  STORE_NEUTRON(15,
+  STORE_NEUTRON(18,
     mcnlx,
     mcnly,
     mcnlz,
@@ -18510,12 +20421,12 @@ mcnlp)
     mcnlp);
   mcScattered=0;
   mcRestore=0;
-  mcNCounter[15]++;
-  mcPCounter[15] += p;
-  mcP2Counter[15] += p*p;
+  mcNCounter[18]++;
+  mcPCounter[18] += p;
+  mcP2Counter[18] += p*p;
 #define mccompcurname  Monitor2_xy
 #define mccompcurtype  Monitor_nD
-#define mccompcurindex 15
+#define mccompcurindex 18
 #define user1 mccMonitor2_xy_user1
 #define user2 mccMonitor2_xy_user2
 #define user3 mccMonitor2_xy_user3
@@ -18714,7 +20625,7 @@ int nowritefile = mccMonitor2_xy_nowritefile;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 18687 "./Test_Guides.c"
+#line 20589 "./Test_Guides.c"
 }   /* End of Monitor2_xy=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -18729,7 +20640,7 @@ int nowritefile = mccMonitor2_xy_nowritefile;
   /* Label for restoring  neutron */
   mcabsorbCompMonitor2_xy:
   if (RESTORE) /* restore if needed */
-  { RESTORE_NEUTRON(15,
+  { RESTORE_NEUTRON(18,
       mcnlx,
       mcnly,
       mcnlz,
@@ -18830,7 +20741,7 @@ MCNUM minutes = mccOrigin_minutes;
 
   }
 }
-#line 18803 "./Test_Guides.c"
+#line 20705 "./Test_Guides.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -18881,7 +20792,7 @@ int nowritefile = mccMonitor1_xt_nowritefile;
     detector = Monitor_nD_Save(&DEFS, &Vars);
   }
 }
-#line 18854 "./Test_Guides.c"
+#line 20756 "./Test_Guides.c"
 }   /* End of Monitor1_xt=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -18898,7 +20809,7 @@ int nowritefile = mccMonitor1_xt_nowritefile;
   SIG_MESSAGE("Monitor2_xy (Save)");
 #define mccompcurname  Monitor2_xy
 #define mccompcurtype  Monitor_nD
-#define mccompcurindex 15
+#define mccompcurindex 18
 #define user1 mccMonitor2_xy_user1
 #define user2 mccMonitor2_xy_user2
 #define user3 mccMonitor2_xy_user3
@@ -18935,7 +20846,7 @@ int nowritefile = mccMonitor2_xy_nowritefile;
     detector = Monitor_nD_Save(&DEFS, &Vars);
   }
 }
-#line 18908 "./Test_Guides.c"
+#line 20810 "./Test_Guides.c"
 }   /* End of Monitor2_xy=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -18982,7 +20893,7 @@ MCNUM minutes = mccOrigin_minutes;
     fprintf(stdout, "%g [min] ", difftime(NowTime,StartTime)/60.0);
   fprintf(stdout, "\n");
 }
-#line 18955 "./Test_Guides.c"
+#line 20857 "./Test_Guides.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -19054,7 +20965,7 @@ int target_index = mccSource_target_index;
   Table_Free(&pTable_x);
   Table_Free(&pTable_y);
 }
-#line 19026 "./Test_Guides.c"
+#line 20928 "./Test_Guides.c"
 }   /* End of Source=Source_gen() SETTING parameter declarations. */
 #undef pTable_dymax
 #undef pTable_dymin
@@ -19119,7 +21030,7 @@ int nowritefile = mccMonitor1_xt_nowritefile;
   /* free pointers */
   Monitor_nD_Finally(&DEFS, &Vars);
 }
-#line 19090 "./Test_Guides.c"
+#line 20992 "./Test_Guides.c"
 }   /* End of Monitor1_xt=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -19193,7 +21104,7 @@ if (GVars.warnings > 100) {
   fprintf(stderr,"%s: warning: This message has been repeated %g times\n", GVars.compcurname, GVars.warnings);
 }
 }
-#line 19160 "./Test_Guides.c"
+#line 21062 "./Test_Guides.c"
 }   /* End of GuideG=Guide_gravity() SETTING parameter declarations. */
 #undef pTable
 #undef GVars
@@ -19253,7 +21164,7 @@ if (GVars.warnings > 100) {
   fprintf(stderr,"%s: warning: This message has been repeated %g times\n", GVars.compcurname, GVars.warnings);
 }
 }
-#line 19213 "./Test_Guides.c"
+#line 21115 "./Test_Guides.c"
 }   /* End of GuideH=Guide_honeycomb() SETTING parameter declarations. */
 #undef GVars
 #undef mccompcurname
@@ -19263,11 +21174,20 @@ if (GVars.warnings > 100) {
     if (!mcNCounter[14]) fprintf(stderr, "Warning: No neutron could reach Component[14] GuideH\n");
     if (mcAbsorbProp[14]) fprintf(stderr, "Warning: %g events were removed in Component[14] GuideH=Guide_honeycomb()\n"
 "         (negative time, miss next components, rounding errors, Nan, Inf).\n", mcAbsorbProp[14]);
+    if (!mcNCounter[15]) fprintf(stderr, "Warning: No neutron could reach Component[15] GuideAr_prefix\n");
+    if (mcAbsorbProp[15]) fprintf(stderr, "Warning: %g events were removed in Component[15] GuideAr_prefix=Slit()\n"
+"         (negative time, miss next components, rounding errors, Nan, Inf).\n", mcAbsorbProp[15]);
+    if (!mcNCounter[16]) fprintf(stderr, "Warning: No neutron could reach Component[16] GuideAr\n");
+    if (mcAbsorbProp[16]) fprintf(stderr, "Warning: %g events were removed in Component[16] GuideAr=Guide_anyshape_r()\n"
+"         (negative time, miss next components, rounding errors, Nan, Inf).\n", mcAbsorbProp[16]);
+    if (!mcNCounter[17]) fprintf(stderr, "Warning: No neutron could reach Component[17] GuideAr_sufffix\n");
+    if (mcAbsorbProp[17]) fprintf(stderr, "Warning: %g events were removed in Component[17] GuideAr_sufffix=Slit()\n"
+"         (negative time, miss next components, rounding errors, Nan, Inf).\n", mcAbsorbProp[17]);
   /* User FINALLY code for component 'Monitor2_xy'. */
   SIG_MESSAGE("Monitor2_xy (Finally)");
 #define mccompcurname  Monitor2_xy
 #define mccompcurtype  Monitor_nD
-#define mccompcurindex 15
+#define mccompcurindex 18
 #define user1 mccMonitor2_xy_user1
 #define user2 mccMonitor2_xy_user2
 #define user3 mccMonitor2_xy_user3
@@ -19302,7 +21222,7 @@ int nowritefile = mccMonitor2_xy_nowritefile;
   /* free pointers */
   Monitor_nD_Finally(&DEFS, &Vars);
 }
-#line 19261 "./Test_Guides.c"
+#line 21169 "./Test_Guides.c"
 }   /* End of Monitor2_xy=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -19315,9 +21235,9 @@ int nowritefile = mccMonitor2_xy_nowritefile;
 #undef mccompcurtype
 #undef mccompcurindex
 
-    if (!mcNCounter[15]) fprintf(stderr, "Warning: No neutron could reach Component[15] Monitor2_xy\n");
-    if (mcAbsorbProp[15]) fprintf(stderr, "Warning: %g events were removed in Component[15] Monitor2_xy=Monitor_nD()\n"
-"         (negative time, miss next components, rounding errors, Nan, Inf).\n", mcAbsorbProp[15]);
+    if (!mcNCounter[18]) fprintf(stderr, "Warning: No neutron could reach Component[18] Monitor2_xy\n");
+    if (mcAbsorbProp[18]) fprintf(stderr, "Warning: %g events were removed in Component[18] Monitor2_xy=Monitor_nD()\n"
+"         (negative time, miss next components, rounding errors, Nan, Inf).\n", mcAbsorbProp[18]);
   mcsiminfo_close(); 
 } /* end finally */
 #define magnify mcdis_magnify
@@ -19352,7 +21272,7 @@ MCNUM minutes = mccOrigin_minutes;
 {
   
 }
-#line 19310 "./Test_Guides.c"
+#line 21218 "./Test_Guides.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -19465,7 +21385,7 @@ int target_index = mccSource_target_index;
     dashed_line(0,0,0, -focus_xw/2, focus_yh/2,dist, 4);
   }
 }
-#line 19423 "./Test_Guides.c"
+#line 21331 "./Test_Guides.c"
 }   /* End of Source=Source_gen() SETTING parameter declarations. */
 #undef pTable_dymax
 #undef pTable_dymin
@@ -19532,7 +21452,7 @@ int nowritefile = mccMonitor1_xt_nowritefile;
     Monitor_nD_McDisplay(&DEFS, &Vars);
   }
 }
-#line 19490 "./Test_Guides.c"
+#line 21398 "./Test_Guides.c"
 }   /* End of Monitor1_xt=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector
@@ -19559,7 +21479,7 @@ int nowritefile = mccMonitor1_xt_nowritefile;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 19517 "./Test_Guides.c"
+#line 21425 "./Test_Guides.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -19603,7 +21523,7 @@ MCNUM W = mccGuide1_W;
   line( w1/2.0,  h1/2.0, 0,  w2/2.0,  h2/2.0, (double)l);
   line(-w1/2.0,  h1/2.0, 0, -w2/2.0,  h2/2.0, (double)l);
 }
-#line 19561 "./Test_Guides.c"
+#line 21469 "./Test_Guides.c"
 }   /* End of Guide1=Guide() SETTING parameter declarations. */
 #undef pTable
 #undef mccompcurname
@@ -19676,7 +21596,7 @@ MCNUM phase = mccGuideC_phase;
     circle("xz", 0, h1/2,l/2,radius);
   }
 }
-#line 19634 "./Test_Guides.c"
+#line 21542 "./Test_Guides.c"
 }   /* End of GuideC=Guide_channeled() SETTING parameter declarations. */
 #undef lhhalf
 #undef lwhalf
@@ -19796,7 +21716,7 @@ char* reflect = mccGuideG_reflect;
   }
 
 }
-#line 19754 "./Test_Guides.c"
+#line 21662 "./Test_Guides.c"
 }   /* End of GuideG=Guide_gravity() SETTING parameter declarations. */
 #undef pTable
 #undef GVars
@@ -19868,7 +21788,7 @@ MCNUM wavy_xy = mccGuideW_wavy_xy;
   line( w1/2.0,  h1/2.0, 0,  w2/2.0,  h2/2.0, (double)l);
   line(-w1/2.0,  h1/2.0, 0, -w2/2.0,  h2/2.0, (double)l);
 }
-#line 19826 "./Test_Guides.c"
+#line 21734 "./Test_Guides.c"
 }   /* End of GuideW=Guide_wavy() SETTING parameter declarations. */
 #undef eta_xy
 #undef eta_z
@@ -19936,7 +21856,7 @@ MCNUM curvature = mccGuideR_curvature;
   line(xplot2[n-1],-0.5*h1,zplot2[n-1],xplot2[n-1], 0.5*h1,zplot2[n-1]);
   line(xplot1[n-1],-0.5*h1,zplot1[n-1],xplot2[n-1],-0.5*h1,zplot2[n-1]);
 }
-#line 19894 "./Test_Guides.c"
+#line 21802 "./Test_Guides.c"
 }   /* End of GuideR=Guide_curved() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -20185,7 +22105,7 @@ MCNUM curvature = mccGuideEl_curvature;
 							guideInfo.xArray[1],guideInfo.yArray[1],guideInfo.zArray[1],10 );
 		}
 }
-#line 20143 "./Test_Guides.c"
+#line 22051 "./Test_Guides.c"
 }   /* End of GuideEl=Elliptic_guide_gravity() SETTING parameter declarations. */
 #undef dynamicalSegLength
 #undef Circ
@@ -20243,7 +22163,7 @@ MCNUM yheight = mccGuideA_prefix_yheight;
     circle("xy",0,0,0,radius);
   }
 }
-#line 20201 "./Test_Guides.c"
+#line 22109 "./Test_Guides.c"
 }   /* End of GuideA_prefix=Slit() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -20284,7 +22204,7 @@ MCNUM W = mccGuideA_W;
             (-offdata.zmin+offdata.zmax));
   */
 }
-#line 20242 "./Test_Guides.c"
+#line 22150 "./Test_Guides.c"
 }   /* End of GuideA=Guide_anyshape() SETTING parameter declarations. */
 #undef offdata
 #undef pTable
@@ -20331,7 +22251,7 @@ MCNUM yheight = mccGuideA_sufffix_yheight;
     circle("xy",0,0,0,radius);
   }
 }
-#line 20289 "./Test_Guides.c"
+#line 22197 "./Test_Guides.c"
 }   /* End of GuideA_sufffix=Slit() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
@@ -20452,9 +22372,138 @@ MCNUM G = mccGuideH_G;
    }
 
 }
-#line 20410 "./Test_Guides.c"
+#line 22318 "./Test_Guides.c"
 }   /* End of GuideH=Guide_honeycomb() SETTING parameter declarations. */
 #undef GVars
+#undef mccompcurname
+#undef mccompcurtype
+#undef mccompcurindex
+
+  /* MCDISPLAY code for component 'GuideAr_prefix'. */
+  SIG_MESSAGE("GuideAr_prefix (McDisplay)");
+  printf("MCDISPLAY: component %s\n", "GuideAr_prefix");
+#define mccompcurname  GuideAr_prefix
+#define mccompcurtype  Slit
+#define mccompcurindex 15
+{   /* Declarations of GuideAr_prefix=Slit() SETTING parameters. */
+MCNUM xmin = mccGuideAr_prefix_xmin;
+MCNUM xmax = mccGuideAr_prefix_xmax;
+MCNUM ymin = mccGuideAr_prefix_ymin;
+MCNUM ymax = mccGuideAr_prefix_ymax;
+MCNUM radius = mccGuideAr_prefix_radius;
+MCNUM xwidth = mccGuideAr_prefix_xwidth;
+MCNUM yheight = mccGuideAr_prefix_yheight;
+#line 83 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Slit.comp"
+{
+  
+  if (radius == 0) {
+    double xw, yh;
+    xw = (xmax - xmin)/2.0;
+    yh = (ymax - ymin)/2.0;
+    multiline(3, xmin-xw, (double)ymax, 0.0,
+              (double)xmin, (double)ymax, 0.0,
+              (double)xmin, ymax+yh, 0.0);
+    multiline(3, xmax+xw, (double)ymax, 0.0,
+              (double)xmax, (double)ymax, 0.0,
+              (double)xmax, ymax+yh, 0.0);
+    multiline(3, xmin-xw, (double)ymin, 0.0,
+              (double)xmin, (double)ymin, 0.0,
+              (double)xmin, ymin-yh, 0.0);
+    multiline(3, xmax+xw, (double)ymin, 0.0,
+              (double)xmax, (double)ymin, 0.0,
+              (double)xmax, ymin-yh, 0.0);
+  } else {
+    circle("xy",0,0,0,radius);
+  }
+}
+#line 22362 "./Test_Guides.c"
+}   /* End of GuideAr_prefix=Slit() SETTING parameter declarations. */
+#undef mccompcurname
+#undef mccompcurtype
+#undef mccompcurindex
+
+  /* MCDISPLAY code for component 'GuideAr'. */
+  SIG_MESSAGE("GuideAr (McDisplay)");
+  printf("MCDISPLAY: component %s\n", "GuideAr");
+#define mccompcurname  GuideAr
+#define mccompcurtype  Guide_anyshape_r
+#define mccompcurindex 16
+#define geometry mccGuideAr_geometry
+#define offdata mccGuideAr_offdata
+#define use_file_coatings mccGuideAr_use_file_coatings
+{   /* Declarations of GuideAr=Guide_anyshape_r() SETTING parameters. */
+MCNUM xwidth = mccGuideAr_xwidth;
+MCNUM yheight = mccGuideAr_yheight;
+MCNUM zdepth = mccGuideAr_zdepth;
+MCNUM center = mccGuideAr_center;
+MCNUM transmit = mccGuideAr_transmit;
+MCNUM R0 = mccGuideAr_R0;
+MCNUM Qc = mccGuideAr_Qc;
+MCNUM alpha = mccGuideAr_alpha;
+MCNUM m = mccGuideAr_m;
+MCNUM W = mccGuideAr_W;
+#line 185 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Guide_anyshape_r.comp"
+{
+  /* display the object */
+  r_off_display(offdata);
+  /* and its bounding box */
+  /*
+  mcdis_box(( offdata.xmin+offdata.xmax)/2,
+            ( offdata.ymin+offdata.ymax)/2,
+            ( offdata.zmin+offdata.zmax)/2,
+            (-offdata.xmin+offdata.xmax),
+            (-offdata.ymin+offdata.ymax),
+            (-offdata.zmin+offdata.zmax));
+  */
+}
+#line 22402 "./Test_Guides.c"
+}   /* End of GuideAr=Guide_anyshape_r() SETTING parameter declarations. */
+#undef use_file_coatings
+#undef offdata
+#undef geometry
+#undef mccompcurname
+#undef mccompcurtype
+#undef mccompcurindex
+
+  /* MCDISPLAY code for component 'GuideAr_sufffix'. */
+  SIG_MESSAGE("GuideAr_sufffix (McDisplay)");
+  printf("MCDISPLAY: component %s\n", "GuideAr_sufffix");
+#define mccompcurname  GuideAr_sufffix
+#define mccompcurtype  Slit
+#define mccompcurindex 17
+{   /* Declarations of GuideAr_sufffix=Slit() SETTING parameters. */
+MCNUM xmin = mccGuideAr_sufffix_xmin;
+MCNUM xmax = mccGuideAr_sufffix_xmax;
+MCNUM ymin = mccGuideAr_sufffix_ymin;
+MCNUM ymax = mccGuideAr_sufffix_ymax;
+MCNUM radius = mccGuideAr_sufffix_radius;
+MCNUM xwidth = mccGuideAr_sufffix_xwidth;
+MCNUM yheight = mccGuideAr_sufffix_yheight;
+#line 83 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Slit.comp"
+{
+  
+  if (radius == 0) {
+    double xw, yh;
+    xw = (xmax - xmin)/2.0;
+    yh = (ymax - ymin)/2.0;
+    multiline(3, xmin-xw, (double)ymax, 0.0,
+              (double)xmin, (double)ymax, 0.0,
+              (double)xmin, ymax+yh, 0.0);
+    multiline(3, xmax+xw, (double)ymax, 0.0,
+              (double)xmax, (double)ymax, 0.0,
+              (double)xmax, ymax+yh, 0.0);
+    multiline(3, xmin-xw, (double)ymin, 0.0,
+              (double)xmin, (double)ymin, 0.0,
+              (double)xmin, ymin-yh, 0.0);
+    multiline(3, xmax+xw, (double)ymin, 0.0,
+              (double)xmax, (double)ymin, 0.0,
+              (double)xmax, ymin-yh, 0.0);
+  } else {
+    circle("xy",0,0,0,radius);
+  }
+}
+#line 22448 "./Test_Guides.c"
+}   /* End of GuideAr_sufffix=Slit() SETTING parameter declarations. */
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -20464,7 +22513,7 @@ MCNUM G = mccGuideH_G;
   printf("MCDISPLAY: component %s\n", "Monitor2_xy");
 #define mccompcurname  Monitor2_xy
 #define mccompcurtype  Monitor_nD
-#define mccompcurindex 15
+#define mccompcurindex 18
 #define user1 mccMonitor2_xy_user1
 #define user2 mccMonitor2_xy_user2
 #define user3 mccMonitor2_xy_user3
@@ -20503,7 +22552,7 @@ int nowritefile = mccMonitor2_xy_nowritefile;
     Monitor_nD_McDisplay(&DEFS, &Vars);
   }
 }
-#line 20461 "./Test_Guides.c"
+#line 22498 "./Test_Guides.c"
 }   /* End of Monitor2_xy=Monitor_nD() SETTING parameter declarations. */
 #undef offdata
 #undef detector

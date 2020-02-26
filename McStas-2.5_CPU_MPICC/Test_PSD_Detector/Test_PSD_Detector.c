@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr (Test_PSD_Detector)
- * Date:       Wed Nov 20 00:51:40 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr (Test_PSD_Detector)
+ * Date:       Tue Feb 25 21:06:17 2020
  * File:       ./Test_PSD_Detector.c
  * Compile:    cc -o Test_PSD_Detector.out ./Test_PSD_Detector.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Test_PSD_Detector";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -9263,13 +9263,13 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccOrigin_minutes = 0;
 #line 9274 "./Test_PSD_Detector.c"
 
@@ -9281,11 +9281,11 @@ void mcinit(void) {
 #line 9281 "./Test_PSD_Detector.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 33 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 33 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
     0,
-#line 33 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 33 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
     0,
-#line 33 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 33 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
     0);
 #line 9290 "./Test_PSD_Detector.c"
   mctc1 = coords_neg(mcposaOrigin);
@@ -9298,86 +9298,86 @@ void mcinit(void) {
     /* Component mysource. */
   /* Setting parameters for component mysource. */
   SIG_MESSAGE("mysource (Init:SetPar)");
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   if("NULL") strncpy(mccmysource_flux_file, "NULL" ? "NULL" : "", 16384); else mccmysource_flux_file[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   if("NULL") strncpy(mccmysource_xdiv_file, "NULL" ? "NULL" : "", 16384); else mccmysource_xdiv_file[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   if("NULL") strncpy(mccmysource_ydiv_file, "NULL" ? "NULL" : "", 16384); else mccmysource_ydiv_file[0]='\0';
-#line 36 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 36 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_radius = 0.0001;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_dist = 0;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_focus_xw = 0.045;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_focus_yh = 0.12;
-#line 36 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 36 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_focus_aw = 0.0001;
-#line 36 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 36 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_focus_ah = 0.0001;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_E0 = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_dE = 0;
-#line 36 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 36 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_lambda0 = 0.18;
-#line 36 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 36 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_dlambda = 0.01;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_I1 = 1;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_yheight = 0.1;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_xwidth = 0.1;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_verbose = 0;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_T1 = 0;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_flux_file_perAA = 0;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_flux_file_log = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_Lmin = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_Lmax = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_Emin = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_Emax = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_T2 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_I2 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_T3 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_I3 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_zdepth = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmysource_target_index = + 1;
 #line 9361 "./Test_PSD_Detector.c"
 
   SIG_MESSAGE("mysource (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
     (0)*DEG2RAD,
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
     (0)*DEG2RAD,
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
     (0)*DEG2RAD);
 #line 9371 "./Test_PSD_Detector.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotamysource);
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotamysource, mctr1, mcrotrmysource);
   mctc1 = coords_set(
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
     0,
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
     0,
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
     0);
 #line 9382 "./Test_PSD_Detector.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -9404,11 +9404,11 @@ void mcinit(void) {
   rot_transpose(mcrotamysource, mctr1);
   rot_mul(mcrotadet_pos, mctr1, mcrotrdet_pos);
   mctc1 = coords_set(
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
     0,
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
     0,
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
     0.1);
 #line 9413 "./Test_PSD_Detector.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -9424,74 +9424,74 @@ void mcinit(void) {
     /* Component mydet. */
   /* Setting parameters for component mydet. */
   SIG_MESSAGE("mydet (Init:SetPar)");
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmydet_xwidth = 0.01;
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmydet_radius = 0;
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmydet_awidth = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmydet_yheight = .01;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmydet_zdepth = 3.2e-2;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmydet_threshold = 100;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmydet_PressureConv = 5;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmydet_PressureStop = 1;
-#line 177 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 177 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmydet_interpolate = 1;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmydet_p_interact = 0;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmydet_verbose = 1;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmydet_LensOn = 1;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmydet_dc = 2.6e-2;
-#line 178 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 178 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmydet_borderx = -2;
-#line 178 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 178 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmydet_bordery = -2;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmydet_xChDivRelSigma = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmydet_yChDivRelSigma = 0.0037;
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmydet_bufsize = 0;
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmydet_restore_neutron = 0;
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   mccmydet_angle = 0;
-#line 180 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 180 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   if(0) strncpy(mccmydet_type, 0 ? 0 : "", 16384); else mccmydet_type[0]='\0';
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   if("test_out.dat") strncpy(mccmydet_filename, "test_out.dat" ? "test_out.dat" : "", 16384); else mccmydet_filename[0]='\0';
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   if("Gas_tables/He3inHe.table") strncpy(mccmydet_FN_Conv, "Gas_tables/He3inHe.table" ? "Gas_tables/He3inHe.table" : "", 16384); else mccmydet_FN_Conv[0]='\0';
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
   if("Gas_tables/He3inCF4.table") strncpy(mccmydet_FN_Stop, "Gas_tables/He3inCF4.table" ? "Gas_tables/He3inCF4.table" : "", 16384); else mccmydet_FN_Stop[0]='\0';
 #line 9475 "./Test_PSD_Detector.c"
 
   SIG_MESSAGE("mydet (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
     (0)*DEG2RAD,
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
     (mciprot)*DEG2RAD,
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
     (0)*DEG2RAD);
 #line 9485 "./Test_PSD_Detector.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotamydet);
   rot_transpose(mcrotadet_pos, mctr1);
   rot_mul(mcrotamydet, mctr1, mcrotrmydet);
   mctc1 = coords_set(
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
     0,
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
     0,
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr"
     0);
 #line 9496 "./Test_PSD_Detector.c"
   rot_transpose(mcrotadet_pos, mctr1);

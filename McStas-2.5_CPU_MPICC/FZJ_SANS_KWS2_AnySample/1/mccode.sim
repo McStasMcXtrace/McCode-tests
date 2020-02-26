@@ -1,10 +1,10 @@
 McStas simulation description file for SANS_KWS2_AnySample.
-Date:    Wed Nov 20 00:59:09 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:14:48 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: SANS_KWS2_AnySample
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_SANS_KWS2_AnySample/FZJ_SANS_KWS2_AnySample.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_SANS_KWS2_AnySample/FZJ_SANS_KWS2_AnySample.instr
   Parameters:  lambda(double) dlambda(double) FLUX(double) NGblen(double) sample(int) Clen(double) Dlen(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_SANS_KWS2_AnySample/FZJ_SANS_KWS2_AnySample.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_SANS_KWS2_AnySample/FZJ_SANS_KWS2_AnySample.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574226754
+  Seed: 1582673063
   Directory: 1
   Nodes: 10
   Param: lambda=7
@@ -32,17 +32,17 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Wed Nov 20 00:59:10 2019 (1574207950)
+  Date: Tue Feb 25 21:14:50 2020 (1582661690)
   type: array_2d(128, 128)
-  Source: SANS_KWS2_AnySample (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_SANS_KWS2_AnySample/FZJ_SANS_KWS2_AnySample.instr)
+  Source: SANS_KWS2_AnySample (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_SANS_KWS2_AnySample/FZJ_SANS_KWS2_AnySample.instr)
   component: detector
   position: 0 0 60
   title: PSD monitor
   Ncount: 10000000
   filename: PSD.dat
-  statistics: X0=0.00608648; dX=1.57704; Y0=0.00639028; dY=1.57386;
-  signal: Min=0; Max=32.1969; Mean=0.211594;
-  values: 3466.75 13.6654 64364
+  statistics: X0=-0.00935132; dX=1.56713; Y0=-0.0038044; dY=1.57221;
+  signal: Min=0; Max=32.4075; Mean=0.21161;
+  values: 3467.02 13.6664 64365
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -54,17 +54,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 00:59:10 2019 (1574207950)
+  Date: Tue Feb 25 21:14:50 2020 (1582661690)
   type: array_1d(500)
-  Source: SANS_KWS2_AnySample (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_SANS_KWS2_AnySample/FZJ_SANS_KWS2_AnySample.instr)
+  Source: SANS_KWS2_AnySample (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_SANS_KWS2_AnySample/FZJ_SANS_KWS2_AnySample.instr)
   component: detector2
   position: 0 0 60.01
   title: PSD monitor radial sum
   Ncount: 10000000
   filename: PSDr.dat
-  statistics: X0=0.0208639; dX=0.00855296;
-  signal: Min=0; Max=102.8; Mean=6.9335;
-  values: 3466.75 13.6654 64364
+  statistics: X0=0.020775; dX=0.00853956;
+  signal: Min=0; Max=104.348; Mean=6.93403;
+  values: 3467.02 13.6664 64365
   xvar: r
   yvar: (I,I_err)
   xlabel: Radius [m]
@@ -74,17 +74,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 00:59:10 2019 (1574207950)
+  Date: Tue Feb 25 21:14:50 2020 (1582661690)
   type: array_1d(500)
-  Source: SANS_KWS2_AnySample (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_SANS_KWS2_AnySample/FZJ_SANS_KWS2_AnySample.instr)
+  Source: SANS_KWS2_AnySample (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_SANS_KWS2_AnySample/FZJ_SANS_KWS2_AnySample.instr)
   component: detector2
   position: 0 0 60.01
   title: PSD monitor radial average
   Ncount: 10000000
   filename: PSDr_av.dat
-  statistics: X0=0.014963; dX=0.00928601;
-  signal: Min=0; Max=1.54696e+06; Mean=107879;
-  values: 5.39394e+07 363669 64364
+  statistics: X0=0.0148606; dX=0.00926394;
+  signal: Min=0; Max=1.51826e+06; Mean=108648;
+  values: 5.4324e+07 374979 64365
   xvar: r
   yvar: (I,I_err)
   xlabel: Radius [m]

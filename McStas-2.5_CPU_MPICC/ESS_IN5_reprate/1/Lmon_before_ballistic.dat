@@ -1,11 +1,11 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Nov. 19, 2019
-# Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr
+# Creator: McStas 2.5 - Feb. 24, 2020
+# Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr
 # Ncount: 1000000
 # Trace: no
 # Gravitation: no
-# Seed: 1574226575
+# Seed: 1582672815
 # Directory: 1
 # Nodes: 10
 # Param: Lmin=4.9
@@ -55,17 +55,17 @@
 # Param: RES_DE=0.5
 # Param: port=30
 # Param: cold=0.95
-# Date: Wed Nov 20 00:59:04 2019 (1574207944)
+# Date: Tue Feb 25 21:14:42 2020 (1582661682)
 # type: array_1d(200)
-# Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+# Source: ESS_IN5_reprate (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
 # component: Lmon_beforeballistic
 # position: 0 0 82.975
 # title: Wavelength monitor
 # Ncount: 10000000
 # filename: Lmon_before_ballistic.dat
-# statistics: X0=4.99827; dX=0.0586308;
-# signal: Min=0; Max=4.77438e+09; Mean=1.52006e+08;
-# values: 3.04013e+10 2.72137e+07 3.30224e+06
+# statistics: X0=4.99821; dX=0.0587216;
+# signal: Min=0; Max=4.8051e+09; Mean=1.51905e+08;
+# values: 3.03811e+10 2.71859e+07 3.30402e+06
 # xvar: L
 # yvar: (I,I_err)
 # xlabel: Wavelength [AA]
@@ -232,14 +232,14 @@
 4.80375 0 0 0 
 4.83425 0 0 0 
 4.86475 0 0 0 
-4.89525 1666532536 6558414.062 172776 
-4.92575 4774380790 11007457.78 502100 
-4.95625 4751009651 10893783.01 503437 
-4.98675 4678164844 10708227.54 503549 
-5.01725 4616004024 10540124.09 505488 
-5.04775 4524266646 10346708.63 504127 
-5.07825 4448169230 10159717 503183 
-5.10875 942741463.6 4658116.749 107578 
+4.89525 1674067593 6564709.225 173062 
+4.92575 4805103338 11048211.49 502921 
+4.95625 4734401880 10867967.09 503979 
+4.98675 4649179799 10662249.31 503014 
+5.01725 4604223273 10521044.35 504148 
+5.04775 4502924622 10307887.83 503623 
+5.07825 4473113147 10182791.43 505899 
+5.10875 938081281.1 4635399.419 107371 
 5.13925 0 0 0 
 5.16975 0 0 0 
 5.20025 0 0 0 

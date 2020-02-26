@@ -1,31 +1,5 @@
-[1574207002.898485] [n-62-23-6:9047 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3381.74
-[1574207002.899881] [n-62-23-6:9047 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207002.899885] [n-62-23-6:9047 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207002.901808] [n-62-23-6:9047 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207002.901811] [n-62-23-6:9047 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-begin instrument: ISIS_TS1_Brilliance
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr
-  Parameters:  modfile(string)
-  Trace_enabled: yes
-  Default_main: yes
-  Embedded_runtime: yes
-end instrument
-begin simulation: .
-  Format: McStas
-  URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr
-  Ncount: 1000000
-  Trace: no
-  Gravitation: no
-  Seed: 1574216049
-  Directory: .
-  Param: modfile=ch4
-end simulation
-info!
 INFO: No output directory specified (--dir)
-INFO: Using directory: "ISIS_TS1_Brilliance_20191120_004320"
+INFO: Using directory: "ISIS_TS1_Brilliance_20200225_205839"
 INFO: Regenerating c-file: ISIS_TS1_Brilliance.c
 Info:    'ISIS_moderator' is a contributed component.
 Warning: Component Source=ISIS_moderator(string Face) definition parameter
@@ -34,9 +8,37 @@ Warning: Component Source=ISIS_moderator(string Face) definition parameter
 CFLAGS=
 INFO: Recompiling: ./ISIS_TS1_Brilliance.out
 INFO: ===
+[n-62-23-14:05060] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:05060] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582660721.980071] [n-62-23-14:5059 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3377.98
+[1582660721.981536] [n-62-23-14:5059 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582660721.981539] [n-62-23-14:5059 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 --------------------------------------------------------------------------
 Initialization of MXM library failed.
 
   Error: Input/output error
 
 --------------------------------------------------------------------------
+[1582660721.984153] [n-62-23-14:5059 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582660721.984156] [n-62-23-14:5059 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+begin instrument: ISIS_TS1_Brilliance
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr
+  Parameters:  modfile(string)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+begin simulation: .
+  Format: McStas
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_TS1_Brilliance/ISIS_TS1_Brilliance.instr
+  Ncount: 1000000
+  Trace: no
+  Gravitation: no
+  Seed: 1582665781
+  Directory: .
+  Param: modfile=ch4
+end simulation
+info!

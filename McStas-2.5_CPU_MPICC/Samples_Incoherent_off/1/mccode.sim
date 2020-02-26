@@ -1,10 +1,10 @@
 McStas simulation description file for Samples_Incoherent_off.
-Date:    Wed Nov 20 01:06:45 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:32:28 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: Samples_Incoherent_off
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr
   Parameters:  geometry(string)
   Trace_enabled: yes
   Default_main: yes
@@ -14,29 +14,29 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574233010
+  Seed: 1582681173
   Directory: 1
   Nodes: 10
   Param: geometry=socket.off
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:07:10 2019 (1574208430)
+  Date: Tue Feb 25 21:33:34 2020 (1582662814)
   type: array_2d(300, 300)
-  Source: Samples_Incoherent_off (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr)
+  Source: Samples_Incoherent_off (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr)
   component: monitor
   position: 0 0 2
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: monitor_1574208405.x_y
-  statistics: X0=6.56001e-05; dX=0.0630614; Y0=1.38414e-05; dY=0.0580635;
-  signal: Min=2.01032e-11; Max=1.97453e-05; Mean=1.64586e-07;
-  values: 0.0148127 9.89054e-06 9.44671e+06
+  filename: monitor_1582662748.x_y
+  statistics: X0=-2.58755e-05; dX=0.0630861; Y0=3.28292e-05; dY=0.0581029;
+  signal: Min=1.70048e-11; Max=1.99614e-05; Mean=1.64721e-07;
+  values: 0.0148249 9.89481e-06 9.44578e+06
   xvar: x
   yvar: y
   xlabel: x [m]

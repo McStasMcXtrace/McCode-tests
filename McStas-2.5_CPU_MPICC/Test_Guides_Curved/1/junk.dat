@@ -1,19 +1,19 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Nov. 19, 2019
-# Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr
+# Creator: McStas 2.5 - Feb. 24, 2020
+# Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr
 # Ncount: 1000000
 # Trace: no
 # Gravitation: no
-# Seed: 1574236387
+# Seed: 1582684838
 # Directory: 1
 # Nodes: 10
 # Param: Guide=1
 # Param: curvature=1000
 # Param: length=100
-# Date: Wed Nov 20 01:11:13 2019 (1574208673)
+# Date: Tue Feb 25 21:43:21 2020 (1582663401)
 # type: array_2d(90, 90)
-# Source: Test_Guides_Curved (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr)
+# Source: Test_Guides_Curved (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr)
 # component: dummy
 # position: 0 0 0
 # title: 4PI PSD monitor

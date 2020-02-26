@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr (BTsimple)
- * Date:       Wed Nov 20 00:11:01 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr (BTsimple)
+ * Date:       Tue Feb 25 20:22:38 2020
  * File:       ./BTsimple.c
  * Compile:    cc -o BTsimple.out ./BTsimple.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "BTsimple";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -7729,7 +7729,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define gm mcipgm
 #define delta1 mcipdelta1
 #define delta2 mcipdelta2
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
 	/* Variables for calculation of neutron divergence  */
 	double VertDiv,HorDiv;
 	/* Arrays for storing the calculated brilliance transfer */
@@ -8563,13 +8563,13 @@ void mcinit(void) {
     /* Component origin. */
   /* Setting parameters for component origin. */
   SIG_MESSAGE("origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   if("NULL") strncpy(mccorigin_profile, "NULL" ? "NULL" : "", 16384); else mccorigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccorigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccorigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccorigin_minutes = 0;
 #line 8574 "./BTsimple.c"
 
@@ -8581,11 +8581,11 @@ void mcinit(void) {
 #line 8581 "./BTsimple.c"
   rot_copy(mcrotrorigin, mcrotaorigin);
   mcposaorigin = coords_set(
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0,
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0,
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0);
 #line 8590 "./BTsimple.c"
   mctc1 = coords_neg(mcposaorigin);
@@ -8598,65 +8598,65 @@ void mcinit(void) {
     /* Component source. */
   /* Setting parameters for component source. */
   SIG_MESSAGE("source (Init:SetPar)");
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   if("NULL") strncpy(mccsource_flux_file, "NULL" ? "NULL" : "", 16384); else mccsource_flux_file[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   if("NULL") strncpy(mccsource_xdiv_file, "NULL" ? "NULL" : "", 16384); else mccsource_xdiv_file[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   if("NULL") strncpy(mccsource_ydiv_file, "NULL" ? "NULL" : "", 16384); else mccsource_ydiv_file[0]='\0';
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_radius = 0.06;
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_dist = 2;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_focus_xw = mcipgw;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_focus_yh = mcipgh;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_focus_aw = 0;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_focus_ah = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_E0 = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_dE = 0;
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_lambda0 = mciplambda;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_dlambda = mcipdlambda;
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_I1 = 10.22e12;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_yheight = 0.1;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_xwidth = 0.1;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_verbose = 0;
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_T1 = 413.5;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_flux_file_perAA = 0;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_flux_file_log = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_Lmin = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_Lmax = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_Emin = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_Emax = 0;
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_T2 = 145.8;
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_I2 = 3.44e13;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_T3 = 40.1;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_I3 = 2.78e13;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_zdepth = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccsource_target_index = + 1;
 #line 8661 "./BTsimple.c"
 
@@ -8670,11 +8670,11 @@ void mcinit(void) {
   rot_transpose(mcrotaorigin, mctr1);
   rot_mul(mcrotasource, mctr1, mcrotrsource);
   mctc1 = coords_set(
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0,
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0,
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0);
 #line 8679 "./BTsimple.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -8701,11 +8701,11 @@ void mcinit(void) {
   rot_transpose(mcrotasource, mctr1);
   rot_mul(mcrotaCalcDiv1, mctr1, mcrotrCalcDiv1);
   mctc1 = coords_set(
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0,
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0,
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0);
 #line 8710 "./BTsimple.c"
   rot_transpose(mcrotasource, mctr1);
@@ -8721,27 +8721,27 @@ void mcinit(void) {
     /* Component BT_in. */
   /* Setting parameters for component BT_in. */
   SIG_MESSAGE("BT_in (Init:SetPar)");
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   if("BT_in.dat") strncpy(mccBT_in_filename, "BT_in.dat" ? "BT_in.dat" : "", 16384); else mccBT_in_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccBT_in_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccBT_in_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccBT_in_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccBT_in_ymax = 0.05;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccBT_in_xwidth = 0.02;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccBT_in_yheight = 0.02;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccBT_in_Lmin = mciplambda - mcipdlambda;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccBT_in_Lmax = mciplambda + mcipdlambda;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccBT_in_restore_neutron = 1;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccBT_in_nowritefile = 0;
 #line 8746 "./BTsimple.c"
 
@@ -8755,11 +8755,11 @@ void mcinit(void) {
   rot_transpose(mcrotaCalcDiv1, mctr1);
   rot_mul(mcrotaBT_in, mctr1, mcrotrBT_in);
   mctc1 = coords_set(
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0,
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0,
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     2.0);
 #line 8764 "./BTsimple.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -8775,33 +8775,33 @@ void mcinit(void) {
     /* Component Div_in. */
   /* Setting parameters for component Div_in. */
   SIG_MESSAGE("Div_in (Init:SetPar)");
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   if("Div_in") strncpy(mccDiv_in_filename, "Div_in" ? "Div_in" : "", 16384); else mccDiv_in_filename[0]='\0';
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_in_xmin = -0.05;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_in_xmax = 0.05;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_in_ymin = -0.05;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_in_ymax = 0.05;
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_in_xwidth = mcipgw;
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_in_yheight = mcipgh;
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_in_maxdiv_h = 5;
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_in_maxdiv_v = 5;
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_in_restore_neutron = 1;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_in_nx = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_in_ny = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_in_nz = 1;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_in_nowritefile = 0;
 #line 8806 "./BTsimple.c"
 
@@ -8815,11 +8815,11 @@ void mcinit(void) {
   rot_transpose(mcrotaBT_in, mctr1);
   rot_mul(mcrotaDiv_in, mctr1, mcrotrDiv_in);
   mctc1 = coords_set(
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0,
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0,
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     2.0);
 #line 8824 "./BTsimple.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -8835,25 +8835,25 @@ void mcinit(void) {
     /* Component PSD_in. */
   /* Setting parameters for component PSD_in. */
   SIG_MESSAGE("PSD_in (Init:SetPar)");
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccPSD_in_nx = 20;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccPSD_in_ny = 20;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   if("PSD_in") strncpy(mccPSD_in_filename, "PSD_in" ? "PSD_in" : "", 16384); else mccPSD_in_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccPSD_in_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccPSD_in_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccPSD_in_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccPSD_in_ymax = 0.05;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccPSD_in_xwidth = mcipgw;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccPSD_in_yheight = mcipgh;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccPSD_in_restore_neutron = 1;
 #line 8858 "./BTsimple.c"
 
@@ -8867,11 +8867,11 @@ void mcinit(void) {
   rot_transpose(mcrotaDiv_in, mctr1);
   rot_mul(mcrotaPSD_in, mctr1, mcrotrPSD_in);
   mctc1 = coords_set(
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0,
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0,
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     2.0);
 #line 8876 "./BTsimple.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -8887,67 +8887,67 @@ void mcinit(void) {
     /* Component guide. */
   /* Setting parameters for component guide. */
   SIG_MESSAGE("guide (Init:SetPar)");
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_l = mcipgL;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_xwidth = mcipgw;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_yheight = mcipgh;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_linxw = 2 + mcipdelta1;
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_loutxw = 2 + mcipdelta2;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_linyh = 2 + mcipdelta1;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_loutyh = 2 + mcipdelta2;
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_majorAxisxw = 0;
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_minorAxisxw = 0;
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_majorAxisyh = 0;
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_minorAxisyh = 0;
-#line 167 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_majorAxisoffsetxw = 0;
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_majorAxisoffsetyh = 0;
-#line 169 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   if("entrance") strncpy(mccguide_dimensionsAt, "entrance" ? "entrance" : "", 16384); else mccguide_dimensionsAt[0]='\0';
-#line 170 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 170 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   if("ellipse") strncpy(mccguide_option, "ellipse" ? "ellipse" : "", 16384); else mccguide_option[0]='\0';
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_R0 = 0.99;
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_Qc = 0.0218;
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_alpha = 0;
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_m = mcipgm;
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_W = 0;
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 172 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_alpharight = -1;
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 172 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_mright = -1;
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_alphaleft = -1;
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_mleft = -1;
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_alphatop = -1;
-#line 174 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 174 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_mtop = -1;
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 175 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_alphabottom = -1;
-#line 175 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 175 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_mbottom = -1;
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   if("on") strncpy(mccguide_verbose, "on" ? "on" : "", 16384); else mccguide_verbose[0]='\0';
-#line 177 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 177 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_enableGravity = 1.0;
-#line 178 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 178 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccguide_curvature = 0;
 #line 8952 "./BTsimple.c"
 
@@ -8961,11 +8961,11 @@ void mcinit(void) {
   rot_transpose(mcrotaPSD_in, mctr1);
   rot_mul(mcrotaguide, mctr1, mcrotrguide);
   mctc1 = coords_set(
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0,
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0,
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     2);
 #line 8970 "./BTsimple.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -8992,11 +8992,11 @@ void mcinit(void) {
   rot_transpose(mcrotaguide, mctr1);
   rot_mul(mcrotaCalcDiv2, mctr1, mcrotrCalcDiv2);
   mctc1 = coords_set(
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     mcipgL);
 #line 9001 "./BTsimple.c"
   rot_transpose(mcrotaguide, mctr1);
@@ -9012,27 +9012,27 @@ void mcinit(void) {
     /* Component BT_out. */
   /* Setting parameters for component BT_out. */
   SIG_MESSAGE("BT_out (Init:SetPar)");
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   if("BT_out.dat") strncpy(mccBT_out_filename, "BT_out.dat" ? "BT_out.dat" : "", 16384); else mccBT_out_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccBT_out_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccBT_out_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccBT_out_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccBT_out_ymax = 0.05;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccBT_out_xwidth = 0.02;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccBT_out_yheight = 0.02;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccBT_out_Lmin = mciplambda - mcipdlambda;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccBT_out_Lmax = mciplambda + mcipdlambda;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccBT_out_restore_neutron = 1;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccBT_out_nowritefile = 0;
 #line 9037 "./BTsimple.c"
 
@@ -9046,11 +9046,11 @@ void mcinit(void) {
   rot_transpose(mcrotaCalcDiv2, mctr1);
   rot_mul(mcrotaBT_out, mctr1, mcrotrBT_out);
   mctc1 = coords_set(
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0,
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0,
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     2.0 + mcipgL);
 #line 9055 "./BTsimple.c"
   rot_transpose(mcrotaguide, mctr1);
@@ -9066,33 +9066,33 @@ void mcinit(void) {
     /* Component Div_out. */
   /* Setting parameters for component Div_out. */
   SIG_MESSAGE("Div_out (Init:SetPar)");
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   if("Div_out") strncpy(mccDiv_out_filename, "Div_out" ? "Div_out" : "", 16384); else mccDiv_out_filename[0]='\0';
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_out_xmin = -0.05;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_out_xmax = 0.05;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_out_ymin = -0.05;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_out_ymax = 0.05;
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_out_xwidth = mcipgw;
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_out_yheight = mcipgh;
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_out_maxdiv_h = 5;
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_out_maxdiv_v = 5;
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_out_restore_neutron = 1;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_out_nx = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_out_ny = 0;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_out_nz = 1;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccDiv_out_nowritefile = 0;
 #line 9097 "./BTsimple.c"
 
@@ -9106,11 +9106,11 @@ void mcinit(void) {
   rot_transpose(mcrotaBT_out, mctr1);
   rot_mul(mcrotaDiv_out, mctr1, mcrotrDiv_out);
   mctc1 = coords_set(
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0,
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0,
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     2.0 + mcipgL);
 #line 9115 "./BTsimple.c"
   rot_transpose(mcrotaguide, mctr1);
@@ -9126,25 +9126,25 @@ void mcinit(void) {
     /* Component PSD_out. */
   /* Setting parameters for component PSD_out. */
   SIG_MESSAGE("PSD_out (Init:SetPar)");
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccPSD_out_nx = 20;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccPSD_out_ny = 20;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   if("PSD_out") strncpy(mccPSD_out_filename, "PSD_out" ? "PSD_out" : "", 16384); else mccPSD_out_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccPSD_out_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccPSD_out_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccPSD_out_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccPSD_out_ymax = 0.05;
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccPSD_out_xwidth = mcipgw;
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccPSD_out_yheight = mcipgh;
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   mccPSD_out_restore_neutron = 1;
 #line 9149 "./BTsimple.c"
 
@@ -9158,11 +9158,11 @@ void mcinit(void) {
   rot_transpose(mcrotaDiv_out, mctr1);
   rot_mul(mcrotaPSD_out, mctr1, mcrotrPSD_out);
   mctc1 = coords_set(
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0,
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0,
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     0);
 #line 9167 "./BTsimple.c"
   rot_transpose(mcrotaDiv_out, mctr1);
@@ -10832,7 +10832,7 @@ MCNUM minutes = mccorigin_minutes;
 #line 10832 "./BTsimple.c"
 /* 'origin=Progress_bar()' component instance extend code */
     SIG_MESSAGE("origin (Trace:Extend)");
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   /* Initialize divergencies to 0 */
   VertDiv = 0;
   HorDiv = 0;
@@ -11208,7 +11208,7 @@ mcnlp)
 #define mccompcurindex 3
 /* 'CalcDiv1=Arm()' component instance extend code */
     SIG_MESSAGE("CalcDiv1 (Trace:Extend)");
-#line 74 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 74 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
   /* Calculate divergence of ray as emitted by the source */
   VertDiv = RAD2DEG*atan2(vy,vz);
   HorDiv = RAD2DEG*atan2(vx,vz);
@@ -12000,7 +12000,7 @@ mcnlp)
 #define mccompcurindex 8
 /* 'CalcDiv2=Arm()' component instance extend code */
     SIG_MESSAGE("CalcDiv2 (Trace:Extend)");
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
     /* Calculate divergence of ray after the guide */
     VertDiv = RAD2DEG*atan2(vy,vz);
     HorDiv = RAD2DEG*atan2(vx,vz);
@@ -13072,7 +13072,7 @@ MCNUM restore_neutron = mccPSD_out_restore_neutron;
 #define gm mcipgm
 #define delta1 mcipdelta1
 #define delta2 mcipdelta2
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr"
 {
   /* This adds another "monitor" that measures BT_out / BT_in */
   /* In MPI-mode renormalisation by mpi_node_count needs doing */

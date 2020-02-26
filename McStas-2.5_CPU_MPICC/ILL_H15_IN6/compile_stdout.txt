@@ -1,11 +1,36 @@
-      [1574205702.487104] [n-62-23-6:514  :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3368.92
-[1574205702.488645] [n-62-23-6:514  :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574205702.488649] [n-62-23-6:514  :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574205702.490577] [n-62-23-6:514  :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574205702.490580] [n-62-23-6:514  :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: No output directory specified (--dir)
+INFO: Using directory: "ILL_H15_IN6_20200225_203240"
+INFO: Regenerating c-file: ILL_H15_IN6.c
+Info:    'Al_window' is a contributed component.
+Info:    Defining SPLIT from Mono1=Monochromator_curved() to END in instrument ILL_H15_IN6
+Info:    Defining SPLIT from Sample=Isotropic_Sqw() to END in instrument ILL_H15_IN6
+CFLAGS=
+      INFO: Recompiling: ./ILL_H15_IN6.out
+./ILL_H15_IN6.c: In function 'mcraytrace':
+./ILL_H15_IN6.c:39322:6: note: variable tracking size limit exceeded with -fvar-tracking-assignments, retrying without
+ 
+      ^         
+./ILL_H15_IN6.c: In function 'mcinit':
+./ILL_H15_IN6.c:20894:6: note: variable tracking size limit exceeded with -fvar-tracking-assignments, retrying without
+ 
+      ^     
+INFO: ===
+[n-62-23-14:01294] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:01294] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582659214.538702] [n-62-23-14:1291 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3384.81
+[1582659214.540553] [n-62-23-14:1291 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582659214.540557] [n-62-23-14:1291 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1582659214.543513] [n-62-23-14:1291 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582659214.543516] [n-62-23-14:1291 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 begin instrument: ILL_H15_IN6
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H15_IN6/ILL_H15_IN6.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H15_IN6/ILL_H15_IN6.instr
   Parameters:  lambda(double) dlambda(double) m(double) mip(double) SPEED(double) M1(double) M2(double) M3(double) MONITOR(double) CHA_WIDTH(double) TOF_DELAY(double) TOF_CHA_RESOL(double) ELPEAK(double) RATIO(double) mFC(double) PHASE(double) Sqw_coh(string) Sqw_inc(string) radius(double) thickness(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +39,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H15_IN6/ILL_H15_IN6.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H15_IN6/ILL_H15_IN6.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1574206216
+  Seed: 1582660505
   Directory: .
   Param: lambda=4.14
   Param: dlambda=0.075
@@ -43,26 +68,3 @@ begin simulation: .
   Param: thickness=0.005
 end simulation
 info!
-INFO: No output directory specified (--dir)
-INFO: Using directory: "ILL_H15_IN6_20191120_002050"
-INFO: Regenerating c-file: ILL_H15_IN6.c
-Info:    'Al_window' is a contributed component.
-Info:    Defining SPLIT from Mono1=Monochromator_curved() to END in instrument ILL_H15_IN6
-Info:    Defining SPLIT from Sample=Isotropic_Sqw() to END in instrument ILL_H15_IN6
-CFLAGS=
-INFO: Recompiling: ./ILL_H15_IN6.out
-./ILL_H15_IN6.c: In function 'mcraytrace':
-./ILL_H15_IN6.c:39322:6: note: variable tracking size limit exceeded with -fvar-tracking-assignments, retrying without
- 
-      ^         
-./ILL_H15_IN6.c: In function 'mcinit':
-./ILL_H15_IN6.c:20894:6: note: variable tracking size limit exceeded with -fvar-tracking-assignments, retrying without
- 
-      ^     
-INFO: ===
---------------------------------------------------------------------------
-Initialization of MXM library failed.
-
-  Error: Input/output error
-
---------------------------------------------------------------------------

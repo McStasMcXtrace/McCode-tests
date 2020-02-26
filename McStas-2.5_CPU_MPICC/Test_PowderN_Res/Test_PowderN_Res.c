@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr (Test_PowderN_Res)
- * Date:       Wed Nov 20 00:52:13 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr (Test_PowderN_Res)
+ * Date:       Tue Feb 25 21:06:55 2020
  * File:       ./Test_PowderN_Res.c
  * Compile:    cc -o Test_PowderN_Res.out ./Test_PowderN_Res.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Test_PowderN_Res";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -10875,13 +10875,13 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccOrigin_minutes = 0;
 #line 10886 "./Test_PowderN_Res.c"
 
@@ -10893,11 +10893,11 @@ void mcinit(void) {
 #line 10893 "./Test_PowderN_Res.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0,
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0,
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0);
 #line 10902 "./Test_PowderN_Res.c"
   mctc1 = coords_neg(mcposaOrigin);
@@ -10910,25 +10910,25 @@ void mcinit(void) {
     /* Component Source. */
   /* Setting parameters for component Source. */
   SIG_MESSAGE("Source (Init:SetPar)");
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSource_xwidth = 2.01 * mcipradius;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSource_yheight = 0.1;
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSource_focus_aw = 1e-3;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSource_focus_ah = 1e-3;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSource_E0 = 0.0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSource_dE = 0.0;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSource_lambda0 = mcipLambda0;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSource_dlambda = mcipdLambda;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSource_gauss = 0;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSource_flux = 1e16;
 #line 10933 "./Test_PowderN_Res.c"
 
@@ -10942,11 +10942,11 @@ void mcinit(void) {
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotaSource, mctr1, mcrotrSource);
   mctc1 = coords_set(
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0,
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0,
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0);
 #line 10951 "./Test_PowderN_Res.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -10962,19 +10962,19 @@ void mcinit(void) {
     /* Component SampleSlit. */
   /* Setting parameters for component SampleSlit. */
   SIG_MESSAGE("SampleSlit (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSampleSlit_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSampleSlit_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSampleSlit_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSampleSlit_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSampleSlit_radius = 0;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSampleSlit_xwidth = 2.1 * mcipradius;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSampleSlit_yheight = 0.1;
 #line 10979 "./Test_PowderN_Res.c"
 
@@ -10988,11 +10988,11 @@ void mcinit(void) {
   rot_transpose(mcrotaSource, mctr1);
   rot_mul(mcrotaSampleSlit, mctr1, mcrotrSampleSlit);
   mctc1 = coords_set(
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0,
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0,
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0.89 * mcipDistance);
 #line 10997 "./Test_PowderN_Res.c"
   rot_transpose(mcrotaSource, mctr1);
@@ -11008,59 +11008,59 @@ void mcinit(void) {
     /* Component Sample. */
   /* Setting parameters for component Sample. */
   SIG_MESSAGE("Sample (Init:SetPar)");
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   if("Na2Ca3Al2F14.laz") strncpy(mccSample_reflections, "Na2Ca3Al2F14.laz" ? "Na2Ca3Al2F14.laz" : "", 16384); else mccSample_reflections[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   if("NULL") strncpy(mccSample_geometry, "NULL" ? "NULL" : "", 16384); else mccSample_geometry[0]='\0';
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_radius = mcipradius;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_yheight = 0.1;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_xwidth = 0;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_zdepth = 0;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_thickness = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_pack = 1;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_Vc = 0;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_sigma_abs = mcipsig_abs;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_sigma_inc = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_delta_d_d = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_p_inc = 0.1;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_p_transmit = 0.1;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_DW = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_nb_atoms = 1;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_d_omega = 0;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_d_phi = mcipD_PHI;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_tth_sign = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_p_interact = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_concentric = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_density = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_weight = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_barns = 1;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_Strain = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_focus_flip = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccSample_target_index = 0;
 #line 11065 "./Test_PowderN_Res.c"
 
@@ -11074,11 +11074,11 @@ void mcinit(void) {
   rot_transpose(mcrotaSampleSlit, mctr1);
   rot_mul(mcrotaSample, mctr1, mcrotrSample);
   mctc1 = coords_set(
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0,
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0,
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     mcipDistance);
 #line 11083 "./Test_PowderN_Res.c"
   rot_transpose(mcrotaSource, mctr1);
@@ -11094,47 +11094,47 @@ void mcinit(void) {
     /* Component Detector. */
   /* Setting parameters for component Detector. */
   SIG_MESSAGE("Detector (Init:SetPar)");
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetector_xwidth = 3.0;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetector_yheight = 0.09;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetector_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetector_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetector_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetector_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetector_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetector_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetector_zmax = 0;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetector_bins = 400;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetector_min = 19.9;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetector_max = 99.9;
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetector_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetector_radius = 0;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   if("banana, theta") strncpy(mccDetector_options, "banana, theta" ? "banana, theta" : "", 16384); else mccDetector_options[0]='\0';
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   if("detector.dat") strncpy(mccDetector_filename, "detector.dat" ? "detector.dat" : "", 16384); else mccDetector_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   if("NULL") strncpy(mccDetector_geometry, "NULL" ? "NULL" : "", 16384); else mccDetector_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   if("NULL") strncpy(mccDetector_username1, "NULL" ? "NULL" : "", 16384); else mccDetector_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   if("NULL") strncpy(mccDetector_username2, "NULL" ? "NULL" : "", 16384); else mccDetector_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   if("NULL") strncpy(mccDetector_username3, "NULL" ? "NULL" : "", 16384); else mccDetector_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetector_nowritefile = 0;
 #line 11139 "./Test_PowderN_Res.c"
 
@@ -11148,11 +11148,11 @@ void mcinit(void) {
   rot_transpose(mcrotaSample, mctr1);
   rot_mul(mcrotaDetector, mctr1, mcrotrDetector);
   mctc1 = coords_set(
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0,
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0,
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0);
 #line 11157 "./Test_PowderN_Res.c"
   rot_transpose(mcrotaSample, mctr1);
@@ -11168,47 +11168,47 @@ void mcinit(void) {
     /* Component DetectorSmall. */
   /* Setting parameters for component DetectorSmall. */
   SIG_MESSAGE("DetectorSmall (Init:SetPar)");
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmall_xwidth = 3.001;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmall_yheight = 0.09;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmall_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmall_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmall_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmall_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmall_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmall_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmall_zmax = 0;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmall_bins = 41;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmall_min = mcipTT -2;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmall_max = mcipTT + 2;
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmall_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmall_radius = 0;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   if("banana, theta") strncpy(mccDetectorSmall_options, "banana, theta" ? "banana, theta" : "", 16384); else mccDetectorSmall_options[0]='\0';
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   if("detectorsmall.dat") strncpy(mccDetectorSmall_filename, "detectorsmall.dat" ? "detectorsmall.dat" : "", 16384); else mccDetectorSmall_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   if("NULL") strncpy(mccDetectorSmall_geometry, "NULL" ? "NULL" : "", 16384); else mccDetectorSmall_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   if("NULL") strncpy(mccDetectorSmall_username1, "NULL" ? "NULL" : "", 16384); else mccDetectorSmall_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   if("NULL") strncpy(mccDetectorSmall_username2, "NULL" ? "NULL" : "", 16384); else mccDetectorSmall_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   if("NULL") strncpy(mccDetectorSmall_username3, "NULL" ? "NULL" : "", 16384); else mccDetectorSmall_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmall_nowritefile = 0;
 #line 11213 "./Test_PowderN_Res.c"
 
@@ -11222,11 +11222,11 @@ void mcinit(void) {
   rot_transpose(mcrotaDetector, mctr1);
   rot_mul(mcrotaDetectorSmall, mctr1, mcrotrDetectorSmall);
   mctc1 = coords_set(
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0,
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0,
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0);
 #line 11231 "./Test_PowderN_Res.c"
   rot_transpose(mcrotaSample, mctr1);
@@ -11242,47 +11242,47 @@ void mcinit(void) {
     /* Component DetectorSmallDiv. */
   /* Setting parameters for component DetectorSmallDiv. */
   SIG_MESSAGE("DetectorSmallDiv (Init:SetPar)");
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmallDiv_xwidth = 3.001;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmallDiv_yheight = 0.09;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmallDiv_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmallDiv_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmallDiv_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmallDiv_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmallDiv_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmallDiv_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmallDiv_zmax = 0;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmallDiv_bins = 41;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmallDiv_min = mcipTT -2;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmallDiv_max = mcipTT + 2;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmallDiv_restore_neutron = 1;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmallDiv_radius = 0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   if("banana, divergence") strncpy(mccDetectorSmallDiv_options, "banana, divergence" ? "banana, divergence" : "", 16384); else mccDetectorSmallDiv_options[0]='\0';
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   if("detectorsmall2.dat") strncpy(mccDetectorSmallDiv_filename, "detectorsmall2.dat" ? "detectorsmall2.dat" : "", 16384); else mccDetectorSmallDiv_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   if("NULL") strncpy(mccDetectorSmallDiv_geometry, "NULL" ? "NULL" : "", 16384); else mccDetectorSmallDiv_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   if("NULL") strncpy(mccDetectorSmallDiv_username1, "NULL" ? "NULL" : "", 16384); else mccDetectorSmallDiv_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   if("NULL") strncpy(mccDetectorSmallDiv_username2, "NULL" ? "NULL" : "", 16384); else mccDetectorSmallDiv_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   if("NULL") strncpy(mccDetectorSmallDiv_username3, "NULL" ? "NULL" : "", 16384); else mccDetectorSmallDiv_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccDetectorSmallDiv_nowritefile = 0;
 #line 11287 "./Test_PowderN_Res.c"
 
@@ -11296,11 +11296,11 @@ void mcinit(void) {
   rot_transpose(mcrotaDetectorSmall, mctr1);
   rot_mul(mcrotaDetectorSmallDiv, mctr1, mcrotrDetectorSmallDiv);
   mctc1 = coords_set(
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0);
 #line 11305 "./Test_PowderN_Res.c"
   rot_transpose(mcrotaSample, mctr1);
@@ -11319,22 +11319,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("TwoTheta (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     (0)*DEG2RAD,
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     (mcipTT)*DEG2RAD,
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     (0)*DEG2RAD);
 #line 11328 "./Test_PowderN_Res.c"
   rot_mul(mctr1, mcrotaSample, mcrotaTwoTheta);
   rot_transpose(mcrotaDetectorSmallDiv, mctr1);
   rot_mul(mcrotaTwoTheta, mctr1, mcrotrTwoTheta);
   mctc1 = coords_set(
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0,
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0,
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0);
 #line 11339 "./Test_PowderN_Res.c"
   rot_transpose(mcrotaSample, mctr1);
@@ -11350,25 +11350,25 @@ void mcinit(void) {
     /* Component PSD. */
   /* Setting parameters for component PSD. */
   SIG_MESSAGE("PSD (Init:SetPar)");
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccPSD_nx = 90;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccPSD_ny = 90;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   if("smallPSD") strncpy(mccPSD_filename, "smallPSD" ? "smallPSD" : "", 16384); else mccPSD_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccPSD_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccPSD_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccPSD_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccPSD_ymax = 0.05;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccPSD_xwidth = 0.001;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccPSD_yheight = 0.1;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   mccPSD_restore_neutron = 0;
 #line 11373 "./Test_PowderN_Res.c"
 
@@ -11382,11 +11382,11 @@ void mcinit(void) {
   rot_transpose(mcrotaTwoTheta, mctr1);
   rot_mul(mcrotaPSD, mctr1, mcrotrPSD);
   mctc1 = coords_set(
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0,
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     0,
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
     1.51);
 #line 11391 "./Test_PowderN_Res.c"
   rot_transpose(mcrotaTwoTheta, mctr1);
@@ -13301,7 +13301,7 @@ int target_index = mccSample_target_index;
 #line 13301 "./Test_PowderN_Res.c"
 /* 'Sample=PowderN()' component instance extend code */
     SIG_MESSAGE("Sample (Trace:Extend)");
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PowderN_Res/Test_PowderN_Res.instr"
   if(!SCATTERED) ABSORB;
 #line 13306 "./Test_PowderN_Res.c"
 }   /* End of Sample=PowderN() SETTING parameter declarations. */

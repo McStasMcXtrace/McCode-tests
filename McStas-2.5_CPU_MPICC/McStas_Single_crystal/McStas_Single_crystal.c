@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr (McStas_Single_crystal)
- * Date:       Wed Nov 20 00:44:07 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr (McStas_Single_crystal)
+ * Date:       Tue Feb 25 20:59:26 2020
  * File:       ./McStas_Single_crystal.c
  * Compile:    cc -o McStas_Single_crystal.out ./McStas_Single_crystal.c  -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
  * CFLAGS= -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "McStas_Single_crystal";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -8837,7 +8837,7 @@ void mcinit(void) {
 #define rot_x mciprot_x
 #define rot_y mciprot_y
 #define rot_z mciprot_z
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
 {
 
 
@@ -8876,23 +8876,23 @@ void mcinit(void) {
     /* Component mcpl_in. */
   /* Setting parameters for component mcpl_in. */
   SIG_MESSAGE("mcpl_in (Init:SetPar)");
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   if("McStas_Single_crystal_in.mcpl") strncpy(mccmcpl_in_filename, "McStas_Single_crystal_in.mcpl" ? "McStas_Single_crystal_in.mcpl" : "", 16384); else mccmcpl_in_filename[0]='\0';
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccmcpl_in_polarisationuse = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccmcpl_in_verbose = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccmcpl_in_Emin = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccmcpl_in_Emax = FLT_MAX;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccmcpl_in_repeat_count = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccmcpl_in_E_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccmcpl_in_pos_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccmcpl_in_dir_smear = 0;
 #line 8897 "./McStas_Single_crystal.c"
 
@@ -8904,11 +8904,11 @@ void mcinit(void) {
 #line 8904 "./McStas_Single_crystal.c"
   rot_copy(mcrotrmcpl_in, mcrotamcpl_in);
   mcposamcpl_in = coords_set(
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
     0,
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
     0,
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
     0);
 #line 8913 "./McStas_Single_crystal.c"
   mctc1 = coords_neg(mcposamcpl_in);
@@ -8921,93 +8921,93 @@ void mcinit(void) {
     /* Component SX. */
   /* Setting parameters for component SX. */
   SIG_MESSAGE("SX (Init:SetPar)");
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   if(mcipreflections) strncpy(mccSX_reflections, mcipreflections ? mcipreflections : "", 16384); else mccSX_reflections[0]='\0';
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   if(mcipgeometry) strncpy(mccSX_geometry, mcipgeometry ? mcipgeometry : "", 16384); else mccSX_geometry[0]='\0';
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_xwidth = mcipxwidth;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_yheight = mcipyheight;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_zdepth = mcipzdepth;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_radius = mcipradius;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_delta_d_d = mcipdelta_d_d;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_mosaic = mcipmosaic;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_mosaic_a = mcipmosaic_a;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_mosaic_b = mcipmosaic_b;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_mosaic_c = mcipmosaic_c;
-#line 285 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 285 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_recip_cell = 0;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_barns = mcipbarns;
-#line 286 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 286 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_ax = 0;
-#line 286 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 286 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_ay = 0;
-#line 286 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 286 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_az = 0;
-#line 287 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 287 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_bx = 0;
-#line 287 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 287 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_by = 0;
-#line 287 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 287 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_bz = 0;
-#line 288 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 288 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_cx = 0;
-#line 288 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 288 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_cy = 0;
-#line 288 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 288 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_cz = 0;
-#line 289 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 289 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_p_transmit = 0.001;
-#line 289 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 289 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_sigma_abs = 0;
-#line 289 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 289 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_sigma_inc = 0;
-#line 290 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 290 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_aa = 0;
-#line 290 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 290 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_bb = 0;
-#line 290 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 290 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_cc = 0;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_order = mciporder;
-#line 290 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 290 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_RX = 0;
-#line 290 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 290 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_RY = 0;
-#line 290 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 290 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_powder = 0;
-#line 290 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 290 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_PG = 0;
-#line 291 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 291 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccSX_deltak = 1e-6;
 #line 8992 "./McStas_Single_crystal.c"
 
   SIG_MESSAGE("SX (Init:Place/Rotate)");
   rot_set_rotation(mcrotaSX,
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
     (mciprot_x)*DEG2RAD,
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
     (mciprot_y)*DEG2RAD,
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
     (mciprot_z)*DEG2RAD);
 #line 9002 "./McStas_Single_crystal.c"
   rot_transpose(mcrotamcpl_in, mctr1);
   rot_mul(mcrotaSX, mctr1, mcrotrSX);
   mcposaSX = coords_set(
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
     0,
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
     0,
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
     0);
 #line 9012 "./McStas_Single_crystal.c"
   mctc1 = coords_sub(mcposamcpl_in, mcposaSX);
@@ -9020,13 +9020,13 @@ void mcinit(void) {
     /* Component mcpl_out. */
   /* Setting parameters for component mcpl_out. */
   SIG_MESSAGE("mcpl_out (Init:SetPar)");
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   if("McStas_Single_crystal_out.mcpl") strncpy(mccmcpl_out_filename, "McStas_Single_crystal_out.mcpl" ? "McStas_Single_crystal_out.mcpl" : "", 16384); else mccmcpl_out_filename[0]='\0';
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   if("") strncpy(mccmcpl_out_userflagcomment, "" ? "" : "", 16384); else mccmcpl_out_userflagcomment[0]='\0';
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccmcpl_out_merge_mpi = 1;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
   mccmcpl_out_keep_mpi_unmerged = 0;
 #line 9031 "./McStas_Single_crystal.c"
 
@@ -9039,11 +9039,11 @@ void mcinit(void) {
   rot_transpose(mcrotaSX, mctr1);
   rot_mul(mcrotamcpl_out, mctr1, mcrotrmcpl_out);
   mcposamcpl_out = coords_set(
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
     0,
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
     0,
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/McStas_Single_crystal/McStas_Single_crystal.instr"
     0);
 #line 9048 "./McStas_Single_crystal.c"
   mctc1 = coords_sub(mcposaSX, mcposamcpl_out);

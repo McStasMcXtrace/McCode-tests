@@ -1,11 +1,37 @@
-      [1574205507.207554] [n-62-23-6:31857:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3382.76
-[1574205507.209243] [n-62-23-6:31857:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574205507.209247] [n-62-23-6:31857:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574205507.211351] [n-62-23-6:31857:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574205507.211354] [n-62-23-6:31857:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: No output directory specified (--dir)
+INFO: Using directory: "ILL_H142_IN12_20200225_202908"
+INFO: Regenerating c-file: ILL_H142_IN12.c
+Info:    'Al_window' is a contributed component.
+Info:    Defining SPLIT from PG1Xtal=Monochromator_curved() to END in instrument ILL_H142_IN12
+Info:    Defining SPLIT from Sample_Cradle=Monitor_nD() to END in instrument ILL_H142_IN12
+Info:    Defining SPLIT from PG2Xtal=Monochromator_curved() to END in instrument ILL_H142_IN12
+CFLAGS=
+      INFO: Recompiling: ./ILL_H142_IN12.out
+./ILL_H142_IN12.c: In function 'mcraytrace':
+./ILL_H142_IN12.c:51670:6: note: variable tracking size limit exceeded with -fvar-tracking-assignments, retrying without
+ 
+      ^         
+./ILL_H142_IN12.c: In function 'mcinit':
+./ILL_H142_IN12.c:25209:6: note: variable tracking size limit exceeded with -fvar-tracking-assignments, retrying without
+ 
+      ^     
+INFO: ===
+[n-62-23-14:00982] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:00982] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582659015.914810] [n-62-23-14:981  :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3304.49
+[1582659015.916778] [n-62-23-14:981  :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582659015.916782] [n-62-23-14:981  :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1582659015.919702] [n-62-23-14:981  :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582659015.919705] [n-62-23-14:981  :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 begin instrument: ILL_H142_IN12
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H142_IN12/ILL_H142_IN12.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H142_IN12/ILL_H142_IN12.instr
   Parameters:  m(double) KI(double) QM(double) EN(double) verbose(double) WM(double) HM(double) NHM(double) NVM(double) RMV(double) WA(double) HA(double) NHA(double) NVA(double) RAH(double) L2(double) L3(double) L4(double) lambda(double) dlambda(double) gH(double) mip(double) KF(double) EI(double) EF(double) QH(double) QK(double) QL(double) KFIX(double) FX(double) L1(double) SM(double) SS(double) SA(double) DM(double) DA(double) RMH(double) RAV(double) ETAM(double) ETAA(double) ALF1(double) ALF2(double) ALF3(double) ALF4(double) BET1(double) BET2(double) BET3(double) BET4(double) AS(double) BS(double) CS(double) AA(double) BB(double) CC(double) AX(double) AY(double) AZ(double) BX(double) BY(double) BZ(double) A1(double) A2(double) A3(double) A4(double) A5(double) A6(double) Sqw_coh(string) Sqw_inc(string) radius(double) thickness(double) height(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +40,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H142_IN12/ILL_H142_IN12.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H142_IN12/ILL_H142_IN12.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1574237364
+  Seed: 1582659996
   Directory: .
   Param: m=1
   Param: KI=2.662
@@ -94,27 +120,3 @@ begin simulation: .
   Param: height=0.05
 end simulation
 info!
-INFO: No output directory specified (--dir)
-INFO: Using directory: "ILL_H142_IN12_20191120_001722"
-INFO: Regenerating c-file: ILL_H142_IN12.c
-Info:    'Al_window' is a contributed component.
-Info:    Defining SPLIT from PG1Xtal=Monochromator_curved() to END in instrument ILL_H142_IN12
-Info:    Defining SPLIT from Sample_Cradle=Monitor_nD() to END in instrument ILL_H142_IN12
-Info:    Defining SPLIT from PG2Xtal=Monochromator_curved() to END in instrument ILL_H142_IN12
-CFLAGS=
-INFO: Recompiling: ./ILL_H142_IN12.out
-./ILL_H142_IN12.c: In function 'mcraytrace':
-./ILL_H142_IN12.c:51670:6: note: variable tracking size limit exceeded with -fvar-tracking-assignments, retrying without
- 
-      ^         
-./ILL_H142_IN12.c: In function 'mcinit':
-./ILL_H142_IN12.c:25209:6: note: variable tracking size limit exceeded with -fvar-tracking-assignments, retrying without
- 
-      ^     
-INFO: ===
---------------------------------------------------------------------------
-Initialization of MXM library failed.
-
-  Error: Input/output error
-
---------------------------------------------------------------------------

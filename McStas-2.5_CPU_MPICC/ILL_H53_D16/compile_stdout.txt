@@ -1,11 +1,29 @@
-      [1574206498.595681] [n-62-23-6:5328 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3366.01
-[1574206498.597018] [n-62-23-6:5328 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574206498.597022] [n-62-23-6:5328 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574206498.598894] [n-62-23-6:5328 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574206498.598897] [n-62-23-6:5328 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: No output directory specified (--dir)
+INFO: Using directory: "ILL_H53_D16_20200225_204813"
+INFO: Regenerating c-file: ILL_H53_D16.c
+Info:    'Al_window' is a contributed component.
+Info:    'PSD_Detector' is a contributed component.
+Info:    Defining SPLIT from mono=Monochromator_curved() to END in instrument ILL_H53_D16
+Info:    Defining SPLIT from D16_xy=Monitor_nD() to END in instrument ILL_H53_D16
+CFLAGS=
+      INFO: Recompiling: ./ILL_H53_D16.out
+INFO: ===
+[n-62-23-14:03502] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:03502] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582660163.713890] [n-62-23-14:3501 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.27
+[1582660163.715977] [n-62-23-14:3501 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582660163.715981] [n-62-23-14:3501 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1582660163.718956] [n-62-23-14:3501 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582660163.718960] [n-62-23-14:3501 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 begin instrument: ILL_H53_D16
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H53_D16/ILL_H53_D16.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H53_D16/ILL_H53_D16.instr
   Parameters:  lambda(double) DM(double) dlambda(double) Powder(string) RV(double) L1(double) L2(double) L3(double) THETA_M(double) TwoTheta(double) RadiusDet(double) DetEthick(double) DetEgap(double) DetVthick(double) verbose(double) TILT(double) m(double) mip(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +32,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H53_D16/ILL_H53_D16.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H53_D16/ILL_H53_D16.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1574211826
+  Seed: 1582663664
   Directory: .
   Param: lambda=4.7
   Param: DM=3.355
@@ -41,19 +59,3 @@ begin simulation: .
   Param: mip=1.2
 end simulation
 info!
-INFO: No output directory specified (--dir)
-INFO: Using directory: "ILL_H53_D16_20191120_003403"
-INFO: Regenerating c-file: ILL_H53_D16.c
-Info:    'Al_window' is a contributed component.
-Info:    'PSD_Detector' is a contributed component.
-Info:    Defining SPLIT from mono=Monochromator_curved() to END in instrument ILL_H53_D16
-Info:    Defining SPLIT from D16_xy=Monitor_nD() to END in instrument ILL_H53_D16
-CFLAGS=
-INFO: Recompiling: ./ILL_H53_D16.out
-INFO: ===
---------------------------------------------------------------------------
-Initialization of MXM library failed.
-
-  Error: Input/output error
-
---------------------------------------------------------------------------

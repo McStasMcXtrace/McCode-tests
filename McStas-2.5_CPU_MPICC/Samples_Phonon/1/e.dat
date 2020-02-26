@@ -1,11 +1,11 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Nov. 19, 2019
-# Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr
+# Creator: McStas 2.5 - Feb. 24, 2020
+# Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr
 # Ncount: 1000000
 # Trace: no
 # Gravitation: no
-# Seed: 1574233474
+# Seed: 1582681547
 # Directory: 1
 # Nodes: 10
 # Param: E=10
@@ -15,17 +15,17 @@
 # Param: TT=72.69
 # Param: OM=-43.3
 # Param: C=8
-# Date: Wed Nov 20 01:08:15 2019 (1574208495)
+# Date: Tue Feb 25 21:36:18 2020 (1582662978)
 # type: array_1d(400)
-# Source: Samples_Phonon (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr)
+# Source: Samples_Phonon (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Phonon/Samples_Phonon.instr)
 # component: mon1
 # position: 0.954709 0 1.29754
 # title: Energy monitor
 # Ncount: 10000000
 # filename: e.dat
-# statistics: X0=10.3478; dX=3.75205;
-# signal: Min=0; Max=9.12284e-23; Mean=4.50648e-25;
-# values: 1.80259e-22 6.16313e-26 1e+07
+# statistics: X0=10.3503; dX=3.75319;
+# signal: Min=0; Max=9.11169e-23; Mean=4.50508e-25;
+# values: 1.80203e-22 6.16146e-26 1e+07
 # xvar: E
 # yvar: (I,I_err)
 # xlabel: Energy [meV]
@@ -110,8 +110,8 @@
 7.55 0 0 0 
 7.65 0 0 0 
 7.75 0 0 0 
-7.85 3.588175227e-23 2.966060773e-26 1463565 
-7.95 9.122836955e-23 4.851165116e-26 3538205 
+7.85 3.589925896e-23 2.966779256e-26 1464284 
+7.95 9.111690283e-23 4.848179709e-26 3533912 
 8.05 0 0 0 
 8.15 0 0 0 
 8.25 0 0 0 
@@ -193,7 +193,7 @@
 15.85 0 0 0 
 15.95 0 0 0 
 16.05 0 0 0 
-16.15 5.314902802e-23 2.377579711e-26 4998230 
+16.15 5.318700101e-23 2.378428134e-26 5001804 
 16.25 0 0 0 
 16.35 0 0 0 
 16.45 0 0 0 

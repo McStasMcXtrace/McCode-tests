@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr (Test_Sample_nxs_diffraction)
- * Date:       Wed Nov 20 00:52:28 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr (Test_Sample_nxs_diffraction)
+ * Date:       Tue Feb 25 21:07:11 2020
  * File:       ./Test_Sample_nxs_diffraction.c
  * Compile:    cc -o Test_Sample_nxs_diffraction.out ./Test_Sample_nxs_diffraction.c  -I@MCCODE_LIB@/libs/libnxs/ @MCCODE_LIB@/libs/libnxs/libnxs.a
  * CFLAGS= -I@MCCODE_LIB@/libs/libnxs/ @MCCODE_LIB@/libs/libnxs/libnxs.a
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Test_Sample_nxs_diffraction";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -9785,7 +9785,7 @@ void mcinit(void) {
 #define sample_x mcipsample_x
 #define sample_file mcipsample_file
 #define moderator_face mcipmoderator_face
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
 {
 
 }
@@ -9824,11 +9824,11 @@ void mcinit(void) {
 #line 9824 "./Test_Sample_nxs_diffraction.c"
   rot_copy(mcrotra1, mcrotaa1);
   mcposaa1 = coords_set(
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0,
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0,
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0);
 #line 9833 "./Test_Sample_nxs_diffraction.c"
   mctc1 = coords_neg(mcposaa1);
@@ -9841,31 +9841,31 @@ void mcinit(void) {
     /* Component moderator. */
   /* Setting parameters for component moderator. */
   SIG_MESSAGE("moderator (Init:SetPar)");
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccmoderator_Emin = - mciplambda1;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccmoderator_Emax = - mciplambda2;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccmoderator_dist = 4.0;
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccmoderator_focus_xw = 0.001;
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccmoderator_focus_yh = 0.001;
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccmoderator_xwidth = 0.001;
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccmoderator_yheight = 0.001;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccmoderator_CAngle = 0.0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccmoderator_SAC = 1;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccmoderator_Lmin = 0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccmoderator_Lmax = 0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccmoderator_target_index = + 1;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccmoderator_verbose = 0;
 #line 9870 "./Test_Sample_nxs_diffraction.c"
 
@@ -9879,11 +9879,11 @@ void mcinit(void) {
   rot_transpose(mcrotaa1, mctr1);
   rot_mul(mcrotamoderator, mctr1, mcrotrmoderator);
   mctc1 = coords_set(
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0.0,
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0.0,
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0.0);
 #line 9888 "./Test_Sample_nxs_diffraction.c"
   rot_transpose(mcrotaa1, mctr1);
@@ -9899,19 +9899,19 @@ void mcinit(void) {
     /* Component pinhole. */
   /* Setting parameters for component pinhole. */
   SIG_MESSAGE("pinhole (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccpinhole_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccpinhole_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccpinhole_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccpinhole_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccpinhole_radius = 0;
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccpinhole_xwidth = 0.002;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccpinhole_yheight = 0.002;
 #line 9916 "./Test_Sample_nxs_diffraction.c"
 
@@ -9925,11 +9925,11 @@ void mcinit(void) {
   rot_transpose(mcrotamoderator, mctr1);
   rot_mul(mcrotapinhole, mctr1, mcrotrpinhole);
   mctc1 = coords_set(
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0.0,
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0.0,
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     mcipmoderator_pinhole_distance);
 #line 9934 "./Test_Sample_nxs_diffraction.c"
   rot_transpose(mcrotamoderator, mctr1);
@@ -9945,47 +9945,47 @@ void mcinit(void) {
     /* Component sample1. */
   /* Setting parameters for component sample1. */
   SIG_MESSAGE("sample1 (Init:SetPar)");
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccsample1_xwidth = 0;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccsample1_yheight = 0.005;
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccsample1_zthick = 0;
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccsample1_radius = 0.0025;
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccsample1_thickness = 0;
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   if(0) strncpy(mccsample1_geometry, 0 ? 0 : "", 16384); else mccsample1_geometry[0]='\0';
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   if(mcipsample_file) strncpy(mccsample1_nxsFileName, mcipsample_file ? mcipsample_file : "", 16384); else mccsample1_nxsFileName[0]='\0';
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccsample1_max_hkl = 8;
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccsample1_d_phi = 110.0;
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   if("") strncpy(mccsample1_strainFileName, "" ? "" : "", 16384); else mccsample1_strainFileName[0]='\0';
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccsample1_sample_temp = 293.0;
 #line 9970 "./Test_Sample_nxs_diffraction.c"
 
   SIG_MESSAGE("sample1 (Init:Place/Rotate)");
   rot_set_rotation(mcrotasample1,
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     (0)*DEG2RAD,
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     (0)*DEG2RAD,
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     (0)*DEG2RAD);
 #line 9980 "./Test_Sample_nxs_diffraction.c"
   rot_transpose(mcrotapinhole, mctr1);
   rot_mul(mcrotasample1, mctr1, mcrotrsample1);
   mctc1 = coords_set(
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     mcipsample_x,
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0.0,
-#line 77 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 77 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     mcippinhole_sample_distance);
 #line 9990 "./Test_Sample_nxs_diffraction.c"
   rot_transpose(mcrotapinhole, mctr1);
@@ -10004,22 +10004,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("sample (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     (0)*DEG2RAD,
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     (0)*DEG2RAD,
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     (0)*DEG2RAD);
 #line 10013 "./Test_Sample_nxs_diffraction.c"
   rot_mul(mctr1, mcrotasample1, mcrotasample);
   rot_transpose(mcrotasample1, mctr1);
   rot_mul(mcrotasample, mctr1, mcrotrsample);
   mctc1 = coords_set(
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0,
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0,
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0);
 #line 10024 "./Test_Sample_nxs_diffraction.c"
   rot_transpose(mcrotasample1, mctr1);
@@ -10035,19 +10035,19 @@ void mcinit(void) {
     /* Component beamstop. */
   /* Setting parameters for component beamstop. */
   SIG_MESSAGE("beamstop (Init:SetPar)");
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccbeamstop_xmin = -0.05;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccbeamstop_xmax = 0.05;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccbeamstop_ymin = -0.05;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccbeamstop_ymax = 0.05;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccbeamstop_xwidth = 0;
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccbeamstop_yheight = 0;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccbeamstop_radius = 0.005;
 #line 10052 "./Test_Sample_nxs_diffraction.c"
 
@@ -10061,11 +10061,11 @@ void mcinit(void) {
   rot_transpose(mcrotasample, mctr1);
   rot_mul(mcrotabeamstop, mctr1, mcrotrbeamstop);
   mctc1 = coords_set(
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     - mcipsample_x,
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0,
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0.05);
 #line 10070 "./Test_Sample_nxs_diffraction.c"
   rot_transpose(mcrotasample, mctr1);
@@ -10081,13 +10081,13 @@ void mcinit(void) {
     /* Component psd4pi. */
   /* Setting parameters for component psd4pi. */
   SIG_MESSAGE("psd4pi (Init:SetPar)");
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   if("psd4pi.psd") strncpy(mccpsd4pi_filename, "psd4pi.psd" ? "psd4pi.psd" : "", 16384); else mccpsd4pi_filename[0]='\0';
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccpsd4pi_radius = 0.5;
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccpsd4pi_restore_neutron = 1;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccpsd4pi_nowritefile = 0;
 #line 10092 "./Test_Sample_nxs_diffraction.c"
 
@@ -10101,11 +10101,11 @@ void mcinit(void) {
   rot_transpose(mcrotabeamstop, mctr1);
   rot_mul(mcrotapsd4pi, mctr1, mcrotrpsd4pi);
   mctc1 = coords_set(
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     - mcipsample_x,
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0,
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0);
 #line 10110 "./Test_Sample_nxs_diffraction.c"
   rot_transpose(mcrotasample, mctr1);
@@ -10121,29 +10121,29 @@ void mcinit(void) {
     /* Component tofmon. */
   /* Setting parameters for component tofmon. */
   SIG_MESSAGE("tofmon (Init:SetPar)");
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   if("tofmon.dat") strncpy(mcctofmon_filename, "tofmon.dat" ? "tofmon.dat" : "", 16384); else mcctofmon_filename[0]='\0';
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mcctofmon_xmin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mcctofmon_xmax = 0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mcctofmon_ymin = -0.05;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mcctofmon_ymax = 0.05;
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mcctofmon_xwidth = 0.1;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mcctofmon_yheight = 0.1;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mcctofmon_tmin = 25000;
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mcctofmon_tmax = 45000;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mcctofmon_dt = 1.0;
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mcctofmon_restore_neutron = 1;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mcctofmon_nowritefile = 0;
 #line 10148 "./Test_Sample_nxs_diffraction.c"
 
@@ -10157,11 +10157,11 @@ void mcinit(void) {
   rot_transpose(mcrotapsd4pi, mctr1);
   rot_mul(mcrotatofmon, mctr1, mcrotrtofmon);
   mctc1 = coords_set(
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     - mcipsample_x,
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0,
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     mcipsample_detector_distance);
 #line 10166 "./Test_Sample_nxs_diffraction.c"
   rot_transpose(mcrotasample, mctr1);
@@ -10177,27 +10177,27 @@ void mcinit(void) {
     /* Component lmon. */
   /* Setting parameters for component lmon. */
   SIG_MESSAGE("lmon (Init:SetPar)");
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   if("lmon.dat") strncpy(mcclmon_filename, "lmon.dat" ? "lmon.dat" : "", 16384); else mcclmon_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mcclmon_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mcclmon_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mcclmon_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mcclmon_ymax = 0.05;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mcclmon_xwidth = 0.1;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mcclmon_yheight = 0.1;
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mcclmon_Lmin = mciplambda1 - mciplambda2;
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mcclmon_Lmax = mciplambda1 + mciplambda2;
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mcclmon_restore_neutron = 1;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mcclmon_nowritefile = 0;
 #line 10202 "./Test_Sample_nxs_diffraction.c"
 
@@ -10211,11 +10211,11 @@ void mcinit(void) {
   rot_transpose(mcrotatofmon, mctr1);
   rot_mul(mcrotalmon, mctr1, mcrotrlmon);
   mctc1 = coords_set(
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     - mcipsample_x,
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0,
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     mcipsample_detector_distance);
 #line 10220 "./Test_Sample_nxs_diffraction.c"
   rot_transpose(mcrotasample, mctr1);
@@ -10234,22 +10234,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("rot90 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     (0)*DEG2RAD,
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     (60)*DEG2RAD,
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     (0)*DEG2RAD);
 #line 10243 "./Test_Sample_nxs_diffraction.c"
   rot_mul(mctr1, mcrotasample, mcrotarot90);
   rot_transpose(mcrotalmon, mctr1);
   rot_mul(mcrotarot90, mctr1, mcrotrrot90);
   mctc1 = coords_set(
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0,
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0,
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0);
 #line 10254 "./Test_Sample_nxs_diffraction.c"
   rot_transpose(mcrotasample, mctr1);
@@ -10265,19 +10265,19 @@ void mcinit(void) {
     /* Component blende. */
   /* Setting parameters for component blende. */
   SIG_MESSAGE("blende (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccblende_xmin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccblende_xmax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccblende_ymin = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccblende_ymax = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccblende_radius = 0;
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccblende_xwidth = 0.001;
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccblende_yheight = 0.1002;
 #line 10282 "./Test_Sample_nxs_diffraction.c"
 
@@ -10291,11 +10291,11 @@ void mcinit(void) {
   rot_transpose(mcrotarot90, mctr1);
   rot_mul(mcrotablende, mctr1, mcrotrblende);
   mctc1 = coords_set(
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0.0,
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0.0,
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0.026);
 #line 10300 "./Test_Sample_nxs_diffraction.c"
   rot_transpose(mcrotarot90, mctr1);
@@ -10311,25 +10311,25 @@ void mcinit(void) {
     /* Component detector. */
   /* Setting parameters for component detector. */
   SIG_MESSAGE("detector (Init:SetPar)");
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccdetector_nx = 500;
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccdetector_ny = 500;
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   if("PSD.dat") strncpy(mccdetector_filename, "PSD.dat" ? "PSD.dat" : "", 16384); else mccdetector_filename[0]='\0';
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccdetector_xmin = -0.5;
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccdetector_xmax = 0.5;
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccdetector_ymin = -0.3;
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccdetector_ymax = 0.3;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccdetector_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccdetector_yheight = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
   mccdetector_restore_neutron = 0;
 #line 10334 "./Test_Sample_nxs_diffraction.c"
 
@@ -10343,11 +10343,11 @@ void mcinit(void) {
   rot_transpose(mcrotablende, mctr1);
   rot_mul(mcrotadetector, mctr1, mcrotrdetector);
   mctc1 = coords_set(
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0,
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     0,
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr"
     1.0);
 #line 10352 "./Test_Sample_nxs_diffraction.c"
   rot_transpose(mcrotarot90, mctr1);

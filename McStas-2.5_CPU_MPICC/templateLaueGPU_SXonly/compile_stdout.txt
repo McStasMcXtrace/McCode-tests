@@ -1,5 +1,5 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "templateLaueGPU_SXonly_20191120_005754"
+INFO: Using directory: "templateLaueGPU_SXonly_20200225_211302"
 INFO: Regenerating c-file: templateLaueGPU_SXonly.c
 CFLAGS=  -I@MCCODE_LIB@/share @OPENCL_CFLAGS@ -DUSE_OPENCL -DMC_RAND_ALG=1
 INFO: Recompiling: ./templateLaueGPU_SXonly.out

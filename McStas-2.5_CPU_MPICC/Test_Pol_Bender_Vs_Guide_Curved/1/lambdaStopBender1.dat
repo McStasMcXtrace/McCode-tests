@@ -1,26 +1,26 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Nov. 19, 2019
-# Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr
+# Creator: McStas 2.5 - Feb. 24, 2020
+# Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr
 # Ncount: 1000000
 # Trace: no
 # Gravitation: no
-# Seed: 1574241090
+# Seed: 1582689150
 # Directory: 1
 # Nodes: 10
 # Param: guideLength=10
 # Param: guideRadius=100
-# Date: Wed Nov 20 01:18:04 2019 (1574209084)
+# Date: Tue Feb 25 21:59:27 2020 (1582664367)
 # type: array_1d(20)
-# Source: Test_Pol_Bender_Vs_Guide_Curved (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr)
+# Source: Test_Pol_Bender_Vs_Guide_Curved (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr)
 # component: lamStopBender1
 # position: 0.504575 0 11.2331
 # title: Wavelength monitor
 # Ncount: 10000000
 # filename: lambdaStopBender1.dat
-# statistics: X0=8.65033; dX=0.619249;
-# signal: Min=0; Max=0.000772186; Mean=0.000103158;
-# values: 0.00206316 3.95769e-06 1.37516e+06
+# statistics: X0=8.65107; dX=0.61836;
+# signal: Min=0; Max=0.000768012; Mean=0.000102703;
+# values: 0.00205407 3.94896e-06 1.37339e+06
 # xvar: L
 # yvar: (I,I_err)
 # xlabel: Wavelength [AA]
@@ -34,16 +34,16 @@
 2.25 0 0 0 
 2.75 0 0 0 
 3.25 0 0 0 
-3.75 1.250060603e-22 2.101741424e-23 977 
-4.25 6.78454038e-18 7.58763649e-19 13692 
-4.75 5.102208879e-14 5.068779241e-15 45070 
-5.25 6.608399256e-11 4.736261688e-12 82091 
-5.75 2.445114715e-08 1.249047973e-09 107117 
-6.25 2.119426943e-06 5.28898371e-08 127860 
-6.75 2.340931602e-05 2.907163404e-07 142451 
-7.25 9.051844272e-05 6.99138919e-07 153855 
-7.75 0.0002119160044 1.170530537e-06 163603 
-8.25 0.0003836885855 1.661563687e-06 173517 
-8.75 0.0005792997856 2.126190196e-06 180570 
-9.25 0.0007721860254 2.536860332e-06 184357 
+3.75 1.17122989e-22 2.069284265e-23 950 
+4.25 7.470046826e-18 1.113004643e-18 13856 
+4.75 4.103060578e-14 3.56292603e-15 45718 
+5.25 5.55151561e-11 4.024245527e-12 80741 
+5.75 2.815476636e-08 1.43494233e-09 107047 
+6.25 2.055851571e-06 5.281849642e-08 127905 
+6.75 2.281837566e-05 2.868698109e-07 142154 
+7.25 9.093462829e-05 6.998403155e-07 153848 
+7.75 0.0002091098852 1.162154273e-06 164004 
+8.25 0.000381698383 1.656796203e-06 173467 
+8.75 0.0005794129187 2.127502999e-06 180230 
+9.25 0.0007680115474 2.529357274e-06 183467 
 9.75 0 0 0 

@@ -1,10 +1,10 @@
 McStas simulation description file for Samples_vanadium.
-Date:    Wed Nov 20 01:08:16 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:36:19 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: Samples_vanadium
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr
   Parameters:  ROT(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,29 +14,29 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574234098
+  Seed: 1582681906
   Directory: 1
   Nodes: 10
   Param: ROT=0
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:08:17 2019 (1574208497)
+  Date: Tue Feb 25 21:36:22 2020 (1582662982)
   type: array_2d(101, 51)
-  Source: Samples_vanadium (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr)
+  Source: Samples_vanadium (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_vanadium/Samples_vanadium.instr)
   component: PSD_4pi
   position: 0 0 1
   title: 4PI PSD monitor
   Ncount: 10000000
   filename: vanadium.psd
-  statistics: X0=0.0330292; dX=105.768; Y0=1.75981; dY=38.9928;
-  signal: Min=6.89943e-11; Max=2.7559e-08; Mean=1.5469e-08;
-  values: 7.96809e-05 3.29136e-08 9.0999e+06
+  statistics: X0=-0.0313808; dX=105.774; Y0=1.78736; dY=39.0094;
+  signal: Min=5.83546e-11; Max=2.73585e-08; Mean=1.5474e-08;
+  values: 7.97063e-05 3.29212e-08 9.10068e+06
   xvar: Longitude
   yvar: Lattitude
   xlabel: Longitude [deg]

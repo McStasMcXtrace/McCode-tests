@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr (Tomography)
- * Date:       Wed Nov 20 00:53:20 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr (Tomography)
+ * Date:       Tue Feb 25 21:08:08 2020
  * File:       ./Tomography.c
  * Compile:    cc -o Tomography.out ./Tomography.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Tomography";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -10198,13 +10198,13 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccOrigin_minutes = 0;
 #line 10209 "./Tomography.c"
 
@@ -10216,11 +10216,11 @@ void mcinit(void) {
 #line 10216 "./Tomography.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
     0,
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
     0,
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
     0);
 #line 10225 "./Tomography.c"
   mctc1 = coords_neg(mcposaOrigin);
@@ -10233,25 +10233,25 @@ void mcinit(void) {
     /* Component source. */
   /* Setting parameters for component source. */
   SIG_MESSAGE("source (Init:SetPar)");
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsource_xwidth = mcipsource_w;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsource_yheight = mcipsource_h;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsource_focus_aw = mcipdiv_h;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsource_focus_ah = mcipdiv_v;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsource_E0 = 14;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsource_dE = .5;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsource_lambda0 = 0.0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsource_dlambda = 0.0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsource_gauss = 0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsource_flux = 1;
 #line 10256 "./Tomography.c"
 
@@ -10265,11 +10265,11 @@ void mcinit(void) {
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotasource, mctr1, mcrotrsource);
   mctc1 = coords_set(
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
     0,
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
     0,
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
     0);
 #line 10274 "./Tomography.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -10288,22 +10288,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("samplearm (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
     (0)*DEG2RAD,
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
     (mcipomega)*DEG2RAD,
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
     (0)*DEG2RAD);
 #line 10297 "./Tomography.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotasamplearm);
   rot_transpose(mcrotasource, mctr1);
   rot_mul(mcrotasamplearm, mctr1, mcrotrsamplearm);
   mctc1 = coords_set(
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
     0,
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
     0,
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
     1 + 0);
 #line 10308 "./Tomography.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -10319,57 +10319,57 @@ void mcinit(void) {
     /* Component sample. */
   /* Setting parameters for component sample. */
   SIG_MESSAGE("sample (Init:SetPar)");
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   if(mcipgeometry) strncpy(mccsample_geometry, mcipgeometry ? mcipgeometry : "", 16384); else mccsample_geometry[0]='\0';
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_radius = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_xwidth = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_yheight = 0.1;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_zdepth = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_thickness = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_target_x = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_target_y = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_target_z = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_focus_r = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_focus_xw = mcipdet_w;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_focus_yh = mcipdet_h;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_focus_aw = 0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_focus_ah = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_target_index = 1;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_pack = 1;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_p_interact = mcipfrac_scatt;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_f_QE = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_gamma = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_Etrans = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_deltaE = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_sigma_abs = mcipsigma_abs;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_sigma_inc = 5.08;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_Vc = 13.827;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_concentric = 0;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccsample_order = 0;
 #line 10374 "./Tomography.c"
 
@@ -10383,11 +10383,11 @@ void mcinit(void) {
   rot_transpose(mcrotasamplearm, mctr1);
   rot_mul(mcrotasample, mctr1, mcrotrsample);
   mctc1 = coords_set(
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
     0,
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
     0,
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
     0);
 #line 10392 "./Tomography.c"
   rot_transpose(mcrotasamplearm, mctr1);
@@ -10403,47 +10403,47 @@ void mcinit(void) {
     /* Component monitor. */
   /* Setting parameters for component monitor. */
   SIG_MESSAGE("monitor (Init:SetPar)");
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccmonitor_xwidth = mcipdet_w;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccmonitor_yheight = mcipdet_h;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccmonitor_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccmonitor_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccmonitor_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccmonitor_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccmonitor_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccmonitor_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccmonitor_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccmonitor_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccmonitor_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccmonitor_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccmonitor_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccmonitor_radius = 0;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   if(mcipopts) strncpy(mccmonitor_options, mcipopts ? mcipopts : "", 16384); else mccmonitor_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   if("NULL") strncpy(mccmonitor_filename, "NULL" ? "NULL" : "", 16384); else mccmonitor_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   if("NULL") strncpy(mccmonitor_geometry, "NULL" ? "NULL" : "", 16384); else mccmonitor_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   if("NULL") strncpy(mccmonitor_username1, "NULL" ? "NULL" : "", 16384); else mccmonitor_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   if("NULL") strncpy(mccmonitor_username2, "NULL" ? "NULL" : "", 16384); else mccmonitor_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   if("NULL") strncpy(mccmonitor_username3, "NULL" ? "NULL" : "", 16384); else mccmonitor_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
   mccmonitor_nowritefile = 0;
 #line 10448 "./Tomography.c"
 
@@ -10457,11 +10457,11 @@ void mcinit(void) {
   rot_transpose(mcrotasample, mctr1);
   rot_mul(mcrotamonitor, mctr1, mcrotrmonitor);
   mctc1 = coords_set(
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
     0,
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
     0,
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Tomography/Tomography.instr"
     2);
 #line 10466 "./Tomography.c"
   rot_transpose(mcrotasource, mctr1);

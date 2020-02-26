@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr (ESS_2001_bispectral)
- * Date:       Wed Nov 20 00:11:07 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr (ESS_2001_bispectral)
+ * Date:       Tue Feb 25 20:22:45 2020
  * File:       ./ESS_2001_bispectral.c
  * Compile:    cc -o ESS_2001_bispectral.out ./ESS_2001_bispectral.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "ESS_2001_bispectral";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -6933,7 +6933,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define coating_thickness mcipcoating_thickness
 #define m1 mcipm1
 #define m2 mcipm2
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
 double cold_moderator_x=0.12;
 
 // parameters for the elliptic guide
@@ -8443,7 +8443,7 @@ void mcinit(void) {
 #define coating_thickness mcipcoating_thickness
 #define m1 mcipm1
 #define m2 mcipm2
-#line 241 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 241 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
 {
 
 //input focus points are in real coordinates: focus_start_w=0 means at origin, focus_start_w=-1 means 1m behind source. In elliptic guide, they are in coordinates relative to the guide
@@ -8787,13 +8787,13 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccOrigin_minutes = 0;
 #line 8798 "./ESS_2001_bispectral.c"
 
@@ -8805,11 +8805,11 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
 #line 8805 "./ESS_2001_bispectral.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 538 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 538 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 538 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 538 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 538 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 538 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0);
 #line 8814 "./ESS_2001_bispectral.c"
   mctc1 = coords_neg(mcposaOrigin);
@@ -8825,22 +8825,22 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
 
   SIG_MESSAGE("ArmForGuideRight (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 553 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 553 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (0)*DEG2RAD,
-#line 553 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 553 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (0)*DEG2RAD,
-#line 553 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 553 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (90)*DEG2RAD);
 #line 8834 "./ESS_2001_bispectral.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaArmForGuideRight);
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotaArmForGuideRight, mctr1, mcrotrArmForGuideRight);
   mctc1 = coords_set(
-#line 552 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 552 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 552 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 552 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 552 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 552 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0);
 #line 8845 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -8859,22 +8859,22 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
 
   SIG_MESSAGE("ArmForGuideBottom (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 555 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 555 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (0)*DEG2RAD,
-#line 555 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 555 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (0)*DEG2RAD,
-#line 555 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 555 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (90)*DEG2RAD);
 #line 8868 "./ESS_2001_bispectral.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaArmForGuideBottom);
   rot_transpose(mcrotaArmForGuideRight, mctr1);
   rot_mul(mcrotaArmForGuideBottom, mctr1, mcrotrArmForGuideBottom);
   mctc1 = coords_set(
-#line 555 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 555 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 555 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 555 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 555 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 555 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0);
 #line 8879 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -8893,22 +8893,22 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
 
   SIG_MESSAGE("ArmForGuideTop (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 557 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 557 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (0)*DEG2RAD,
-#line 557 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 557 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (0)*DEG2RAD,
-#line 557 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 557 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (-90)*DEG2RAD);
 #line 8902 "./ESS_2001_bispectral.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaArmForGuideTop);
   rot_transpose(mcrotaArmForGuideBottom, mctr1);
   rot_mul(mcrotaArmForGuideTop, mctr1, mcrotrArmForGuideTop);
   mctc1 = coords_set(
-#line 557 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 557 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 557 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 557 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 557 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 557 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0);
 #line 8913 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -8927,22 +8927,22 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
 
   SIG_MESSAGE("ArmForGuideLeft (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 559 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 559 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (0)*DEG2RAD,
-#line 559 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 559 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (0)*DEG2RAD,
-#line 559 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 559 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (180)*DEG2RAD);
 #line 8936 "./ESS_2001_bispectral.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaArmForGuideLeft);
   rot_transpose(mcrotaArmForGuideTop, mctr1);
   rot_mul(mcrotaArmForGuideLeft, mctr1, mcrotrArmForGuideLeft);
   mctc1 = coords_set(
-#line 559 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 559 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 559 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 559 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 559 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 559 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0);
 #line 8947 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -8958,49 +8958,49 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
     /* Component cold_source. */
   /* Setting parameters for component cold_source. */
   SIG_MESSAGE("cold_source (Init:SetPar)");
-#line 563 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 563 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_source_size = 0.12;
-#line 563 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 563 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_source_l_low = mcipcold_Lam_min;
-#line 563 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 563 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_source_l_high = mcipcold_Lam_max;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_source_dist = 0;
-#line 564 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 564 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_source_xw = x_focus + 0.15;
-#line 564 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 564 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_source_yh = y_focus + 0.15;
-#line 564 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 564 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_source_freq = mcipfrequency;
-#line 564 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 564 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_source_T = 50;
-#line 564 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 564 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_source_tau = 287e-6;
-#line 564 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 564 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_source_tau1 = 0;
-#line 566 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 566 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_source_tau2 = 20e-6;
-#line 566 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 566 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_source_d = mcipPulse_width;
-#line 566 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 566 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_source_n = 20;
-#line 566 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 566 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_source_n2 = 5;
-#line 566 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 566 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_source_chi2 = 0.9;
-#line 567 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 567 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_source_I0 = 6.9e11;
-#line 567 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 567 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_source_I2 = 27.6e10;
-#line 567 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 567 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_source_branch1 = 1.0;
-#line 567 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 567 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_source_branch2 = 0.5;
-#line 568 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 568 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_source_branch_tail = 0.1;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_source_twopulses = 0;
-#line 568 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 568 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_source_target_index = 2;
 #line 9005 "./ESS_2001_bispectral.c"
 
@@ -9014,11 +9014,11 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
   rot_transpose(mcrotaArmForGuideLeft, mctr1);
   rot_mul(mcrotacold_source, mctr1, mcrotrcold_source);
   mctc1 = coords_set(
-#line 569 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 569 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     cold_moderator_x,
-#line 569 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 569 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 569 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 569 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0);
 #line 9023 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -9034,49 +9034,49 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
     /* Component thermal_source. */
   /* Setting parameters for component thermal_source. */
   SIG_MESSAGE("thermal_source (Init:SetPar)");
-#line 590 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 590 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_source_size = 0.12;
-#line 590 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 590 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_source_l_low = mcipthermal_Lam_min;
-#line 590 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 590 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_source_l_high = mcipthermal_Lam_max;
-#line 590 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 590 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_source_dist = extraction_start_pos;
-#line 591 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 591 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_source_xw = 2 * w_guide_leftstart + 0.1;
-#line 591 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 591 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_source_yh = 2 * h_guide_leftstart + 0.1;
-#line 591 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 591 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_source_freq = mcipfrequency;
-#line 591 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 591 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_source_T = 325;
-#line 591 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 591 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_source_tau = 80e-6;
-#line 591 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 591 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_source_tau1 = 400e-6;
-#line 592 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 592 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_source_tau2 = 12e-6;
-#line 592 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 592 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_source_d = mcipPulse_width;
-#line 592 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 592 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_source_n = 20;
-#line 592 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 592 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_source_n2 = 5;
-#line 592 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 592 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_source_chi2 = 2.5;
-#line 593 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 593 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_source_I0 = 13.5e11;
-#line 593 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 593 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_source_I2 = 27.6e10;
-#line 593 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 593 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_source_branch1 = 0.5;
-#line 593 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 593 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_source_branch2 = 0.5;
-#line 594 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 594 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_source_branch_tail = 0.1;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_source_twopulses = 0;
-#line 91 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 91 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_source_target_index = 0;
 #line 9081 "./ESS_2001_bispectral.c"
 
@@ -9090,11 +9090,11 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
   rot_transpose(mcrotacold_source, mctr1);
   rot_mul(mcrotathermal_source, mctr1, mcrotrthermal_source);
   mctc1 = coords_set(
-#line 595 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 595 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 595 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 595 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 595 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 595 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0);
 #line 9099 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -9121,11 +9121,11 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
   rot_transpose(mcrotathermal_source, mctr1);
   rot_mul(mcrotaColdFocus, mctr1, mcrotrColdFocus);
   mctc1 = coords_set(
-#line 614 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 614 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     x_mid,
-#line 614 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 614 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 614 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 614 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     extraction_start_pos);
 #line 9130 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -9152,11 +9152,11 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
   rot_transpose(mcrotaColdFocus, mctr1);
   rot_mul(mcrotaArmMidOne, mctr1, mcrotrArmMidOne);
   mctc1 = coords_set(
-#line 625 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 625 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 625 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 625 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 625 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 625 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     ArmMidOnePos);
 #line 9161 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -9172,54 +9172,54 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
     /* Component mirror_full_center. */
   /* Setting parameters for component mirror_full_center. */
   SIG_MESSAGE("mirror_full_center (Init:SetPar)");
-#line 657 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 657 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccmirror_full_center_focus_s = mcipfocus_start_h;
-#line 657 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 657 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccmirror_full_center_focus_e = mcipfocus_end_h;
-#line 657 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 657 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccmirror_full_center_mirror_start = extraction_start_pos;
-#line 657 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 657 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccmirror_full_center_guide_start = mcipguide_start;
-#line 657 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 657 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccmirror_full_center_yheight = mciph_mirror;
-#line 657 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 657 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccmirror_full_center_smallaxis = mcipsmallaxis_h;
-#line 657 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 657 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccmirror_full_center_length = 2.5;
-#line 658 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 658 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccmirror_full_center_m = mcipm_mirror;
-#line 658 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 658 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccmirror_full_center_transmit = 1;
-#line 656 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 656 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccmirror_full_center_substrate_thickness = mcipsubstrate_thickness;
-#line 656 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 656 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccmirror_full_center_coating_thickness = mcipcoating_thickness;
-#line 658 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 658 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccmirror_full_center_theta_1 = mciptheta1;
-#line 658 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 658 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccmirror_full_center_theta_2 = mciptheta1;
-#line 658 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 658 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccmirror_full_center_theta_3 = mciptheta1;
 #line 9203 "./ESS_2001_bispectral.c"
 
   SIG_MESSAGE("mirror_full_center (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 661 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 661 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (0)*DEG2RAD,
-#line 661 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 661 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (-90)*DEG2RAD,
-#line 661 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 661 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (0)*DEG2RAD);
 #line 9213 "./ESS_2001_bispectral.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotamirror_full_center);
   rot_transpose(mcrotaArmMidOne, mctr1);
   rot_mul(mcrotamirror_full_center, mctr1, mcrotrmirror_full_center);
   mctc1 = coords_set(
-#line 660 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 660 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     mcipmirror_offset,
-#line 660 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 660 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 660 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 660 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     extraction_start_pos + mirror_full_length * 0.5);
 #line 9224 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -9246,11 +9246,11 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
   rot_transpose(mcrotamirror_full_center, mctr1);
   rot_mul(mcrotaArmForNeutronPropState_2, mctr1, mcrotrArmForNeutronPropState_2);
   mctc1 = coords_set(
-#line 668 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 668 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 668 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 668 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 668 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 668 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     ArmMidOnePos);
 #line 9255 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -9266,50 +9266,50 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
     /* Component guide_right. */
   /* Setting parameters for component guide_right. */
   SIG_MESSAGE("guide_right (Init:SetPar)");
-#line 703 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 703 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_right_focus_start_w = mcipfocus_start_w;
-#line 703 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 703 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_right_focus_end_w = mcipfocus_end_w;
-#line 702 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 702 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_right_focus_start_h = mcipfocus_start_h;
-#line 702 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 702 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_right_focus_end_h = mcipfocus_end_h;
-#line 702 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 702 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_right_mirror_start = mcipguide_start;
-#line 704 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 704 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_right_m = m [ 0 ];
-#line 703 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 703 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_right_smallaxis_w = mcipsmallaxis_w;
-#line 702 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 702 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_right_smallaxis_h = mcipsmallaxis_h;
-#line 702 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 702 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_right_length = extraction_start_pos + mirror_full_length - mcipguide_start;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_right_transmit = 0;
-#line 701 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 701 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_right_substrate_thickness = 0;
-#line 701 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 701 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_right_coating_thickness = 0;
 #line 9293 "./ESS_2001_bispectral.c"
 
   SIG_MESSAGE("guide_right (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 707 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 707 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (0)*DEG2RAD,
-#line 707 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 707 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (-90)*DEG2RAD,
-#line 707 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 707 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (0)*DEG2RAD);
 #line 9303 "./ESS_2001_bispectral.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaguide_right);
   rot_transpose(mcrotaArmForNeutronPropState_2, mctr1);
   rot_mul(mcrotaguide_right, mctr1, mcrotrguide_right);
   mctc1 = coords_set(
-#line 706 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 706 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 706 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 706 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 706 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 706 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     mcipguide_start);
 #line 9314 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -9336,11 +9336,11 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
   rot_transpose(mcrotaguide_right, mctr1);
   rot_mul(mcrotaArmForNeutronPropState_4, mctr1, mcrotrArmForNeutronPropState_4);
   mctc1 = coords_set(
-#line 714 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 714 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 714 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 714 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 714 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 714 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     ArmMidOnePos);
 #line 9345 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -9356,50 +9356,50 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
     /* Component guide_bottom. */
   /* Setting parameters for component guide_bottom. */
   SIG_MESSAGE("guide_bottom (Init:SetPar)");
-#line 753 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 753 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_bottom_focus_start_w = mcipfocus_start_h;
-#line 753 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 753 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_bottom_focus_end_w = mcipfocus_end_h;
-#line 752 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 752 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_bottom_focus_start_h = mcipfocus_start_w;
-#line 752 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 752 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_bottom_focus_end_h = mcipfocus_end_w;
-#line 752 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 752 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_bottom_mirror_start = mcipguide_start;
-#line 754 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 754 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_bottom_m = m [ 0 ];
-#line 753 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 753 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_bottom_smallaxis_w = mcipsmallaxis_h;
-#line 752 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 752 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_bottom_smallaxis_h = mcipsmallaxis_w;
-#line 752 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 752 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_bottom_length = extraction_start_pos + mirror_full_length - mcipguide_start;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_bottom_transmit = 0;
-#line 751 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 751 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_bottom_substrate_thickness = 0;
-#line 751 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 751 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_bottom_coating_thickness = 0;
 #line 9383 "./ESS_2001_bispectral.c"
 
   SIG_MESSAGE("guide_bottom (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 757 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 757 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (0)*DEG2RAD,
-#line 757 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 757 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (-90)*DEG2RAD,
-#line 757 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 757 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (0)*DEG2RAD);
 #line 9393 "./ESS_2001_bispectral.c"
   rot_mul(mctr1, mcrotaArmForGuideBottom, mcrotaguide_bottom);
   rot_transpose(mcrotaArmForNeutronPropState_4, mctr1);
   rot_mul(mcrotaguide_bottom, mctr1, mcrotrguide_bottom);
   mctc1 = coords_set(
-#line 756 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 756 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 756 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 756 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 756 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 756 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     mcipguide_start);
 #line 9404 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaArmForGuideBottom, mctr1);
@@ -9426,11 +9426,11 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
   rot_transpose(mcrotaguide_bottom, mctr1);
   rot_mul(mcrotaArmForNeutronPropState_5, mctr1, mcrotrArmForNeutronPropState_5);
   mctc1 = coords_set(
-#line 764 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 764 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 764 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 764 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 764 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 764 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     ArmMidOnePos);
 #line 9435 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -9446,27 +9446,27 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
     /* Component cold_lambda_guidestart. */
   /* Setting parameters for component cold_lambda_guidestart. */
   SIG_MESSAGE("cold_lambda_guidestart (Init:SetPar)");
-#line 800 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 800 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   if("cold_lambda_guidestart") strncpy(mcccold_lambda_guidestart_filename, "cold_lambda_guidestart" ? "cold_lambda_guidestart" : "", 16384); else mcccold_lambda_guidestart_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_lambda_guidestart_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_lambda_guidestart_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_lambda_guidestart_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_lambda_guidestart_ymax = 0.05;
-#line 801 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 801 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_lambda_guidestart_xwidth = w [ 0 ];
-#line 801 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 801 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_lambda_guidestart_yheight = h [ 0 ];
-#line 801 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 801 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_lambda_guidestart_Lmin = 0.01;
-#line 801 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 801 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_lambda_guidestart_Lmax = 20;
-#line 800 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 800 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_lambda_guidestart_restore_neutron = 1;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcccold_lambda_guidestart_nowritefile = 0;
 #line 9471 "./ESS_2001_bispectral.c"
 
@@ -9480,11 +9480,11 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
   rot_transpose(mcrotaArmForNeutronPropState_5, mctr1);
   rot_mul(mcrotacold_lambda_guidestart, mctr1, mcrotrcold_lambda_guidestart);
   mctc1 = coords_set(
-#line 802 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 802 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 802 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 802 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 802 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 802 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     guide_z_pos [ 0 ]);
 #line 9489 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -9500,27 +9500,27 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
     /* Component thermal_lambda_guidestart. */
   /* Setting parameters for component thermal_lambda_guidestart. */
   SIG_MESSAGE("thermal_lambda_guidestart (Init:SetPar)");
-#line 805 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 805 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   if("thermal_lambda_guidestart") strncpy(mccthermal_lambda_guidestart_filename, "thermal_lambda_guidestart" ? "thermal_lambda_guidestart" : "", 16384); else mccthermal_lambda_guidestart_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_lambda_guidestart_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_lambda_guidestart_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_lambda_guidestart_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_lambda_guidestart_ymax = 0.05;
-#line 806 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 806 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_lambda_guidestart_xwidth = w [ 0 ];
-#line 806 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 806 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_lambda_guidestart_yheight = h [ 0 ];
-#line 806 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 806 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_lambda_guidestart_Lmin = 0.01;
-#line 806 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 806 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_lambda_guidestart_Lmax = 20;
-#line 805 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 805 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_lambda_guidestart_restore_neutron = 1;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccthermal_lambda_guidestart_nowritefile = 0;
 #line 9525 "./ESS_2001_bispectral.c"
 
@@ -9534,11 +9534,11 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
   rot_transpose(mcrotacold_lambda_guidestart, mctr1);
   rot_mul(mcrotathermal_lambda_guidestart, mctr1, mcrotrthermal_lambda_guidestart);
   mctc1 = coords_set(
-#line 807 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 807 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 807 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 807 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 807 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 807 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     guide_z_pos [ 0 ]);
 #line 9543 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -9554,27 +9554,27 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
     /* Component lambda_guidestart. */
   /* Setting parameters for component lambda_guidestart. */
   SIG_MESSAGE("lambda_guidestart (Init:SetPar)");
-#line 810 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 810 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   if("lambda_guidestart") strncpy(mcclambda_guidestart_filename, "lambda_guidestart" ? "lambda_guidestart" : "", 16384); else mcclambda_guidestart_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcclambda_guidestart_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcclambda_guidestart_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcclambda_guidestart_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcclambda_guidestart_ymax = 0.05;
-#line 811 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 811 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcclambda_guidestart_xwidth = w [ 0 ];
-#line 811 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 811 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcclambda_guidestart_yheight = h [ 0 ];
-#line 811 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 811 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcclambda_guidestart_Lmin = 0.01;
-#line 811 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 811 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcclambda_guidestart_Lmax = 20;
-#line 810 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 810 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcclambda_guidestart_restore_neutron = 1;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mcclambda_guidestart_nowritefile = 0;
 #line 9579 "./ESS_2001_bispectral.c"
 
@@ -9588,11 +9588,11 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
   rot_transpose(mcrotathermal_lambda_guidestart, mctr1);
   rot_mul(mcrotalambda_guidestart, mctr1, mcrotrlambda_guidestart);
   mctc1 = coords_set(
-#line 812 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 812 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 812 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 812 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 812 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 812 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     guide_z_pos [ 0 ]);
 #line 9597 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -9608,50 +9608,50 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
     /* Component guide_top. */
   /* Setting parameters for component guide_top. */
   SIG_MESSAGE("guide_top (Init:SetPar)");
-#line 818 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 818 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_top_focus_start_w = mcipfocus_start_h;
-#line 818 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 818 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_top_focus_end_w = mcipfocus_end_h;
-#line 817 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 817 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_top_focus_start_h = mcipfocus_start_w;
-#line 817 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 817 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_top_focus_end_h = mcipfocus_end_w;
-#line 817 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 817 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_top_mirror_start = mcipguide_start;
-#line 819 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 819 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_top_m = m [ 0 ];
-#line 818 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 818 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_top_smallaxis_w = mcipsmallaxis_h;
-#line 817 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 817 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_top_smallaxis_h = mcipsmallaxis_w;
-#line 817 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 817 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_top_length = extraction_start_pos + mirror_full_length - mcipguide_start;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_top_transmit = 0;
-#line 816 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 816 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_top_substrate_thickness = 0;
-#line 816 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 816 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_top_coating_thickness = 0;
 #line 9635 "./ESS_2001_bispectral.c"
 
   SIG_MESSAGE("guide_top (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 822 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 822 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (0)*DEG2RAD,
-#line 822 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 822 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (-90)*DEG2RAD,
-#line 822 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 822 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (0)*DEG2RAD);
 #line 9645 "./ESS_2001_bispectral.c"
   rot_mul(mctr1, mcrotaArmForGuideTop, mcrotaguide_top);
   rot_transpose(mcrotalambda_guidestart, mctr1);
   rot_mul(mcrotaguide_top, mctr1, mcrotrguide_top);
   mctc1 = coords_set(
-#line 821 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 821 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 821 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 821 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 821 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 821 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     mcipguide_start);
 #line 9656 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaArmForGuideTop, mctr1);
@@ -9678,11 +9678,11 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
   rot_transpose(mcrotaguide_top, mctr1);
   rot_mul(mcrotaArmForNeutronPropState_6, mctr1, mcrotrArmForNeutronPropState_6);
   mctc1 = coords_set(
-#line 829 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 829 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 829 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 829 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 829 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 829 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     ArmMidOnePos);
 #line 9687 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -9698,50 +9698,50 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
     /* Component guide_Left. */
   /* Setting parameters for component guide_Left. */
   SIG_MESSAGE("guide_Left (Init:SetPar)");
-#line 868 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 868 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_Left_focus_start_w = mcipfocus_start_w;
-#line 868 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 868 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_Left_focus_end_w = mcipfocus_end_w;
-#line 867 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 867 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_Left_focus_start_h = mcipfocus_start_h;
-#line 867 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 867 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_Left_focus_end_h = mcipfocus_end_h;
-#line 867 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 867 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_Left_mirror_start = guide_left_start;
-#line 869 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 869 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_Left_m = m [ 0 ];
-#line 868 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 868 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_Left_smallaxis_w = mcipsmallaxis_w;
-#line 867 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 867 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_Left_smallaxis_h = mcipsmallaxis_h;
-#line 867 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 867 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_Left_length = extraction_start_pos + mirror_full_length - guide_left_start;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_Left_transmit = 0;
-#line 866 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 866 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_Left_substrate_thickness = 0;
-#line 866 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 866 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
   mccguide_Left_coating_thickness = 0;
 #line 9725 "./ESS_2001_bispectral.c"
 
   SIG_MESSAGE("guide_Left (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 872 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 872 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (0)*DEG2RAD,
-#line 872 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 872 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (-90)*DEG2RAD,
-#line 872 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 872 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     (0)*DEG2RAD);
 #line 9735 "./ESS_2001_bispectral.c"
   rot_mul(mctr1, mcrotaArmForGuideLeft, mcrotaguide_Left);
   rot_transpose(mcrotaArmForNeutronPropState_6, mctr1);
   rot_mul(mcrotaguide_Left, mctr1, mcrotrguide_Left);
   mctc1 = coords_set(
-#line 871 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 871 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 871 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 871 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 871 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 871 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     guide_left_start);
 #line 9746 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaArmForGuideLeft, mctr1);
@@ -9768,11 +9768,11 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
   rot_transpose(mcrotaguide_Left, mctr1);
   rot_mul(mcrotaArmForNeutronPropState_7, mctr1, mcrotrArmForNeutronPropState_7);
   mctc1 = coords_set(
-#line 879 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 879 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 879 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 879 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 879 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 879 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     ArmMidOnePos);
 #line 9777 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -9799,11 +9799,11 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
   rot_transpose(mcrotaArmForNeutronPropState_7, mctr1);
   rot_mul(mcrotaArmMidTwo, mctr1, mcrotrArmMidTwo);
   mctc1 = coords_set(
-#line 918 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 918 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 918 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 918 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 918 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 918 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0);
 #line 9808 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaArmMidOne, mctr1);
@@ -9830,11 +9830,11 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
   rot_transpose(mcrotaArmMidTwo, mctr1);
   rot_mul(mcrotaArmForNeutronPropState_8, mctr1, mcrotrArmForNeutronPropState_8);
   mctc1 = coords_set(
-#line 924 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 924 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 924 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 924 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 924 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 924 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     ArmMidOnePos);
 #line 9839 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -9861,11 +9861,11 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
   rot_transpose(mcrotaArmForNeutronPropState_8, mctr1);
   rot_mul(mcrotaArmMidThree, mctr1, mcrotrArmMidThree);
   mctc1 = coords_set(
-#line 952 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 952 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 952 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 952 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 952 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 952 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0);
 #line 9870 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaArmMidOne, mctr1);
@@ -9892,11 +9892,11 @@ printf("h[0]=%f, w[0]=%f\n",h[0],w[0]);
   rot_transpose(mcrotaArmMidThree, mctr1);
   rot_mul(mcrotaArmExit, mctr1, mcrotrArmExit);
   mctc1 = coords_set(
-#line 955 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 955 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 955 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 955 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     0,
-#line 955 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 955 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
     ArmExitPos);
 #line 9901 "./ESS_2001_bispectral.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -10769,7 +10769,7 @@ MCNUM minutes = mccOrigin_minutes;
 #line 10769 "./ESS_2001_bispectral.c"
 /* 'Origin=Progress_bar()' component instance extend code */
     SIG_MESSAGE("Origin (Trace:Extend)");
-#line 541 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 541 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
 	if(two_sources!=0){                //switch between sources
 		dummy=thermalmultiplier*rand01();
 		if (dummy>1){
@@ -11436,7 +11436,7 @@ if (( flag == 1 ))
     SIG_MESSAGE("cold_source (Trace:Extend)");
 if (( flag == 1 )) {
 
-#line 572 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 572 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
 if (flag==1){
 /*
 	if (cold_hotspot_factor>1){
@@ -11698,7 +11698,7 @@ if (( flag == 0 ))
     SIG_MESSAGE("thermal_source (Trace:Extend)");
 if (( flag == 0 )) {
 
-#line 598 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 598 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
 if (flag==0){
 /*
 	if (thermal_hotspot_factor>1){
@@ -11822,7 +11822,7 @@ mcnlp)
 #define mccompcurindex 8
 /* 'ColdFocus=Arm()' component instance extend code */
     SIG_MESSAGE("ColdFocus (Trace:Extend)");
-#line 616 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 616 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
 PROP_Z0;
 #line 11821 "./ESS_2001_bispectral.c"
 #undef mccompcurname
@@ -11930,7 +11930,7 @@ mcnlp)
 #define mccompcurindex 9
 /* 'ArmMidOne=Arm()' component instance extend code */
     SIG_MESSAGE("ArmMidOne (Trace:Extend)");
-#line 627 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 627 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
  guide_scatt=0; 
 
 //save the current state of the neutron. consider including spin
@@ -12580,7 +12580,7 @@ vz=old_vx*(2*cos_theta_m*sin_theta_m)+old_vz*(sin_theta_m*sin_theta_m-cos_theta_
 #line 12574 "./ESS_2001_bispectral.c"
 /* 'mirror_full_center=Mirror_Curved_Bispectral()' component instance extend code */
     SIG_MESSAGE("mirror_full_center (Trace:Extend)");
-#line 663 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 663 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
 if (SCATTERED) {
 //{printf("I scatter\n");
 guide_scatt=5; PROP_DT(1e-9); SCATTER; }
@@ -12693,7 +12693,7 @@ mcnlp)
 #define mccompcurindex 11
 /* 'ArmForNeutronPropState_2=Arm()' component instance extend code */
     SIG_MESSAGE("ArmForNeutronPropState_2 (Trace:Extend)");
-#line 670 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 670 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
 //save new parameters if the time it took to reach the component is less than the time of the previous component
 if (guide_scatt==5){
 if (t<new_t_prop){
@@ -13119,7 +13119,7 @@ vz=-old_vx*(2*zeta*xhi)+old_vz*(xhi*xhi-zeta*zeta);
 #line 13113 "./ESS_2001_bispectral.c"
 /* 'guide_right=Mirror_Elliptic_Bispectral()' component instance extend code */
     SIG_MESSAGE("guide_right (Trace:Extend)");
-#line 709 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 709 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
 if (SCATTERED){
 //{printf("I scatter\n");
 guide_scatt=3; PROP_DT(1e-9); SCATTER; }
@@ -13232,7 +13232,7 @@ mcnlp)
 #define mccompcurindex 13
 /* 'ArmForNeutronPropState_4=Arm()' component instance extend code */
     SIG_MESSAGE("ArmForNeutronPropState_4 (Trace:Extend)");
-#line 716 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 716 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
 
 //save new parameters if the time it took to reach the component is less than the time of the previous component
 //printf("3guide_scatt=%i\,z=%f, t=%f, old_t_prop=%f, new_t_prop=%f\n",guide_scatt,z,t,old_t_prop, new_t_prop);
@@ -13663,7 +13663,7 @@ vz=-old_vx*(2*zeta*xhi)+old_vz*(xhi*xhi-zeta*zeta);
 #line 13657 "./ESS_2001_bispectral.c"
 /* 'guide_bottom=Mirror_Elliptic_Bispectral()' component instance extend code */
     SIG_MESSAGE("guide_bottom (Trace:Extend)");
-#line 759 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 759 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
 if (SCATTERED){
 //printf("I scatter\n");
 guide_scatt=2; PROP_DT(1e-9); SCATTER; }
@@ -13776,7 +13776,7 @@ mcnlp)
 #define mccompcurindex 15
 /* 'ArmForNeutronPropState_5=Arm()' component instance extend code */
     SIG_MESSAGE("ArmForNeutronPropState_5 (Trace:Extend)");
-#line 766 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 766 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
 
 if (guide_scatt==2){
 
@@ -14652,7 +14652,7 @@ vz=-old_vx*(2*zeta*xhi)+old_vz*(xhi*xhi-zeta*zeta);
 #line 14644 "./ESS_2001_bispectral.c"
 /* 'guide_top=Mirror_Elliptic_Bispectral()' component instance extend code */
     SIG_MESSAGE("guide_top (Trace:Extend)");
-#line 824 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 824 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
 if (SCATTERED){
 //{printf("I scatter\n");
 guide_scatt=1; PROP_DT(1e-9); SCATTER; }
@@ -14765,7 +14765,7 @@ mcnlp)
 #define mccompcurindex 20
 /* 'ArmForNeutronPropState_6=Arm()' component instance extend code */
     SIG_MESSAGE("ArmForNeutronPropState_6 (Trace:Extend)");
-#line 831 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 831 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
 
 if (guide_scatt==1){
 
@@ -15195,7 +15195,7 @@ vz=-old_vx*(2*zeta*xhi)+old_vz*(xhi*xhi-zeta*zeta);
 #line 15187 "./ESS_2001_bispectral.c"
 /* 'guide_Left=Mirror_Elliptic_Bispectral()' component instance extend code */
     SIG_MESSAGE("guide_Left (Trace:Extend)");
-#line 874 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 874 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
 if (SCATTERED){
 //{printf("I scatter\n");
 guide_scatt=4; PROP_DT(1e-9); SCATTER; }
@@ -15308,7 +15308,7 @@ mcnlp)
 #define mccompcurindex 22
 /* 'ArmForNeutronPropState_7=Arm()' component instance extend code */
     SIG_MESSAGE("ArmForNeutronPropState_7 (Trace:Extend)");
-#line 881 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 881 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
 
 //save new parameters if the time it took to reach the component is less than the time of the previous component
 if (guide_scatt==4){
@@ -15447,7 +15447,7 @@ mcnlp)
 #define mccompcurindex 23
 /* 'ArmMidTwo=Arm()' component instance extend code */
     SIG_MESSAGE("ArmMidTwo (Trace:Extend)");
-#line 920 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 920 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
  if (guide_scatt==0)
  {SCATTER; }
 #line 15445 "./ESS_2001_bispectral.c"
@@ -15556,7 +15556,7 @@ mcnlp)
 #define mccompcurindex 24
 /* 'ArmForNeutronPropState_8=Arm()' component instance extend code */
     SIG_MESSAGE("ArmForNeutronPropState_8 (Trace:Extend)");
-#line 926 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
+#line 926 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr"
 //printf("1guide_scatt=%i\,z=%f, t=%f, old_t_prop=%f, new_t_prop=%f\n",guide_scatt,z,t*1000,old_t_prop*1000, new_t_prop*1000);
 
 if (guide_scatt>0)

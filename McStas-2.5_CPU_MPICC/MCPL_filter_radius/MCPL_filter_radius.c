@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr (MCPL_filter_radius)
- * Date:       Wed Nov 20 00:43:48 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr (MCPL_filter_radius)
+ * Date:       Tue Feb 25 20:59:07 2020
  * File:       ./MCPL_filter_radius.c
  * Compile:    cc -o MCPL_filter_radius.out ./MCPL_filter_radius.c  -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
  * CFLAGS= -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "MCPL_filter_radius";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -9764,7 +9764,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define mcposaMCPL_filter_radius coords_set(0,0,0)
 #define MCPLfile mcipMCPLfile
 #define radius mcipradius
-#line 30 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 30 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   double Radius;
 #line 9769 "./MCPL_filter_radius.c"
 #undef radius
@@ -10237,13 +10237,13 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccOrigin_minutes = 0;
 #line 10248 "./MCPL_filter_radius.c"
 
@@ -10255,11 +10255,11 @@ void mcinit(void) {
 #line 10255 "./MCPL_filter_radius.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
     0,
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
     0,
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
     0);
 #line 10264 "./MCPL_filter_radius.c"
   mctc1 = coords_neg(mcposaOrigin);
@@ -10272,23 +10272,23 @@ void mcinit(void) {
     /* Component MCPLinput. */
   /* Setting parameters for component MCPLinput. */
   SIG_MESSAGE("MCPLinput (Init:SetPar)");
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   if(mcipMCPLfile) strncpy(mccMCPLinput_filename, mcipMCPLfile ? mcipMCPLfile : "", 16384); else mccMCPLinput_filename[0]='\0';
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccMCPLinput_polarisationuse = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccMCPLinput_verbose = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccMCPLinput_Emin = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccMCPLinput_Emax = FLT_MAX;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccMCPLinput_repeat_count = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccMCPLinput_E_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccMCPLinput_pos_smear = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccMCPLinput_dir_smear = 0;
 #line 10293 "./MCPL_filter_radius.c"
 
@@ -10302,11 +10302,11 @@ void mcinit(void) {
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotaMCPLinput, mctr1, mcrotrMCPLinput);
   mctc1 = coords_set(
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
     0,
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
     0,
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
     0);
 #line 10311 "./MCPL_filter_radius.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -10333,11 +10333,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMCPLinput, mctr1);
   rot_mul(mcrotaCalc, mctr1, mcrotrCalc);
   mctc1 = coords_set(
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
     0,
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
     0,
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
     0);
 #line 10342 "./MCPL_filter_radius.c"
   rot_transpose(mcrotaMCPLinput, mctr1);
@@ -10353,13 +10353,13 @@ void mcinit(void) {
     /* Component MCPLlow. */
   /* Setting parameters for component MCPLlow. */
   SIG_MESSAGE("MCPLlow (Init:SetPar)");
-#line 53 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 53 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   if("R_short") strncpy(mccMCPLlow_filename, "R_short" ? "R_short" : "", 16384); else mccMCPLlow_filename[0]='\0';
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   if("") strncpy(mccMCPLlow_userflagcomment, "" ? "" : "", 16384); else mccMCPLlow_userflagcomment[0]='\0';
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccMCPLlow_merge_mpi = 1;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccMCPLlow_keep_mpi_unmerged = 0;
 #line 10364 "./MCPL_filter_radius.c"
 
@@ -10373,11 +10373,11 @@ void mcinit(void) {
   rot_transpose(mcrotaCalc, mctr1);
   rot_mul(mcrotaMCPLlow, mctr1, mcrotrMCPLlow);
   mctc1 = coords_set(
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
     0,
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
     0,
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
     0);
 #line 10382 "./MCPL_filter_radius.c"
   rot_transpose(mcrotaCalc, mctr1);
@@ -10393,13 +10393,13 @@ void mcinit(void) {
     /* Component MCPLhigh. */
   /* Setting parameters for component MCPLhigh. */
   SIG_MESSAGE("MCPLhigh (Init:SetPar)");
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   if("R_long") strncpy(mccMCPLhigh_filename, "R_long" ? "R_long" : "", 16384); else mccMCPLhigh_filename[0]='\0';
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   if("") strncpy(mccMCPLhigh_userflagcomment, "" ? "" : "", 16384); else mccMCPLhigh_userflagcomment[0]='\0';
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccMCPLhigh_merge_mpi = 1;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccMCPLhigh_keep_mpi_unmerged = 0;
 #line 10404 "./MCPL_filter_radius.c"
 
@@ -10413,11 +10413,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMCPLlow, mctr1);
   rot_mul(mcrotaMCPLhigh, mctr1, mcrotrMCPLhigh);
   mctc1 = coords_set(
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
     0,
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
     0,
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
     0);
 #line 10422 "./MCPL_filter_radius.c"
   rot_transpose(mcrotaMCPLlow, mctr1);
@@ -10433,47 +10433,47 @@ void mcinit(void) {
     /* Component Rshort. */
   /* Setting parameters for component Rshort. */
   SIG_MESSAGE("Rshort (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRshort_xwidth = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRshort_yheight = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRshort_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRshort_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRshort_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRshort_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRshort_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRshort_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRshort_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRshort_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRshort_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRshort_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRshort_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRshort_radius = 0;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   if("previous auto user1") strncpy(mccRshort_options, "previous auto user1" ? "previous auto user1" : "", 16384); else mccRshort_options[0]='\0';
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   if("R_short") strncpy(mccRshort_filename, "R_short" ? "R_short" : "", 16384); else mccRshort_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   if("NULL") strncpy(mccRshort_geometry, "NULL" ? "NULL" : "", 16384); else mccRshort_geometry[0]='\0';
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   if("Distance from origin / m") strncpy(mccRshort_username1, "Distance from origin / m" ? "Distance from origin / m" : "", 16384); else mccRshort_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   if("NULL") strncpy(mccRshort_username2, "NULL" ? "NULL" : "", 16384); else mccRshort_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   if("NULL") strncpy(mccRshort_username3, "NULL" ? "NULL" : "", 16384); else mccRshort_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRshort_nowritefile = 0;
 #line 10478 "./MCPL_filter_radius.c"
 
@@ -10487,11 +10487,11 @@ void mcinit(void) {
   rot_transpose(mcrotaMCPLhigh, mctr1);
   rot_mul(mcrotaRshort, mctr1, mcrotrRshort);
   mctc1 = coords_set(
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
     0,
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
     0,
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
     0);
 #line 10496 "./MCPL_filter_radius.c"
   rot_transpose(mcrotaMCPLhigh, mctr1);
@@ -10507,47 +10507,47 @@ void mcinit(void) {
     /* Component Rlong. */
   /* Setting parameters for component Rlong. */
   SIG_MESSAGE("Rlong (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRlong_xwidth = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRlong_yheight = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRlong_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRlong_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRlong_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRlong_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRlong_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRlong_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRlong_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRlong_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRlong_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRlong_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRlong_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRlong_radius = 0;
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   if("previous auto user1") strncpy(mccRlong_options, "previous auto user1" ? "previous auto user1" : "", 16384); else mccRlong_options[0]='\0';
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   if("R_long") strncpy(mccRlong_filename, "R_long" ? "R_long" : "", 16384); else mccRlong_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   if("NULL") strncpy(mccRlong_geometry, "NULL" ? "NULL" : "", 16384); else mccRlong_geometry[0]='\0';
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   if("Distance from origin / m") strncpy(mccRlong_username1, "Distance from origin / m" ? "Distance from origin / m" : "", 16384); else mccRlong_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   if("NULL") strncpy(mccRlong_username2, "NULL" ? "NULL" : "", 16384); else mccRlong_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   if("NULL") strncpy(mccRlong_username3, "NULL" ? "NULL" : "", 16384); else mccRlong_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   mccRlong_nowritefile = 0;
 #line 10552 "./MCPL_filter_radius.c"
 
@@ -10561,11 +10561,11 @@ void mcinit(void) {
   rot_transpose(mcrotaRshort, mctr1);
   rot_mul(mcrotaRlong, mctr1, mcrotrRlong);
   mctc1 = coords_set(
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
     0,
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
     0,
-#line 63 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 63 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
     0);
 #line 10570 "./MCPL_filter_radius.c"
   rot_transpose(mcrotaRshort, mctr1);
@@ -11818,7 +11818,7 @@ mcnlp)
 #define mccompcurindex 3
 /* 'Calc=Arm()' component instance extend code */
     SIG_MESSAGE("Calc (Trace:Extend)");
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/MCPL_filter_radius/MCPL_filter_radius.instr"
   Radius = sqrt(x*x+y*y+z*z);
 #line 11823 "./MCPL_filter_radius.c"
 #undef mccompcurname

@@ -1,10 +1,10 @@
 McStas simulation description file for Test_Guides.
-Date:    Wed Nov 20 01:10:59 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:42:43 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: Test_Guides
   File: 7/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr
   Parameters:  Guide(int)
   Trace_enabled: yes
   Default_main: yes
@@ -14,29 +14,29 @@ end instrument
 begin simulation: 7
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574236212
+  Seed: 1582684502
   Directory: 7
   Nodes: 10
   Param: Guide=7
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:11:01 2019 (1574208661)
+  Date: Tue Feb 25 21:42:46 2020 (1582663366)
   type: array_2d(20, 20)
-  Source: Test_Guides (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr)
+  Source: Test_Guides (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr)
   component: Monitor1_xt
   position: 0 0 1
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: Monitor1_xt_1574208659.x_y
-  statistics: X0=-9.07872e-06; dX=0.0144092; Y0=3.57902e-06; dY=0.0144101;
-  signal: Min=9.19819e-05; Max=9.53689e-05; Mean=9.35942e-05;
-  values: 0.0374377 1.18388e-05 1e+07
+  filename: Monitor1_xt_1582663363.x_y
+  statistics: X0=-2.76679e-06; dX=0.0144121; Y0=9.38441e-06; dY=0.0144139;
+  signal: Min=9.18854e-05; Max=9.52878e-05; Mean=9.35941e-05;
+  values: 0.0374376 1.18388e-05 1e+07
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -48,17 +48,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:11:01 2019 (1574208661)
+  Date: Tue Feb 25 21:42:46 2020 (1582663366)
   type: array_2d(20, 20)
-  Source: Test_Guides (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr)
+  Source: Test_Guides (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr)
   component: Monitor2_xy
   position: 0 0 3.1
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: Monitor2_xy_1574208659.x_y
-  statistics: X0=4.05685e-05; dX=0.0192193; Y0=1.03359e-05; dY=0.0192147;
-  signal: Min=7.82027e-06; Max=2.61307e-05; Mean=1.81421e-05;
-  values: 0.00725685 5.20204e-06 2.53403e+06
+  filename: Monitor2_xy_1582663363.x_y
+  statistics: X0=-2.08411e-05; dX=0.0192141; Y0=2.72559e-05; dY=0.0192228;
+  signal: Min=8.05263e-06; Max=2.57663e-05; Mean=1.81311e-05;
+  values: 0.00725246 5.20039e-06 2.53225e+06
   xvar: x
   yvar: y
   xlabel: x [m]

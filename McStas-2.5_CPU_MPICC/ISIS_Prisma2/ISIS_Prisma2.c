@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr (ISIS_Prisma2)
- * Date:       Wed Nov 20 00:42:04 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr (ISIS_Prisma2)
+ * Date:       Tue Feb 25 20:57:23 2020
  * File:       ./ISIS_Prisma2.c
  * Compile:    cc -o ISIS_Prisma2.out ./ISIS_Prisma2.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "ISIS_Prisma2";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -9901,7 +9901,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define PHA6 mcipPHA6
 #define PHA7 mcipPHA7
 #define TTA mcipTTA
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
 int neu_color;                  /* "Color" of current neutron */
 
 /* 30' mosaicity used on analysator */
@@ -11233,7 +11233,7 @@ void mcinit(void) {
 #define PHA6 mcipPHA6
 #define PHA7 mcipPHA7
 #define TTA mcipTTA
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
 {
   focus_x = 0.52 * sin(TT*DEG2RAD);
   focus_z = 0.52 * cos(TT*DEG2RAD);
@@ -11277,27 +11277,27 @@ void mcinit(void) {
     /* Component mod. */
   /* Setting parameters for component mod. */
   SIG_MESSAGE("mod (Init:SetPar)");
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmod_radius = 0.0707;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmod_Emin = 10;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmod_Emax = 15;
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmod_dist = 9.035;
-#line 86 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 86 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmod_focus_xw = 0.021;
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmod_focus_yh = 0.021;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmod_t0 = 37.15;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmod_Ec = 9.0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmod_gamma = 39.1;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmod_target_index = + 1;
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmod_flux = 1;
 #line 11302 "./ISIS_Prisma2.c"
 
@@ -11309,11 +11309,11 @@ void mcinit(void) {
 #line 11309 "./ISIS_Prisma2.c"
   rot_copy(mcrotrmod, mcrotamod);
   mcposamod = coords_set(
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0);
 #line 11318 "./ISIS_Prisma2.c"
   mctc1 = coords_neg(mcposamod);
@@ -11326,19 +11326,19 @@ void mcinit(void) {
     /* Component modslit. */
   /* Setting parameters for component modslit. */
   SIG_MESSAGE("modslit (Init:SetPar)");
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmodslit_xmin = -0.05;
-#line 96 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 96 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmodslit_xmax = 0.05;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmodslit_ymin = -0.05;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmodslit_ymax = 0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmodslit_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmodslit_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmodslit_yheight = 0;
 #line 11343 "./ISIS_Prisma2.c"
 
@@ -11352,11 +11352,11 @@ void mcinit(void) {
   rot_transpose(mcrotamod, mctr1);
   rot_mul(mcrotamodslit, mctr1, mcrotrmodslit);
   mctc1 = coords_set(
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0.000001);
 #line 11361 "./ISIS_Prisma2.c"
   rot_transpose(mcrotamod, mctr1);
@@ -11372,29 +11372,29 @@ void mcinit(void) {
     /* Component tof_test. */
   /* Setting parameters for component tof_test. */
   SIG_MESSAGE("tof_test (Init:SetPar)");
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   if("prisma2.mon") strncpy(mcctof_test_filename, "prisma2.mon" ? "prisma2.mon" : "", 16384); else mcctof_test_filename[0]='\0';
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mcctof_test_xmin = -0.05;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mcctof_test_xmax = 0.05;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mcctof_test_ymin = -0.05;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mcctof_test_ymax = 0.05;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mcctof_test_xwidth = 0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mcctof_test_yheight = 0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mcctof_test_tmin = 0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mcctof_test_tmax = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mcctof_test_dt = 1;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mcctof_test_restore_neutron = 0;
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mcctof_test_nowritefile = 0;
 #line 11399 "./ISIS_Prisma2.c"
 
@@ -11408,11 +11408,11 @@ void mcinit(void) {
   rot_transpose(mcrotamodslit, mctr1);
   rot_mul(mcrotatof_test, mctr1, mcrotrtof_test);
   mctc1 = coords_set(
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0.005);
 #line 11417 "./ISIS_Prisma2.c"
   rot_transpose(mcrotamod, mctr1);
@@ -11428,40 +11428,40 @@ void mcinit(void) {
     /* Component mon1. */
   /* Setting parameters for component mon1. */
   SIG_MESSAGE("mon1 (Init:SetPar)");
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon1_xmin = -0.1;
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon1_xmax = 0.1;
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon1_ymin = -0.1;
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon1_ymax = 0.1;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon1_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon1_yheight = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon1_restore_neutron = 0;
 #line 11445 "./ISIS_Prisma2.c"
 
   SIG_MESSAGE("mon1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (0)*DEG2RAD,
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (0)*DEG2RAD,
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (0)*DEG2RAD);
 #line 11455 "./ISIS_Prisma2.c"
   rot_mul(mctr1, mcrotamod, mcrotamon1);
   rot_transpose(mcrotatof_test, mctr1);
   rot_mul(mcrotamon1, mctr1, mcrotrmon1);
   mctc1 = coords_set(
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0.01);
 #line 11466 "./ISIS_Prisma2.c"
   rot_transpose(mcrotamod, mctr1);
@@ -11477,19 +11477,19 @@ void mcinit(void) {
     /* Component slit1. */
   /* Setting parameters for component slit1. */
   SIG_MESSAGE("slit1 (Init:SetPar)");
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccslit1_xmin = -0.05;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccslit1_xmax = 0.05;
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccslit1_ymin = -0.05;
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccslit1_ymax = 0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccslit1_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccslit1_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccslit1_yheight = 0;
 #line 11494 "./ISIS_Prisma2.c"
 
@@ -11503,11 +11503,11 @@ void mcinit(void) {
   rot_transpose(mcrotamon1, mctr1);
   rot_mul(mcrotaslit1, mctr1, mcrotrslit1);
   mctc1 = coords_set(
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 111 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 111 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     1.7);
 #line 11512 "./ISIS_Prisma2.c"
   rot_transpose(mcrotamod, mctr1);
@@ -11523,19 +11523,19 @@ void mcinit(void) {
     /* Component slit2. */
   /* Setting parameters for component slit2. */
   SIG_MESSAGE("slit2 (Init:SetPar)");
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccslit2_xmin = -0.02;
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccslit2_xmax = 0.02;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccslit2_ymin = -0.03;
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccslit2_ymax = 0.03;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccslit2_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccslit2_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccslit2_yheight = 0;
 #line 11540 "./ISIS_Prisma2.c"
 
@@ -11549,11 +11549,11 @@ void mcinit(void) {
   rot_transpose(mcrotaslit1, mctr1);
   rot_mul(mcrotaslit2, mctr1, mcrotrslit2);
   mctc1 = coords_set(
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 115 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 115 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     7);
 #line 11558 "./ISIS_Prisma2.c"
   rot_transpose(mcrotaslit1, mctr1);
@@ -11569,19 +11569,19 @@ void mcinit(void) {
     /* Component mon2. */
   /* Setting parameters for component mon2. */
   SIG_MESSAGE("mon2 (Init:SetPar)");
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon2_xmin = -0.1;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon2_xmax = 0.1;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon2_ymin = -0.1;
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon2_ymax = 0.1;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon2_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon2_yheight = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon2_restore_neutron = 0;
 #line 11586 "./ISIS_Prisma2.c"
 
@@ -11595,11 +11595,11 @@ void mcinit(void) {
   rot_transpose(mcrotaslit2, mctr1);
   rot_mul(mcrotamon2, mctr1, mcrotrmon2);
   mctc1 = coords_set(
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     9);
 #line 11604 "./ISIS_Prisma2.c"
   rot_transpose(mcrotamod, mctr1);
@@ -11615,57 +11615,57 @@ void mcinit(void) {
     /* Component sample. */
   /* Setting parameters for component sample. */
   SIG_MESSAGE("sample (Init:SetPar)");
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   if(0) strncpy(mccsample_geometry, 0 ? 0 : "", 16384); else mccsample_geometry[0]='\0';
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_radius = 0.01;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_xwidth = 0;
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_yheight = 0.02;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_zdepth = 0;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_thickness = 0.00999;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_target_x = focus_x;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_target_y = 0;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_target_z = focus_z;
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_focus_r = 0.03;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_focus_xw = 0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_focus_yh = 0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_focus_aw = 0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_focus_ah = 0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_target_index = 0;
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_pack = 1;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_p_interact = 1;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_f_QE = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_gamma = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_Etrans = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_deltaE = 0;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_sigma_abs = 5.08;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_sigma_inc = 5.08;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_Vc = 13.827;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_concentric = 0;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccsample_order = 0;
 #line 11670 "./ISIS_Prisma2.c"
 
@@ -11679,11 +11679,11 @@ void mcinit(void) {
   rot_transpose(mcrotamon2, mctr1);
   rot_mul(mcrotasample, mctr1, mcrotrsample);
   mctc1 = coords_set(
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     9.035);
 #line 11688 "./ISIS_Prisma2.c"
   rot_transpose(mcrotamod, mctr1);
@@ -11702,22 +11702,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("a2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (0)*DEG2RAD,
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (mcipTT)*DEG2RAD,
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (0)*DEG2RAD);
 #line 11711 "./ISIS_Prisma2.c"
   rot_mul(mctr1, mcrotasample, mcrotaa2);
   rot_transpose(mcrotasample, mctr1);
   rot_mul(mcrotaa2, mctr1, mcrotra2);
   mctc1 = coords_set(
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0);
 #line 11722 "./ISIS_Prisma2.c"
   rot_transpose(mcrotasample, mctr1);
@@ -11733,19 +11733,19 @@ void mcinit(void) {
     /* Component mon3. */
   /* Setting parameters for component mon3. */
   SIG_MESSAGE("mon3 (Init:SetPar)");
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon3_xmin = -0.1;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon3_xmax = 0.1;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon3_ymin = -0.1;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon3_ymax = 0.1;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon3_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon3_yheight = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon3_restore_neutron = 0;
 #line 11750 "./ISIS_Prisma2.c"
 
@@ -11759,11 +11759,11 @@ void mcinit(void) {
   rot_transpose(mcrotaa2, mctr1);
   rot_mul(mcrotamon3, mctr1, mcrotrmon3);
   mctc1 = coords_set(
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0.39);
 #line 11768 "./ISIS_Prisma2.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -11779,25 +11779,25 @@ void mcinit(void) {
     /* Component coll2. */
   /* Setting parameters for component coll2. */
   SIG_MESSAGE("coll2 (Init:SetPar)");
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mcccoll2_xmin = -0.015;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mcccoll2_xmax = 0.015;
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mcccoll2_ymin = -0.025;
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mcccoll2_ymax = 0.025;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mcccoll2_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mcccoll2_yheight = 0;
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mcccoll2_length = 0.12;
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mcccoll2_divergence = 120;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mcccoll2_transmission = 1;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mcccoll2_divergenceV = 0;
 #line 11802 "./ISIS_Prisma2.c"
 
@@ -11811,11 +11811,11 @@ void mcinit(void) {
   rot_transpose(mcrotamon3, mctr1);
   rot_mul(mcrotacoll2, mctr1, mcrotrcoll2);
   mctc1 = coords_set(
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0.40);
 #line 11820 "./ISIS_Prisma2.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -11831,19 +11831,19 @@ void mcinit(void) {
     /* Component mon4. */
   /* Setting parameters for component mon4. */
   SIG_MESSAGE("mon4 (Init:SetPar)");
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon4_xmin = -0.1;
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon4_xmax = 0.1;
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon4_ymin = -0.1;
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon4_ymax = 0.1;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon4_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon4_yheight = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon4_restore_neutron = 0;
 #line 11848 "./ISIS_Prisma2.c"
 
@@ -11857,11 +11857,11 @@ void mcinit(void) {
   rot_transpose(mcrotacoll2, mctr1);
   rot_mul(mcrotamon4, mctr1, mcrotrmon4);
   mctc1 = coords_set(
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0.521);
 #line 11866 "./ISIS_Prisma2.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -11880,22 +11880,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("rita_ana (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (0)*DEG2RAD,
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (mcipPHA)*DEG2RAD,
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (0)*DEG2RAD);
 #line 11889 "./ISIS_Prisma2.c"
   rot_mul(mctr1, mcrotaa2, mcrotarita_ana);
   rot_transpose(mcrotamon4, mctr1);
   rot_mul(mcrotarita_ana, mctr1, mcrotrrita_ana);
   mctc1 = coords_set(
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0.58);
 #line 11900 "./ISIS_Prisma2.c"
   rot_transpose(mcrotaa2, mctr1);
@@ -11911,48 +11911,48 @@ void mcinit(void) {
     /* Component ana1. */
   /* Setting parameters for component ana1. */
   SIG_MESSAGE("ana1 (Init:SetPar)");
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana1_zmin = -0.006;
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana1_zmax = 0.006;
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana1_ymin = -0.0375;
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana1_ymax = 0.0375;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana1_zwidth = 0;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana1_yheight = 0;
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana1_mosaich = prisma_ana_mosaic;
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana1_mosaicv = prisma_ana_mosaic;
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana1_r0 = prisma_ana_r0;
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana1_Q = prisma_ana_q;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana1_DM = 0;
 #line 11936 "./ISIS_Prisma2.c"
 
   SIG_MESSAGE("ana1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (0)*DEG2RAD,
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (mcipPHA1)*DEG2RAD,
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (0)*DEG2RAD);
 #line 11946 "./ISIS_Prisma2.c"
   rot_mul(mctr1, mcrotarita_ana, mcrotaana1);
   rot_transpose(mcrotarita_ana, mctr1);
   rot_mul(mcrotaana1, mctr1, mcrotrana1);
   mctc1 = coords_set(
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     apos1);
 #line 11957 "./ISIS_Prisma2.c"
   rot_transpose(mcrotarita_ana, mctr1);
@@ -11968,48 +11968,48 @@ void mcinit(void) {
     /* Component ana2. */
   /* Setting parameters for component ana2. */
   SIG_MESSAGE("ana2 (Init:SetPar)");
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana2_zmin = -0.006;
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana2_zmax = 0.006;
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana2_ymin = -0.0375;
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana2_ymax = 0.0375;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana2_zwidth = 0;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana2_yheight = 0;
-#line 157 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 157 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana2_mosaich = prisma_ana_mosaic;
-#line 157 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 157 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana2_mosaicv = prisma_ana_mosaic;
-#line 158 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 158 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana2_r0 = prisma_ana_r0;
-#line 158 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 158 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana2_Q = prisma_ana_q;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana2_DM = 0;
 #line 11993 "./ISIS_Prisma2.c"
 
   SIG_MESSAGE("ana2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 160 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 160 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (0)*DEG2RAD,
-#line 160 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 160 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (mcipPHA2)*DEG2RAD,
-#line 160 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 160 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (0)*DEG2RAD);
 #line 12003 "./ISIS_Prisma2.c"
   rot_mul(mctr1, mcrotarita_ana, mcrotaana2);
   rot_transpose(mcrotaana1, mctr1);
   rot_mul(mcrotaana2, mctr1, mcrotrana2);
   mctc1 = coords_set(
-#line 159 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 159 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 159 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 159 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 159 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 159 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     apos2);
 #line 12014 "./ISIS_Prisma2.c"
   rot_transpose(mcrotarita_ana, mctr1);
@@ -12025,48 +12025,48 @@ void mcinit(void) {
     /* Component ana3. */
   /* Setting parameters for component ana3. */
   SIG_MESSAGE("ana3 (Init:SetPar)");
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana3_zmin = -0.006;
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana3_zmax = 0.006;
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana3_ymin = -0.0375;
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana3_ymax = 0.0375;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana3_zwidth = 0;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana3_yheight = 0;
-#line 167 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana3_mosaich = prisma_ana_mosaic;
-#line 167 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana3_mosaicv = prisma_ana_mosaic;
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana3_r0 = prisma_ana_r0;
-#line 168 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 168 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana3_Q = prisma_ana_q;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana3_DM = 0;
 #line 12050 "./ISIS_Prisma2.c"
 
   SIG_MESSAGE("ana3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 170 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 170 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (0)*DEG2RAD,
-#line 170 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 170 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (mcipPHA3)*DEG2RAD,
-#line 170 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 170 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (0)*DEG2RAD);
 #line 12060 "./ISIS_Prisma2.c"
   rot_mul(mctr1, mcrotarita_ana, mcrotaana3);
   rot_transpose(mcrotaana2, mctr1);
   rot_mul(mcrotaana3, mctr1, mcrotrana3);
   mctc1 = coords_set(
-#line 169 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 169 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 169 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 169 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     apos3);
 #line 12071 "./ISIS_Prisma2.c"
   rot_transpose(mcrotarita_ana, mctr1);
@@ -12082,48 +12082,48 @@ void mcinit(void) {
     /* Component ana4. */
   /* Setting parameters for component ana4. */
   SIG_MESSAGE("ana4 (Init:SetPar)");
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana4_zmin = -0.006;
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana4_zmax = 0.006;
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana4_ymin = -0.0375;
-#line 176 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 176 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana4_ymax = 0.0375;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana4_zwidth = 0;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana4_yheight = 0;
-#line 177 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 177 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana4_mosaich = prisma_ana_mosaic;
-#line 177 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 177 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana4_mosaicv = prisma_ana_mosaic;
-#line 178 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 178 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana4_r0 = prisma_ana_r0;
-#line 178 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 178 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana4_Q = prisma_ana_q;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana4_DM = 0;
 #line 12107 "./ISIS_Prisma2.c"
 
   SIG_MESSAGE("ana4 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 180 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 180 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (0)*DEG2RAD,
-#line 180 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 180 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (mcipPHA4)*DEG2RAD,
-#line 180 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 180 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (0)*DEG2RAD);
 #line 12117 "./ISIS_Prisma2.c"
   rot_mul(mctr1, mcrotarita_ana, mcrotaana4);
   rot_transpose(mcrotaana3, mctr1);
   rot_mul(mcrotaana4, mctr1, mcrotrana4);
   mctc1 = coords_set(
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 179 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 179 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     apos4);
 #line 12128 "./ISIS_Prisma2.c"
   rot_transpose(mcrotarita_ana, mctr1);
@@ -12139,48 +12139,48 @@ void mcinit(void) {
     /* Component ana5. */
   /* Setting parameters for component ana5. */
   SIG_MESSAGE("ana5 (Init:SetPar)");
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana5_zmin = -0.006;
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana5_zmax = 0.006;
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana5_ymin = -0.0375;
-#line 186 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 186 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana5_ymax = 0.0375;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana5_zwidth = 0;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana5_yheight = 0;
-#line 187 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 187 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana5_mosaich = prisma_ana_mosaic;
-#line 187 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 187 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana5_mosaicv = prisma_ana_mosaic;
-#line 188 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 188 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana5_r0 = prisma_ana_r0;
-#line 188 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 188 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana5_Q = prisma_ana_q;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana5_DM = 0;
 #line 12164 "./ISIS_Prisma2.c"
 
   SIG_MESSAGE("ana5 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (0)*DEG2RAD,
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (mcipPHA5)*DEG2RAD,
-#line 190 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 190 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (0)*DEG2RAD);
 #line 12174 "./ISIS_Prisma2.c"
   rot_mul(mctr1, mcrotarita_ana, mcrotaana5);
   rot_transpose(mcrotaana4, mctr1);
   rot_mul(mcrotaana5, mctr1, mcrotrana5);
   mctc1 = coords_set(
-#line 189 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 189 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 189 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 189 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 189 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 189 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     apos5);
 #line 12185 "./ISIS_Prisma2.c"
   rot_transpose(mcrotarita_ana, mctr1);
@@ -12196,48 +12196,48 @@ void mcinit(void) {
     /* Component ana6. */
   /* Setting parameters for component ana6. */
   SIG_MESSAGE("ana6 (Init:SetPar)");
-#line 196 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 196 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana6_zmin = -0.006;
-#line 196 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 196 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana6_zmax = 0.006;
-#line 196 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 196 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana6_ymin = -0.0375;
-#line 196 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 196 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana6_ymax = 0.0375;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana6_zwidth = 0;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana6_yheight = 0;
-#line 197 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 197 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana6_mosaich = prisma_ana_mosaic;
-#line 197 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 197 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana6_mosaicv = prisma_ana_mosaic;
-#line 198 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 198 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana6_r0 = prisma_ana_r0;
-#line 198 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 198 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana6_Q = prisma_ana_q;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana6_DM = 0;
 #line 12221 "./ISIS_Prisma2.c"
 
   SIG_MESSAGE("ana6 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 200 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 200 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (0)*DEG2RAD,
-#line 200 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 200 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (mcipPHA6)*DEG2RAD,
-#line 200 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 200 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (0)*DEG2RAD);
 #line 12231 "./ISIS_Prisma2.c"
   rot_mul(mctr1, mcrotarita_ana, mcrotaana6);
   rot_transpose(mcrotaana5, mctr1);
   rot_mul(mcrotaana6, mctr1, mcrotrana6);
   mctc1 = coords_set(
-#line 199 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 199 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 199 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 199 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 199 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 199 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     apos6);
 #line 12242 "./ISIS_Prisma2.c"
   rot_transpose(mcrotarita_ana, mctr1);
@@ -12253,48 +12253,48 @@ void mcinit(void) {
     /* Component ana7. */
   /* Setting parameters for component ana7. */
   SIG_MESSAGE("ana7 (Init:SetPar)");
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana7_zmin = -0.006;
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana7_zmax = 0.006;
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana7_ymin = -0.0375;
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana7_ymax = 0.0375;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana7_zwidth = 0;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana7_yheight = 0;
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana7_mosaich = prisma_ana_mosaic;
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana7_mosaicv = prisma_ana_mosaic;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana7_r0 = prisma_ana_r0;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana7_Q = prisma_ana_q;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccana7_DM = 0;
 #line 12278 "./ISIS_Prisma2.c"
 
   SIG_MESSAGE("ana7 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (0)*DEG2RAD,
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (mcipPHA7)*DEG2RAD,
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (0)*DEG2RAD);
 #line 12288 "./ISIS_Prisma2.c"
   rot_mul(mctr1, mcrotarita_ana, mcrotaana7);
   rot_transpose(mcrotaana6, mctr1);
   rot_mul(mcrotaana7, mctr1, mcrotrana7);
   mctc1 = coords_set(
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     apos7);
 #line 12299 "./ISIS_Prisma2.c"
   rot_transpose(mcrotarita_ana, mctr1);
@@ -12313,22 +12313,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("a3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 216 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 216 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (0)*DEG2RAD,
-#line 216 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 216 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (mcipTTA)*DEG2RAD,
-#line 216 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 216 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     (0)*DEG2RAD);
 #line 12322 "./ISIS_Prisma2.c"
   rot_mul(mctr1, mcrotaa2, mcrotaa3);
   rot_transpose(mcrotaana7, mctr1);
   rot_mul(mcrotaa3, mctr1, mcrotra3);
   mctc1 = coords_set(
-#line 216 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 216 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 216 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 216 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 216 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 216 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0);
 #line 12333 "./ISIS_Prisma2.c"
   rot_transpose(mcrotarita_ana, mctr1);
@@ -12344,19 +12344,19 @@ void mcinit(void) {
     /* Component mon5. */
   /* Setting parameters for component mon5. */
   SIG_MESSAGE("mon5 (Init:SetPar)");
-#line 218 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 218 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon5_xmin = -0.05;
-#line 218 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 218 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon5_xmax = 0.05;
-#line 218 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 218 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon5_ymin = -0.05;
-#line 218 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 218 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon5_ymax = 0.05;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon5_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon5_yheight = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon5_restore_neutron = 0;
 #line 12361 "./ISIS_Prisma2.c"
 
@@ -12370,11 +12370,11 @@ void mcinit(void) {
   rot_transpose(mcrotaa3, mctr1);
   rot_mul(mcrotamon5, mctr1, mcrotrmon5);
   mctc1 = coords_set(
-#line 219 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 219 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 219 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 219 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 219 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 219 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0.06);
 #line 12379 "./ISIS_Prisma2.c"
   rot_transpose(mcrotaa3, mctr1);
@@ -12390,19 +12390,19 @@ void mcinit(void) {
     /* Component mon6. */
   /* Setting parameters for component mon6. */
   SIG_MESSAGE("mon6 (Init:SetPar)");
-#line 221 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 221 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon6_xmin = -0.1;
-#line 221 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 221 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon6_xmax = 0.1;
-#line 221 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 221 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon6_ymin = -0.1;
-#line 221 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 221 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon6_ymax = 0.1;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon6_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon6_yheight = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon6_restore_neutron = 0;
 #line 12407 "./ISIS_Prisma2.c"
 
@@ -12416,11 +12416,11 @@ void mcinit(void) {
   rot_transpose(mcrotamon5, mctr1);
   rot_mul(mcrotamon6, mctr1, mcrotrmon6);
   mctc1 = coords_set(
-#line 222 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 222 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 222 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 222 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 222 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 222 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0.161);
 #line 12425 "./ISIS_Prisma2.c"
   rot_transpose(mcrotaa3, mctr1);
@@ -12436,25 +12436,25 @@ void mcinit(void) {
     /* Component psd. */
   /* Setting parameters for component psd. */
   SIG_MESSAGE("psd (Init:SetPar)");
-#line 226 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 226 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccpsd_nx = 100;
-#line 226 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 226 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccpsd_ny = 100;
-#line 227 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 227 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   if("prisma2.psd") strncpy(mccpsd_filename, "prisma2.psd" ? "prisma2.psd" : "", 16384); else mccpsd_filename[0]='\0';
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 224 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccpsd_xmin = -0.05;
-#line 224 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 224 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccpsd_xmax = 0.05;
-#line 225 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 225 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccpsd_ymin = -0.05;
-#line 225 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 225 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccpsd_ymax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccpsd_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccpsd_yheight = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccpsd_restore_neutron = 0;
 #line 12459 "./ISIS_Prisma2.c"
 
@@ -12468,11 +12468,11 @@ void mcinit(void) {
   rot_transpose(mcrotamon6, mctr1);
   rot_mul(mcrotapsd, mctr1, mcrotrpsd);
   mctc1 = coords_set(
-#line 228 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 228 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 228 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 228 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 228 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 228 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0.20);
 #line 12477 "./ISIS_Prisma2.c"
   rot_transpose(mcrotaa3, mctr1);
@@ -12488,47 +12488,47 @@ void mcinit(void) {
     /* Component Detector. */
   /* Setting parameters for component Detector. */
   SIG_MESSAGE("Detector (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccDetector_xwidth = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccDetector_yheight = 0;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccDetector_zdepth = 0;
-#line 230 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 230 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccDetector_xmin = -0.05;
-#line 230 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 230 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccDetector_xmax = 0.05;
-#line 231 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 231 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccDetector_ymin = -0.05;
-#line 231 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 231 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccDetector_ymax = 0.05;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccDetector_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccDetector_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccDetector_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccDetector_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccDetector_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccDetector_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccDetector_radius = 0;
-#line 232 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 232 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   if("user1 limits=[0 6] bins=7, t limits=[0 10000] bins=1000") strncpy(mccDetector_options, "user1 limits=[0 6] bins=7, t limits=[0 10000] bins=1000" ? "user1 limits=[0 6] bins=7, t limits=[0 10000] bins=1000" : "", 16384); else mccDetector_options[0]='\0';
-#line 233 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 233 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   if("prisma2.tof") strncpy(mccDetector_filename, "prisma2.tof" ? "prisma2.tof" : "", 16384); else mccDetector_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   if("NULL") strncpy(mccDetector_geometry, "NULL" ? "NULL" : "", 16384); else mccDetector_geometry[0]='\0';
-#line 232 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 232 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   if("Mono blade") strncpy(mccDetector_username1, "Mono blade" ? "Mono blade" : "", 16384); else mccDetector_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   if("NULL") strncpy(mccDetector_username2, "NULL" ? "NULL" : "", 16384); else mccDetector_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   if("NULL") strncpy(mccDetector_username3, "NULL" ? "NULL" : "", 16384); else mccDetector_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccDetector_nowritefile = 0;
 #line 12533 "./ISIS_Prisma2.c"
 
@@ -12542,11 +12542,11 @@ void mcinit(void) {
   rot_transpose(mcrotapsd, mctr1);
   rot_mul(mcrotaDetector, mctr1, mcrotrDetector);
   mctc1 = coords_set(
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 234 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 234 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0.20);
 #line 12551 "./ISIS_Prisma2.c"
   rot_transpose(mcrotaa3, mctr1);
@@ -12562,19 +12562,19 @@ void mcinit(void) {
     /* Component mon9. */
   /* Setting parameters for component mon9. */
   SIG_MESSAGE("mon9 (Init:SetPar)");
-#line 236 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 236 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon9_xmin = -0.1;
-#line 236 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 236 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon9_xmax = 0.1;
-#line 236 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 236 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon9_ymin = -0.1;
-#line 236 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 236 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon9_ymax = 0.1;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon9_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon9_yheight = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   mccmon9_restore_neutron = 0;
 #line 12579 "./ISIS_Prisma2.c"
 
@@ -12588,11 +12588,11 @@ void mcinit(void) {
   rot_transpose(mcrotaDetector, mctr1);
   rot_mul(mcrotamon9, mctr1, mcrotrmon9);
   mctc1 = coords_set(
-#line 237 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 237 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 237 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 237 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0,
-#line 237 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 237 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
     0.01);
 #line 12597 "./ISIS_Prisma2.c"
   rot_transpose(mcrotaDetector, mctr1);
@@ -14141,7 +14141,7 @@ MCNUM flux = mccmod_flux;
 #line 14141 "./ISIS_Prisma2.c"
 /* 'mod=Moderator()' component instance extend code */
     SIG_MESSAGE("mod (Trace:Extend)");
-#line 92 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 92 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   neu_color=0;
 #line 14146 "./ISIS_Prisma2.c"
 }   /* End of mod=Moderator() SETTING parameter declarations. */
@@ -16156,7 +16156,7 @@ MCNUM DM = mccana1_DM;
 #line 16156 "./ISIS_Prisma2.c"
 /* 'ana1=Monochromator_flat()' component instance extend code */
     SIG_MESSAGE("ana1 (Trace:Extend)");
-#line 152 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 152 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   if(SCATTERED) neu_color=1;
 #line 16161 "./ISIS_Prisma2.c"
 }   /* End of ana1=Monochromator_flat() SETTING parameter declarations. */
@@ -16421,7 +16421,7 @@ MCNUM DM = mccana2_DM;
 #line 16421 "./ISIS_Prisma2.c"
 /* 'ana2=Monochromator_flat()' component instance extend code */
     SIG_MESSAGE("ana2 (Trace:Extend)");
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   if(SCATTERED) neu_color=2;
 #line 16426 "./ISIS_Prisma2.c"
 }   /* End of ana2=Monochromator_flat() SETTING parameter declarations. */
@@ -16686,7 +16686,7 @@ MCNUM DM = mccana3_DM;
 #line 16686 "./ISIS_Prisma2.c"
 /* 'ana3=Monochromator_flat()' component instance extend code */
     SIG_MESSAGE("ana3 (Trace:Extend)");
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 172 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   if(SCATTERED) neu_color=3;
 #line 16691 "./ISIS_Prisma2.c"
 }   /* End of ana3=Monochromator_flat() SETTING parameter declarations. */
@@ -16951,7 +16951,7 @@ MCNUM DM = mccana4_DM;
 #line 16951 "./ISIS_Prisma2.c"
 /* 'ana4=Monochromator_flat()' component instance extend code */
     SIG_MESSAGE("ana4 (Trace:Extend)");
-#line 182 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 182 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   if(SCATTERED) neu_color=4;
 #line 16956 "./ISIS_Prisma2.c"
 }   /* End of ana4=Monochromator_flat() SETTING parameter declarations. */
@@ -17216,7 +17216,7 @@ MCNUM DM = mccana5_DM;
 #line 17216 "./ISIS_Prisma2.c"
 /* 'ana5=Monochromator_flat()' component instance extend code */
     SIG_MESSAGE("ana5 (Trace:Extend)");
-#line 192 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 192 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   if(SCATTERED) neu_color=5;
 #line 17221 "./ISIS_Prisma2.c"
 }   /* End of ana5=Monochromator_flat() SETTING parameter declarations. */
@@ -17481,7 +17481,7 @@ MCNUM DM = mccana6_DM;
 #line 17481 "./ISIS_Prisma2.c"
 /* 'ana6=Monochromator_flat()' component instance extend code */
     SIG_MESSAGE("ana6 (Trace:Extend)");
-#line 202 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 202 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   if(SCATTERED) neu_color=6;
 #line 17486 "./ISIS_Prisma2.c"
 }   /* End of ana6=Monochromator_flat() SETTING parameter declarations. */
@@ -17746,7 +17746,7 @@ MCNUM DM = mccana7_DM;
 #line 17746 "./ISIS_Prisma2.c"
 /* 'ana7=Monochromator_flat()' component instance extend code */
     SIG_MESSAGE("ana7 (Trace:Extend)");
-#line 212 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
+#line 212 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr"
   if(SCATTERED) neu_color=7;
 #line 17751 "./ISIS_Prisma2.c"
 }   /* End of ana7=Monochromator_flat() SETTING parameter declarations. */

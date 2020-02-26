@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr (Test_Pol_Guide_Vmirror)
- * Date:       Wed Nov 20 00:51:52 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr (Test_Pol_Guide_Vmirror)
+ * Date:       Tue Feb 25 21:06:33 2020
  * File:       ./Test_Pol_Guide_Vmirror.c
  * Compile:    cc -o Test_Pol_Guide_Vmirror.out ./Test_Pol_Guide_Vmirror.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Test_Pol_Guide_Vmirror";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -5482,6 +5482,13 @@ void destroy_darr3d(DArray3d a){
 #include <mcstas-r.h>
 #endif
 
+/*Redefine MAGNET_OFF to also clear the magnetic field stack.*/
+#undef MAGNET_OFF
+#define MAGNET_OFF \
+  do { \
+    mcMagnet = 0; \
+    mcmagnet_pop_all(); \
+  } while(0)
 
 typedef int mcmagnet_field_func (double, double, double, double, double *, double *, double *, void *);
 typedef void mcmagnet_prec_func (double, double, double, double, double, double, double, double*, double*, double*, double, Coords, Rotation);
@@ -5519,7 +5526,7 @@ void mc_pol_set_angular_accuracy(double);
   do { \
     mcMagneticField=NULL; \
     mcMagnetData=NULL; \
-    MAGNET_OFF; \
+    mcMagnet=0; \
   } while (0);
 
 #define mcmagnet_set_active(mcmagnet_new) \
@@ -5557,6 +5564,7 @@ void *mcmagnet_init_par_backend(int dummy, ...);
 int mcmagnet_get_field(double x, double y, double z, double t, double *bx,double *by, double *bz, void *dummy);
 void *mcmagnet_push(mcmagnet_field_func *func,  Rotation *magnet_rot, Coords *magnet_pos, int stopbit, void * prms);
 void *mcmagnet_pop(void);
+void *mcmagnet_pop_all(void);
 
 /*example functions for magnetic fields*/
 int const_magnetic_field(double x, double y, double z, double t, double *bx, double *by, double *bz, void *data);
@@ -7894,7 +7902,7 @@ void *mcmagnet_push(mcmagnet_field_func *func,  Rotation *magnet_rot, Coords *ma
   mcmagnet_pack(stack[0],func,magnet_rot,magnet_pos,stopbit,prms);
   mcmagnet_set_active(stack[0]);
   if(stack[0] && stack[0]->func){
-    MAGNET_ON;
+    mcMagnet=1;
   }
   return (void *) stack[0];
 }
@@ -7910,11 +7918,19 @@ void *mcmagnet_pop(void) {
   stack[MCMAGNET_STACKSIZE-1]=NULL;
   mcmagnet_set_active(stack[0]);
   if(stack[0] && stack[0]->func){
-    MAGNET_ON;
+    mcMagnet=1;
   }else{
-    MAGNET_OFF;
+    mcMagnet=0;
   }
   return (void*) t;
+}
+
+void *mcmagnet_pop_all(void){
+  void *t=mcmagnet_pop();
+  while (t!=NULL){
+    t=mcmagnet_pop();
+  }
+  return NULL;
 }
 
 void mcmagnet_free_stack(void){
@@ -8406,13 +8422,13 @@ void TableReflecFunc(double mc_pol_q, t_Table *mc_pol_par, double *mc_pol_r) {
 
 /* end of ref-lib.c */
 
-#line 8409 "./Test_Pol_Guide_Vmirror.c"
+#line 8425 "./Test_Pol_Guide_Vmirror.c"
 
 /* Shared user declarations for all components 'Guide'. */
 #line 63 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Guide.comp"
 
 
-#line 8415 "./Test_Pol_Guide_Vmirror.c"
+#line 8431 "./Test_Pol_Guide_Vmirror.c"
 
 /* Instrument parameters. */
 int mcippolariserIn;
@@ -8430,10 +8446,10 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define mccompcurindex 0
 #define mcposaTest_Pol_Guide_Vmirror coords_set(0,0,0)
 #define polariserIn mcippolariserIn
-#line 31 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 31 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
 #define GUIDEREF 0.99
 #define MIRRORREF 0.99
-#line 8436 "./Test_Pol_Guide_Vmirror.c"
+#line 8452 "./Test_Pol_Guide_Vmirror.c"
 #undef polariserIn
 #undef mcposaTest_Pol_Guide_Vmirror
 #undef mccompcurindex
@@ -8687,7 +8703,7 @@ double IntermediateCnts;
 time_t StartTime;
 time_t EndTime;
 time_t CurrentTime;
-#line 8690 "./Test_Pol_Guide_Vmirror.c"
+#line 8706 "./Test_Pol_Guide_Vmirror.c"
 #undef minutes
 #undef flag_save
 #undef percent
@@ -8724,7 +8740,7 @@ time_t CurrentTime;
 double pmul, srcArea;
 int square;
 double tx,ty,tz;
-#line 8727 "./Test_Pol_Guide_Vmirror.c"
+#line 8743 "./Test_Pol_Guide_Vmirror.c"
 #undef target_index
 #undef gauss
 #undef flux
@@ -8767,7 +8783,7 @@ double tx,ty,tz;
 #line 57 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../monitors/L_monitor.comp"
 double L_N[nL];
 double L_p[nL], L_p2[nL];
-#line 8770 "./Test_Pol_Guide_Vmirror.c"
+#line 8786 "./Test_Pol_Guide_Vmirror.c"
 #undef nowritefile
 #undef restore_neutron
 #undef Lmax
@@ -8808,7 +8824,7 @@ double L_p[nL], L_p2[nL];
   DArray2d PSD_N;
   DArray2d PSD_p;
   DArray2d PSD_p2;
-#line 8811 "./Test_Pol_Guide_Vmirror.c"
+#line 8827 "./Test_Pol_Guide_Vmirror.c"
 #undef restore_neutron
 #undef yheight
 #undef xwidth
@@ -8871,7 +8887,7 @@ Coords pointTop, pointBot, pointLeft, pointRight, pointIn, pointOut;
   double rUpParPtr[]   = (double [])rUpPar;
   double rDownParPtr[] = (double [])rDownPar;
 #endif
-#line 8874 "./Test_Pol_Guide_Vmirror.c"
+#line 8890 "./Test_Pol_Guide_Vmirror.c"
 #undef allow_inside_start
 #undef useTables
 #undef debug
@@ -8921,7 +8937,7 @@ Coords pointTop, pointBot, pointLeft, pointRight, pointIn, pointOut;
 #define W mccNONPOLguide_W
 #line 71 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Guide.comp"
 t_Table pTable;
-#line 8924 "./Test_Pol_Guide_Vmirror.c"
+#line 8940 "./Test_Pol_Guide_Vmirror.c"
 #undef W
 #undef m
 #undef alpha
@@ -8964,7 +8980,7 @@ t_Table pTable;
 #define W mccGuide_W
 #line 71 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Guide.comp"
 t_Table pTable;
-#line 8967 "./Test_Pol_Guide_Vmirror.c"
+#line 8983 "./Test_Pol_Guide_Vmirror.c"
 #undef W
 #undef m
 #undef alpha
@@ -9011,7 +9027,7 @@ t_Table pTable;
 #line 57 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../monitors/L_monitor.comp"
 double L_N[nL];
 double L_p[nL], L_p2[nL];
-#line 9014 "./Test_Pol_Guide_Vmirror.c"
+#line 9030 "./Test_Pol_Guide_Vmirror.c"
 #undef nowritefile
 #undef restore_neutron
 #undef Lmax
@@ -9052,7 +9068,7 @@ double L_p[nL], L_p2[nL];
   DArray2d PSD_N;
   DArray2d PSD_p;
   DArray2d PSD_p2;
-#line 9055 "./Test_Pol_Guide_Vmirror.c"
+#line 9071 "./Test_Pol_Guide_Vmirror.c"
 #undef restore_neutron
 #undef yheight
 #undef xwidth
@@ -9093,7 +9109,7 @@ double L_p[nL], L_p2[nL];
 double PolL_N[nL][npol];
 double PolL_p[nL][npol];
 double PolL_p2[nL][npol];
-#line 9096 "./Test_Pol_Guide_Vmirror.c"
+#line 9112 "./Test_Pol_Guide_Vmirror.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -9136,7 +9152,7 @@ double PolL_p2[nL][npol];
 double PolL_N[nL][npol];
 double PolL_p[nL][npol];
 double PolL_p2[nL][npol];
-#line 9139 "./Test_Pol_Guide_Vmirror.c"
+#line 9155 "./Test_Pol_Guide_Vmirror.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -9179,7 +9195,7 @@ double PolL_p2[nL][npol];
 double PolL_N[nL][npol];
 double PolL_p[nL][npol];
 double PolL_p2[nL][npol];
-#line 9182 "./Test_Pol_Guide_Vmirror.c"
+#line 9198 "./Test_Pol_Guide_Vmirror.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -9223,7 +9239,7 @@ double PolL_N[nL];
 double PolL_p[nL];
 double PolL_p2[nL];
 double HelpArray[nL];
-#line 9226 "./Test_Pol_Guide_Vmirror.c"
+#line 9242 "./Test_Pol_Guide_Vmirror.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -9267,7 +9283,7 @@ double PolL_N[nL];
 double PolL_p[nL];
 double PolL_p2[nL];
 double HelpArray[nL];
-#line 9270 "./Test_Pol_Guide_Vmirror.c"
+#line 9286 "./Test_Pol_Guide_Vmirror.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -9311,7 +9327,7 @@ double PolL_N[nL];
 double PolL_p[nL];
 double PolL_p2[nL];
 double HelpArray[nL];
-#line 9314 "./Test_Pol_Guide_Vmirror.c"
+#line 9330 "./Test_Pol_Guide_Vmirror.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -9394,31 +9410,31 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccOrigin_minutes = 0;
-#line 9405 "./Test_Pol_Guide_Vmirror.c"
+#line 9421 "./Test_Pol_Guide_Vmirror.c"
 
   SIG_MESSAGE("Origin (Init:Place/Rotate)");
   rot_set_rotation(mcrotaOrigin,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9412 "./Test_Pol_Guide_Vmirror.c"
+#line 9428 "./Test_Pol_Guide_Vmirror.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0);
-#line 9421 "./Test_Pol_Guide_Vmirror.c"
+#line 9437 "./Test_Pol_Guide_Vmirror.c"
   mctc1 = coords_neg(mcposaOrigin);
   mcposrOrigin = rot_apply(mcrotaOrigin, mctc1);
   mcDEBUG_COMPONENT("Origin", mcposaOrigin, mcrotaOrigin)
@@ -9429,51 +9445,51 @@ void mcinit(void) {
     /* Component source. */
   /* Setting parameters for component source. */
   SIG_MESSAGE("source (Init:SetPar)");
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccsource_radius = 0.05;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccsource_yheight = 0;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccsource_xwidth = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccsource_dist = 5.0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccsource_focus_xw = 0.03;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccsource_focus_yh = 0.05;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccsource_E0 = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccsource_dE = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccsource_lambda0 = 11;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccsource_dlambda = 10;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccsource_flux = 1e14;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccsource_gauss = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccsource_target_index = + 1;
-#line 9458 "./Test_Pol_Guide_Vmirror.c"
+#line 9474 "./Test_Pol_Guide_Vmirror.c"
 
   SIG_MESSAGE("source (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9465 "./Test_Pol_Guide_Vmirror.c"
+#line 9481 "./Test_Pol_Guide_Vmirror.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotasource);
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotasource, mctr1, mcrotrsource);
   mctc1 = coords_set(
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0);
-#line 9476 "./Test_Pol_Guide_Vmirror.c"
+#line 9492 "./Test_Pol_Guide_Vmirror.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposasource = coords_add(mcposaOrigin, mctc2);
@@ -9487,47 +9503,47 @@ void mcinit(void) {
     /* Component lamStart. */
   /* Setting parameters for component lamStart. */
   SIG_MESSAGE("lamStart (Init:SetPar)");
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   if("lambdaStart.dat") strncpy(mcclamStart_filename, "lambdaStart.dat" ? "lambdaStart.dat" : "", 16384); else mcclamStart_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mcclamStart_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mcclamStart_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mcclamStart_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mcclamStart_ymax = 0.05;
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mcclamStart_xwidth = 0.10;
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mcclamStart_yheight = 0.10;
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mcclamStart_Lmin = 1;
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mcclamStart_Lmax = 21;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mcclamStart_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mcclamStart_nowritefile = 0;
-#line 9512 "./Test_Pol_Guide_Vmirror.c"
+#line 9528 "./Test_Pol_Guide_Vmirror.c"
 
   SIG_MESSAGE("lamStart (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9519 "./Test_Pol_Guide_Vmirror.c"
+#line 9535 "./Test_Pol_Guide_Vmirror.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotalamStart);
   rot_transpose(mcrotasource, mctr1);
   rot_mul(mcrotalamStart, mctr1, mcrotrlamStart);
   mctc1 = coords_set(
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 62 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 62 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     4.8);
-#line 9530 "./Test_Pol_Guide_Vmirror.c"
+#line 9546 "./Test_Pol_Guide_Vmirror.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposalamStart = coords_add(mcposaOrigin, mctc2);
@@ -9541,45 +9557,45 @@ void mcinit(void) {
     /* Component psdStart. */
   /* Setting parameters for component psdStart. */
   SIG_MESSAGE("psdStart (Init:SetPar)");
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpsdStart_nx = 40;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpsdStart_ny = 40;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   if("psdStart.dat") strncpy(mccpsdStart_filename, "psdStart.dat" ? "psdStart.dat" : "", 16384); else mccpsdStart_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpsdStart_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpsdStart_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpsdStart_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpsdStart_ymax = 0.05;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpsdStart_xwidth = 0.10;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpsdStart_yheight = 0.10;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpsdStart_restore_neutron = 0;
-#line 9564 "./Test_Pol_Guide_Vmirror.c"
+#line 9580 "./Test_Pol_Guide_Vmirror.c"
 
   SIG_MESSAGE("psdStart (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9571 "./Test_Pol_Guide_Vmirror.c"
+#line 9587 "./Test_Pol_Guide_Vmirror.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotapsdStart);
   rot_transpose(mcrotalamStart, mctr1);
   rot_mul(mcrotapsdStart, mctr1, mcrotrpsdStart);
   mctc1 = coords_set(
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     4.8);
-#line 9582 "./Test_Pol_Guide_Vmirror.c"
+#line 9598 "./Test_Pol_Guide_Vmirror.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposapsdStart = coords_add(mcposaOrigin, mctc2);
@@ -9593,37 +9609,37 @@ void mcinit(void) {
     /* Component POLguidevmirror. */
   /* Setting parameters for component POLguidevmirror. */
   SIG_MESSAGE("POLguidevmirror (Init:SetPar)");
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccPOLguidevmirror_xwidth = 0.03;
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccPOLguidevmirror_yheight = 0.05;
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccPOLguidevmirror_length = 1.8;
-#line 81 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 81 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccPOLguidevmirror_debug = 0;
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccPOLguidevmirror_useTables = 0;
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccPOLguidevmirror_allow_inside_start = 0;
-#line 9608 "./Test_Pol_Guide_Vmirror.c"
+#line 9624 "./Test_Pol_Guide_Vmirror.c"
 
   SIG_MESSAGE("POLguidevmirror (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9615 "./Test_Pol_Guide_Vmirror.c"
+#line 9631 "./Test_Pol_Guide_Vmirror.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaPOLguidevmirror);
   rot_transpose(mcrotapsdStart, mctr1);
   rot_mul(mcrotaPOLguidevmirror, mctr1, mcrotrPOLguidevmirror);
   mctc1 = coords_set(
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     5.0);
-#line 9626 "./Test_Pol_Guide_Vmirror.c"
+#line 9642 "./Test_Pol_Guide_Vmirror.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaPOLguidevmirror = coords_add(mcposaOrigin, mctc2);
@@ -9637,47 +9653,47 @@ void mcinit(void) {
     /* Component NONPOLguide. */
   /* Setting parameters for component NONPOLguide. */
   SIG_MESSAGE("NONPOLguide (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   if(0) strncpy(mccNONPOLguide_reflect, 0 ? 0 : "", 16384); else mccNONPOLguide_reflect[0]='\0';
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccNONPOLguide_w1 = 0.03;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccNONPOLguide_h1 = 0.05;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccNONPOLguide_w2 = 0.03;
-#line 88 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 88 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccNONPOLguide_h2 = 0.05;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccNONPOLguide_l = 1.8;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccNONPOLguide_R0 = GUIDEREF;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccNONPOLguide_Qc = 0.0219;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccNONPOLguide_alpha = 6.07;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccNONPOLguide_m = 1.0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccNONPOLguide_W = 0.003;
-#line 9662 "./Test_Pol_Guide_Vmirror.c"
+#line 9678 "./Test_Pol_Guide_Vmirror.c"
 
   SIG_MESSAGE("NONPOLguide (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9669 "./Test_Pol_Guide_Vmirror.c"
+#line 9685 "./Test_Pol_Guide_Vmirror.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaNONPOLguide);
   rot_transpose(mcrotaPOLguidevmirror, mctr1);
   rot_mul(mcrotaNONPOLguide, mctr1, mcrotrNONPOLguide);
   mctc1 = coords_set(
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     5.0);
-#line 9680 "./Test_Pol_Guide_Vmirror.c"
+#line 9696 "./Test_Pol_Guide_Vmirror.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaNONPOLguide = coords_add(mcposaOrigin, mctc2);
@@ -9697,18 +9713,18 @@ void mcinit(void) {
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9700 "./Test_Pol_Guide_Vmirror.c"
+#line 9716 "./Test_Pol_Guide_Vmirror.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaarmGuide);
   rot_transpose(mcrotaNONPOLguide, mctr1);
   rot_mul(mcrotaarmGuide, mctr1, mcrotrarmGuide);
   mctc1 = coords_set(
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 93 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 93 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     6.8);
-#line 9711 "./Test_Pol_Guide_Vmirror.c"
+#line 9727 "./Test_Pol_Guide_Vmirror.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaarmGuide = coords_add(mcposaOrigin, mctc2);
@@ -9722,47 +9738,47 @@ void mcinit(void) {
     /* Component Guide. */
   /* Setting parameters for component Guide. */
   SIG_MESSAGE("Guide (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   if(0) strncpy(mccGuide_reflect, 0 ? 0 : "", 16384); else mccGuide_reflect[0]='\0';
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccGuide_w1 = 0.03;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccGuide_h1 = 0.05;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccGuide_w2 = 0.03;
-#line 97 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 97 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccGuide_h2 = 0.05;
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccGuide_l = 11.0;
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccGuide_R0 = GUIDEREF;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccGuide_Qc = 0.0219;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccGuide_alpha = 6.07;
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccGuide_m = 1.0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccGuide_W = 0.003;
-#line 9747 "./Test_Pol_Guide_Vmirror.c"
+#line 9763 "./Test_Pol_Guide_Vmirror.c"
 
   SIG_MESSAGE("Guide (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9754 "./Test_Pol_Guide_Vmirror.c"
+#line 9770 "./Test_Pol_Guide_Vmirror.c"
   rot_mul(mctr1, mcrotaarmGuide, mcrotaGuide);
   rot_transpose(mcrotaarmGuide, mctr1);
   rot_mul(mcrotaGuide, mctr1, mcrotrGuide);
   mctc1 = coords_set(
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0);
-#line 9765 "./Test_Pol_Guide_Vmirror.c"
+#line 9781 "./Test_Pol_Guide_Vmirror.c"
   rot_transpose(mcrotaarmGuide, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaGuide = coords_add(mcposaarmGuide, mctc2);
@@ -9782,18 +9798,18 @@ void mcinit(void) {
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9785 "./Test_Pol_Guide_Vmirror.c"
+#line 9801 "./Test_Pol_Guide_Vmirror.c"
   rot_mul(mctr1, mcrotaarmGuide, mcrotaarmlambdaStop);
   rot_transpose(mcrotaGuide, mctr1);
   rot_mul(mcrotaarmlambdaStop, mctr1, mcrotrarmlambdaStop);
   mctc1 = coords_set(
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     11.0);
-#line 9796 "./Test_Pol_Guide_Vmirror.c"
+#line 9812 "./Test_Pol_Guide_Vmirror.c"
   rot_transpose(mcrotaarmGuide, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaarmlambdaStop = coords_add(mcposaarmGuide, mctc2);
@@ -9807,47 +9823,47 @@ void mcinit(void) {
     /* Component lamStopPolGuide. */
   /* Setting parameters for component lamStopPolGuide. */
   SIG_MESSAGE("lamStopPolGuide (Init:SetPar)");
-#line 106 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 106 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   if("lambdaStopPolGuide.dat") strncpy(mcclamStopPolGuide_filename, "lambdaStopPolGuide.dat" ? "lambdaStopPolGuide.dat" : "", 16384); else mcclamStopPolGuide_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mcclamStopPolGuide_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mcclamStopPolGuide_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mcclamStopPolGuide_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mcclamStopPolGuide_ymax = 0.05;
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mcclamStopPolGuide_xwidth = 0.10;
-#line 107 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 107 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mcclamStopPolGuide_yheight = 0.10;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mcclamStopPolGuide_Lmin = 3;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mcclamStopPolGuide_Lmax = 19;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mcclamStopPolGuide_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mcclamStopPolGuide_nowritefile = 0;
-#line 9832 "./Test_Pol_Guide_Vmirror.c"
+#line 9848 "./Test_Pol_Guide_Vmirror.c"
 
   SIG_MESSAGE("lamStopPolGuide (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9839 "./Test_Pol_Guide_Vmirror.c"
+#line 9855 "./Test_Pol_Guide_Vmirror.c"
   rot_mul(mctr1, mcrotaarmlambdaStop, mcrotalamStopPolGuide);
   rot_transpose(mcrotaarmlambdaStop, mctr1);
   rot_mul(mcrotalamStopPolGuide, mctr1, mcrotrlamStopPolGuide);
   mctc1 = coords_set(
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0.05);
-#line 9850 "./Test_Pol_Guide_Vmirror.c"
+#line 9866 "./Test_Pol_Guide_Vmirror.c"
   rot_transpose(mcrotaarmlambdaStop, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposalamStopPolGuide = coords_add(mcposaarmlambdaStop, mctc2);
@@ -9861,45 +9877,45 @@ void mcinit(void) {
     /* Component psdPolGuide. */
   /* Setting parameters for component psdPolGuide. */
   SIG_MESSAGE("psdPolGuide (Init:SetPar)");
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpsdPolGuide_nx = 40;
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpsdPolGuide_ny = 40;
-#line 113 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 113 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   if("psdPolGuide.dat") strncpy(mccpsdPolGuide_filename, "psdPolGuide.dat" ? "psdPolGuide.dat" : "", 16384); else mccpsdPolGuide_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpsdPolGuide_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpsdPolGuide_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpsdPolGuide_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpsdPolGuide_ymax = 0.05;
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpsdPolGuide_xwidth = 0.10;
-#line 112 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 112 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpsdPolGuide_yheight = 0.10;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpsdPolGuide_restore_neutron = 0;
-#line 9884 "./Test_Pol_Guide_Vmirror.c"
+#line 9900 "./Test_Pol_Guide_Vmirror.c"
 
   SIG_MESSAGE("psdPolGuide (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9891 "./Test_Pol_Guide_Vmirror.c"
+#line 9907 "./Test_Pol_Guide_Vmirror.c"
   rot_mul(mctr1, mcrotaarmlambdaStop, mcrotapsdPolGuide);
   rot_transpose(mcrotalamStopPolGuide, mctr1);
   rot_mul(mcrotapsdPolGuide, mctr1, mcrotrpsdPolGuide);
   mctc1 = coords_set(
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0.05);
-#line 9902 "./Test_Pol_Guide_Vmirror.c"
+#line 9918 "./Test_Pol_Guide_Vmirror.c"
   rot_transpose(mcrotaarmlambdaStop, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposapsdPolGuide = coords_add(mcposaarmlambdaStop, mctc2);
@@ -9913,37 +9929,37 @@ void mcinit(void) {
     /* Component pollambdaMonitorX. */
   /* Setting parameters for component pollambdaMonitorX. */
   SIG_MESSAGE("pollambdaMonitorX (Init:SetPar)");
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   if("pollambdaMonX.data") strncpy(mccpollambdaMonitorX_filename, "pollambdaMonX.data" ? "pollambdaMonX.data" : "", 16384); else mccpollambdaMonitorX_filename[0]='\0';
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpollambdaMonitorX_mx = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpollambdaMonitorX_my = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpollambdaMonitorX_mz = 0;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpollambdaMonitorX_Lmin = 1;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpollambdaMonitorX_Lmax = 21;
-#line 9928 "./Test_Pol_Guide_Vmirror.c"
+#line 9944 "./Test_Pol_Guide_Vmirror.c"
 
   SIG_MESSAGE("pollambdaMonitorX (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9935 "./Test_Pol_Guide_Vmirror.c"
+#line 9951 "./Test_Pol_Guide_Vmirror.c"
   rot_mul(mctr1, mcrotaarmlambdaStop, mcrotapollambdaMonitorX);
   rot_transpose(mcrotapsdPolGuide, mctr1);
   rot_mul(mcrotapollambdaMonitorX, mctr1, mcrotrpollambdaMonitorX);
   mctc1 = coords_set(
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0.05);
-#line 9946 "./Test_Pol_Guide_Vmirror.c"
+#line 9962 "./Test_Pol_Guide_Vmirror.c"
   rot_transpose(mcrotaarmlambdaStop, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposapollambdaMonitorX = coords_add(mcposaarmlambdaStop, mctc2);
@@ -9957,37 +9973,37 @@ void mcinit(void) {
     /* Component pollambdaMonitorY. */
   /* Setting parameters for component pollambdaMonitorY. */
   SIG_MESSAGE("pollambdaMonitorY (Init:SetPar)");
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   if("pollambdaMonY.data") strncpy(mccpollambdaMonitorY_filename, "pollambdaMonY.data" ? "pollambdaMonY.data" : "", 16384); else mccpollambdaMonitorY_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpollambdaMonitorY_mx = 0;
-#line 125 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 125 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpollambdaMonitorY_my = 1;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpollambdaMonitorY_mz = 0;
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpollambdaMonitorY_Lmin = 1;
-#line 124 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 124 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpollambdaMonitorY_Lmax = 21;
-#line 9972 "./Test_Pol_Guide_Vmirror.c"
+#line 9988 "./Test_Pol_Guide_Vmirror.c"
 
   SIG_MESSAGE("pollambdaMonitorY (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 9979 "./Test_Pol_Guide_Vmirror.c"
+#line 9995 "./Test_Pol_Guide_Vmirror.c"
   rot_mul(mctr1, mcrotaarmlambdaStop, mcrotapollambdaMonitorY);
   rot_transpose(mcrotapollambdaMonitorX, mctr1);
   rot_mul(mcrotapollambdaMonitorY, mctr1, mcrotrpollambdaMonitorY);
   mctc1 = coords_set(
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0.05);
-#line 9990 "./Test_Pol_Guide_Vmirror.c"
+#line 10006 "./Test_Pol_Guide_Vmirror.c"
   rot_transpose(mcrotaarmlambdaStop, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposapollambdaMonitorY = coords_add(mcposaarmlambdaStop, mctc2);
@@ -10001,37 +10017,37 @@ void mcinit(void) {
     /* Component pollambdaMonitorZ. */
   /* Setting parameters for component pollambdaMonitorZ. */
   SIG_MESSAGE("pollambdaMonitorZ (Init:SetPar)");
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   if("pollambdaMonZ.data") strncpy(mccpollambdaMonitorZ_filename, "pollambdaMonZ.data" ? "pollambdaMonZ.data" : "", 16384); else mccpollambdaMonitorZ_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpollambdaMonitorZ_mx = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpollambdaMonitorZ_my = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpollambdaMonitorZ_mz = 1;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpollambdaMonitorZ_Lmin = 1;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccpollambdaMonitorZ_Lmax = 21;
-#line 10016 "./Test_Pol_Guide_Vmirror.c"
+#line 10032 "./Test_Pol_Guide_Vmirror.c"
 
   SIG_MESSAGE("pollambdaMonitorZ (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10023 "./Test_Pol_Guide_Vmirror.c"
+#line 10039 "./Test_Pol_Guide_Vmirror.c"
   rot_mul(mctr1, mcrotaarmlambdaStop, mcrotapollambdaMonitorZ);
   rot_transpose(mcrotapollambdaMonitorY, mctr1);
   rot_mul(mcrotapollambdaMonitorZ, mctr1, mcrotrpollambdaMonitorZ);
   mctc1 = coords_set(
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0.05);
-#line 10034 "./Test_Pol_Guide_Vmirror.c"
+#line 10050 "./Test_Pol_Guide_Vmirror.c"
   rot_transpose(mcrotaarmlambdaStop, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposapollambdaMonitorZ = coords_add(mcposaarmlambdaStop, mctc2);
@@ -10045,37 +10061,37 @@ void mcinit(void) {
     /* Component MPLMon2X. */
   /* Setting parameters for component MPLMon2X. */
   SIG_MESSAGE("MPLMon2X (Init:SetPar)");
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   if("MPLMon2X.data") strncpy(mccMPLMon2X_filename, "MPLMon2X.data" ? "MPLMon2X.data" : "", 16384); else mccMPLMon2X_filename[0]='\0';
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccMPLMon2X_mx = 1;
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccMPLMon2X_my = 0;
-#line 137 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 137 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccMPLMon2X_mz = 0;
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccMPLMon2X_Lmin = 1;
-#line 136 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 136 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccMPLMon2X_Lmax = 21;
-#line 10060 "./Test_Pol_Guide_Vmirror.c"
+#line 10076 "./Test_Pol_Guide_Vmirror.c"
 
   SIG_MESSAGE("MPLMon2X (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10067 "./Test_Pol_Guide_Vmirror.c"
+#line 10083 "./Test_Pol_Guide_Vmirror.c"
   rot_mul(mctr1, mcrotaarmlambdaStop, mcrotaMPLMon2X);
   rot_transpose(mcrotapollambdaMonitorZ, mctr1);
   rot_mul(mcrotaMPLMon2X, mctr1, mcrotrMPLMon2X);
   mctc1 = coords_set(
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0.10);
-#line 10078 "./Test_Pol_Guide_Vmirror.c"
+#line 10094 "./Test_Pol_Guide_Vmirror.c"
   rot_transpose(mcrotaarmlambdaStop, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMPLMon2X = coords_add(mcposaarmlambdaStop, mctc2);
@@ -10089,37 +10105,37 @@ void mcinit(void) {
     /* Component MPLMon2Y. */
   /* Setting parameters for component MPLMon2Y. */
   SIG_MESSAGE("MPLMon2Y (Init:SetPar)");
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   if("MPLMon2Y.data") strncpy(mccMPLMon2Y_filename, "MPLMon2Y.data" ? "MPLMon2Y.data" : "", 16384); else mccMPLMon2Y_filename[0]='\0';
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccMPLMon2Y_mx = 0;
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccMPLMon2Y_my = 1;
-#line 143 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 143 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccMPLMon2Y_mz = 0;
-#line 142 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 142 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccMPLMon2Y_Lmin = 1;
-#line 142 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 142 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccMPLMon2Y_Lmax = 21;
-#line 10104 "./Test_Pol_Guide_Vmirror.c"
+#line 10120 "./Test_Pol_Guide_Vmirror.c"
 
   SIG_MESSAGE("MPLMon2Y (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10111 "./Test_Pol_Guide_Vmirror.c"
+#line 10127 "./Test_Pol_Guide_Vmirror.c"
   rot_mul(mctr1, mcrotaarmlambdaStop, mcrotaMPLMon2Y);
   rot_transpose(mcrotaMPLMon2X, mctr1);
   rot_mul(mcrotaMPLMon2Y, mctr1, mcrotrMPLMon2Y);
   mctc1 = coords_set(
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0.10);
-#line 10122 "./Test_Pol_Guide_Vmirror.c"
+#line 10138 "./Test_Pol_Guide_Vmirror.c"
   rot_transpose(mcrotaarmlambdaStop, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMPLMon2Y = coords_add(mcposaarmlambdaStop, mctc2);
@@ -10133,37 +10149,37 @@ void mcinit(void) {
     /* Component MPLMon2Z. */
   /* Setting parameters for component MPLMon2Z. */
   SIG_MESSAGE("MPLMon2Z (Init:SetPar)");
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   if("MPLMon2Z.data") strncpy(mccMPLMon2Z_filename, "MPLMon2Z.data" ? "MPLMon2Z.data" : "", 16384); else mccMPLMon2Z_filename[0]='\0';
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccMPLMon2Z_mx = 0;
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccMPLMon2Z_my = 0;
-#line 149 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 149 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccMPLMon2Z_mz = 1;
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccMPLMon2Z_Lmin = 1;
-#line 148 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 148 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
   mccMPLMon2Z_Lmax = 21;
-#line 10148 "./Test_Pol_Guide_Vmirror.c"
+#line 10164 "./Test_Pol_Guide_Vmirror.c"
 
   SIG_MESSAGE("MPLMon2Z (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10155 "./Test_Pol_Guide_Vmirror.c"
+#line 10171 "./Test_Pol_Guide_Vmirror.c"
   rot_mul(mctr1, mcrotaarmlambdaStop, mcrotaMPLMon2Z);
   rot_transpose(mcrotaMPLMon2Y, mctr1);
   rot_mul(mcrotaMPLMon2Z, mctr1, mcrotrMPLMon2Z);
   mctc1 = coords_set(
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0,
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr"
     0.10);
-#line 10166 "./Test_Pol_Guide_Vmirror.c"
+#line 10182 "./Test_Pol_Guide_Vmirror.c"
   rot_transpose(mcrotaarmlambdaStop, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMPLMon2Z = coords_add(mcposaarmlambdaStop, mctc2);
@@ -10200,7 +10216,7 @@ fprintf(stdout, "[%s] Initialize\n", mcinstrument_name);
     percent=1e5*100.0/mcget_ncount();
   }
 }
-#line 10203 "./Test_Pol_Guide_Vmirror.c"
+#line 10219 "./Test_Pol_Guide_Vmirror.c"
 #undef minutes
 #undef flag_save
 #undef percent
@@ -10294,7 +10310,7 @@ if (radius && !yheight && !xwidth ) {
       exit(0);
   }
 }
-#line 10297 "./Test_Pol_Guide_Vmirror.c"
+#line 10313 "./Test_Pol_Guide_Vmirror.c"
 #undef target_index
 #undef gauss
 #undef flux
@@ -10356,7 +10372,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
       L_p2[i] = 0;
     }
 }
-#line 10359 "./Test_Pol_Guide_Vmirror.c"
+#line 10375 "./Test_Pol_Guide_Vmirror.c"
 #undef nowritefile
 #undef restore_neutron
 #undef Lmax
@@ -10419,7 +10435,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
     }
   }
 }
-#line 10422 "./Test_Pol_Guide_Vmirror.c"
+#line 10438 "./Test_Pol_Guide_Vmirror.c"
 #undef restore_neutron
 #undef yheight
 #undef xwidth
@@ -10543,7 +10559,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
   pointRight = coords_set(-xwidth/2, 0, 0);
 
 }
-#line 10546 "./Test_Pol_Guide_Vmirror.c"
+#line 10562 "./Test_Pol_Guide_Vmirror.c"
 #undef allow_inside_start
 #undef useTables
 #undef debug
@@ -10611,7 +10627,7 @@ if (mcgravitation) fprintf(stderr,"WARNING: Guide: %s: "
       exit(-1); }
   }
 }
-#line 10614 "./Test_Pol_Guide_Vmirror.c"
+#line 10630 "./Test_Pol_Guide_Vmirror.c"
 #undef W
 #undef m
 #undef alpha
@@ -10667,7 +10683,7 @@ if (mcgravitation) fprintf(stderr,"WARNING: Guide: %s: "
       exit(-1); }
   }
 }
-#line 10670 "./Test_Pol_Guide_Vmirror.c"
+#line 10686 "./Test_Pol_Guide_Vmirror.c"
 #undef W
 #undef m
 #undef alpha
@@ -10728,7 +10744,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
       L_p2[i] = 0;
     }
 }
-#line 10731 "./Test_Pol_Guide_Vmirror.c"
+#line 10747 "./Test_Pol_Guide_Vmirror.c"
 #undef nowritefile
 #undef restore_neutron
 #undef Lmax
@@ -10791,7 +10807,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
     }
   }
 }
-#line 10794 "./Test_Pol_Guide_Vmirror.c"
+#line 10810 "./Test_Pol_Guide_Vmirror.c"
 #undef restore_neutron
 #undef yheight
 #undef xwidth
@@ -10869,7 +10885,7 @@ if (Lmax<=Lmin) {
     }
   }
 }
-#line 10872 "./Test_Pol_Guide_Vmirror.c"
+#line 10888 "./Test_Pol_Guide_Vmirror.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -10949,7 +10965,7 @@ if (Lmax<=Lmin) {
     }
   }
 }
-#line 10952 "./Test_Pol_Guide_Vmirror.c"
+#line 10968 "./Test_Pol_Guide_Vmirror.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -11029,7 +11045,7 @@ if (Lmax<=Lmin) {
     }
   }
 }
-#line 11032 "./Test_Pol_Guide_Vmirror.c"
+#line 11048 "./Test_Pol_Guide_Vmirror.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -11108,7 +11124,7 @@ if (Lmax<=Lmin) {
       HelpArray[i] = 0;
   }
 }
-#line 11111 "./Test_Pol_Guide_Vmirror.c"
+#line 11127 "./Test_Pol_Guide_Vmirror.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -11187,7 +11203,7 @@ if (Lmax<=Lmin) {
       HelpArray[i] = 0;
   }
 }
-#line 11190 "./Test_Pol_Guide_Vmirror.c"
+#line 11206 "./Test_Pol_Guide_Vmirror.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -11266,7 +11282,7 @@ if (Lmax<=Lmin) {
       HelpArray[i] = 0;
   }
 }
-#line 11269 "./Test_Pol_Guide_Vmirror.c"
+#line 11285 "./Test_Pol_Guide_Vmirror.c"
 #undef Lmax
 #undef Lmin
 #undef mz
@@ -11439,7 +11455,7 @@ MCNUM minutes = mccOrigin_minutes;
     if (flag_save) mcsave(NULL);
   }
 }
-#line 11442 "./Test_Pol_Guide_Vmirror.c"
+#line 11458 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -11610,7 +11626,7 @@ int target_index = mccsource_target_index;
  vy=v*dy/rf;
  vx=v*dx/rf;
 }
-#line 11613 "./Test_Pol_Guide_Vmirror.c"
+#line 11629 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of source=Source_simple() SETTING parameter declarations. */
 #undef srcArea
 #undef square
@@ -11756,7 +11772,7 @@ int nowritefile = mcclamStart_nowritefile;
       RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
     }
 }
-#line 11759 "./Test_Pol_Guide_Vmirror.c"
+#line 11775 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of lamStart=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -11894,7 +11910,7 @@ MCNUM restore_neutron = mccpsdStart_restore_neutron;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 11897 "./Test_Pol_Guide_Vmirror.c"
+#line 11913 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of psdStart=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -12248,7 +12264,7 @@ if (( mcippolariserIn > 0 ))
   }
 
 }
-#line 12250 "./Test_Pol_Guide_Vmirror.c"
+#line 12266 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of POLguidevmirror=Pol_guide_vmirror() SETTING parameter declarations. */
 #undef rDownParPtr
 #undef rUpParPtr
@@ -12497,7 +12513,7 @@ if (( mcippolariserIn <= 0 ))
     SCATTER;
   }
 }
-#line 12498 "./Test_Pol_Guide_Vmirror.c"
+#line 12514 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of NONPOLguide=Guide() SETTING parameter declarations. */
 #undef pTable
 #undef mccompcurname
@@ -12826,7 +12842,7 @@ MCNUM W = mccGuide_W;
     SCATTER;
   }
 }
-#line 12827 "./Test_Pol_Guide_Vmirror.c"
+#line 12843 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of Guide=Guide() SETTING parameter declarations. */
 #undef pTable
 #undef mccompcurname
@@ -13073,7 +13089,7 @@ int nowritefile = mcclamStopPolGuide_nowritefile;
       RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
     }
 }
-#line 13074 "./Test_Pol_Guide_Vmirror.c"
+#line 13090 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of lamStopPolGuide=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -13211,7 +13227,7 @@ MCNUM restore_neutron = mccpsdPolGuide_restore_neutron;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 13212 "./Test_Pol_Guide_Vmirror.c"
+#line 13228 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of psdPolGuide=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -13366,7 +13382,7 @@ MCNUM Lmax = mccpollambdaMonitorX_Lmax;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 13367 "./Test_Pol_Guide_Vmirror.c"
+#line 13383 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of pollambdaMonitorX=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -13527,7 +13543,7 @@ MCNUM Lmax = mccpollambdaMonitorY_Lmax;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 13528 "./Test_Pol_Guide_Vmirror.c"
+#line 13544 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of pollambdaMonitorY=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -13688,7 +13704,7 @@ MCNUM Lmax = mccpollambdaMonitorZ_Lmax;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 13689 "./Test_Pol_Guide_Vmirror.c"
+#line 13705 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of pollambdaMonitorZ=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -13845,7 +13861,7 @@ MCNUM Lmax = mccMPLMon2X_Lmax;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 13846 "./Test_Pol_Guide_Vmirror.c"
+#line 13862 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of MPLMon2X=MeanPolLambda_monitor() SETTING parameter declarations. */
 #undef HelpArray
 #undef PolL_p2
@@ -14002,7 +14018,7 @@ MCNUM Lmax = mccMPLMon2Y_Lmax;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 14003 "./Test_Pol_Guide_Vmirror.c"
+#line 14019 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of MPLMon2Y=MeanPolLambda_monitor() SETTING parameter declarations. */
 #undef HelpArray
 #undef PolL_p2
@@ -14159,7 +14175,7 @@ MCNUM Lmax = mccMPLMon2Z_Lmax;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 14160 "./Test_Pol_Guide_Vmirror.c"
+#line 14176 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of MPLMon2Z=MeanPolLambda_monitor() SETTING parameter declarations. */
 #undef HelpArray
 #undef PolL_p2
@@ -14277,7 +14293,7 @@ MCNUM minutes = mccOrigin_minutes;
 
   }
 }
-#line 14278 "./Test_Pol_Guide_Vmirror.c"
+#line 14294 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -14320,7 +14336,7 @@ int nowritefile = mcclamStart_nowritefile;
         filename);
     }
 }
-#line 14321 "./Test_Pol_Guide_Vmirror.c"
+#line 14337 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of lamStart=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -14360,7 +14376,7 @@ MCNUM restore_neutron = mccpsdStart_restore_neutron;
     &PSD_N[0][0],&PSD_p[0][0],&PSD_p2[0][0],
     filename);
 }
-#line 14361 "./Test_Pol_Guide_Vmirror.c"
+#line 14377 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of psdStart=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -14402,7 +14418,7 @@ int nowritefile = mcclamStopPolGuide_nowritefile;
         filename);
     }
 }
-#line 14403 "./Test_Pol_Guide_Vmirror.c"
+#line 14419 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of lamStopPolGuide=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -14442,7 +14458,7 @@ MCNUM restore_neutron = mccpsdPolGuide_restore_neutron;
     &PSD_N[0][0],&PSD_p[0][0],&PSD_p2[0][0],
     filename);
 }
-#line 14443 "./Test_Pol_Guide_Vmirror.c"
+#line 14459 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of psdPolGuide=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -14483,7 +14499,7 @@ MCNUM Lmax = mccpollambdaMonitorX_Lmax;
 		  filename);
     }
 }
-#line 14484 "./Test_Pol_Guide_Vmirror.c"
+#line 14500 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of pollambdaMonitorX=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -14530,7 +14546,7 @@ MCNUM Lmax = mccpollambdaMonitorY_Lmax;
 		  filename);
     }
 }
-#line 14531 "./Test_Pol_Guide_Vmirror.c"
+#line 14547 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of pollambdaMonitorY=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -14577,7 +14593,7 @@ MCNUM Lmax = mccpollambdaMonitorZ_Lmax;
 		  filename);
     }
 }
-#line 14578 "./Test_Pol_Guide_Vmirror.c"
+#line 14594 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of pollambdaMonitorZ=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -14641,7 +14657,7 @@ MCNUM Lmax = mccMPLMon2X_Lmax;
 		  filename);
     }
 }
-#line 14642 "./Test_Pol_Guide_Vmirror.c"
+#line 14658 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of MPLMon2X=MeanPolLambda_monitor() SETTING parameter declarations. */
 #undef HelpArray
 #undef PolL_p2
@@ -14705,7 +14721,7 @@ MCNUM Lmax = mccMPLMon2Y_Lmax;
 		  filename);
     }
 }
-#line 14706 "./Test_Pol_Guide_Vmirror.c"
+#line 14722 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of MPLMon2Y=MeanPolLambda_monitor() SETTING parameter declarations. */
 #undef HelpArray
 #undef PolL_p2
@@ -14769,7 +14785,7 @@ MCNUM Lmax = mccMPLMon2Z_Lmax;
 		  filename);
     }
 }
-#line 14770 "./Test_Pol_Guide_Vmirror.c"
+#line 14786 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of MPLMon2Z=MeanPolLambda_monitor() SETTING parameter declarations. */
 #undef HelpArray
 #undef PolL_p2
@@ -14818,7 +14834,7 @@ MCNUM minutes = mccOrigin_minutes;
     fprintf(stdout, "%g [min] ", difftime(NowTime,StartTime)/60.0);
   fprintf(stdout, "\n");
 }
-#line 14819 "./Test_Pol_Guide_Vmirror.c"
+#line 14835 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -14862,7 +14878,7 @@ MCNUM restore_neutron = mccpsdStart_restore_neutron;
   destroy_darr2d(PSD_p);
   destroy_darr2d(PSD_p2);
 }
-#line 14860 "./Test_Pol_Guide_Vmirror.c"
+#line 14876 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of psdStart=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -14917,7 +14933,7 @@ MCNUM restore_neutron = mccpsdPolGuide_restore_neutron;
   destroy_darr2d(PSD_p);
   destroy_darr2d(PSD_p2);
 }
-#line 14908 "./Test_Pol_Guide_Vmirror.c"
+#line 14924 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of psdPolGuide=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -14981,7 +14997,7 @@ MCNUM minutes = mccOrigin_minutes;
 {
   
 }
-#line 14965 "./Test_Pol_Guide_Vmirror.c"
+#line 14981 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -15030,7 +15046,7 @@ int target_index = mccsource_target_index;
     dashed_line(0,0,0, -focus_xw/2+tx, focus_yh/2+ty,tz, 4);
   }
 }
-#line 15014 "./Test_Pol_Guide_Vmirror.c"
+#line 15030 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of source=Source_simple() SETTING parameter declarations. */
 #undef srcArea
 #undef square
@@ -15070,7 +15086,7 @@ int nowritefile = mcclamStart_nowritefile;
                (double)xmin, (double)ymax, 0.0,
                (double)xmin, (double)ymin, 0.0);
 }
-#line 15054 "./Test_Pol_Guide_Vmirror.c"
+#line 15070 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of lamStart=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -15109,7 +15125,7 @@ MCNUM restore_neutron = mccpsdStart_restore_neutron;
     (double)xmin, (double)ymax, 0.0,
     (double)xmin, (double)ymin, 0.0);
 }
-#line 15093 "./Test_Pol_Guide_Vmirror.c"
+#line 15109 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of psdStart=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -15164,7 +15180,7 @@ MCNUM allow_inside_start = mccPOLguidevmirror_allow_inside_start;
       line(0, j*yheight/2, 0, i*xwidth/2, j*yheight/2, length);
 
 }
-#line 15148 "./Test_Pol_Guide_Vmirror.c"
+#line 15164 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of POLguidevmirror=Pol_guide_vmirror() SETTING parameter declarations. */
 #undef rDownParPtr
 #undef rUpParPtr
@@ -15230,7 +15246,7 @@ MCNUM W = mccNONPOLguide_W;
   line( w1/2.0,  h1/2.0, 0,  w2/2.0,  h2/2.0, (double)l);
   line(-w1/2.0,  h1/2.0, 0, -w2/2.0,  h2/2.0, (double)l);
 }
-#line 15214 "./Test_Pol_Guide_Vmirror.c"
+#line 15230 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of NONPOLguide=Guide() SETTING parameter declarations. */
 #undef pTable
 #undef mccompcurname
@@ -15251,7 +15267,7 @@ MCNUM W = mccNONPOLguide_W;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 15235 "./Test_Pol_Guide_Vmirror.c"
+#line 15251 "./Test_Pol_Guide_Vmirror.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -15295,7 +15311,7 @@ MCNUM W = mccGuide_W;
   line( w1/2.0,  h1/2.0, 0,  w2/2.0,  h2/2.0, (double)l);
   line(-w1/2.0,  h1/2.0, 0, -w2/2.0,  h2/2.0, (double)l);
 }
-#line 15279 "./Test_Pol_Guide_Vmirror.c"
+#line 15295 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of Guide=Guide() SETTING parameter declarations. */
 #undef pTable
 #undef mccompcurname
@@ -15316,7 +15332,7 @@ MCNUM W = mccGuide_W;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 15300 "./Test_Pol_Guide_Vmirror.c"
+#line 15316 "./Test_Pol_Guide_Vmirror.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -15352,7 +15368,7 @@ int nowritefile = mcclamStopPolGuide_nowritefile;
                (double)xmin, (double)ymax, 0.0,
                (double)xmin, (double)ymin, 0.0);
 }
-#line 15336 "./Test_Pol_Guide_Vmirror.c"
+#line 15352 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of lamStopPolGuide=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -15391,7 +15407,7 @@ MCNUM restore_neutron = mccpsdPolGuide_restore_neutron;
     (double)xmin, (double)ymax, 0.0,
     (double)xmin, (double)ymin, 0.0);
 }
-#line 15375 "./Test_Pol_Guide_Vmirror.c"
+#line 15391 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of psdPolGuide=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -15427,7 +15443,7 @@ MCNUM Lmax = mccpollambdaMonitorX_Lmax;
   
   rectangle("xy", 0, 0, 0, xwidth, yheight);
 }
-#line 15411 "./Test_Pol_Guide_Vmirror.c"
+#line 15427 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of pollambdaMonitorX=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -15469,7 +15485,7 @@ MCNUM Lmax = mccpollambdaMonitorY_Lmax;
   
   rectangle("xy", 0, 0, 0, xwidth, yheight);
 }
-#line 15453 "./Test_Pol_Guide_Vmirror.c"
+#line 15469 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of pollambdaMonitorY=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -15511,7 +15527,7 @@ MCNUM Lmax = mccpollambdaMonitorZ_Lmax;
   
   rectangle("xy", 0, 0, 0, xwidth, yheight);
 }
-#line 15495 "./Test_Pol_Guide_Vmirror.c"
+#line 15511 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of pollambdaMonitorZ=PolLambda_monitor() SETTING parameter declarations. */
 #undef PolL_p2
 #undef PolL_p
@@ -15553,7 +15569,7 @@ MCNUM Lmax = mccMPLMon2X_Lmax;
   
   rectangle("xy", 0, 0, 0, xwidth, yheight);
 }
-#line 15537 "./Test_Pol_Guide_Vmirror.c"
+#line 15553 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of MPLMon2X=MeanPolLambda_monitor() SETTING parameter declarations. */
 #undef HelpArray
 #undef PolL_p2
@@ -15595,7 +15611,7 @@ MCNUM Lmax = mccMPLMon2Y_Lmax;
   
   rectangle("xy", 0, 0, 0, xwidth, yheight);
 }
-#line 15579 "./Test_Pol_Guide_Vmirror.c"
+#line 15595 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of MPLMon2Y=MeanPolLambda_monitor() SETTING parameter declarations. */
 #undef HelpArray
 #undef PolL_p2
@@ -15637,7 +15653,7 @@ MCNUM Lmax = mccMPLMon2Z_Lmax;
   
   rectangle("xy", 0, 0, 0, xwidth, yheight);
 }
-#line 15621 "./Test_Pol_Guide_Vmirror.c"
+#line 15637 "./Test_Pol_Guide_Vmirror.c"
 }   /* End of MPLMon2Z=MeanPolLambda_monitor() SETTING parameter declarations. */
 #undef HelpArray
 #undef PolL_p2

@@ -1,11 +1,28 @@
-      [1574207909.677887] [n-62-23-6:18211:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3376.61
-[1574207909.679374] [n-62-23-6:18211:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207909.679377] [n-62-23-6:18211:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574207909.681361] [n-62-23-6:18211:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574207909.681364] [n-62-23-6:18211:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: No output directory specified (--dir)
+INFO: Using directory: "templateTAS_20200225_211332"
+INFO: Regenerating c-file: templateTAS.c
+Info:    Defining SPLIT from PG1Xtal=Monochromator_curved() to END in instrument templateTAS
+Info:    Defining SPLIT from Sample_Cradle=Monitor_nD() to END in instrument templateTAS
+Info:    Defining SPLIT from PG2Xtal=Monochromator_curved() to END in instrument templateTAS
+CFLAGS=
+      INFO: Recompiling: ./templateTAS.out
+INFO: ===
+[n-62-23-14:10679] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:10679] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582661620.665821] [n-62-23-14:10678:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3379.00
+[1582661620.667406] [n-62-23-14:10678:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661620.667410] [n-62-23-14:10678:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1582661620.670099] [n-62-23-14:10678:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582661620.670102] [n-62-23-14:10678:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 begin instrument: templateTAS
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateTAS/templateTAS.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateTAS/templateTAS.instr
   Parameters:  KI(double) KF(double) EI(double) EF(double) QH(double) QK(double) QL(double) EN(double) QM(double) KFIX(double) FX(double) L1(double) L2(double) L3(double) L4(double) SM(double) SS(double) SA(double) DM(double) DA(double) RMV(double) RMH(double) RAV(double) RAH(double) ETAM(double) ETAA(double) ALF1(double) ALF2(double) ALF3(double) ALF4(double) BET1(double) BET2(double) BET3(double) BET4(double) AS(double) BS(double) CS(double) AA(double) BB(double) CC(double) AX(double) AY(double) AZ(double) BX(double) BY(double) BZ(double) verbose(double) A1(double) A2(double) A3(double) A4(double) A5(double) A6(double) NHM(double) NVM(double) WM(double) HM(double) NHA(double) NVA(double) WA(double) HA(double) Sqw_coh(string) Sqw_inc(string) radius(double) thickness(double) height(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +31,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateTAS/templateTAS.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateTAS/templateTAS.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1574226120
+  Seed: 1582672298
   Directory: .
   Param: KI=2.662
   Param: KF=0
@@ -89,18 +106,3 @@ begin simulation: .
   Param: height=0.05
 end simulation
 info!
-INFO: No output directory specified (--dir)
-INFO: Using directory: "templateTAS_20191120_005821"
-INFO: Regenerating c-file: templateTAS.c
-Info:    Defining SPLIT from PG1Xtal=Monochromator_curved() to END in instrument templateTAS
-Info:    Defining SPLIT from Sample_Cradle=Monitor_nD() to END in instrument templateTAS
-Info:    Defining SPLIT from PG2Xtal=Monochromator_curved() to END in instrument templateTAS
-CFLAGS=
-INFO: Recompiling: ./templateTAS.out
-INFO: ===
---------------------------------------------------------------------------
-Initialization of MXM library failed.
-
-  Error: Input/output error
-
---------------------------------------------------------------------------

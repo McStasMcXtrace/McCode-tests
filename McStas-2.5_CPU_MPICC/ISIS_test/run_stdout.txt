@@ -3,69 +3,166 @@ INFO: Using existing c-file: ./ISIS_test.c
 INFO: Using existing binary: ./ISIS_test.out
 WARNING: Ignoring invalid parameter: "ISIS_test.instr"
 INFO: ===
-INFO: Using system default number of mpirun -np processes
-[1574208342.712424] [n-62-23-6:23292:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3145.04
-[1574208342.713562] [n-62-23-6:23291:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3145.04
-[1574208342.713917] [n-62-23-6:23292:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208342.713933] [n-62-23-6:23292:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-23-14:16676] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:16676] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:16676] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582662626.829813] [n-62-23-14:16682:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3103.51
+[1582662626.832186] [n-62-23-14:16682:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662626.832207] [n-62-23-14:16682:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 --------------------------------------------------------------------------
 Initialization of MXM library failed.
 
   Error: Input/output error
 
 --------------------------------------------------------------------------
-[1574208342.715091] [n-62-23-6:23291:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208342.715106] [n-62-23-6:23291:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208342.715834] [n-62-23-6:23292:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208342.715849] [n-62-23-6:23292:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208342.716969] [n-62-23-6:23291:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208342.716983] [n-62-23-6:23291:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208342.720196] [n-62-23-6:23293:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3114.79
-[1574208342.722024] [n-62-23-6:23293:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208342.722040] [n-62-23-6:23293:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208342.723967] [n-62-23-6:23293:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208342.723982] [n-62-23-6:23293:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208342.724631] [n-62-23-6:23296:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.15
-[1574208342.726137] [n-62-23-6:23296:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208342.726154] [n-62-23-6:23296:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208342.726302] [n-62-23-6:23294:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.15
-[1574208342.727793] [n-62-23-6:23294:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208342.727809] [n-62-23-6:23294:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208342.727804] [n-62-23-6:23295:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.15
-[1574208342.728049] [n-62-23-6:23296:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208342.728064] [n-62-23-6:23296:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208342.729275] [n-62-23-6:23295:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208342.729291] [n-62-23-6:23295:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208342.729641] [n-62-23-6:23294:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208342.729656] [n-62-23-6:23294:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208342.731183] [n-62-23-6:23295:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208342.731198] [n-62-23-6:23295:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208342.750279] [n-62-23-3:22197:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3246.22
-[1574208342.750275] [n-62-23-3:22198:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3246.22
-[1574208342.750279] [n-62-23-3:22199:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3246.22
-[1574208342.750281] [n-62-23-3:22200:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3246.22
-[1574208342.754390] [n-62-23-3:22197:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208342.754404] [n-62-23-3:22197:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208342.754388] [n-62-23-3:22198:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208342.754388] [n-62-23-3:22199:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208342.754404] [n-62-23-3:22199:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208342.754448] [n-62-23-3:22198:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208342.754774] [n-62-23-3:22200:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208342.754792] [n-62-23-3:22200:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208342.756627] [n-62-23-3:22198:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208342.756629] [n-62-23-3:22199:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208342.756642] [n-62-23-3:22199:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208342.756640] [n-62-23-3:22197:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208342.756653] [n-62-23-3:22197:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208342.756687] [n-62-23-3:22198:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208342.756867] [n-62-23-3:22200:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208342.756883] [n-62-23-3:22200:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'ISIS_test' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_test/ISIS_test.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
-Instrument parameters for ISIS_test (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_test/ISIS_test.instr)
+[1582662626.835656] [n-62-23-14:16682:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662626.835676] [n-62-23-14:16682:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662626.846454] [n-62-23-14:16681:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.95
+[1582662626.847866] [n-62-23-14:16683:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.95
+[1582662626.848267] [n-62-23-14:16681:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662626.848283] [n-62-23-14:16681:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662626.849672] [n-62-23-14:16683:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662626.849714] [n-62-23-14:16683:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662626.850511] [n-62-23-14:16681:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662626.850528] [n-62-23-14:16681:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662626.850836] [n-62-23-14:16685:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.95
+[1582662626.852564] [n-62-23-14:16685:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662626.852581] [n-62-23-14:16685:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662626.853062] [n-62-23-14:16683:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662626.853078] [n-62-23-14:16683:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662626.854271] [n-62-23-14:16690:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.78
+[1582662626.854587] [n-62-23-14:16685:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662626.854603] [n-62-23-14:16685:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662626.856191] [n-62-23-14:16690:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662626.856208] [n-62-23-14:16690:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662626.857804] [n-62-23-14:16686:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.78
+[1582662626.859167] [n-62-23-14:16690:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662626.859184] [n-62-23-14:16690:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662626.859691] [n-62-23-14:16684:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.78
+[1582662626.860347] [n-62-23-14:16686:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662626.860388] [n-62-23-14:16686:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662626.861451] [n-62-23-14:16684:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662626.861466] [n-62-23-14:16684:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662626.861991] [n-62-23-14:16687:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.78
+[1582662626.863356] [n-62-23-14:16686:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662626.863373] [n-62-23-14:16686:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662626.863384] [n-62-23-14:16684:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662626.863397] [n-62-23-14:16684:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662626.863710] [n-62-23-14:16687:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662626.863727] [n-62-23-14:16687:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662626.865805] [n-62-23-14:16687:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662626.865821] [n-62-23-14:16687:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662626.866381] [n-62-23-14:16689:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.95
+[1582662626.867352] [n-62-23-14:16688:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.95
+[1582662626.868348] [n-62-23-14:16689:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662626.868365] [n-62-23-14:16689:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662626.869177] [n-62-23-14:16688:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662626.869193] [n-62-23-14:16688:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662626.870468] [n-62-23-14:16689:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662626.870483] [n-62-23-14:16689:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662626.871350] [n-62-23-14:16688:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662626.871368] [n-62-23-14:16688:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'ISIS_test' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_test/ISIS_test.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
+Instrument parameters for ISIS_test (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_test/ISIS_test.instr)
+[ISIS_test] Initialize
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+converting Angstroms to meV
+-49 A -> -51 A =>  0.568013 meV -> 908.822 meV
+[ISIS_test] Initialize
+Face == narrow 
+default xwidth used 0.12 m
+default yheight used 0.12 m
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+converting Angstroms to meV
+-49 A -> -51 A =>  0.568013 meV -> 908.822 meV
+Face == narrow 
+default xwidth used 0.12 m
+default yheight used 0.12 m
+[ISIS_test] Initialize
 [ISIS_test] Initialize
 [ISIS_test] Initialize
 **********************************************************************
 ****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+converting Angstroms to meV
+-49 A -> -51 A =>  0.568013 meV -> 908.822 meV
+Face == narrow 
+default xwidth used 0.12 m
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+converting Angstroms to meV
+default yheight used 0.12 m
+-49 A -> -51 A =>  0.568013 meV -> 908.822 meV
+Face == narrow 
+default xwidth used 0.12 m
+default yheight used 0.12 m
+[ISIS_test] Initialize
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+converting Angstroms to meV
+-49 A -> -51 A =>  0.568013 meV -> 908.822 meV
+Face == narrow 
+default xwidth used 0.12 m
+default yheight used 0.12 m
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+[ISIS_test] Initialize
+[ISIS_test] Initialize
+[ISIS_test] Initialize
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+converting Angstroms to meV
+-49 A -> -51 A =>  0.568013 meV -> 908.822 meV
+Face == narrow 
+default xwidth used 0.12 m
+default yheight used 0.12 m
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+converting Angstroms to meV
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+-49 A -> -51 A =>  0.568013 meV -> 908.822 meV
+Face == narrow 
+default xwidth used 0.12 m
+default yheight used 0.12 m
+**********************************************************************
+
+converting Angstroms to meV
+-49 A -> -51 A =>  0.568013 meV -> 908.822 meV
+Face == narrow 
+default xwidth used 0.12 m
+default yheight used 0.12 m
 ****   Please check to see if your files are up-to-date           ****
 ****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
 **********************************************************************
@@ -86,114 +183,7 @@ converting Angstroms to meV
 Face == narrow 
 default xwidth used 0.12 m
 default yheight used 0.12 m
-Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.narrow
-Energy == 0.568013 908.822
-Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.narrow
-Energy == 0.568013 908.822
-nEnergy == 113
-nEnergy == 113
-Totals:: 0.000262775 113 181 
-Totals:: 0.000262775 113 181 
 [ISIS_test] Initialize
-**********************************************************************
-****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
-****   Please check to see if your files are up-to-date           ****
-****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
-**********************************************************************
-
-converting Angstroms to meV
--49 A -> -51 A =>  0.568013 meV -> 908.822 meV
-Face == narrow 
-default xwidth used 0.12 m
-default yheight used 0.12 m
-**********************************************************************
-****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
-****   Please check to see if your files are up-to-date           ****
-****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
-**********************************************************************
-
-converting Angstroms to meV
--49 A -> -51 A =>  0.568013 meV -> 908.822 meV
-Face == narrow 
-default xwidth used 0.12 m
-[ISIS_test] Initialize
-default yheight used 0.12 m
-[ISIS_test] Initialize
-**********************************************************************
-****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
-****   Please check to see if your files are up-to-date           ****
-****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
-**********************************************************************
-
-converting Angstroms to meV
--49 A -> -51 A =>  0.568013 meV -> 908.822 meV
-Face == narrow 
-default xwidth used 0.12 m
-default yheight used 0.12 m
-**********************************************************************
-****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
-****   Please check to see if your files are up-to-date           ****
-****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
-**********************************************************************
-
-converting Angstroms to meV
--49 A -> -51 A =>  0.568013 meV -> 908.822 meV
-Face == narrow 
-default xwidth used 0.12 m
-[ISIS_test] Initialize
-default yheight used 0.12 m
-[ISIS_test] Initialize
-**********************************************************************
-****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
-****   Please check to see if your files are up-to-date           ****
-****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
-**********************************************************************
-
-converting Angstroms to meV
--49 A -> -51 A =>  0.568013 meV -> 908.822 meV
-Face == narrow 
-default xwidth used 0.12 m
-default yheight used 0.12 m
-[ISIS_test] Initialize
-**********************************************************************
-****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
-****   Please check to see if your files are up-to-date           ****
-****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
-**********************************************************************
-
-converting Angstroms to meV
--49 A -> -51 A =>  0.568013 meV -> 908.822 meV
-Face == narrow 
-default xwidth used 0.12 m
-default yheight used 0.12 m
-[ISIS_test] Initialize
-**********************************************************************
-****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
-****   Please check to see if your files are up-to-date           ****
-****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
-**********************************************************************
-
-converting Angstroms to meV
--49 A -> -51 A =>  0.568013 meV -> 908.822 meV
-Face == narrow 
-default xwidth used 0.12 m
-default yheight used 0.12 m
-Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.narrow
-Energy == 0.568013 908.822
-Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.narrow
-Energy == 0.568013 908.822
-[ISIS_test] Initialize
-**********************************************************************
-****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
-****   Please check to see if your files are up-to-date           ****
-****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
-**********************************************************************
-
-converting Angstroms to meV
--49 A -> -51 A =>  0.568013 meV -> 908.822 meV
-Face == narrow 
-default xwidth used 0.12 m
-default yheight used 0.12 m
 Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.narrow
 Energy == 0.568013 908.822
 Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.narrow
@@ -206,49 +196,61 @@ Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/.
 Energy == 0.568013 908.822
 Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.narrow
 Energy == 0.568013 908.822
-nEnergy == 113
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.narrow
+Energy == 0.568013 908.822
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.narrow
+Energy == 0.568013 908.822
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.narrow
+Energy == 0.568013 908.822
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.narrow
+Energy == 0.568013 908.822
 nEnergy == 113
 Totals:: 0.000262775 113 181 
 nEnergy == 113
 Totals:: 0.000262775 113 181 
 nEnergy == 113
-Totals:: 0.000262775 113 181 
+nEnergy == 113
 Monitor_nD: monT is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
 Totals:: 0.000262775 113 181 
 nEnergy == 113
+Totals:: 0.000262775 113 181 
+nEnergy == 113
+Totals:: 0.000262775 113 181 
 nEnergy == 113
 nEnergy == 113
+Totals:: 0.000262775 113 181 
+Totals:: 0.000262775 113 181 
+nEnergy == 113
+Totals:: 0.000262775 113 181 
 nEnergy == 113
 Totals:: 0.000262775 113 181 
 Totals:: 0.000262775 113 181 
-Totals:: 0.000262775 113 181 
-Totals:: 0.000262775 113 181 
+
 
 Finally [ISIS_test: 1]. Time: 1 [s] 
-
 Finally [ISIS_test: 1]. Time: 1 [s] 
 
-Finally [ISIS_test: 1]. Time: 1 [s] 
+Finally [ISIS_test: 1]. Time: 2 [s] 
 
-Finally [ISIS_test: 1]. Time: 1 [s] 
+Finally [ISIS_test: 1]. Time: 2 [s] 
 
-Finally [ISIS_test: 1]. Time: 1 [s] 
-
-Finally [ISIS_test: 1]. Time: 1 [s] 
-
-Finally [ISIS_test: 1]. Time: 1 [s] 
+Finally [ISIS_test: 1]. Time: 2 [s] 
 
 Save [ISIS_test]
-Detector: lam1_I=8.24294e+11 lam1_ERR=5.0722e+08 lam1_N=9.99999e+06 "lambdagr.dat"
 
-Finally [ISIS_test: 1]. Time: 1 [s] 
-Detector: monL_I=8.24294e+11 monL_ERR=5.0722e+08 monL_N=9.99999e+06 "LamND.dat"
+Finally [ISIS_test: 1]. Time: 2 [s] 
+Detector: lam1_I=8.23502e+11 lam1_ERR=5.06716e+08 lam1_N=9.99999e+06 "lambdagr.dat"
 
-Finally [ISIS_test: 1]. Time: 1 [s] 
-Detector: monT_I=8.24214e+11 monT_ERR=5.07143e+08 monT_N=9.99987e+06 "timeND.dat"
 
-Finally [ISIS_test: 1]. Time: 1 [s] 
-[n-62-23-6:23278] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-6:23278] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
-INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_test/ISIS_test.instr in dataset 1
+Finally [ISIS_test: 1]. Time: 2 [s] 
+Finally [ISIS_test: 1]. Time: 2 [s] 
+Detector: monL_I=8.23502e+11 monL_ERR=5.06716e+08 monL_N=9.99999e+06 "LamND.dat"
+
+Finally [ISIS_test: 1]. Time: 2 [s] 
+Detector: monT_I=8.23397e+11 monT_ERR=5.06619e+08 monT_N=9.99977e+06 "timeND.dat"
+
+Finally [ISIS_test: 1]. Time: 2 [s] 
+[n-62-23-14:16676] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-14:16676] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_test/ISIS_test.instr in dataset 1

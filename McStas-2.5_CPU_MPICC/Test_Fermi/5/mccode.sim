@@ -1,10 +1,10 @@
 McStas simulation description file for Test_Fermi.
-Date:    Wed Nov 20 01:10:29 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:41:40 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: Test_Fermi
   File: 5/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr
   Parameters:  Fermi(int) lambda(double) width_FC(double) height_FC(double) length_FC(double) FC_Hz(double) Nslit_FC(double) d_SF(double) d_FD(double) phase(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 5
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574235552
+  Seed: 1582683558
   Directory: 5
   Nodes: 10
   Param: Fermi=5
@@ -35,121 +35,121 @@ begin simulation: 5
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:10:30 2019 (1574208630)
+  Date: Tue Feb 25 21:41:42 2020 (1582663302)
   type: array_1d(20)
-  Source: Test_Fermi (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr)
+  Source: Test_Fermi (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr)
   component: Monitor1_xt
   position: 0 0 2.9
   title: x [m] monitor
   Ncount: 10000000
-  filename: Monitor1_xt_1574208629.x
-  statistics: X0=-2.27851e-06; dX=0.0126846;
-  signal: Min=0.000282185; Max=0.000283625; Mean=0.0002828;
-  values: 0.005656 1.7886e-06 9.99982e+06
+  filename: Monitor1_xt_1582663300.x
+  statistics: X0=-3.82936e-07; dX=0.0126833;
+  signal: Min=0.000281556; Max=0.000283634; Mean=0.000282801;
+  values: 0.00565601 1.7886e-06 9.99985e+06
   xvar: x
   yvar: (I,I_err)
   xlabel: x [m]
   ylabel: Intensity [n/s/bin]
-  xlimits: -0.0219996 0.0219997
+  xlimits: -0.0219996 0.0219996
   variables: x I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:10:30 2019 (1574208630)
+  Date: Tue Feb 25 21:41:42 2020 (1582663302)
   type: array_1d(20)
-  Source: Test_Fermi (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr)
+  Source: Test_Fermi (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr)
   component: Monitor1_xt
   position: 0 0 2.9
   title: y [m] monitor
   Ncount: 10000000
-  filename: Monitor1_xt_1574208629.y
-  statistics: X0=-3.03094e-06; dX=0.0184474;
-  signal: Min=0.000281946; Max=0.000283841; Mean=0.000282797;
-  values: 0.00565594 1.78859e-06 9.99972e+06
+  filename: Monitor1_xt_1582663300.y
+  statistics: X0=1.11362e-06; dX=0.0184485;
+  signal: Min=0.000282092; Max=0.000284039; Mean=0.000282794;
+  values: 0.00565587 1.78858e-06 9.9996e+06
   xvar: y
   yvar: (I,I_err)
   xlabel: y [m]
   ylabel: Intensity [n/s/bin]
-  xlimits: -0.0319997 0.0319995
+  xlimits: -0.0319986 0.0319967
   variables: y I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:10:30 2019 (1574208630)
+  Date: Tue Feb 25 21:41:42 2020 (1582663302)
   type: array_1d(20)
-  Source: Test_Fermi (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr)
+  Source: Test_Fermi (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr)
   component: Monitor1_xt
   position: 0 0 2.9
   title: TOF [s] monitor
   Ncount: 10000000
-  filename: Monitor1_xt_1574208629.t
-  statistics: X0=0.00248481; dX=0.000139209;
-  signal: Min=3.56763e-05; Max=0.000406381; Mean=0.00028279;
-  values: 0.00565579 1.78857e-06 9.99946e+06
+  filename: Monitor1_xt_1582663300.t
+  statistics: X0=0.00248514; dX=0.000139045;
+  signal: Min=3.5238e-05; Max=0.000406884; Mean=0.000282788;
+  values: 0.00565577 1.78856e-06 9.99942e+06
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.00216896 0.00280082
+  xlimits: 0.00216941 0.0028012
   variables: t I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:10:30 2019 (1574208630)
+  Date: Tue Feb 25 21:41:42 2020 (1582663302)
   type: array_1d(20)
-  Source: Test_Fermi (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr)
+  Source: Test_Fermi (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr)
   component: Monitor2_xt
   position: 0 0 6
   title: x [m] monitor
   Ncount: 10000000
-  filename: Monitor2_xt_1574208629.x
-  statistics: X0=3.59429e-06; dX=0.0126808;
-  signal: Min=2.9202e-05; Max=2.97176e-05; Mean=2.93754e-05;
-  values: 0.000587509 5.76455e-07 1.03872e+06
+  filename: Monitor2_xt_1582663300.x
+  statistics: X0=7.09137e-06; dX=0.0126772;
+  signal: Min=2.91247e-05; Max=2.97216e-05; Mean=2.9363e-05;
+  values: 0.00058726 5.76333e-07 1.03828e+06
   xvar: x
   yvar: (I,I_err)
   xlabel: x [m]
   ylabel: Intensity [n/s/bin]
-  xlimits: -0.0219918 0.0219938
+  xlimits: -0.0219972 0.0219984
   variables: x I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:10:30 2019 (1574208630)
+  Date: Tue Feb 25 21:41:42 2020 (1582663302)
   type: array_1d(20)
-  Source: Test_Fermi (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr)
+  Source: Test_Fermi (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr)
   component: Monitor2_xt
   position: 0 0 6
   title: y [m] monitor
   Ncount: 10000000
-  filename: Monitor2_xt_1574208629.y
-  statistics: X0=-6.08964e-06; dX=0.0184411;
-  signal: Min=2.90313e-05; Max=2.95953e-05; Mean=2.93752e-05;
-  values: 0.000587503 5.76452e-07 1.03871e+06
+  filename: Monitor2_xt_1582663300.y
+  statistics: X0=-1.0981e-05; dX=0.018451;
+  signal: Min=2.91645e-05; Max=2.96023e-05; Mean=2.93627e-05;
+  values: 0.000587255 5.76331e-07 1.03827e+06
   xvar: y
   yvar: (I,I_err)
   xlabel: y [m]
   ylabel: Intensity [n/s/bin]
-  xlimits: -0.0319996 0.0319994
+  xlimits: -0.0319989 0.032
   variables: y I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:10:30 2019 (1574208630)
+  Date: Tue Feb 25 21:41:42 2020 (1582663302)
   type: array_1d(20)
-  Source: Test_Fermi (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr)
+  Source: Test_Fermi (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr)
   component: Monitor2_xt
   position: 0 0 6
   title: TOF [s] monitor
   Ncount: 10000000
-  filename: Monitor2_xt_1574208629.t
-  statistics: X0=0.00489727; dX=6.55442e-05;
-  signal: Min=5.28847e-07; Max=5.26305e-05; Mean=2.93748e-05;
-  values: 0.000587497 5.76449e-07 1.0387e+06
+  filename: Monitor2_xt_1582663300.t
+  statistics: X0=0.00489949; dX=6.63065e-05;
+  signal: Min=5.52039e-07; Max=5.27358e-05; Mean=2.93624e-05;
+  values: 0.000587249 5.76328e-07 1.03826e+06
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.00474394 0.00508322
+  xlimits: 0.00474437 0.00508736
   variables: t I I_err N
 end data

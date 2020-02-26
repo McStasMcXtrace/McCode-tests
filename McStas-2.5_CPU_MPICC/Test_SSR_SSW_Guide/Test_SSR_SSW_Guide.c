@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr (Test_SSW_SSR_Guide)
- * Date:       Wed Nov 20 00:52:25 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr (Test_SSW_SSR_Guide)
+ * Date:       Tue Feb 25 21:07:08 2020
  * File:       ./Test_SSR_SSW_Guide.c
  * Compile:    cc -o Test_SSW_SSR_Guide.out ./Test_SSR_SSW_Guide.c  -L@MCCODE_LIB@/libs/neutronics/ -lneutronics -lgfortran
  * CFLAGS= -L@MCCODE_LIB@/libs/neutronics/ -lneutronics -lgfortran
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Test_SSW_SSR_Guide";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -7034,13 +7034,13 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
   mccOrigin_minutes = 0;
 #line 7045 "./Test_SSR_SSW_Guide.c"
 
@@ -7052,11 +7052,11 @@ void mcinit(void) {
 #line 7052 "./Test_SSR_SSW_Guide.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
     0,
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
     0,
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
     0);
 #line 7061 "./Test_SSR_SSW_Guide.c"
   mctc1 = coords_neg(mcposaOrigin);
@@ -7069,7 +7069,7 @@ void mcinit(void) {
     /* Component testread. */
   /* Setting parameters for component testread. */
   SIG_MESSAGE("testread (Init:SetPar)");
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
   mcctestread_verbose = 1;
 #line 7074 "./Test_SSR_SSW_Guide.c"
 
@@ -7083,11 +7083,11 @@ void mcinit(void) {
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotatestread, mctr1, mcrotrtestread);
   mctc1 = coords_set(
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
     0,
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
     0,
-#line 85 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 85 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
     0);
 #line 7092 "./Test_SSR_SSW_Guide.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -7103,19 +7103,19 @@ void mcinit(void) {
     /* Component window. */
   /* Setting parameters for component window. */
   SIG_MESSAGE("window (Init:SetPar)");
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
   mccwindow_xmin = -2;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
   mccwindow_xmax = 2;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
   mccwindow_ymin = -2;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
   mccwindow_ymax = 2;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
   mccwindow_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
   mccwindow_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
   mccwindow_yheight = 0;
 #line 7120 "./Test_SSR_SSW_Guide.c"
 
@@ -7129,11 +7129,11 @@ void mcinit(void) {
   rot_transpose(mcrotatestread, mctr1);
   rot_mul(mcrotawindow, mctr1, mcrotrwindow);
   mctc1 = coords_set(
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
     0,
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
     0,
-#line 90 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 90 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
     2.0);
 #line 7138 "./Test_SSR_SSW_Guide.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -7149,25 +7149,25 @@ void mcinit(void) {
     /* Component test_ss_guide. */
   /* Setting parameters for component test_ss_guide. */
   SIG_MESSAGE("test_ss_guide (Init:SetPar)");
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
   mcctest_ss_guide_w1 = 1;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
   mcctest_ss_guide_h1 = 1;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
   mcctest_ss_guide_w2 = 1;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
   mcctest_ss_guide_h2 = 1;
-#line 94 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 94 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
   mcctest_ss_guide_l = 100;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
   mcctest_ss_guide_R0 = 0.99;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
   mcctest_ss_guide_Qc = 0.0219;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
   mcctest_ss_guide_alpha = 6.07;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
   mcctest_ss_guide_m = 2;
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
   mcctest_ss_guide_W = 0.003;
 #line 7172 "./Test_SSR_SSW_Guide.c"
 
@@ -7181,11 +7181,11 @@ void mcinit(void) {
   rot_transpose(mcrotawindow, mctr1);
   rot_mul(mcrotatest_ss_guide, mctr1, mcrotrtest_ss_guide);
   mctc1 = coords_set(
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
     0,
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
     0,
-#line 95 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
+#line 95 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_SSR_SSW_Guide/Test_SSR_SSW_Guide.instr"
     2.01);
 #line 7190 "./Test_SSR_SSW_Guide.c"
   rot_transpose(mcrotaOrigin, mctr1);

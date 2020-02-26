@@ -1,10 +1,10 @@
 McStas simulation description file for templateTAS.
-Date:    Wed Nov 20 01:26:19 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 22:19:43 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: templateTAS
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateTAS/templateTAS.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateTAS/templateTAS.instr
   Parameters:  KI(double) KF(double) EI(double) EF(double) QH(double) QK(double) QL(double) EN(double) QM(double) KFIX(double) FX(double) L1(double) L2(double) L3(double) L4(double) SM(double) SS(double) SA(double) DM(double) DA(double) RMV(double) RMH(double) RAV(double) RAH(double) ETAM(double) ETAA(double) ALF1(double) ALF2(double) ALF3(double) ALF4(double) BET1(double) BET2(double) BET3(double) BET4(double) AS(double) BS(double) CS(double) AA(double) BB(double) CC(double) AX(double) AY(double) AZ(double) BX(double) BY(double) BZ(double) verbose(double) A1(double) A2(double) A3(double) A4(double) A5(double) A6(double) NHM(double) NVM(double) WM(double) HM(double) NHA(double) NVA(double) WA(double) HA(double) Sqw_coh(string) Sqw_inc(string) radius(double) thickness(double) height(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateTAS/templateTAS.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateTAS/templateTAS.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574214160
+  Seed: 1582695128
   Directory: 1
   Nodes: 10
   Param: KI=2.662
@@ -91,74 +91,74 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:26:46 2019 (1574209606)
+  Date: Tue Feb 25 22:20:52 2020 (1582665652)
   type: array_1d(20)
-  Source: templateTAS (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateTAS/templateTAS.instr)
+  Source: templateTAS (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateTAS/templateTAS.instr)
   component: D4_SC2_1D
   position: 0.384269 0 9.43888
   title: Wavelength [Angs] monitor
   Ncount: 10000000
-  filename: D4_SC2_1D_1574209579.L
-  statistics: X0=2.36055; dX=0.0190897;
-  signal: Min=653909; Max=1.09683e+06; Mean=937479;
-  values: 1.87496e+07 3938.1 2.36085e+07
+  filename: D4_SC2_1D_1582665583.L
+  statistics: X0=2.36052; dX=0.019078;
+  signal: Min=651717; Max=1.09452e+06; Mean=937830;
+  values: 1.87566e+07 3938.73 2.36193e+07
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
   ylabel: Intensity [n/s/cm2/bin]
-  xlimits: 2.32578 2.39663
+  xlimits: 2.32579 2.39663
   variables: L I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:26:46 2019 (1574209606)
+  Date: Tue Feb 25 22:20:52 2020 (1582665652)
   type: array_0d
-  Source: templateTAS (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateTAS/templateTAS.instr)
+  Source: templateTAS (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateTAS/templateTAS.instr)
   component: Sample_Cradle
   position: 1.38337 0 10.58
   title:  Intensity Monitor (Square)
   Ncount: 10000000
-  statistics: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿX0=2.36055; dX=0.0190897;
-  signal: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿMin=653909; Max=1.09683e+06; Mean=937479;
-  values: ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ1.87496e+07 3938.1 2.36085e+07
+  statistics: None
+  signal: None
+  values: 3.22616e+07 8981.02 1.59638e+07
   xylimits: 0 0 0 0 0 0
   variables: I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:26:46 2019 (1574209606)
+  Date: Tue Feb 25 22:20:52 2020 (1582665652)
   type: array_2d(50, 50)
-  Source: templateTAS (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateTAS/templateTAS.instr)
+  Source: templateTAS (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateTAS/templateTAS.instr)
   component: D7_SC3_1D
   position: 1.38337 0 10.58
   title:  Intensity Angle Energy Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: D7_SC3_1D_1574209579.th_E
-  statistics: X0=21.0273; dX=30.7717; Y0=14.684; dY=0.22406;
-  signal: Min=194.701; Max=938422; Mean=102768;
-  values: 2.56921e+08 43748.3 1.98037e+08
+  filename: D7_SC3_1D_1582665583.th_E
+  statistics: X0=21.0145; dX=30.7784; Y0=14.6843; dY=0.224005;
+  signal: Min=187.5; Max=934780; Mean=102789;
+  values: 2.56974e+08 43738.2 1.98122e+08
   xvar: Longitude
   yvar: Energy
   xlabel: Longitude [deg]
   ylabel: Energy [meV]
   zvar: I
   zlabel: Signal per bin
-  xylimits: -179.996 179.998 14.2424 15.1227
+  xylimits: -179.984 179.997 14.2421 15.1229
   variables: I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:26:46 2019 (1574209606)
+  Date: Tue Feb 25 22:20:52 2020 (1582665652)
   type: array_2d(20, 20)
-  Source: templateTAS (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateTAS/templateTAS.instr)
+  Source: templateTAS (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateTAS/templateTAS.instr)
   component: He3H
   position: 2.49615 0 12.3354
   title: PSD monitor
   Ncount: 10000000
   filename: He3H.psd
-  statistics: X0=-0.000471937; dX=0.436037; Y0=-0.000754623; dY=2.05604;
-  signal: Min=0; Max=4.60095; Mean=0.652572;
-  values: 261.029 0.521256 547721
+  statistics: X0=0.00101586; dX=0.434055; Y0=0.0176209; dY=2.06433;
+  signal: Min=0; Max=4.4561; Mean=0.654063;
+  values: 261.625 0.519803 553325
   xvar: X
   yvar: Y
   xlabel: X position [cm]

@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr (Samples_Incoherent_off)
- * Date:       Wed Nov 20 00:49:08 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr (Samples_Incoherent_off)
+ * Date:       Tue Feb 25 21:03:37 2020
  * File:       ./Samples_Incoherent_off.c
  * Compile:    cc -o Samples_Incoherent_off.out ./Samples_Incoherent_off.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Samples_Incoherent_off";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -10264,13 +10264,13 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccOrigin_minutes = 0;
 #line 10275 "./Samples_Incoherent_off.c"
 
@@ -10282,11 +10282,11 @@ void mcinit(void) {
 #line 10282 "./Samples_Incoherent_off.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 34 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 34 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
     0,
-#line 34 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 34 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
     0,
-#line 34 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 34 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
     0);
 #line 10291 "./Samples_Incoherent_off.c"
   mctc1 = coords_neg(mcposaOrigin);
@@ -10299,65 +10299,65 @@ void mcinit(void) {
     /* Component source. */
   /* Setting parameters for component source. */
   SIG_MESSAGE("source (Init:SetPar)");
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   if("NULL") strncpy(mccsource_flux_file, "NULL" ? "NULL" : "", 16384); else mccsource_flux_file[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   if("NULL") strncpy(mccsource_xdiv_file, "NULL" ? "NULL" : "", 16384); else mccsource_xdiv_file[0]='\0';
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   if("NULL") strncpy(mccsource_ydiv_file, "NULL" ? "NULL" : "", 16384); else mccsource_ydiv_file[0]='\0';
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_radius = 0.05;
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_dist = 1;
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_focus_xw = .1;
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_focus_yh = .1;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_focus_aw = 0;
-#line 130 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 130 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_focus_ah = 0;
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_E0 = 14;
-#line 37 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 37 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_dE = .5;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_lambda0 = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_dlambda = 0;
-#line 131 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 131 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_I1 = 1;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_yheight = 0.1;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_xwidth = 0.1;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_verbose = 0;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_T1 = 0;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_flux_file_perAA = 0;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_flux_file_log = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_Lmin = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_Lmax = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_Emin = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_Emax = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_T2 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_I2 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_T3 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_I3 = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_zdepth = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsource_target_index = + 1;
 #line 10362 "./Samples_Incoherent_off.c"
 
@@ -10371,11 +10371,11 @@ void mcinit(void) {
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotasource, mctr1, mcrotrsource);
   mctc1 = coords_set(
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
     0,
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
     0,
-#line 38 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 38 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
     0);
 #line 10380 "./Samples_Incoherent_off.c"
   rot_transpose(mcrotaOrigin, mctr1);
@@ -10391,57 +10391,57 @@ void mcinit(void) {
     /* Component sample. */
   /* Setting parameters for component sample. */
   SIG_MESSAGE("sample (Init:SetPar)");
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   if(mcipgeometry) strncpy(mccsample_geometry, mcipgeometry ? mcipgeometry : "", 16384); else mccsample_geometry[0]='\0';
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_radius = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_xwidth = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_yheight = 0;
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_zdepth = 0.15;
-#line 118 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 118 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_thickness = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_target_x = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_target_y = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_target_z = 0;
-#line 119 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 119 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_focus_r = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_focus_xw = 1;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_focus_yh = 1;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_focus_aw = 0;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_focus_ah = 0;
-#line 41 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 41 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_target_index = 1;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_pack = 1;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_p_interact = 1;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_f_QE = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_gamma = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_Etrans = 0;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_deltaE = 0;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_sigma_abs = 5.08;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_sigma_inc = 5.08;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_Vc = 13.827;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_concentric = 0;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccsample_order = 0;
 #line 10446 "./Samples_Incoherent_off.c"
 
@@ -10455,11 +10455,11 @@ void mcinit(void) {
   rot_transpose(mcrotasource, mctr1);
   rot_mul(mcrotasample, mctr1, mcrotrsample);
   mctc1 = coords_set(
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
     0,
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
     0,
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
     1.5);
 #line 10464 "./Samples_Incoherent_off.c"
   rot_transpose(mcrotasource, mctr1);
@@ -10475,47 +10475,47 @@ void mcinit(void) {
     /* Component monitor. */
   /* Setting parameters for component monitor. */
   SIG_MESSAGE("monitor (Init:SetPar)");
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccmonitor_xwidth = 1;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccmonitor_yheight = 1;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccmonitor_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccmonitor_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccmonitor_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccmonitor_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccmonitor_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccmonitor_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccmonitor_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccmonitor_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccmonitor_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccmonitor_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccmonitor_restore_neutron = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccmonitor_radius = 0;
-#line 44 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 44 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   if("x y, all bins=300") strncpy(mccmonitor_options, "x y, all bins=300" ? "x y, all bins=300" : "", 16384); else mccmonitor_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   if("NULL") strncpy(mccmonitor_filename, "NULL" ? "NULL" : "", 16384); else mccmonitor_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   if("NULL") strncpy(mccmonitor_geometry, "NULL" ? "NULL" : "", 16384); else mccmonitor_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   if("NULL") strncpy(mccmonitor_username1, "NULL" ? "NULL" : "", 16384); else mccmonitor_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   if("NULL") strncpy(mccmonitor_username2, "NULL" ? "NULL" : "", 16384); else mccmonitor_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   if("NULL") strncpy(mccmonitor_username3, "NULL" ? "NULL" : "", 16384); else mccmonitor_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
   mccmonitor_nowritefile = 0;
 #line 10520 "./Samples_Incoherent_off.c"
 
@@ -10529,11 +10529,11 @@ void mcinit(void) {
   rot_transpose(mcrotasample, mctr1);
   rot_mul(mcrotamonitor, mctr1, mcrotrmonitor);
   mctc1 = coords_set(
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
     0,
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
     0,
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
     2);
 #line 10538 "./Samples_Incoherent_off.c"
   rot_transpose(mcrotasource, mctr1);
@@ -12314,7 +12314,7 @@ int nowritefile = mccmonitor_nowritefile;
 #line 12314 "./Samples_Incoherent_off.c"
 /* 'monitor=Monitor_nD()' component instance extend code */
     SIG_MESSAGE("monitor (Trace:Extend)");
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr"
 	if(SCATTERED) ABSORB;
 #line 12319 "./Samples_Incoherent_off.c"
 }   /* End of monitor=Monitor_nD() SETTING parameter declarations. */

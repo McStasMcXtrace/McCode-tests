@@ -1,10 +1,10 @@
 McStas simulation description file for templateSANS.
-Date:    Wed Nov 20 01:26:04 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 22:19:13 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: templateSANS
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateSANS/templateSANS.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateSANS/templateSANS.instr
   Parameters:  lambda(double) dlambda(double) r(double) PHI(double) Delta_Rho(double) sigma_abs(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateSANS/templateSANS.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateSANS/templateSANS.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574213912
+  Seed: 1582694663
   Directory: 1
   Nodes: 10
   Param: lambda=6
@@ -31,17 +31,17 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:26:05 2019 (1574209565)
+  Date: Tue Feb 25 22:19:15 2020 (1582665555)
   type: array_2d(128, 128)
-  Source: templateSANS (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateSANS/templateSANS.instr)
+  Source: templateSANS (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateSANS/templateSANS.instr)
   component: detector
   position: 0 0 9.2
   title: PSD monitor
   Ncount: 10000000
   filename: PSD.dat
-  statistics: X0=-0.007439; dX=5.05518; Y0=-0.00965672; dY=5.05806;
-  signal: Min=0; Max=1.34985e-19; Mean=4.00702e-21;
-  values: 6.56511e-17 1.27741e-19 4.69787e+06
+  statistics: X0=-0.00439547; dX=5.05737; Y0=-0.00294852; dY=5.06154;
+  signal: Min=0; Max=1.3676e-19; Mean=4.00407e-21;
+  values: 6.56027e-17 1.27662e-19 4.69512e+06
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -53,17 +53,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:26:05 2019 (1574209565)
+  Date: Tue Feb 25 22:19:15 2020 (1582665555)
   type: array_1d(1000)
-  Source: templateSANS (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateSANS/templateSANS.instr)
+  Source: templateSANS (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateSANS/templateSANS.instr)
   component: Ldetector
   position: 0 0 9.21
   title: Wavelength monitor
   Ncount: 10000000
   filename: Edet.dat
-  statistics: X0=5.99553; dX=0.0286673;
-  signal: Min=0; Max=8.57336e-19; Mean=6.56489e-20;
-  values: 6.56489e-17 1.27741e-19 4.66703e+06
+  statistics: X0=5.99552; dX=0.0286995;
+  signal: Min=0; Max=8.606e-19; Mean=6.56005e-20;
+  values: 6.56005e-17 1.27662e-19 4.66464e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -73,17 +73,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:26:05 2019 (1574209565)
+  Date: Tue Feb 25 22:19:15 2020 (1582665555)
   type: array_1d(100)
-  Source: templateSANS (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateSANS/templateSANS.instr)
+  Source: templateSANS (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateSANS/templateSANS.instr)
   component: PSDrad
   position: 0 0 9.22
   title: PSD monitor radial sum
   Ncount: 10000000
   filename: psd2.dat
-  statistics: X0=0.0626789; dX=0.0359187;
-  signal: Min=0; Max=3.2127e-18; Mean=6.55673e-19;
-  values: 6.55673e-17 1.27741e-19 3.63841e+06
+  statistics: X0=0.0627376; dX=0.0358933;
+  signal: Min=0; Max=3.21747e-18; Mean=6.55186e-19;
+  values: 6.55186e-17 1.27662e-19 3.63488e+06
   xvar: r
   yvar: (I,I_err)
   xlabel: Radius [m]
@@ -93,17 +93,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:26:05 2019 (1574209565)
+  Date: Tue Feb 25 22:19:15 2020 (1582665555)
   type: array_1d(100)
-  Source: templateSANS (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/templateSANS/templateSANS.instr)
+  Source: templateSANS (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateSANS/templateSANS.instr)
   component: PSDrad
   position: 0 0 9.22
   title: PSD monitor radial average
   Ncount: 10000000
   filename: psd2_av.dat
-  statistics: X0=0.0499828; dX=0.0248101;
-  signal: Min=0; Max=5.56793e-15; Mean=7.1746e-16;
-  values: 7.1746e-14 1.84059e-16 3.63841e+06
+  statistics: X0=0.0500609; dX=0.0248111;
+  signal: Min=0; Max=5.46555e-15; Mean=7.15776e-16;
+  values: 7.15776e-14 1.83611e-16 3.63488e+06
   xvar: r
   yvar: (I,I_err)
   xlabel: Radius [m]

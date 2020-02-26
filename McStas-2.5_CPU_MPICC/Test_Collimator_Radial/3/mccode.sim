@@ -1,10 +1,10 @@
 McStas simulation description file for Test_Collimator_Radial.
-Date:    Wed Nov 20 01:08:23 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:36:31 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: Test_Collimator_Radial
   File: 3/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr
   Parameters:  Collimator(int) Powder(string)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 3
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574234349
+  Seed: 1582682233
   Directory: 3
   Nodes: 10
   Param: Collimator=3
@@ -27,16 +27,16 @@ begin simulation: 3
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:08:24 2019 (1574208504)
+  Date: Tue Feb 25 21:36:34 2020 (1582662994)
   type: array_2d(20, 20)
-  Source: Test_Collimator_Radial (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr)
+  Source: Test_Collimator_Radial (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr)
   component: Monitor1_xt
   position: 0 0 1
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: Monitor1_xt_1574208503.x_y
-  statistics: X0=-1.87174e-08; dX=0.0019094; Y0=-8.29381e-07; dY=0.00279497;
-  signal: Min=0; Max=3.12583e-06; Mean=7.49359e-08;
+  filename: Monitor1_xt_1582662991.x_y
+  statistics: X0=-2.71827e-07; dX=0.00190967; Y0=-1.07176e-06; dY=0.00279503;
+  signal: Min=0; Max=3.125e-06; Mean=7.49358e-08;
   values: 2.99743e-05 9.47872e-09 1e+07
   xvar: x
   yvar: y
@@ -49,17 +49,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:08:24 2019 (1574208504)
+  Date: Tue Feb 25 21:36:34 2020 (1582662994)
   type: array_1d(1280)
-  Source: Test_Collimator_Radial (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr)
+  Source: Test_Collimator_Radial (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr)
   component: BananaTheta
   position: 0 0 1.1
   title: Angle [deg] monitor
   Ncount: 10000000
-  filename: BananaTheta_1574208503.A
-  statistics: X0=84.4974; dX=40.0578;
-  signal: Min=8.50542e-13; Max=5.12611e-11; Mean=1.2578e-11;
-  values: 1.60999e-08 1.90119e-11 2.426e+06
+  filename: BananaTheta_1582662991.A
+  statistics: X0=84.5292; dX=40.0664;
+  signal: Min=7.60085e-13; Max=5.14398e-11; Mean=1.25835e-11;
+  values: 1.61069e-08 1.90402e-11 2.42575e+06
   xvar: A
   yvar: (I,I_err)
   xlabel: Angle [deg]

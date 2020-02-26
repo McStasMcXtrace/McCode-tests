@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr (FZJ_KWS2_Lens)
- * Date:       Wed Nov 20 00:13:40 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr (FZJ_KWS2_Lens)
+ * Date:       Tue Feb 25 20:25:27 2020
  * File:       ./FZJ_KWS2_Lens.c
  * Compile:    cc -o FZJ_KWS2_Lens.out ./FZJ_KWS2_Lens.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "FZJ_KWS2_Lens";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -7543,11 +7543,11 @@ void mcinit(void) {
 #line 7543 "./FZJ_KWS2_Lens.c"
   rot_copy(mcrotrorigin, mcrotaorigin);
   mcposaorigin = coords_set(
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     0,
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     0,
-#line 40 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 40 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     0);
 #line 7552 "./FZJ_KWS2_Lens.c"
   mctc1 = coords_neg(mcposaorigin);
@@ -7560,31 +7560,31 @@ void mcinit(void) {
     /* Component source. */
   /* Setting parameters for component source. */
   SIG_MESSAGE("source (Init:SetPar)");
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccsource_radius = sqrt ( 2 ) * mcipNGblen;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccsource_yheight = 0;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccsource_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccsource_dist = mcipClen;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccsource_focus_xw = mcipCblen;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccsource_focus_yh = mcipCblen;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccsource_E0 = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccsource_dE = 0;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccsource_lambda0 = mciplambda;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccsource_dlambda = mcipdlambda * 1.5;
-#line 47 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 47 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccsource_flux = mcipFLUX;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccsource_gauss = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccsource_target_index = + 1;
 #line 7589 "./FZJ_KWS2_Lens.c"
 
@@ -7598,11 +7598,11 @@ void mcinit(void) {
   rot_transpose(mcrotaorigin, mctr1);
   rot_mul(mcrotasource, mctr1, mcrotrsource);
   mctc1 = coords_set(
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     0,
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     0,
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     0);
 #line 7607 "./FZJ_KWS2_Lens.c"
   rot_transpose(mcrotaorigin, mctr1);
@@ -7618,27 +7618,27 @@ void mcinit(void) {
     /* Component guide. */
   /* Setting parameters for component guide. */
   SIG_MESSAGE("guide (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   if(0) strncpy(mccguide_reflect, 0 ? 0 : "", 16384); else mccguide_reflect[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccguide_w1 = mcipCblen;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccguide_h1 = mcipCblen;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccguide_w2 = mcipCblen;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccguide_h2 = mcipCblen;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccguide_l = 20.0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccguide_R0 = 0.99;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccguide_Qc = 0.0219;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccguide_alpha = 6.07;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccguide_m = 2;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccguide_W = 0.003;
 #line 7643 "./FZJ_KWS2_Lens.c"
 
@@ -7652,11 +7652,11 @@ void mcinit(void) {
   rot_transpose(mcrotasource, mctr1);
   rot_mul(mcrotaguide, mctr1, mcrotrguide);
   mctc1 = coords_set(
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     0,
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     0,
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     mcipClen);
 #line 7661 "./FZJ_KWS2_Lens.c"
   rot_transpose(mcrotasource, mctr1);
@@ -7672,23 +7672,23 @@ void mcinit(void) {
     /* Component select. */
   /* Setting parameters for component select. */
   SIG_MESSAGE("select (Init:SetPar)");
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccselect_xwidth = mcipCblen;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccselect_yheight = mcipCblen;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccselect_zdepth = 0.30;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccselect_radius = 0.12;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccselect_alpha = 48.298;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccselect_length = 0.25;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccselect_d = 0.0004;
-#line 56 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 56 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccselect_nu = DEG2RAD * 48.298 / ( V2Q * mciplambda * 0.25 );
-#line 57 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 57 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccselect_nslit = PI / fabs ( PI * 48.298 / 180.0 * 0.5 * mcipdlambda / mciplambda - atan ( 0.5 * mcipCblen / 10.0 ) );
 #line 7693 "./FZJ_KWS2_Lens.c"
 
@@ -7702,11 +7702,11 @@ void mcinit(void) {
   rot_transpose(mcrotaguide, mctr1);
   rot_mul(mcrotaselect, mctr1, mcrotrselect);
   mctc1 = coords_set(
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     0,
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     0,
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     20.151);
 #line 7711 "./FZJ_KWS2_Lens.c"
   rot_transpose(mcrotaguide, mctr1);
@@ -7722,27 +7722,27 @@ void mcinit(void) {
     /* Component Cguide. */
   /* Setting parameters for component Cguide. */
   SIG_MESSAGE("Cguide (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   if(0) strncpy(mccCguide_reflect, 0 ? 0 : "", 16384); else mccCguide_reflect[0]='\0';
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccCguide_w1 = mcipCblen;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccCguide_h1 = mcipCblen;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccCguide_w2 = mcipCblen;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccCguide_h2 = mcipCblen;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccCguide_l = 40.0 - mcipClen;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccCguide_R0 = 0.99;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccCguide_Qc = 0.0219;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccCguide_alpha = 6.07;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccCguide_m = 2;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccCguide_W = 0.003;
 #line 7747 "./FZJ_KWS2_Lens.c"
 
@@ -7756,11 +7756,11 @@ void mcinit(void) {
   rot_transpose(mcrotaselect, mctr1);
   rot_mul(mcrotaCguide, mctr1, mcrotrCguide);
   mctc1 = coords_set(
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     0,
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     0,
-#line 67 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 67 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     0.151);
 #line 7765 "./FZJ_KWS2_Lens.c"
   rot_transpose(mcrotaselect, mctr1);
@@ -7776,19 +7776,19 @@ void mcinit(void) {
     /* Component Capert. */
   /* Setting parameters for component Capert. */
   SIG_MESSAGE("Capert (Init:SetPar)");
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccCapert_xmin = -0.5 * mcipCblen;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccCapert_xmax = 0.5 * mcipCblen;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccCapert_ymin = -0.5 * mcipCblen;
-#line 69 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 69 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccCapert_ymax = 0.5 * mcipCblen;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccCapert_radius = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccCapert_xwidth = 0;
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccCapert_yheight = 0;
 #line 7793 "./FZJ_KWS2_Lens.c"
 
@@ -7802,11 +7802,11 @@ void mcinit(void) {
   rot_transpose(mcrotaCguide, mctr1);
   rot_mul(mcrotaCapert, mctr1, mcrotrCapert);
   mctc1 = coords_set(
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     0,
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     0,
-#line 70 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 70 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     40.001 - mcipClen);
 #line 7811 "./FZJ_KWS2_Lens.c"
   rot_transpose(mcrotaCguide, mctr1);
@@ -7833,11 +7833,11 @@ void mcinit(void) {
   rot_transpose(mcrotaCapert, mctr1);
   rot_mul(mcrotagr2, mctr1, mcrotrgr2);
   mctc1 = coords_set(
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     0,
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     0,
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     40.002 - mcipClen);
 #line 7842 "./FZJ_KWS2_Lens.c"
   rot_transpose(mcrotaCguide, mctr1);
@@ -7853,27 +7853,27 @@ void mcinit(void) {
     /* Component Lense2. */
   /* Setting parameters for component Lense2. */
   SIG_MESSAGE("Lense2 (Init:SetPar)");
-#line 71 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 71 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccLense2_rho = 5.16e14;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccLense2_Rc = 0.02;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccLense2_Nl = 3;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccLense2_parab = 1.1;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccLense2_xmin = 0;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccLense2_xmax = 0;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccLense2_ymin = 0;
-#line 72 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 72 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccLense2_ymax = 0;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccLense2_radius = mcipRlense;
-#line 73 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 73 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccLense2_SigmaAL = 0.141;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccLense2_d0 = 0.002;
 #line 7878 "./FZJ_KWS2_Lens.c"
 
@@ -7887,11 +7887,11 @@ void mcinit(void) {
   rot_transpose(mcrotagr2, mctr1);
   rot_mul(mcrotaLense2, mctr1, mcrotrLense2);
   mctc1 = coords_set(
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     0,
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     0,
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     40.002);
 #line 7896 "./FZJ_KWS2_Lens.c"
   rot_transpose(mcrotaCguide, mctr1);
@@ -7907,25 +7907,25 @@ void mcinit(void) {
     /* Component detector. */
   /* Setting parameters for component detector. */
   SIG_MESSAGE("detector (Init:SetPar)");
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccdetector_nx = 128;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccdetector_ny = 384;
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   if("PSD.dat") strncpy(mccdetector_filename, "PSD.dat" ? "PSD.dat" : "", 16384); else mccdetector_filename[0]='\0';
-#line 82 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 82 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccdetector_xmin = -0.03;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccdetector_xmax = 0.03;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccdetector_ymin = -0.15;
-#line 83 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 83 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccdetector_ymax = 0.03;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccdetector_xwidth = 0;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccdetector_yheight = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mccdetector_restore_neutron = 0;
 #line 7930 "./FZJ_KWS2_Lens.c"
 
@@ -7939,11 +7939,11 @@ void mcinit(void) {
   rot_transpose(mcrotaLense2, mctr1);
   rot_mul(mcrotadetector, mctr1, mcrotrdetector);
   mctc1 = coords_set(
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     0,
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     0,
-#line 84 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 84 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     20.0 + mcipDlen + mcipClen);
 #line 7948 "./FZJ_KWS2_Lens.c"
   rot_transpose(mcrotaCguide, mctr1);
@@ -7970,11 +7970,11 @@ void mcinit(void) {
   rot_transpose(mcrotadetector, mctr1);
   rot_mul(mcrotagr3, mctr1, mcrotrgr3);
   mctc1 = coords_set(
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     0,
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     0,
-#line 87 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 87 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
     0.002);
 #line 7979 "./FZJ_KWS2_Lens.c"
   rot_transpose(mcrotadetector, mctr1);
@@ -8505,7 +8505,7 @@ extern double mcnt, mcnsx, mcnsy, mcnsz, mcnp;
 #define mccompcurindex 1
 /* 'origin=Arm()' component instance extend code */
     SIG_MESSAGE("origin (Trace:Extend)");
-#line 42 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 42 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mcgravitation = 0;
 #line 8510 "./FZJ_KWS2_Lens.c"
 #undef mccompcurname
@@ -9530,7 +9530,7 @@ mcnlp)
 #define mccompcurindex 7
 /* 'gr2=Arm()' component instance extend code */
     SIG_MESSAGE("gr2 (Trace:Extend)");
-#line 75 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 75 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mcgravitation = 1;
 #line 9535 "./FZJ_KWS2_Lens.c"
 #undef mccompcurname
@@ -9948,7 +9948,7 @@ mcnlp)
 #define mccompcurindex 10
 /* 'gr3=Arm()' component instance extend code */
     SIG_MESSAGE("gr3 (Trace:Extend)");
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_KWS2_Lens/FZJ_KWS2_Lens.instr"
   mcgravitation = 0;
 #line 9953 "./FZJ_KWS2_Lens.c"
 #undef mccompcurname

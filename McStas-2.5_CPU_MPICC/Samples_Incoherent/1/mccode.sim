@@ -1,10 +1,10 @@
 McStas simulation description file for Samples_Incoherent.
-Date:    Wed Nov 20 01:06:00 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:31:01 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: Samples_Incoherent
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr
   Parameters:  L_min(double) L_max(double) SAMPLE(double) STOP(double) V_multiples(double) Order(double) INC(double) ABS(double) DB(double) ISISFACE(string)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574232088
+  Seed: 1582679983
   Directory: 1
   Nodes: 10
   Param: L_min=0.5
@@ -35,9 +35,9 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:06:02 2019 (1574208362)
+  Date: Tue Feb 25 21:31:07 2020 (1582662667)
   type: array_2d(128, 128)
-  Source: Samples_Incoherent (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr)
+  Source: Samples_Incoherent (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr)
   component: Dirbeam
   position: 0 0 8.339
   title: PSD monitor
@@ -57,9 +57,9 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:06:02 2019 (1574208362)
+  Date: Tue Feb 25 21:31:07 2020 (1582662667)
   type: array_2d(2000, 20)
-  Source: Samples_Incoherent (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr)
+  Source: Samples_Incoherent (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr)
   component: Tof_Sphere_4pi
   position: 0 0 8.3
   title:  Intensity Wavelength Time_Of_Flight Monitor (Sphere) [out] per bin
@@ -79,17 +79,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:06:03 2019 (1574208363)
+  Date: Tue Feb 25 21:31:07 2020 (1582662667)
   type: array_2d(180, 180)
-  Source: Samples_Incoherent (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr)
+  Source: Samples_Incoherent (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr)
   component: PSD_Sphere_4pi
   position: 0 0 8.3
   title: 4PI PSD monitor
   Ncount: 10000000
   filename: PSD.dat
-  statistics: X0=-0.0275104; dX=104.752; Y0=0.477813; dY=39.219;
-  signal: Min=0; Max=70.6844; Mean=38.0105;
-  values: 1.23154e+06 402.073 9.9613e+06
+  statistics: X0=0.0124619; dX=104.774; Y0=0.507113; dY=39.2183;
+  signal: Min=0; Max=70.7802; Mean=38.0123;
+  values: 1.2316e+06 402.095 9.9611e+06
   xvar: Longitude
   yvar: Lattitude
   xlabel: Longitude [deg]
@@ -101,17 +101,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:06:03 2019 (1574208363)
+  Date: Tue Feb 25 21:31:07 2020 (1582662667)
   type: array_2d(180, 180)
-  Source: Samples_Incoherent (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr)
+  Source: Samples_Incoherent (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr)
   component: Sphere_4pi
   position: 0 0 8.3
   title: 4PI PSD monitor
   Ncount: 10000000
   filename: Events.dat
-  statistics: X0=-0.0194962; dX=104.109; Y0=0.478522; dY=39.2405;
-  signal: Min=0; Max=569; Mean=307.448;
-  values: 9.9613e+06 3156.15 9.9613e+06
+  statistics: X0=0.0321314; dX=104.13; Y0=0.511511; dY=39.2428;
+  signal: Min=0; Max=557; Mean=307.441;
+  values: 9.9611e+06 3156.12 9.9611e+06
   xvar: Longitude
   yvar: Lattitude
   xlabel: Longitude [deg]

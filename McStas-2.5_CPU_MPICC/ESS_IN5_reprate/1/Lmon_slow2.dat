@@ -1,11 +1,11 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Nov. 19, 2019
-# Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr
+# Creator: McStas 2.5 - Feb. 24, 2020
+# Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr
 # Ncount: 1000000
 # Trace: no
 # Gravitation: no
-# Seed: 1574226575
+# Seed: 1582672815
 # Directory: 1
 # Nodes: 10
 # Param: Lmin=4.9
@@ -55,17 +55,17 @@
 # Param: RES_DE=0.5
 # Param: port=30
 # Param: cold=0.95
-# Date: Wed Nov 20 00:59:04 2019 (1574207944)
+# Date: Tue Feb 25 21:14:42 2020 (1582661682)
 # type: array_1d(200)
-# Source: ESS_IN5_reprate (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
+# Source: ESS_IN5_reprate (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
 # component: Lmon_slow2
 # position: 0 0 50
 # title: Wavelength monitor
 # Ncount: 10000000
 # filename: Lmon_slow2.dat
-# statistics: X0=4.99824; dX=0.0586769;
-# signal: Min=0; Max=5.99102e+09; Mean=1.89714e+08;
-# values: 3.79428e+10 3.06357e+07 3.7968e+06
+# statistics: X0=4.99822; dX=0.0586958;
+# signal: Min=0; Max=5.98728e+09; Mean=1.89481e+08;
+# values: 3.78963e+10 3.06021e+07 3.79496e+06
 # xvar: L
 # yvar: (I,I_err)
 # xlabel: Wavelength [AA]
@@ -232,14 +232,14 @@
 4.80375 0 0 0 
 4.83425 0 0 0 
 4.86475 0 0 0 
-4.89525 2077950145 7379623.653 198198 
-4.92575 5991019839 12436733.61 576265 
-4.95625 5919063715 12243608.05 578663 
-4.98675 5825025426 12038953.25 578715 
-5.01725 5759488527 11862579.69 580238 
-5.04775 5625161696 11620205.15 580099 
-5.07825 5564629970 11455930.73 580728 
-5.10875 1180431070 5251880.358 123895 
+4.89525 2086102874 7387639.981 198657 
+4.92575 5987282627 12432953.42 575098 
+4.95625 5900965130 12231523.94 578016 
+4.98675 5813390055 12021852.71 578310 
+5.01725 5735203871 11831481.06 579983 
+5.04775 5643140855 11622006.09 580436 
+5.07825 5558249923 11438130.13 580959 
+5.10875 1171950907 5226389.395 123502 
 5.13925 0 0 0 
 5.16975 0 0 0 
 5.20025 0 0 0 

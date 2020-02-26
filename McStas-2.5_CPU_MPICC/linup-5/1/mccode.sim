@@ -1,10 +1,10 @@
 McStas simulation description file for TAS1_Diff_Powder.
-Date:    Tue Dec  3 18:17:00 2019
-Program: McStas 2.5 - Dec. 03, 2019
+Date:    Tue Feb 25 22:18:14 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: TAS1_Diff_Powder
   File: 1/mccode
-  Source: /zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-5/linup-5.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/linup-5/linup-5.instr
   Parameters:  PHM(double) TTM(double) TT(double) TTA(double) C1(double) OMC1(double) C2(double) C3(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Dec. 03, 2019
-  Instrument: /zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-5/linup-5.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/linup-5/linup-5.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1575407689
+  Seed: 1582693820
   Directory: 1
   Nodes: 10
   Param: PHM=-37.077
@@ -33,32 +33,32 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Tue Dec  3 18:17:02 2019 (1575393422)
+  Date: Tue Feb 25 22:18:18 2020 (1582665498)
   type: array_0d
-  Source: TAS1_Diff_Powder (/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-5/linup-5.instr)
+  Source: TAS1_Diff_Powder (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/linup-5/linup-5.instr)
   component: mon
   position: -1.23041 0 3.91282
   title: Single monitor mon
   Ncount: 10000000
   statistics: None
   signal: None
-  values: 0.00100644 2.02208e-06 315478
+  values: 0.00100801 2.02457e-06 315629
   xylimits: 0 0 0 0 0 0
   variables: I I_err N
 end data
 
 begin data
-  Date: Tue Dec  3 18:17:02 2019 (1575393422)
+  Date: Tue Feb 25 22:18:18 2020 (1582665498)
   type: array_1d(35)
-  Source: TAS1_Diff_Powder (/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-5/linup-5.instr)
+  Source: TAS1_Diff_Powder (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/linup-5/linup-5.instr)
   component: emon1
   position: -1.44189 0 3.97346
   title: Energy monitor
   Ncount: 10000000
   filename: linup_5_1.vmon
-  statistics: X0=20.1489; dX=0.168878;
-  signal: Min=0; Max=5.61401e-05; Mean=1.83323e-05;
-  values: 0.00064163 1.63417e-06 190120
+  statistics: X0=20.1498; dX=0.168783;
+  signal: Min=0; Max=5.712e-05; Mean=1.83152e-05;
+  values: 0.000641031 1.63403e-06 189627
   xvar: E
   yvar: (I,I_err)
   xlabel: Energy [meV]
@@ -68,32 +68,32 @@ begin data
 end data
 
 begin data
-  Date: Tue Dec  3 18:17:02 2019 (1575393422)
+  Date: Tue Feb 25 22:18:18 2020 (1582665498)
   type: array_0d
-  Source: TAS1_Diff_Powder (/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-5/linup-5.instr)
+  Source: TAS1_Diff_Powder (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/linup-5/linup-5.instr)
   component: sng
   position: -2.28339 0 4.90413
   title: Single monitor sng
   Ncount: 10000000
   statistics: None
   signal: None
-  values: 4.53113e-07 1.15473e-09 231407
+  values: 4.56455e-07 1.16185e-09 231770
   xylimits: 0 0 0 0 0 0
   variables: I I_err N
 end data
 
 begin data
-  Date: Tue Dec  3 18:17:02 2019 (1575393422)
+  Date: Tue Feb 25 22:18:18 2020 (1582665498)
   type: array_1d(35)
-  Source: TAS1_Diff_Powder (/zhome/89/0/38697/Standalone_gpu/McStas-2.5_CPU_MPICC/linup-5/linup-5.instr)
+  Source: TAS1_Diff_Powder (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/linup-5/linup-5.instr)
   component: emon2
   position: -2.28339 0 4.90413
   title: Energy monitor
   Ncount: 10000000
   filename: linup_5_2.vmon
-  statistics: X0=20.1736; dX=0.156188;
-  signal: Min=0; Max=5.01672e-08; Mean=1.41019e-08;
-  values: 4.93566e-07 1.19476e-09 264157
+  statistics: X0=20.1755; dX=0.155455;
+  signal: Min=0; Max=5.01885e-08; Mean=1.41855e-08;
+  values: 4.96493e-07 1.20184e-09 264055
   xvar: E
   yvar: (I,I_err)
   xlabel: Energy [meV]

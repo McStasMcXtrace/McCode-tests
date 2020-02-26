@@ -2,65 +2,81 @@ INFO: Using directory: "10"
 INFO: Using existing c-file: ./Samples_Incoherent.c
 INFO: Using existing binary: ./Samples_Incoherent.out
 INFO: ===
-INFO: Using system default number of mpirun -np processes
-[1574208401.921912] [n-62-23-6:24523:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3174.78
-[1574208401.923824] [n-62-23-6:24523:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208401.923840] [n-62-23-6:24523:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-23-14:18311] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:18311] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:18311] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582662741.794870] [n-62-23-14:18316:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.32
+[1582662741.798450] [n-62-23-14:18316:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662741.798475] [n-62-23-14:18316:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 --------------------------------------------------------------------------
 Initialization of MXM library failed.
 
   Error: Input/output error
 
 --------------------------------------------------------------------------
-[1574208401.925895] [n-62-23-6:24523:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208401.925909] [n-62-23-6:24523:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208401.967115] [n-62-23-6:24526:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3107.62
-[1574208401.968057] [n-62-23-6:24528:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3107.62
-[1574208401.968497] [n-62-23-6:24526:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208401.968515] [n-62-23-6:24526:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208401.969603] [n-62-23-6:24528:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208401.969619] [n-62-23-6:24528:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208401.969625] [n-62-23-6:24524:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3107.62
-[1574208401.970366] [n-62-23-6:24526:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208401.970380] [n-62-23-6:24526:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208401.970687] [n-62-23-6:24527:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3107.62
-[1574208401.971083] [n-62-23-6:24524:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208401.971100] [n-62-23-6:24524:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208401.971416] [n-62-23-6:24528:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208401.971430] [n-62-23-6:24528:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208401.971609] [n-62-23-6:24525:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3107.62
-[1574208401.972193] [n-62-23-6:24527:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208401.972209] [n-62-23-6:24527:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208401.972972] [n-62-23-6:24524:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208401.972987] [n-62-23-6:24524:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208401.973093] [n-62-23-6:24525:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208401.973109] [n-62-23-6:24525:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208401.974095] [n-62-23-6:24527:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208401.974110] [n-62-23-6:24527:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208401.974969] [n-62-23-6:24525:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208401.974983] [n-62-23-6:24525:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208401.991626] [n-62-23-3:22880:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3182.64
-[1574208401.991625] [n-62-23-3:22881:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3182.64
-[1574208401.991625] [n-62-23-3:22882:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3182.64
-[1574208401.991625] [n-62-23-3:22883:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3182.64
-[1574208401.995627] [n-62-23-3:22880:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208401.995643] [n-62-23-3:22880:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208401.995627] [n-62-23-3:22881:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208401.995627] [n-62-23-3:22882:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208401.995643] [n-62-23-3:22882:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208401.995690] [n-62-23-3:22881:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208401.996002] [n-62-23-3:22883:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208401.996020] [n-62-23-3:22883:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208401.997780] [n-62-23-3:22881:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208401.997783] [n-62-23-3:22880:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208401.997797] [n-62-23-3:22880:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208401.997786] [n-62-23-3:22882:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208401.997800] [n-62-23-3:22882:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208401.997842] [n-62-23-3:22881:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208401.998059] [n-62-23-3:22883:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208401.998074] [n-62-23-3:22883:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'Samples_Incoherent' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
+[1582662741.803865] [n-62-23-14:18317:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.61
+[1582662741.804186] [n-62-23-14:18316:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662741.804205] [n-62-23-14:18316:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662741.805948] [n-62-23-14:18317:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662741.805967] [n-62-23-14:18317:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662741.808349] [n-62-23-14:18317:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662741.808369] [n-62-23-14:18317:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662741.817032] [n-62-23-14:18318:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.46
+[1582662741.818180] [n-62-23-14:18323:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.46
+[1582662741.819057] [n-62-23-14:18318:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662741.819075] [n-62-23-14:18318:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662741.821081] [n-62-23-14:18320:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.46
+[1582662741.821335] [n-62-23-14:18323:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662741.821408] [n-62-23-14:18318:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662741.821472] [n-62-23-14:18318:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662741.821537] [n-62-23-14:18323:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662741.822865] [n-62-23-14:18319:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.61
+[1582662741.821960] [n-62-23-14:18322:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.46
+[1582662741.823002] [n-62-23-14:18320:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662741.823020] [n-62-23-14:18320:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662741.824030] [n-62-23-14:18322:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662741.824046] [n-62-23-14:18322:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662741.825063] [n-62-23-14:18323:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662741.825080] [n-62-23-14:18323:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662741.825419] [n-62-23-14:18319:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662741.825492] [n-62-23-14:18319:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662741.825618] [n-62-23-14:18320:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662741.825645] [n-62-23-14:18320:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662741.827291] [n-62-23-14:18322:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662741.827309] [n-62-23-14:18322:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662741.827694] [n-62-23-14:18319:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662741.827775] [n-62-23-14:18319:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662741.827825] [n-62-23-14:18321:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.61
+[1582662741.830138] [n-62-23-14:18321:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662741.830157] [n-62-23-14:18321:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662741.832199] [n-62-23-14:18324:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.61
+[1582662741.832340] [n-62-23-14:18321:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662741.832358] [n-62-23-14:18321:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662741.833968] [n-62-23-14:18324:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662741.833986] [n-62-23-14:18324:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662741.835982] [n-62-23-14:18325:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.95
+[1582662741.836271] [n-62-23-14:18324:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662741.836298] [n-62-23-14:18324:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662741.837734] [n-62-23-14:18325:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662741.837751] [n-62-23-14:18325:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662741.839909] [n-62-23-14:18325:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662741.839927] [n-62-23-14:18325:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'Samples_Incoherent' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
 **********************************************************************
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == hydrogen 
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == hydrogen 
 **********************************************************************
 ****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
 ****   Please check to see if your files are up-to-date           ****
@@ -74,87 +90,73 @@ Face == hydrogen
 **********************************************************************
 
 Face == hydrogen 
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == hydrogen 
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == hydrogen 
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == hydrogen 
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == hydrogen 
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == hydrogen 
+**********************************************************************
+****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
+****   Please check to see if your files are up-to-date           ****
+****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
+**********************************************************************
+
+Face == hydrogen 
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.hydrogen
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.hydrogen
+Energy == 1.66937 327.196
+Energy == 1.66937 327.196
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.hydrogen
+Energy == 1.66937 327.196
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.hydrogen
+Energy == 1.66937 327.196
+Energy == 1.66937 327.196
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.hydrogen
 Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.hydrogen
 Energy == 1.66937 327.196
 Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.hydrogen
 Energy == 1.66937 327.196
 nEnergy == 84
-nEnergy == 84
-**********************************************************************
-****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
-****   Please check to see if your files are up-to-date           ****
-****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
-**********************************************************************
-
-Face == hydrogen 
-**********************************************************************
-****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
-****   Please check to see if your files are up-to-date           ****
-****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
-**********************************************************************
-
-Face == hydrogen 
-**********************************************************************
-****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
-****   Please check to see if your files are up-to-date           ****
-****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
-**********************************************************************
-
-Face == hydrogen 
-Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.hydrogen
-Energy == 1.66937 327.196
-**********************************************************************
-****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
-****   Please check to see if your files are up-to-date           ****
-****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
-**********************************************************************
-
-Face == hydrogen 
-Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.hydrogen
-Energy == 1.66937 327.196
-Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.hydrogen
-Energy == 1.66937 327.196
-Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.hydrogen
-Energy == 1.66937 327.196
-**********************************************************************
-****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
-****   Please check to see if your files are up-to-date           ****
-****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
-**********************************************************************
-
-Face == hydrogen 
-**********************************************************************
-****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
-****   Please check to see if your files are up-to-date           ****
-****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
-**********************************************************************
-
-Face == hydrogen 
-**********************************************************************
-****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
-****   Please check to see if your files are up-to-date           ****
-****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
-**********************************************************************
-
-Face == hydrogen 
-**********************************************************************
-****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
-****   Please check to see if your files are up-to-date           ****
-****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
-**********************************************************************
-
-Face == hydrogen 
-Energy == 1.66937 327.196
-Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.hydrogen
-Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.hydrogen
-Energy == 1.66937 327.196
-Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.hydrogen
-Energy == 1.66937 327.196
 Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.hydrogen
 Energy == 1.66937 327.196
 nEnergy == 84
 nEnergy == 84
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.hydrogen
+Energy == 1.66937 327.196
 nEnergy == 84
+nEnergy == 84
+Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS2.hydrogen
+Energy == 1.66937 327.196
 nEnergy == 84
 nEnergy == 84
 nEnergy == 84
@@ -162,16 +164,7 @@ nEnergy == 84
 nEnergy == 84
 Viewport == 0.005 0.005 Moderator size == (0.12 * 0.115) m^2 
 Dist == 8.299 (metres) 
-Viewport == 0.005 0.005 Moderator size == (0.12 * 0.115) m^2 
-Dist == 8.299 (metres) 
 Viewport Solid angle == 0.000200361 str
-Solid angle used == 5.00903e-05 str
-Viewport Solid angle == 0.000200361 str
-[Samples_Incoherent] Initialize
-V_sample: Vsample: The target is not defined. Using direct beam (Z-axis).
-Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
-Single_crystal: SX: Using incoherent elastic scattering only sigma=5.08.
-Single_crystal: SX: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
 Solid angle used == 5.00903e-05 str
 [Samples_Incoherent] Initialize
 V_sample: Vsample: The target is not defined. Using direct beam (Z-axis).
@@ -179,12 +172,8 @@ Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13
 Single_crystal: SX: Using incoherent elastic scattering only sigma=5.08.
 Single_crystal: SX: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
 Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
-Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
-Single_crystal: SXg: Using incoherent elastic scattering only sigma=5.08.
 Single_crystal: SXg: Using incoherent elastic scattering only sigma=5.08.
 Single_crystal: SXg: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
-Single_crystal: SXg: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
-Totals:: 0.000712473 84 181 
 Totals:: 0.000712473 84 181 
 Viewport == 0.005 0.005 Moderator size == (0.12 * 0.115) m^2 
 Dist == 8.299 (metres) 
@@ -195,6 +184,10 @@ V_sample: Vsample: The target is not defined. Using direct beam (Z-axis).
 Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
 Single_crystal: SX: Using incoherent elastic scattering only sigma=5.08.
 Single_crystal: SX: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
+Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
+Single_crystal: SXg: Using incoherent elastic scattering only sigma=5.08.
+Viewport == 0.005 0.005 Moderator size == (0.12 * 0.115) m^2 
+Single_crystal: SXg: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
 Viewport == 0.005 0.005 Moderator size == (0.12 * 0.115) m^2 
 Dist == 8.299 (metres) 
 Viewport Solid angle == 0.000200361 str
@@ -204,6 +197,86 @@ V_sample: Vsample: The target is not defined. Using direct beam (Z-axis).
 Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
 Single_crystal: SX: Using incoherent elastic scattering only sigma=5.08.
 Single_crystal: SX: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
+Dist == 8.299 (metres) 
+Viewport Solid angle == 0.000200361 str
+Solid angle used == 5.00903e-05 str
+[Samples_Incoherent] Initialize
+V_sample: Vsample: The target is not defined. Using direct beam (Z-axis).
+Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
+Single_crystal: SX: Using incoherent elastic scattering only sigma=5.08.
+Single_crystal: SX: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
+Totals:: 0.000712473 84 181 
+Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
+Single_crystal: SXg: Using incoherent elastic scattering only sigma=5.08.
+Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
+Single_crystal: SXg: Using incoherent elastic scattering only sigma=5.08.
+Single_crystal: SXg: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
+Single_crystal: SXg: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
+Totals:: 0.000712473 84 181 
+Totals:: 0.000712473 84 181 
+Viewport == 0.005 0.005 Moderator size == (0.12 * 0.115) m^2 
+Viewport == 0.005 0.005 Moderator size == (0.12 * 0.115) m^2 
+Dist == 8.299 (metres) 
+Viewport Solid angle == 0.000200361 str
+Solid angle used == 5.00903e-05 str
+[Samples_Incoherent] Initialize
+V_sample: Vsample: The target is not defined. Using direct beam (Z-axis).
+Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
+Single_crystal: SX: Using incoherent elastic scattering only sigma=5.08.
+Single_crystal: SX: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
+Dist == 8.299 (metres) 
+Viewport Solid angle == 0.000200361 str
+Solid angle used == 5.00903e-05 str
+[Samples_Incoherent] Initialize
+V_sample: Vsample: The target is not defined. Using direct beam (Z-axis).
+Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
+Single_crystal: SX: Using incoherent elastic scattering only sigma=5.08.
+Single_crystal: SX: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
+Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
+Single_crystal: SXg: Using incoherent elastic scattering only sigma=5.08.
+Viewport == 0.005 0.005 Moderator size == (0.12 * 0.115) m^2 
+Dist == 8.299 (metres) 
+Viewport Solid angle == 0.000200361 str
+Solid angle used == 5.00903e-05 str
+[Samples_Incoherent] Initialize
+V_sample: Vsample: The target is not defined. Using direct beam (Z-axis).
+Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
+Single_crystal: SX: Using incoherent elastic scattering only sigma=5.08.
+Single_crystal: SX: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
+Viewport == 0.005 0.005 Moderator size == (0.12 * 0.115) m^2 
+Dist == 8.299 (metres) 
+Viewport Solid angle == 0.000200361 str
+Solid angle used == 5.00903e-05 str
+[Samples_Incoherent] Initialize
+Viewport == 0.005 0.005 Moderator size == (0.12 * 0.115) m^2 
+Dist == 8.299 (metres) 
+Viewport Solid angle == 0.000200361 str
+Solid angle used == 5.00903e-05 str
+[Samples_Incoherent] Initialize
+V_sample: Vsample: The target is not defined. Using direct beam (Z-axis).
+Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
+Single_crystal: SX: Using incoherent elastic scattering only sigma=5.08.
+Single_crystal: SX: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
+V_sample: Vsample: The target is not defined. Using direct beam (Z-axis).
+Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
+Single_crystal: SX: Using incoherent elastic scattering only sigma=5.08.
+Single_crystal: SX: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
+Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
+Single_crystal: SXg: Using incoherent elastic scattering only sigma=5.08.
+Single_crystal: SXg: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
+Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
+Single_crystal: SXg: Using incoherent elastic scattering only sigma=5.08.
+Single_crystal: SXg: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
+Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
+Single_crystal: SXg: Using incoherent elastic scattering only sigma=5.08.
+Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
+Single_crystal: SXg: Using incoherent elastic scattering only sigma=5.08.
+Single_crystal: SXg: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
+Single_crystal: SXg: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
+Single_crystal: SXg: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
+Totals:: 0.000712473 84 181 
+Totals:: 0.000712473 84 181 
+Totals:: 0.000712473 84 181 
 Viewport == 0.005 0.005 Moderator size == (0.12 * 0.115) m^2 
 Dist == 8.299 (metres) 
 Viewport Solid angle == 0.000200361 str
@@ -221,19 +294,6 @@ Isotropic_Sqw: Sqw: Using Isotropic elastic incoherent scattering (sigma=5.08 [b
 Incoherent: IncS: The target is not defined. Using direct beam (Z-axis).
 Incoherent: IncS: Vc=13.827 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn]
 Loading geometry file (OFF/PLY): cube.off
-Viewport == 0.005 0.005 Moderator size == (0.12 * 0.115) m^2 
-Dist == 8.299 (metres) 
-Viewport Solid angle == 0.000200361 str
-Solid angle used == 5.00903e-05 str
-[Samples_Incoherent] Initialize
-V_sample: Vsample: The target is not defined. Using direct beam (Z-axis).
-Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
-Single_crystal: SX: Using incoherent elastic scattering only sigma=5.08.
-Single_crystal: SX: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
-Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
-Single_crystal: SXg: Using incoherent elastic scattering only sigma=5.08.
-Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
-Single_crystal: SXg: Using incoherent elastic scattering only sigma=5.08.
   Number of vertices: 8
   Number of polygons: 6
   Bounding box dimensions for geometry cube.off:
@@ -246,19 +306,7 @@ PowderN: PowNg: Vc=13.827 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] ref
 Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
 Single_crystal: SXg: Using incoherent elastic scattering only sigma=5.08.
 Loading geometry file (OFF/PLY): cube.off
-Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
-Single_crystal: SXg: Using incoherent elastic scattering only sigma=5.08.
-Single_crystal: SXg: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
-Single_crystal: SXg: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
-Viewport == 0.005 0.005 Moderator size == (0.12 * 0.115) m^2 
-Dist == 8.299 (metres) 
-Viewport Solid angle == 0.000200361 str
-Solid angle used == 5.00903e-05 str
-[Samples_Incoherent] Initialize
-V_sample: Vsample: The target is not defined. Using direct beam (Z-axis).
-Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
-Single_crystal: SX: Using incoherent elastic scattering only sigma=5.08.
-Single_crystal: SX: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
+Totals:: 0.000712473 84 181 
   Number of vertices: 8
   Number of polygons: 6
   Bounding box dimensions for geometry cube.off:
@@ -267,16 +315,6 @@ Single_crystal: SX: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn
     Depth= 0.005000 (0.500%)
 Single_crystal: SXg: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
 Loading geometry file (OFF/PLY): cube.off
-Viewport == 0.005 0.005 Moderator size == (0.12 * 0.115) m^2 
-Dist == 8.299 (metres) 
-Viewport Solid angle == 0.000200361 str
-Solid angle used == 5.00903e-05 str
-[Samples_Incoherent] Initialize
-V_sample: Vsample: The target is not defined. Using direct beam (Z-axis).
-Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
-Single_crystal: SX: Using incoherent elastic scattering only sigma=5.08.
-Single_crystal: SX: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
-Single_crystal: SXg: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
   Number of vertices: 8
   Number of polygons: 6
   Bounding box dimensions for geometry cube.off:
@@ -286,10 +324,6 @@ Single_crystal: SXg: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [bar
 Isotropic_Sqw: Sqwg: is a volume defined from file cube.off
 Isotropic_Sqw: Sqwg: Using Isotropic elastic incoherent scattering (sigma=5.08 [barns])
 Loading geometry file (OFF/PLY): cube.off
-Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
-Single_crystal: SXg: Using incoherent elastic scattering only sigma=5.08.
-Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
-Single_crystal: SXg: Using incoherent elastic scattering only sigma=5.08.
   Number of vertices: 8
   Number of polygons: 6
   Bounding box dimensions for geometry cube.off:
@@ -299,31 +333,8 @@ Single_crystal: SXg: Using incoherent elastic scattering only sigma=5.08.
 Incoherent: IncSg: The target is not defined. Using direct beam (Z-axis).
 Incoherent: IncSg: Vc=13.827 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn]
 Isotropic_Sqw: SqwV: is a box: width=0.005000 height=0.005000 depth=0.005000 
-Viewport == 0.005 0.005 Moderator size == (0.12 * 0.115) m^2 
-Dist == 8.299 (metres) 
-Viewport Solid angle == 0.000200361 str
-Solid angle used == 5.00903e-05 str
-[Samples_Incoherent] Initialize
-V_sample: Vsample: The target is not defined. Using direct beam (Z-axis).
-Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
-Single_crystal: SX: Using incoherent elastic scattering only sigma=5.08.
-Single_crystal: SX: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
-Single_crystal: SXg: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
-Viewport == 0.005 0.005 Moderator size == (0.12 * 0.115) m^2 
-Dist == 8.299 (metres) 
-Viewport Solid angle == 0.000200361 str
-Solid angle used == 5.00903e-05 str
-[Samples_Incoherent] Initialize
-V_sample: Vsample: The target is not defined. Using direct beam (Z-axis).
-Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
-Single_crystal: SX: Using incoherent elastic scattering only sigma=5.08.
-Single_crystal: SX: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
-Single_crystal: SXg: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/V.laz' (Table_Read_Offset)
-Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
-Single_crystal: SXg: Using incoherent elastic scattering only sigma=5.08.
-Single_crystal: INC structure a=[3.0282,0,0] b=[0,3.0282,0] c=[0,0,1.5141] V0=13.8843
-Single_crystal: SXg: Using incoherent elastic scattering only sigma=5.08.
+Totals:: 0.000712473 84 181 
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/V.laz' (Table_Read_Offset)
 Isotropic_sqw: Converting 21 powder lines from V.laz into S(q,w) data
 Isotropic_sqw: q range [0:12.4666], creating 106 elements vector
@@ -333,49 +344,40 @@ Isotropic_Sqw: SqwV: Generated V.laz coherent Sqw
 Isotropic_Sqw: SqwV: Using Isotropic elastic incoherent scattering (sigma=9.87 [barns])
 Isotropic_Sqw: SqwV: Sample temperature not defined (T=0).
 Warning        Disabling detailed balance.
-Single_crystal: SXg: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
-Single_crystal: SXg: Vc=13.8843 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn] reflections=NULL
 Totals:: 0.000712473 84 181 
-Totals:: 0.000712473 84 181 
-Totals:: 0.000712473 84 181 
-Totals:: 0.000712473 84 181 
-Totals:: 0.000712473 84 181 
-Totals:: 0.000712473 84 181 
-Totals:: 0.000712473 84 181 
-Totals:: 0.000712473 84 181 
+[n-62-23-14:18311] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-14:18311] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
 
-Finally [Samples_Incoherent: 10]. Time: 2 [s] 
+Finally [Samples_Incoherent: 10]. Time: 5 [s] 
 
-Finally [Samples_Incoherent: 10]. Time: 2 [s] 
+Finally [Samples_Incoherent: 10]. Time: 5 [s] 
 
-Finally [Samples_Incoherent: 10]. Time: 2 [s] 
+Finally [Samples_Incoherent: 10]. Time: 5 [s] 
+
+Finally [Samples_Incoherent: 10]. Time: 5 [s] 
+
+Finally [Samples_Incoherent: 10]. Time: 5 [s] 
 
 Save [Samples_Incoherent]
-
-Finally [Samples_Incoherent: 10]. Time: 2 [s] 
-
-Finally [Samples_Incoherent: 10]. Time: 2 [s] 
-
-Finally [Samples_Incoherent: 10]. Time: 2 [s] 
 Detector: Dirbeam_I=0 Dirbeam_ERR=0 Dirbeam_N=0 "beamstopPSD.dat"
 
-Finally [Samples_Incoherent: 10]. Time: 2 [s] 
-
-Finally [Samples_Incoherent: 10]. Time: 2 [s] 
+Finally [Samples_Incoherent: 10]. Time: 5 [s] 
 Detector: Tof_Sphere_4pi_I=0 Tof_Sphere_4pi_ERR=0 Tof_Sphere_4pi_N=0 "tof.L_t"
-Detector: PSD_Sphere_4pi_I=1.29307e+06 PSD_Sphere_4pi_ERR=729.552 PSD_Sphere_4pi_N=3.88254e+06 "PSD.dat"
 
-Finally [Samples_Incoherent: 10]. Time: 2 [s] 
-Detector: Sphere_4pi_I=3.88254e+06 Sphere_4pi_ERR=1970.42 Sphere_4pi_N=3.88254e+06 "Events.dat"
+Finally [Samples_Incoherent: 10]. Time: 5 [s] 
+Detector: PSD_Sphere_4pi_I=1.29251e+06 PSD_Sphere_4pi_ERR=729.296 PSD_Sphere_4pi_N=3.88177e+06 "PSD.dat"
 
-Finally [Samples_Incoherent: 10]. Time: 2 [s] 
-Isotropic_Sqw: SqwV: 229 neutron events (out of 4909832) that should have
+Finally [Samples_Incoherent: 10]. Time: 5 [s] 
+
+Finally [Samples_Incoherent: 10]. Time: 5 [s] 
+Detector: Sphere_4pi_I=3.88177e+06 Sphere_4pi_ERR=1970.22 Sphere_4pi_N=3.88177e+06 "Events.dat"
+
+Finally [Samples_Incoherent: 10]. Time: 5 [s] 
+Isotropic_Sqw: SqwV: 246 neutron events (out of 4908121) that should have
                scattered were transmitted because scattering conditions
 WARNING        could not be satisfied after 100 tries.
-Isotropic_Sqw: SqwV: Scattering fraction=0.159841 of incoming intensity
-               Absorption fraction           =0.638834
-               Single   scattering intensity =1.20926e+06 (coh=3432.11 inc=1.20583e+06)
-               Multiple scattering intensity =88684
-[n-62-23-6:24517] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-6:24517] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
-INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr in dataset 10
+Isotropic_Sqw: SqwV: Scattering fraction=0.159838 of incoming intensity
+               Absorption fraction           =0.63892
+               Single   scattering intensity =1.20849e+06 (coh=3497.96 inc=1.20499e+06)
+               Multiple scattering intensity =88614
+INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr in dataset 10

@@ -2,123 +2,81 @@ INFO: Using directory: "1"
 INFO: Using existing c-file: ./ILL_H25_IN22.c
 INFO: Using existing binary: ./ILL_H25_IN22.out
 INFO: ===
-INFO: Using system default number of mpirun -np processes
-[1574208193.443026] [n-62-23-6:21749:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3135.99
-[1574208193.443928] [n-62-23-6:21750:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3112.74
-[1574208193.444627] [n-62-23-6:21749:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208193.444643] [n-62-23-6:21749:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-23-14:15063] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:15063] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:15063] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582662316.534804] [n-62-23-14:15068:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662316.534840] [n-62-23-14:15068:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 --------------------------------------------------------------------------
 Initialization of MXM library failed.
 
   Error: Input/output error
 
 --------------------------------------------------------------------------
-[1574208193.445333] [n-62-23-6:21750:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208193.445349] [n-62-23-6:21750:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208193.446614] [n-62-23-6:21749:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208193.446630] [n-62-23-6:21749:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208193.447154] [n-62-23-6:21750:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208193.447169] [n-62-23-6:21750:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208193.449926] [n-62-23-6:21751:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3105.22
-[1574208193.451423] [n-62-23-6:21751:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208193.451439] [n-62-23-6:21751:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208193.453201] [n-62-23-6:21751:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208193.453215] [n-62-23-6:21751:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208193.457455] [n-62-23-6:21752:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.49
-[1574208193.458451] [n-62-23-6:21754:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.49
-[1574208193.458931] [n-62-23-6:21752:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208193.458948] [n-62-23-6:21752:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208193.459067] [n-62-23-6:21753:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.49
-[1574208193.459900] [n-62-23-6:21754:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208193.459916] [n-62-23-6:21754:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208193.460520] [n-62-23-6:21753:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208193.460536] [n-62-23-6:21753:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208193.460825] [n-62-23-6:21752:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208193.460839] [n-62-23-6:21752:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208193.461809] [n-62-23-6:21754:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208193.461824] [n-62-23-6:21754:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208193.462396] [n-62-23-6:21753:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208193.462411] [n-62-23-6:21753:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208193.500960] [n-62-23-3:21278:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3187.26
-[1574208193.500960] [n-62-23-3:21279:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3187.26
-[1574208193.500960] [n-62-23-3:21280:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3187.26
-[1574208193.500960] [n-62-23-3:21281:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3187.26
-[1574208193.505551] [n-62-23-3:21278:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208193.505568] [n-62-23-3:21278:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208193.505551] [n-62-23-3:21279:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208193.505569] [n-62-23-3:21279:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208193.505551] [n-62-23-3:21280:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208193.505551] [n-62-23-3:21281:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208193.505568] [n-62-23-3:21281:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208193.505692] [n-62-23-3:21280:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208193.507688] [n-62-23-3:21281:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208193.507681] [n-62-23-3:21278:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208193.507694] [n-62-23-3:21278:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208193.507673] [n-62-23-3:21279:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208193.507687] [n-62-23-3:21279:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208193.507678] [n-62-23-3:21280:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208193.507692] [n-62-23-3:21280:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208193.507748] [n-62-23-3:21281:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'ILL_H25_IN22' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H25_IN22/ILL_H25_IN22.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
-Instrument: ILL_H25_IN22 (H25@ILL thermal guide).
+[1582662316.537850] [n-62-23-14:15068:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662316.537870] [n-62-23-14:15068:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662316.539482] [n-62-23-14:15071:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662316.539520] [n-62-23-14:15071:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662316.542004] [n-62-23-14:15071:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662316.542026] [n-62-23-14:15071:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662316.543712] [n-62-23-14:15069:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662316.543744] [n-62-23-14:15069:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662316.545418] [n-62-23-14:15070:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662316.545449] [n-62-23-14:15070:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662316.548017] [n-62-23-14:15070:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662316.548041] [n-62-23-14:15070:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662316.548446] [n-62-23-14:15069:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662316.548465] [n-62-23-14:15069:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662316.554777] [n-62-23-14:15072:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662316.554813] [n-62-23-14:15072:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662316.555355] [n-62-23-14:15073:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662316.555384] [n-62-23-14:15073:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662316.556959] [n-62-23-14:15072:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662316.556975] [n-62-23-14:15072:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662316.557511] [n-62-23-14:15073:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662316.557528] [n-62-23-14:15073:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662316.561041] [n-62-23-14:15076:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662316.561075] [n-62-23-14:15076:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662316.561658] [n-62-23-14:15074:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662316.561689] [n-62-23-14:15074:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662316.563276] [n-62-23-14:15076:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662316.563351] [n-62-23-14:15076:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662316.563924] [n-62-23-14:15074:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662316.563939] [n-62-23-14:15074:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662316.566215] [n-62-23-14:15077:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662316.566247] [n-62-23-14:15077:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662316.568327] [n-62-23-14:15075:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662316.568379] [n-62-23-14:15077:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662316.568393] [n-62-23-14:15077:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662316.568414] [n-62-23-14:15075:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662316.570880] [n-62-23-14:15075:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662316.570899] [n-62-23-14:15075:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'ILL_H25_IN22' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H25_IN22/ILL_H25_IN22.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
 Instrument: ILL_H25_IN22 (H25@ILL thermal guide).
 ILL_H25_IN22: Detailed TAS configuration
 * Incoming beam: EI=30.55 [meV] KI=3.84 [Angs-1] Vi=2417.75 [m/s]
-* Outgoing beam: EF=30.55 [meV] KF=3.84 [Angs-1] Vf=2417.75 [m/s]
+Instrument: ILL_H25_IN22 (H25@ILL thermal guide).
 ILL_H25_IN22: Detailed TAS configuration
+* Outgoing beam: EF=30.55 [meV] KF=3.84 [Angs-1] Vf=2417.75 [m/s]
 * Incoming beam: EI=30.55 [meV] KI=3.84 [Angs-1] Vi=2417.75 [m/s]
 * Outgoing beam: EF=30.55 [meV] KF=3.84 [Angs-1] Vf=2417.75 [m/s]
 * Transfer:     EN=0 [meV] QM=1 [Angs-1]
 Angles: A1=-14.12 A2=-28.24 A3=0 A4=14.96 A5=-14.12 A6=-28.24 [deg]
 Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=0.7089 [m] curved
-Analyzer:      DA=3.354 [Angs] RAH=3.644 [m] RAV=0.2168 [m] curved
 * Transfer:     EN=0 [meV] QM=1 [Angs-1]
 Angles: A1=-14.12 A2=-28.24 A3=0 A4=14.96 A5=-14.12 A6=-28.24 [deg]
+Analyzer:      DA=3.354 [Angs] RAH=3.644 [m] RAV=0.2168 [m] curved
 Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=0.7089 [m] curved
 Analyzer:      DA=3.354 [Angs] RAH=3.644 [m] RAV=0.2168 [m] curved
 Sample:        Powder V.laz
 ILL_H25_IN22: Incoming wavelength lambda=1.63625 [Angs]
 Sample:        Powder V.laz
 ILL_H25_IN22: Incoming wavelength lambda=1.63625 [Angs]
-[ILL_H25_IN22] Initialize
-[ILL_H25_IN22] Initialize
 Instrument: ILL_H25_IN22 (H25@ILL thermal guide).
 ILL_H25_IN22: Detailed TAS configuration
 * Incoming beam: EI=30.55 [meV] KI=3.84 [Angs-1] Vi=2417.75 [m/s]
 * Outgoing beam: EF=30.55 [meV] KF=3.84 [Angs-1] Vf=2417.75 [m/s]
-* Transfer:     EN=0 [meV] QM=1 [Angs-1]
-Angles: A1=-14.12 A2=-28.24 A3=0 A4=14.96 A5=-14.12 A6=-28.24 [deg]
-Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=0.7089 [m] curved
-Analyzer:      DA=3.354 [Angs] RAH=3.644 [m] RAV=0.2168 [m] curved
-Instrument: ILL_H25_IN22 (H25@ILL thermal guide).
-ILL_H25_IN22: Detailed TAS configuration
-Sample:        Powder V.laz
-ILL_H25_IN22: Incoming wavelength lambda=1.63625 [Angs]
-* Incoming beam: EI=30.55 [meV] KI=3.84 [Angs-1] Vi=2417.75 [m/s]
-* Outgoing beam: EF=30.55 [meV] KF=3.84 [Angs-1] Vf=2417.75 [m/s]
-Instrument: ILL_H25_IN22 (H25@ILL thermal guide).
-* Transfer:     EN=0 [meV] QM=1 [Angs-1]
-Angles: A1=-14.12 A2=-28.24 A3=0 A4=14.96 A5=-14.12 A6=-28.24 [deg]
-Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=0.7089 [m] curved
-Analyzer:      DA=3.354 [Angs] RAH=3.644 [m] RAV=0.2168 [m] curved
-Sample:        Powder V.laz
-ILL_H25_IN22: Incoming wavelength lambda=1.63625 [Angs]
-ILL_H25_IN22: Detailed TAS configuration
-* Incoming beam: EI=30.55 [meV] KI=3.84 [Angs-1] Vi=2417.75 [m/s]
-* Outgoing beam: EF=30.55 [meV] KF=3.84 [Angs-1] Vf=2417.75 [m/s]
-* Transfer:     EN=0 [meV] QM=1 [Angs-1]
-Angles: A1=-14.12 A2=-28.24 A3=0 A4=14.96 A5=-14.12 A6=-28.24 [deg]
-Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=0.7089 [m] curved
-Analyzer:      DA=3.354 [Angs] RAH=3.644 [m] RAV=0.2168 [m] curved
-Sample:        Powder V.laz
-ILL_H25_IN22: Incoming wavelength lambda=1.63625 [Angs]
 [ILL_H25_IN22] Initialize
-[ILL_H25_IN22] Initialize
-Instrument: ILL_H25_IN22 (H25@ILL thermal guide).
-ILL_H25_IN22: Detailed TAS configuration
-[ILL_H25_IN22] Initialize
-* Incoming beam: EI=30.55 [meV] KI=3.84 [Angs-1] Vi=2417.75 [m/s]
-* Outgoing beam: EF=30.55 [meV] KF=3.84 [Angs-1] Vf=2417.75 [m/s]
 * Transfer:     EN=0 [meV] QM=1 [Angs-1]
 Angles: A1=-14.12 A2=-28.24 A3=0 A4=14.96 A5=-14.12 A6=-28.24 [deg]
 Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=0.7089 [m] curved
@@ -131,58 +89,92 @@ Source_gen: component Thermal (square 0.14 x 0.22)
             spectra 1.612 to 1.661 AA (29.660 to 31.495 meV)
             T1=683.7 K (1.178 AA), T2=257.7 K (1.919 AA), T3=16.7 K (7.539 AA)
   Flux is dPhi/dlambda in [n/s/cm2].
+Instrument: ILL_H25_IN22 (H25@ILL thermal guide).
+ILL_H25_IN22: Detailed TAS configuration
+* Incoming beam: EI=30.55 [meV] KI=3.84 [Angs-1] Vi=2417.75 [m/s]
+* Outgoing beam: EF=30.55 [meV] KF=3.84 [Angs-1] Vf=2417.75 [m/s]
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=-14.12 A2=-28.24 A3=0 A4=14.96 A5=-14.12 A6=-28.24 [deg]
+Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=0.7089 [m] curved
+Analyzer:      DA=3.354 [Angs] RAH=3.644 [m] RAV=0.2168 [m] curved
+Sample:        Powder V.laz
+ILL_H25_IN22: Incoming wavelength lambda=1.63625 [Angs]
 Monitor_nD: GuideOut_dxdy is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
+Instrument: ILL_H25_IN22 (H25@ILL thermal guide).
+Instrument: ILL_H25_IN22 (H25@ILL thermal guide).
+Instrument: ILL_H25_IN22 (H25@ILL thermal guide).
+ILL_H25_IN22: Detailed TAS configuration
+* Incoming beam: EI=30.55 [meV] KI=3.84 [Angs-1] Vi=2417.75 [m/s]
+* Outgoing beam: EF=30.55 [meV] KF=3.84 [Angs-1] Vf=2417.75 [m/s]
+ILL_H25_IN22: Detailed TAS configuration
+* Incoming beam: EI=30.55 [meV] KI=3.84 [Angs-1] Vi=2417.75 [m/s]
+* Outgoing beam: EF=30.55 [meV] KF=3.84 [Angs-1] Vf=2417.75 [m/s]
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=-14.12 A2=-28.24 A3=0 A4=14.96 A5=-14.12 A6=-28.24 [deg]
+Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=0.7089 [m] curved
+Analyzer:      DA=3.354 [Angs] RAH=3.644 [m] RAV=0.2168 [m] curved
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=-14.12 A2=-28.24 A3=0 A4=14.96 A5=-14.12 A6=-28.24 [deg]
+Sample:        Powder V.laz
+ILL_H25_IN22: Incoming wavelength lambda=1.63625 [Angs]
+Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=0.7089 [m] curved
+Analyzer:      DA=3.354 [Angs] RAH=3.644 [m] RAV=0.2168 [m] curved
+Sample:        Powder V.laz
+ILL_H25_IN22: Incoming wavelength lambda=1.63625 [Angs]
+Instrument: ILL_H25_IN22 (H25@ILL thermal guide).
+ILL_H25_IN22: Detailed TAS configuration
+* Incoming beam: EI=30.55 [meV] KI=3.84 [Angs-1] Vi=2417.75 [m/s]
+* Outgoing beam: EF=30.55 [meV] KF=3.84 [Angs-1] Vf=2417.75 [m/s]
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=-14.12 A2=-28.24 A3=0 A4=14.96 A5=-14.12 A6=-28.24 [deg]
+Instrument: ILL_H25_IN22 (H25@ILL thermal guide).
+Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=0.7089 [m] curved
+Analyzer:      DA=3.354 [Angs] RAH=3.644 [m] RAV=0.2168 [m] curved
+Sample:        Powder V.laz
+ILL_H25_IN22: Detailed TAS configuration
+ILL_H25_IN22: Incoming wavelength lambda=1.63625 [Angs]
+* Incoming beam: EI=30.55 [meV] KI=3.84 [Angs-1] Vi=2417.75 [m/s]
+* Outgoing beam: EF=30.55 [meV] KF=3.84 [Angs-1] Vf=2417.75 [m/s]
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+ILL_H25_IN22: Detailed TAS configuration
+Angles: A1=-14.12 A2=-28.24 A3=0 A4=14.96 A5=-14.12 A6=-28.24 [deg]
+* Incoming beam: EI=30.55 [meV] KI=3.84 [Angs-1] Vi=2417.75 [m/s]
+* Outgoing beam: EF=30.55 [meV] KF=3.84 [Angs-1] Vf=2417.75 [m/s]
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=-14.12 A2=-28.24 A3=0 A4=14.96 A5=-14.12 A6=-28.24 [deg]
+Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=0.7089 [m] curved
+Analyzer:      DA=3.354 [Angs] RAH=3.644 [m] RAV=0.2168 [m] curved
+Sample:        Powder V.laz
+ILL_H25_IN22: Incoming wavelength lambda=1.63625 [Angs]
+Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=0.7089 [m] curved
+Analyzer:      DA=3.354 [Angs] RAH=3.644 [m] RAV=0.2168 [m] curved
+Sample:        Powder V.laz
+ILL_H25_IN22: Incoming wavelength lambda=1.63625 [Angs]
+[ILL_H25_IN22] Initialize
+[ILL_H25_IN22] Initialize
+Instrument: ILL_H25_IN22 (H25@ILL thermal guide).
+ILL_H25_IN22: Detailed TAS configuration
+* Incoming beam: EI=30.55 [meV] KI=3.84 [Angs-1] Vi=2417.75 [m/s]
+* Outgoing beam: EF=30.55 [meV] KF=3.84 [Angs-1] Vf=2417.75 [m/s]
+* Transfer:     EN=0 [meV] QM=1 [Angs-1]
+Angles: A1=-14.12 A2=-28.24 A3=0 A4=14.96 A5=-14.12 A6=-28.24 [deg]
+Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=0.7089 [m] curved
+Analyzer:      DA=3.354 [Angs] RAH=3.644 [m] RAV=0.2168 [m] curved
+Sample:        Powder V.laz
+ILL_H25_IN22: Incoming wavelength lambda=1.63625 [Angs]
+[ILL_H25_IN22] Initialize
+[ILL_H25_IN22] Initialize
+[ILL_H25_IN22] Initialize
+[ILL_H25_IN22] Initialize
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/HOPG.rfl' (Table_Read_Offset)
+[ILL_H25_IN22] Initialize
 Monitor_nD: D4_SC2_1D is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
 Isotropic_Sqw: Sample: is a hollow cylinder: radius=0.010000 thickness=0.005000 height=0.050000 [J Comp Phys 228 (2009) 5251]
-Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/V.laz' (Table_Read_Offset)
-Instrument: ILL_H25_IN22 (H25@ILL thermal guide).
-ILL_H25_IN22: Detailed TAS configuration
-* Incoming beam: EI=30.55 [meV] KI=3.84 [Angs-1] Vi=2417.75 [m/s]
-* Outgoing beam: EF=30.55 [meV] KF=3.84 [Angs-1] Vf=2417.75 [m/s]
-* Transfer:     EN=0 [meV] QM=1 [Angs-1]
-Angles: A1=-14.12 A2=-28.24 A3=0 A4=14.96 A5=-14.12 A6=-28.24 [deg]
-Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=0.7089 [m] curved
-Instrument: ILL_H25_IN22 (H25@ILL thermal guide).
-Analyzer:      DA=3.354 [Angs] RAH=3.644 [m] RAV=0.2168 [m] curved
-Sample:        Powder V.laz
-ILL_H25_IN22: Incoming wavelength lambda=1.63625 [Angs]
-ILL_H25_IN22: Detailed TAS configuration
-* Incoming beam: EI=30.55 [meV] KI=3.84 [Angs-1] Vi=2417.75 [m/s]
-* Outgoing beam: EF=30.55 [meV] KF=3.84 [Angs-1] Vf=2417.75 [m/s]
-* Transfer:     EN=0 [meV] QM=1 [Angs-1]
-Angles: A1=-14.12 A2=-28.24 A3=0 A4=14.96 A5=-14.12 A6=-28.24 [deg]
-Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=0.7089 [m] curved
-Analyzer:      DA=3.354 [Angs] RAH=3.644 [m] RAV=0.2168 [m] curved
-Sample:        Powder V.laz
-ILL_H25_IN22: Incoming wavelength lambda=1.63625 [Angs]
-Instrument: ILL_H25_IN22 (H25@ILL thermal guide).
-ILL_H25_IN22: Detailed TAS configuration
-* Incoming beam: EI=30.55 [meV] KI=3.84 [Angs-1] Vi=2417.75 [m/s]
-* Outgoing beam: EF=30.55 [meV] KF=3.84 [Angs-1] Vf=2417.75 [m/s]
-* Transfer:     EN=0 [meV] QM=1 [Angs-1]
-Instrument: ILL_H25_IN22 (H25@ILL thermal guide).
-Angles: A1=-14.12 A2=-28.24 A3=0 A4=14.96 A5=-14.12 A6=-28.24 [deg]
-Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=0.7089 [m] curved
-Analyzer:      DA=3.354 [Angs] RAH=3.644 [m] RAV=0.2168 [m] curved
-ILL_H25_IN22: Detailed TAS configuration
-* Incoming beam: EI=30.55 [meV] KI=3.84 [Angs-1] Vi=2417.75 [m/s]
-* Outgoing beam: EF=30.55 [meV] KF=3.84 [Angs-1] Vf=2417.75 [m/s]
-Sample:        Powder V.laz
-* Transfer:     EN=0 [meV] QM=1 [Angs-1]
-Angles: A1=-14.12 A2=-28.24 A3=0 A4=14.96 A5=-14.12 A6=-28.24 [deg]
-ILL_H25_IN22: Incoming wavelength lambda=1.63625 [Angs]
-Monochromator: DM=3.354 [Angs] RMH=0 [m] RMV=0.7089 [m] curved
-Analyzer:      DA=3.354 [Angs] RAH=3.644 [m] RAV=0.2168 [m] curved
-Sample:        Powder V.laz
-ILL_H25_IN22: Incoming wavelength lambda=1.63625 [Angs]
-[ILL_H25_IN22] Initialize
 [ILL_H25_IN22] Initialize
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/V.laz' (Table_Read_Offset)
-[ILL_H25_IN22] Initialize
-[ILL_H25_IN22] Initialize
+Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/V.laz' (Table_Read_Offset)
 Isotropic_sqw: Converting 21 powder lines from V.laz into S(q,w) data
 Isotropic_sqw: q range [0:12.4666], creating 106 elements vector
 Isotropic_Sqw: Sample: Generated V.laz coherent Sqw
@@ -193,60 +185,70 @@ Isotropic_Sqw: Sample: Sample temperature not defined (T=0).
 Warning        Disabling detailed balance.
 Monitor_nD: D7_SC3_1D is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
-[n-62-23-6:21743] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-6:21743] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-23-14:15063] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-14:15063] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
 
-Finally [ILL_H25_IN22: 1]. Time: 6 [s] 
-Warning: 284804 events were removed in Component[105] SC3=Collimator_linear()
+
+Trace ETA 16 [s] % 68 
+
+Trace ETA 15 [s] % 72 
+
+Trace ETA 15 [s] % 70 Trace ETA 15 [s] % 70 
+Trace ETA 15 [s] % 69 70 Trace ETA 15 [s] % 70 
+
+Trace ETA 16 [s] % 68 
+Trace ETA 14 [s] % 76 Trace ETA 14 [s] % 75 Trace ETA 13 [s] % 82 70 70 75 85 75 80 75 75 75 80 90 80 75 75 80 80 80 85 95 80 85 85 85 80 80 85 85 90 90 90 85 85 90 90 90 85 95 95 90 95 90 95 95 95 90 95 
+Finally [ILL_H25_IN22: 1]. Time: 14 [s] 
+Warning: 286314 events were removed in Component[105] SC3=Collimator_linear()
          (negative time, miss next components, rounding errors, Nan, Inf).
 
-Finally [ILL_H25_IN22: 1]. Time: 6 [s] 
 
-Finally [ILL_H25_IN22: 1]. Time: 6 [s] 
-Warning: 288217 events were removed in Component[105] SC3=Collimator_linear()
+Finally [ILL_H25_IN22: 1]. Time: 15 [s] 
+Finally [ILL_H25_IN22: 1]. Time: 15 [s] 
+Warning: 285638 events were removed in Component[105] SC3=Collimator_linear()
          (negative time, miss next components, rounding errors, Nan, Inf).
-Warning: 286271 events were removed in Component[105] SC3=Collimator_linear()
+Warning: 287549 events were removed in Component[105] SC3=Collimator_linear()
          (negative time, miss next components, rounding errors, Nan, Inf).
+95 
+Finally [ILL_H25_IN22: 1]. Time: 15 [s] 
 
-Finally [ILL_H25_IN22: 1]. Time: 6 [s] 
-Warning: 281002 events were removed in Component[105] SC3=Collimator_linear()
+Finally [ILL_H25_IN22: 1]. Time: 15 [s] 
+Warning: 284471 events were removed in Component[105] SC3=Collimator_linear()
          (negative time, miss next components, rounding errors, Nan, Inf).
+Warning: 289687 events were removed in Component[105] SC3=Collimator_linear()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+95 
+Finally [ILL_H25_IN22: 1]. Time: 15 [s] 
 
-Finally [ILL_H25_IN22: 1]. Time: 6 [s] 
-Warning: 287268 events were removed in Component[105] SC3=Collimator_linear()
+Finally [ILL_H25_IN22: 1]. Time: 15 [s] 
+Warning: 284786 events were removed in Component[105] SC3=Collimator_linear()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+Warning: 284913 events were removed in Component[105] SC3=Collimator_linear()
          (negative time, miss next components, rounding errors, Nan, Inf).
 
 Save [ILL_H25_IN22]
+Detector: GuideOut_xy_I=1.67924e+07 GuideOut_xy_ERR=45683.2 GuideOut_xy_N=435539 "GuideOut_xy_1582662316.x_y"
 
-Finally [ILL_H25_IN22: 1]. Time: 6 [s] 
-Warning: 282125 events were removed in Component[105] SC3=Collimator_linear()
+Finally [ILL_H25_IN22: 1]. Time: 15 [s] 
+Warning: 287372 events were removed in Component[105] SC3=Collimator_linear()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+Detector: GuideOut_dxdy_I=1.67928e+07 GuideOut_dxdy_ERR=45683.9 GuideOut_dxdy_N=435529 "GuideOut_dxdy_1582662316.hd_vd"
+Detector: GuideOut_Phic_I=1.52766e+07 GuideOut_Phic_ERR=41553.9 GuideOut_Phic_N=435539 "GuideOut_Phic"
+Detector: GuideOut_L_I=1.67924e+07 GuideOut_L_ERR=45683.2 GuideOut_L_N=435539 "GuideOut_L_1582662316.L"
+Detector: D4_SC2_1D_I=1.67573e+07 D4_SC2_1D_ERR=22517.3 D4_SC2_1D_N=1.22863e+06 "D4_SC2_1D_1582662316.L"
+Detector: Sample_Cradle_I=4.6287e+07 Sample_Cradle_ERR=64623.6 Sample_Cradle_N=1.08384e+06 "Sample_Cradle"
+Detector: D7_SC3_1D_I=1.90297e+08 D7_SC3_1D_ERR=271272 D7_SC3_1D_N=9.91064e+06 "D7_SC3_1D_1582662316.th_E"
+
+Finally [ILL_H25_IN22: 1]. Time: 15 [s] 
+Detector: He3H_I=193.216 He3H_ERR=3.09643 He3H_N=21772 "He3H.psd"
+Warning: 283134 events were removed in Component[105] SC3=Collimator_linear()
          (negative time, miss next components, rounding errors, Nan, Inf).
 
-Finally [ILL_H25_IN22: 1]. Time: 6 [s] 
-Warning: 282749 events were removed in Component[105] SC3=Collimator_linear()
-         (negative time, miss next components, rounding errors, Nan, Inf).
-Detector: GuideOut_xy_I=1.6701e+07 GuideOut_xy_ERR=45538.3 GuideOut_xy_N=435937 "GuideOut_xy_1574208193.x_y"
-
-Finally [ILL_H25_IN22: 1]. Time: 6 [s] 
-Warning: 285929 events were removed in Component[105] SC3=Collimator_linear()
-         (negative time, miss next components, rounding errors, Nan, Inf).
-Detector: GuideOut_dxdy_I=1.67015e+07 GuideOut_dxdy_ERR=45539.1 GuideOut_dxdy_N=435927 "GuideOut_dxdy_1574208193.hd_vd"
-Detector: GuideOut_Phic_I=0 GuideOut_Phic_ERR=0 GuideOut_Phic_N=0 "GuideOut_Phic"
-Detector: GuideOut_L_I=1.6701e+07 GuideOut_L_ERR=45538.3 GuideOut_L_N=435937 "GuideOut_L_1574208193.L"
-Detector: D4_SC2_1D_I=1.66367e+07 D4_SC2_1D_ERR=22428.7 D4_SC2_1D_N=1.22578e+06 "D4_SC2_1D_1574208193.L"
-Detector: Sample_Cradle_I=0 Sample_Cradle_ERR=0 Sample_Cradle_N=0 "Sample_Cradle"
-Detector: D7_SC3_1D_I=1.8896e+08 D7_SC3_1D_ERR=268945 D7_SC3_1D_N=9.89397e+06 "D7_SC3_1D_1574208193.th_E"
-
-Finally [ILL_H25_IN22: 1]. Time: 6 [s] 
-Detector: He3H_I=186.884 He3H_ERR=3.08286 He3H_N=21373 "He3H.psd"
-Warning: 285079 events were removed in Component[105] SC3=Collimator_linear()
-         (negative time, miss next components, rounding errors, Nan, Inf).
-
-Finally [ILL_H25_IN22: 1]. Time: 6 [s] 
-Isotropic_Sqw: Sample: Scattering fraction=0.342151 of incoming intensity
-               Absorption fraction           =0.482749
-               Single   scattering intensity =2.50504e+06 (coh=11126.5 inc=2.49391e+06)
+Finally [ILL_H25_IN22: 1]. Time: 15 [s] 
+Isotropic_Sqw: Sample: Scattering fraction=0.343007 of incoming intensity
+               Absorption fraction           =0.482765
+               Single   scattering intensity =2.5387e+06 (coh=11206.8 inc=2.5275e+06)
                Multiple scattering intensity =0
-Warning: 285570 events were removed in Component[105] SC3=Collimator_linear()
+Warning: 285888 events were removed in Component[105] SC3=Collimator_linear()
          (negative time, miss next components, rounding errors, Nan, Inf).
-INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H25_IN22/ILL_H25_IN22.instr in dataset 1
+INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H25_IN22/ILL_H25_IN22.instr in dataset 1

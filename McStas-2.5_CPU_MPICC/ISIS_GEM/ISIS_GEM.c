@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr (ISIS_GEM)
- * Date:       Wed Nov 20 00:41:18 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr (ISIS_GEM)
+ * Date:       Tue Feb 25 20:56:38 2020
  * File:       ./ISIS_GEM.c
  * Compile:    cc -o ISIS_GEM.out ./ISIS_GEM.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "ISIS_GEM";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -10839,7 +10839,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define l_max mcipl_max
 #define dist mcipdist
 #define sample mcipsample
-#line 45 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 45 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   double emin, emax;
 #line 10844 "./ISIS_GEM.c"
 #undef sample
@@ -11250,7 +11250,7 @@ void mcinit(void) {
 #define l_max mcipl_max
 #define dist mcipdist
 #define sample mcipsample
-#line 48 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 48 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
 {
   emin=81.799/l_max/l_max;
   emax=81.799/l_min/l_min;
@@ -11277,13 +11277,13 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccOrigin_minutes = 0;
 #line 11288 "./ISIS_GEM.c"
 
@@ -11295,11 +11295,11 @@ void mcinit(void) {
 #line 11295 "./ISIS_GEM.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
     0,
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
     0,
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
     0);
 #line 11304 "./ISIS_GEM.c"
   mctc1 = coords_neg(mcposaOrigin);
@@ -11312,31 +11312,31 @@ void mcinit(void) {
     /* Component Source. */
   /* Setting parameters for component Source. */
   SIG_MESSAGE("Source (Init:SetPar)");
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSource_Emin = emin;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSource_Emax = emax;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSource_dist = 0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSource_focus_xw = 0.008;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSource_focus_yh = 0.04;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSource_xwidth = 0.09;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSource_yheight = 0.084;
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSource_CAngle = 0;
-#line 60 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 60 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSource_SAC = 1;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSource_Lmin = 0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSource_Lmax = 0;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSource_target_index = 1;
-#line 58 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 58 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSource_verbose = 0;
 #line 11341 "./ISIS_GEM.c"
 
@@ -11349,11 +11349,11 @@ void mcinit(void) {
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotaSource, mctr1, mcrotrSource);
   mcposaSource = coords_set(
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
     0,
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
     0,
-#line 61 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 61 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
     0);
 #line 11358 "./ISIS_GEM.c"
   mctc1 = coords_sub(mcposaOrigin, mcposaSource);
@@ -11366,59 +11366,59 @@ void mcinit(void) {
     /* Component Sample. */
   /* Setting parameters for component Sample. */
   SIG_MESSAGE("Sample (Init:SetPar)");
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   if(mcipsample) strncpy(mccSample_reflections, mcipsample ? mcipsample : "", 16384); else mccSample_reflections[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   if("NULL") strncpy(mccSample_geometry, "NULL" ? "NULL" : "", 16384); else mccSample_geometry[0]='\0';
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_radius = 8e-3 / 2;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_yheight = 0.04;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_xwidth = 0;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_zdepth = 0;
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_thickness = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_pack = 1;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_Vc = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_sigma_abs = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_sigma_inc = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_delta_d_d = 0;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_p_inc = 0.1;
-#line 209 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 209 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_p_transmit = 0.1;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_DW = 0;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_nb_atoms = 1;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_d_omega = 0;
-#line 65 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 65 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_d_phi = atan ( .20 / mcipdist ) * RAD2DEG;
-#line 210 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 210 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_tth_sign = 0;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_p_interact = 1;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_concentric = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_density = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_weight = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_barns = 1;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_Strain = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_focus_flip = 0;
-#line 211 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 211 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccSample_target_index = 0;
 #line 11423 "./ISIS_GEM.c"
 
@@ -11432,11 +11432,11 @@ void mcinit(void) {
   rot_transpose(mcrotaSource, mctr1);
   rot_mul(mcrotaSample, mctr1, mcrotrSample);
   mctc1 = coords_set(
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
     0,
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
     0,
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
     17.00);
 #line 11441 "./ISIS_GEM.c"
   rot_transpose(mcrotaSource, mctr1);
@@ -11455,22 +11455,22 @@ void mcinit(void) {
 
   SIG_MESSAGE("sample_out (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
     (0)*DEG2RAD,
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
     (0)*DEG2RAD,
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
     (0)*DEG2RAD);
 #line 11464 "./ISIS_GEM.c"
   rot_mul(mctr1, mcrotaSample, mcrotasample_out);
   rot_transpose(mcrotaSample, mctr1);
   rot_mul(mcrotasample_out, mctr1, mcrotrsample_out);
   mctc1 = coords_set(
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
     0,
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
     0,
-#line 76 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 76 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
     0);
 #line 11475 "./ISIS_GEM.c"
   rot_transpose(mcrotaSample, mctr1);
@@ -11486,47 +11486,47 @@ void mcinit(void) {
     /* Component monzns. */
   /* Setting parameters for component monzns. */
   SIG_MESSAGE("monzns (Init:SetPar)");
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccmonzns_xwidth = 0;
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccmonzns_yheight = .20;
-#line 203 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 203 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccmonzns_zdepth = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccmonzns_xmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccmonzns_xmax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccmonzns_ymin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccmonzns_ymax = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccmonzns_zmin = 0;
-#line 204 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 204 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccmonzns_zmax = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccmonzns_bins = 0;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccmonzns_min = -1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccmonzns_max = 1e40;
-#line 205 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 205 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccmonzns_restore_neutron = 0;
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccmonzns_radius = mcipdist;
-#line 79 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 79 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   if("banana, angle bins=40 limits=[80 110], auto time bins=128") strncpy(mccmonzns_options, "banana, angle bins=40 limits=[80 110], auto time bins=128" ? "banana, angle bins=40 limits=[80 110], auto time bins=128" : "", 16384); else mccmonzns_options[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   if("NULL") strncpy(mccmonzns_filename, "NULL" ? "NULL" : "", 16384); else mccmonzns_filename[0]='\0';
-#line 206 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 206 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   if("NULL") strncpy(mccmonzns_geometry, "NULL" ? "NULL" : "", 16384); else mccmonzns_geometry[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   if("NULL") strncpy(mccmonzns_username1, "NULL" ? "NULL" : "", 16384); else mccmonzns_username1[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   if("NULL") strncpy(mccmonzns_username2, "NULL" ? "NULL" : "", 16384); else mccmonzns_username2[0]='\0';
-#line 207 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 207 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   if("NULL") strncpy(mccmonzns_username3, "NULL" ? "NULL" : "", 16384); else mccmonzns_username3[0]='\0';
-#line 208 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 208 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   mccmonzns_nowritefile = 0;
 #line 11531 "./ISIS_GEM.c"
 
@@ -11540,11 +11540,11 @@ void mcinit(void) {
   rot_transpose(mcrotasample_out, mctr1);
   rot_mul(mcrotamonzns, mctr1, mcrotrmonzns);
   mctc1 = coords_set(
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
     0,
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
     0,
-#line 80 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 80 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
     0);
 #line 11549 "./ISIS_GEM.c"
   rot_transpose(mcrotasample_out, mctr1);
@@ -13149,7 +13149,7 @@ int target_index = mccSample_target_index;
 #line 13149 "./ISIS_GEM.c"
 /* 'Sample=PowderN()' component instance extend code */
     SIG_MESSAGE("Sample (Trace:Extend)");
-#line 68 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
+#line 68 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr"
   /* take into account ZnS scintillator efficiency */
   if (!SCATTERED) ABSORB;
   double eff=0.5;

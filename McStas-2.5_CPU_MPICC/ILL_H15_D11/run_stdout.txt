@@ -2,215 +2,69 @@ INFO: Using directory: "1"
 INFO: Using existing c-file: ./ILL_H15_D11.c
 INFO: Using existing binary: ./ILL_H15_D11.out
 INFO: ===
-INFO: Using system default number of mpirun -np processes
-[1574208093.662162] [n-62-23-6:20534:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3159.40
-[1574208093.662861] [n-62-23-6:20535:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3159.40
-[1574208093.663702] [n-62-23-6:20534:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208093.663724] [n-62-23-6:20534:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-23-14:13243] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:13243] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:13243] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582662064.689407] [n-62-23-14:13248:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3299.19
+[1582662064.691497] [n-62-23-14:13248:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662064.691514] [n-62-23-14:13248:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
 --------------------------------------------------------------------------
 Initialization of MXM library failed.
 
   Error: Input/output error
 
 --------------------------------------------------------------------------
-[1574208093.664274] [n-62-23-6:20535:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208093.664290] [n-62-23-6:20535:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208093.665630] [n-62-23-6:20534:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208093.665645] [n-62-23-6:20534:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208093.666106] [n-62-23-6:20535:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208093.666122] [n-62-23-6:20535:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208093.671048] [n-62-23-6:20537:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.95
-[1574208093.672612] [n-62-23-6:20537:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208093.672628] [n-62-23-6:20537:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208093.674539] [n-62-23-6:20537:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208093.674554] [n-62-23-6:20537:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208093.677554] [n-62-23-6:20538:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.15
-[1574208093.678824] [n-62-23-6:20536:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.15
-[1574208093.679283] [n-62-23-6:20539:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.15
-[1574208093.679435] [n-62-23-6:20538:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208093.679452] [n-62-23-6:20538:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208093.680480] [n-62-23-6:20536:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208093.680496] [n-62-23-6:20536:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208093.680983] [n-62-23-6:20539:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208093.680999] [n-62-23-6:20539:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208093.681519] [n-62-23-6:20538:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208093.681534] [n-62-23-6:20538:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208093.682406] [n-62-23-6:20536:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208093.682421] [n-62-23-6:20536:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208093.682816] [n-62-23-6:20539:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208093.682830] [n-62-23-6:20539:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208093.712514] [n-62-23-3:20374:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3168.46
-[1574208093.712517] [n-62-23-3:20375:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3168.46
-[1574208093.712519] [n-62-23-3:20376:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3168.46
-[1574208093.712517] [n-62-23-3:20377:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3168.46
-[1574208093.716731] [n-62-23-3:20374:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208093.716731] [n-62-23-3:20375:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208093.716748] [n-62-23-3:20375:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208093.716731] [n-62-23-3:20376:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208093.716747] [n-62-23-3:20376:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208093.716797] [n-62-23-3:20374:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208093.717116] [n-62-23-3:20377:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208093.717134] [n-62-23-3:20377:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208093.718877] [n-62-23-3:20374:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208093.718900] [n-62-23-3:20374:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208093.718886] [n-62-23-3:20376:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208093.718902] [n-62-23-3:20376:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208093.718888] [n-62-23-3:20375:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208093.718902] [n-62-23-3:20375:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1574208093.719047] [n-62-23-3:20377:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1574208093.719062] [n-62-23-3:20377:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'ILL_H15_D11' (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H15_D11/ILL_H15_D11.instr): running on 10 nodes (master is 'n-62-23-6', MPI version 3.1).
-Simulation : H15_D11@ILL Farhi 10/08/2003 on n-62-23-6 [pid 20538]
-Simulation : H15_D11@ILL Farhi 10/08/2003 on n-62-23-6 [pid 20539]
+[1582662064.696010] [n-62-23-14:13248:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662064.696025] [n-62-23-14:13248:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662064.696943] [n-62-23-14:13251:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3213.74
+[1582662064.699116] [n-62-23-14:13251:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662064.699133] [n-62-23-14:13251:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662064.699713] [n-62-23-14:13249:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3214.77
+[1582662064.702156] [n-62-23-14:13249:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662064.702173] [n-62-23-14:13249:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662064.702450] [n-62-23-14:13251:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662064.702468] [n-62-23-14:13251:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662064.704723] [n-62-23-14:13249:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662064.704779] [n-62-23-14:13249:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662064.705384] [n-62-23-14:13250:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3214.77
+[1582662064.706561] [n-62-23-14:13253:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3214.77
+[1582662064.707259] [n-62-23-14:13250:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662064.707274] [n-62-23-14:13250:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662064.708613] [n-62-23-14:13253:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662064.708635] [n-62-23-14:13253:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662064.709459] [n-62-23-14:13250:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662064.709475] [n-62-23-14:13250:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662064.711253] [n-62-23-14:13253:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662064.711269] [n-62-23-14:13253:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662064.714448] [n-62-23-14:13252:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3214.77
+[1582662064.716397] [n-62-23-14:13252:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662064.716413] [n-62-23-14:13252:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662064.718083] [n-62-23-14:13255:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3214.77
+[1582662064.718608] [n-62-23-14:13252:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662064.718629] [n-62-23-14:13252:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662064.718922] [n-62-23-14:13254:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3214.77
+[1582662064.719695] [n-62-23-14:13255:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662064.719711] [n-62-23-14:13255:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662064.719828] [n-62-23-14:13257:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3214.77
+[1582662064.720674] [n-62-23-14:13254:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662064.720690] [n-62-23-14:13254:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662064.721338] [n-62-23-14:13257:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662064.721355] [n-62-23-14:13257:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662064.721870] [n-62-23-14:13255:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662064.721884] [n-62-23-14:13255:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662064.722824] [n-62-23-14:13254:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662064.722840] [n-62-23-14:13254:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662064.723533] [n-62-23-14:13257:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662064.723548] [n-62-23-14:13257:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662064.724799] [n-62-23-14:13256:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3214.77
+[1582662064.726473] [n-62-23-14:13256:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662064.726489] [n-62-23-14:13256:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582662064.728476] [n-62-23-14:13256:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582662064.728490] [n-62-23-14:13256:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'ILL_H15_D11' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H15_D11/ILL_H15_D11.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
+Simulation : H15_D11@ILL Farhi 10/08/2003 on n-62-23-14 [pid 13250]
+Simulation : H15_D11@ILL Farhi 10/08/2003 on n-62-23-14 [pid 13254]
 Guide: L =25.5000 m, rho=2700.0000 m, m=1.00
-Guide: L*=25.46 m, Phi_c = 0.27 deg, Gamma_c = 0.10 deg/Angs
-Guide: Zc = -0.0676 m, Lambda_c = 2.72 Angs
-Guide: Garland and Zig-Zag reflections
-Guide: L =25.5000 m, rho=2700.0000 m, m=1.00
-Guide: L*=25.46 m, Phi_c = 0.27 deg, Gamma_c = 0.10 deg/Angs
-Guide: Zc = -0.0676 m, Lambda_c = 2.72 Angs
-Guide: Garland and Zig-Zag reflections
-D11:   Ki = 1.393 [Angs-1], Lambda = 4.51 [Angs], V_Dolores=2.83e+04 [rpm]
-D11:   Ki = 1.393 [Angs-1], Lambda = 4.51 [Angs], V_Dolores=2.83e+04 [rpm]
-D11:   Coll.  L_c=    10.5 [m], Configuration='Borkron_1972', 
-D11:   Length L_g=      30 [m], n_elements=      60
-D11:   Chamfers  =  0.0002 [m], Waviness  = 2.5e-05 [rad] (0.00143 [deg])
-D11:   Coll.  L_c=    10.5 [m], Configuration='Borkron_1972', 
-D11:   Length L_g=      30 [m], n_elements=      60
-D11:   Chamfers  =  0.0002 [m], Waviness  = 2.5e-05 [rad] (0.00143 [deg])
-[ILL_H15_D11] Initialize
-[ILL_H15_D11] Initialize
-Guide_gravity: mg1: unactivated (l=0 or nelements=0)
-Guide_gravity: mg2: unactivated (l=0 or nelements=0)
-Guide_gravity: mg3: unactivated (l=0 or nelements=0)
-Guide_gravity: mg4: unactivated (l=0 or nelements=0)
-Guide_gravity: mg8: unactivated (l=0 or nelements=0)
-Guide_gravity: mg9: unactivated (l=0 or nelements=0)
-Guide_gravity: mg10: unactivated (l=0 or nelements=0)
-Guide_gravity: mg11: unactivated (l=0 or nelements=0)
-Guide_gravity: mg12: unactivated (l=0 or nelements=0)
-Guide_gravity: mg13: unactivated (l=0 or nelements=0)
-Guide_gravity: mg14: unactivated (l=0 or nelements=0)
-Guide_gravity: mg15: unactivated (l=0 or nelements=0)
-Guide_gravity: mg16: unactivated (l=0 or nelements=0)
-Monitor_nD: SampleC: Using capture flux weightening on 400 bins.
-WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
-Guide_gravity: mg1: unactivated (l=0 or nelements=0)
-Guide_gravity: mg2: unactivated (l=0 or nelements=0)
-Guide_gravity: mg3: unactivated (l=0 or nelements=0)
-Guide_gravity: mg4: unactivated (l=0 or nelements=0)
-Guide_gravity: mg8: unactivated (l=0 or nelements=0)
-Guide_gravity: mg9: unactivated (l=0 or nelements=0)
-Guide_gravity: mg10: unactivated (l=0 or nelements=0)
-Guide_gravity: mg11: unactivated (l=0 or nelements=0)
-Guide_gravity: mg12: unactivated (l=0 or nelements=0)
-Guide_gravity: mg13: unactivated (l=0 or nelements=0)
-Guide_gravity: mg14: unactivated (l=0 or nelements=0)
-Guide_gravity: mg15: unactivated (l=0 or nelements=0)
-Guide_gravity: mg16: unactivated (l=0 or nelements=0)
-Monitor_nD: SampleC: Using capture flux weightening on 400 bins.
-WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
-Simulation : H15_D11@ILL Farhi 10/08/2003 on n-62-23-6 [pid 20536]
-Guide: L =25.5000 m, rho=2700.0000 m, m=1.00
-Guide: L*=25.46 m, Phi_c = 0.27 deg, Gamma_c = 0.10 deg/Angs
-Guide: Zc = -0.0676 m, Lambda_c = 2.72 Angs
-Guide: Garland and Zig-Zag reflections
-Simulation : H15_D11@ILL Farhi 10/08/2003 on n-62-23-3 [pid 20374]
-Guide: L =25.5000 m, rho=2700.0000 m, m=1.00
-Guide: L*=25.46 m, Phi_c = 0.27 deg, Gamma_c = 0.10 deg/Angs
-Guide: Zc = -0.0676 m, Lambda_c = 2.72 Angs
-Guide: Garland and Zig-Zag reflections
-D11:   Ki = 1.393 [Angs-1], Lambda = 4.51 [Angs], V_Dolores=2.83e+04 [rpm]
-D11:   Ki = 1.393 [Angs-1], Lambda = 4.51 [Angs], V_Dolores=2.83e+04 [rpm]
-D11:   Coll.  L_c=    10.5 [m], Configuration='Borkron_1972', 
-D11:   Length L_g=      30 [m], n_elements=      60
-D11:   Chamfers  =  0.0002 [m], Waviness  = 2.5e-05 [rad] (0.00143 [deg])
-D11:   Coll.  L_c=    10.5 [m], Configuration='Borkron_1972', 
-D11:   Length L_g=      30 [m], n_elements=      60
-D11:   Chamfers  =  0.0002 [m], Waviness  = 2.5e-05 [rad] (0.00143 [deg])
-[ILL_H15_D11] Initialize
-[ILL_H15_D11] Initialize
-Guide_gravity: mg1: unactivated (l=0 or nelements=0)
-Guide_gravity: mg2: unactivated (l=0 or nelements=0)
-Guide_gravity: mg3: unactivated (l=0 or nelements=0)
-Guide_gravity: mg4: unactivated (l=0 or nelements=0)
-Guide_gravity: mg8: unactivated (l=0 or nelements=0)
-Guide_gravity: mg9: unactivated (l=0 or nelements=0)
-Guide_gravity: mg10: unactivated (l=0 or nelements=0)
-Guide_gravity: mg11: unactivated (l=0 or nelements=0)
-Guide_gravity: mg12: unactivated (l=0 or nelements=0)
-Guide_gravity: mg13: unactivated (l=0 or nelements=0)
-Guide_gravity: mg14: unactivated (l=0 or nelements=0)
-Guide_gravity: mg15: unactivated (l=0 or nelements=0)
-Guide_gravity: mg16: unactivated (l=0 or nelements=0)
-Monitor_nD: SampleC: Using capture flux weightening on 400 bins.
-WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
-Guide_gravity: mg1: unactivated (l=0 or nelements=0)
-Guide_gravity: mg2: unactivated (l=0 or nelements=0)
-Guide_gravity: mg3: unactivated (l=0 or nelements=0)
-Guide_gravity: mg4: unactivated (l=0 or nelements=0)
-Guide_gravity: mg8: unactivated (l=0 or nelements=0)
-Guide_gravity: mg9: unactivated (l=0 or nelements=0)
-Guide_gravity: mg10: unactivated (l=0 or nelements=0)
-Guide_gravity: mg11: unactivated (l=0 or nelements=0)
-Guide_gravity: mg12: unactivated (l=0 or nelements=0)
-Guide_gravity: mg13: unactivated (l=0 or nelements=0)
-Guide_gravity: mg14: unactivated (l=0 or nelements=0)
-Guide_gravity: mg15: unactivated (l=0 or nelements=0)
-Guide_gravity: mg16: unactivated (l=0 or nelements=0)
-Monitor_nD: SampleC: Using capture flux weightening on 400 bins.
-WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
-Simulation : H15_D11@ILL Farhi 10/08/2003 on n-62-23-6 [pid 20535]
-Guide: L =25.5000 m, rho=2700.0000 m, m=1.00
-Guide: L*=25.46 m, Phi_c = 0.27 deg, Gamma_c = 0.10 deg/Angs
-Guide: Zc = -0.0676 m, Lambda_c = 2.72 Angs
-Guide: Garland and Zig-Zag reflections
-D11:   Ki = 1.393 [Angs-1], Lambda = 4.51 [Angs], V_Dolores=2.83e+04 [rpm]
-D11:   Coll.  L_c=    10.5 [m], Configuration='Borkron_1972', 
-D11:   Length L_g=      30 [m], n_elements=      60
-D11:   Chamfers  =  0.0002 [m], Waviness  = 2.5e-05 [rad] (0.00143 [deg])
-Simulation : H15_D11@ILL Farhi 10/08/2003 on n-62-23-3 [pid 20377]
-Guide: L =25.5000 m, rho=2700.0000 m, m=1.00
-Guide: L*=25.46 m, Phi_c = 0.27 deg, Gamma_c = 0.10 deg/Angs
-Guide: Zc = -0.0676 m, Lambda_c = 2.72 Angs
-Guide: Garland and Zig-Zag reflections
-D11:   Ki = 1.393 [Angs-1], Lambda = 4.51 [Angs], V_Dolores=2.83e+04 [rpm]
-D11:   Coll.  L_c=    10.5 [m], Configuration='Borkron_1972', 
-D11:   Length L_g=      30 [m], n_elements=      60
-D11:   Chamfers  =  0.0002 [m], Waviness  = 2.5e-05 [rad] (0.00143 [deg])
-Simulation : H15_D11@ILL Farhi 10/08/2003 on n-62-23-3 [pid 20376]
-Guide: L =25.5000 m, rho=2700.0000 m, m=1.00
-Guide: L*=25.46 m, Phi_c = 0.27 deg, Gamma_c = 0.10 deg/Angs
-Guide: Zc = -0.0676 m, Lambda_c = 2.72 Angs
-Guide: Garland and Zig-Zag reflections
-D11:   Ki = 1.393 [Angs-1], Lambda = 4.51 [Angs], V_Dolores=2.83e+04 [rpm]
-D11:   Coll.  L_c=    10.5 [m], Configuration='Borkron_1972', 
-D11:   Length L_g=      30 [m], n_elements=      60
-D11:   Chamfers  =  0.0002 [m], Waviness  = 2.5e-05 [rad] (0.00143 [deg])
-Simulation : H15_D11@ILL Farhi 10/08/2003 on n-62-23-6 [pid 20537]
-Guide: L =25.5000 m, rho=2700.0000 m, m=1.00
-Guide: L*=25.46 m, Phi_c = 0.27 deg, Gamma_c = 0.10 deg/Angs
-Guide: Zc = -0.0676 m, Lambda_c = 2.72 Angs
-Guide: Garland and Zig-Zag reflections
-D11:   Ki = 1.393 [Angs-1], Lambda = 4.51 [Angs], V_Dolores=2.83e+04 [rpm]
-D11:   Coll.  L_c=    10.5 [m], Configuration='Borkron_1972', 
-D11:   Length L_g=      30 [m], n_elements=      60
-D11:   Chamfers  =  0.0002 [m], Waviness  = 2.5e-05 [rad] (0.00143 [deg])
-Simulation : H15_D11@ILL Farhi 10/08/2003 on n-62-23-3 [pid 20375]
-Guide: L =25.5000 m, rho=2700.0000 m, m=1.00
-Guide: L*=25.46 m, Phi_c = 0.27 deg, Gamma_c = 0.10 deg/Angs
-Guide: Zc = -0.0676 m, Lambda_c = 2.72 Angs
-Guide: Garland and Zig-Zag reflections
-D11:   Ki = 1.393 [Angs-1], Lambda = 4.51 [Angs], V_Dolores=2.83e+04 [rpm]
-[ILL_H15_D11] Initialize
-D11:   Coll.  L_c=    10.5 [m], Configuration='Borkron_1972', 
-D11:   Length L_g=      30 [m], n_elements=      60
-D11:   Chamfers  =  0.0002 [m], Waviness  = 2.5e-05 [rad] (0.00143 [deg])
-[ILL_H15_D11] Initialize
-[ILL_H15_D11] Initialize
-Simulation : H15_D11@ILL Farhi 10/08/2003 on n-62-23-6 [pid 20534]
-Guide: L =25.5000 m, rho=2700.0000 m, m=1.00
-[ILL_H15_D11] Initialize
 Guide: L*=25.46 m, Phi_c = 0.27 deg, Gamma_c = 0.10 deg/Angs
 Guide: Zc = -0.0676 m, Lambda_c = 2.72 Angs
 Guide: Garland and Zig-Zag reflections
@@ -219,27 +73,21 @@ D11:   Coll.  L_c=    10.5 [m], Configuration='Borkron_1972',
 D11:   Length L_g=      30 [m], n_elements=      60
 D11:   Chamfers  =  0.0002 [m], Waviness  = 2.5e-05 [rad] (0.00143 [deg])
 [ILL_H15_D11] Initialize
+Simulation : H15_D11@ILL Farhi 10/08/2003 on n-62-23-14 [pid 13248]
+Guide: L =25.5000 m, rho=2700.0000 m, m=1.00
+Guide: L*=25.46 m, Phi_c = 0.27 deg, Gamma_c = 0.10 deg/Angs
+Guide: Zc = -0.0676 m, Lambda_c = 2.72 Angs
+Guide: Garland and Zig-Zag reflections
+D11:   Ki = 1.393 [Angs-1], Lambda = 4.51 [Angs], V_Dolores=2.83e+04 [rpm]
+D11:   Coll.  L_c=    10.5 [m], Configuration='Borkron_1972', 
+D11:   Length L_g=      30 [m], n_elements=      60
+D11:   Chamfers  =  0.0002 [m], Waviness  = 2.5e-05 [rad] (0.00143 [deg])
 [ILL_H15_D11] Initialize
 Source_gen: component Source (square 0.1 x 0.22)
             focusing distance dist=2.33 area=0.038 x 0.2
             spectra 4.330 to 4.690 AA (3.719 to 4.364 meV)
             T1=216.8 K (2.093 AA), T2=33.9 K (5.292 AA), T3=16.7 K (7.539 AA)
-Guide_gravity: mg1: unactivated (l=0 or nelements=0)
-Guide_gravity: mg2: unactivated (l=0 or nelements=0)
-Guide_gravity: mg3: unactivated (l=0 or nelements=0)
-Guide_gravity: mg4: unactivated (l=0 or nelements=0)
-Guide_gravity: mg8: unactivated (l=0 or nelements=0)
-Guide_gravity: mg9: unactivated (l=0 or nelements=0)
-Guide_gravity: mg10: unactivated (l=0 or nelements=0)
-Guide_gravity: mg11: unactivated (l=0 or nelements=0)
-Guide_gravity: mg12: unactivated (l=0 or nelements=0)
-Guide_gravity: mg13: unactivated (l=0 or nelements=0)
-Guide_gravity: mg14: unactivated (l=0 or nelements=0)
-Guide_gravity: mg15: unactivated (l=0 or nelements=0)
-Guide_gravity: mg16: unactivated (l=0 or nelements=0)
   Flux is dPhi/dlambda in [n/s/cm2].
-Monitor_nD: SampleC: Using capture flux weightening on 400 bins.
-WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
 Guide_gravity: mg1: unactivated (l=0 or nelements=0)
 Guide_gravity: mg2: unactivated (l=0 or nelements=0)
 Guide_gravity: mg3: unactivated (l=0 or nelements=0)
@@ -253,53 +101,8 @@ Guide_gravity: mg13: unactivated (l=0 or nelements=0)
 Guide_gravity: mg14: unactivated (l=0 or nelements=0)
 Guide_gravity: mg15: unactivated (l=0 or nelements=0)
 Guide_gravity: mg16: unactivated (l=0 or nelements=0)
-Monitor_nD: SampleC: Using capture flux weightening on 400 bins.
-WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
-Guide_gravity: mg1: unactivated (l=0 or nelements=0)
-Guide_gravity: mg2: unactivated (l=0 or nelements=0)
-Guide_gravity: mg3: unactivated (l=0 or nelements=0)
-Guide_gravity: mg4: unactivated (l=0 or nelements=0)
-Guide_gravity: mg8: unactivated (l=0 or nelements=0)
-Guide_gravity: mg9: unactivated (l=0 or nelements=0)
-Guide_gravity: mg10: unactivated (l=0 or nelements=0)
-Guide_gravity: mg11: unactivated (l=0 or nelements=0)
-Guide_gravity: mg12: unactivated (l=0 or nelements=0)
-Guide_gravity: mg13: unactivated (l=0 or nelements=0)
-Guide_gravity: mg14: unactivated (l=0 or nelements=0)
-Guide_gravity: mg15: unactivated (l=0 or nelements=0)
-Guide_gravity: mg16: unactivated (l=0 or nelements=0)
-Monitor_nD: SampleC: Using capture flux weightening on 400 bins.
-WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
-Guide_gravity: mg1: unactivated (l=0 or nelements=0)
-Guide_gravity: mg2: unactivated (l=0 or nelements=0)
-Guide_gravity: mg3: unactivated (l=0 or nelements=0)
-Guide_gravity: mg4: unactivated (l=0 or nelements=0)
-Guide_gravity: mg8: unactivated (l=0 or nelements=0)
-Guide_gravity: mg9: unactivated (l=0 or nelements=0)
-Guide_gravity: mg10: unactivated (l=0 or nelements=0)
-Guide_gravity: mg11: unactivated (l=0 or nelements=0)
-Guide_gravity: mg12: unactivated (l=0 or nelements=0)
-Guide_gravity: mg13: unactivated (l=0 or nelements=0)
-Guide_gravity: mg14: unactivated (l=0 or nelements=0)
-Guide_gravity: mg15: unactivated (l=0 or nelements=0)
-Guide_gravity: mg16: unactivated (l=0 or nelements=0)
-Monitor_nD: SampleC: Using capture flux weightening on 400 bins.
-WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
 Monitor_nD: Mon_D11_In is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
-Guide_gravity: mg1: unactivated (l=0 or nelements=0)
-Guide_gravity: mg2: unactivated (l=0 or nelements=0)
-Guide_gravity: mg3: unactivated (l=0 or nelements=0)
-Guide_gravity: mg4: unactivated (l=0 or nelements=0)
-Guide_gravity: mg8: unactivated (l=0 or nelements=0)
-Guide_gravity: mg9: unactivated (l=0 or nelements=0)
-Guide_gravity: mg10: unactivated (l=0 or nelements=0)
-Guide_gravity: mg11: unactivated (l=0 or nelements=0)
-Guide_gravity: mg12: unactivated (l=0 or nelements=0)
-Guide_gravity: mg13: unactivated (l=0 or nelements=0)
-Guide_gravity: mg14: unactivated (l=0 or nelements=0)
-Guide_gravity: mg15: unactivated (l=0 or nelements=0)
-Guide_gravity: mg16: unactivated (l=0 or nelements=0)
 Monitor_nD: SampleC: Using capture flux weightening on 400 bins.
 WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
 Monitor_nD: Mon_D11_Out is using automatic limits option 'auto' together with MPI.
@@ -319,35 +122,244 @@ Guide_gravity: mg15: unactivated (l=0 or nelements=0)
 Guide_gravity: mg16: unactivated (l=0 or nelements=0)
 Monitor_nD: SampleC: Using capture flux weightening on 400 bins.
 WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
-[n-62-23-6:20527] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-6:20527] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+Simulation : H15_D11@ILL Farhi 10/08/2003 on n-62-23-14 [pid 13256]
+Guide: L =25.5000 m, rho=2700.0000 m, m=1.00
+Guide: L*=25.46 m, Phi_c = 0.27 deg, Gamma_c = 0.10 deg/Angs
+Guide: Zc = -0.0676 m, Lambda_c = 2.72 Angs
+Guide: Garland and Zig-Zag reflections
+D11:   Ki = 1.393 [Angs-1], Lambda = 4.51 [Angs], V_Dolores=2.83e+04 [rpm]
+D11:   Coll.  L_c=    10.5 [m], Configuration='Borkron_1972', 
+D11:   Length L_g=      30 [m], n_elements=      60
+D11:   Chamfers  =  0.0002 [m], Waviness  = 2.5e-05 [rad] (0.00143 [deg])
+[ILL_H15_D11] Initialize
+Guide: L =25.5000 m, rho=2700.0000 m, m=1.00
+Guide: L*=25.46 m, Phi_c = 0.27 deg, Gamma_c = 0.10 deg/Angs
+Guide: Zc = -0.0676 m, Lambda_c = 2.72 Angs
+Guide: Garland and Zig-Zag reflections
+D11:   Ki = 1.393 [Angs-1], Lambda = 4.51 [Angs], V_Dolores=2.83e+04 [rpm]
+D11:   Coll.  L_c=    10.5 [m], Configuration='Borkron_1972', 
+D11:   Length L_g=      30 [m], n_elements=      60
+D11:   Chamfers  =  0.0002 [m], Waviness  = 2.5e-05 [rad] (0.00143 [deg])
+[ILL_H15_D11] Initialize
+Guide_gravity: mg1: unactivated (l=0 or nelements=0)
+Guide_gravity: mg1: unactivated (l=0 or nelements=0)
+Simulation : H15_D11@ILL Farhi 10/08/2003 on n-62-23-14 [pid 13252]
+Guide: L =25.5000 m, rho=2700.0000 m, m=1.00
+Guide: L*=25.46 m, Phi_c = 0.27 deg, Gamma_c = 0.10 deg/Angs
+Guide: Zc = -0.0676 m, Lambda_c = 2.72 Angs
+Guide: Garland and Zig-Zag reflections
+D11:   Ki = 1.393 [Angs-1], Lambda = 4.51 [Angs], V_Dolores=2.83e+04 [rpm]
+D11:   Coll.  L_c=    10.5 [m], Configuration='Borkron_1972', 
+D11:   Length L_g=      30 [m], n_elements=      60
+D11:   Chamfers  =  0.0002 [m], Waviness  = 2.5e-05 [rad] (0.00143 [deg])
+[ILL_H15_D11] Initialize
+Guide_gravity: mg1: unactivated (l=0 or nelements=0)
+Guide_gravity: mg2: unactivated (l=0 or nelements=0)
+Guide_gravity: mg3: unactivated (l=0 or nelements=0)
+Guide_gravity: mg4: unactivated (l=0 or nelements=0)
+Guide_gravity: mg8: unactivated (l=0 or nelements=0)
+Guide_gravity: mg9: unactivated (l=0 or nelements=0)
+Guide_gravity: mg10: unactivated (l=0 or nelements=0)
+Guide_gravity: mg11: unactivated (l=0 or nelements=0)
+Guide_gravity: mg12: unactivated (l=0 or nelements=0)
+Guide_gravity: mg13: unactivated (l=0 or nelements=0)
+Guide_gravity: mg14: unactivated (l=0 or nelements=0)
+Guide_gravity: mg15: unactivated (l=0 or nelements=0)
+Guide_gravity: mg16: unactivated (l=0 or nelements=0)
+Monitor_nD: SampleC: Using capture flux weightening on 400 bins.
+WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
+Guide_gravity: mg2: unactivated (l=0 or nelements=0)
+Guide_gravity: mg3: unactivated (l=0 or nelements=0)
+Guide_gravity: mg4: unactivated (l=0 or nelements=0)
+Guide_gravity: mg8: unactivated (l=0 or nelements=0)
+Guide_gravity: mg9: unactivated (l=0 or nelements=0)
+Guide_gravity: mg10: unactivated (l=0 or nelements=0)
+Guide_gravity: mg11: unactivated (l=0 or nelements=0)
+Guide_gravity: mg12: unactivated (l=0 or nelements=0)
+Guide_gravity: mg13: unactivated (l=0 or nelements=0)
+Guide_gravity: mg14: unactivated (l=0 or nelements=0)
+Guide_gravity: mg15: unactivated (l=0 or nelements=0)
+Guide_gravity: mg16: unactivated (l=0 or nelements=0)
+Simulation : H15_D11@ILL Farhi 10/08/2003 on n-62-23-14 [pid 13249]
+Guide: L =25.5000 m, rho=2700.0000 m, m=1.00
+Monitor_nD: SampleC: Using capture flux weightening on 400 bins.
+WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
+Guide: L*=25.46 m, Phi_c = 0.27 deg, Gamma_c = 0.10 deg/Angs
+Guide: Zc = -0.0676 m, Lambda_c = 2.72 Angs
+Simulation : H15_D11@ILL Farhi 10/08/2003 on n-62-23-14 [pid 13257]
+Guide: Garland and Zig-Zag reflections
+D11:   Ki = 1.393 [Angs-1], Lambda = 4.51 [Angs], V_Dolores=2.83e+04 [rpm]
+D11:   Coll.  L_c=    10.5 [m], Configuration='Borkron_1972', 
+D11:   Length L_g=      30 [m], n_elements=      60
+D11:   Chamfers  =  0.0002 [m], Waviness  = 2.5e-05 [rad] (0.00143 [deg])
+[ILL_H15_D11] Initialize
+Simulation : H15_D11@ILL Farhi 10/08/2003 on n-62-23-14 [pid 13251]
+Guide: L =25.5000 m, rho=2700.0000 m, m=1.00
+Guide: L*=25.46 m, Phi_c = 0.27 deg, Gamma_c = 0.10 deg/Angs
+Guide: Zc = -0.0676 m, Lambda_c = 2.72 Angs
+Guide: Garland and Zig-Zag reflections
+D11:   Ki = 1.393 [Angs-1], Lambda = 4.51 [Angs], V_Dolores=2.83e+04 [rpm]
+D11:   Coll.  L_c=    10.5 [m], Configuration='Borkron_1972', 
+D11:   Length L_g=      30 [m], n_elements=      60
+D11:   Chamfers  =  0.0002 [m], Waviness  = 2.5e-05 [rad] (0.00143 [deg])
+[ILL_H15_D11] Initialize
+Guide_gravity: mg1: unactivated (l=0 or nelements=0)
+Guide_gravity: mg1: unactivated (l=0 or nelements=0)
+Guide_gravity: mg2: unactivated (l=0 or nelements=0)
+Guide_gravity: mg3: unactivated (l=0 or nelements=0)
+Guide_gravity: mg4: unactivated (l=0 or nelements=0)
+Guide_gravity: mg8: unactivated (l=0 or nelements=0)
+Guide_gravity: mg9: unactivated (l=0 or nelements=0)
+Guide_gravity: mg10: unactivated (l=0 or nelements=0)
+Guide_gravity: mg11: unactivated (l=0 or nelements=0)
+Guide_gravity: mg12: unactivated (l=0 or nelements=0)
+Guide_gravity: mg13: unactivated (l=0 or nelements=0)
+Guide_gravity: mg14: unactivated (l=0 or nelements=0)
+Guide_gravity: mg15: unactivated (l=0 or nelements=0)
+Guide_gravity: mg16: unactivated (l=0 or nelements=0)
+Monitor_nD: SampleC: Using capture flux weightening on 400 bins.
+WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
+Guide_gravity: mg2: unactivated (l=0 or nelements=0)
+Guide_gravity: mg3: unactivated (l=0 or nelements=0)
+Guide_gravity: mg4: unactivated (l=0 or nelements=0)
+Guide_gravity: mg8: unactivated (l=0 or nelements=0)
+Guide_gravity: mg9: unactivated (l=0 or nelements=0)
+Guide_gravity: mg10: unactivated (l=0 or nelements=0)
+Guide_gravity: mg11: unactivated (l=0 or nelements=0)
+Guide_gravity: mg12: unactivated (l=0 or nelements=0)
+Guide_gravity: mg13: unactivated (l=0 or nelements=0)
+Guide_gravity: mg14: unactivated (l=0 or nelements=0)
+Guide_gravity: mg15: unactivated (l=0 or nelements=0)
+Guide_gravity: mg16: unactivated (l=0 or nelements=0)
+Monitor_nD: SampleC: Using capture flux weightening on 400 bins.
+WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
+Guide: L =25.5000 m, rho=2700.0000 m, m=1.00
+Guide: L*=25.46 m, Phi_c = 0.27 deg, Gamma_c = 0.10 deg/Angs
+Guide: Zc = -0.0676 m, Lambda_c = 2.72 Angs
+Guide: Garland and Zig-Zag reflections
+D11:   Ki = 1.393 [Angs-1], Lambda = 4.51 [Angs], V_Dolores=2.83e+04 [rpm]
+D11:   Coll.  L_c=    10.5 [m], Configuration='Borkron_1972', 
+D11:   Length L_g=      30 [m], n_elements=      60
+D11:   Chamfers  =  0.0002 [m], Waviness  = 2.5e-05 [rad] (0.00143 [deg])
+Simulation : H15_D11@ILL Farhi 10/08/2003 on n-62-23-14 [pid 13255]
+Guide: L =25.5000 m, rho=2700.0000 m, m=1.00
+Guide: L*=25.46 m, Phi_c = 0.27 deg, Gamma_c = 0.10 deg/Angs
+Guide: Zc = -0.0676 m, Lambda_c = 2.72 Angs
+Guide: Garland and Zig-Zag reflections
+D11:   Ki = 1.393 [Angs-1], Lambda = 4.51 [Angs], V_Dolores=2.83e+04 [rpm]
+D11:   Coll.  L_c=    10.5 [m], Configuration='Borkron_1972', 
+D11:   Length L_g=      30 [m], n_elements=      60
+D11:   Chamfers  =  0.0002 [m], Waviness  = 2.5e-05 [rad] (0.00143 [deg])
+[ILL_H15_D11] Initialize
+[ILL_H15_D11] Initialize
+Guide_gravity: mg2: unactivated (l=0 or nelements=0)
+Guide_gravity: mg3: unactivated (l=0 or nelements=0)
+Guide_gravity: mg4: unactivated (l=0 or nelements=0)
+Guide_gravity: mg8: unactivated (l=0 or nelements=0)
+Guide_gravity: mg9: unactivated (l=0 or nelements=0)
+Guide_gravity: mg10: unactivated (l=0 or nelements=0)
+Guide_gravity: mg11: unactivated (l=0 or nelements=0)
+Guide_gravity: mg12: unactivated (l=0 or nelements=0)
+Guide_gravity: mg13: unactivated (l=0 or nelements=0)
+Guide_gravity: mg14: unactivated (l=0 or nelements=0)
+Guide_gravity: mg15: unactivated (l=0 or nelements=0)
+Guide_gravity: mg16: unactivated (l=0 or nelements=0)
+Monitor_nD: SampleC: Using capture flux weightening on 400 bins.
+WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
+Guide_gravity: mg1: unactivated (l=0 or nelements=0)
+Guide_gravity: mg2: unactivated (l=0 or nelements=0)
+Guide_gravity: mg3: unactivated (l=0 or nelements=0)
+Guide_gravity: mg4: unactivated (l=0 or nelements=0)
+Guide_gravity: mg8: unactivated (l=0 or nelements=0)
+Guide_gravity: mg9: unactivated (l=0 or nelements=0)
+Guide_gravity: mg10: unactivated (l=0 or nelements=0)
+Guide_gravity: mg11: unactivated (l=0 or nelements=0)
+Guide_gravity: mg12: unactivated (l=0 or nelements=0)
+Guide_gravity: mg13: unactivated (l=0 or nelements=0)
+Guide_gravity: mg14: unactivated (l=0 or nelements=0)
+Guide_gravity: mg15: unactivated (l=0 or nelements=0)
+Guide_gravity: mg16: unactivated (l=0 or nelements=0)
+Monitor_nD: SampleC: Using capture flux weightening on 400 bins.
+WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
+Simulation : H15_D11@ILL Farhi 10/08/2003 on n-62-23-14 [pid 13253]
+Guide: L =25.5000 m, rho=2700.0000 m, m=1.00
+Guide: L*=25.46 m, Phi_c = 0.27 deg, Gamma_c = 0.10 deg/Angs
+Guide: Zc = -0.0676 m, Lambda_c = 2.72 Angs
+Guide: Garland and Zig-Zag reflections
+D11:   Ki = 1.393 [Angs-1], Lambda = 4.51 [Angs], V_Dolores=2.83e+04 [rpm]
+D11:   Coll.  L_c=    10.5 [m], Configuration='Borkron_1972', 
+D11:   Length L_g=      30 [m], n_elements=      60
+D11:   Chamfers  =  0.0002 [m], Waviness  = 2.5e-05 [rad] (0.00143 [deg])
+[ILL_H15_D11] Initialize
+Guide_gravity: mg1: unactivated (l=0 or nelements=0)
+Guide_gravity: mg1: unactivated (l=0 or nelements=0)
+Guide_gravity: mg2: unactivated (l=0 or nelements=0)
+Guide_gravity: mg3: unactivated (l=0 or nelements=0)
+Guide_gravity: mg4: unactivated (l=0 or nelements=0)
+Guide_gravity: mg8: unactivated (l=0 or nelements=0)
+Guide_gravity: mg9: unactivated (l=0 or nelements=0)
+Guide_gravity: mg10: unactivated (l=0 or nelements=0)
+Guide_gravity: mg11: unactivated (l=0 or nelements=0)
+Guide_gravity: mg12: unactivated (l=0 or nelements=0)
+Guide_gravity: mg13: unactivated (l=0 or nelements=0)
+Guide_gravity: mg14: unactivated (l=0 or nelements=0)
+Guide_gravity: mg15: unactivated (l=0 or nelements=0)
+Guide_gravity: mg16: unactivated (l=0 or nelements=0)
+Monitor_nD: SampleC: Using capture flux weightening on 400 bins.
+WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
+Guide_gravity: mg2: unactivated (l=0 or nelements=0)
+Guide_gravity: mg3: unactivated (l=0 or nelements=0)
+Guide_gravity: mg4: unactivated (l=0 or nelements=0)
+Guide_gravity: mg8: unactivated (l=0 or nelements=0)
+Guide_gravity: mg9: unactivated (l=0 or nelements=0)
+Guide_gravity: mg10: unactivated (l=0 or nelements=0)
+Guide_gravity: mg11: unactivated (l=0 or nelements=0)
+Guide_gravity: mg12: unactivated (l=0 or nelements=0)
+Guide_gravity: mg13: unactivated (l=0 or nelements=0)
+Guide_gravity: mg14: unactivated (l=0 or nelements=0)
+Guide_gravity: mg15: unactivated (l=0 or nelements=0)
+Guide_gravity: mg16: unactivated (l=0 or nelements=0)
+Monitor_nD: SampleC: Using capture flux weightening on 400 bins.
+WARNING     Use binned data with caution, and prefer monitor integral value (I,Ierr).
+[n-62-23-14:13243] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-14:13243] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
 
-Finally [ILL_H15_D11: 1]. Time: 8 [s] 
+Trace ETA 16 [s] % 65 
+Trace ETA 17 [s] % 61 
+Trace ETA 27 [s] % 40 
 
-Finally [ILL_H15_D11: 1]. Time: 8 [s] 
 
-Finally [ILL_H15_D11: 1]. Time: 8 [s] 
+Trace ETA 26 [s] % 40 
 
-Finally [ILL_H15_D11: 1]. Time: 8 [s] 
+Trace ETA 26 [s] % 41 
 
-Finally [ILL_H15_D11: 1]. Time: 9 [s] 
+Trace ETA 17 [s] % 61 Trace ETA 18 [s] % 59 Trace ETA 27 [s] % 40 Trace ETA 26 [s] % 40 Trace ETA 27 [s] % 40 60 70 70 70 70 50 50 50 50 50 50 80 80 80 80 90 60 90 60 60 90 60 60 60 90 
+Finally [ILL_H15_D11: 1]. Time: 17 [s] 
 
-Finally [ILL_H15_D11: 1]. Time: 9 [s] 
+Finally [ILL_H15_D11: 1]. Time: 17 [s] 
+70 70 70 70 70 70 80 80 80 80 80 90 80 90 90 
+Finally [ILL_H15_D11: 1]. Time: 22 [s] 
 
-Finally [ILL_H15_D11: 1]. Time: 9 [s] 
+Finally [ILL_H15_D11: 1]. Time: 22 [s] 
+90 90 90 
+Finally [ILL_H15_D11: 1]. Time: 24 [s] 
+
+
+Finally [ILL_H15_D11: 1]. Time: 24 [s] 
+Finally [ILL_H15_D11: 1]. Time: 24 [s] 
 
 Save [ILL_H15_D11]
-Detector: PSD_VTE_I=1.30057e+10 PSD_VTE_ERR=2.00193e+07 PSD_VTE_N=2.07923e+06 "PSD_VTE_1574208093.x_y"
+Detector: PSD_VTE_I=1.30127e+10 PSD_VTE_ERR=2.00275e+07 PSD_VTE_N=2.07878e+06 "PSD_VTE_1582662064.x_y"
 
-Finally [ILL_H15_D11: 1]. Time: 9 [s] 
-Detector: PSD_IN6_I=1.16836e+10 PSD_IN6_ERR=1.8885e+07 PSD_IN6_N=1.8376e+06 "PSD_IN6_1574208093.x_y"
-Detector: PSD_D7_I=1.09687e+10 PSD_D7_ERR=1.81614e+07 PSD_D7_N=1.65165e+06 "PSD_D7_1574208093.x_y"
-Detector: Mon_D11_In_I=2.24737e+09 Mon_D11_In_ERR=8.08006e+06 Mon_D11_In_N=352326 "Mon_D11_In_1574208093.x_L"
-Detector: Mon_D11_Out_I=1.4847e+09 Mon_D11_Out_ERR=5.73499e+06 Mon_D11_Out_N=293991 "Mon_D11_Out_1574208093.x_L"
-Detector: SampleF_I=8.84357e+06 SampleF_ERR=116626 SampleF_N=5898 "SampleF_1574208093.x_y"
+Finally [ILL_H15_D11: 1]. Time: 24 [s] 
+Detector: PSD_IN6_I=1.16913e+10 PSD_IN6_ERR=1.88937e+07 PSD_IN6_N=1.83701e+06 "PSD_IN6_1582662064.x_y"
+Detector: PSD_D7_I=1.09755e+10 PSD_D7_ERR=1.8169e+07 PSD_D7_N=1.65106e+06 "PSD_D7_1582662064.x_y"
+Detector: Mon_D11_In_I=2.2551e+09 Mon_D11_In_ERR=8.09591e+06 Mon_D11_In_N=352683 "Mon_D11_In_1582662064.x_L"
+Detector: Mon_D11_Out_I=1.48638e+09 Mon_D11_Out_ERR=5.7378e+06 Mon_D11_Out_N=294129 "Mon_D11_Out_1582662064.x_L"
+Detector: SampleF_I=8.86086e+06 SampleF_ERR=116807 SampleF_N=5905 "SampleF_1582662064.x_y"
 
-Detector: SampleC_I=2.21377e+07 SampleC_ERR=291738 SampleC_N=5897 "SampleC_1574208093.x_y"
-Finally [ILL_H15_D11: 1]. Time: 9 [s] 
+Finally [ILL_H15_D11: 1]. Time: 24 [s] 
+Detector: SampleC_I=2.21799e+07 SampleC_ERR=292190 SampleC_N=5903 "SampleC_1582662064.x_y"
 
-Finally [ILL_H15_D11: 1]. Time: 9 [s] 
-INFO: Placing instr file copy /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_H15_D11/ILL_H15_D11.instr in dataset 1
+Finally [ILL_H15_D11: 1]. Time: 24 [s] 
+INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H15_D11/ILL_H15_D11.instr in dataset 1

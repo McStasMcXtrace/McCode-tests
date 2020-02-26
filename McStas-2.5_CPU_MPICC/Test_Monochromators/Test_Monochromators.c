@@ -1,15 +1,15 @@
 /* Automatically generated file. Do not edit. 
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
- * Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr (Test_Monochromators)
- * Date:       Wed Nov 20 00:51:35 2019
+ * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr (Test_Monochromators)
+ * Date:       Tue Feb 25 21:06:12 2020
  * File:       ./Test_Monochromators.c
  * Compile:    cc -o Test_Monochromators.out ./Test_Monochromators.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Nov. 19, 2019"
+#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Nov. 19, 2019"
+#define MCCODE_DATE "Feb. 24, 2020"
 #endif
 
 #ifndef MCCODE_VERSION
@@ -1462,7 +1462,7 @@ MCDETECTOR mcdetector_statistics(
   MCDETECTOR detector)
 {
 
-  if (!detector.p1 || !detector.m || detector.filename[0] == '\0')
+  if (!detector.p1 || !detector.m || !detector.filename)
     return(detector);
   
   /* compute statistics and update MCDETECTOR structure ===================== */
@@ -2080,8 +2080,8 @@ MCDETECTOR mcdetector_out_2D_ascii(MCDETECTOR detector)
       
         mcruninfo_out( "# ", outfile);
         mcdatainfo_out("# ", outfile,   detector);
-        fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       }
+      fprintf(outfile, "# Data [%s/%s] %s:\n", detector.component, detector.filename, detector.zvar);
       mcdetector_out_array_ascii(detector.m, detector.n*detector.p, detector.p1, 
         outfile, detector.istransposed);
       if (detector.p2) {
@@ -5343,7 +5343,7 @@ int mctraceenabled = 0;
 #define MCSTAS "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../"
 int mcdefaultmain = 1;
 char mcinstrument_name[] = "Test_Monochromators";
-char mcinstrument_source[] = "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr";
+char mcinstrument_source[] = "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr";
 char *mcinstrument_exe=NULL; /* will be set to argv[0] in main */
 int main(int argc, char *argv[]){return mccode_main(argc, argv);}
 void mcinit(void);
@@ -5420,6 +5420,13 @@ double Gauss_W[] = {0.030753241996117, 0.070366047488108, 0.107159220467172,
 #include <mcstas-r.h>
 #endif
 
+/*Redefine MAGNET_OFF to also clear the magnetic field stack.*/
+#undef MAGNET_OFF
+#define MAGNET_OFF \
+  do { \
+    mcMagnet = 0; \
+    mcmagnet_pop_all(); \
+  } while(0)
 
 typedef int mcmagnet_field_func (double, double, double, double, double *, double *, double *, void *);
 typedef void mcmagnet_prec_func (double, double, double, double, double, double, double, double*, double*, double*, double, Coords, Rotation);
@@ -5457,7 +5464,7 @@ void mc_pol_set_angular_accuracy(double);
   do { \
     mcMagneticField=NULL; \
     mcMagnetData=NULL; \
-    MAGNET_OFF; \
+    mcMagnet=0; \
   } while (0);
 
 #define mcmagnet_set_active(mcmagnet_new) \
@@ -5495,6 +5502,7 @@ void *mcmagnet_init_par_backend(int dummy, ...);
 int mcmagnet_get_field(double x, double y, double z, double t, double *bx,double *by, double *bz, void *dummy);
 void *mcmagnet_push(mcmagnet_field_func *func,  Rotation *magnet_rot, Coords *magnet_pos, int stopbit, void * prms);
 void *mcmagnet_pop(void);
+void *mcmagnet_pop_all(void);
 
 /*example functions for magnetic fields*/
 int const_magnetic_field(double x, double y, double z, double t, double *bx, double *by, double *bz, void *data);
@@ -7832,7 +7840,7 @@ void *mcmagnet_push(mcmagnet_field_func *func,  Rotation *magnet_rot, Coords *ma
   mcmagnet_pack(stack[0],func,magnet_rot,magnet_pos,stopbit,prms);
   mcmagnet_set_active(stack[0]);
   if(stack[0] && stack[0]->func){
-    MAGNET_ON;
+    mcMagnet=1;
   }
   return (void *) stack[0];
 }
@@ -7848,11 +7856,19 @@ void *mcmagnet_pop(void) {
   stack[MCMAGNET_STACKSIZE-1]=NULL;
   mcmagnet_set_active(stack[0]);
   if(stack[0] && stack[0]->func){
-    MAGNET_ON;
+    mcMagnet=1;
   }else{
-    MAGNET_OFF;
+    mcMagnet=0;
   }
   return (void*) t;
+}
+
+void *mcmagnet_pop_all(void){
+  void *t=mcmagnet_pop();
+  while (t!=NULL){
+    t=mcmagnet_pop();
+  }
+  return NULL;
 }
 
 void mcmagnet_free_stack(void){
@@ -8196,7 +8212,7 @@ double GetConstantField(double mc_pol_length, double mc_pol_lambda,
 
 /* end of regular pol-lib.c */
 
-#line 8199 "./Test_Monochromators.c"
+#line 8215 "./Test_Monochromators.c"
 
 /* Shared user declarations for all components 'Monochromator_curved'. */
 #line 109 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../optics/Monochromator_curved.comp"
@@ -8222,12 +8238,12 @@ double Gauss_W[] = {0.030753241996117, 0.070366047488108, 0.107159220467172,
 #endif
 
 
-#line 8225 "./Test_Monochromators.c"
+#line 8241 "./Test_Monochromators.c"
 
 /* Shared user declarations for all components 'Monochromator_2foc'. */
 #line 83 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Monochromator_2foc.comp"
 
-#line 8230 "./Test_Monochromators.c"
+#line 8246 "./Test_Monochromators.c"
 
 /* Shared user declarations for all components 'Single_crystal'. */
 #line 296 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../samples/Single_crystal.comp"
@@ -9890,7 +9906,7 @@ double tau;                 /* Length of (tau_x, tau_y, tau_z) */
 
 
 #endif /* !SINGLE_CRYSTAL_DECL */
-#line 9893 "./Test_Monochromators.c"
+#line 9909 "./Test_Monochromators.c"
 
 /* Shared user declarations for all components 'PSD_monitor'. */
 #line 57 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../monitors/PSD_monitor.comp"
@@ -9976,7 +9992,7 @@ void destroy_darr3d(DArray3d a){
 }
 #endif
 
-#line 9979 "./Test_Monochromators.c"
+#line 9995 "./Test_Monochromators.c"
 
 /* Instrument parameters. */
 int mcipMono;
@@ -10009,7 +10025,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 #define PG mcipPG
 #define powder mcippowder
 #define order mciporder
-#line 46 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 46 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   double DM  = 3.3539; /* Monochromator d-spacing in Angs */
                        /* PG002 Orders : 1st 3.355 2e 1.6775, 3e 1.1183 */
 
@@ -10019,7 +10035,7 @@ struct mcinputtable_struct mcinputtable[mcNUMIPAR+1] = {
 
   /* This variable helps us switch on and off the different setups*/
   double filterProb;
-#line 10022 "./Test_Monochromators.c"
+#line 10038 "./Test_Monochromators.c"
 #undef order
 #undef powder
 #undef PG
@@ -10263,7 +10279,7 @@ double IntermediateCnts;
 time_t StartTime;
 time_t EndTime;
 time_t CurrentTime;
-#line 10266 "./Test_Monochromators.c"
+#line 10282 "./Test_Monochromators.c"
 #undef minutes
 #undef flag_save
 #undef percent
@@ -10300,7 +10316,7 @@ time_t CurrentTime;
 double pmul, srcArea;
 int square;
 double tx,ty,tz;
-#line 10303 "./Test_Monochromators.c"
+#line 10319 "./Test_Monochromators.c"
 #undef target_index
 #undef gauss
 #undef flux
@@ -10343,7 +10359,7 @@ double tx,ty,tz;
 #line 57 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../monitors/L_monitor.comp"
 double L_N[nL];
 double L_p[nL], L_p2[nL];
-#line 10346 "./Test_Monochromators.c"
+#line 10362 "./Test_Monochromators.c"
 #undef nowritefile
 #undef restore_neutron
 #undef Lmax
@@ -10403,7 +10419,7 @@ double L_p[nL], L_p2[nL];
   double mos_rms_z;
   double mos_rms_max;
   double mono_Q;
-#line 10406 "./Test_Monochromators.c"
+#line 10422 "./Test_Monochromators.c"
 #undef DM
 #undef Q
 #undef r0
@@ -10449,7 +10465,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 10452 "./Test_Monochromators.c"
+#line 10468 "./Test_Monochromators.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -10495,7 +10511,7 @@ double mono_Q;
 
 double FN; /* Unit cell nuclear structure factor */
 double FM; /* Unit cell magnetic structure factor */
-#line 10498 "./Test_Monochromators.c"
+#line 10514 "./Test_Monochromators.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -10561,7 +10577,7 @@ double FM; /* Unit cell magnetic structure factor */
   double row,col;
   double* tiltH;
   double* tiltV;
-#line 10564 "./Test_Monochromators.c"
+#line 10580 "./Test_Monochromators.c"
 #undef order
 #undef verbose
 #undef height
@@ -10634,7 +10650,7 @@ double mos_z;
 double mono_Q;
 double SlabWidth, SlabHeight;
 t_Table rTable;
-#line 10637 "./Test_Monochromators.c"
+#line 10653 "./Test_Monochromators.c"
 #undef verbose
 #undef height
 #undef width
@@ -10706,7 +10722,7 @@ t_Table rTable;
 #line 970 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../samples/Single_crystal.comp"
   struct hkl_info_struct hkl_info;
   off_struct             offdata;
-#line 10709 "./Test_Monochromators.c"
+#line 10725 "./Test_Monochromators.c"
 #undef deltak
 #undef PG
 #undef powder
@@ -10765,7 +10781,7 @@ t_Table rTable;
 double PSD_N[nx][ny];
 double PSD_p[nx][ny];
 double PSD_p2[nx][ny];
-#line 10768 "./Test_Monochromators.c"
+#line 10784 "./Test_Monochromators.c"
 #undef nowritefile
 #undef restore_neutron
 #undef radius
@@ -10801,7 +10817,7 @@ double PSD_p2[nx][ny];
 #line 57 "/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../monitors/L_monitor.comp"
 double L_N[nL];
 double L_p[nL], L_p2[nL];
-#line 10804 "./Test_Monochromators.c"
+#line 10820 "./Test_Monochromators.c"
 #undef nowritefile
 #undef restore_neutron
 #undef Lmax
@@ -10842,7 +10858,7 @@ double L_p[nL], L_p2[nL];
   DArray2d PSD_N;
   DArray2d PSD_p;
   DArray2d PSD_p2;
-#line 10845 "./Test_Monochromators.c"
+#line 10861 "./Test_Monochromators.c"
 #undef restore_neutron
 #undef yheight
 #undef xwidth
@@ -10904,7 +10920,7 @@ void mcinit(void) {
 #define PG mcipPG
 #define powder mcippowder
 #define order mciporder
-#line 59 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 59 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
 {
   int    ORDER = 1;
   double Ki;
@@ -10938,7 +10954,7 @@ void mcinit(void) {
     printf("Using Single_crystal\n"); break;
   }
 }
-#line 10941 "./Test_Monochromators.c"
+#line 10957 "./Test_Monochromators.c"
 #undef order
 #undef powder
 #undef PG
@@ -10962,31 +10978,31 @@ void mcinit(void) {
     /* Component Origin. */
   /* Setting parameters for component Origin. */
   SIG_MESSAGE("Origin (Init:SetPar)");
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   if("NULL") strncpy(mccOrigin_profile, "NULL" ? "NULL" : "", 16384); else mccOrigin_profile[0]='\0';
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccOrigin_percent = 10;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccOrigin_flag_save = 0;
-#line 39 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 39 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccOrigin_minutes = 0;
-#line 10973 "./Test_Monochromators.c"
+#line 10989 "./Test_Monochromators.c"
 
   SIG_MESSAGE("Origin (Init:Place/Rotate)");
   rot_set_rotation(mcrotaOrigin,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 10980 "./Test_Monochromators.c"
+#line 10996 "./Test_Monochromators.c"
   rot_copy(mcrotrOrigin, mcrotaOrigin);
   mcposaOrigin = coords_set(
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 98 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 98 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0);
-#line 10989 "./Test_Monochromators.c"
+#line 11005 "./Test_Monochromators.c"
   mctc1 = coords_neg(mcposaOrigin);
   mcposrOrigin = rot_apply(mcrotaOrigin, mctc1);
   mcDEBUG_COMPONENT("Origin", mcposaOrigin, mcrotaOrigin)
@@ -10997,51 +11013,51 @@ void mcinit(void) {
     /* Component Source. */
   /* Setting parameters for component Source. */
   SIG_MESSAGE("Source (Init:SetPar)");
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccSource_radius = 0.01;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccSource_yheight = 0;
-#line 52 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 52 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccSource_xwidth = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccSource_dist = 1.0;
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccSource_focus_xw = 0.02;
-#line 103 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 103 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccSource_focus_yh = 0.02;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccSource_E0 = 0;
-#line 54 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 54 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccSource_dE = 0;
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccSource_lambda0 = mciplambda;
-#line 104 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 104 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccSource_dlambda = 0.2 * mciplambda;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccSource_flux = 1;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccSource_gauss = 0;
-#line 55 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 55 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccSource_target_index = + 1;
-#line 11026 "./Test_Monochromators.c"
+#line 11042 "./Test_Monochromators.c"
 
   SIG_MESSAGE("Source (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 11033 "./Test_Monochromators.c"
+#line 11049 "./Test_Monochromators.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotaSource);
   rot_transpose(mcrotaOrigin, mctr1);
   rot_mul(mcrotaSource, mctr1, mcrotrSource);
   mctc1 = coords_set(
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 105 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 105 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0);
-#line 11044 "./Test_Monochromators.c"
+#line 11060 "./Test_Monochromators.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaSource = coords_add(mcposaOrigin, mctc2);
@@ -11055,47 +11071,47 @@ void mcinit(void) {
     /* Component lamStart. */
   /* Setting parameters for component lamStart. */
   SIG_MESSAGE("lamStart (Init:SetPar)");
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   if("lambdaStart.dat") strncpy(mcclamStart_filename, "lambdaStart.dat" ? "lambdaStart.dat" : "", 16384); else mcclamStart_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mcclamStart_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mcclamStart_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mcclamStart_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mcclamStart_ymax = 0.05;
-#line 108 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 108 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mcclamStart_xwidth = 0.10;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mcclamStart_yheight = 0.10;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mcclamStart_Lmin = 0.7 * mciplambda;
-#line 109 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 109 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mcclamStart_Lmax = 1.3 * mciplambda;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mcclamStart_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mcclamStart_nowritefile = 0;
-#line 11080 "./Test_Monochromators.c"
+#line 11096 "./Test_Monochromators.c"
 
   SIG_MESSAGE("lamStart (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 11087 "./Test_Monochromators.c"
+#line 11103 "./Test_Monochromators.c"
   rot_mul(mctr1, mcrotaOrigin, mcrotalamStart);
   rot_transpose(mcrotaSource, mctr1);
   rot_mul(mcrotalamStart, mctr1, mcrotrlamStart);
   mctc1 = coords_set(
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 110 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 110 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0.5);
-#line 11098 "./Test_Monochromators.c"
+#line 11114 "./Test_Monochromators.c"
   rot_transpose(mcrotaOrigin, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposalamStart = coords_add(mcposaOrigin, mctc2);
@@ -11112,24 +11128,24 @@ void mcinit(void) {
 
   SIG_MESSAGE("Mono_Arm (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     (0)*DEG2RAD,
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     (A1)*DEG2RAD,
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     (0)*DEG2RAD);
-#line 11121 "./Test_Monochromators.c"
+#line 11137 "./Test_Monochromators.c"
   rot_mul(mctr1, mcrotaSource, mcrotaMono_Arm);
   rot_transpose(mcrotalamStart, mctr1);
   rot_mul(mcrotaMono_Arm, mctr1, mcrotrMono_Arm);
   mctc1 = coords_set(
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 114 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 114 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     1.0);
-#line 11132 "./Test_Monochromators.c"
+#line 11148 "./Test_Monochromators.c"
   rot_transpose(mcrotaSource, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMono_Arm = coords_add(mcposaSource, mctc2);
@@ -11146,24 +11162,24 @@ void mcinit(void) {
 
   SIG_MESSAGE("Mono_Out (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     (0)*DEG2RAD,
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     (A2)*DEG2RAD,
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     (0)*DEG2RAD);
-#line 11155 "./Test_Monochromators.c"
+#line 11171 "./Test_Monochromators.c"
   rot_mul(mctr1, mcrotaSource, mcrotaMono_Out);
   rot_transpose(mcrotaMono_Arm, mctr1);
   rot_mul(mcrotaMono_Out, mctr1, mcrotrMono_Out);
   mctc1 = coords_set(
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 117 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 117 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0);
-#line 11166 "./Test_Monochromators.c"
+#line 11182 "./Test_Monochromators.c"
   rot_transpose(mcrotaMono_Arm, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMono_Out = coords_add(mcposaMono_Arm, mctc2);
@@ -11177,47 +11193,47 @@ void mcinit(void) {
     /* Component Mono1. */
   /* Setting parameters for component Mono1. */
   SIG_MESSAGE("Mono1 (Init:SetPar)");
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono1_zmin = -0.05;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono1_zmax = 0.05;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono1_ymin = -0.05;
-#line 64 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 64 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono1_ymax = 0.05;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono1_zwidth = 0.10;
-#line 120 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 120 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono1_yheight = 0.10;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono1_mosaich = mcipMoz;
-#line 121 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 121 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono1_mosaicv = mcipMoz;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono1_r0 = 0.9;
-#line 122 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 122 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono1_Q = mono_q;
-#line 66 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 66 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono1_DM = 0;
-#line 11202 "./Test_Monochromators.c"
+#line 11218 "./Test_Monochromators.c"
 
   SIG_MESSAGE("Mono1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 11209 "./Test_Monochromators.c"
+#line 11225 "./Test_Monochromators.c"
   rot_mul(mctr1, mcrotaMono_Arm, mcrotaMono1);
   rot_transpose(mcrotaMono_Out, mctr1);
   rot_mul(mcrotaMono1, mctr1, mcrotrMono1);
   mctc1 = coords_set(
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 123 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 123 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0);
-#line 11220 "./Test_Monochromators.c"
+#line 11236 "./Test_Monochromators.c"
   rot_transpose(mcrotaMono_Arm, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMono1 = coords_add(mcposaMono_Arm, mctc2);
@@ -11231,45 +11247,45 @@ void mcinit(void) {
     /* Component Mono2. */
   /* Setting parameters for component Mono2. */
   SIG_MESSAGE("Mono2 (Init:SetPar)");
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono2_zwidth = 0.10;
-#line 126 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 126 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono2_yheight = 0.10;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono2_mosaic = mcipMoz;
-#line 127 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 127 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono2_dspread = 0.0;
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono2_Q = mono_q;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono2_DM = 0;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono2_pThreshold = 0;
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono2_Rup = 0.9;
-#line 128 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 128 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono2_Rdown = 0.9;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono2_debug = 0;
-#line 11254 "./Test_Monochromators.c"
+#line 11270 "./Test_Monochromators.c"
 
   SIG_MESSAGE("Mono2 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 11261 "./Test_Monochromators.c"
+#line 11277 "./Test_Monochromators.c"
   rot_mul(mctr1, mcrotaMono_Arm, mcrotaMono2);
   rot_transpose(mcrotaMono1, mctr1);
   rot_mul(mcrotaMono2, mctr1, mcrotrMono2);
   mctc1 = coords_set(
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 129 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 129 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0);
-#line 11272 "./Test_Monochromators.c"
+#line 11288 "./Test_Monochromators.c"
   rot_transpose(mcrotaMono_Arm, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMono2 = coords_add(mcposaMono_Arm, mctc2);
@@ -11283,45 +11299,45 @@ void mcinit(void) {
     /* Component Mono3. */
   /* Setting parameters for component Mono3. */
   SIG_MESSAGE("Mono3 (Init:SetPar)");
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono3_zwidth = 0.10;
-#line 132 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 132 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono3_yheight = 0.10;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono3_mosaic = mcipMoz;
-#line 133 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 133 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono3_dspread = 0.0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono3_Q = mono_q;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono3_DM = 0;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono3_pThreshold = 0.01;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono3_Rup = 0.9;
-#line 134 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 134 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono3_Rdown = 0.9;
-#line 89 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 89 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono3_debug = 0;
-#line 11306 "./Test_Monochromators.c"
+#line 11322 "./Test_Monochromators.c"
 
   SIG_MESSAGE("Mono3 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 11313 "./Test_Monochromators.c"
+#line 11329 "./Test_Monochromators.c"
   rot_mul(mctr1, mcrotaMono_Arm, mcrotaMono3);
   rot_transpose(mcrotaMono2, mctr1);
   rot_mul(mcrotaMono3, mctr1, mcrotrMono3);
   mctc1 = coords_set(
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 135 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 135 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0);
-#line 11324 "./Test_Monochromators.c"
+#line 11340 "./Test_Monochromators.c"
   rot_transpose(mcrotaMono_Arm, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMono3 = coords_add(mcposaMono_Arm, mctc2);
@@ -11335,65 +11351,65 @@ void mcinit(void) {
     /* Component Mono4. */
   /* Setting parameters for component Mono4. */
   SIG_MESSAGE("Mono4 (Init:SetPar)");
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   if("NULL") strncpy(mccMono4_reflect, "NULL" ? "NULL" : "", 16384); else mccMono4_reflect[0]='\0';
-#line 99 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 99 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   if("NULL") strncpy(mccMono4_transmit, "NULL" ? "NULL" : "", 16384); else mccMono4_transmit[0]='\0';
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono4_zwidth = 0.01;
-#line 100 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 100 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono4_yheight = 0.01;
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono4_gap = 0;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono4_NH = 11;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono4_NV = 11;
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono4_mosaich = mcipMoz;
-#line 139 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 139 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono4_mosaicv = mcipMoz;
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono4_r0 = 0.9;
-#line 101 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 101 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono4_t0 = 1.0;
-#line 140 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 140 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono4_Q = mono_q;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono4_RV = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono4_RH = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono4_DM = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono4_mosaic = 0;
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono4_width = 0.10;
-#line 138 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 138 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono4_height = 0.10;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono4_verbose = 0;
-#line 102 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 102 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono4_order = 0;
-#line 11378 "./Test_Monochromators.c"
+#line 11394 "./Test_Monochromators.c"
 
   SIG_MESSAGE("Mono4 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 11385 "./Test_Monochromators.c"
+#line 11401 "./Test_Monochromators.c"
   rot_mul(mctr1, mcrotaMono_Arm, mcrotaMono4);
   rot_transpose(mcrotaMono3, mctr1);
   rot_mul(mcrotaMono4, mctr1, mcrotrMono4);
   mctc1 = coords_set(
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 141 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 141 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0);
-#line 11396 "./Test_Monochromators.c"
+#line 11412 "./Test_Monochromators.c"
   rot_transpose(mcrotaMono_Arm, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMono4 = coords_add(mcposaMono_Arm, mctc2);
@@ -11407,59 +11423,59 @@ void mcinit(void) {
     /* Component Mono5. */
   /* Setting parameters for component Mono5. */
   SIG_MESSAGE("Mono5 (Init:SetPar)");
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   if(0) strncpy(mccMono5_reflect, 0 ? 0 : "", 16384); else mccMono5_reflect[0]='\0';
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono5_zwidth = 0.01;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono5_yheight = 0.01;
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono5_gap = 0;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono5_NH = 11;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono5_NV = 11;
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono5_mosaich = mcipMoz;
-#line 145 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 145 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono5_mosaicv = mcipMoz;
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono5_r0 = 0.9;
-#line 146 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 146 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono5_Q = mono_q;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono5_RV = 0;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono5_RH = 0;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono5_DM = 0;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono5_mosaic = 0;
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono5_width = 0.10;
-#line 144 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 144 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono5_height = 0.10;
-#line 78 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 78 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono5_verbose = 0;
-#line 11444 "./Test_Monochromators.c"
+#line 11460 "./Test_Monochromators.c"
 
   SIG_MESSAGE("Mono5 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 11451 "./Test_Monochromators.c"
+#line 11467 "./Test_Monochromators.c"
   rot_mul(mctr1, mcrotaMono_Arm, mcrotaMono5);
   rot_transpose(mcrotaMono4, mctr1);
   rot_mul(mcrotaMono5, mctr1, mcrotrMono5);
   mctc1 = coords_set(
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 147 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 147 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0);
-#line 11462 "./Test_Monochromators.c"
+#line 11478 "./Test_Monochromators.c"
   rot_transpose(mcrotaMono_Arm, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMono5 = coords_add(mcposaMono_Arm, mctc2);
@@ -11473,93 +11489,93 @@ void mcinit(void) {
     /* Component Mono6. */
   /* Setting parameters for component Mono6. */
   SIG_MESSAGE("Mono6 (Init:SetPar)");
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   if("C_graphite.lau") strncpy(mccMono6_reflections, "C_graphite.lau" ? "C_graphite.lau" : "", 16384); else mccMono6_reflections[0]='\0';
-#line 282 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 282 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   if(0) strncpy(mccMono6_geometry, 0 ? 0 : "", 16384); else mccMono6_geometry[0]='\0';
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_xwidth = 0.002;
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_yheight = 0.1;
-#line 150 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 150 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_zdepth = 0.1;
-#line 283 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 283 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_radius = 0;
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_delta_d_d = 1e-2;
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_mosaic = mcipMoz;
-#line 284 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 284 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_mosaic_a = -1;
-#line 284 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 284 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_mosaic_b = -1;
-#line 284 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 284 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_mosaic_c = -1;
-#line 285 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 285 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_recip_cell = 0;
-#line 151 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 151 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_barns = 0;
-#line 152 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 152 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_ax = 0;
-#line 152 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 152 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_ay = 2.14;
-#line 152 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 152 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_az = -1.24;
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_bx = 0;
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_by = 0;
-#line 153 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 153 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_bz = 2.47;
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_cx = 6.71;
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_cy = 0;
-#line 154 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 154 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_cz = 0;
-#line 289 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 289 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_p_transmit = 0.001;
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_sigma_abs = 0.014;
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_sigma_inc = 0.004;
-#line 290 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 290 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_aa = 0;
-#line 290 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 290 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_bb = 0;
-#line 290 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 290 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_cc = 0;
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_order = mciporder;
-#line 290 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 290 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_RX = 0;
-#line 290 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 290 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_RY = 0;
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_powder = mcippowder;
-#line 155 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 155 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_PG = mcipPG;
-#line 291 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 291 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccMono6_deltak = 1e-6;
-#line 11544 "./Test_Monochromators.c"
+#line 11560 "./Test_Monochromators.c"
 
   SIG_MESSAGE("Mono6 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 11551 "./Test_Monochromators.c"
+#line 11567 "./Test_Monochromators.c"
   rot_mul(mctr1, mcrotaMono_Arm, mcrotaMono6);
   rot_transpose(mcrotaMono5, mctr1);
   rot_mul(mcrotaMono6, mctr1, mcrotrMono6);
   mctc1 = coords_set(
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 156 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 156 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0);
-#line 11562 "./Test_Monochromators.c"
+#line 11578 "./Test_Monochromators.c"
   rot_transpose(mcrotaMono_Arm, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaMono6 = coords_add(mcposaMono_Arm, mctc2);
@@ -11573,33 +11589,33 @@ void mcinit(void) {
     /* Component Sphere1. */
   /* Setting parameters for component Sphere1. */
   SIG_MESSAGE("Sphere1 (Init:SetPar)");
-#line 161 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 161 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   if("sphere") strncpy(mccSphere1_filename, "sphere" ? "sphere" : "", 16384); else mccSphere1_filename[0]='\0';
-#line 161 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 161 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccSphere1_radius = 1;
-#line 161 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 161 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccSphere1_restore_neutron = 1;
-#line 49 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 49 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccSphere1_nowritefile = 0;
-#line 11584 "./Test_Monochromators.c"
+#line 11600 "./Test_Monochromators.c"
 
   SIG_MESSAGE("Sphere1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 11591 "./Test_Monochromators.c"
+#line 11607 "./Test_Monochromators.c"
   rot_mul(mctr1, mcrotaMono_Out, mcrotaSphere1);
   rot_transpose(mcrotaMono6, mctr1);
   rot_mul(mcrotaSphere1, mctr1, mcrotrSphere1);
   mctc1 = coords_set(
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 162 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 162 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0);
-#line 11602 "./Test_Monochromators.c"
+#line 11618 "./Test_Monochromators.c"
   rot_transpose(mcrotaMono_Out, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposaSphere1 = coords_add(mcposaMono_Out, mctc2);
@@ -11613,47 +11629,47 @@ void mcinit(void) {
     /* Component lam1. */
   /* Setting parameters for component lam1. */
   SIG_MESSAGE("lam1 (Init:SetPar)");
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   if("lambda1.dat") strncpy(mcclam1_filename, "lambda1.dat" ? "lambda1.dat" : "", 16384); else mcclam1_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mcclam1_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mcclam1_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mcclam1_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mcclam1_ymax = 0.05;
-#line 165 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 165 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mcclam1_xwidth = 0.10;
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mcclam1_yheight = 0.10;
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mcclam1_Lmin = 0.7 * mciplambda;
-#line 166 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 166 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mcclam1_Lmax = 1.3 * mciplambda;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mcclam1_restore_neutron = 0;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mcclam1_nowritefile = 0;
-#line 11638 "./Test_Monochromators.c"
+#line 11654 "./Test_Monochromators.c"
 
   SIG_MESSAGE("lam1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 11645 "./Test_Monochromators.c"
+#line 11661 "./Test_Monochromators.c"
   rot_mul(mctr1, mcrotaMono_Out, mcrotalam1);
   rot_transpose(mcrotaSphere1, mctr1);
   rot_mul(mcrotalam1, mctr1, mcrotrlam1);
   mctc1 = coords_set(
-#line 167 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 167 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 167 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 167 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0.25);
-#line 11656 "./Test_Monochromators.c"
+#line 11672 "./Test_Monochromators.c"
   rot_transpose(mcrotaMono_Out, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposalam1 = coords_add(mcposaMono_Out, mctc2);
@@ -11667,45 +11683,45 @@ void mcinit(void) {
     /* Component psd1. */
   /* Setting parameters for component psd1. */
   SIG_MESSAGE("psd1 (Init:SetPar)");
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 172 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccpsd1_nx = 20;
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 172 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccpsd1_ny = 20;
-#line 172 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 172 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   if("psd1.dat") strncpy(mccpsd1_filename, "psd1.dat" ? "psd1.dat" : "", 16384); else mccpsd1_filename[0]='\0';
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccpsd1_xmin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccpsd1_xmax = 0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccpsd1_ymin = -0.05;
-#line 50 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 50 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccpsd1_ymax = 0.05;
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccpsd1_xwidth = 0.10;
-#line 171 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 171 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccpsd1_yheight = 0.10;
-#line 51 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 51 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   mccpsd1_restore_neutron = 0;
-#line 11690 "./Test_Monochromators.c"
+#line 11706 "./Test_Monochromators.c"
 
   SIG_MESSAGE("psd1 (Init:Place/Rotate)");
   rot_set_rotation(mctr1,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD,
     (0.0)*DEG2RAD);
-#line 11697 "./Test_Monochromators.c"
+#line 11713 "./Test_Monochromators.c"
   rot_mul(mctr1, mcrotaMono_Out, mcrotapsd1);
   rot_transpose(mcrotalam1, mctr1);
   rot_mul(mcrotapsd1, mctr1, mcrotrpsd1);
   mctc1 = coords_set(
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0,
-#line 173 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 173 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
     0.5);
-#line 11708 "./Test_Monochromators.c"
+#line 11724 "./Test_Monochromators.c"
   rot_transpose(mcrotaMono_Out, mctr1);
   mctc2 = rot_apply(mctr1, mctc1);
   mcposapsd1 = coords_add(mcposaMono_Out, mctc2);
@@ -11742,7 +11758,7 @@ fprintf(stdout, "[%s] Initialize\n", mcinstrument_name);
     percent=1e5*100.0/mcget_ncount();
   }
 }
-#line 11745 "./Test_Monochromators.c"
+#line 11761 "./Test_Monochromators.c"
 #undef minutes
 #undef flag_save
 #undef percent
@@ -11836,7 +11852,7 @@ if (radius && !yheight && !xwidth ) {
       exit(0);
   }
 }
-#line 11839 "./Test_Monochromators.c"
+#line 11855 "./Test_Monochromators.c"
 #undef target_index
 #undef gauss
 #undef flux
@@ -11898,7 +11914,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
       L_p2[i] = 0;
     }
 }
-#line 11901 "./Test_Monochromators.c"
+#line 11917 "./Test_Monochromators.c"
 #undef nowritefile
 #undef restore_neutron
 #undef Lmax
@@ -11959,7 +11975,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
   if (zmin==zmax || ymin==ymax)
     exit(fprintf(stderr, "Monochromator_flat: %s : Surface is null (zmin,zmax,ymin,ymax)\n", NAME_CURRENT_COMP));
 }
-#line 11962 "./Test_Monochromators.c"
+#line 11978 "./Test_Monochromators.c"
 #undef DM
 #undef Q
 #undef r0
@@ -12019,7 +12035,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 12022 "./Test_Monochromators.c"
+#line 12038 "./Test_Monochromators.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -12079,7 +12095,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   if(debug > 0)
     printf("FN: %f, FM: %f\n", FN, FM);
 }
-#line 12082 "./Test_Monochromators.c"
+#line 12098 "./Test_Monochromators.c"
 #undef debug
 #undef Rdown
 #undef Rup
@@ -12217,7 +12233,7 @@ mos_rms = MIN2RAD*mosaic/sqrt(8*log(2));
   }
 
 }
-#line 12220 "./Test_Monochromators.c"
+#line 12236 "./Test_Monochromators.c"
 #undef order
 #undef verbose
 #undef height
@@ -12330,7 +12346,7 @@ if (mosaic != 0) {
   if (height == 0) SlabHeight = yheight;
   else SlabHeight = (height+gap)/NV - gap;
 }
-#line 12333 "./Test_Monochromators.c"
+#line 12349 "./Test_Monochromators.c"
 #undef verbose
 #undef height
 #undef width
@@ -12489,7 +12505,7 @@ if (mosaic != 0) {
 
 
 }
-#line 12492 "./Test_Monochromators.c"
+#line 12508 "./Test_Monochromators.c"
 #undef deltak
 #undef PG
 #undef powder
@@ -12557,7 +12573,7 @@ for (i=0; i<nx; i++)
       PSD_p2[i][j] = 0;
     }
 }
-#line 12560 "./Test_Monochromators.c"
+#line 12576 "./Test_Monochromators.c"
 #undef nowritefile
 #undef restore_neutron
 #undef radius
@@ -12612,7 +12628,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
       L_p2[i] = 0;
     }
 }
-#line 12615 "./Test_Monochromators.c"
+#line 12631 "./Test_Monochromators.c"
 #undef nowritefile
 #undef restore_neutron
 #undef Lmax
@@ -12675,7 +12691,7 @@ if (xwidth  > 0) { xmax = xwidth/2;  xmin = -xmax; }
     }
   }
 }
-#line 12678 "./Test_Monochromators.c"
+#line 12694 "./Test_Monochromators.c"
 #undef restore_neutron
 #undef yheight
 #undef xwidth
@@ -12846,7 +12862,7 @@ MCNUM minutes = mccOrigin_minutes;
     if (flag_save) mcsave(NULL);
   }
 }
-#line 12849 "./Test_Monochromators.c"
+#line 12865 "./Test_Monochromators.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -13017,7 +13033,7 @@ int target_index = mccSource_target_index;
  vy=v*dy/rf;
  vx=v*dx/rf;
 }
-#line 13020 "./Test_Monochromators.c"
+#line 13036 "./Test_Monochromators.c"
 }   /* End of Source=Source_simple() SETTING parameter declarations. */
 #undef srcArea
 #undef square
@@ -13163,7 +13179,7 @@ int nowritefile = mcclamStart_nowritefile;
       RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
     }
 }
-#line 13166 "./Test_Monochromators.c"
+#line 13182 "./Test_Monochromators.c"
 }   /* End of lamStart=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -13632,7 +13648,7 @@ if (( mcipMono == 1 ))
     } /* End intersect the crystal */
   } /* End neutron moving towards crystal */
 }
-#line 13634 "./Test_Monochromators.c"
+#line 13650 "./Test_Monochromators.c"
 }   /* End of Mono1=Monochromator_flat() SETTING parameter declarations. */
 #undef mono_Q
 #undef mos_rms_max
@@ -13828,7 +13844,7 @@ if (( mcipMono == 2 ))
   } /* End intersect the crystal */
 
 }
-#line 13829 "./Test_Monochromators.c"
+#line 13845 "./Test_Monochromators.c"
 }   /* End of Mono2=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -14025,7 +14041,7 @@ if (( mcipMono == 3 ))
   } /* End intersect the crystal */
 
 }
-#line 14025 "./Test_Monochromators.c"
+#line 14041 "./Test_Monochromators.c"
 }   /* End of Mono3=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -14400,7 +14416,7 @@ if (( mcipMono == 4 ))
     }
   } /* End neutron moving towards crystal (if vx)*/
 }
-#line 14399 "./Test_Monochromators.c"
+#line 14415 "./Test_Monochromators.c"
 }   /* End of Mono4=Monochromator_curved() SETTING parameter declarations. */
 #undef tiltV
 #undef tiltH
@@ -14665,7 +14681,7 @@ if (( mcipMono == 5 ))
     } /* End intersect the crystal (if z1) */
   } /* End neutron moving towards crystal (if vx)*/
 }
-#line 14663 "./Test_Monochromators.c"
+#line 14679 "./Test_Monochromators.c"
 }   /* End of Mono5=Monochromator_2foc() SETTING parameter declarations. */
 #undef rTable
 #undef SlabHeight
@@ -15160,14 +15176,14 @@ if (( mcipMono == 6 ))
     } while (intersect); /* end do (intersect) (multiple scattering loop) */
   } /* if intersect */
 }
-#line 15157 "./Test_Monochromators.c"
+#line 15173 "./Test_Monochromators.c"
 /* 'Mono6=Single_crystal()' component instance extend code */
     SIG_MESSAGE("Mono6 (Trace:Extend)");
 if (( mcipMono == 6 )) {
 
-#line 158 "/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
+#line 158 "/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr"
   if(!SCATTERED) ABSORB;
-#line 15163 "./Test_Monochromators.c"
+#line 15179 "./Test_Monochromators.c"
 }
 
 }   /* End of Mono6=Single_crystal() SETTING parameter declarations. */
@@ -15319,7 +15335,7 @@ int nowritefile = mccSphere1_nowritefile;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 15314 "./Test_Monochromators.c"
+#line 15330 "./Test_Monochromators.c"
 }   /* End of Sphere1=PSD_monitor_4PI() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -15467,7 +15483,7 @@ int nowritefile = mcclam1_nowritefile;
       RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
     }
 }
-#line 15462 "./Test_Monochromators.c"
+#line 15478 "./Test_Monochromators.c"
 }   /* End of lam1=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -15605,7 +15621,7 @@ MCNUM restore_neutron = mccpsd1_restore_neutron;
     RESTORE_NEUTRON(INDEX_CURRENT_COMP, x, y, z, vx, vy, vz, t, sx, sy, sz, p);
   }
 }
-#line 15600 "./Test_Monochromators.c"
+#line 15616 "./Test_Monochromators.c"
 }   /* End of psd1=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -15717,7 +15733,7 @@ MCNUM minutes = mccOrigin_minutes;
 
   }
 }
-#line 15712 "./Test_Monochromators.c"
+#line 15728 "./Test_Monochromators.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -15760,7 +15776,7 @@ int nowritefile = mcclamStart_nowritefile;
         filename);
     }
 }
-#line 15755 "./Test_Monochromators.c"
+#line 15771 "./Test_Monochromators.c"
 }   /* End of lamStart=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -15798,7 +15814,7 @@ int nowritefile = mccSphere1_nowritefile;
     filename);
   }
 }
-#line 15793 "./Test_Monochromators.c"
+#line 15809 "./Test_Monochromators.c"
 }   /* End of Sphere1=PSD_monitor_4PI() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -15842,7 +15858,7 @@ int nowritefile = mcclam1_nowritefile;
         filename);
     }
 }
-#line 15837 "./Test_Monochromators.c"
+#line 15853 "./Test_Monochromators.c"
 }   /* End of lam1=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -15882,7 +15898,7 @@ MCNUM restore_neutron = mccpsd1_restore_neutron;
     &PSD_N[0][0],&PSD_p[0][0],&PSD_p2[0][0],
     filename);
 }
-#line 15877 "./Test_Monochromators.c"
+#line 15893 "./Test_Monochromators.c"
 }   /* End of psd1=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -15925,7 +15941,7 @@ MCNUM minutes = mccOrigin_minutes;
     fprintf(stdout, "%g [min] ", difftime(NowTime,StartTime)/60.0);
   fprintf(stdout, "\n");
 }
-#line 15920 "./Test_Monochromators.c"
+#line 15936 "./Test_Monochromators.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -16004,7 +16020,7 @@ MCNUM order = mccMono4_order;
   if (tiltH) free(tiltH);
   if (tiltV) free(tiltV);
 }
-#line 15991 "./Test_Monochromators.c"
+#line 16007 "./Test_Monochromators.c"
 }   /* End of Mono4=Monochromator_curved() SETTING parameter declarations. */
 #undef tiltV
 #undef tiltH
@@ -16091,7 +16107,7 @@ MCNUM deltak = mccMono6_deltak;
   }
   );
 }
-#line 16076 "./Test_Monochromators.c"
+#line 16092 "./Test_Monochromators.c"
 }   /* End of Mono6=Single_crystal() SETTING parameter declarations. */
 #undef offdata
 #undef hkl_info
@@ -16134,7 +16150,7 @@ MCNUM restore_neutron = mccpsd1_restore_neutron;
   destroy_darr2d(PSD_p);
   destroy_darr2d(PSD_p2);
 }
-#line 16116 "./Test_Monochromators.c"
+#line 16132 "./Test_Monochromators.c"
 }   /* End of psd1=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -16180,7 +16196,7 @@ MCNUM minutes = mccOrigin_minutes;
 {
   
 }
-#line 16161 "./Test_Monochromators.c"
+#line 16177 "./Test_Monochromators.c"
 }   /* End of Origin=Progress_bar() SETTING parameter declarations. */
 #undef CurrentTime
 #undef EndTime
@@ -16229,7 +16245,7 @@ int target_index = mccSource_target_index;
     dashed_line(0,0,0, -focus_xw/2+tx, focus_yh/2+ty,tz, 4);
   }
 }
-#line 16210 "./Test_Monochromators.c"
+#line 16226 "./Test_Monochromators.c"
 }   /* End of Source=Source_simple() SETTING parameter declarations. */
 #undef srcArea
 #undef square
@@ -16269,7 +16285,7 @@ int nowritefile = mcclamStart_nowritefile;
                (double)xmin, (double)ymax, 0.0,
                (double)xmin, (double)ymin, 0.0);
 }
-#line 16250 "./Test_Monochromators.c"
+#line 16266 "./Test_Monochromators.c"
 }   /* End of lamStart=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -16293,7 +16309,7 @@ int nowritefile = mcclamStart_nowritefile;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 16274 "./Test_Monochromators.c"
+#line 16290 "./Test_Monochromators.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -16312,7 +16328,7 @@ int nowritefile = mcclamStart_nowritefile;
   line(0,0,0,0,0.2,0);
   line(0,0,0,0,0,0.2);
 }
-#line 16293 "./Test_Monochromators.c"
+#line 16309 "./Test_Monochromators.c"
 #undef mccompcurname
 #undef mccompcurtype
 #undef mccompcurindex
@@ -16348,7 +16364,7 @@ MCNUM DM = mccMono1_DM;
                0.0, (double)ymin, (double)zmax,
                0.0, (double)ymin, (double)zmin);
 }
-#line 16329 "./Test_Monochromators.c"
+#line 16345 "./Test_Monochromators.c"
 }   /* End of Mono1=Monochromator_flat() SETTING parameter declarations. */
 #undef mono_Q
 #undef mos_rms_max
@@ -16385,7 +16401,7 @@ int debug = mccMono2_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 16366 "./Test_Monochromators.c"
+#line 16382 "./Test_Monochromators.c"
 }   /* End of Mono2=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -16423,7 +16439,7 @@ int debug = mccMono3_debug;
   
   rectangle("yz", 0, 0, 0, zwidth, yheight);
 }
-#line 16404 "./Test_Monochromators.c"
+#line 16420 "./Test_Monochromators.c"
 }   /* End of Mono3=Monochromator_pol() SETTING parameter declarations. */
 #undef FM
 #undef FN
@@ -16503,7 +16519,7 @@ MCNUM order = mccMono4_order;
      }
    }
 }
-#line 16484 "./Test_Monochromators.c"
+#line 16500 "./Test_Monochromators.c"
 }   /* End of Mono4=Monochromator_curved() SETTING parameter declarations. */
 #undef tiltV
 #undef tiltH
@@ -16586,7 +16602,7 @@ MCNUM verbose = mccMono5_verbose;
      }
    }
 }
-#line 16567 "./Test_Monochromators.c"
+#line 16583 "./Test_Monochromators.c"
 }   /* End of Mono5=Monochromator_2foc() SETTING parameter declarations. */
 #undef rTable
 #undef SlabHeight
@@ -16684,7 +16700,7 @@ MCNUM deltak = mccMono6_deltak;
     off_display(offdata);
   }
 }
-#line 16665 "./Test_Monochromators.c"
+#line 16681 "./Test_Monochromators.c"
 }   /* End of Mono6=Single_crystal() SETTING parameter declarations. */
 #undef offdata
 #undef hkl_info
@@ -16716,7 +16732,7 @@ int nowritefile = mccSphere1_nowritefile;
   circle("xz",0,0,0,radius);
   circle("yz",0,0,0,radius);
 }
-#line 16697 "./Test_Monochromators.c"
+#line 16713 "./Test_Monochromators.c"
 }   /* End of Sphere1=PSD_monitor_4PI() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p
@@ -16758,7 +16774,7 @@ int nowritefile = mcclam1_nowritefile;
                (double)xmin, (double)ymax, 0.0,
                (double)xmin, (double)ymin, 0.0);
 }
-#line 16739 "./Test_Monochromators.c"
+#line 16755 "./Test_Monochromators.c"
 }   /* End of lam1=L_monitor() SETTING parameter declarations. */
 #undef L_p2
 #undef L_p
@@ -16797,7 +16813,7 @@ MCNUM restore_neutron = mccpsd1_restore_neutron;
     (double)xmin, (double)ymax, 0.0,
     (double)xmin, (double)ymin, 0.0);
 }
-#line 16778 "./Test_Monochromators.c"
+#line 16794 "./Test_Monochromators.c"
 }   /* End of psd1=PSD_monitor() SETTING parameter declarations. */
 #undef PSD_p2
 #undef PSD_p

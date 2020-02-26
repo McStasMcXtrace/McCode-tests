@@ -1,10 +1,10 @@
 McStas simulation description file for ILL_IN5_Mantid.
-Date:    Wed Nov 20 01:04:40 2019
-Program: McStas 2.5 - Nov. 19, 2019
+Date:    Tue Feb 25 21:28:03 2020
+Program: McStas 2.5 - Feb. 24, 2020
 
 begin instrument: ILL_IN5_Mantid
   File: 1/mccode
-  Source: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr
   Parameters:  lambda(double) dlambda(double) speed(double) ratio(double) housing(string) coh(string) inc(string) thickness(double) height(double) radius(double) order(double)
   Trace_enabled: yes
   Default_main: yes
@@ -14,12 +14,12 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Nov. 19, 2019
-  Instrument: /zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1574230936
+  Seed: 1582678522
   Directory: 1
   Nodes: 10
   Param: lambda=4.5
@@ -36,36 +36,36 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Wed Nov 20 01:04:42 2019 (1574208282)
+  Date: Tue Feb 25 21:28:06 2020 (1582662486)
   type: array_1d(20)
-  Source: ILL_IN5_Mantid (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr)
+  Source: ILL_IN5_Mantid (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr)
   component: Det_sample_t
   position: 0 0 17.0191
   title: TOF [s] monitor
   Ncount: 10000000
-  filename: Det_sample_t_1574208280.t
-  statistics: X0=0.0162315; dX=2.62031e-05;
-  signal: Min=94444.2; Max=3.81996e+06; Mean=1.90515e+06;
-  values: 3.8103e+07 201694 52536
+  filename: Det_sample_t_1582662483.t
+  statistics: X0=0.0162305; dX=2.64845e-05;
+  signal: Min=106451; Max=3.86054e+06; Mean=1.91191e+06;
+  values: 3.82381e+07 202262 52646
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.0161624 0.0163004
+  xlimits: 0.0161615 0.0163008
   variables: t I I_err N
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:42 2019 (1574208282)
-  type: array_2d(6, 18267)
-  Source: ILL_IN5_Mantid (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr)
+  Date: Tue Feb 25 21:28:06 2020 (1582662486)
+  type: array_2d(6, 18880)
+  Source: ILL_IN5_Mantid (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr)
   component: nD_Mantid_0
   position: 0 0 17.2589
   title:  Intensity Angle Position Neutron_ID Pixel_ID Time_Of_Flight Monitor (Banana) [out]
   Ncount: 10000000
-  filename: nD_Mantid_0_1574208280_list.p.th.y.n.id.t
+  filename: nD_Mantid_0_1582662483_list.p.th.y.n.id.t
   statistics: X0=0; dX=0; Y0=0; dY=0;
-  signal: Min=10.858; Max=10.858; Mean=0;
+  signal: Min=3.41196; Max=3.41196; Mean=0;
   values: 0 0 0
   xvar: List
   yvar: p
@@ -73,22 +73,22 @@ begin data
   ylabel: p th y n id t 
   zvar: I
   zlabel: Signal per bin
-  xylimits: 1 18267 1 6
+  xylimits: 1 18880 1 6
   variables: p th y n id t 
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:42 2019 (1574208282)
+  Date: Tue Feb 25 21:28:08 2020 (1582662488)
   type: array_2d(100, 300)
-  Source: ILL_IN5_Mantid (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr)
+  Source: ILL_IN5_Mantid (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr)
   component: Cp_0
   position: 0 0 17.2589
   title:  Intensity Angle Position Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: Cp_0_1574208280.th_y
-  statistics: X0=45.1944; dX=21.6346; Y0=-0.00121194; dY=0.818483;
-  signal: Min=0; Max=995.676; Mean=45.5488;
-  values: 1.36646e+06 3852.05 186764
+  filename: Cp_0_1582662483.th_y
+  statistics: X0=45.1712; dX=21.5536; Y0=-0.0014762; dY=0.82254;
+  signal: Min=0; Max=992.435; Mean=45.6272;
+  values: 1.36882e+06 3859.35 186755
   xvar: Longitude
   yvar: y
   xlabel: Longitude [deg]
@@ -100,17 +100,17 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:42 2019 (1574208282)
+  Date: Tue Feb 25 21:28:08 2020 (1582662488)
   type: array_2d(384, 128)
-  Source: ILL_IN5_Mantid (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr)
+  Source: ILL_IN5_Mantid (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr)
   component: Det_PSD
   position: 0 0 17.2589
   title: PSD Detector
   Ncount: 10000000
   filename: in5det.dat
-  statistics: X0=3.17528; dX=1.52794; Y0=-0.00186416; dY=0.829685;
-  signal: Min=0; Max=693.995; Mean=27.2389;
-  values: 1.33884e+06 4206.81 162423
+  statistics: X0=3.17512; dX=1.51798; Y0=-0.00164545; dY=0.834075;
+  signal: Min=0; Max=673.657; Mean=27.1767;
+  values: 1.33579e+06 4206.11 162293
   xvar: X
   yvar: Y
   xlabel: X position [m]
@@ -122,21 +122,21 @@ begin data
 end data
 
 begin data
-  Date: Wed Nov 20 01:04:43 2019 (1574208283)
+  Date: Tue Feb 25 21:28:08 2020 (1582662488)
   type: array_1d(50)
-  Source: ILL_IN5_Mantid (/zhome/89/0/38697/TESTS/2019-11-20/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr)
+  Source: ILL_IN5_Mantid (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr)
   component: in5_t
   position: 0 0 17.2589
   title: TOF [s] monitor
   Ncount: 10000000
-  filename: in5_t_1574208280.t
-  statistics: X0=0.0211666; dX=0.000131466;
-  signal: Min=0; Max=2.10625e+06; Mean=54587;
-  values: 2.72935e+06 8538.59 413820
+  filename: in5_t_1582662483.t
+  statistics: X0=0.0210938; dX=0.000129299;
+  signal: Min=0; Max=2.10211e+06; Mean=54393.8;
+  values: 2.71969e+06 8495.08 413394
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.0164499 0.0308719
+  xlimits: 0.0164374 0.0306759
   variables: t I I_err N
 end data
