@@ -1,0 +1,128 @@
+INFO: Using directory: "2"
+INFO: Using existing c-file: ./templateSANS2.c
+INFO: Using existing binary: ./templateSANS2.out
+INFO: ===
+[n-62-23-14:29318] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:29318] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-23-14:29318] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[1582665564.103869] [n-62-23-14:29323:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3498.63
+[1582665564.104894] [n-62-23-14:29324:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3498.63
+[1582665564.105565] [n-62-23-14:29323:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665564.105581] [n-62-23-14:29323:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+Initialization of MXM library failed.
+
+  Error: Input/output error
+
+--------------------------------------------------------------------------
+[1582665564.107033] [n-62-23-14:29324:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665564.107049] [n-62-23-14:29324:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665564.107754] [n-62-23-14:29323:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665564.107773] [n-62-23-14:29323:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665564.109181] [n-62-23-14:29324:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665564.109239] [n-62-23-14:29324:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665564.146010] [n-62-23-14:29325:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3498.63
+[1582665564.147946] [n-62-23-14:29325:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665564.148010] [n-62-23-14:29325:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665564.150249] [n-62-23-14:29325:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665564.150266] [n-62-23-14:29325:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665564.150459] [n-62-23-14:29329:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3498.63
+[1582665564.152425] [n-62-23-14:29329:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665564.152443] [n-62-23-14:29329:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665564.154958] [n-62-23-14:29329:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665564.154975] [n-62-23-14:29329:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665564.155368] [n-62-23-14:29327:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3498.63
+[1582665564.157820] [n-62-23-14:29327:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665564.157839] [n-62-23-14:29327:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665564.160324] [n-62-23-14:29331:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3498.63
+[1582665564.160354] [n-62-23-14:29327:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665564.160372] [n-62-23-14:29327:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665564.161835] [n-62-23-14:29326:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3498.63
+[1582665564.162267] [n-62-23-14:29331:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665564.162283] [n-62-23-14:29331:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665564.162529] [n-62-23-14:29328:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3498.63
+[1582665564.163874] [n-62-23-14:29326:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665564.163997] [n-62-23-14:29326:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665564.164271] [n-62-23-14:29328:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665564.164287] [n-62-23-14:29328:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665564.164497] [n-62-23-14:29331:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665564.164513] [n-62-23-14:29331:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665564.166507] [n-62-23-14:29330:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3498.63
+[1582665564.166712] [n-62-23-14:29326:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665564.166728] [n-62-23-14:29326:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665564.166933] [n-62-23-14:29328:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665564.166949] [n-62-23-14:29328:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665564.168241] [n-62-23-14:29330:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665564.168258] [n-62-23-14:29330:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665564.169553] [n-62-23-14:29332:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3498.63
+[1582665564.170381] [n-62-23-14:29330:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665564.170397] [n-62-23-14:29330:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665564.171554] [n-62-23-14:29332:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665564.171571] [n-62-23-14:29332:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[1582665564.173661] [n-62-23-14:29332:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
+[1582665564.173678] [n-62-23-14:29332:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+Simulation 'templateSANS2' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateSANS2/templateSANS2.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
+[templateSANS2] Initialize
+[templateSANS2] Initialize
+[templateSANS2] Initialize
+[templateSANS2] Initialize
+[templateSANS2] Initialize
+[templateSANS2] Initialize
+[templateSANS2] Initialize
+[templateSANS2] Initialize
+[templateSANS2] Initialize
+[templateSANS2] Initialize
+
+Finally [templateSANS2: 2]. Time: 4 [s] 
+Warning: 1815 events were removed in Component[9] detector=PSD_monitor()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+
+Finally [templateSANS2: 2]. Time: 4 [s] 
+Warning: 1928 events were removed in Component[9] detector=PSD_monitor()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+
+Finally [templateSANS2: 2]. Time: 4 [s] 
+Warning: 1925 events were removed in Component[9] detector=PSD_monitor()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+
+Finally [templateSANS2: 2]. Time: 4 [s] 
+Warning: 1944 events were removed in Component[9] detector=PSD_monitor()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+
+Finally [templateSANS2: 2]. Time: 4 [s] 
+Warning: 1877 events were removed in Component[9] detector=PSD_monitor()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+
+Finally [templateSANS2: 2]. Time: 4 [s] 
+Warning: 1850 events were removed in Component[9] detector=PSD_monitor()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+
+Finally [templateSANS2: 2]. Time: 4 [s] 
+Warning: 1886 events were removed in Component[9] detector=PSD_monitor()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+
+Finally [templateSANS2: 2]. Time: 4 [s] 
+Warning: 1935 events were removed in Component[9] detector=PSD_monitor()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+
+Save [templateSANS2]
+Detector: Sample_in_I=68.6298 Sample_in_ERR=0.0489451 Sample_in_N=1.96611e+06 "SamplePos.dat"
+Detector: detector_I=66.9349 detector_ERR=0.0152741 detector_N=1.95029e+07 "PSD.dat"
+Detector: detectorSANS_I=0.201794 detectorSANS_ERR=0.000596886 detectorSANS_N=385216 "SANS.dat"
+Detector: detectorDB_I=66.7331 detectorDB_ERR=0.0152624 detectorDB_N=1.91177e+07 "Direct.dat"
+Detector: Ldetector_I=66.9348 Ldetector_ERR=0.0152741 Ldetector_N=1.95028e+07 "Edet.dat"
+Detector: PSDrad_I=0.200444 PSDrad_ERR=0.000596636 PSDrad_N=379000 "psd2.dat"
+
+Finally [templateSANS2: 2]. Time: 4 [s] 
+Detector: PSDrad_I=448.133 PSDrad_ERR=1.33886 PSDrad_N=379000 "psd2_av.dat"
+Warning: 1788 events were removed in Component[9] detector=PSD_monitor()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+Detector: PSDrad_full_I=66.9335 PSDrad_full_ERR=0.0152741 PSDrad_full_N=1.94967e+07 "psd2_full.dat"
+Detector: PSDrad_full_I=654164 PSDrad_full_ERR=194.821 PSDrad_full_N=1.94967e+07 "psd2_av_full.dat"
+
+Finally [templateSANS2: 2]. Time: 4 [s] 
+Warning: 1862 events were removed in Component[9] detector=PSD_monitor()
+         (negative time, miss next components, rounding errors, Nan, Inf).
+[n-62-23-14:29318] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
+[n-62-23-14:29318] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/templateSANS2/templateSANS2.instr in dataset 2

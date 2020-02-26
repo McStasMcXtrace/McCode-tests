@@ -1,0 +1,165 @@
+McStas simulation description file for Test_single_magnetic_crystal.
+Date:    Tue Feb 25 22:16:23 2020
+Program: McStas 2.5 - Feb. 24, 2020
+
+begin instrument: Test_single_magnetic_crystal
+  File: 1/mccode
+  Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_single_magnetic_crystal/Test_single_magnetic_crystal.instr
+  Parameters:  L0(double) dL(double) OM(double) TT(double) PX(double) PY(double) PZ(double) MOS(double) QMIN(double) QMAX(double)
+  Trace_enabled: yes
+  Default_main: yes
+  Embedded_runtime: yes
+end instrument
+
+begin simulation: 1
+  Format: McCode with text headers
+  URL: http://www.mccode.org
+  Creator: McStas 2.5 - Feb. 24, 2020
+  Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_single_magnetic_crystal/Test_single_magnetic_crystal.instr
+  Ncount: 10000000
+  Trace: no
+  Gravitation: no
+  Seed: 1582692999
+  Directory: 1
+  Nodes: 10
+  Param: L0=4
+  Param: dL=3.91
+  Param: OM=0
+  Param: TT=0
+  Param: PX=0
+  Param: PY=1
+  Param: PZ=0
+  Param: MOS=100
+  Param: QMIN=0.1
+  Param: QMAX=5
+end simulation
+
+begin data
+  Date: Tue Feb 25 22:16:29 2020 (1582665389)
+  type: array_1d(100)
+  Source: Test_single_magnetic_crystal (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_single_magnetic_crystal/Test_single_magnetic_crystal.instr)
+  component: Lmon
+  position: 0 0 1
+  title: Wavelength monitor
+  Ncount: 10000000
+  filename: Lmon.dat
+  statistics: X0=4.00057; dX=2.25666;
+  signal: Min=0; Max=1.57182e-05; Mean=7.81948e-06;
+  values: 0.000781948 2.47274e-07 1e+07
+  xvar: L
+  yvar: (I,I_err)
+  xlabel: Wavelength [AA]
+  ylabel: Intensity
+  xlimits: -3.82 11.82
+  variables: L I I_err N
+end data
+
+begin data
+  Date: Tue Feb 25 22:16:29 2020 (1582665389)
+  type: array_2d(100, 100)
+  Source: Test_single_magnetic_crystal (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_single_magnetic_crystal/Test_single_magnetic_crystal.instr)
+  component: Divmon
+  position: 0 0 1.001
+  title: Divergence monitor
+  Ncount: 10000000
+  filename: Divmon.dat
+  statistics: X0=-4.58402e-05; dX=0.225999; Y0=7.32988e-05; dY=0.225949;
+  signal: Min=3.90883e-09; Max=2.41794e-07; Mean=7.569e-08;
+  values: 0.0007569 2.43282e-07 9.67963e+06
+  xvar: X
+  yvar: Y
+  xlabel: X divergence [deg]
+  ylabel: Y divergence [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -0.5 0.5 -0.5 0.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Tue Feb 25 22:16:32 2020 (1582665392)
+  type: array_2d(100, 100)
+  Source: Test_single_magnetic_crystal (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_single_magnetic_crystal/Test_single_magnetic_crystal.instr)
+  component: PSDmon
+  position: 0 0 1.002
+  title: PSD monitor
+  Ncount: 10000000
+  filename: PSDmon.dat
+  statistics: X0=-0.000160908; dX=0.288969; Y0=5.50091e-05; dY=0.288939;
+  signal: Min=0; Max=1.99294e-06; Mean=7.81948e-08;
+  values: 0.000781948 2.47274e-07 1e+07
+  xvar: X
+  yvar: Y
+  xlabel: X position [cm]
+  ylabel: Y position [cm]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -2.5 2.5 -2.5 2.5
+  variables: I I_err N
+end data
+
+begin data
+  Date: Tue Feb 25 22:16:32 2020 (1582665392)
+  type: array_2d(1000, 1000)
+  Source: Test_single_magnetic_crystal (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_single_magnetic_crystal/Test_single_magnetic_crystal.instr)
+  component: PSD4PImon
+  position: 0 0 2
+  title: 4PI PSD monitor
+  Ncount: 10000000
+  filename: PSD4PImon.dat
+  statistics: X0=0.325104; dX=65.9574; Y0=-0.497722; dY=39.6358;
+  signal: Min=0; Max=1.00244e-08; Mean=3.87653e-12;
+  values: 3.87653e-06 4.52324e-08 51281
+  xvar: Longitude
+  yvar: Lattitude
+  xlabel: Longitude [deg]
+  ylabel: Lattitude [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -180 180 -90 90
+  variables: I I_err N
+end data
+
+begin data
+  Date: Tue Feb 25 22:16:33 2020 (1582665393)
+  type: array_2d(1000, 1000)
+  Source: Test_single_magnetic_crystal (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_single_magnetic_crystal/Test_single_magnetic_crystal.instr)
+  component: PSD4PImon_spin
+  position: 0 0 2
+  title: 4PI PSD Monitor spin up (parallel to m=0,1,0).
+  Ncount: 10000000
+  filename: PSD4PImon_spin.up
+  statistics: X0=0.316163; dX=65.9382; Y0=-0.496438; dY=39.6381;
+  signal: Min=0; Max=1.00244e-08; Mean=3.87211e-12;
+  values: 3.87211e-06 4.5232e-08 51281
+  xvar: Longitude
+  yvar: Lattitude
+  xlabel: Longitude [deg]
+  ylabel: Lattitude [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -180 180 -90 90
+  variables: I I_err N
+end data
+
+begin data
+  Date: Tue Feb 25 22:16:34 2020 (1582665394)
+  type: array_2d(1000, 1000)
+  Source: Test_single_magnetic_crystal (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_single_magnetic_crystal/Test_single_magnetic_crystal.instr)
+  component: PSD4PImon_spin
+  position: 0 0 2
+  title: 4PI PSD Monitor spin down (antiparallel to m=0,1,0).
+  Ncount: 10000000
+  filename: PSD4PImon_spin.down
+  statistics: X0=8.15599; dX=80.6587; Y0=-1.62269; dY=37.5371;
+  signal: Min=0; Max=1.36567e-10; Mean=4.42099e-15;
+  values: 4.42099e-09 1.93808e-10 51281
+  xvar: Longitude
+  yvar: Lattitude
+  xlabel: Longitude [deg]
+  ylabel: Lattitude [deg]
+  zvar: I
+  zlabel: Signal per bin
+  xylimits: -180 180 -90 90
+  variables: I I_err N
+end data

@@ -1,0 +1,30 @@
+INFO: No output directory specified (--dir)
+INFO: Using directory: "ESS_BIFROST_shielding_20200225_202302"
+INFO: Regenerating c-file: ESS_BIFROST_shielding.c
+Info:    'Elliptic_guide_gravity_shieldinglogger' is a contributed component.
+Info:    'Guide_gravity_shieldinglogger' is a contributed component.
+Info:    'Shielding_logger' is a contributed component.
+Info:    'Shielding_logger_stop' is a contributed component.
+Info:    'Shielding_log_iterator_Ni_new' is a contributed component.
+Info:    'Shielding_log_iterator_stop' is a contributed component.
+Info:    'Shielding_log_iterator_Ti_new' is a contributed component.
+Info:    'Shielding_log_iterator_total' is a contributed component.
+Info:    'Shielding_calculator' is a contributed component.
+Info:    'Dose_calculator' is a contributed component.
+Info:    Defining conditional JUMP from iter_P1_start to arm_iter_P1_stop
+Info:    Defining conditional JUMP from a11i to arm_iter_P1_start
+Info:    Defining conditional JUMP from iter_P2_start to arm_iter_P2_stop
+Info:    Defining conditional JUMP from a12i to arm_iter_P2_start
+Info:    Defining conditional JUMP from iter_P3_start to arm_iter_P3_stop
+Info:    Defining conditional JUMP from a13i to arm_iter_P3_start
+CFLAGS=
+      INFO: Recompiling: ./ESS_BIFROST_shielding.out
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../sources/Virtual_output.comp: In function 'mcraytrace':
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../sources/Virtual_output.comp:119:39: error: '_particle' undeclared (first use in this function)
+   pp = Monitor_nD_Trace(&DEFS, &Vars, _particle);
+                                       ^~~~~~~~~
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../sources/Virtual_output.comp:119:39: note: each undeclared identifier is reported only once for each function it appears in
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../sources/Virtual_output.comp:119:8: error: too many arguments to function 'Monitor_nD_Trace'
+   pp = Monitor_nD_Trace(&DEFS, &Vars, _particle);
+        ^~~~~~~~~~~~~~~~
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../sources/Virtual_output.comp:1008:5: note: declared here
