@@ -2,14 +2,14 @@
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
  * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Vin_test/Vin_test.instr (Vin_test)
- * Date:       Tue Feb 25 21:11:56 2020
+ * Date:       Wed Feb 26 19:27:19 2020
  * File:       ./Vin_test.c
  * Compile:    cc -o Vin_test.out ./Vin_test.c 
  * CFLAGS=
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
+#define MCCODE_STRING "McStas 2.5 - Feb. 26, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
+#define MCCODE_STRING "McStas 2.5 - Feb. 26, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Feb. 24, 2020"
+#define MCCODE_DATE "Feb. 26, 2020"
 #endif
 
 #ifndef MCCODE_VERSION

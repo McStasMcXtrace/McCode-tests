@@ -1,25 +1,31 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "ESS_IN5_reprate_20200225_202334"
+INFO: Using directory: "ESS_IN5_reprate_20200226_183728"
 INFO: Regenerating c-file: ESS_IN5_reprate.c
 Warning: 'ESS_moderator_long' is an obsolete component (not maintained).
 CFLAGS=
 INFO: Recompiling: ./ESS_IN5_reprate.out
 INFO: ===
-[n-62-23-14:32231] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:32231] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582658627.796357] [n-62-23-14:32230:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3276.29
-[1582658627.798033] [n-62-23-14:32230:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582658627.798037] [n-62-23-14:32230:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-31-16:207323] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:207323] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582658627.800700] [n-62-23-14:32230:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582658627.800703] [n-62-23-14:32230:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
 begin instrument: ESS_IN5_reprate
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr
   Parameters:  Lmin(double) Lmax(double) lambda0(double) Pulse_width(double) Num_pulses(double) GUI_start(double) FO1_DIST(double) L_ballistic_begin(double) L_ballistic_end(double) Length(double) SAMPLE_DIST(double) DETECTOR_DIST(double) GUI_h(double) GUI_w(double) GUI_GAP(double) H1(double) W1(double) H2(double) W2(double) H3(double) W3(double) H4(double) W4(double) H_chop(double) W_chop(double) H_end(double) W_end(double) ALPHA(double) M(double) F_slow1(double) F_slow2(double) F_fast1(double) F_fast2(double) N_fast(double) SLOW1_THETA(double) FO3(double) THETA_fast1(double) FAST_THETA(double) Gamma(double) Etun(double) V_HOLE(double) FRAC_QUASIEL(double) FRAC_TUNNEL(double) TT(double) RES_DE(double) port(double) cold(double)
   Trace_enabled: yes
@@ -29,12 +35,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1582690857
+  Seed: 1582945984
   Directory: .
   Param: Lmin=4.9
   Param: Lmax=5.1

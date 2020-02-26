@@ -1,6 +1,6 @@
 McStas simulation description file for Samples_Incoherent.
-Date:    Tue Feb 25 21:31:08 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:38:35 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: Samples_Incoherent
   File: 2/mccode
@@ -14,14 +14,14 @@ end instrument
 begin simulation: 2
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582680099
+  Seed: 1582960248
   Directory: 2
-  Nodes: 10
+  Nodes: 4
   Param: L_min=0.5
   Param: L_max=7
   Param: SAMPLE=2
@@ -35,7 +35,7 @@ begin simulation: 2
 end simulation
 
 begin data
-  Date: Tue Feb 25 21:31:14 2020 (1582662674)
+  Date: Wed Feb 26 19:38:38 2020 (1582742318)
   type: array_2d(128, 128)
   Source: Samples_Incoherent (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr)
   component: Dirbeam
@@ -57,7 +57,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:31:14 2020 (1582662674)
+  Date: Wed Feb 26 19:38:38 2020 (1582742318)
   type: array_2d(2000, 20)
   Source: Samples_Incoherent (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr)
   component: Tof_Sphere_4pi
@@ -79,7 +79,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:31:14 2020 (1582662674)
+  Date: Wed Feb 26 19:38:38 2020 (1582742318)
   type: array_2d(180, 180)
   Source: Samples_Incoherent (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr)
   component: PSD_Sphere_4pi
@@ -87,9 +87,9 @@ begin data
   title: 4PI PSD monitor
   Ncount: 10000000
   filename: PSD.dat
-  statistics: X0=-0.0639592; dX=104.784; Y0=0.499152; dY=39.2334;
-  signal: Min=0; Max=74.7167; Mean=38.0058;
-  values: 1.23139e+06 568.615 4.97923e+06
+  statistics: X0=0.0126518; dX=104.788; Y0=0.513882; dY=39.2185;
+  signal: Min=0; Max=73.8752; Mean=37.9943;
+  values: 1.23102e+06 568.508 4.97857e+06
   xvar: Longitude
   yvar: Lattitude
   xlabel: Longitude [deg]
@@ -101,7 +101,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:31:14 2020 (1582662674)
+  Date: Wed Feb 26 19:38:39 2020 (1582742319)
   type: array_2d(180, 180)
   Source: Samples_Incoherent (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr)
   component: Sphere_4pi
@@ -109,9 +109,9 @@ begin data
   title: 4PI PSD monitor
   Ncount: 10000000
   filename: Events.dat
-  statistics: X0=-0.0566084; dX=104.139; Y0=0.496349; dY=39.2559;
-  signal: Min=0; Max=306; Mean=153.68;
-  values: 4.97923e+06 2231.42 4.97923e+06
+  statistics: X0=0.0039674; dX=104.145; Y0=0.508904; dY=39.2441;
+  signal: Min=0; Max=304; Mean=153.66;
+  values: 4.97857e+06 2231.27 4.97857e+06
   xvar: Longitude
   yvar: Lattitude
   xlabel: Longitude [deg]

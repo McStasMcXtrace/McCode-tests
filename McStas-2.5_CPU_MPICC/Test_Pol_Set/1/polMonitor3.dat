@@ -1,14 +1,14 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Feb. 24, 2020
+# Creator: McStas 2.5 - Feb. 26, 2020
 # Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Set/Test_Pol_Set.instr
-# Ncount: 1000000
+# Ncount: 2500000
 # Trace: no
 # Gravitation: no
-# Seed: 1582689601
+# Seed: 1582964895
 # Directory: 1
-# Nodes: 10
-# Date: Tue Feb 25 21:59:48 2020 (1582664388)
+# Nodes: 4
+# Date: Wed Feb 26 19:59:20 2020 (1582743560)
 # type: array_0d
 # Source: Test_Pol_Set (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Set/Test_Pol_Set.instr)
 # component: polMonitor3
@@ -17,7 +17,7 @@
 # Ncount: 10000000
 # statistics: None
 # signal: None
-# values: -3.33333 3.33333e-07 1e+07
+# values: -1.33333 1.33333e-07 1e+07
 # xylimits: 0 0 0 0 0 0
 # variables: I I_err N
--3.33333 3.33333e-07 1e+07
+-1.33333 1.33333e-07 1e+07

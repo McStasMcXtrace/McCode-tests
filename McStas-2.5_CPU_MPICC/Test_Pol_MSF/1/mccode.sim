@@ -1,6 +1,6 @@
 McStas simulation description file for Test_Pol_MSF.
-Date:    Tue Feb 25 21:59:39 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:59:12 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: Test_Pol_MSF
   File: 1/mccode
@@ -14,18 +14,18 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_MSF/Test_Pol_MSF.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582689386
+  Seed: 1582964805
   Directory: 1
-  Nodes: 10
+  Nodes: 4
 end simulation
 
 begin data
-  Date: Tue Feb 25 21:59:41 2020 (1582664381)
+  Date: Wed Feb 26 19:59:14 2020 (1582743554)
   type: array_2d(100, 21)
   Source: Test_Pol_MSF (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_MSF/Test_Pol_MSF.instr)
   component: pollambdaMonitor1x
@@ -33,9 +33,9 @@ begin data
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: pollambdaMon1x.data
-  statistics: X0=5.00029; dX=2.82973; Y0=0.952381; dY=2.10734e-08;
-  signal: Min=0; Max=0.00315574; Mean=0.000146106;
-  values: 0.306823 9.70262e-05 1e+07
+  statistics: X0=5.00016; dX=2.82894; Y0=0.952381; dY=0;
+  signal: Min=0; Max=0.00315656; Mean=0.000146106;
+  values: 0.306823 9.70263e-05 1e+07
   xvar: Wavelength
   yvar: Polarisation
   xlabel: Wavelength [AA]
@@ -47,7 +47,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:59:41 2020 (1582664381)
+  Date: Wed Feb 26 19:59:14 2020 (1582743554)
   type: array_2d(100, 21)
   Source: Test_Pol_MSF (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_MSF/Test_Pol_MSF.instr)
   component: pollambdaMonitor1y
@@ -55,9 +55,9 @@ begin data
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: pollambdaMon1y.data
-  statistics: X0=5.00029; dX=2.82973; Y0=0; dY=0;
-  signal: Min=0; Max=0.00315574; Mean=0.000146106;
-  values: 0.306823 9.70262e-05 1e+07
+  statistics: X0=5.00016; dX=2.82894; Y0=0; dY=0;
+  signal: Min=0; Max=0.00315656; Mean=0.000146106;
+  values: 0.306823 9.70263e-05 1e+07
   xvar: Wavelength
   yvar: Polarisation
   xlabel: Wavelength [AA]
@@ -69,7 +69,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:59:41 2020 (1582664381)
+  Date: Wed Feb 26 19:59:14 2020 (1582743554)
   type: array_2d(100, 21)
   Source: Test_Pol_MSF (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_MSF/Test_Pol_MSF.instr)
   component: pollambdaMonitor1z
@@ -77,9 +77,9 @@ begin data
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: pollambdaMon1z.data
-  statistics: X0=5.00029; dX=2.82973; Y0=0; dY=0;
-  signal: Min=0; Max=0.00315574; Mean=0.000146106;
-  values: 0.306823 9.70262e-05 1e+07
+  statistics: X0=5.00016; dX=2.82894; Y0=0; dY=0;
+  signal: Min=0; Max=0.00315656; Mean=0.000146106;
+  values: 0.306823 9.70263e-05 1e+07
   xvar: Wavelength
   yvar: Polarisation
   xlabel: Wavelength [AA]
@@ -91,7 +91,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:59:41 2020 (1582664381)
+  Date: Wed Feb 26 19:59:14 2020 (1582743554)
   type: array_2d(100, 21)
   Source: Test_Pol_MSF (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_MSF/Test_Pol_MSF.instr)
   component: pollambdaMonitor2x
@@ -99,9 +99,9 @@ begin data
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: pollambdaMon2x.data
-  statistics: X0=5.00037; dX=2.82912; Y0=-0.0189315; dY=0.693647;
-  signal: Min=0; Max=0.00140626; Mean=6.50547e-05;
-  values: 0.136615 6.48038e-05 4.44422e+06
+  statistics: X0=5.00089; dX=2.82957; Y0=-0.0187242; dY=0.693719;
+  signal: Min=0; Max=0.00140673; Mean=6.50982e-05;
+  values: 0.136706 6.48255e-05 4.44718e+06
   xvar: Wavelength
   yvar: Polarisation
   xlabel: Wavelength [AA]
@@ -113,7 +113,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:59:41 2020 (1582664381)
+  Date: Wed Feb 26 19:59:14 2020 (1582743554)
   type: array_2d(100, 21)
   Source: Test_Pol_MSF (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_MSF/Test_Pol_MSF.instr)
   component: pollambdaMonitor2y
@@ -121,9 +121,9 @@ begin data
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: pollambdaMon2y.data
-  statistics: X0=5.00037; dX=2.82912; Y0=0; dY=0;
-  signal: Min=0; Max=0.00140626; Mean=6.50547e-05;
-  values: 0.136615 6.48038e-05 4.44422e+06
+  statistics: X0=5.00089; dX=2.82957; Y0=0; dY=0;
+  signal: Min=0; Max=0.00140881; Mean=6.50982e-05;
+  values: 0.136706 6.48255e-05 4.44718e+06
   xvar: Wavelength
   yvar: Polarisation
   xlabel: Wavelength [AA]
@@ -135,7 +135,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:59:41 2020 (1582664381)
+  Date: Wed Feb 26 19:59:14 2020 (1582743554)
   type: array_2d(100, 21)
   Source: Test_Pol_MSF (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_MSF/Test_Pol_MSF.instr)
   component: pollambdaMonitor2z
@@ -143,9 +143,9 @@ begin data
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: pollambdaMon2z.data
-  statistics: X0=5.00037; dX=2.82912; Y0=-8.89379e-05; dY=0.706866;
-  signal: Min=0; Max=0.00140613; Mean=6.50547e-05;
-  values: 0.136615 6.48038e-05 4.44422e+06
+  statistics: X0=5.00089; dX=2.82957; Y0=0.000231793; dY=0.706761;
+  signal: Min=0; Max=0.00140881; Mean=6.50982e-05;
+  values: 0.136706 6.48255e-05 4.44718e+06
   xvar: Wavelength
   yvar: Polarisation
   xlabel: Wavelength [AA]
@@ -157,7 +157,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:59:41 2020 (1582664381)
+  Date: Wed Feb 26 19:59:14 2020 (1582743554)
   type: array_1d(100)
   Source: Test_Pol_MSF (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_MSF/Test_Pol_MSF.instr)
   component: mpollambdaMonitor2x
@@ -165,9 +165,9 @@ begin data
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: mpollambdaMon2x.data
-  statistics: X0=4.90102; dX=0;
-  signal: Min=-9.99381; Max=9.95624; Mean=-0.196025;
-  values: -19.6025 0.00602971 4.44422e+06
+  statistics: X0=4.90031; dX=0;
+  signal: Min=-3.99751; Max=3.98246; Mean=-0.0783819;
+  values: -7.83819 0.00241248 4.44718e+06
   xvar: Wavelength
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -177,7 +177,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:59:41 2020 (1582664381)
+  Date: Wed Feb 26 19:59:14 2020 (1582743554)
   type: array_1d(100)
   Source: Test_Pol_MSF (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_MSF/Test_Pol_MSF.instr)
   component: mpollambdaMonitor2y
@@ -187,7 +187,7 @@ begin data
   filename: mpollambdaMon2y.data
   statistics: X0=0; dX=0;
   signal: Min=0; Max=0; Mean=0;
-  values: 0 0 4.44422e+06
+  values: 0 0 4.44718e+06
   xvar: Wavelength
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -197,7 +197,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:59:41 2020 (1582664381)
+  Date: Wed Feb 26 19:59:14 2020 (1582743554)
   type: array_1d(100)
   Source: Test_Pol_MSF (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_MSF/Test_Pol_MSF.instr)
   component: mpollambdaMonitor2z
@@ -205,9 +205,9 @@ begin data
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: mpollambdaMon2z.data
-  statistics: X0=56486.2; dX=0;
-  signal: Min=-9.99361; Max=9.99395; Mean=0.000281034;
-  values: 0.0281034 0.00591336 4.44422e+06
+  statistics: X0=68669.9; dX=0;
+  signal: Min=-3.99747; Max=3.9976; Mean=9.24683e-05;
+  values: 0.00924683 0.00236391 4.44718e+06
   xvar: Wavelength
   yvar: (I,I_err)
   xlabel: Wavelength [AA]

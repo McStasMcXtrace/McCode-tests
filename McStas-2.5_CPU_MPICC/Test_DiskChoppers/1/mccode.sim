@@ -1,6 +1,6 @@
 McStas simulation description file for Test_DiskChoppers.
-Date:    Tue Feb 25 21:36:35 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:42:46 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: Test_DiskChoppers
   File: 1/mccode
@@ -14,14 +14,14 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582682347
+  Seed: 1582961376
   Directory: 1
-  Nodes: 10
+  Nodes: 4
   Param: chopper=0
   Param: lambda=10
   Param: dlambda=9.9
@@ -29,7 +29,7 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Tue Feb 25 21:36:37 2020 (1582662997)
+  Date: Wed Feb 26 19:42:47 2020 (1582742567)
   type: array_2d(128, 20)
   Source: Test_DiskChoppers (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr)
   component: Tofl
@@ -37,9 +37,9 @@ begin data
   title: TOF-wavelength monitor
   Ncount: 10000000
   filename: TOFlambda.dat
-  statistics: X0=511959; dX=271514; Y0=9.88417; dY=5.73991;
-  signal: Min=0; Max=8.10406e-06; Mean=1.0841e-06;
-  values: 0.00277529 5.44717e-06 259583
+  statistics: X0=511913; dX=271878; Y0=9.90072; dY=5.73827;
+  signal: Min=0; Max=8.12545e-06; Mean=1.08265e-06;
+  values: 0.00277158 5.44353e-06 259236
   xvar: Time-of-flight
   yvar: Wavelength
   xlabel: Time-of-flight [\gms]
@@ -51,7 +51,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:36:37 2020 (1582662997)
+  Date: Wed Feb 26 19:42:47 2020 (1582742567)
   type: array_2d(90, 90)
   Source: Test_DiskChoppers (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_DiskChoppers/Test_DiskChoppers.instr)
   component: psd_monitor
@@ -59,9 +59,9 @@ begin data
   title: PSD monitor
   Ncount: 10000000
   filename: PSD.dat
-  statistics: X0=0.0002317; dX=1.29776; Y0=-0.0131142; dY=3.45463;
-  signal: Min=0; Max=6.94937e-07; Mean=3.64978e-07;
-  values: 0.00295632 5.62202e-06 276515
+  statistics: X0=0.000774425; dX=1.29681; Y0=-0.00509667; dY=3.45504;
+  signal: Min=0; Max=7.0561e-07; Mean=3.64943e-07;
+  values: 0.00295604 5.62175e-06 276489
   xvar: X
   yvar: Y
   xlabel: X position [cm]

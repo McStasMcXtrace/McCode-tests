@@ -1,5 +1,5 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "Test_Sample_nxs_diffraction_20200225_210711"
+INFO: Using directory: "Test_Sample_nxs_diffraction_20200226_192205"
 INFO: Regenerating c-file: Test_Sample_nxs_diffraction.c
 Info:    'ISIS_moderator' is a contributed component.
 Info:    'Sample_nxs' is a contributed component.
@@ -9,21 +9,27 @@ Warning: Component moderator=ISIS_moderator(string Face) definition parameter
 CFLAGS= -I@MCCODE_LIB@/libs/libnxs/ @MCCODE_LIB@/libs/libnxs/libnxs.a
 INFO: Recompiling: ./Test_Sample_nxs_diffraction.out
 INFO: ===
-[n-62-23-14:08327] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:08327] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582661235.273098] [n-62-23-14:8326 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3287.23
-[1582661235.274728] [n-62-23-14:8326 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661235.274732] [n-62-23-14:8326 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-31-16:213329] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:213329] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582661235.277476] [n-62-23-14:8326 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661235.277479] [n-62-23-14:8326 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
 begin instrument: Test_Sample_nxs_diffraction
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr
   Parameters:  lambda1(double) lambda2(double) sample_detector_distance(double) moderator_pinhole_distance(double) pinhole_sample_distance(double) sample_x(double) sample_file(string) moderator_face(string)
   Trace_enabled: yes
@@ -33,12 +39,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sample_nxs_diffraction/Test_Sample_nxs_diffraction.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1582669561
+  Seed: 1582954658
   Directory: .
   Param: lambda1=1.5
   Param: lambda2=1.51

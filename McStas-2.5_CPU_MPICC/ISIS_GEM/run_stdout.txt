@@ -2,90 +2,28 @@ INFO: Using directory: "1"
 INFO: Using existing c-file: ./ISIS_GEM.c
 INFO: Using existing binary: ./ISIS_GEM.out
 INFO: ===
-[n-62-23-14:16331] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:16331] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:16331] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582662589.807450] [n-62-23-14:16336:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.44
-[1582662589.812700] [n-62-23-14:16336:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662589.812724] [n-62-23-14:16336:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: Using system default number of mpirun -np processes
+[n-62-31-16:217483] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:217483] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:217483] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582662589.815578] [n-62-23-14:16336:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662589.815595] [n-62-23-14:16336:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662589.819961] [n-62-23-14:16337:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.12
-[1582662589.821680] [n-62-23-14:16337:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662589.821697] [n-62-23-14:16337:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662589.824508] [n-62-23-14:16337:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662589.824525] [n-62-23-14:16337:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662589.829988] [n-62-23-14:16342:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.61
-[1582662589.830022] [n-62-23-14:16338:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.61
-[1582662589.831848] [n-62-23-14:16338:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662589.831866] [n-62-23-14:16338:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662589.833252] [n-62-23-14:16339:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.61
-[1582662589.833499] [n-62-23-14:16340:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.61
-[1582662589.834077] [n-62-23-14:16342:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662589.834094] [n-62-23-14:16342:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662589.834174] [n-62-23-14:16338:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662589.834192] [n-62-23-14:16338:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662589.835178] [n-62-23-14:16340:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662589.835193] [n-62-23-14:16340:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662589.835307] [n-62-23-14:16339:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662589.835323] [n-62-23-14:16339:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662589.837119] [n-62-23-14:16342:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662589.837134] [n-62-23-14:16342:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662589.837209] [n-62-23-14:16340:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662589.837266] [n-62-23-14:16340:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662589.839075] [n-62-23-14:16339:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662589.839092] [n-62-23-14:16339:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662589.841329] [n-62-23-14:16343:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.29
-[1582662589.843007] [n-62-23-14:16344:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.29
-[1582662589.845264] [n-62-23-14:16343:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662589.845281] [n-62-23-14:16343:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662589.845882] [n-62-23-14:16344:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662589.845898] [n-62-23-14:16344:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662589.847903] [n-62-23-14:16343:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662589.847920] [n-62-23-14:16343:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662589.847974] [n-62-23-14:16344:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662589.847988] [n-62-23-14:16344:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662589.848505] [n-62-23-14:16341:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.61
-[1582662589.849265] [n-62-23-14:16345:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.61
-[1582662589.850374] [n-62-23-14:16341:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662589.850390] [n-62-23-14:16341:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662589.851103] [n-62-23-14:16345:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662589.851119] [n-62-23-14:16345:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662589.852471] [n-62-23-14:16341:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662589.852488] [n-62-23-14:16341:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662589.853245] [n-62-23-14:16345:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662589.853261] [n-62-23-14:16345:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'ISIS_GEM' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
-**********************************************************************
-****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
-****   Please check to see if your files are up-to-date           ****
-****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
-**********************************************************************
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
 
-Face == gem 
-**********************************************************************
-****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
-****   Please check to see if your files are up-to-date           ****
-****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
-**********************************************************************
-
-Face == gem 
-[ISIS_GEM] Initialize
-[ISIS_GEM] Initialize
-[ISIS_GEM] Initialize
-**********************************************************************
-****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
-****   Please check to see if your files are up-to-date           ****
-****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
-**********************************************************************
-
-Face == gem 
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+Simulation 'ISIS_GEM' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr): running on 4 nodes (master is 'n-62-31-16', MPI version 3.1).
 [ISIS_GEM] Initialize
 [ISIS_GEM] Initialize
 [ISIS_GEM] Initialize
@@ -118,34 +56,6 @@ Face == gem
 
 Face == gem 
 [ISIS_GEM] Initialize
-[ISIS_GEM] Initialize
-**********************************************************************
-****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
-****   Please check to see if your files are up-to-date           ****
-****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
-**********************************************************************
-
-Face == gem 
-[ISIS_GEM] Initialize
-**********************************************************************
-****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
-****   Please check to see if your files are up-to-date           ****
-****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
-**********************************************************************
-
-Face == gem 
-**********************************************************************
-****   This is ISIS_moderator.comp version 2.0 (25/8/05)          ****
-****   Please check to see if your files are up-to-date           ****
-****   http://www.isis.rl.ac.uk/Computing/Software/MC/index.htm   ****
-**********************************************************************
-
-Face == gem 
-[ISIS_GEM] Initialize
-Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.gem
-Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.gem
-Energy == 4.63713 8179.9
-Energy == 4.63713 8179.9
 Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.gem
 Energy == 4.63713 8179.9
 Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.gem
@@ -154,20 +64,6 @@ Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/.
 Energy == 4.63713 8179.9
 Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.gem
 Energy == 4.63713 8179.9
-Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.gem
-Energy == 4.63713 8179.9
-Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.gem
-Energy == 4.63713 8179.9
-Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.gem
-Energy == 4.63713 8179.9
-Opening -- /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/ISIS_tables/TS1.gem
-Energy == 4.63713 8179.9
-nEnergy == 103
-nEnergy == 103
-nEnergy == 103
-nEnergy == 103
-nEnergy == 103
-nEnergy == 103
 nEnergy == 103
 nEnergy == 103
 nEnergy == 103
@@ -180,92 +76,45 @@ Viewport == 0.008 0.04 Moderator size == (0.09 * 0.084) m^2
 Dist == 17 (metres) 
 Viewport Solid angle == 2.6159e-05 str
 Solid angle used == 8.37089e-05 str
-Totals:: 0.000148369 103 181 
-Totals:: 0.000148369 103 181 
-Viewport == 0.008 0.04 Moderator size == (0.09 * 0.084) m^2 
-Viewport == 0.008 0.04 Moderator size == (0.09 * 0.084) m^2 
-Dist == 17 (metres) 
-Viewport == 0.008 0.04 Moderator size == (0.09 * 0.084) m^2 
-Dist == 17 (metres) 
-Viewport Solid angle == 2.6159e-05 str
-Solid angle used == 8.37089e-05 str
-Viewport Solid angle == 2.6159e-05 str
-Solid angle used == 8.37089e-05 str
-Dist == 17 (metres) 
-Viewport Solid angle == 2.6159e-05 str
-Solid angle used == 8.37089e-05 str
-Viewport == 0.008 0.04 Moderator size == (0.09 * 0.084) m^2 
-Dist == 17 (metres) 
-Viewport Solid angle == 2.6159e-05 str
-Solid angle used == 8.37089e-05 str
-Totals:: 0.000148369 103 181 
-Totals:: 0.000148369 103 181 
-Totals:: 0.000148369 103 181 
-Totals:: 0.000148369 103 181 
 Viewport == 0.008 0.04 Moderator size == (0.09 * 0.084) m^2 
 Dist == 17 (metres) 
 Viewport Solid angle == 2.6159e-05 str
 Solid angle used == 8.37089e-05 str
 Viewport == 0.008 0.04 Moderator size == (0.09 * 0.084) m^2 
-Dist == 17 (metres) 
-Viewport Solid angle == 2.6159e-05 str
-Solid angle used == 8.37089e-05 str
-Totals:: 0.000148369 103 181 
-Viewport == 0.008 0.04 Moderator size == (0.09 * 0.084) m^2 
-Totals:: 0.000148369 103 181 
-Viewport == 0.008 0.04 Moderator size == (0.09 * 0.084) m^2 
-Dist == 17 (metres) 
-Viewport Solid angle == 2.6159e-05 str
-Solid angle used == 8.37089e-05 str
 Dist == 17 (metres) 
 Viewport Solid angle == 2.6159e-05 str
 Solid angle used == 8.37089e-05 str
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Y2O3.laz' (Table_Read_Offset)
 Totals:: 0.000148369 103 181 
+Totals:: 0.000148369 103 181 
 Table from file 'Y2O3.laz' (block 1) is 871 x 18 (x=2:21), constant step. interpolation: linear
   '# TITLE *-Y2O3-[IA3-] Baldinozzi, G.;Berar, J.F.;Calvarin, G.[1998];# CELL  ...'
 PowderN: Sample: Reading 871 rows from Y2O3.laz
+Totals:: 0.000148369 103 181 
 PowderN: Sample: Read 871 reflections from file 'Y2O3.laz'
 PowderN: Sample: Vc=1192.3 [Angs] sigma_abs=40.96 [barn] sigma_inc=4.832 [barn] reflections=Y2O3.laz
 Monitor_nD: monzns is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
 Totals:: 0.000148369 103 181 
-[n-62-23-14:16331] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-14:16331] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:217483] 3 more processes have sent help message help-mpi-btl-openib.txt / ib port not selected
+[n-62-31-16:217483] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:217483] 3 more processes have sent help message help-mpi-btl-openib.txt / error in device init
 
+Trace ETA 16 [s] % 66 
+Trace ETA 16 [s] % 66 
+Trace ETA 16 [s] % 66 
+Trace ETA 16 [s] % 66 70 70 70 70 80 80 80 80 90 90 90 90 
+Finally [ISIS_GEM: 1]. Time: 16 [s] 
 
-Trace ETA 22 [s] % 49 
-Trace ETA 19 [s] % 57 
-Trace ETA 20 [s] % 53 
-Trace ETA 21 [s] % 52 Trace ETA 20 [s] % 54 
-Trace ETA 22 [s] % 48 
-Trace ETA 21 [s] % 51 
-
-Trace ETA 21 [s] % 52 
-Trace ETA 19 [s] % 55 Trace ETA 18 [s] % 59 60 50 50 60 60 60 60 60 60 60 70 60 60 70 70 70 70 70 80 70 70 70 70 80 80 80 80 80 90 80 80 80 80 90 90 90 90 90 90 90 90 90 
-Finally [ISIS_GEM: 1]. Time: 19 [s] 
-
-Finally [ISIS_GEM: 1]. Time: 20 [s] 
-
-Finally [ISIS_GEM: 1]. Time: 20 [s] 
-
-Finally [ISIS_GEM: 1]. Time: 20 [s] 
-
-Finally [ISIS_GEM: 1]. Time: 20 [s] 
-
-Finally [ISIS_GEM: 1]. Time: 20 [s] 
+Finally [ISIS_GEM: 1]. Time: 16 [s] 
 
 Save [ISIS_GEM]
 
-Finally [ISIS_GEM: 1]. Time: 20 [s] 
+Finally [ISIS_GEM: 1]. Time: 16 [s] 
+Detector: monzns_I=52.6187 monzns_ERR=0.0633423 monzns_N=6.35688e+06 "monzns_1582742261.A_t"
 
-Finally [ISIS_GEM: 1]. Time: 20 [s] 
-Detector: monzns_I=52.6441 monzns_ERR=0.0633419 monzns_N=6.35718e+06 "monzns_1582662590.A_t"
-
-Finally [ISIS_GEM: 1]. Time: 20 [s] 
-
-Finally [ISIS_GEM: 1]. Time: 20 [s] 
+Finally [ISIS_GEM: 1]. Time: 16 [s] 
 PowderN: Sample: Info: you may highly improve the computation efficiency by using
-    SPLIT 630 COMPONENT Sample=PowderN(...)
+    SPLIT 631 COMPONENT Sample=PowderN(...)
   in the instrument description /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr.
 INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_GEM/ISIS_GEM.instr in dataset 1

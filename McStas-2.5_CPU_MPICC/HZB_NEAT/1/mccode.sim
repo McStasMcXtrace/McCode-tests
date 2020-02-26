@@ -1,6 +1,6 @@
 McStas simulation description file for HZB_NEAT.
-Date:    Tue Feb 25 21:15:01 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:30:22 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: HZB_NEAT
   File: 1/mccode
@@ -14,14 +14,14 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_NEAT/HZB_NEAT.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582673495
+  Seed: 1582957581
   Directory: 1
-  Nodes: 10
+  Nodes: 4
   Param: lambda=6
   Param: dlambda=0.05
   Param: rpm=10000
@@ -30,17 +30,17 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Tue Feb 25 21:15:28 2020 (1582661728)
+  Date: Wed Feb 26 19:30:35 2020 (1582741835)
   type: array_2d(20, 20)
   Source: HZB_NEAT (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_NEAT/HZB_NEAT.instr)
   component: Guide_PSD
   position: 0.217608 0 36.0007
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: Guide_PSD_1582661701.y_x
-  statistics: X0=2.45317e-05; dX=0.0158727; Y0=-0.000212285; dY=0.00863968;
-  signal: Min=174267; Max=229760; Mean=198674;
-  values: 7.94696e+07 158185 1.41912e+06
+  filename: Guide_PSD_1582741822.y_x
+  statistics: X0=-8.80415e-06; dX=0.01585; Y0=-0.00021079; dY=0.00864793;
+  signal: Min=170624; Max=223869; Mean=198516;
+  values: 7.94065e+07 158096 1.41925e+06
   xvar: y
   yvar: x
   xlabel: y [m]
@@ -52,17 +52,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:15:28 2020 (1582661728)
+  Date: Wed Feb 26 19:30:35 2020 (1582741835)
   type: array_1d(20)
   Source: HZB_NEAT (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_NEAT/HZB_NEAT.instr)
   component: Guide_Lambda
   position: 0.217609 0 36.0008
   title: Wavelength [Angs] monitor
   Ncount: 10000000
-  filename: Guide_Lambda_1582661701.L
-  statistics: X0=5.99978; dX=0.0288649;
-  signal: Min=3.87408e+06; Max=4.05756e+06; Mean=3.97335e+06;
-  values: 7.94669e+07 158182 1.41902e+06
+  filename: Guide_Lambda_1582741822.L
+  statistics: X0=5.9997; dX=0.0288096;
+  signal: Min=3.83952e+06; Max=4.06597e+06; Mean=3.97018e+06;
+  values: 7.94036e+07 158093 1.41915e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
@@ -72,17 +72,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:15:28 2020 (1582661728)
+  Date: Wed Feb 26 19:30:35 2020 (1582741835)
   type: array_2d(20, 20)
   Source: HZB_NEAT (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_NEAT/HZB_NEAT.instr)
   component: Guide2_PSD
   position: 0.370822 0 47.97
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: Guide2_PSD_1582661701.x_y
-  statistics: X0=-3.27162e-05; dX=0.00430634; Y0=-5.26364e-05; dY=0.0158963;
-  signal: Min=0; Max=27352; Mean=12585.8;
-  values: 5.03433e+06 10312.4 1.18119e+06
+  filename: Guide2_PSD_1582741822.x_y
+  statistics: X0=-3.35272e-05; dX=0.004309; Y0=9.52842e-06; dY=0.0158807;
+  signal: Min=0; Max=26977.6; Mean=12567.1;
+  values: 5.02683e+06 10302.5 1.18138e+06
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -94,17 +94,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:15:28 2020 (1582661728)
+  Date: Wed Feb 26 19:30:35 2020 (1582741835)
   type: array_1d(20)
   Source: HZB_NEAT (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_NEAT/HZB_NEAT.instr)
   component: Guide2_Lambda
   position: 0.370823 0 47.9701
   title: Wavelength [Angs] monitor
   Ncount: 10000000
-  filename: Guide2_Lambda_1582661701.L
-  statistics: X0=5.99977; dX=0.0288636;
-  signal: Min=244779; Max=257087; Mean=251712;
-  values: 5.03424e+06 10312.3 1.18114e+06
+  filename: Guide2_Lambda_1582741822.L
+  statistics: X0=5.99971; dX=0.0288098;
+  signal: Min=243175; Max=257167; Mean=251338;
+  values: 5.02675e+06 10302.4 1.18133e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
@@ -114,17 +114,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:15:28 2020 (1582661728)
+  Date: Wed Feb 26 19:30:35 2020 (1582741835)
   type: array_2d(20, 20)
   Source: HZB_NEAT (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_NEAT/HZB_NEAT.instr)
   component: Guide2_dXY
   position: 0.370825 0 47.9702
   title:  Intensity Divergence Divergence Monitor (Square) per bin
   Ncount: 10000000
-  filename: Guide2_dXY_1582661701.hd_vd
-  statistics: X0=-0.000970875; dX=0.695074; Y0=-0.00057475; dY=0.397199;
-  signal: Min=0; Max=468715; Mean=12585.5;
-  values: 5.03421e+06 10312.3 1.18113e+06
+  filename: Guide2_dXY_1582741822.hd_vd
+  statistics: X0=-0.000378633; dX=0.695957; Y0=3.85216e-05; dY=0.398153;
+  signal: Min=0; Max=461385; Mean=12566.9;
+  values: 5.02675e+06 10302.4 1.18131e+06
   xvar: Hor.
   yvar: Vert.
   xlabel: Hor. Divergence [deg]
@@ -136,37 +136,37 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:15:28 2020 (1582661728)
+  Date: Wed Feb 26 19:30:35 2020 (1582741835)
   type: array_1d(20)
   Source: HZB_NEAT (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_NEAT/HZB_NEAT.instr)
   component: Guide_time
   position: 0.370978 0 47.9822
   title: TOF [s] monitor
   Ncount: 10000000
-  filename: Guide_time_1582661701.t
-  statistics: X0=0.0181635; dX=4.35032e-05;
-  signal: Min=6020.45; Max=176830; Mean=109989;
-  values: 2.19978e+06 6816.06 515947
+  filename: Guide_time_1582741822.t
+  statistics: X0=0.0181632; dX=4.33027e-05;
+  signal: Min=5328.26; Max=179034; Mean=109890;
+  values: 2.1978e+06 6810.89 516420
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.018058 0.0182694
+  xlimits: 0.0180567 0.0182694
   variables: t I I_err N
 end data
 
 begin data
-  Date: Tue Feb 25 21:15:28 2020 (1582661728)
+  Date: Wed Feb 26 19:30:35 2020 (1582741835)
   type: array_2d(300, 256)
   Source: HZB_NEAT (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_NEAT/HZB_NEAT.instr)
   component: Ideal_Det
   position: 0.400516 0 50.2897
   title:  Intensity Angle Time_Of_Flight Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: Ideal_Det_1582661709.A_t
-  statistics: X0=91.1747; dX=24.6076; Y0=0.025167; dY=0.000862654;
-  signal: Min=0; Max=2.58816; Mean=0.0802261;
-  values: 6161.36 16.8451 426579
+  filename: Ideal_Det_1582741825.A_t
+  statistics: X0=91.1839; dX=24.5539; Y0=0.0251714; dY=0.000863874;
+  signal: Min=0; Max=2.68103; Mean=0.0803986;
+  values: 6174.61 16.86 427445
   xvar: Angle
   yvar: TOF
   xlabel: Angle [deg] (abs)
@@ -178,7 +178,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:15:28 2020 (1582661728)
+  Date: Wed Feb 26 19:30:35 2020 (1582741835)
   type: array_2d(640, 256)
   Source: HZB_NEAT (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_NEAT/HZB_NEAT.instr)
   component: Detector
@@ -186,9 +186,9 @@ begin data
   title: PSD Detector
   Ncount: 10000000
   filename: NEAT.psd
-  statistics: X0=0.75733; dX=1.04582; Y0=0.00104881; dY=0.565159;
-  signal: Min=0; Max=0.344225; Mean=0.0178452;
-  values: 2923.75 11.6048 199357
+  statistics: X0=0.751758; dX=1.0446; Y0=0.000396138; dY=0.567059;
+  signal: Min=0; Max=0.350105; Mean=0.0178023;
+  values: 2916.73 11.5892 199702
   xvar: X
   yvar: Y
   xlabel: X position [m]

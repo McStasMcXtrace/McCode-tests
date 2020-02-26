@@ -1,6 +1,6 @@
 McStas simulation description file for Test_Pol_Mirror.
-Date:    Tue Feb 25 21:59:42 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:59:15 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: Test_Pol_Mirror
   File: 1/mccode
@@ -14,19 +14,19 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Mirror/Test_Pol_Mirror.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582689493
+  Seed: 1582964851
   Directory: 1
-  Nodes: 10
+  Nodes: 4
   Param: mirrorOption=1
 end simulation
 
 begin data
-  Date: Tue Feb 25 21:59:44 2020 (1582664384)
+  Date: Wed Feb 26 19:59:16 2020 (1582743556)
   type: array_1d(30)
   Source: Test_Pol_Mirror (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Mirror/Test_Pol_Mirror.instr)
   component: lamStart
@@ -34,8 +34,8 @@ begin data
   title: Wavelength monitor
   Ncount: 10000000
   filename: lambdaStart.dat
-  statistics: X0=14.9981; dX=8.38165;
-  signal: Min=1.56811e-06; Max=3.15237e-06; Mean=3.03677e-06;
+  statistics: X0=14.9977; dX=8.38054;
+  signal: Min=1.56414e-06; Max=3.15451e-06; Mean=3.03677e-06;
   values: 9.11031e-05 2.88093e-08 1e+07
   xvar: L
   yvar: (I,I_err)
@@ -46,7 +46,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:59:44 2020 (1582664384)
+  Date: Wed Feb 26 19:59:16 2020 (1582743556)
   type: array_1d(30)
   Source: Test_Pol_Mirror (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Mirror/Test_Pol_Mirror.instr)
   component: pollambdaMonitorReflecY
@@ -54,9 +54,9 @@ begin data
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: pollambdaMonReflecY.data
-  statistics: X0=17.0483; dX=7.47406;
-  signal: Min=0; Max=8.18182; Mean=7.06364;
-  values: 211.909 2.11909e-05 1e+07
+  statistics: X0=17; dX=7.5;
+  signal: Min=0; Max=3.27273; Mean=2.83636;
+  values: 85.0909 8.50909e-06 1e+07
   xvar: Wavelength
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -66,7 +66,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:59:44 2020 (1582664384)
+  Date: Wed Feb 26 19:59:16 2020 (1582743556)
   type: array_1d(30)
   Source: Test_Pol_Mirror (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Mirror/Test_Pol_Mirror.instr)
   component: pollambdaMonitorTransmitY
@@ -86,7 +86,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:59:44 2020 (1582664384)
+  Date: Wed Feb 26 19:59:16 2020 (1582743556)
   type: array_1d(30)
   Source: Test_Pol_Mirror (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Mirror/Test_Pol_Mirror.instr)
   component: lamReflec
@@ -94,9 +94,9 @@ begin data
   title: Wavelength monitor
   Ncount: 10000000
   filename: lambdaReflec.dat
-  statistics: X0=19.9332; dX=5.62371;
-  signal: Min=0; Max=1.73134e-06; Mean=1.09014e-06;
-  values: 3.27042e-05 1.255e-08 1e+07
+  statistics: X0=19.9313; dX=5.62253;
+  signal: Min=0; Max=1.73189e-06; Mean=1.09027e-06;
+  values: 3.2708e-05 1.25509e-08 1e+07
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -106,7 +106,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:59:44 2020 (1582664384)
+  Date: Wed Feb 26 19:59:16 2020 (1582743556)
   type: array_1d(30)
   Source: Test_Pol_Mirror (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Mirror/Test_Pol_Mirror.instr)
   component: lamTrans

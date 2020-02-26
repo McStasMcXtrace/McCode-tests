@@ -2,174 +2,76 @@ INFO: Using directory: "1"
 INFO: Using existing c-file: ./ILL_IN5.c
 INFO: Using existing binary: ./ILL_IN5.out
 INFO: ===
-[n-62-23-14:15929] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:15929] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:15929] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582662478.684470] [n-62-23-14:15934:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3106.76
-[1582662478.684851] [n-62-23-14:15936:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3106.76
-[1582662478.686266] [n-62-23-14:15934:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662478.686282] [n-62-23-14:15934:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662478.687132] [n-62-23-14:15936:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662478.687149] [n-62-23-14:15936:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: Using system default number of mpirun -np processes
+[n-62-31-16:217294] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:217294] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:217294] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582662478.689924] [n-62-23-14:15936:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662478.689940] [n-62-23-14:15936:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662478.691045] [n-62-23-14:15935:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3106.25
-[1582662478.691383] [n-62-23-14:15934:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662478.691399] [n-62-23-14:15934:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662478.692938] [n-62-23-14:15935:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662478.692954] [n-62-23-14:15935:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662478.696485] [n-62-23-14:15935:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662478.696502] [n-62-23-14:15935:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662478.700872] [n-62-23-14:15937:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.10
-[1582662478.701257] [n-62-23-14:15938:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.10
-[1582662478.702694] [n-62-23-14:15937:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662478.702770] [n-62-23-14:15937:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662478.703083] [n-62-23-14:15938:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662478.703099] [n-62-23-14:15938:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662478.704782] [n-62-23-14:15937:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662478.704798] [n-62-23-14:15937:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662478.705326] [n-62-23-14:15939:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.10
-[1582662478.705430] [n-62-23-14:15938:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662478.705445] [n-62-23-14:15938:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662478.707285] [n-62-23-14:15939:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662478.707302] [n-62-23-14:15939:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662478.709412] [n-62-23-14:15939:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662478.709428] [n-62-23-14:15939:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662478.710478] [n-62-23-14:15942:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3099.93
-[1582662478.712364] [n-62-23-14:15942:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662478.712381] [n-62-23-14:15942:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662478.714407] [n-62-23-14:15942:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662478.714423] [n-62-23-14:15942:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662478.714825] [n-62-23-14:15940:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3099.93
-[1582662478.716144] [n-62-23-14:15941:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3099.93
-[1582662478.716441] [n-62-23-14:15940:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662478.716458] [n-62-23-14:15940:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662478.717895] [n-62-23-14:15941:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662478.717916] [n-62-23-14:15941:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662478.718620] [n-62-23-14:15940:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662478.718643] [n-62-23-14:15940:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662478.719964] [n-62-23-14:15941:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662478.719980] [n-62-23-14:15941:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662478.721675] [n-62-23-14:15943:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3099.93
-[1582662478.723382] [n-62-23-14:15943:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662478.723398] [n-62-23-14:15943:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662478.725389] [n-62-23-14:15943:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662478.725404] [n-62-23-14:15943:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'ILL_IN5' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN5/ILL_IN5.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+Simulation 'ILL_IN5' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN5/ILL_IN5.instr): running on 4 nodes (master is 'n-62-31-16', MPI version 3.1).
+Instrument: ILL_IN5 (IN5 disk chopper time-of-flight spectrometer).
 Instrument: ILL_IN5 (IN5 disk chopper time-of-flight spectrometer).
 Instrument: ILL_IN5 (IN5 disk chopper time-of-flight spectrometer).
   Wavelength lambda=4.5 [Angs]
+  Wavelength lambda=4.5 [Angs]
+  Wavelength lambda=4.5 [Angs]
 Chopper 0: L=0.000000 [m] V=890.117919 [rad/s] Phase=0.000000 [mu-sec]           op-times(0.000000+n*0.003529)s +/- 0.000176
+Chopper 1: L=5.308300 [m] V=890.117919 [rad/s] Phase=6038.204920 [mu-sec]           op-times(0.006038+n*0.003529)s +/- 0.000176
+Chopper 0: L=0.000000 [m] V=890.117919 [rad/s] Phase=0.000000 [mu-sec]           op-times(0.000000+n*0.003529)s +/- 0.000176
+Chopper 0: L=0.000000 [m] V=890.117919 [rad/s] Phase=0.000000 [mu-sec]           op-times(0.000000+n*0.003529)s +/- 0.000176
+Chopper 2: L=5.458300 [m] V=890.117919 [rad/s] Phase=6208.830306 [mu-sec]           op-times(0.006209+n*0.003529)s +/- 0.000176
+Chopper 3: L=12.428900 [m] V=445.058959 [rad/s] Phase=14137.905757 [mu-sec]           op-times(0.014138+n*0.007059)s +/- 0.000373
+Chopper 4: L=12.483900 [m] V=890.117919 [rad/s] Phase=14200.468398 [mu-sec]           op-times(0.014200+n*0.003529)s +/- 0.000186
+Chopper 1: L=5.308300 [m] V=890.117919 [rad/s] Phase=6038.204920 [mu-sec]           op-times(0.006038+n*0.003529)s +/- 0.000176
+Chopper 2: L=5.458300 [m] V=890.117919 [rad/s] Phase=6208.830306 [mu-sec]           op-times(0.006209+n*0.003529)s +/- 0.000176
+Chopper 3: L=12.428900 [m] V=445.058959 [rad/s] Phase=14137.905757 [mu-sec]           op-times(0.014138+n*0.007059)s +/- 0.000373
 Chopper 1: L=5.308300 [m] V=890.117919 [rad/s] Phase=6038.204920 [mu-sec]           op-times(0.006038+n*0.003529)s +/- 0.000176
 Chopper 2: L=5.458300 [m] V=890.117919 [rad/s] Phase=6208.830306 [mu-sec]           op-times(0.006209+n*0.003529)s +/- 0.000176
 Chopper 3: L=12.428900 [m] V=445.058959 [rad/s] Phase=14137.905757 [mu-sec]           op-times(0.014138+n*0.007059)s +/- 0.000373
 Chopper 4: L=12.483900 [m] V=890.117919 [rad/s] Phase=14200.468398 [mu-sec]           op-times(0.014200+n*0.003529)s +/- 0.000186
 Chopper 5: L=13.253900 [m] V=890.117919 [rad/s] Phase=15076.345381 [mu-sec]           op-times(0.015076+n*0.003529)s +/- 0.000064
+Chopper 5: L=13.253900 [m] V=890.117919 [rad/s] Phase=15076.345381 [mu-sec]           op-times(0.015076+n*0.003529)s +/- 0.000064
 Chopper 6: L=13.308900 [m] V=890.117919 [rad/s] Phase=15138.908023 [mu-sec]           op-times(0.015139+n*0.003529)s +/- 0.000064
-Instrument: ILL_IN5 (IN5 disk chopper time-of-flight spectrometer).
-  Wavelength lambda=4.5 [Angs]
-Chopper 0: L=0.000000 [m] V=890.117919 [rad/s] Phase=0.000000 [mu-sec]           op-times(0.000000+n*0.003529)s +/- 0.000176
-Chopper 1: L=5.308300 [m] V=890.117919 [rad/s] Phase=6038.204920 [mu-sec]           op-times(0.006038+n*0.003529)s +/- 0.000176
-Chopper 2: L=5.458300 [m] V=890.117919 [rad/s] Phase=6208.830306 [mu-sec]           op-times(0.006209+n*0.003529)s +/- 0.000176
-Chopper 3: L=12.428900 [m] V=445.058959 [rad/s] Phase=14137.905757 [mu-sec]           op-times(0.014138+n*0.007059)s +/- 0.000373
 Chopper 4: L=12.483900 [m] V=890.117919 [rad/s] Phase=14200.468398 [mu-sec]           op-times(0.014200+n*0.003529)s +/- 0.000186
 Chopper 5: L=13.253900 [m] V=890.117919 [rad/s] Phase=15076.345381 [mu-sec]           op-times(0.015076+n*0.003529)s +/- 0.000064
 Chopper 6: L=13.308900 [m] V=890.117919 [rad/s] Phase=15138.908023 [mu-sec]           op-times(0.015139+n*0.003529)s +/- 0.000064
+Chopper 6: L=13.308900 [m] V=890.117919 [rad/s] Phase=15138.908023 [mu-sec]           op-times(0.015139+n*0.003529)s +/- 0.000064
+[ILL_IN5] Initialize
 [ILL_IN5] Initialize
 [ILL_IN5] Initialize
 Instrument: ILL_IN5 (IN5 disk chopper time-of-flight spectrometer).
   Wavelength lambda=4.5 [Angs]
 Chopper 0: L=0.000000 [m] V=890.117919 [rad/s] Phase=0.000000 [mu-sec]           op-times(0.000000+n*0.003529)s +/- 0.000176
-  Wavelength lambda=4.5 [Angs]
 Chopper 1: L=5.308300 [m] V=890.117919 [rad/s] Phase=6038.204920 [mu-sec]           op-times(0.006038+n*0.003529)s +/- 0.000176
 Chopper 2: L=5.458300 [m] V=890.117919 [rad/s] Phase=6208.830306 [mu-sec]           op-times(0.006209+n*0.003529)s +/- 0.000176
 Chopper 3: L=12.428900 [m] V=445.058959 [rad/s] Phase=14137.905757 [mu-sec]           op-times(0.014138+n*0.007059)s +/- 0.000373
-Chopper 0: L=0.000000 [m] V=890.117919 [rad/s] Phase=0.000000 [mu-sec]           op-times(0.000000+n*0.003529)s +/- 0.000176
-Chopper 1: L=5.308300 [m] V=890.117919 [rad/s] Phase=6038.204920 [mu-sec]           op-times(0.006038+n*0.003529)s +/- 0.000176
-Chopper 2: L=5.458300 [m] V=890.117919 [rad/s] Phase=6208.830306 [mu-sec]           op-times(0.006209+n*0.003529)s +/- 0.000176
 Chopper 4: L=12.483900 [m] V=890.117919 [rad/s] Phase=14200.468398 [mu-sec]           op-times(0.014200+n*0.003529)s +/- 0.000186
 Chopper 5: L=13.253900 [m] V=890.117919 [rad/s] Phase=15076.345381 [mu-sec]           op-times(0.015076+n*0.003529)s +/- 0.000064
-Chopper 3: L=12.428900 [m] V=445.058959 [rad/s] Phase=14137.905757 [mu-sec]           op-times(0.014138+n*0.007059)s +/- 0.000373
-Chopper 4: L=12.483900 [m] V=890.117919 [rad/s] Phase=14200.468398 [mu-sec]           op-times(0.014200+n*0.003529)s +/- 0.000186
-Chopper 5: L=13.253900 [m] V=890.117919 [rad/s] Phase=15076.345381 [mu-sec]           op-times(0.015076+n*0.003529)s +/- 0.000064
-Chopper 6: L=13.308900 [m] V=890.117919 [rad/s] Phase=15138.908023 [mu-sec]           op-times(0.015139+n*0.003529)s +/- 0.000064
 Chopper 6: L=13.308900 [m] V=890.117919 [rad/s] Phase=15138.908023 [mu-sec]           op-times(0.015139+n*0.003529)s +/- 0.000064
 [ILL_IN5] Initialize
 Source_gen: component VCS (square 0.14 x 0.22)
-[ILL_IN5] Initialize
             focusing distance dist=2.55 area=0.038 x 0.2
             spectra 4.450 to 4.550 AA (3.952 to 4.131 meV)
             T1=216.8 K (2.093 AA), T2=33.9 K (5.292 AA), T3=16.7 K (7.539 AA)
   Flux is dPhi/dlambda in [n/s/cm2].
-Instrument: ILL_IN5 (IN5 disk chopper time-of-flight spectrometer).
-Instrument: ILL_IN5 (IN5 disk chopper time-of-flight spectrometer).
-Instrument: ILL_IN5 (IN5 disk chopper time-of-flight spectrometer).
-  Wavelength lambda=4.5 [Angs]
-Chopper 0: L=0.000000 [m] V=890.117919 [rad/s] Phase=0.000000 [mu-sec]           op-times(0.000000+n*0.003529)s +/- 0.000176
-Chopper 1: L=5.308300 [m] V=890.117919 [rad/s] Phase=6038.204920 [mu-sec]           op-times(0.006038+n*0.003529)s +/- 0.000176
-Chopper 2: L=5.458300 [m] V=890.117919 [rad/s] Phase=6208.830306 [mu-sec]           op-times(0.006209+n*0.003529)s +/- 0.000176
-Chopper 3: L=12.428900 [m] V=445.058959 [rad/s] Phase=14137.905757 [mu-sec]           op-times(0.014138+n*0.007059)s +/- 0.000373
-Chopper 4: L=12.483900 [m] V=890.117919 [rad/s] Phase=14200.468398 [mu-sec]           op-times(0.014200+n*0.003529)s +/- 0.000186
-Chopper 5: L=13.253900 [m] V=890.117919 [rad/s] Phase=15076.345381 [mu-sec]           op-times(0.015076+n*0.003529)s +/- 0.000064
-Chopper 6: L=13.308900 [m] V=890.117919 [rad/s] Phase=15138.908023 [mu-sec]           op-times(0.015139+n*0.003529)s +/- 0.000064
 Monitor_nD: Det_sample_t is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
 Isotropic_Sqw: SAMPLE: is a hollow cylinder: radius=0.015000 thickness=0.012500 height=0.060000 [J Comp Phys 228 (2009) 5251]
-  Wavelength lambda=4.5 [Angs]
-Chopper 0: L=0.000000 [m] V=890.117919 [rad/s] Phase=0.000000 [mu-sec]           op-times(0.000000+n*0.003529)s +/- 0.000176
-Chopper 1: L=5.308300 [m] V=890.117919 [rad/s] Phase=6038.204920 [mu-sec]           op-times(0.006038+n*0.003529)s +/- 0.000176
-Chopper 2: L=5.458300 [m] V=890.117919 [rad/s] Phase=6208.830306 [mu-sec]           op-times(0.006209+n*0.003529)s +/- 0.000176
-Chopper 3: L=12.428900 [m] V=445.058959 [rad/s] Phase=14137.905757 [mu-sec]           op-times(0.014138+n*0.007059)s +/- 0.000373
-Chopper 4: L=12.483900 [m] V=890.117919 [rad/s] Phase=14200.468398 [mu-sec]           op-times(0.014200+n*0.003529)s +/- 0.000186
-Chopper 5: L=13.253900 [m] V=890.117919 [rad/s] Phase=15076.345381 [mu-sec]           op-times(0.015076+n*0.003529)s +/- 0.000064
-[ILL_IN5] Initialize
-Chopper 6: L=13.308900 [m] V=890.117919 [rad/s] Phase=15138.908023 [mu-sec]           op-times(0.015139+n*0.003529)s +/- 0.000064
-[ILL_IN5] Initialize
-Instrument: ILL_IN5 (IN5 disk chopper time-of-flight spectrometer).
-  Wavelength lambda=4.5 [Angs]
-Chopper 0: L=0.000000 [m] V=890.117919 [rad/s] Phase=0.000000 [mu-sec]           op-times(0.000000+n*0.003529)s +/- 0.000176
-Chopper 1: L=5.308300 [m] V=890.117919 [rad/s] Phase=6038.204920 [mu-sec]           op-times(0.006038+n*0.003529)s +/- 0.000176
-Chopper 2: L=5.458300 [m] V=890.117919 [rad/s] Phase=6208.830306 [mu-sec]           op-times(0.006209+n*0.003529)s +/- 0.000176
-Chopper 3: L=12.428900 [m] V=445.058959 [rad/s] Phase=14137.905757 [mu-sec]           op-times(0.014138+n*0.007059)s +/- 0.000373
-Chopper 4: L=12.483900 [m] V=890.117919 [rad/s] Phase=14200.468398 [mu-sec]           op-times(0.014200+n*0.003529)s +/- 0.000186
-Chopper 5: L=13.253900 [m] V=890.117919 [rad/s] Phase=15076.345381 [mu-sec]           op-times(0.015076+n*0.003529)s +/- 0.000064
-Chopper 6: L=13.308900 [m] V=890.117919 [rad/s] Phase=15138.908023 [mu-sec]           op-times(0.015139+n*0.003529)s +/- 0.000064
-Instrument: ILL_IN5 (IN5 disk chopper time-of-flight spectrometer).
-Instrument: ILL_IN5 (IN5 disk chopper time-of-flight spectrometer).
-  Wavelength lambda=4.5 [Angs]
-  Wavelength lambda=4.5 [Angs]
-Chopper 0: L=0.000000 [m] V=890.117919 [rad/s] Phase=0.000000 [mu-sec]           op-times(0.000000+n*0.003529)s +/- 0.000176
-Chopper 0: L=0.000000 [m] V=890.117919 [rad/s] Phase=0.000000 [mu-sec]           op-times(0.000000+n*0.003529)s +/- 0.000176
-Chopper 1: L=5.308300 [m] V=890.117919 [rad/s] Phase=6038.204920 [mu-sec]           op-times(0.006038+n*0.003529)s +/- 0.000176
-Chopper 1: L=5.308300 [m] V=890.117919 [rad/s] Phase=6038.204920 [mu-sec]           op-times(0.006038+n*0.003529)s +/- 0.000176
-Chopper 2: L=5.458300 [m] V=890.117919 [rad/s] Phase=6208.830306 [mu-sec]           op-times(0.006209+n*0.003529)s +/- 0.000176
-Chopper 3: L=12.428900 [m] V=445.058959 [rad/s] Phase=14137.905757 [mu-sec]           op-times(0.014138+n*0.007059)s +/- 0.000373
-Chopper 2: L=5.458300 [m] V=890.117919 [rad/s] Phase=6208.830306 [mu-sec]           op-times(0.006209+n*0.003529)s +/- 0.000176
-Chopper 4: L=12.483900 [m] V=890.117919 [rad/s] Phase=14200.468398 [mu-sec]           op-times(0.014200+n*0.003529)s +/- 0.000186
-Chopper 3: L=12.428900 [m] V=445.058959 [rad/s] Phase=14137.905757 [mu-sec]           op-times(0.014138+n*0.007059)s +/- 0.000373
-Chopper 4: L=12.483900 [m] V=890.117919 [rad/s] Phase=14200.468398 [mu-sec]           op-times(0.014200+n*0.003529)s +/- 0.000186
-Chopper 5: L=13.253900 [m] V=890.117919 [rad/s] Phase=15076.345381 [mu-sec]           op-times(0.015076+n*0.003529)s +/- 0.000064
-Chopper 6: L=13.308900 [m] V=890.117919 [rad/s] Phase=15138.908023 [mu-sec]           op-times(0.015139+n*0.003529)s +/- 0.000064
-Chopper 5: L=13.253900 [m] V=890.117919 [rad/s] Phase=15076.345381 [mu-sec]           op-times(0.015076+n*0.003529)s +/- 0.000064
-Chopper 6: L=13.308900 [m] V=890.117919 [rad/s] Phase=15138.908023 [mu-sec]           op-times(0.015139+n*0.003529)s +/- 0.000064
-[ILL_IN5] Initialize
-[ILL_IN5] Initialize
-[ILL_IN5] Initialize
-  Wavelength lambda=4.5 [Angs]
-Chopper 0: L=0.000000 [m] V=890.117919 [rad/s] Phase=0.000000 [mu-sec]           op-times(0.000000+n*0.003529)s +/- 0.000176
-Chopper 1: L=5.308300 [m] V=890.117919 [rad/s] Phase=6038.204920 [mu-sec]           op-times(0.006038+n*0.003529)s +/- 0.000176
-Chopper 2: L=5.458300 [m] V=890.117919 [rad/s] Phase=6208.830306 [mu-sec]           op-times(0.006209+n*0.003529)s +/- 0.000176
-Chopper 3: L=12.428900 [m] V=445.058959 [rad/s] Phase=14137.905757 [mu-sec]           op-times(0.014138+n*0.007059)s +/- 0.000373
-Chopper 4: L=12.483900 [m] V=890.117919 [rad/s] Phase=14200.468398 [mu-sec]           op-times(0.014200+n*0.003529)s +/- 0.000186
-Chopper 5: L=13.253900 [m] V=890.117919 [rad/s] Phase=15076.345381 [mu-sec]           op-times(0.015076+n*0.003529)s +/- 0.000064
-Chopper 6: L=13.308900 [m] V=890.117919 [rad/s] Phase=15138.908023 [mu-sec]           op-times(0.015139+n*0.003529)s +/- 0.000064
-[ILL_IN5] Initialize
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Y3Fe5O12_YIG.laz' (Table_Read_Offset)
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Y3Fe5O12_YIG.laz' (Table_Read_Offset)
 Isotropic_sqw: Converting 594 powder lines from Y3Fe5O12_YIG.laz into S(q,w) data
@@ -197,38 +99,27 @@ Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mc
 Monitor_nD: in5_t is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
 
-Finally [ILL_IN5: 1]. Time: 3 [s] 
+Finally [ILL_IN5: 1]. Time: 2 [s] 
 
-Finally [ILL_IN5: 1]. Time: 3 [s] 
-
-Finally [ILL_IN5: 1]. Time: 3 [s] 
-
-Finally [ILL_IN5: 1]. Time: 4 [s] 
-
-Finally [ILL_IN5: 1]. Time: 4 [s] 
-
-Finally [ILL_IN5: 1]. Time: 4 [s] 
-
-Finally [ILL_IN5: 1]. Time: 4 [s] 
+Finally [ILL_IN5: 1]. Time: 2 [s] 
 
 Save [ILL_IN5]
-Detector: Det_sample_t_I=3.82223e+07 Det_sample_t_ERR=202077 Det_sample_t_N=52741 "Det_sample_t_1582662478.t"
-Detector: Det_ideal_ay_I=1.38485e+06 Det_ideal_ay_ERR=3886.37 Det_ideal_ay_N=188541 "Det_ideal_ay_1582662478.th_y"
+Detector: Det_sample_t_I=3.79672e+07 Det_sample_t_ERR=201354 Det_sample_t_N=52284 "Det_sample_t_1582742188.t"
+Detector: Det_ideal_ay_I=1.37927e+06 Det_ideal_ay_ERR=3875.74 Det_ideal_ay_N=187467 "Det_ideal_ay_1582742188.th_y"
 
-Finally [ILL_IN5: 1]. Time: 4 [s] 
-Detector: Det_PSD_I=1.35835e+06 Det_PSD_ERR=4246.9 Det_PSD_N=164136 "in5det.dat"
+Finally [ILL_IN5: 1]. Time: 2 [s] 
+Detector: Det_PSD_I=1.34838e+06 Det_PSD_ERR=4227.92 Det_PSD_N=162867 "in5det.dat"
+Detector: in5_t_I=2.70003e+06 in5_t_ERR=8483.96 in5_t_N=411371 "in5_t_1582742188.t"
 
-Finally [ILL_IN5: 1]. Time: 4 [s] 
-Detector: in5_t_I=2.72024e+06 in5_t_ERR=8522.32 in5_t_N=415011 "in5_t_1582662478.t"
-
-Finally [ILL_IN5: 1]. Time: 4 [s] 
-Isotropic_Sqw: SAMPLE: 298 neutron events (out of 461285) that should have
+Finally [ILL_IN5: 1]. Time: 2 [s] 
+Isotropic_Sqw: SAMPLE: 321 neutron events (out of 457628) that should have
                scattered were transmitted because scattering conditions
 WARNING        could not be satisfied after 100 tries.
-Isotropic_Sqw: SAMPLE: Scattering fraction=0.432405 of incoming intensity
-               Absorption fraction           =0.460436
-               Single   scattering intensity =4.19298e+06 (coh=3.96007e+06 inc=232906)
+Isotropic_Sqw: SAMPLE: Scattering fraction=0.431961 of incoming intensity
+               Absorption fraction           =0.460423
+               Single   scattering intensity =4.16064e+06 (coh=3.92773e+06 inc=232902)
                Multiple scattering intensity =0
-[n-62-23-14:15929] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-14:15929] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:217294] 3 more processes have sent help message help-mpi-btl-openib.txt / ib port not selected
+[n-62-31-16:217294] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:217294] 3 more processes have sent help message help-mpi-btl-openib.txt / error in device init
 INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN5/ILL_IN5.instr in dataset 1

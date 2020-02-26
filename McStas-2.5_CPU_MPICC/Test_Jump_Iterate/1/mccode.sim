@@ -1,6 +1,6 @@
 McStas simulation description file for Test_Jump_Iterate.
-Date:    Tue Feb 25 21:51:51 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:54:51 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: Test_Jump_Iterate
   File: 1/mccode
@@ -14,14 +14,14 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Jump_Iterate/Test_Jump_Iterate.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582686275
+  Seed: 1582963597
   Directory: 1
-  Nodes: 10
+  Nodes: 4
   Param: L=60
   Param: numel=30
   Param: R=1500
@@ -30,17 +30,17 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Tue Feb 25 21:52:10 2020 (1582663930)
+  Date: Wed Feb 26 19:55:06 2020 (1582743306)
   type: array_2d(100, 100)
   Source: Test_Jump_Iterate (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Jump_Iterate/Test_Jump_Iterate.instr)
   component: Mon_LambdaX_In
   position: 0 0 0.5
   title:  Intensity Position Wavelength Monitor (Square) per bin
   Ncount: 10000000
-  filename: Mon_LambdaX_In_1582663911.x_L
-  statistics: X0=5.0245e-06; dX=0.00866057; Y0=10.001; dY=5.48516;
-  signal: Min=0; Max=0.00161459; Mean=0.0011065;
-  values: 11.065 0.0035003 1e+07
+  filename: Mon_LambdaX_In_1582743291.x_L
+  statistics: X0=7.83776e-07; dX=0.00865958; Y0=10.0008; dY=5.48361;
+  signal: Min=0; Max=0.00162089; Mean=0.00110649;
+  values: 11.0649 0.00350025 1e+07
   xvar: x
   yvar: Wavelength
   xlabel: x [m]
@@ -52,17 +52,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:52:10 2020 (1582663930)
+  Date: Wed Feb 26 19:55:06 2020 (1582743306)
   type: array_2d(100, 100)
   Source: Test_Jump_Iterate (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Jump_Iterate/Test_Jump_Iterate.instr)
   component: Mon_LambdaDX_In
   position: 0 0 0.5
   title:  Intensity Divergence Wavelength Monitor (Square) per bin
   Ncount: 10000000
-  filename: Mon_LambdaDX_In_1582663911.hd_L
-  statistics: X0=1.03059e-05; dX=1.11361; Y0=10.0018; dY=5.48466;
-  signal: Min=0.000511353; Max=0.00089658; Mean=0.000732813;
-  values: 7.32813 0.00285067 6.61296e+06
+  filename: Mon_LambdaDX_In_1582743291.hd_L
+  statistics: X0=-0.000403035; dX=1.11363; Y0=10.001; dY=5.48402;
+  signal: Min=0.000526286; Max=0.000882875; Mean=0.000732519;
+  values: 7.32519 0.00285008 6.61039e+06
   xvar: Hor.
   yvar: Wavelength
   xlabel: Hor. Divergence [deg]
@@ -74,17 +74,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:52:10 2020 (1582663930)
+  Date: Wed Feb 26 19:55:06 2020 (1582743306)
   type: array_2d(100, 100)
   Source: Test_Jump_Iterate (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Jump_Iterate/Test_Jump_Iterate.instr)
   component: CG_2_out
   position: 0.00266867 0 12.501
   title:  Intensity Divergence Wavelength Monitor (Square) per bin
   Ncount: 10000000
-  filename: CG_2_out_1582663911.hd_L
-  statistics: X0=0.00649727; dX=1.00982; Y0=13.8522; dY=3.96975;
-  signal: Min=0; Max=0.0069263; Mean=0.00272951;
-  values: 27.2951 0.00517449 5.54287e+07
+  filename: CG_2_out_1582743291.hd_L
+  statistics: X0=0.00652806; dX=1.01037; Y0=13.8537; dY=3.97265;
+  signal: Min=0; Max=0.0070509; Mean=0.00272109;
+  values: 27.2109 0.00516651 5.53263e+07
   xvar: Hor.
   yvar: Wavelength
   xlabel: Hor. Divergence [deg]
@@ -96,17 +96,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:52:10 2020 (1582663930)
+  Date: Wed Feb 26 19:55:06 2020 (1582743306)
   type: array_2d(100, 100)
   Source: Test_Jump_Iterate (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Jump_Iterate/Test_Jump_Iterate.instr)
   component: Mon_LambdaX_Out
   position: 0.00280207 0 12.601
   title:  Intensity Position Wavelength Monitor (Square) per bin
   Ncount: 10000000
-  filename: Mon_LambdaX_Out_1582663911.x_L
-  statistics: X0=7.0922e-05; dX=0.00956444; Y0=14.1604; dY=3.92551;
-  signal: Min=0; Max=0.0071591; Mean=8.74372e-05;
-  values: 0.874372 0.000875096 2.55962e+06
+  filename: Mon_LambdaX_Out_1582743291.x_L
+  statistics: X0=7.01699e-05; dX=0.00955952; Y0=14.1614; dY=3.92849;
+  signal: Min=0; Max=0.00711184; Mean=8.71785e-05;
+  values: 0.871785 0.000873783 2.55547e+06
   xvar: x
   yvar: Wavelength
   xlabel: x [m]
@@ -118,17 +118,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:52:10 2020 (1582663930)
+  Date: Wed Feb 26 19:55:06 2020 (1582743306)
   type: array_2d(100, 100)
   Source: Test_Jump_Iterate (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Jump_Iterate/Test_Jump_Iterate.instr)
   component: Mon_LambdaDX_Out
   position: 0.00280207 0 12.601
   title:  Intensity Divergence Wavelength Monitor (Square) per bin
   Ncount: 10000000
-  filename: Mon_LambdaDX_Out_1582663911.hd_L
-  statistics: X0=0.0133216; dX=0.975949; Y0=13.8653; dY=3.96853;
-  signal: Min=0; Max=0.000237946; Mean=7.92196e-05;
-  values: 0.792196 0.000846289 1.82151e+06
+  filename: Mon_LambdaDX_Out_1582743291.hd_L
+  statistics: X0=0.0141048; dX=0.976525; Y0=13.8661; dY=3.97173;
+  signal: Min=0; Max=0.000250411; Mean=7.89709e-05;
+  values: 0.789709 0.000844991 1.81785e+06
   xvar: Hor.
   yvar: Wavelength
   xlabel: Hor. Divergence [deg]

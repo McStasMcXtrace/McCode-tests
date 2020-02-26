@@ -2,56 +2,30 @@ INFO: Using directory: "5"
 INFO: Using existing c-file: ./Test_Monochromators.c
 INFO: Using existing binary: ./Test_Monochromators.out
 INFO: ===
-[n-62-23-14:24457] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:24457] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:24457] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582664350.027629] [n-62-23-14:24462:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664350.028096] [n-62-23-14:24462:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: Using system default number of mpirun -np processes
+[n-62-31-16:221032] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:221032] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:221032] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582664350.031986] [n-62-23-14:24462:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664350.032016] [n-62-23-14:24462:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664350.051806] [n-62-23-14:24464:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664350.051844] [n-62-23-14:24464:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664350.051960] [n-62-23-14:24463:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664350.051990] [n-62-23-14:24463:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664350.054181] [n-62-23-14:24464:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664350.054203] [n-62-23-14:24464:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664350.054284] [n-62-23-14:24463:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664350.054304] [n-62-23-14:24463:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664350.056462] [n-62-23-14:24467:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664350.056499] [n-62-23-14:24467:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664350.060495] [n-62-23-14:24465:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664350.060659] [n-62-23-14:24465:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664350.061393] [n-62-23-14:24467:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664350.061413] [n-62-23-14:24467:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664350.062863] [n-62-23-14:24465:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664350.062882] [n-62-23-14:24465:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664350.074454] [n-62-23-14:24470:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664350.074490] [n-62-23-14:24470:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664350.076920] [n-62-23-14:24470:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664350.076942] [n-62-23-14:24470:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664350.078960] [n-62-23-14:24468:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664350.078995] [n-62-23-14:24468:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664350.081615] [n-62-23-14:24469:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664350.081656] [n-62-23-14:24469:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664350.082348] [n-62-23-14:24468:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664350.082365] [n-62-23-14:24468:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664350.082389] [n-62-23-14:24466:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664350.082419] [n-62-23-14:24466:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664350.083850] [n-62-23-14:24469:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664350.083879] [n-62-23-14:24469:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664350.084438] [n-62-23-14:24466:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664350.084453] [n-62-23-14:24466:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664350.091860] [n-62-23-14:24471:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664350.091893] [n-62-23-14:24471:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664350.093917] [n-62-23-14:24471:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664350.093933] [n-62-23-14:24471:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'Test_Monochromators' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+Simulation 'Test_Monochromators' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr): running on 4 nodes (master is 'n-62-31-16', MPI version 3.1).
+
+Test_Monochromators: Using Monochromator_2foc (contrib, flat mode)
 
 Test_Monochromators: Using Monochromator_2foc (contrib, flat mode)
 
@@ -60,81 +34,25 @@ Test_Monochromators: Using Monochromator_2foc (contrib, flat mode)
 Table from file '' (catenated) is empty.
 [Test_Monochromators] Initialize
 Table from file '' (catenated) is empty.
-
-
-
-Test_Monochromators: Using Monochromator_2foc (contrib, flat mode)
-Test_Monochromators: Using Monochromator_2foc (contrib, flat mode)
-[Test_Monochromators] Initialize
-
-Test_Monochromators: Using Monochromator_2foc (contrib, flat mode)
-Table from file '' (catenated) is empty.
-Test_Monochromators: Using Monochromator_2foc (contrib, flat mode)
-[Test_Monochromators] Initialize
-[Test_Monochromators] Initialize
-Table from file '' (catenated) is empty.
-Table from file '' (catenated) is empty.
 [Test_Monochromators] Initialize
 Table from file '' (catenated) is empty.
 
 Test_Monochromators: Using Monochromator_2foc (contrib, flat mode)
 [Test_Monochromators] Initialize
 Table from file '' (catenated) is empty.
-Single_crystal: C_graphite.lau structure a=[0,2.14,-1.24] b=[0,0,2.47] c=[6.71,0,0] V0=35.4677
-Single_crystal: C_graphite.lau structure a=[0,2.14,-1.24] b=[0,0,2.47] c=[6.71,0,0] V0=35.4677
-Single_crystal: C_graphite.lau structure a=[0,2.14,-1.24] b=[0,0,2.47] c=[6.71,0,0] V0=35.4677
-Single_crystal: Mono6: Read 290 reflections from file 'C_graphite.lau'
-Single_crystal: Mono6: Vc=35.4677 [Angs] sigma_abs=0.056 [barn] sigma_inc=0.016 [barn] reflections=C_graphite.lau
-Single_crystal: Mono6: Read 290 reflections from file 'C_graphite.lau'
-Single_crystal: Mono6: Vc=35.4677 [Angs] sigma_abs=0.056 [barn] sigma_inc=0.016 [barn] reflections=C_graphite.lau
-Single_crystal: C_graphite.lau structure a=[0,2.14,-1.24] b=[0,0,2.47] c=[6.71,0,0] V0=35.4677
-Single_crystal: Mono6: Read 290 reflections from file 'C_graphite.lau'
-Single_crystal: Mono6: Vc=35.4677 [Angs] sigma_abs=0.056 [barn] sigma_inc=0.016 [barn] reflections=C_graphite.lau
-
-Test_Monochromators: Using Monochromator_2foc (contrib, flat mode)
-[Test_Monochromators] Initialize
-Table from file '' (catenated) is empty.
-
-Test_Monochromators: Using Monochromator_2foc (contrib, flat mode)
-[Test_Monochromators] Initialize
-Table from file '' (catenated) is empty.
-Single_crystal: Mono6: Read 290 reflections from file 'C_graphite.lau'
-
-Test_Monochromators: Using Monochromator_2foc (contrib, flat mode)
-[Test_Monochromators] Initialize
-Table from file '' (catenated) is empty.
-Single_crystal: Mono6: Vc=35.4677 [Angs] sigma_abs=0.056 [barn] sigma_inc=0.016 [barn] reflections=C_graphite.lau
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/C_graphite.lau' (Table_Read_Offset)
 Single_crystal: C_graphite.lau structure a=[0,2.14,-1.24] b=[0,0,2.47] c=[6.71,0,0] V0=35.4677
 Single_crystal: C_graphite.lau structure a=[0,2.14,-1.24] b=[0,0,2.47] c=[6.71,0,0] V0=35.4677
 Single_crystal: C_graphite.lau structure a=[0,2.14,-1.24] b=[0,0,2.47] c=[6.71,0,0] V0=35.4677
-Single_crystal: Mono6: Read 290 reflections from file 'C_graphite.lau'
-Single_crystal: Mono6: Vc=35.4677 [Angs] sigma_abs=0.056 [barn] sigma_inc=0.016 [barn] reflections=C_graphite.lau
-Single_crystal: Mono6: Read 290 reflections from file 'C_graphite.lau'
-Single_crystal: Mono6: Read 290 reflections from file 'C_graphite.lau'
-Single_crystal: Mono6: Vc=35.4677 [Angs] sigma_abs=0.056 [barn] sigma_inc=0.016 [barn] reflections=C_graphite.lau
-Single_crystal: Mono6: Vc=35.4677 [Angs] sigma_abs=0.056 [barn] sigma_inc=0.016 [barn] reflections=C_graphite.lau
 Single_crystal: C_graphite.lau structure a=[0,2.14,-1.24] b=[0,0,2.47] c=[6.71,0,0] V0=35.4677
 Single_crystal: Mono6: Read 290 reflections from file 'C_graphite.lau'
 Single_crystal: Mono6: Vc=35.4677 [Angs] sigma_abs=0.056 [barn] sigma_inc=0.016 [barn] reflections=C_graphite.lau
-Single_crystal: C_graphite.lau structure a=[0,2.14,-1.24] b=[0,0,2.47] c=[6.71,0,0] V0=35.4677
-Single_crystal: C_graphite.lau structure a=[0,2.14,-1.24] b=[0,0,2.47] c=[6.71,0,0] V0=35.4677
-Single_crystal: Mono6: Read 290 reflections from file 'C_graphite.lau'
 Single_crystal: Mono6: Read 290 reflections from file 'C_graphite.lau'
 Single_crystal: Mono6: Vc=35.4677 [Angs] sigma_abs=0.056 [barn] sigma_inc=0.016 [barn] reflections=C_graphite.lau
+Single_crystal: Mono6: Read 290 reflections from file 'C_graphite.lau'
 Single_crystal: Mono6: Vc=35.4677 [Angs] sigma_abs=0.056 [barn] sigma_inc=0.016 [barn] reflections=C_graphite.lau
-
-Finally [Test_Monochromators: 5]. Time: 3 [s] 
-
-Finally [Test_Monochromators: 5]. Time: 3 [s] 
-
-Finally [Test_Monochromators: 5]. Time: 3 [s] 
-
-Finally [Test_Monochromators: 5]. Time: 3 [s] 
-
-
-Finally [Test_Monochromators: 5]. Time: 3 [s] 
-Finally [Test_Monochromators: 5]. Time: 3 [s] 
+Single_crystal: Mono6: Read 290 reflections from file 'C_graphite.lau'
+Single_crystal: Mono6: Vc=35.4677 [Angs] sigma_abs=0.056 [barn] sigma_inc=0.016 [barn] reflections=C_graphite.lau
 
 Finally [Test_Monochromators: 5]. Time: 3 [s] 
 
@@ -142,13 +60,14 @@ Save [Test_Monochromators]
 Detector: lamStart_I=0.00100508 lamStart_ERR=3.17833e-07 lamStart_N=1e+07 "lambdaStart.dat"
 
 Finally [Test_Monochromators: 5]. Time: 3 [s] 
-Detector: Sphere1_I=0.000404343 Sphere1_ERR=1.93298e-07 Sphere1_N=1e+07 "sphere.dat"
-Detector: lam1_I=8.96252e-05 lam1_ERR=7.57145e-08 lam1_N=6.86871e+06 "lambda1.dat"
 
 Finally [Test_Monochromators: 5]. Time: 3 [s] 
-Detector: psd1_I=8.96252e-05 psd1_ERR=7.57145e-08 psd1_N=5.85772e+06 "psd1.dat"
+Detector: Sphere1_I=0.00040405 Sphere1_ERR=1.93222e-07 Sphere1_N=1e+07 "sphere.dat"
+Detector: lam1_I=8.95833e-05 lam1_ERR=7.56861e-08 lam1_N=6.87121e+06 "lambda1.dat"
+Detector: psd1_I=8.95833e-05 psd1_ERR=7.56861e-08 psd1_N=5.85707e+06 "psd1.dat"
 
 Finally [Test_Monochromators: 5]. Time: 3 [s] 
-[n-62-23-14:24457] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-14:24457] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:221032] 3 more processes have sent help message help-mpi-btl-openib.txt / ib port not selected
+[n-62-31-16:221032] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:221032] 3 more processes have sent help message help-mpi-btl-openib.txt / error in device init
 INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Monochromators/Test_Monochromators.instr in dataset 5

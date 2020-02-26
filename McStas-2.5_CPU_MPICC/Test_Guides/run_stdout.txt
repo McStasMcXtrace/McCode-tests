@@ -2,87 +2,37 @@ INFO: Using directory: "9"
 INFO: Using existing c-file: ./Test_Guides.c
 INFO: Using existing binary: ./Test_Guides.out
 INFO: ===
-[n-62-23-14:21345] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:21345] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:21345] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582663371.246402] [n-62-23-14:21350:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3104.88
-[1582663371.249703] [n-62-23-14:21350:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663371.249720] [n-62-23-14:21350:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: Using system default number of mpirun -np processes
+[n-62-31-16:219697] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:219697] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:219697] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582663371.252384] [n-62-23-14:21350:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663371.252399] [n-62-23-14:21350:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663371.275074] [n-62-23-14:21351:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3117.36
-[1582663371.274975] [n-62-23-14:21355:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3117.36
-[1582663371.276851] [n-62-23-14:21355:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663371.276868] [n-62-23-14:21355:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663371.277031] [n-62-23-14:21351:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663371.277047] [n-62-23-14:21351:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663371.279401] [n-62-23-14:21351:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663371.279464] [n-62-23-14:21351:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663371.279816] [n-62-23-14:21355:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663371.279831] [n-62-23-14:21355:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663371.280998] [n-62-23-14:21352:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3111.72
-[1582663371.282643] [n-62-23-14:21353:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3111.72
-[1582663371.283350] [n-62-23-14:21352:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663371.283367] [n-62-23-14:21352:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663371.284956] [n-62-23-14:21353:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663371.284972] [n-62-23-14:21353:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663371.286496] [n-62-23-14:21352:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663371.286511] [n-62-23-14:21352:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663371.287995] [n-62-23-14:21353:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663371.288011] [n-62-23-14:21353:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663371.289851] [n-62-23-14:21356:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.49
-[1582663371.291826] [n-62-23-14:21356:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663371.291842] [n-62-23-14:21356:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663371.293275] [n-62-23-14:21359:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.61
-[1582663371.293937] [n-62-23-14:21356:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663371.293953] [n-62-23-14:21356:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663371.295411] [n-62-23-14:21358:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.61
-[1582663371.295068] [n-62-23-14:21359:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663371.295084] [n-62-23-14:21359:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663371.295526] [n-62-23-14:21357:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.61
-[1582663371.297109] [n-62-23-14:21358:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663371.297167] [n-62-23-14:21358:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663371.297349] [n-62-23-14:21357:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663371.297365] [n-62-23-14:21357:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663371.298385] [n-62-23-14:21359:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663371.298401] [n-62-23-14:21359:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663371.299221] [n-62-23-14:21358:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663371.299278] [n-62-23-14:21358:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663371.299303] [n-62-23-14:21354:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.61
-[1582663371.299717] [n-62-23-14:21357:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663371.299732] [n-62-23-14:21357:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663371.301100] [n-62-23-14:21354:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663371.301116] [n-62-23-14:21354:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663371.303106] [n-62-23-14:21354:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663371.303121] [n-62-23-14:21354:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'Test_Guides' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+Simulation 'Test_Guides' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr): running on 4 nodes (master is 'n-62-31-16', MPI version 3.1).
 Using Guide_r_anyshape
 Using Guide_r_anyshape
 Using Guide_r_anyshape
 [Test_Guides] Initialize
 [Test_Guides] Initialize
-Using Guide_r_anyshape
-Using Guide_r_anyshape
-Using Guide_r_anyshape
-Using Guide_r_anyshape
-[Test_Guides] Initialize
 [Test_Guides] Initialize
 Using Guide_r_anyshape
-[Test_Guides] Initialize
-[Test_Guides] Initialize
 [Test_Guides] Initialize
 Loading geometry file (OFF/PLY): Guide.off
-[Test_Guides] Initialize
-Using Guide_r_anyshape
-[Test_Guides] Initialize
-Using Guide_r_anyshape
-[Test_Guides] Initialize
   Number of vertices: 8
   Number of polygons: 4
 Warning: Neither xwidth, yheight or zdepth are defined.
@@ -92,14 +42,6 @@ Warning: Neither xwidth, yheight or zdepth are defined.
     Width= 0.050000 (100.000%)
     Depth= 1.000000 (100.000%)
 Loading geometry file (OFF/PLY): Guide_r.off
-Guide_anyshape_r: GuideAr: All of m, alpha, W assigned 0: 
- - We are using H. Jacobsen reflectivity model if m-values are given in Guide_r.off
-Guide_anyshape_r: GuideAr: All of m, alpha, W assigned 0: 
- - We are using H. Jacobsen reflectivity model if m-values are given in Guide_r.off
-Guide_anyshape_r: GuideAr: All of m, alpha, W assigned 0: 
- - We are using H. Jacobsen reflectivity model if m-values are given in Guide_r.off
-Guide_anyshape_r: GuideAr: All of m, alpha, W assigned 0: 
- - We are using H. Jacobsen reflectivity model if m-values are given in Guide_r.off
 Guide_anyshape_r: GuideAr: All of m, alpha, W assigned 0: 
  - We are using H. Jacobsen reflectivity model if m-values are given in Guide_r.off
 Guide_anyshape_r: GuideAr: All of m, alpha, W assigned 0: 
@@ -116,34 +58,19 @@ Warning: Neither xwidth, yheight or zdepth are defined.
     Depth= 1.000000 (100.000%)
 Guide_anyshape_r: GuideAr: All of m, alpha, W assigned 0: 
  - We are using H. Jacobsen reflectivity model if m-values are given in Guide_r.off
-Guide_anyshape_r: GuideAr: All of m, alpha, W assigned 0: 
- - We are using H. Jacobsen reflectivity model if m-values are given in Guide_r.off
-Guide_anyshape_r: GuideAr: All of m, alpha, W assigned 0: 
- - We are using H. Jacobsen reflectivity model if m-values are given in Guide_r.off
 
-Finally [Test_Guides: 9]. Time: 4 [s] 
-
-Finally [Test_Guides: 9]. Time: 4 [s] 
-
-Finally [Test_Guides: 9]. Time: 4 [s] 
-
-Finally [Test_Guides: 9]. Time: 4 [s] 
+Finally [Test_Guides: 9]. Time: 2 [s] 
 
 Save [Test_Guides]
+Detector: Monitor1_xt_I=0.0374376 Monitor1_xt_ERR=1.18388e-05 Monitor1_xt_N=1e+07 "Monitor1_xt_1582742866.x_y"
 
+Finally [Test_Guides: 9]. Time: 2 [s] 
 
-Finally [Test_Guides: 9]. Time: 4 [s] 
+Finally [Test_Guides: 9]. Time: 2 [s] 
+Detector: Monitor2_xy_I=0.00740017 Monitor2_xy_ERR=5.24782e-06 Monitor2_xy_N=2.35468e+06 "Monitor2_xy_1582742866.x_y"
 
-Finally [Test_Guides: 9]. Time: 4 [s] 
-Finally [Test_Guides: 9]. Time: 4 [s] 
-Detector: Monitor1_xt_I=0.0374376 Monitor1_xt_ERR=1.18388e-05 Monitor1_xt_N=1e+07 "Monitor1_xt_1582663371.x_y"
-
-Finally [Test_Guides: 9]. Time: 4 [s] 
-Detector: Monitor2_xy_I=0.00738268 Monitor2_xy_ERR=5.24146e-06 Monitor2_xy_N=2.35085e+06 "Monitor2_xy_1582663371.x_y"
-
-Finally [Test_Guides: 9]. Time: 4 [s] 
-
-Finally [Test_Guides: 9]. Time: 4 [s] 
-[n-62-23-14:21345] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-14:21345] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+Finally [Test_Guides: 9]. Time: 3 [s] 
+[n-62-31-16:219697] 3 more processes have sent help message help-mpi-btl-openib.txt / ib port not selected
+[n-62-31-16:219697] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:219697] 3 more processes have sent help message help-mpi-btl-openib.txt / error in device init
 INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr in dataset 9

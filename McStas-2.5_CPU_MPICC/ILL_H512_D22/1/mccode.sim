@@ -1,6 +1,6 @@
 McStas simulation description file for ILL_H512_D22.
-Date:    Tue Feb 25 21:25:32 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:34:57 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: ILL_H512_D22
   File: 1/mccode
@@ -14,14 +14,14 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H512_D22/ILL_H512_D22.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582677522
+  Seed: 1582959060
   Directory: 1
-  Nodes: 10
+  Nodes: 4
   Param: lambda=4.5
   Param: dlambda=0.45
   Param: D22_collimation=2
@@ -29,17 +29,17 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Tue Feb 25 21:25:41 2020 (1582662341)
+  Date: Wed Feb 26 19:35:02 2020 (1582742102)
   type: array_2d(50, 50)
   Source: ILL_H512_D22 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H512_D22/ILL_H512_D22.instr)
   component: H5
   position: 0 0 2.155
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: H5_1582662332.x_y
-  statistics: X0=-1.07628e-05; dX=0.0351487; Y0=1.76074e-05; dY=0.0343036;
-  signal: Min=1.55373e+09; Max=2.63948e+09; Mean=2.44229e+09;
-  values: 6.10573e+12 2.24063e+09 7.67618e+06
+  filename: H5_1582742097.x_y
+  statistics: X0=3.39731e-06; dX=0.0351556; Y0=3.25574e-05; dY=0.0343067;
+  signal: Min=1.59916e+09; Max=2.668e+09; Mean=2.44166e+09;
+  values: 6.10415e+12 2.24046e+09 7.6739e+06
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -51,17 +51,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:25:41 2020 (1582662341)
+  Date: Wed Feb 26 19:35:02 2020 (1582742102)
   type: array_2d(50, 50)
   Source: ILL_H512_D22 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H512_D22/ILL_H512_D22.instr)
   component: H51_origin
   position: -0.0415 0 2.155
   title:  Intensity Divergence Divergence Monitor (Square) per bin
   Ncount: 10000000
-  filename: H51_origin_1582662332.hd_vd
-  statistics: X0=0.489605; dX=1.40686; Y0=0.00352863; dY=1.65987;
-  signal: Min=0; Max=2.47993e+09; Mean=4.01443e+08;
-  values: 1.00361e+12 9.08681e+08 1.25823e+06
+  filename: H51_origin_1582742097.hd_vd
+  statistics: X0=0.489554; dX=1.40585; Y0=7.76311e-05; dY=1.65873;
+  signal: Min=0; Max=2.49313e+09; Mean=4.00617e+08;
+  values: 1.00154e+12 9.07757e+08 1.2557e+06
   xvar: Hor.
   yvar: Vert.
   xlabel: Hor. Divergence [deg]
@@ -73,17 +73,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:25:41 2020 (1582662341)
+  Date: Wed Feb 26 19:35:02 2020 (1582742102)
   type: array_2d(50, 50)
   Source: ILL_H512_D22 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H512_D22/ILL_H512_D22.instr)
   component: H51_Obt_Out
   position: -0.178935 0 8.08841
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: H51_Obt_Out_1582662332.x_y
-  statistics: X0=-4.60396e-05; dX=0.0114407; Y0=-7.79261e-05; dY=0.0362418;
-  signal: Min=2.2083e+07; Max=7.15311e+07; Mean=4.62842e+07;
-  values: 1.15711e+11 3.02376e+08 545633
+  filename: H51_Obt_Out_1582742097.x_y
+  statistics: X0=-7.9324e-05; dX=0.0114563; Y0=3.35013e-05; dY=0.0362253;
+  signal: Min=2.28403e+07; Max=7.60346e+07; Mean=4.62304e+07;
+  values: 1.15576e+11 3.02246e+08 543793
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -95,17 +95,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:25:41 2020 (1582662341)
+  Date: Wed Feb 26 19:35:02 2020 (1582742102)
   type: array_2d(50, 50)
   Source: ILL_H512_D22 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H512_D22/ILL_H512_D22.instr)
   component: H51_S2_Out
   position: -0.240102 0 10.6977
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: H51_S2_Out_1582662332.x_y
-  statistics: X0=0.000316521; dX=0.0115538; Y0=-0.000140138; dY=0.0357494;
-  signal: Min=1.52546e+07; Max=5.77774e+07; Mean=3.56252e+07;
-  values: 8.9063e+10 2.78238e+08 464327
+  filename: H51_S2_Out_1582742097.x_y
+  statistics: X0=0.000353839; dX=0.0115147; Y0=-5.44432e-05; dY=0.035636;
+  signal: Min=1.75485e+07; Max=6.47815e+07; Mean=3.55004e+07;
+  values: 8.87509e+10 2.77775e+08 462908
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -117,17 +117,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:25:41 2020 (1582662341)
+  Date: Wed Feb 26 19:35:02 2020 (1582742102)
   type: array_2d(50, 50)
   Source: ILL_H512_D22 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H512_D22/ILL_H512_D22.instr)
   component: H51_split_2
   position: -0.240102 0.0325 10.6977
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: H51_split_2_1582662332.x_y
-  statistics: X0=0.000310342; dX=0.0115567; Y0=0.0011714; dY=0.0158938;
-  signal: Min=5.37549e+06; Max=3.19296e+07; Mean=1.63563e+07;
-  values: 4.08909e+10 1.88741e+08 211879
+  filename: H51_split_2_1582742097.x_y
+  statistics: X0=0.000290399; dX=0.0115121; Y0=0.000881348; dY=0.015852;
+  signal: Min=4.99175e+06; Max=3.08743e+07; Mean=1.64311e+07;
+  values: 4.10778e+10 1.89238e+08 212382
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -139,17 +139,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:25:41 2020 (1582662341)
+  Date: Wed Feb 26 19:35:02 2020 (1582742102)
   type: array_2d(50, 50)
   Source: ILL_H512_D22 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H512_D22/ILL_H512_D22.instr)
   component: H51_split_1
   position: -0.240102 -0.0325 10.6977
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: H51_split_1_1582662332.x_y
-  statistics: X0=0.00032331; dX=0.0115542; Y0=-0.00109794; dY=0.0158902;
-  signal: Min=5.22589e+06; Max=3.23636e+07; Mean=1.65379e+07;
-  values: 4.13447e+10 1.89881e+08 213732
+  filename: H51_split_1_1582742097.x_y
+  statistics: X0=0.000396416; dX=0.0115331; Y0=-0.00105224; dY=0.015938;
+  signal: Min=4.93723e+06; Max=3.15523e+07; Mean=1.64063e+07;
+  values: 4.10157e+10 1.89049e+08 212060
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -161,17 +161,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:25:41 2020 (1582662341)
+  Date: Wed Feb 26 19:35:02 2020 (1582742102)
   type: array_2d(50, 50)
   Source: ILL_H512_D22 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H512_D22/ILL_H512_D22.instr)
   component: H512_VTE
   position: -0.804306 0.0325 31.603
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: H512_VTE_1582662332.x_y
-  statistics: X0=0.000847549; dX=0.0115296; Y0=-0.000120642; dY=0.0159266;
-  signal: Min=0; Max=5.98056e+07; Mean=1.16192e+07;
-  values: 2.9048e+10 1.63061e+08 194182
+  filename: H512_VTE_1582742097.x_y
+  statistics: X0=0.000733556; dX=0.0115664; Y0=-1.97651e-05; dY=0.0158811;
+  signal: Min=0; Max=6.20668e+07; Mean=1.17379e+07;
+  values: 2.93447e+10 1.63979e+08 194601
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -183,17 +183,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:25:41 2020 (1582662341)
+  Date: Wed Feb 26 19:35:02 2020 (1582742102)
   type: array_2d(50, 50)
   Source: ILL_H512_D22 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H512_D22/ILL_H512_D22.instr)
   component: D22_PreV
   position: -1.08823 0.0325 40.6926
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: D22_PreV_1582662332.x_y
-  statistics: X0=-2.8215e-05; dX=0.0115537; Y0=0.000148301; dY=0.0144382;
-  signal: Min=1.25133e+06; Max=2.2177e+07; Mean=9.50027e+06;
-  values: 2.37507e+10 1.578e+08 138876
+  filename: D22_PreV_1582742097.x_y
+  statistics: X0=-4.89663e-05; dX=0.0115814; Y0=1.39833e-06; dY=0.0144556;
+  signal: Min=1.26986e+06; Max=2.05897e+07; Mean=9.62729e+06;
+  values: 2.40682e+10 1.5891e+08 139108
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -205,17 +205,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:25:41 2020 (1582662341)
+  Date: Wed Feb 26 19:35:02 2020 (1582742102)
   type: array_2d(100, 100)
   Source: ILL_H512_D22 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H512_D22/ILL_H512_D22.instr)
   component: H51_D22_Sample_Div
   position: -1.74176 0.0325 61.2822
   title:  Intensity Divergence Divergence Monitor (Square) per bin
   Ncount: 10000000
-  filename: H51_D22_Sample_Div_1582662332.hd_vd
-  statistics: X0=0.000655172; dX=0.23218; Y0=0.000340819; dY=0.274852;
-  signal: Min=0; Max=1.5033e+07; Mean=210236;
-  values: 2.10236e+09 3.77751e+07 11711
+  filename: H51_D22_Sample_Div_1582742097.hd_vd
+  statistics: X0=0.00233461; dX=0.23538; Y0=-0.0034079; dY=0.272597;
+  signal: Min=0; Max=1.67701e+07; Mean=219779;
+  values: 2.19779e+09 3.85779e+07 11867
   xvar: Hor.
   yvar: Vert.
   xlabel: Hor. Divergence [deg]
@@ -227,17 +227,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:25:41 2020 (1582662341)
+  Date: Wed Feb 26 19:35:02 2020 (1582742102)
   type: array_2d(50, 50)
   Source: ILL_H512_D22 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H512_D22/ILL_H512_D22.instr)
   component: H51_D22_Sample_XY
   position: -1.74176 0.0325 61.2822
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: H51_D22_Sample_XY_1582662332.x_y
-  statistics: X0=-0.000261925; dX=0.0057301; Y0=0.000273961; dY=0.0142915;
-  signal: Min=0; Max=4.85794e+06; Mean=840943;
-  values: 2.10236e+09 3.77751e+07 11711
+  filename: H51_D22_Sample_XY_1582742097.x_y
+  statistics: X0=4.55789e-05; dX=0.00570448; Y0=-0.000135386; dY=0.0143539;
+  signal: Min=0; Max=4.11979e+06; Mean=879117;
+  values: 2.19779e+09 3.85779e+07 11867
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -249,17 +249,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:25:41 2020 (1582662341)
+  Date: Wed Feb 26 19:35:02 2020 (1582742102)
   type: array_1d(50)
   Source: ILL_H512_D22 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H512_D22/ILL_H512_D22.instr)
   component: H51_D22_Sample_L
   position: -1.74176 0.0325 61.2822
   title: Wavelength [Angs] monitor
   Ncount: 10000000
-  filename: H51_D22_Sample_L_1582662332.L
-  statistics: X0=4.48275; dX=0.193682;
-  signal: Min=0; Max=7.22165e+08; Mean=4.20471e+07;
-  values: 2.10236e+09 3.77751e+07 11711
+  filename: H51_D22_Sample_L_1582742097.L
+  statistics: X0=4.48553; dX=0.195331;
+  signal: Min=0; Max=7.4311e+08; Mean=4.39559e+07;
+  values: 2.19779e+09 3.85779e+07 11867
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
@@ -269,17 +269,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:25:41 2020 (1582662341)
+  Date: Wed Feb 26 19:35:02 2020 (1582742102)
   type: array_2d(128, 128)
   Source: ILL_H512_D22 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H512_D22/ILL_H512_D22.instr)
   component: D22_Detector
   position: -1.80521 0.0325 63.2812
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: D22_Detector_1582662332.x_y
-  statistics: X0=0.000196335; dX=0.287981; Y0=-0.0105899; dY=0.270054;
-  signal: Min=0; Max=101333; Mean=1134.86;
-  values: 1.85935e+07 581794 4278
+  filename: D22_Detector_1582742097.x_y
+  statistics: X0=0.0119243; dX=0.282585; Y0=0.000534426; dY=0.267048;
+  signal: Min=0; Max=98287; Mean=1179.35;
+  values: 1.93225e+07 582986 4282
   xvar: x
   yvar: y
   xlabel: x [m]

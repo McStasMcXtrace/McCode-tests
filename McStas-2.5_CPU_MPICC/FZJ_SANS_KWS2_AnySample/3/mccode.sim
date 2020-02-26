@@ -1,6 +1,6 @@
 McStas simulation description file for SANS_KWS2_AnySample.
-Date:    Tue Feb 25 21:14:54 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:30:17 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: SANS_KWS2_AnySample
   File: 3/mccode
@@ -14,14 +14,14 @@ end instrument
 begin simulation: 3
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_SANS_KWS2_AnySample/FZJ_SANS_KWS2_AnySample.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582673278
+  Seed: 1582957493
   Directory: 3
-  Nodes: 10
+  Nodes: 4
   Param: lambda=7
   Param: dlambda=0.7
   Param: FLUX=1e+08
@@ -32,7 +32,7 @@ begin simulation: 3
 end simulation
 
 begin data
-  Date: Tue Feb 25 21:14:57 2020 (1582661697)
+  Date: Wed Feb 26 19:30:19 2020 (1582741819)
   type: array_2d(128, 128)
   Source: SANS_KWS2_AnySample (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_SANS_KWS2_AnySample/FZJ_SANS_KWS2_AnySample.instr)
   component: detector
@@ -40,9 +40,9 @@ begin data
   title: PSD monitor
   Ncount: 10000000
   filename: PSD.dat
-  statistics: X0=0.0166942; dX=17.4294; Y0=-0.0150932; dY=17.4294;
-  signal: Min=0; Max=1.02353; Mean=0.105061;
-  values: 1721.33 9.63006 31953
+  statistics: X0=-0.105744; dX=17.3997; Y0=0.1244; dY=17.4834;
+  signal: Min=0; Max=1.07903; Mean=0.106178;
+  values: 1739.61 9.68041 32297
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -54,7 +54,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:14:57 2020 (1582661697)
+  Date: Wed Feb 26 19:30:19 2020 (1582741819)
   type: array_1d(500)
   Source: SANS_KWS2_AnySample (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_SANS_KWS2_AnySample/FZJ_SANS_KWS2_AnySample.instr)
   component: detector2
@@ -62,9 +62,9 @@ begin data
   title: PSD monitor radial sum
   Ncount: 10000000
   filename: PSDr.dat
-  statistics: X0=0.24618; dX=0.0211401;
-  signal: Min=0; Max=24.1345; Mean=3.44265;
-  values: 1721.33 9.63006 31953
+  statistics: X0=0.246351; dX=0.0210897;
+  signal: Min=0; Max=23.3786; Mean=3.47934;
+  values: 1739.67 9.68056 32298
   xvar: r
   yvar: (I,I_err)
   xlabel: Radius [m]
@@ -74,7 +74,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:14:57 2020 (1582661697)
+  Date: Wed Feb 26 19:30:19 2020 (1582741819)
   type: array_1d(500)
   Source: SANS_KWS2_AnySample (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/FZJ_SANS_KWS2_AnySample/FZJ_SANS_KWS2_AnySample.instr)
   component: detector2
@@ -82,9 +82,9 @@ begin data
   title: PSD monitor radial average
   Ncount: 10000000
   filename: PSDr_av.dat
-  statistics: X0=0.244341; dX=0.0211861;
-  signal: Min=0; Max=22493.6; Mean=3208.06;
-  values: 1.60403e+06 9007.96 31953
+  statistics: X0=0.24452; dX=0.021143;
+  signal: Min=0; Max=21496.2; Mean=3239.85;
+  values: 1.61993e+06 9048.34 32298
   xvar: r
   yvar: (I,I_err)
   xlabel: Radius [m]

@@ -1,6 +1,6 @@
 McStas simulation description file for PSI_Focus_shielding.
-Date:    Tue Feb 25 21:30:58 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:38:28 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: PSI_Focus_shielding
   File: 1/mccode
@@ -14,14 +14,14 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus_shielding/PSI_Focus_shielding.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582679773
+  Seed: 1582960114
   Directory: 1
-  Nodes: 10
+  Nodes: 4
   Param: lambda=3.4
   Param: dL=4
   Param: chopp_ratio=1

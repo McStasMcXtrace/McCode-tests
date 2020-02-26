@@ -1,18 +1,18 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Feb. 24, 2020
+# Creator: McStas 2.5 - Feb. 26, 2020
 # Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H15/ILL_H15.instr
-# Ncount: 1000000
+# Ncount: 2500000
 # Trace: no
 # Gravitation: no
-# Seed: 1582675120
+# Seed: 1582958266
 # Directory: 1
-# Nodes: 10
+# Nodes: 4
 # Param: m=1
 # Param: lambda=10
 # Param: dlambda=9.9
 # Param: mip=1
-# Date: Tue Feb 25 21:21:04 2020 (1582662064)
+# Date: Wed Feb 26 19:33:08 2020 (1582741988)
 # type: array_0d
 # Source: ILL_H15 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H15/ILL_H15.instr)
 # component: GuideOut_Phic
@@ -21,7 +21,7 @@
 # Ncount: 10000000
 # statistics: None
 # signal: None
-# values: 1.16597e+10 2.02212e+07 3.4219e+06
+# values: 1.16866e+10 2.0269e+07 3.42072e+06
 # xylimits: 0 0 0 0 0 0
 # variables: I I_err N
-1.16597e+10 2.02212e+07 3.4219e+06
+1.16866e+10 2.0269e+07 3.42072e+06

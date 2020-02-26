@@ -1,5 +1,5 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "ESS_2001_bispectral_20200225_202245"
+INFO: Using directory: "ESS_2001_bispectral_20200226_183636"
 INFO: Regenerating c-file: ESS_2001_bispectral.c
 Warning: 'ESS_moderator_long_2001' is an obsolete component (not maintained).
 Info:    'Mirror_Curved_Bispectral' is a contributed component.
@@ -23,21 +23,27 @@ Info:    Defining conditional JUMP from ArmMidThree to ArmMidOne
 CFLAGS=
 INFO: Recompiling: ./ESS_2001_bispectral.out
 INFO: ===
-[n-62-23-14:31891] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:31891] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582658571.335832] [n-62-23-14:31890:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3191.19
-[1582658571.337452] [n-62-23-14:31890:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582658571.337455] [n-62-23-14:31890:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-31-16:207051] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:207051] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582658571.340308] [n-62-23-14:31890:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582658571.340312] [n-62-23-14:31890:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
 begin instrument: ESS_2001_bispectral
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr
   Parameters:  man_lam(int) thermal(int) cold_Lam_min(double) cold_Lam_max(double) thermal_Lam_min(double) thermal_Lam_max(double) thermal_hotspot_fac(double) cold_hotspot_fac(double) use_full_guide_flag(int) guide_start(double) Length(double) focus_start_w(double) focus_end_w(double) smallaxis_w(double) focus_start_h(double) focus_end_h(double) smallaxis_h(double) maxdiv(double) coldperthermal(double) mirror_type(int) mirror_coating_type(int) mirror_offset(double) theta1(double) theta2(double) theta3(double) m_mirror(double) h_mirror(double) Pulse_width(double) frequency(double) gravity(double) substrate_thickness(double) coating_thickness(double) m1(double) m2(double)
   Trace_enabled: yes
@@ -47,12 +53,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_2001_bispectral/ESS_2001_bispectral.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1582690461
+  Seed: 1582945651
   Directory: .
   Param: man_lam=1
   Param: thermal=2

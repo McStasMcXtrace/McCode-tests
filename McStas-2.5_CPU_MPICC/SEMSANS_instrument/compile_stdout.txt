@@ -1,5 +1,5 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "SEMSANS_instrument_20200225_210129"
+INFO: Using directory: "SEMSANS_instrument_20200226_191531"
 INFO: Regenerating c-file: SEMSANS_instrument.c
 Info:    'Pol_pi_2_rotator' is a contributed component.
 Info:    'Pol_triafield' is a contributed component.
@@ -10,21 +10,27 @@ INFO: Recompiling: ./SEMSANS_instrument.out
    } else if (fieldFunction==majorana_magnetic_field){
                    ^
 INFO: ===
-[n-62-23-14:06256] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:06256] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582660897.087620] [n-62-23-14:6255 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3375.07
-[1582660897.089239] [n-62-23-14:6255 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582660897.089243] [n-62-23-14:6255 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-31-16:211734] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:211734] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582660897.091866] [n-62-23-14:6255 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582660897.091869] [n-62-23-14:6255 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
 begin instrument: SEMSANS_instrument
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr
   Parameters:  triacoil_depth(double) triacoil_width(double) triacoil_height(double) pol_zdepth(double) vcoil_zdepth(double) Guide1_depth(double) Guide2_depth(double) Guide3_depth(double) Guide4_depth(double) Bguide(double) Bextra(double) Bt2(double) Bt1(double) DLambda(double) Lambda(double) flippos(double) FLIP(double) chop1_pos(double) chop2_pos(double) pol_pos(double) analyser_pos(double) grating_w(double) grating_a(double) slit_1_pos(double) slit_2_pos(double) Guide1_pos(double) Guide2_pos(double) Guide3_pos(double) Guide4_pos(double) vcoil_12_pos(double) vcoil_34_pos(double) vcoil_56_pos(double) triacoil_1_pos(double) triacoil_2_pos(double) grating_pos(double) detector_pos(double) tlow(double) thigh(double)
   Trace_enabled: yes
@@ -34,12 +40,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SEMSANS_instrument/SEMSANS_instrument.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1582667152
+  Seed: 1582952673
   Directory: .
   Param: triacoil_depth=0.1935
   Param: triacoil_width=0.0704282

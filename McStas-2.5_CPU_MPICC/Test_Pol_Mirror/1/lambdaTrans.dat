@@ -1,15 +1,15 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Feb. 24, 2020
+# Creator: McStas 2.5 - Feb. 26, 2020
 # Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Mirror/Test_Pol_Mirror.instr
-# Ncount: 1000000
+# Ncount: 2500000
 # Trace: no
 # Gravitation: no
-# Seed: 1582689493
+# Seed: 1582964851
 # Directory: 1
-# Nodes: 10
+# Nodes: 4
 # Param: mirrorOption=1
-# Date: Tue Feb 25 21:59:44 2020 (1582664384)
+# Date: Wed Feb 26 19:59:16 2020 (1582743556)
 # type: array_1d(30)
 # Source: Test_Pol_Mirror (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Mirror/Test_Pol_Mirror.instr)
 # component: lamTrans

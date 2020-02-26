@@ -1,13 +1,13 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Feb. 24, 2020
+# Creator: McStas 2.5 - Feb. 26, 2020
 # Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr
-# Ncount: 1000000
+# Ncount: 2500000
 # Trace: no
 # Gravitation: no
-# Seed: 1582672815
+# Seed: 1582957293
 # Directory: 1
-# Nodes: 10
+# Nodes: 4
 # Param: Lmin=4.9
 # Param: Lmax=5.1
 # Param: lambda0=5
@@ -55,7 +55,7 @@
 # Param: RES_DE=0.5
 # Param: port=30
 # Param: cold=0.95
-# Date: Tue Feb 25 21:14:43 2020 (1582661683)
+# Date: Wed Feb 26 19:30:08 2020 (1582741808)
 # type: array_1d(500)
 # Source: ESS_IN5_reprate (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
 # component: TOFsample_zoom
@@ -63,9 +63,9 @@
 # title: Time-of-flight monitor
 # Ncount: 10000000
 # filename: TOF_sample.dat
-# statistics: X0=130176; dX=0.00195312;
-# signal: Min=0; Max=364458; Mean=728.915;
-# values: 364458 102274 21
+# statistics: X0=130176; dX=0;
+# signal: Min=0; Max=389340; Mean=778.681;
+# values: 389340 103458 27
 # xvar: t
 # yvar: (I,I_err)
 # xlabel: Time-of-flight [\gms]
@@ -327,7 +327,7 @@
 129575.8771 0 0 0 
 129775.8771 0 0 0 
 129975.8771 0 0 0 
-130175.8771 364457.6885 102274.008 21 
+130175.8771 389340.3213 103457.6785 27 
 130375.8771 0 0 0 
 130575.8771 0 0 0 
 130775.8771 0 0 0 

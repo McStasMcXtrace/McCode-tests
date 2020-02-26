@@ -1,41 +1,47 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "Union_test_box_20200225_211059"
+INFO: Using directory: "Union_test_box_20200226_192618"
 INFO: Regenerating c-file: Union_test_box.c
 CFLAGS= -I@MCCODE_LIB@/share/
 INFO: Recompiling: ./Union_test_box.out
-In file included from /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/union/Incoherent_process.comp:65:0:
+In file included from /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/union/Incoherent_process.comp:65:
 /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../share/Union_functions.c: In function 'write_tagging_tree':
 /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../share/Union_functions.c:1421:105: warning: passing argument 4 of 'qsort' from incompatible pointer type [-Wincompatible-pointer-types]
    qsort(total_history.saved_histories,total_history.used_elements,sizeof (struct saved_history_struct), Sample_compare_history_intensities);
                                                                                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-In file included from mccode-r.h:42:0:
-/usr/include/stdlib.h:760:13: note: expected '__compar_fn_t {aka int (*)(const void *, const void *)}' but argument is of type 'int (*)(const struct saved_history_struct *, const struct saved_history_struct *)'
- extern void qsort (void *__base, size_t __nmemb, size_t __size,
-             ^~~~~
+In file included from mccode-r.h:42:
+/usr/include/stdlib.h:761:20: note: expected '__compar_fn_t' {aka 'int (*)(const void *, const void *)'} but argument is of type 'int (*)(const struct saved_history_struct *, const struct saved_history_struct *)'
+      __compar_fn_t __compar) __nonnull ((1, 4));
+      ~~~~~~~~~~~~~~^~~~~~~~
 /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../share/Union_functions.c:1430:20: warning: passing argument 1 of 'printf_history' from incompatible pointer type [-Wincompatible-pointer-types]
      printf_history(&total_history.saved_histories[history_iterate]);
-                    ^
+                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 mccode-r.h:201:5: note: in definition of macro 'MPI_MASTER'
-In file included from /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/union/Incoherent_process.comp:65:0:
-/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../share/Union_functions.c:1251:6: note: expected 'struct dynamic_history_list *' but argument is of type 'struct saved_history_struct *'
+In file included from /zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/union/Incoherent_process.comp:65:
+/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../share/Union_functions.c:1251:50: note: expected 'struct dynamic_history_list *' but argument is of type 'struct saved_history_struct *'
  void printf_history(struct dynamic_history_list *history) {
-      ^~~~~~~~~~~~~~
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
 INFO: ===
-[n-62-23-14:09517] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:09517] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582661466.884388] [n-62-23-14:9516 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3381.22
-[1582661466.886010] [n-62-23-14:9516 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661466.886013] [n-62-23-14:9516 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-31-16:214290] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:214290] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582661466.888921] [n-62-23-14:9516 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661466.888925] [n-62-23-14:9516 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
 begin instrument: Union_test_box
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr
   Parameters: 
   Trace_enabled: yes
@@ -45,12 +51,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Union_test_box/Union_test_box.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1582670982
+  Seed: 1582955875
   Directory: .
 end simulation
 info!

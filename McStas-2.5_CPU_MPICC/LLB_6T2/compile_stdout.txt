@@ -1,25 +1,31 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "LLB_6T2_20200225_205849"
+INFO: Using directory: "LLB_6T2_20200226_191227"
 INFO: Regenerating c-file: LLB_6T2.c
 Info:    Defining SPLIT from Sample=Single_crystal() to END in instrument LLB_6T2
 CFLAGS=
 INFO: Recompiling: ./LLB_6T2.out
 INFO: ===
-[n-62-23-14:05173] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:05173] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582660734.929007] [n-62-23-14:5172 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3370.46
-[1582660734.930770] [n-62-23-14:5172 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582660734.930774] [n-62-23-14:5172 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-31-16:210979] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:210979] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582660734.933590] [n-62-23-14:5172 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582660734.933593] [n-62-23-14:5172 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
 begin instrument: LLB_6T2
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/LLB_6T2/LLB_6T2.instr
   Parameters:  lambda(double) phi(double) gamma(double) nu(double) monok(double) samp_f(string)
   Trace_enabled: yes
@@ -29,12 +35,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/LLB_6T2/LLB_6T2.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1582665906
+  Seed: 1582951731
   Directory: .
   Param: lambda=1
   Param: phi=0

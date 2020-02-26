@@ -2,14 +2,14 @@
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
  * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr (ESS_BEER_MCPL)
- * Date:       Tue Feb 25 20:22:55 2020
+ * Date:       Wed Feb 26 18:36:46 2020
  * File:       ./ESS_BEER_MCPL.c
  * Compile:    cc -o ESS_BEER_MCPL.out ./ESS_BEER_MCPL.c  -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
  * CFLAGS= -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
+#define MCCODE_STRING "McStas 2.5 - Feb. 26, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
+#define MCCODE_STRING "McStas 2.5 - Feb. 26, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Feb. 24, 2020"
+#define MCCODE_DATE "Feb. 26, 2020"
 #endif
 
 #ifndef MCCODE_VERSION

@@ -1,5 +1,5 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "ESS_BEER_MCPL_20200225_202255"
+INFO: Using directory: "ESS_BEER_MCPL_20200226_183646"
 INFO: Regenerating c-file: ESS_BEER_MCPL.c
 Info:    'Exact_radial_coll' is a contributed component.
 Info:    'NPI_tof_dhkl_detector' is a contributed component.
@@ -7,21 +7,27 @@ Info:    'NPI_tof_theta_monitor' is a contributed component.
 CFLAGS= -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
       INFO: Recompiling: ./ESS_BEER_MCPL.out
 INFO: ===
-[n-62-23-14:31976] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:31976] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582658581.794446] [n-62-23-14:31975:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3377.81
-[1582658581.796218] [n-62-23-14:31975:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582658581.796222] [n-62-23-14:31975:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-31-16:207112] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:207112] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582658581.798823] [n-62-23-14:31975:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582658581.798826] [n-62-23-14:31975:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
 begin instrument: ESS_BEER_MCPL
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr
   Parameters:  input(string) repetition(int) pwdfile(string) lc(double) lam0(double) dlam(double) omega(double) chi(double) colw(double) modul(double) mod_frq(double) mod_twidth(double) mod_shift(double) only_event(double) pinc(double) ptra(double) strain(double) ustrain(double)
   Trace_enabled: yes
@@ -31,12 +37,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_BEER_MCPL/ESS_BEER_MCPL.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1582690556
+  Seed: 1582945725
   Directory: .
   Param: input=BEER_MR.mcpl
   Param: repetition=50

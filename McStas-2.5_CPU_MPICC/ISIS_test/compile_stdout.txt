@@ -1,5 +1,5 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "ISIS_test_20200225_205844"
+INFO: Using directory: "ISIS_test_20200226_191222"
 INFO: Regenerating c-file: ISIS_test.c
 Info:    'ISIS_moderator' is a contributed component.
 Warning: Component isis_mod=ISIS_moderator(string Face) definition parameter
@@ -8,21 +8,27 @@ Warning: Component isis_mod=ISIS_moderator(string Face) definition parameter
 CFLAGS=
       INFO: Recompiling: ./ISIS_test.out
 INFO: ===
-[n-62-23-14:05134] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:05134] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582660729.030828] [n-62-23-14:5133 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3298.17
-[1582660729.032348] [n-62-23-14:5133 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582660729.032351] [n-62-23-14:5133 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-31-16:210946] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:210946] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582660729.035063] [n-62-23-14:5133 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582660729.035066] [n-62-23-14:5133 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
 begin instrument: ISIS_test
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_test/ISIS_test.instr
   Parameters: 
   Trace_enabled: yes
@@ -32,12 +38,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_test/ISIS_test.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1582665862
+  Seed: 1582951692
   Directory: .
 end simulation
 info!

@@ -1,5 +1,5 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "BNL_H8_20200225_202223"
+INFO: Using directory: "BNL_H8_20200226_183613"
 INFO: Regenerating c-file: BNL_H8.c
 Warning: 'V_sample' is an obsolete component (not maintained).
 Info:    Defining SPLIT from PG1Xtal=Monochromator_flat() to END in instrument BNL_H8
@@ -8,21 +8,27 @@ Info:    Defining SPLIT from PG2Xtal=Monochromator_flat() to END in instrument B
 CFLAGS=
 INFO: Recompiling: ./BNL_H8.out
 INFO: ===
-[n-62-23-14:31737] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:31737] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582658550.841561] [n-62-23-14:31736:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3190.67
-[1582658550.845918] [n-62-23-14:31736:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582658550.845924] [n-62-23-14:31736:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-31-16:206930] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:206930] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582658550.849253] [n-62-23-14:31736:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582658550.849258] [n-62-23-14:31736:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
 begin instrument: BNL_H8
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BNL_H8/BNL_H8.instr
   Parameters:  lambda(double)
   Trace_enabled: yes
@@ -32,12 +38,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BNL_H8/BNL_H8.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1582690286
+  Seed: 1582945510
   Directory: .
   Param: lambda=2.36
 end simulation

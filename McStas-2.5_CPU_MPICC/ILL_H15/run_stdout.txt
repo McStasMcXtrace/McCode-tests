@@ -2,72 +2,34 @@ INFO: Using directory: "1"
 INFO: Using existing c-file: ./ILL_H15.c
 INFO: Using existing binary: ./ILL_H15.out
 INFO: ===
-[n-62-23-14:13096] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:13096] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:13096] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582662018.921195] [n-62-23-14:13102:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3242.63
-[1582662018.922965] [n-62-23-14:13102:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662018.922981] [n-62-23-14:13102:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: Using system default number of mpirun -np processes
+[n-62-31-16:216288] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:216288] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:216288] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582662018.925118] [n-62-23-14:13102:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662018.925133] [n-62-23-14:13102:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662018.925208] [n-62-23-14:13101:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3242.63
-[1582662018.927131] [n-62-23-14:13101:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662018.927147] [n-62-23-14:13101:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662018.929789] [n-62-23-14:13101:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662018.929805] [n-62-23-14:13101:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662018.934276] [n-62-23-14:13104:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3242.63
-[1582662018.938418] [n-62-23-14:13104:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662018.938434] [n-62-23-14:13104:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662018.941013] [n-62-23-14:13104:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662018.941031] [n-62-23-14:13104:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662018.942008] [n-62-23-14:13103:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3242.63
-[1582662018.945017] [n-62-23-14:13103:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662018.945036] [n-62-23-14:13103:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662018.948727] [n-62-23-14:13103:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662018.949376] [n-62-23-14:13103:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662018.954722] [n-62-23-14:13105:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3242.63
-[1582662018.956582] [n-62-23-14:13105:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662018.956598] [n-62-23-14:13105:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662018.958810] [n-62-23-14:13105:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662018.958865] [n-62-23-14:13105:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662018.972714] [n-62-23-14:13107:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3242.63
-[1582662018.974807] [n-62-23-14:13107:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662018.974823] [n-62-23-14:13107:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662018.977064] [n-62-23-14:13107:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662018.977078] [n-62-23-14:13107:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662018.977131] [n-62-23-14:13109:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3242.63
-[1582662018.979045] [n-62-23-14:13109:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662018.979061] [n-62-23-14:13109:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662018.981296] [n-62-23-14:13108:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3242.63
-[1582662018.982105] [n-62-23-14:13109:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662018.982122] [n-62-23-14:13109:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662018.983068] [n-62-23-14:13108:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662018.983084] [n-62-23-14:13108:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662018.983537] [n-62-23-14:13106:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3242.63
-[1582662018.985264] [n-62-23-14:13106:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662018.985281] [n-62-23-14:13106:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662018.985667] [n-62-23-14:13108:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662018.985682] [n-62-23-14:13108:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662018.986025] [n-62-23-14:13110:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3242.63
-[1582662018.987772] [n-62-23-14:13110:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662018.987788] [n-62-23-14:13110:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662018.987848] [n-62-23-14:13106:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662018.987899] [n-62-23-14:13106:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662018.989752] [n-62-23-14:13110:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662018.989768] [n-62-23-14:13110:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'ILL_H15' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H15/ILL_H15.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+Simulation 'ILL_H15' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H15/ILL_H15.instr): running on 4 nodes (master is 'n-62-31-16', MPI version 3.1).
 Instrument: ILL_H15 (H15@ILL cold guide on VCS).
 Instrument: ILL_H15 (H15@ILL cold guide on VCS).
 Instrument: ILL_H15 (H15@ILL cold guide on VCS).
 [ILL_H15] Initialize
 [ILL_H15] Initialize
-Instrument: ILL_H15 (H15@ILL cold guide on VCS).
+[ILL_H15] Initialize
 Instrument: ILL_H15 (H15@ILL cold guide on VCS).
 [ILL_H15] Initialize
 Source_gen: component VCS (square 0.14 x 0.22)
@@ -75,56 +37,27 @@ Source_gen: component VCS (square 0.14 x 0.22)
             spectra 0.100 to 19.900 AA (0.207 to 8181.000 meV)
             T1=216.8 K (2.093 AA), T2=33.9 K (5.292 AA), T3=16.7 K (7.539 AA)
   Flux is dPhi/dlambda in [n/s/cm2].
-Instrument: ILL_H15 (H15@ILL cold guide on VCS).
-Instrument: ILL_H15 (H15@ILL cold guide on VCS).
 Monitor_nD: GuideOut_dxdy is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
-[ILL_H15] Initialize
-Instrument: ILL_H15 (H15@ILL cold guide on VCS).
-[ILL_H15] Initialize
-[ILL_H15] Initialize
-Instrument: ILL_H15 (H15@ILL cold guide on VCS).
-[ILL_H15] Initialize
-[ILL_H15] Initialize
-[ILL_H15] Initialize
-Instrument: ILL_H15 (H15@ILL cold guide on VCS).
-[ILL_H15] Initialize
-[n-62-23-14:13096] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-14:13096] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:216288] 3 more processes have sent help message help-mpi-btl-openib.txt / ib port not selected
+[n-62-31-16:216288] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:216288] 3 more processes have sent help message help-mpi-btl-openib.txt / error in device init
 
+Trace ETA 15 [s] % 69 
+Trace ETA 16 [s] % 68 
 
-Trace ETA 32 [s] % 33 
-Trace ETA 31 [s] % 34 
+Trace ETA 15 [s] % 68 Trace ETA 15 [s] % 69 70 70 70 70 80 80 80 80 90 90 90 90 
+Finally [ILL_H15: 1]. Time: 15 [s] 
 
-Trace ETA 48 [s] % 22 Trace ETA 32 [s] % 33 
-Trace ETA 48 [s] % 22 
-Trace ETA 48 [s] % 22 
-Trace ETA 48 [s] % 22 Trace ETA 32 [s] % 33 
-Trace ETA 48 [s] % 22 
-Trace ETA 48 [s] % 22 40 40 40 40 30 30 30 30 30 30 50 50 50 50 40 40 40 40 40 40 60 60 60 60 50 50 70 70 50 50 50 50 60 60 70 70 80 80 70 70 60 60 60 60 90 90 80 80 80 80 70 70 70 70 90 90 90 90 80 80 80 80 
-Finally [ILL_H15: 1]. Time: 39 [s] 
-
-Finally [ILL_H15: 1]. Time: 39 [s] 
-
-Finally [ILL_H15: 1]. Time: 39 [s] 
-
-Finally [ILL_H15: 1]. Time: 40 [s] 
-90 90 90 90 
-Finally [ILL_H15: 1]. Time: 44 [s] 
-
-Finally [ILL_H15: 1]. Time: 44 [s] 
-
-Finally [ILL_H15: 1]. Time: 44 [s] 
+Finally [ILL_H15: 1]. Time: 15 [s] 
 
 Save [ILL_H15]
-Detector: GuideOut_xy_I=3.06774e+09 GuideOut_xy_ERR=7.78479e+06 GuideOut_xy_N=3.42199e+06 "GuideOut_xy_1582662019.x_y"
+Detector: GuideOut_xy_I=3.07607e+09 GuideOut_xy_ERR=7.81237e+06 GuideOut_xy_N=3.42082e+06 "GuideOut_xy_1582741973.x_y"
 
-Finally [ILL_H15: 1]. Time: 44 [s] 
-Detector: GuideOut_dxdy_I=3.06774e+09 GuideOut_dxdy_ERR=7.78479e+06 GuideOut_dxdy_N=3.42189e+06 "GuideOut_dxdy_1582662019.hd_vd"
+Finally [ILL_H15: 1]. Time: 15 [s] 
+Detector: GuideOut_dxdy_I=3.07607e+09 GuideOut_dxdy_ERR=7.81237e+06 GuideOut_dxdy_N=3.42071e+06 "GuideOut_dxdy_1582741973.hd_vd"
+Detector: GuideOut_Phic_I=1.16866e+10 GuideOut_Phic_ERR=2.0269e+07 GuideOut_Phic_N=3.42072e+06 "GuideOut_Phic"
+Detector: GuideOut_L_I=3.07562e+09 GuideOut_L_ERR=7.81104e+06 GuideOut_L_N=3.42005e+06 "GuideOut_L_1582741973.L"
 
-Finally [ILL_H15: 1]. Time: 44 [s] 
-Detector: GuideOut_Phic_I=1.16597e+10 GuideOut_Phic_ERR=2.02212e+07 GuideOut_Phic_N=3.4219e+06 "GuideOut_Phic"
-Detector: GuideOut_L_I=3.06708e+09 GuideOut_L_ERR=7.78261e+06 GuideOut_L_N=3.42121e+06 "GuideOut_L_1582662019.L"
-
-Finally [ILL_H15: 1]. Time: 45 [s] 
+Finally [ILL_H15: 1]. Time: 15 [s] 
 INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H15/ILL_H15.instr in dataset 1

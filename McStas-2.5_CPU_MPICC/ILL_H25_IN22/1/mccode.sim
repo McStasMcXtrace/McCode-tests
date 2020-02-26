@@ -1,6 +1,6 @@
 McStas simulation description file for ILL_H25_IN22.
-Date:    Tue Feb 25 21:25:16 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:34:49 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: ILL_H25_IN22
   File: 1/mccode
@@ -14,14 +14,14 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H25_IN22/ILL_H25_IN22.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582677384
+  Seed: 1582959006
   Directory: 1
-  Nodes: 10
+  Nodes: 4
   Param: m=2
   Param: KI=3.84
   Param: QM=1
@@ -95,17 +95,17 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Tue Feb 25 21:25:31 2020 (1582662331)
+  Date: Wed Feb 26 19:34:56 2020 (1582742096)
   type: array_2d(20, 20)
   Source: ILL_H25_IN22 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H25_IN22/ILL_H25_IN22.instr)
   component: GuideOut_xy
   position: -0.239052 0.04 69.2324
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: GuideOut_xy_1582662316.x_y
-  statistics: X0=-7.97358e-05; dX=0.00868075; Y0=0.000441872; dY=0.0346003;
-  signal: Min=0; Max=152500; Mean=41980.9;
-  values: 1.67924e+07 45683.2 435539
+  filename: GuideOut_xy_1582742089.x_y
+  statistics: X0=-0.000113449; dX=0.00867357; Y0=0.00028792; dY=0.0346375;
+  signal: Min=0; Max=148930; Mean=41874.4;
+  values: 1.67497e+07 45622 436029
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -117,29 +117,29 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:25:31 2020 (1582662331)
+  Date: Wed Feb 26 19:34:56 2020 (1582742096)
   type: array_2d(20, 20)
   Source: ILL_H25_IN22 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H25_IN22/ILL_H25_IN22.instr)
   component: GuideOut_dxdy
   position: -0.239052 0.04 69.2324
   title:  Intensity Divergence Divergence Monitor (Square) per bin
   Ncount: 10000000
-  filename: GuideOut_dxdy_1582662316.hd_vd
-  statistics: X0=0.00666212; dX=0.145139; Y0=0.00111257; dY=0.178799;
-  signal: Min=5.8629e-141; Max=215787; Mean=41982;
-  values: 1.67928e+07 45683.9 435529
+  filename: GuideOut_dxdy_1582742089.hd_vd
+  statistics: X0=0.00536838; dX=0.145504; Y0=0.000559579; dY=0.178337;
+  signal: Min=1.17308e-144; Max=214405; Mean=41874.4;
+  values: 1.67497e+07 45622 436020
   xvar: Hor.
   yvar: Vert.
   xlabel: Hor. Divergence [deg]
   ylabel: Vert. Divergence [deg]
   zvar: I
   zlabel: Signal per bin
-  xylimits: -0.572292 0.581971 -0.58242 0.583027
+  xylimits: -0.574633 0.583021 -0.583644 0.583852
   variables: I I_err N
 end data
 
 begin data
-  Date: Tue Feb 25 21:25:31 2020 (1582662331)
+  Date: Wed Feb 26 19:34:56 2020 (1582742096)
   type: array_0d
   Source: ILL_H25_IN22 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H25_IN22/ILL_H25_IN22.instr)
   component: GuideOut_Phic
@@ -148,23 +148,23 @@ begin data
   Ncount: 10000000
   statistics: None
   signal: None
-  values: 1.52766e+07 41553.9 435539
+  values: 1.5238e+07 41498.5 436024
   xylimits: 0 0 0 0 0 0
   variables: I I_err N
 end data
 
 begin data
-  Date: Tue Feb 25 21:25:31 2020 (1582662331)
+  Date: Wed Feb 26 19:34:56 2020 (1582742096)
   type: array_1d(20)
   Source: ILL_H25_IN22 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H25_IN22/ILL_H25_IN22.instr)
   component: GuideOut_L
   position: -0.239052 0.04 69.2324
   title: Wavelength [Angs] monitor
   Ncount: 10000000
-  filename: GuideOut_L_1582662316.L
+  filename: GuideOut_L_1582742089.L
   statistics: X0=1.5; dX=0;
-  signal: Min=0; Max=1.67924e+07; Mean=839618;
-  values: 1.67924e+07 45683.2 435539
+  signal: Min=0; Max=1.67497e+07; Mean=837487;
+  values: 1.67497e+07 45622 436024
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
@@ -174,27 +174,27 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:25:31 2020 (1582662331)
+  Date: Wed Feb 26 19:34:56 2020 (1582742096)
   type: array_1d(20)
   Source: ILL_H25_IN22 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H25_IN22/ILL_H25_IN22.instr)
   component: D4_SC2_1D
   position: -0.455769 0.04 69.8275
   title: Wavelength [Angs] monitor
   Ncount: 10000000
-  filename: D4_SC2_1D_1582662316.L
-  statistics: X0=1.6359; dX=0.0135013;
-  signal: Min=664791; Max=947954; Mean=837867;
-  values: 1.67573e+07 22517.3 1.22863e+06
+  filename: D4_SC2_1D_1582742089.L
+  statistics: X0=1.63586; dX=0.013545;
+  signal: Min=654814; Max=954755; Mean=836037;
+  values: 1.67207e+07 22497.4 1.23042e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
   ylabel: Intensity [n/s/cm2/bin]
-  xlimits: 1.61171 1.66079
+  xlimits: 1.6117 1.66079
   variables: L I I_err N
 end data
 
 begin data
-  Date: Tue Feb 25 21:25:31 2020 (1582662331)
+  Date: Wed Feb 26 19:34:56 2020 (1582742096)
   type: array_0d
   Source: ILL_H25_IN22 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H25_IN22/ILL_H25_IN22.instr)
   component: Sample_Cradle
@@ -203,35 +203,35 @@ begin data
   Ncount: 10000000
   statistics: None
   signal: None
-  values: 4.6287e+07 64623.6 1.08384e+06
+  values: 4.67351e+07 65107.3 1.08892e+06
   xylimits: 0 0 0 0 0 0
   variables: I I_err N
 end data
 
 begin data
-  Date: Tue Feb 25 21:25:31 2020 (1582662331)
+  Date: Wed Feb 26 19:34:56 2020 (1582742096)
   type: array_2d(50, 50)
   Source: ILL_H25_IN22 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H25_IN22/ILL_H25_IN22.instr)
   component: D7_SC3_1D
   position: -1.05421 0.04 70.9249
   title:  Intensity Angle Energy Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: D7_SC3_1D_1582662316.th_E
-  statistics: X0=-13.3802; dX=27.6553; Y0=30.5653; dY=0.487137;
-  signal: Min=400.019; Max=827596; Mean=76118.7;
-  values: 1.90297e+08 271272 9.91064e+06
+  filename: D7_SC3_1D_1582742089.th_E
+  statistics: X0=-12.9138; dX=27.6275; Y0=30.5701; dY=0.488095;
+  signal: Min=414.661; Max=835469; Mean=76106.5;
+  values: 1.90266e+08 270430 9.94369e+06
   xvar: Longitude
   yvar: Energy
   xlabel: Longitude [deg]
   ylabel: Energy [meV]
   zvar: I
   zlabel: Signal per bin
-  xylimits: -179.996 179.998 29.6593 31.492
+  xylimits: -179.992 179.99 29.6586 31.492
   variables: I I_err N
 end data
 
 begin data
-  Date: Tue Feb 25 21:25:31 2020 (1582662331)
+  Date: Wed Feb 26 19:34:56 2020 (1582742096)
   type: array_2d(20, 20)
   Source: ILL_H25_IN22 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H25_IN22/ILL_H25_IN22.instr)
   component: He3H
@@ -239,9 +239,9 @@ begin data
   title: PSD monitor
   Ncount: 10000000
   filename: He3H.psd
-  statistics: X0=-0.00480093; dX=0.390164; Y0=-0.0019582; dY=1.38707;
-  signal: Min=0; Max=5.63991; Mean=0.483041;
-  values: 193.216 3.09643 21772
+  statistics: X0=-0.00451933; dX=0.390175; Y0=0.0139659; dY=1.39896;
+  signal: Min=0; Max=6.61736; Mean=0.496445;
+  values: 198.578 3.18816 21840
   xvar: X
   yvar: Y
   xlabel: X position [cm]

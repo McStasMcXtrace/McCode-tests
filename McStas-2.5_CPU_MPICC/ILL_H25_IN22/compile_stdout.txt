@@ -1,5 +1,5 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "ILL_H25_IN22_20200225_204239"
+INFO: Using directory: "ILL_H25_IN22_20200226_185650"
 INFO: Regenerating c-file: ILL_H25_IN22.c
 Info:    'Al_window' is a contributed component.
 Info:    Defining SPLIT from PG1Xtal=Monochromator_curved() to END in instrument ILL_H25_IN22
@@ -16,21 +16,27 @@ CFLAGS=
  
       ^     
 INFO: ===
-[n-62-23-14:02791] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:02791] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582659818.702314] [n-62-23-14:2790 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.29
-[1582659818.703937] [n-62-23-14:2790 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582659818.703941] [n-62-23-14:2790 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-31-16:209444] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:209444] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582659818.706593] [n-62-23-14:2790 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582659818.706597] [n-62-23-14:2790 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
 begin instrument: ILL_H25_IN22
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H25_IN22/ILL_H25_IN22.instr
   Parameters:  m(double) KI(double) QM(double) EN(double) verbose(double) WM(double) HM(double) NHM(double) NVM(double) RMV(double) WA(double) HA(double) NHA(double) NVA(double) RAV(double) RAH(double) SM(double) SS(double) SA(double) L1(double) L2(double) L3(double) L4(double) lambda(double) dlambda(double) mip(double) KF(double) EI(double) EF(double) QH(double) QK(double) QL(double) KFIX(double) FX(double) DM(double) DA(double) RMH(double) ETAM(double) ETAA(double) ALF1(double) ALF2(double) ALF3(double) ALF4(double) BET1(double) BET2(double) BET3(double) BET4(double) AS(double) BS(double) CS(double) AA(double) BB(double) CC(double) AX(double) AY(double) AZ(double) BX(double) BY(double) BZ(double) A1(double) A2(double) A3(double) A4(double) A5(double) A6(double) Sqw_coh(string) Sqw_inc(string) radius(double) thickness(double) height(double)
   Trace_enabled: yes
@@ -40,12 +46,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H25_IN22/ILL_H25_IN22.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1582662608
+  Seed: 1582949307
   Directory: .
   Param: m=2
   Param: KI=3.84

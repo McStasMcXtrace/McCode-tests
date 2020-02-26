@@ -1,5 +1,5 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "ESS_BIFROST_shielding_20200225_202302"
+INFO: Using directory: "ESS_BIFROST_shielding_20200226_183654"
 INFO: Regenerating c-file: ESS_BIFROST_shielding.c
 Info:    'Elliptic_guide_gravity_shieldinglogger' is a contributed component.
 Info:    'Guide_gravity_shieldinglogger' is a contributed component.

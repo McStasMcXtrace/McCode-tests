@@ -2,72 +2,28 @@ INFO: Using directory: "1"
 INFO: Using existing c-file: ./Samples_Incoherent_off.c
 INFO: Using existing binary: ./Samples_Incoherent_off.out
 INFO: ===
-[n-62-23-14:18419] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:18419] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:18419] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582662748.292182] [n-62-23-14:18425:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.12
-[1582662748.294640] [n-62-23-14:18425:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662748.294786] [n-62-23-14:18425:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: Using system default number of mpirun -np processes
+[n-62-31-16:218337] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:218337] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:218337] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582662748.297063] [n-62-23-14:18425:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662748.297081] [n-62-23-14:18425:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662748.313896] [n-62-23-14:18427:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3102.32
-[1582662748.315936] [n-62-23-14:18427:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662748.315955] [n-62-23-14:18427:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662748.321008] [n-62-23-14:18427:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662748.321034] [n-62-23-14:18427:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662748.326853] [n-62-23-14:18426:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.29
-[1582662748.328125] [n-62-23-14:18429:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.29
-[1582662748.328668] [n-62-23-14:18426:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662748.328685] [n-62-23-14:18426:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662748.330192] [n-62-23-14:18429:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662748.330209] [n-62-23-14:18429:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662748.330933] [n-62-23-14:18426:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662748.330952] [n-62-23-14:18426:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662748.332335] [n-62-23-14:18429:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662748.332352] [n-62-23-14:18429:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662748.333331] [n-62-23-14:18428:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.29
-[1582662748.335327] [n-62-23-14:18428:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662748.335347] [n-62-23-14:18428:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662748.338091] [n-62-23-14:18428:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662748.338110] [n-62-23-14:18428:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662748.350253] [n-62-23-14:18431:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.29
-[1582662748.352015] [n-62-23-14:18432:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.29
-[1582662748.352255] [n-62-23-14:18431:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662748.352288] [n-62-23-14:18431:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662748.353847] [n-62-23-14:18432:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662748.353867] [n-62-23-14:18432:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662748.354669] [n-62-23-14:18431:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662748.354685] [n-62-23-14:18431:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662748.355495] [n-62-23-14:18430:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.29
-[1582662748.357055] [n-62-23-14:18432:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662748.357074] [n-62-23-14:18432:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662748.357386] [n-62-23-14:18430:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662748.357402] [n-62-23-14:18430:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662748.358591] [n-62-23-14:18433:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.95
-[1582662748.359121] [n-62-23-14:18434:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.95
-[1582662748.359617] [n-62-23-14:18430:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662748.359641] [n-62-23-14:18430:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662748.360420] [n-62-23-14:18433:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662748.360438] [n-62-23-14:18433:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662748.361290] [n-62-23-14:18434:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662748.361307] [n-62-23-14:18434:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662748.362473] [n-62-23-14:18433:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662748.362490] [n-62-23-14:18433:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662748.363361] [n-62-23-14:18434:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662748.363378] [n-62-23-14:18434:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'Samples_Incoherent_off' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
-[Samples_Incoherent_off] Initialize
-[Samples_Incoherent_off] Initialize
-[Samples_Incoherent_off] Initialize
-[Samples_Incoherent_off] Initialize
-[Samples_Incoherent_off] Initialize
-[Samples_Incoherent_off] Initialize
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+Simulation 'Samples_Incoherent_off' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr): running on 4 nodes (master is 'n-62-31-16', MPI version 3.1).
 [Samples_Incoherent_off] Initialize
 [Samples_Incoherent_off] Initialize
 [Samples_Incoherent_off] Initialize
@@ -80,39 +36,22 @@ Loading geometry file (OFF/PLY): socket.off
     Width= 0.200000 (0.100%)
     Depth= 0.150000 (0.100%)
 Incoherent: sample: Vc=13.827 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn]
-[n-62-23-14:18419] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-14:18419] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:218337] 3 more processes have sent help message help-mpi-btl-openib.txt / ib port not selected
+[n-62-31-16:218337] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:218337] 3 more processes have sent help message help-mpi-btl-openib.txt / error in device init
 
-
-
-
-Trace ETA 1.18333 [min] % 15 
-
-
-Trace ETA 59 [s] % 18 Trace ETA 1.11667 [min] % 16 Trace ETA 1.11667 [min] % 16 
-Trace ETA 1.15 [min] % 15 
-Trace ETA 1 [min] % 18 Trace ETA 1.01667 [min] % 17 Trace ETA 1.18333 [min] % 15 Trace ETA 1.1 [min] % 16 
-Trace ETA 1.05 [min] % 17 20 20 20 20 20 20 20 20 20 20 30 30 30 30 30 30 30 30 30 30 40 40 40 40 40 40 40 40 40 40 50 50 50 50 50 50 50 50 50 50 60 60 60 60 60 60 60 60 70 60 60 70 70 70 70 70 80 70 70 70 70 80 80 80 80 90 80 80 80 80 80 90 90 90 90 90 90 90 90 90 
-Finally [Samples_Incoherent_off: 1]. Time: 1.06667 [min] 
-
-Finally [Samples_Incoherent_off: 1]. Time: 1.06667 [min] 
-
-Finally [Samples_Incoherent_off: 1]. Time: 1.08333 [min] 
-
-Finally [Samples_Incoherent_off: 1]. Time: 1.08333 [min] 
-
-Finally [Samples_Incoherent_off: 1]. Time: 1.08333 [min] 
-
-Finally [Samples_Incoherent_off: 1]. Time: 1.08333 [min] 
-
-Finally [Samples_Incoherent_off: 1]. Time: 1.08333 [min] 
+Trace ETA 1.05 [min] % 17 
+Trace ETA 1.03333 [min] % 17 
+Trace ETA 1.03333 [min] % 17 
+Trace ETA 1.05 [min] % 17 20 20 20 20 30 30 30 30 40 40 40 40 50 50 50 50 60 60 60 60 70 70 70 70 80 80 80 80 90 90 90 90 
+Finally [Samples_Incoherent_off: 1]. Time: 59 [s] 
 
 Save [Samples_Incoherent_off]
 
-Finally [Samples_Incoherent_off: 1]. Time: 1.1 [min] 
+Finally [Samples_Incoherent_off: 1]. Time: 59 [s] 
 
-Finally [Samples_Incoherent_off: 1]. Time: 1.1 [min] 
-Detector: monitor_I=0.0148249 monitor_ERR=9.89481e-06 monitor_N=9.44578e+06 "monitor_1582662748.x_y"
+Finally [Samples_Incoherent_off: 1]. Time: 59 [s] 
+Detector: monitor_I=0.014812 monitor_ERR=9.89023e-06 monitor_N=9.44642e+06 "monitor_1582742366.x_y"
 
-Finally [Samples_Incoherent_off: 1]. Time: 1.1 [min] 
+Finally [Samples_Incoherent_off: 1]. Time: 59 [s] 
 INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent_off/Samples_Incoherent_off.instr in dataset 1

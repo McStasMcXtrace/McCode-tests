@@ -1,13 +1,13 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Feb. 24, 2020
+# Creator: McStas 2.5 - Feb. 26, 2020
 # Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr
-# Ncount: 1000000
+# Ncount: 2500000
 # Trace: no
 # Gravitation: no
-# Seed: 1582672815
+# Seed: 1582957293
 # Directory: 1
-# Nodes: 10
+# Nodes: 4
 # Param: Lmin=4.9
 # Param: Lmax=5.1
 # Param: lambda0=5
@@ -55,7 +55,7 @@
 # Param: RES_DE=0.5
 # Param: port=30
 # Param: cold=0.95
-# Date: Tue Feb 25 21:14:43 2020 (1582661683)
+# Date: Wed Feb 26 19:30:08 2020 (1582741808)
 # type: array_1d(200)
 # Source: ESS_IN5_reprate (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
 # component: TOF2Edetector

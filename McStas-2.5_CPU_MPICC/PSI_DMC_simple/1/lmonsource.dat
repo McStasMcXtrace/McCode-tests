@@ -1,13 +1,13 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Feb. 24, 2020
+# Creator: McStas 2.5 - Feb. 26, 2020
 # Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_DMC_simple/PSI_DMC_simple.instr
-# Ncount: 1000000
+# Ncount: 2500000
 # Trace: no
 # Gravitation: no
-# Seed: 1582679529
+# Seed: 1582960009
 # Directory: 1
-# Nodes: 10
+# Nodes: 4
 # Param: lambda=2.5666
 # Param: R=0.87
 # Param: R_curve=0.87
@@ -17,7 +17,7 @@
 # Param: PACK=0.7
 # Param: Dw=0.8
 # Param: BARNS=1
-# Date: Tue Feb 25 21:30:40 2020 (1582662640)
+# Date: Wed Feb 26 19:38:16 2020 (1582742296)
 # type: array_1d(101)
 # Source: PSI_DMC (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_DMC_simple/PSI_DMC_simple.instr)
 # component: l_mon_source
@@ -25,9 +25,9 @@
 # title: Wavelength monitor
 # Ncount: 10000000
 # filename: lmonsource.dat
-# statistics: X0=2.54378; dX=0.0942022;
-# signal: Min=0; Max=1.6631e+09; Mean=2.51812e+07;
-# values: 2.5433e+09 804271 9.99994e+06
+# statistics: X0=2.54383; dX=0.0942193;
+# signal: Min=0; Max=1.66242e+09; Mean=2.51812e+07;
+# values: 2.5433e+09 804272 9.99993e+06
 # xvar: L
 # yvar: (I,I_err)
 # xlabel: Wavelength [AA]
@@ -46,8 +46,8 @@
 1.881188119 0 0 0 
 2.079207921 0 0 0 
 2.277227723 0 0 0 
-2.475247525 1663097032 650738.9661 6531720 
-2.673267327 880202772.1 472642.1197 3468216 
+2.475247525 1662422084 650608.2528 6529042 
+2.673267327 880879565.1 472823.445 3470888 
 2.871287129 0 0 0 
 3.069306931 0 0 0 
 3.267326733 0 0 0 

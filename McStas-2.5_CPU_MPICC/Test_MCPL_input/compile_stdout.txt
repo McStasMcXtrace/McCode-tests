@@ -1,24 +1,30 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "Test_MCPL_input_20200225_210526"
+INFO: Using directory: "Test_MCPL_input_20200226_192005"
 INFO: Regenerating c-file: Test_MCPL_input.c
 CFLAGS= -DMCPLPATH=@MCCODE_LIB@/libs/mcpl/voutput.mcpl -I@MCCODE_LIB@/libs/mcpl -L@MCCODE_LIB@/libs/mcpl -lmcpl
       INFO: Recompiling: ./Test_MCPL_input.out
 INFO: ===
-[n-62-23-14:07248] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:07248] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582661130.790650] [n-62-23-14:7247 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3385.16
-[1582661130.792552] [n-62-23-14:7247 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661130.792556] [n-62-23-14:7247 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-31-16:212587] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:212587] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582661130.796452] [n-62-23-14:7247 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661130.796455] [n-62-23-14:7247 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
 begin instrument: Test_MCPL_input
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_MCPL_input/Test_MCPL_input.instr
   Parameters:  repeat(double) E_smear(double) pos_smear(double) dir_smear(double)
   Trace_enabled: yes
@@ -28,12 +34,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_MCPL_input/Test_MCPL_input.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1582668377
+  Seed: 1582953796
   Directory: .
   Param: repeat=1
   Param: E_smear=0.1

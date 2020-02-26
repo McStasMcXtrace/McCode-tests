@@ -1,6 +1,6 @@
 McStas simulation description file for PSI_DMC.
-Date:    Tue Feb 25 21:30:36 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:38:14 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: PSI_DMC
   File: 1/mccode
@@ -14,14 +14,14 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_DMC_simple/PSI_DMC_simple.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582679529
+  Seed: 1582960009
   Directory: 1
-  Nodes: 10
+  Nodes: 4
   Param: lambda=2.5666
   Param: R=0.87
   Param: R_curve=0.87
@@ -34,7 +34,7 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Tue Feb 25 21:30:40 2020 (1582662640)
+  Date: Wed Feb 26 19:38:16 2020 (1582742296)
   type: array_2d(128, 128)
   Source: PSI_DMC (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_DMC_simple/PSI_DMC_simple.instr)
   component: PSDbefore_guides
@@ -42,9 +42,9 @@ begin data
   title: PSD monitor
   Ncount: 10000000
   filename: PSDbefore_guides.dat
-  statistics: X0=-0.000212488; dX=0.577257; Y0=-2.19587e-05; dY=3.46269;
-  signal: Min=128036; Max=184482; Mean=155231;
-  values: 2.5433e+09 804271 9.99994e+06
+  statistics: X0=7.75524e-05; dX=0.577199; Y0=0.000720929; dY=3.46152;
+  signal: Min=129789; Max=179325; Mean=155231;
+  values: 2.5433e+09 804272 9.99993e+06
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -56,7 +56,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:30:40 2020 (1582662640)
+  Date: Wed Feb 26 19:38:16 2020 (1582742296)
   type: array_1d(101)
   Source: PSI_DMC (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_DMC_simple/PSI_DMC_simple.instr)
   component: l_mon_source
@@ -64,9 +64,9 @@ begin data
   title: Wavelength monitor
   Ncount: 10000000
   filename: lmonsource.dat
-  statistics: X0=2.54378; dX=0.0942022;
-  signal: Min=0; Max=1.6631e+09; Mean=2.51812e+07;
-  values: 2.5433e+09 804271 9.99994e+06
+  statistics: X0=2.54383; dX=0.0942193;
+  signal: Min=0; Max=1.66242e+09; Mean=2.51812e+07;
+  values: 2.5433e+09 804272 9.99993e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -76,7 +76,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:30:40 2020 (1582662640)
+  Date: Wed Feb 26 19:38:16 2020 (1582742296)
   type: array_2d(128, 128)
   Source: PSI_DMC (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_DMC_simple/PSI_DMC_simple.instr)
   component: PSDbefore_curve
@@ -84,9 +84,9 @@ begin data
   title: PSD monitor
   Ncount: 10000000
   filename: PSDbefore_curve.dat
-  statistics: X0=-4.42763e-05; dX=0.578839; Y0=-0.000350044; dY=3.55508;
-  signal: Min=2718.73; Max=13226; Mean=6891.71;
-  values: 1.12914e+08 163396 1.25702e+06
+  statistics: X0=0.000272889; dX=0.579208; Y0=-0.0109498; dY=3.55804;
+  signal: Min=2620.15; Max=13566.6; Mean=6911.49;
+  values: 1.13238e+08 163608 1.25776e+06
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -98,7 +98,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:30:40 2020 (1582662640)
+  Date: Wed Feb 26 19:38:16 2020 (1582742296)
   type: array_2d(128, 128)
   Source: PSI_DMC (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_DMC_simple/PSI_DMC_simple.instr)
   component: PSDafter_curve
@@ -106,9 +106,9 @@ begin data
   title: PSD monitor
   Ncount: 10000000
   filename: PSDafter_curve.dat
-  statistics: X0=0.0384359; dX=0.574986; Y0=0.00706923; dY=3.50726;
-  signal: Min=262.651; Max=6481.63; Mean=2883.42;
-  values: 4.72419e+07 104624 952293
+  statistics: X0=0.037978; dX=0.576067; Y0=0.00374254; dY=3.50486;
+  signal: Min=359.074; Max=6809.65; Mean=2882.82;
+  values: 4.72322e+07 104589 953119
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -120,7 +120,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:30:40 2020 (1582662640)
+  Date: Wed Feb 26 19:38:16 2020 (1582742296)
   type: array_1d(11)
   Source: PSI_DMC (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_DMC_simple/PSI_DMC_simple.instr)
   component: ydist_fluxpos
@@ -128,9 +128,9 @@ begin data
   title: Linear PSD monitor
   Ncount: 10000000
   filename: ydist_fluxpos.dat
-  statistics: X0=-5.03e-05; dX=0.0344089;
-  signal: Min=3.17439e+06; Max=3.28261e+06; Mean=3.22703e+06;
-  values: 3.54973e+07 89557.2 782584
+  statistics: X0=9.53862e-05; dX=0.0343891;
+  signal: Min=3.16977e+06; Max=3.28488e+06; Mean=3.22493e+06;
+  values: 3.54743e+07 89524.2 782935
   xvar: x
   yvar: (I,I_err)
   xlabel: x-Position [m]
@@ -140,7 +140,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:30:40 2020 (1582662640)
+  Date: Wed Feb 26 19:38:16 2020 (1582742296)
   type: array_2d(100, 100)
   Source: PSI_DMC (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_DMC_simple/PSI_DMC_simple.instr)
   component: PSD_fluxpos
@@ -148,9 +148,9 @@ begin data
   title: PSD monitor
   Ncount: 10000000
   filename: xdist_fluxposy.dat
-  statistics: X0=-0.00162733; dX=0.576452; Y0=-0.00519636; dY=3.45402;
-  signal: Min=546.694; Max=8757.94; Mean=3549.73;
-  values: 3.54973e+07 89557.2 782584
+  statistics: X0=-0.00388024; dX=0.576001; Y0=0.00980273; dY=3.45206;
+  signal: Min=617.516; Max=7651.68; Mean=3547.43;
+  values: 3.54743e+07 89524.2 782935
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -162,7 +162,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:30:40 2020 (1582662640)
+  Date: Wed Feb 26 19:38:16 2020 (1582742296)
   type: array_1d(11)
   Source: PSI_DMC (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_DMC_simple/PSI_DMC_simple.instr)
   component: xdist_flux_pos
@@ -170,9 +170,9 @@ begin data
   title: Linear PSD monitor
   Ncount: 10000000
   filename: xdist_fluxpos.dat
-  statistics: X0=-1.42446e-05; dX=0.00574373;
-  signal: Min=3.13701e+06; Max=3.27336e+06; Mean=3.22703e+06;
-  values: 3.54973e+07 89557.2 782584
+  statistics: X0=-3.77937e-05; dX=0.00573946;
+  signal: Min=3.1507e+06; Max=3.30319e+06; Mean=3.22493e+06;
+  values: 3.54743e+07 89524.2 782935
   xvar: x
   yvar: (I,I_err)
   xlabel: x-Position [m]
@@ -182,7 +182,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:30:40 2020 (1582662640)
+  Date: Wed Feb 26 19:38:16 2020 (1582742296)
   type: array_2d(100, 100)
   Source: PSI_DMC (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_DMC_simple/PSI_DMC_simple.instr)
   component: PSD_fluxposB
@@ -190,9 +190,9 @@ begin data
   title: PSD monitor
   Ncount: 10000000
   filename: PSD_fluxposB.dat
-  statistics: X0=0.00524079; dX=0.547068; Y0=-0.0080921; dY=3.40921;
-  signal: Min=7.16224; Max=7483.74; Mean=3248.92;
-  values: 3.24892e+07 85837.2 623265
+  statistics: X0=0.00279913; dX=0.547319; Y0=0.00658683; dY=3.40427;
+  signal: Min=243.621; Max=7101.76; Mean=3250.75;
+  values: 3.25075e+07 85849.6 623676
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -204,7 +204,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:30:40 2020 (1582662640)
+  Date: Wed Feb 26 19:38:16 2020 (1582742296)
   type: array_1d(128)
   Source: PSI_DMC (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_DMC_simple/PSI_DMC_simple.instr)
   component: lambda_in
@@ -212,9 +212,9 @@ begin data
   title: Wavelength monitor
   Ncount: 10000000
   filename: L_in.dat
-  statistics: X0=2.56674; dX=0.0200511;
-  signal: Min=0; Max=1.62874e+07; Mean=252729;
-  values: 3.23493e+07 85483 622659
+  statistics: X0=2.56675; dX=0.020051;
+  signal: Min=0; Max=1.63091e+07; Mean=252896;
+  values: 3.23707e+07 85499.1 623110
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -224,7 +224,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:30:40 2020 (1582662640)
+  Date: Wed Feb 26 19:38:16 2020 (1582742296)
   type: array_2d(80, 80)
   Source: PSI_DMC (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_DMC_simple/PSI_DMC_simple.instr)
   component: PSD_sample
@@ -232,9 +232,9 @@ begin data
   title: PSD monitor
   Ncount: 10000000
   filename: PSD_sample.dat
-  statistics: X0=-0.0176053; dX=1.20955; Y0=-0.00519016; dY=1.60827;
-  signal: Min=0; Max=24409; Mean=2251.2;
-  values: 1.44077e+07 44238.3 413824
+  statistics: X0=-0.0163264; dX=1.2096; Y0=0.000895344; dY=1.61191;
+  signal: Min=0; Max=25511.7; Mean=2253.52;
+  values: 1.44225e+07 44241.3 414126
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -246,7 +246,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:30:40 2020 (1582662640)
+  Date: Wed Feb 26 19:38:16 2020 (1582742296)
   type: array_1d(128)
   Source: PSI_DMC (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_DMC_simple/PSI_DMC_simple.instr)
   component: lambda_sample
@@ -254,9 +254,9 @@ begin data
   title: Wavelength monitor
   Ncount: 10000000
   filename: L_sample.dat
-  statistics: X0=2.56667; dX=0.00901038;
-  signal: Min=0; Max=238098; Mean=15774.2;
-  values: 2.0191e+06 17577.1 24682
+  statistics: X0=2.56669; dX=0.00901419;
+  signal: Min=0; Max=231733; Mean=15552.8;
+  values: 1.99076e+06 17432.2 24771
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -266,7 +266,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:30:40 2020 (1582662640)
+  Date: Wed Feb 26 19:38:16 2020 (1582742296)
   type: array_1d(400)
   Source: PSI_DMC (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_DMC_simple/PSI_DMC_simple.instr)
   component: Detector
@@ -274,9 +274,9 @@ begin data
   title: Longitude [deg] monitor
   Ncount: 10000000
   filename: detector.dat
-  statistics: X0=72.9199; dX=17.2171;
-  signal: Min=0; Max=33.448; Mean=1.99491;
-  values: 797.964 30.2425 3461
+  statistics: X0=71.5763; dX=17.2647;
+  signal: Min=0; Max=53.2803; Mean=1.839;
+  values: 735.602 29.1247 3368
   xvar: th
   yvar: (I,I_err)
   xlabel: Longitude [deg]

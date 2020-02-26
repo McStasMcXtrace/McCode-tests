@@ -3,144 +3,65 @@ INFO: Using existing c-file: ./Test_Magnetic_Rotation.c
 INFO: Using existing binary: ./Test_Magnetic_Rotation.out
 WARNING: Ignoring invalid parameter: "Test_Magnetic_Rotation.instr"
 INFO: ===
-[n-62-23-14:23073] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:23073] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:23073] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582664116.663052] [n-62-23-14:23078:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3351.83
-[1582664116.665804] [n-62-23-14:23078:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664116.665821] [n-62-23-14:23078:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: Using system default number of mpirun -np processes
+[n-62-31-16:220581] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:220581] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:220581] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582664116.668108] [n-62-23-14:23078:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664116.668124] [n-62-23-14:23078:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664116.668788] [n-62-23-14:23079:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3318.33
-[1582664116.670981] [n-62-23-14:23079:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664116.670998] [n-62-23-14:23079:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664116.674526] [n-62-23-14:23079:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664116.674541] [n-62-23-14:23079:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664116.675324] [n-62-23-14:23080:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3318.33
-[1582664116.677845] [n-62-23-14:23080:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664116.677862] [n-62-23-14:23080:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664116.678477] [n-62-23-14:23081:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3318.33
-[1582664116.680567] [n-62-23-14:23081:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664116.680583] [n-62-23-14:23081:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664116.680754] [n-62-23-14:23080:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664116.680899] [n-62-23-14:23080:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664116.684583] [n-62-23-14:23081:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664116.684598] [n-62-23-14:23081:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664116.684765] [n-62-23-14:23083:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3318.33
-[1582664116.687019] [n-62-23-14:23083:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664116.687034] [n-62-23-14:23083:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664116.688781] [n-62-23-14:23085:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3318.33
-[1582664116.689086] [n-62-23-14:23084:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3318.33
-[1582664116.689903] [n-62-23-14:23082:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3318.33
-[1582664116.690514] [n-62-23-14:23085:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664116.690531] [n-62-23-14:23085:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664116.690820] [n-62-23-14:23084:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664116.690835] [n-62-23-14:23084:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664116.690973] [n-62-23-14:23083:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664116.690991] [n-62-23-14:23083:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664116.691909] [n-62-23-14:23082:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664116.691927] [n-62-23-14:23082:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664116.692743] [n-62-23-14:23085:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664116.692796] [n-62-23-14:23085:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664116.692914] [n-62-23-14:23084:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664116.692937] [n-62-23-14:23084:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664116.694645] [n-62-23-14:23082:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664116.694663] [n-62-23-14:23082:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664116.699255] [n-62-23-14:23086:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3318.33
-[1582664116.700372] [n-62-23-14:23087:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3318.33
-[1582664116.702102] [n-62-23-14:23086:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664116.702118] [n-62-23-14:23086:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664116.702874] [n-62-23-14:23087:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664116.702890] [n-62-23-14:23087:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664116.705204] [n-62-23-14:23086:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664116.705220] [n-62-23-14:23086:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664116.705284] [n-62-23-14:23087:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664116.705304] [n-62-23-14:23087:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'Test_Magnetic_Rotation' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
-deltaT = 0.000506
-Bmagnitude = 0.000339 T
-deltaT = 0.000506
-deltaT = 0.000506
-[Test_Magnetic_Rotation] Initialize
-INFO: Set_pol(polSetter): Setting polarization to (0.000000, 1.000000, 0.000000)
-deltaT = 0.000506
-Bmagnitude = 0.000339 T
-[Test_Magnetic_Rotation] Initialize
-deltaT = 0.000506
-Bmagnitude = 0.000339 T
-Bmagnitude = 0.000339 T
-[Test_Magnetic_Rotation] Initialize
-INFO: Set_pol(polSetter): Setting polarization to (0.000000, 1.000000, 0.000000)
-[Test_Magnetic_Rotation] Initialize
-INFO: Set_pol(polSetter): Setting polarization to (0.000000, 1.000000, 0.000000)
-deltaT = 0.000506
-deltaT = 0.000506
-Bmagnitude = 0.000339 T
-deltaT = 0.000506
-[Test_Magnetic_Rotation] Initialize
-INFO: Set_pol(polSetter): Setting polarization to (0.000000, 1.000000, 0.000000)
-deltaT = 0.000506
-Bmagnitude = 0.000339 T
-Bmagnitude = 0.000339 T
-[Test_Magnetic_Rotation] Initialize
-Bmagnitude = 0.000339 T
-[Test_Magnetic_Rotation] Initialize
-[Test_Magnetic_Rotation] Initialize
-INFO: Set_pol(polSetter): Setting polarization to (0.000000, 1.000000, 0.000000)
-INFO: Set_pol(polSetter): Setting polarization to (0.000000, 1.000000, 0.000000)
-INFO: Set_pol(polSetter): Setting polarization to (0.000000, 1.000000, 0.000000)
-INFO: Set_pol(polSetter): Setting polarization to (0.000000, 1.000000, 0.000000)
-deltaT = 0.000506
-Bmagnitude = 0.000339 T
-[Test_Magnetic_Rotation] Initialize
-INFO: Set_pol(polSetter): Setting polarization to (0.000000, 1.000000, 0.000000)
-Bmagnitude = 0.000339 T
-[Test_Magnetic_Rotation] Initialize
-INFO: Set_pol(polSetter): Setting polarization to (0.000000, 1.000000, 0.000000)
-[n-62-23-14:23073] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-14:23073] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
 
-Trace ETA 2.53333 [min] % 7 
-Trace ETA 2.11667 [min] % 8 
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+Simulation 'Test_Magnetic_Rotation' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr): running on 4 nodes (master is 'n-62-31-16', MPI version 3.1).
+deltaT = 0.000506
+Bmagnitude = 0.000339 T
+deltaT = 0.000506
+Bmagnitude = 0.000339 T
+deltaT = 0.000506
+Bmagnitude = 0.000339 T
+[Test_Magnetic_Rotation] Initialize
+INFO: Set_pol(polSetter): Setting polarization to (0.000000, 1.000000, 0.000000)
+[Test_Magnetic_Rotation] Initialize
+INFO: Set_pol(polSetter): Setting polarization to (0.000000, 1.000000, 0.000000)
+[Test_Magnetic_Rotation] Initialize
+INFO: Set_pol(polSetter): Setting polarization to (0.000000, 1.000000, 0.000000)
+deltaT = 0.000506
+Bmagnitude = 0.000339 T
+[Test_Magnetic_Rotation] Initialize
+INFO: Set_pol(polSetter): Setting polarization to (0.000000, 1.000000, 0.000000)
+[n-62-31-16:220581] 3 more processes have sent help message help-mpi-btl-openib.txt / ib port not selected
+[n-62-31-16:220581] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:220581] 3 more processes have sent help message help-mpi-btl-openib.txt / error in device init
 
-Trace ETA 2.25 [min] % 8 
-Trace ETA 2.31667 [min] % 7 Trace ETA 2.5 [min] % 7 
-Trace ETA 2.2 [min] % 8 
-Trace ETA 2.36667 [min] % 7 
+Trace ETA 1.78333 [min] % 10 
+Trace ETA 1.76667 [min] % 10 
+Trace ETA 1.76667 [min] % 10 
+Trace ETA 1.78333 [min] % 10 20 20 20 20 30 30 30 30 40 40 40 40 50 50 50 50 60 60 60 60 70 70 70 70 80 80 80 80 90 90 90 90 
+Finally [Test_Magnetic_Rotation: 1]. Time: 1.68333 [min] 
 
-Trace ETA 2.23333 [min] % 8 
-Trace ETA 2.35 [min] % 7 Trace ETA 2.4 [min] % 7 10 10 10 10 10 10 10 10 10 10 20 20 20 20 20 20 20 20 20 20 30 30 30 30 30 30 30 30 30 30 40 40 40 40 40 40 40 40 40 40 50 50 50 50 50 50 50 50 50 50 60 60 60 60 60 60 60 60 60 60 70 70 70 70 70 70 70 70 70 80 70 80 80 80 80 80 80 80 80 90 80 90 90 90 90 90 90 90 90 90 
-
-Finally [Test_Magnetic_Rotation: 1]. Time: 2.18333 [min] 
-Finally [Test_Magnetic_Rotation: 1]. Time: 2.18333 [min] 
-
-Finally [Test_Magnetic_Rotation: 1]. Time: 2.21667 [min] 
-
-Finally [Test_Magnetic_Rotation: 1]. Time: 2.25 [min] 
-
-Finally [Test_Magnetic_Rotation: 1]. Time: 2.28333 [min] 
-
-Finally [Test_Magnetic_Rotation: 1]. Time: 2.28333 [min] 
+Finally [Test_Magnetic_Rotation: 1]. Time: 1.68333 [min] 
 
 Save [Test_Magnetic_Rotation]
 Detector: pollambdaMonitor1x_I=0.00313489 pollambdaMonitor1x_ERR=9.9134e-07 pollambdaMonitor1x_N=1e+07 "pollambdaMon1x.data"
 
-Finally [Test_Magnetic_Rotation: 1]. Time: 2.28333 [min] 
-
-Finally [Test_Magnetic_Rotation: 1]. Time: 2.28333 [min] 
+Finally [Test_Magnetic_Rotation: 1]. Time: 1.7 [min] 
 Detector: pollambdaMonitor1y_I=0.00313489 pollambdaMonitor1y_ERR=9.9134e-07 pollambdaMonitor1y_N=1e+07 "pollambdaMon1y.data"
 Detector: pollambdaMonitor1z_I=0.00313489 pollambdaMonitor1z_ERR=9.9134e-07 pollambdaMonitor1z_N=1e+07 "pollambdaMon1z.data"
-Detector: MPLMonNum2X_I=902.275 MPLMonNum2X_ERR=0.00237273 MPLMonNum2X_N=1e+07 "MPLMonNum2X.data"
+Detector: MPLMonNum2X_I=360.91 MPLMonNum2X_ERR=0.00094916 MPLMonNum2X_N=1e+07 "MPLMonNum2X.data"
+Detector: MPLMonNum2Y_I=14.1926 MPLMonNum2Y_ERR=0.00178034 MPLMonNum2Y_N=1e+07 "MPLMonNum2Y.data"
+Detector: MPLMonNum2Z_I=-69.3665 MPLMonNum2Z_ERR=0.00187507 MPLMonNum2Z_N=1e+07 "MPLMonNum2Z.data"
 
-Finally [Test_Magnetic_Rotation: 1]. Time: 2.28333 [min] 
-Detector: MPLMonNum2Y_I=35.4799 MPLMonNum2Y_ERR=0.00445169 MPLMonNum2Y_N=1e+07 "MPLMonNum2Y.data"
-Detector: MPLMonNum2Z_I=-173.419 MPLMonNum2Z_ERR=0.00468906 MPLMonNum2Z_N=1e+07 "MPLMonNum2Z.data"
-
-Finally [Test_Magnetic_Rotation: 1]. Time: 2.28333 [min] 
+Finally [Test_Magnetic_Rotation: 1]. Time: 1.7 [min] 
 INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Rotation/Test_Magnetic_Rotation.instr in dataset 1

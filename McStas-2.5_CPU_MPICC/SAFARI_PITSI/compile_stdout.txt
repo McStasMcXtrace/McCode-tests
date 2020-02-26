@@ -1,25 +1,31 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "SAFARI_PITSI_20200225_210113"
+INFO: Using directory: "SAFARI_PITSI_20200226_191512"
 INFO: Regenerating c-file: SAFARI_PITSI.c
 Info:    Defining SPLIT from Sample=PowderN() to END in instrument SAFARI_PITSI
 CFLAGS=
   INFO: Recompiling: ./SAFARI_PITSI.out
 INFO: ===
-[n-62-23-14:06215] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:06215] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582660888.715127] [n-62-23-14:6214 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3372.68
-[1582660888.716637] [n-62-23-14:6214 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582660888.716641] [n-62-23-14:6214 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-31-16:211701] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:211701] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582660888.719403] [n-62-23-14:6214 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582660888.719406] [n-62-23-14:6214 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
 begin instrument: SAFARI_PITSI
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr
   Parameters:  source_lam_min(double) source_lam_max(double) hi_res(double) mono_Si_type(double) mono_mosh(double) mono_mosv(double) mono_dx(double) mono_dy(double) mono_dz(double) mono_takeoff(double) mono_dtilt(double) mono_r_h(double) mono_r_v(double) port_takeoff(double) inc_slit_rot(double) inc_slit_dx(double) inc_slit_to_cor(double) inc_slit_width(double) inc_slit_height(double) inc_slit_sep(double) mono_to_cor(double) sample_dx(double) sample_dy(double) sample_dz(double) sample_dom(double) det_takeoff(double) cor_to_det(double) dangle_interest(double) full_instrument(double)
   Trace_enabled: yes
@@ -29,12 +35,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/SAFARI_PITSI/SAFARI_PITSI.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1582667102
+  Seed: 1582952630
   Directory: .
   Param: source_lam_min=0.5
   Param: source_lam_max=2

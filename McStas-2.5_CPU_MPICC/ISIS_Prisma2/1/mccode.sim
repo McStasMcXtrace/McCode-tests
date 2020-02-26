@@ -1,6 +1,6 @@
 McStas simulation description file for ISIS_Prisma2.
-Date:    Tue Feb 25 21:30:20 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:38:03 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: ISIS_Prisma2
   File: 1/mccode
@@ -14,14 +14,14 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582679195
+  Seed: 1582959870
   Directory: 1
-  Nodes: 10
+  Nodes: 4
   Param: TT=-30
   Param: PHA=22
   Param: PHA1=-3
@@ -35,7 +35,7 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Tue Feb 25 21:30:26 2020 (1582662626)
+  Date: Wed Feb 26 19:38:06 2020 (1582742286)
   type: array_1d(500)
   Source: ISIS_Prisma2 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr)
   component: tof_test
@@ -43,9 +43,9 @@ begin data
   title: Time-of-flight monitor
   Ncount: 10000000
   filename: prisma2.mon
-  statistics: X0=40.0519; dX=36.8316;
-  signal: Min=0; Max=7.08938e-05; Mean=5.4019e-06;
-  values: 0.00270095 1.07033e-06 6.36786e+06
+  statistics: X0=40.0396; dX=36.7991;
+  signal: Min=0; Max=7.08594e-05; Mean=5.40143e-06;
+  values: 0.00270071 1.07029e-06 6.36731e+06
   xvar: t
   yvar: (I,I_err)
   xlabel: Time-of-flight [\gms]
@@ -55,7 +55,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:30:26 2020 (1582662626)
+  Date: Wed Feb 26 19:38:06 2020 (1582742286)
   type: array_0d
   Source: ISIS_Prisma2 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr)
   component: mon1
@@ -64,13 +64,13 @@ begin data
   Ncount: 10000000
   statistics: None
   signal: None
-  values: 0.00270095 1.07033e-06 6.36787e+06
+  values: 0.00270072 1.07029e-06 6.36732e+06
   xylimits: 0 0 0 0 0 0
   variables: I I_err N
 end data
 
 begin data
-  Date: Tue Feb 25 21:30:26 2020 (1582662626)
+  Date: Wed Feb 26 19:38:06 2020 (1582742286)
   type: array_0d
   Source: ISIS_Prisma2 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr)
   component: mon2
@@ -79,13 +79,13 @@ begin data
   Ncount: 10000000
   statistics: None
   signal: None
-  values: 0.00270095 1.07033e-06 6.36787e+06
+  values: 0.00270072 1.07029e-06 6.36732e+06
   xylimits: 0 0 0 0 0 0
   variables: I I_err N
 end data
 
 begin data
-  Date: Tue Feb 25 21:30:26 2020 (1582662626)
+  Date: Wed Feb 26 19:38:06 2020 (1582742286)
   type: array_0d
   Source: ISIS_Prisma2 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr)
   component: mon3
@@ -94,13 +94,13 @@ begin data
   Ncount: 10000000
   statistics: None
   signal: None
-  values: 2.79203e-07 1.44043e-10 5.78943e+06
+  values: 2.79169e-07 1.44026e-10 5.7878e+06
   xylimits: 0 0 0 0 0 0
   variables: I I_err N
 end data
 
 begin data
-  Date: Tue Feb 25 21:30:26 2020 (1582662626)
+  Date: Wed Feb 26 19:38:06 2020 (1582742286)
   type: array_0d
   Source: ISIS_Prisma2 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr)
   component: mon4
@@ -109,13 +109,13 @@ begin data
   Ncount: 10000000
   statistics: None
   signal: None
-  values: 7.96871e-08 6.47125e-11 2.85195e+06
+  values: 7.97223e-08 6.47209e-11 2.85264e+06
   xylimits: 0 0 0 0 0 0
   variables: I I_err N
 end data
 
 begin data
-  Date: Tue Feb 25 21:30:26 2020 (1582662626)
+  Date: Wed Feb 26 19:38:06 2020 (1582742286)
   type: array_0d
   Source: ISIS_Prisma2 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr)
   component: mon5
@@ -124,13 +124,13 @@ begin data
   Ncount: 10000000
   statistics: None
   signal: None
-  values: 7.73605e-08 6.3704e-11 2.77287e+06
+  values: 7.73983e-08 6.37153e-11 2.77352e+06
   xylimits: 0 0 0 0 0 0
   variables: I I_err N
 end data
 
 begin data
-  Date: Tue Feb 25 21:30:26 2020 (1582662626)
+  Date: Wed Feb 26 19:38:06 2020 (1582742286)
   type: array_0d
   Source: ISIS_Prisma2 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr)
   component: mon6
@@ -139,13 +139,13 @@ begin data
   Ncount: 10000000
   statistics: None
   signal: None
-  values: 7.49904e-08 6.27674e-11 2.68316e+06
+  values: 7.50333e-08 6.27861e-11 2.68364e+06
   xylimits: 0 0 0 0 0 0
   variables: I I_err N
 end data
 
 begin data
-  Date: Tue Feb 25 21:30:26 2020 (1582662626)
+  Date: Wed Feb 26 19:38:06 2020 (1582742286)
   type: array_2d(100, 100)
   Source: ISIS_Prisma2 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr)
   component: psd
@@ -153,9 +153,9 @@ begin data
   title: PSD monitor
   Ncount: 10000000
   filename: prisma2.psd
-  statistics: X0=-1.48259; dX=1.00698; Y0=-0.00176593; dY=2.18552;
-  signal: Min=0; Max=3.84055e-11; Mean=7.49904e-12;
-  values: 7.49904e-08 6.27674e-11 2.68316e+06
+  statistics: X0=-1.48273; dX=1.00729; Y0=0.00237921; dY=2.18735;
+  signal: Min=0; Max=3.79668e-11; Mean=7.50333e-12;
+  values: 7.50333e-08 6.27861e-11 2.68364e+06
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -167,7 +167,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:30:26 2020 (1582662626)
+  Date: Wed Feb 26 19:38:06 2020 (1582742286)
   type: array_2d(7, 1000)
   Source: ISIS_Prisma2 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr)
   component: Detector
@@ -175,9 +175,9 @@ begin data
   title:  Intensity Mono blade Time_Of_Flight Monitor (Square) per bin
   Ncount: 10000000
   filename: prisma2.tof
-  statistics: X0=0.428572; dX=0.000772726; Y0=5; dY=0;
-  signal: Min=0; Max=7.49904e-08; Mean=1.07129e-11;
-  values: 7.49904e-08 6.27674e-11 2.68316e+06
+  statistics: X0=0.428572; dX=0.000872811; Y0=5; dY=5.96046e-08;
+  signal: Min=0; Max=7.50333e-08; Mean=1.0719e-11;
+  values: 7.50333e-08 6.27861e-11 2.68364e+06
   xvar: Mono
   yvar: TOF
   xlabel: Mono blade
@@ -189,7 +189,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:30:26 2020 (1582662626)
+  Date: Wed Feb 26 19:38:06 2020 (1582742286)
   type: array_0d
   Source: ISIS_Prisma2 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr)
   component: mon9
@@ -198,7 +198,7 @@ begin data
   Ncount: 10000000
   statistics: None
   signal: None
-  values: 7.49904e-08 6.27674e-11 2.68316e+06
+  values: 7.50333e-08 6.27861e-11 2.68364e+06
   xylimits: 0 0 0 0 0 0
   variables: I I_err N
 end data

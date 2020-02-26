@@ -1,5 +1,5 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "Reflectometer_20200225_210111"
+INFO: Using directory: "Reflectometer_20200226_191510"
 INFO: Regenerating c-file: Reflectometer.c
 Warning: 'ESS_moderator_long' is an obsolete component (not maintained).
 

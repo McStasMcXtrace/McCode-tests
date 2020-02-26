@@ -1,6 +1,6 @@
 McStas simulation description file for ILL_IN5_Mantid.
-Date:    Tue Feb 25 21:28:03 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:36:31 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: ILL_IN5_Mantid
   File: 1/mccode
@@ -14,14 +14,14 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582678522
+  Seed: 1582959533
   Directory: 1
-  Nodes: 10
+  Nodes: 4
   Param: lambda=4.5
   Param: dlambda=0.05
   Param: speed=8500
@@ -36,36 +36,36 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Tue Feb 25 21:28:06 2020 (1582662486)
+  Date: Wed Feb 26 19:36:33 2020 (1582742193)
   type: array_1d(20)
   Source: ILL_IN5_Mantid (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr)
   component: Det_sample_t
   position: 0 0 17.0191
   title: TOF [s] monitor
   Ncount: 10000000
-  filename: Det_sample_t_1582662483.t
-  statistics: X0=0.0162305; dX=2.64845e-05;
-  signal: Min=106451; Max=3.86054e+06; Mean=1.91191e+06;
-  values: 3.82381e+07 202262 52646
+  filename: Det_sample_t_1582742191.t
+  statistics: X0=0.0162293; dX=2.61049e-05;
+  signal: Min=73258.6; Max=3.94434e+06; Mean=1.92343e+06;
+  values: 3.84686e+07 202851 52531
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.0161615 0.0163008
+  xlimits: 0.0161589 0.0162996
   variables: t I I_err N
 end data
 
 begin data
-  Date: Tue Feb 25 21:28:06 2020 (1582662486)
-  type: array_2d(6, 18880)
+  Date: Wed Feb 26 19:36:33 2020 (1582742193)
+  type: array_2d(6, 46316)
   Source: ILL_IN5_Mantid (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr)
   component: nD_Mantid_0
   position: 0 0 17.2589
   title:  Intensity Angle Position Neutron_ID Pixel_ID Time_Of_Flight Monitor (Banana) [out]
   Ncount: 10000000
-  filename: nD_Mantid_0_1582662483_list.p.th.y.n.id.t
+  filename: nD_Mantid_0_1582742191_list.p.th.y.n.id.t
   statistics: X0=0; dX=0; Y0=0; dY=0;
-  signal: Min=3.41196; Max=3.41196; Mean=0;
+  signal: Min=8.32044; Max=8.32044; Mean=0;
   values: 0 0 0
   xvar: List
   yvar: p
@@ -73,22 +73,22 @@ begin data
   ylabel: p th y n id t 
   zvar: I
   zlabel: Signal per bin
-  xylimits: 1 18880 1 6
+  xylimits: 1 46316 1 6
   variables: p th y n id t 
 end data
 
 begin data
-  Date: Tue Feb 25 21:28:08 2020 (1582662488)
+  Date: Wed Feb 26 19:36:34 2020 (1582742194)
   type: array_2d(100, 300)
   Source: ILL_IN5_Mantid (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr)
   component: Cp_0
   position: 0 0 17.2589
   title:  Intensity Angle Position Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: Cp_0_1582662483.th_y
-  statistics: X0=45.1712; dX=21.5536; Y0=-0.0014762; dY=0.82254;
-  signal: Min=0; Max=992.435; Mean=45.6272;
-  values: 1.36882e+06 3859.35 186755
+  filename: Cp_0_1582742191.th_y
+  statistics: X0=45.2746; dX=21.5675; Y0=-0.00207894; dY=0.821756;
+  signal: Min=0; Max=932.312; Mean=45.9974;
+  values: 1.37992e+06 3875.04 186897
   xvar: Longitude
   yvar: y
   xlabel: Longitude [deg]
@@ -100,7 +100,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:28:08 2020 (1582662488)
+  Date: Wed Feb 26 19:36:34 2020 (1582742194)
   type: array_2d(384, 128)
   Source: ILL_IN5_Mantid (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr)
   component: Det_PSD
@@ -108,9 +108,9 @@ begin data
   title: PSD Detector
   Ncount: 10000000
   filename: in5det.dat
-  statistics: X0=3.17512; dX=1.51798; Y0=-0.00164545; dY=0.834075;
-  signal: Min=0; Max=673.657; Mean=27.1767;
-  values: 1.33579e+06 4206.11 162293
+  statistics: X0=3.18403; dX=1.51137; Y0=-0.00365523; dY=0.832822;
+  signal: Min=0; Max=663.62; Mean=27.3908;
+  values: 1.34631e+06 4221.04 162376
   xvar: X
   yvar: Y
   xlabel: X position [m]
@@ -122,21 +122,21 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:28:08 2020 (1582662488)
+  Date: Wed Feb 26 19:36:34 2020 (1582742194)
   type: array_1d(50)
   Source: ILL_IN5_Mantid (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN5_Mantid/ILL_IN5_Mantid.instr)
   component: in5_t
   position: 0 0 17.2589
   title: TOF [s] monitor
   Ncount: 10000000
-  filename: in5_t_1582662483.t
-  statistics: X0=0.0210938; dX=0.000129299;
-  signal: Min=0; Max=2.10211e+06; Mean=54393.8;
-  values: 2.71969e+06 8495.08 413394
+  filename: in5_t_1582742191.t
+  statistics: X0=0.0211047; dX=0.000143627;
+  signal: Min=0; Max=1.74965e+06; Mean=54681.3;
+  values: 2.73406e+06 8503.77 413597
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.0164374 0.0306759
+  xlimits: 0.0164435 0.0308625
   variables: t I I_err N
 end data

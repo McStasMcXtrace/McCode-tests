@@ -1,13 +1,13 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Feb. 24, 2020
+# Creator: McStas 2.5 - Feb. 26, 2020
 # Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr
-# Ncount: 1000000
+# Ncount: 2500000
 # Trace: no
 # Gravitation: no
-# Seed: 1582672815
+# Seed: 1582957293
 # Directory: 1
-# Nodes: 10
+# Nodes: 4
 # Param: Lmin=4.9
 # Param: Lmax=5.1
 # Param: lambda0=5
@@ -55,7 +55,7 @@
 # Param: RES_DE=0.5
 # Param: port=30
 # Param: cold=0.95
-# Date: Tue Feb 25 21:14:42 2020 (1582661682)
+# Date: Wed Feb 26 19:30:08 2020 (1582741808)
 # type: array_1d(200)
 # Source: ESS_IN5_reprate (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ESS_IN5_reprate/ESS_IN5_reprate.instr)
 # component: Lmon_slow2
@@ -63,9 +63,9 @@
 # title: Wavelength monitor
 # Ncount: 10000000
 # filename: Lmon_slow2.dat
-# statistics: X0=4.99822; dX=0.0586958;
-# signal: Min=0; Max=5.98728e+09; Mean=1.89481e+08;
-# values: 3.78963e+10 3.06021e+07 3.79496e+06
+# statistics: X0=4.99827; dX=0.0586935;
+# signal: Min=0; Max=5.98262e+09; Mean=1.89393e+08;
+# values: 3.78786e+10 3.06066e+07 3.79489e+06
 # xvar: L
 # yvar: (I,I_err)
 # xlabel: Wavelength [AA]
@@ -232,14 +232,14 @@
 4.80375 0 0 0 
 4.83425 0 0 0 
 4.86475 0 0 0 
-4.89525 2086102874 7387639.981 198657 
-4.92575 5987282627 12432953.42 575098 
-4.95625 5900965130 12231523.94 578016 
-4.98675 5813390055 12021852.71 578310 
-5.01725 5735203871 11831481.06 579983 
-5.04775 5643140855 11622006.09 580436 
-5.07825 5558249923 11438130.13 580959 
-5.10875 1171950907 5226389.395 123502 
+4.89525 2080230657 7367653.068 198730 
+4.92575 5982624467 12432268.17 576018 
+4.95625 5881661222 12207373.87 577394 
+4.98675 5823786939 12032728.69 578003 
+5.01725 5727593789 11829036.69 579280 
+5.04775 5657976537 11664474.99 580934 
+5.07825 5544231064 11430040.32 580197 
+5.10875 1180490284 5242539.926 124337 
 5.13925 0 0 0 
 5.16975 0 0 0 
 5.20025 0 0 0 

@@ -2,87 +2,45 @@ INFO: Using directory: "8"
 INFO: Using existing c-file: ./Test_Sources.c
 INFO: Using existing binary: ./Test_Sources.out
 INFO: ===
-[n-62-23-14:26381] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:26381] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:26381] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582664428.505117] [n-62-23-14:26386:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664428.505155] [n-62-23-14:26386:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: Using system default number of mpirun -np processes
+[n-62-31-16:221809] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:221809] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:221809] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582664428.508050] [n-62-23-14:26386:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664428.508076] [n-62-23-14:26386:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664428.528782] [n-62-23-14:26387:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664428.528822] [n-62-23-14:26387:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664428.531640] [n-62-23-14:26387:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664428.531667] [n-62-23-14:26387:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664428.536034] [n-62-23-14:26389:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664428.536074] [n-62-23-14:26389:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664428.542866] [n-62-23-14:26388:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664428.542908] [n-62-23-14:26388:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664428.543635] [n-62-23-14:26389:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664428.543653] [n-62-23-14:26389:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664428.545542] [n-62-23-14:26388:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664428.545566] [n-62-23-14:26388:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664428.547964] [n-62-23-14:26393:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664428.548004] [n-62-23-14:26393:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664428.550327] [n-62-23-14:26393:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664428.550355] [n-62-23-14:26393:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664428.551689] [n-62-23-14:26390:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664428.551724] [n-62-23-14:26390:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664428.554127] [n-62-23-14:26390:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664428.554150] [n-62-23-14:26390:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664428.562393] [n-62-23-14:26394:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664428.562433] [n-62-23-14:26394:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664428.564790] [n-62-23-14:26394:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664428.564814] [n-62-23-14:26394:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664428.565168] [n-62-23-14:26392:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664428.565203] [n-62-23-14:26392:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664428.565258] [n-62-23-14:26391:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664428.565288] [n-62-23-14:26391:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664428.567589] [n-62-23-14:26391:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664428.567613] [n-62-23-14:26391:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664428.567716] [n-62-23-14:26392:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664428.567772] [n-62-23-14:26392:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664428.571175] [n-62-23-14:26395:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664428.571234] [n-62-23-14:26395:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664428.573618] [n-62-23-14:26395:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664428.573650] [n-62-23-14:26395:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'Test_Sources' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sources/Test_Sources.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
-Test_Sources: Using Moderator
-Test_Sources: Using Moderator
-Test_Sources: Using Moderator
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+Simulation 'Test_Sources' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sources/Test_Sources.instr): running on 4 nodes (master is 'n-62-31-16', MPI version 3.1).
 Test_Sources: Using Moderator
 Studied wavelength range is [1 11] AA
-Studied wavelength range is [1 11] AA
-Test_Sources: Using Moderator
-Studied wavelength range is [1 11] AA
-[Test_Sources] Initialize
-[Test_Sources] Initialize
-Studied wavelength range is [1 11] AA
-Test_Sources: Using Moderator
 Test_Sources: Using Moderator
 Test_Sources: Using Moderator
 Studied wavelength range is [1 11] AA
 Studied wavelength range is [1 11] AA
 [Test_Sources] Initialize
-Studied wavelength range is [1 11] AA
 [Test_Sources] Initialize
-ESS_moderator_long: sa7 WARNING: Provided dist parameter is 1 and hence inside the vacated zone of the beam extraction system!
-You might be placing optics in a restricted area!!!
 [Test_Sources] Initialize
-Test_Sources: Using Moderator
-Studied wavelength range is [1 11] AA
 ESS_moderator_long: sa7 WARNING: Provided dist parameter is 1 and hence inside the vacated zone of the beam extraction system!
 You might be placing optics in a restricted area!!!
 ESS_moderator_long: sa7 WARNING: Provided dist parameter is 1 and hence inside the vacated zone of the beam extraction system!
 You might be placing optics in a restricted area!!!
-[Test_Sources] Initialize
 ESS_moderator_long: sa7 WARNING: Provided dist parameter is 1 and hence inside the vacated zone of the beam extraction system!
 You might be placing optics in a restricted area!!!
+Test_Sources: Using Moderator
+Studied wavelength range is [1 11] AA
 [Test_Sources] Initialize
 Source_gen: component sa5 (square 0.01 x 0.01)
             focusing distance dist=1 area=0.1 x 0.1
@@ -91,54 +49,27 @@ Source_gen: component sa5 (square 0.01 x 0.01)
   Flux is dPhi/dlambda in [n/s/cm2].
 ESS_moderator_long: sa7 WARNING: Provided dist parameter is 1 and hence inside the vacated zone of the beam extraction system!
 You might be placing optics in a restricted area!!!
-ESS_moderator_long: sa7 WARNING: Provided dist parameter is 1 and hence inside the vacated zone of the beam extraction system!
-You might be placing optics in a restricted area!!!
-ESS_moderator_long: sa7 WARNING: Provided dist parameter is 1 and hence inside the vacated zone of the beam extraction system!
-You might be placing optics in a restricted area!!!
 Monitor_nD: m1 is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
 Monitor_nD: m2 is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
 Monitor_nD: m3 is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
-Test_Sources: Using Moderator
-Studied wavelength range is [1 11] AA
-[Test_Sources] Initialize
-ESS_moderator_long: sa7 WARNING: Provided dist parameter is 1 and hence inside the vacated zone of the beam extraction system!
-You might be placing optics in a restricted area!!!
-[Test_Sources] Initialize
-ESS_moderator_long: sa7 WARNING: Provided dist parameter is 1 and hence inside the vacated zone of the beam extraction system!
-You might be placing optics in a restricted area!!!
-Studied wavelength range is [1 11] AA
-[Test_Sources] Initialize
-ESS_moderator_long: sa7 WARNING: Provided dist parameter is 1 and hence inside the vacated zone of the beam extraction system!
-You might be placing optics in a restricted area!!!
 
-Finally [Test_Sources: 8]. Time: 3 [s] 
-
-Finally [Test_Sources: 8]. Time: 3 [s] 
-
-Finally [Test_Sources: 8]. Time: 3 [s] 
-
-Finally [Test_Sources: 8]. Time: 3 [s] 
-
-Finally [Test_Sources: 8]. Time: 3 [s] 
-
-
-Finally [Test_Sources: 8]. Time: 3 [s] 
-Finally [Test_Sources: 8]. Time: 3 [s] 
+Finally [Test_Sources: 8]. Time: 2 [s] 
 
 Save [Test_Sources]
-Detector: m1_I=5.07977e+13 m1_ERR=1.60638e+10 m1_N=9.99984e+06 "m1_1582664428.L"
+Detector: m1_I=5.07977e+13 m1_ERR=1.60638e+10 m1_N=9.99984e+06 "m1_1582743591.L"
 
-Finally [Test_Sources: 8]. Time: 3 [s] 
-Detector: m2_I=5.07963e+13 m2_ERR=1.60636e+10 m2_N=9.99958e+06 "m2_1582664428.x_y"
+Finally [Test_Sources: 8]. Time: 2 [s] 
 
-Finally [Test_Sources: 8]. Time: 3 [s] 
-Detector: m3_I=5.07962e+13 m3_ERR=1.60636e+10 m3_N=9.99955e+06 "m3_1582664428.hd_vd"
+Finally [Test_Sources: 8]. Time: 2 [s] 
+Detector: m2_I=5.07963e+13 m2_ERR=1.60636e+10 m2_N=9.99956e+06 "m2_1582743591.x_y"
+Detector: m3_I=5.07966e+13 m3_ERR=1.60636e+10 m3_N=9.99962e+06 "m3_1582743591.hd_vd"
 
-Finally [Test_Sources: 8]. Time: 3 [s] 
+Finally [Test_Sources: 8]. Time: 2 [s] 
 Detector: sa1_I=1 sa1_ERR=0.000125008 sa1_N=8000 "sa1"
-[n-62-23-14:26381] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-14:26381] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:221809] 3 more processes have sent help message help-mpi-btl-openib.txt / ib port not selected
+[n-62-31-16:221809] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:221809] 3 more processes have sent help message help-mpi-btl-openib.txt / error in device init
 INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Sources/Test_Sources.instr in dataset 8

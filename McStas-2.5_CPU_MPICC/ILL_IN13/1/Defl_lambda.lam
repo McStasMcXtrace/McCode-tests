@@ -1,13 +1,13 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Feb. 24, 2020
+# Creator: McStas 2.5 - Feb. 26, 2020
 # Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN13/ILL_IN13.instr
-# Ncount: 1000000
+# Ncount: 2500000
 # Trace: no
 # Gravitation: no
-# Seed: 1582678119
+# Seed: 1582959345
 # Directory: 1
-# Nodes: 10
+# Nodes: 4
 # Param: RMV=-0
 # Param: RDV=4.6
 # Param: RDH=0
@@ -16,7 +16,7 @@
 # Param: mos_ana=2
 # Param: CaF2mos=10
 # Param: gW=0.03
-# Date: Tue Feb 25 21:27:33 2020 (1582662453)
+# Date: Wed Feb 26 19:36:14 2020 (1582742174)
 # type: array_1d(500)
 # Source: ILL_IN13 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN13/ILL_IN13.instr)
 # component: Defl_lambda
@@ -25,8 +25,8 @@
 # Ncount: 10000000
 # filename: Defl_lambda.lam
 # statistics: X0=2.223; dX=0;
-# signal: Min=0; Max=60601.2; Mean=121.202;
-# values: 60601.2 20.2595 8.9504e+06
+# signal: Min=0; Max=60589; Mean=121.178;
+# values: 60589 20.2574 8.94868e+06
 # xvar: L
 # yvar: (I,I_err)
 # xlabel: Wavelength [AA]
@@ -403,7 +403,7 @@
 2.205 0 0 0 
 2.211 0 0 0 
 2.217 0 0 0 
-2.223 60601.15528 20.25953234 8950400 
+2.223 60588.99134 20.25744783 8948680 
 2.229 0 0 0 
 2.235 0 0 0 
 2.241 0 0 0 

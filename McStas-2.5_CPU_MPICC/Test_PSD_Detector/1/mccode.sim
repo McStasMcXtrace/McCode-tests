@@ -1,6 +1,6 @@
 McStas simulation description file for Test_PSD_Detector.
-Date:    Tue Feb 25 21:59:14 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:58:55 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: Test_PSD_Detector
   File: 1/mccode
@@ -14,19 +14,19 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582688922
+  Seed: 1582964615
   Directory: 1
-  Nodes: 10
+  Nodes: 4
   Param: rot=0
 end simulation
 
 begin data
-  Date: Tue Feb 25 21:59:17 2020 (1582664357)
+  Date: Wed Feb 26 19:58:57 2020 (1582743537)
   type: array_2d(64, 32)
   Source: Test_PSD_Detector (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr)
   component: mydet
@@ -34,9 +34,9 @@ begin data
   title: PSD Detector
   Ncount: 10000000
   filename: test_out.dat
-  statistics: X0=5.87105e-07; dX=0.000683784; Y0=-6.47293e-07; dY=0.000687915;
-  signal: Min=0; Max=5.44026e-20; Mean=1.74924e-21;
-  values: 3.58244e-18 2.61853e-21 1.87174e+06
+  statistics: X0=-1.22441e-07; dX=0.00068371; Y0=8.32063e-07; dY=0.000687628;
+  signal: Min=0; Max=5.50381e-20; Mean=1.74777e-21;
+  values: 3.57943e-18 2.61743e-21 1.87016e+06
   xvar: X
   yvar: Y
   xlabel: X position [m]
@@ -48,7 +48,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:59:17 2020 (1582664357)
+  Date: Wed Feb 26 19:58:57 2020 (1582743537)
   type: array_1d(915)
   Source: Test_PSD_Detector (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_PSD_Detector/Test_PSD_Detector.instr)
   component: mydet
@@ -56,9 +56,9 @@ begin data
   title: Pulse Height Spectrum
   Ncount: 10000000
   filename: test_out.dat.en
-  statistics: X0=745.065; dX=80.1746;
-  signal: Min=0; Max=9.70305e-20; Mean=3.91524e-21;
-  values: 3.58244e-18 2.61853e-21 1.87174e+06
+  statistics: X0=745.051; dX=80.1524;
+  signal: Min=0; Max=9.75492e-20; Mean=3.91195e-21;
+  values: 3.57943e-18 2.61743e-21 1.87016e+06
   xvar: E
   yvar: (I,I_err)
   xlabel: Energy [keV], threshold set to 100 keV

@@ -1,6 +1,6 @@
 McStas simulation description file for Test_Guides.
-Date:    Tue Feb 25 21:42:00 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:47:05 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: Test_Guides
   File: 5/mccode
@@ -14,28 +14,28 @@ end instrument
 begin simulation: 5
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582684217
+  Seed: 1582962329
   Directory: 5
-  Nodes: 10
+  Nodes: 4
   Param: Guide=5
 end simulation
 
 begin data
-  Date: Tue Feb 25 21:42:03 2020 (1582663323)
+  Date: Wed Feb 26 19:47:07 2020 (1582742827)
   type: array_2d(20, 20)
   Source: Test_Guides (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr)
   component: Monitor1_xt
   position: 0 0 1
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: Monitor1_xt_1582663320.x_y
-  statistics: X0=2.9315e-06; dX=0.0144142; Y0=4.93206e-06; dY=0.0144113;
-  signal: Min=9.19286e-05; Max=9.57487e-05; Mean=9.35941e-05;
+  filename: Monitor1_xt_1582742825.x_y
+  statistics: X0=-1.1187e-06; dX=0.0144185; Y0=1.40011e-06; dY=0.01441;
+  signal: Min=9.14407e-05; Max=9.50655e-05; Mean=9.35941e-05;
   values: 0.0374376 1.18388e-05 1e+07
   xvar: x
   yvar: y
@@ -48,17 +48,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:42:03 2020 (1582663323)
+  Date: Wed Feb 26 19:47:07 2020 (1582742827)
   type: array_2d(20, 20)
   Source: Test_Guides (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides/Test_Guides.instr)
   component: Monitor2_xy
   position: 0 0 3.1
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: Monitor2_xy_1582663320.x_y
-  statistics: X0=3.3465e-05; dX=0.0192005; Y0=-2.40925e-05; dY=0.0191959;
-  signal: Min=7.86147e-06; Max=2.56626e-05; Mean=1.80025e-05;
-  values: 0.00720101 5.18123e-06 6.23274e+06
+  filename: Monitor2_xy_1582742825.x_y
+  statistics: X0=6.08085e-05; dX=0.0191944; Y0=1.24184e-05; dY=0.0191866;
+  signal: Min=7.68153e-06; Max=2.59016e-05; Mean=1.8026e-05;
+  values: 0.00721039 5.18456e-06 6.23338e+06
   xvar: x
   yvar: y
   xlabel: x [m]

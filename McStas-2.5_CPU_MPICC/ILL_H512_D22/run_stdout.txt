@@ -2,59 +2,34 @@ INFO: Using directory: "1"
 INFO: Using existing c-file: ./ILL_H512_D22.c
 INFO: Using existing binary: ./ILL_H512_D22.out
 INFO: ===
-[n-62-23-14:15185] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:15185] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:15185] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582662332.420097] [n-62-23-14:15190:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662332.420136] [n-62-23-14:15190:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: Using system default number of mpirun -np processes
+[n-62-31-16:216958] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:216958] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:216958] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582662332.422668] [n-62-23-14:15190:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662332.422687] [n-62-23-14:15190:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662332.427896] [n-62-23-14:15192:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662332.428006] [n-62-23-14:15192:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662332.431350] [n-62-23-14:15192:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662332.431376] [n-62-23-14:15192:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662332.441180] [n-62-23-14:15191:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662332.441221] [n-62-23-14:15191:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662332.441554] [n-62-23-14:15195:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662332.441585] [n-62-23-14:15195:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662332.443693] [n-62-23-14:15195:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662332.443713] [n-62-23-14:15195:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662332.443958] [n-62-23-14:15191:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662332.443976] [n-62-23-14:15191:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662332.445283] [n-62-23-14:15194:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662332.445316] [n-62-23-14:15194:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662332.447400] [n-62-23-14:15194:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662332.447416] [n-62-23-14:15194:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662332.449583] [n-62-23-14:15193:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662332.449622] [n-62-23-14:15193:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662332.450293] [n-62-23-14:15197:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662332.450323] [n-62-23-14:15197:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662332.452116] [n-62-23-14:15193:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662332.452139] [n-62-23-14:15193:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662332.452726] [n-62-23-14:15197:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662332.452745] [n-62-23-14:15197:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662332.456256] [n-62-23-14:15198:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662332.456370] [n-62-23-14:15198:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662332.456612] [n-62-23-14:15199:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662332.456651] [n-62-23-14:15199:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662332.458536] [n-62-23-14:15198:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662332.458554] [n-62-23-14:15198:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662332.458815] [n-62-23-14:15199:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662332.458832] [n-62-23-14:15199:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662332.460737] [n-62-23-14:15196:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662332.460770] [n-62-23-14:15196:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662332.463136] [n-62-23-14:15196:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662332.463158] [n-62-23-14:15196:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'ILL_H512_D22' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H512_D22/ILL_H512_D22.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+Simulation 'ILL_H512_D22' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H512_D22/ILL_H512_D22.instr): running on 4 nodes (master is 'n-62-31-16', MPI version 3.1).
 ILL_H512_D22: D22:  nu=28307.4 [rpm] lambda=4.5 [Angs] sample=H2O_liq.qSq
 ILL_H512_D22: D22:  nu=28307.4 [rpm] lambda=4.5 [Angs] sample=H2O_liq.qSq
 ILL_H512_D22: D22:  nu=28307.4 [rpm] lambda=4.5 [Angs] sample=H2O_liq.qSq
+ILL_H512_D22: D22:  nu=28307.4 [rpm] lambda=4.5 [Angs] sample=H2O_liq.qSq
+[ILL_H512_D22] Initialize
+[ILL_H512_D22] Initialize
 [ILL_H512_D22] Initialize
 [ILL_H512_D22] Initialize
 Source_gen: component HCS (square 0.1 x 0.1)
@@ -62,39 +37,24 @@ Source_gen: component HCS (square 0.1 x 0.1)
             spectra 4.050 to 4.950 AA (3.339 to 4.988 meV)
             T1=40.1 K (4.865 AA), T2=145.8 K (2.552 AA), T3=413.5 K (1.515 AA)
   Flux is dPhi/dlambda in [n/s/cm2].
-ILL_H512_D22: D22:  nu=28307.4 [rpm] lambda=4.5 [Angs] sample=H2O_liq.qSq
-[ILL_H512_D22] Initialize
-[ILL_H512_D22] Initialize
-ILL_H512_D22: D22:  nu=28307.4 [rpm] lambda=4.5 [Angs] sample=H2O_liq.qSq
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
 Table from file 'Al.laz' (block 1) is 26 x 18 (x=1:8), constant step. interpolation: linear
   '# TITLE *Aluminum-Al-[FM3-M] Miller, H.P.jr.;DuMond, J.W.M.[1942] at 298 K; ...'
 PowderN: HCS_Al: Reading 26 rows from Al.laz
 PowderN: HCS_Al: Read 26 reflections from file 'Al.laz'
 PowderN: HCS_Al: Vc=66.4 [Angs] sigma_abs=0.924 [barn] sigma_inc=0.0328 [barn] reflections=Al.laz
-[ILL_H512_D22] Initialize
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
 Table from file 'Al.laz' (block 1) is 26 x 18 (x=1:8), constant step. interpolation: linear
   '# TITLE *Aluminum-Al-[FM3-M] Miller, H.P.jr.;DuMond, J.W.M.[1942] at 298 K; ...'
 PowderN: HCS_Al_4: Reading 26 rows from Al.laz
 PowderN: HCS_Al_4: Read 26 reflections from file 'Al.laz'
 PowderN: HCS_Al_4: Vc=66.4 [Angs] sigma_abs=0.924 [barn] sigma_inc=0.0328 [barn] reflections=Al.laz
-ILL_H512_D22: D22:  nu=28307.4 [rpm] lambda=4.5 [Angs] sample=H2O_liq.qSq
-ILL_H512_D22: D22:  nu=28307.4 [rpm] lambda=4.5 [Angs] sample=H2O_liq.qSq
-[ILL_H512_D22] Initialize
-ILL_H512_D22: D22:  nu=28307.4 [rpm] lambda=4.5 [Angs] sample=H2O_liq.qSq
-ILL_H512_D22: D22:  nu=28307.4 [rpm] lambda=4.5 [Angs] sample=H2O_liq.qSq
-[ILL_H512_D22] Initialize
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
-[ILL_H512_D22] Initialize
-[ILL_H512_D22] Initialize
-ILL_H512_D22: D22:  nu=28307.4 [rpm] lambda=4.5 [Angs] sample=H2O_liq.qSq
 Table from file 'Al.laz' (block 1) is 26 x 18 (x=1:8), constant step. interpolation: linear
   '# TITLE *Aluminum-Al-[FM3-M] Miller, H.P.jr.;DuMond, J.W.M.[1942] at 298 K; ...'
 PowderN: HCS_Al_5: Reading 26 rows from Al.laz
 PowderN: HCS_Al_5: Read 26 reflections from file 'Al.laz'
 PowderN: HCS_Al_5: Vc=66.4 [Angs] sigma_abs=0.924 [barn] sigma_inc=0.0328 [barn] reflections=Al.laz
-[ILL_H512_D22] Initialize
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
 Table from file 'Al.laz' (block 1) is 26 x 18 (x=1:8), constant step. interpolation: linear
   '# TITLE *Aluminum-Al-[FM3-M] Miller, H.P.jr.;DuMond, J.W.M.[1942] at 298 K; ...'
@@ -163,47 +123,36 @@ Isotropic_Sqw: H51_D22_Sample: Generated H2O_liq.qSq coherent Sqw
 Isotropic_Sqw: H51_D22_Sample: Using Isotropic elastic incoherent scattering (sigma=160.521 [barns])
 Isotropic_Sqw: H51_D22_Sample: Focusing can only apply for single
                scattering. Setting to order=1.
-[n-62-23-14:15185] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-14:15185] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
-
-Finally [ILL_H512_D22: 1]. Time: 8 [s] 
-
-Finally [ILL_H512_D22: 1]. Time: 9 [s] 
-
-Finally [ILL_H512_D22: 1]. Time: 9 [s] 
-
-Finally [ILL_H512_D22: 1]. Time: 9 [s] 
-
-Finally [ILL_H512_D22: 1]. Time: 9 [s] 
+[n-62-31-16:216958] 3 more processes have sent help message help-mpi-btl-openib.txt / ib port not selected
+[n-62-31-16:216958] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:216958] 3 more processes have sent help message help-mpi-btl-openib.txt / error in device init
 
 Save [ILL_H512_D22]
-Detector: H5_I=6.10573e+12 H5_ERR=2.24063e+09 H5_N=7.67618e+06 "H5_1582662332.x_y"
+Detector: H5_I=6.10415e+12 H5_ERR=2.24046e+09 H5_N=7.6739e+06 "H5_1582742097.x_y"
+Detector: H51_origin_I=1.00154e+12 H51_origin_ERR=9.07757e+08 H51_origin_N=1.2557e+06 "H51_origin_1582742097.hd_vd"
 
-Finally [ILL_H512_D22: 1]. Time: 9 [s] 
-Detector: H51_origin_I=1.00361e+12 H51_origin_ERR=9.08681e+08 H51_origin_N=1.25823e+06 "H51_origin_1582662332.hd_vd"
-Detector: H51_Obt_Out_I=1.15711e+11 H51_Obt_Out_ERR=3.02376e+08 H51_Obt_Out_N=545633 "H51_Obt_Out_1582662332.x_y"
+Finally [ILL_H512_D22: 1]. Time: 5 [s] 
+Detector: H51_Obt_Out_I=1.15576e+11 H51_Obt_Out_ERR=3.02246e+08 H51_Obt_Out_N=543793 "H51_Obt_Out_1582742097.x_y"
+Detector: H51_S2_Out_I=8.87509e+10 H51_S2_Out_ERR=2.77775e+08 H51_S2_Out_N=462908 "H51_S2_Out_1582742097.x_y"
+Detector: H51_split_2_I=4.10778e+10 H51_split_2_ERR=1.89238e+08 H51_split_2_N=212382 "H51_split_2_1582742097.x_y"
+Detector: H51_split_1_I=4.10157e+10 H51_split_1_ERR=1.89049e+08 H51_split_1_N=212060 "H51_split_1_1582742097.x_y"
 
-Finally [ILL_H512_D22: 1]. Time: 9 [s] 
-Detector: H51_S2_Out_I=8.9063e+10 H51_S2_Out_ERR=2.78238e+08 H51_S2_Out_N=464327 "H51_S2_Out_1582662332.x_y"
-Detector: H51_split_2_I=4.08909e+10 H51_split_2_ERR=1.88741e+08 H51_split_2_N=211879 "H51_split_2_1582662332.x_y"
-Detector: H51_split_1_I=4.13447e+10 H51_split_1_ERR=1.89881e+08 H51_split_1_N=213732 "H51_split_1_1582662332.x_y"
-Detector: H512_VTE_I=2.9048e+10 H512_VTE_ERR=1.63061e+08 H512_VTE_N=194182 "H512_VTE_1582662332.x_y"
-Detector: D22_PreV_I=2.37507e+10 D22_PreV_ERR=1.578e+08 D22_PreV_N=138876 "D22_PreV_1582662332.x_y"
-Detector: H51_D22_Sample_Div_I=2.10236e+09 H51_D22_Sample_Div_ERR=3.77751e+07 H51_D22_Sample_Div_N=11711 "H51_D22_Sample_Div_1582662332.hd_vd"
+Finally [ILL_H512_D22: 1]. Time: 5 [s] 
+Detector: H512_VTE_I=2.93447e+10 H512_VTE_ERR=1.63979e+08 H512_VTE_N=194601 "H512_VTE_1582742097.x_y"
+Detector: D22_PreV_I=2.40682e+10 D22_PreV_ERR=1.5891e+08 D22_PreV_N=139108 "D22_PreV_1582742097.x_y"
+Detector: H51_D22_Sample_Div_I=2.19779e+09 H51_D22_Sample_Div_ERR=3.85779e+07 H51_D22_Sample_Div_N=11867 "H51_D22_Sample_Div_1582742097.hd_vd"
+Detector: H51_D22_Sample_XY_I=2.19779e+09 H51_D22_Sample_XY_ERR=3.85779e+07 H51_D22_Sample_XY_N=11867 "H51_D22_Sample_XY_1582742097.x_y"
+Detector: H51_D22_Sample_L_I=2.19779e+09 H51_D22_Sample_L_ERR=3.85779e+07 H51_D22_Sample_L_N=11867 "H51_D22_Sample_L_1582742097.L"
 
-Finally [ILL_H512_D22: 1]. Time: 9 [s] 
-Detector: H51_D22_Sample_XY_I=2.10236e+09 H51_D22_Sample_XY_ERR=3.77751e+07 H51_D22_Sample_XY_N=11711 "H51_D22_Sample_XY_1582662332.x_y"
-Detector: H51_D22_Sample_L_I=2.10236e+09 H51_D22_Sample_L_ERR=3.77751e+07 H51_D22_Sample_L_N=11711 "H51_D22_Sample_L_1582662332.L"
+Finally [ILL_H512_D22: 1]. Time: 5 [s] 
+Detector: D22_Detector_I=1.93225e+07 D22_Detector_ERR=582986 D22_Detector_N=4282 "D22_Detector_1582742097.x_y"
 
-Finally [ILL_H512_D22: 1]. Time: 9 [s] 
-Detector: D22_Detector_I=1.85935e+07 D22_Detector_ERR=581794 D22_Detector_N=4278 "D22_Detector_1582662332.x_y"
-
-Finally [ILL_H512_D22: 1]. Time: 9 [s] 
-Isotropic_Sqw: H51_D22_Sample: 92 neutron events (out of 56381) that should have
+Finally [ILL_H512_D22: 1]. Time: 5 [s] 
+Isotropic_Sqw: H51_D22_Sample: 86 neutron events (out of 57499) that should have
                scattered were transmitted because scattering conditions
 WARNING        could not be satisfied after 100 tries.
-Isotropic_Sqw: H51_D22_Sample: Scattering fraction=0.972499 of incoming intensity
-               Absorption fraction           =0.00976049
-               Single   scattering intensity =2.34568e+08 (coh=1.12752e+07 inc=2.23293e+08)
+Isotropic_Sqw: H51_D22_Sample: Scattering fraction=0.968468 of incoming intensity
+               Absorption fraction           =0.00977382
+               Single   scattering intensity =2.47706e+08 (coh=1.14185e+07 inc=2.36287e+08)
                Multiple scattering intensity =0
 INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H512_D22/ILL_H512_D22.instr in dataset 1

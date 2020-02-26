@@ -1,5 +1,5 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "ISIS_CRISP_20200225_205632"
+INFO: Using directory: "ISIS_CRISP_20200226_190949"
 INFO: Regenerating c-file: ISIS_CRISP.c
 Info:    'ISIS_moderator' is a contributed component.
 Info:    'Multilayer_Sample' is a contributed component.

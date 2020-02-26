@@ -1,13 +1,13 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Feb. 24, 2020
+# Creator: McStas 2.5 - Feb. 26, 2020
 # Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr
-# Ncount: 1000000
+# Ncount: 2500000
 # Trace: no
 # Gravitation: no
-# Seed: 1582679195
+# Seed: 1582959870
 # Directory: 1
-# Nodes: 10
+# Nodes: 4
 # Param: TT=-30
 # Param: PHA=22
 # Param: PHA1=-3
@@ -18,7 +18,7 @@
 # Param: PHA6=2
 # Param: PHA7=3
 # Param: TTA=4
-# Date: Tue Feb 25 21:30:26 2020 (1582662626)
+# Date: Wed Feb 26 19:38:06 2020 (1582742286)
 # type: array_0d
 # Source: ISIS_Prisma2 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_Prisma2/ISIS_Prisma2.instr)
 # component: mon4
@@ -27,7 +27,7 @@
 # Ncount: 10000000
 # statistics: None
 # signal: None
-# values: 7.96871e-08 6.47125e-11 2.85195e+06
+# values: 7.97223e-08 6.47209e-11 2.85264e+06
 # xylimits: 0 0 0 0 0 0
 # variables: I I_err N
-7.96871e-08 6.47125e-11 2.85195e+06
+7.97223e-08 6.47209e-11 2.85264e+06

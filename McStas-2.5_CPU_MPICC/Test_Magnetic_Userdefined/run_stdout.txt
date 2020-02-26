@@ -3,108 +3,57 @@ INFO: Using existing c-file: ./Test_Magnetic_Userdefined.c
 INFO: Using existing binary: ./Test_Magnetic_Userdefined.out
 WARNING: Ignoring invalid parameter: "Test_Magnetic_Userdefined"
 INFO: ===
-[n-62-23-14:23650] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:23650] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:23650] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582664254.187958] [n-62-23-14:23656:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664254.187999] [n-62-23-14:23656:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: Using system default number of mpirun -np processes
+[n-62-31-16:220706] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:220706] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:220706] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582664254.190575] [n-62-23-14:23656:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664254.190601] [n-62-23-14:23656:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664254.214877] [n-62-23-14:23657:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664254.214991] [n-62-23-14:23657:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664254.217212] [n-62-23-14:23657:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664254.217231] [n-62-23-14:23657:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664254.219568] [n-62-23-14:23658:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664254.219603] [n-62-23-14:23658:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664254.221822] [n-62-23-14:23658:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664254.221837] [n-62-23-14:23658:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664254.222502] [n-62-23-14:23659:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664254.222531] [n-62-23-14:23659:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664254.225321] [n-62-23-14:23659:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664254.225368] [n-62-23-14:23659:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664254.226074] [n-62-23-14:23663:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664254.226103] [n-62-23-14:23663:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664254.228391] [n-62-23-14:23663:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664254.228408] [n-62-23-14:23663:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664254.228991] [n-62-23-14:23660:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664254.229061] [n-62-23-14:23660:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664254.230187] [n-62-23-14:23664:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664254.230215] [n-62-23-14:23664:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664254.231338] [n-62-23-14:23660:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664254.231354] [n-62-23-14:23660:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664254.232346] [n-62-23-14:23664:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664254.232401] [n-62-23-14:23664:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664254.234919] [n-62-23-14:23665:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664254.234949] [n-62-23-14:23665:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664254.236138] [n-62-23-14:23662:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664254.236239] [n-62-23-14:23662:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664254.237029] [n-62-23-14:23665:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664254.237046] [n-62-23-14:23665:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664254.238369] [n-62-23-14:23662:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664254.238438] [n-62-23-14:23662:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664254.241666] [n-62-23-14:23661:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664254.241719] [n-62-23-14:23661:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664254.244072] [n-62-23-14:23661:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664254.244095] [n-62-23-14:23661:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'Test_Magnetic_Userdefined' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Userdefined/Test_Magnetic_Userdefined.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+Simulation 'Test_Magnetic_Userdefined' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Userdefined/Test_Magnetic_Userdefined.instr): running on 4 nodes (master is 'n-62-31-16', MPI version 3.1).
 Instrument parameters for Test_Magnetic_Userdefined (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Userdefined/Test_Magnetic_Userdefined.instr)
 [Test_Magnetic_Userdefined] Initialize
-INFO: Set_pol(polSetter): Setting polarization to (1.000000, 0.000000, 0.000000)
 [Test_Magnetic_Userdefined] Initialize
 INFO: Set_pol(polSetter): Setting polarization to (1.000000, 0.000000, 0.000000)
 [Test_Magnetic_Userdefined] Initialize
 INFO: Set_pol(polSetter): Setting polarization to (1.000000, 0.000000, 0.000000)
-[Test_Magnetic_Userdefined] Initialize
 INFO: Set_pol(polSetter): Setting polarization to (1.000000, 0.000000, 0.000000)
 [Test_Magnetic_Userdefined] Initialize
-INFO: Set_pol(polSetter): Setting polarization to (1.000000, 0.000000, 0.000000)
-[Test_Magnetic_Userdefined] Initialize
-[Test_Magnetic_Userdefined] Initialize
-[Test_Magnetic_Userdefined] Initialize
-[Test_Magnetic_Userdefined] Initialize
-INFO: Set_pol(polSetter): Setting polarization to (1.000000, 0.000000, 0.000000)
-INFO: Set_pol(polSetter): Setting polarization to (1.000000, 0.000000, 0.000000)
-[Test_Magnetic_Userdefined] Initialize
-INFO: Set_pol(polSetter): Setting polarization to (1.000000, 0.000000, 0.000000)
-INFO: Set_pol(polSetter): Setting polarization to (1.000000, 0.000000, 0.000000)
 INFO: Set_pol(polSetter): Setting polarization to (1.000000, 0.000000, 0.000000)
 
-Finally [Test_Magnetic_Userdefined: 1]. Time: 3 [s] 
-
-Finally [Test_Magnetic_Userdefined: 1]. Time: 3 [s] 
-
-Finally [Test_Magnetic_Userdefined: 1]. Time: 3 [s] 
-
-Finally [Test_Magnetic_Userdefined: 1]. Time: 3 [s] 
-
-Finally [Test_Magnetic_Userdefined: 1]. Time: 3 [s] 
-
-Finally [Test_Magnetic_Userdefined: 1]. Time: 3 [s] 
+Finally [Test_Magnetic_Userdefined: 1]. Time: 2 [s] 
 
 Save [Test_Magnetic_Userdefined]
-Detector: pollambdaMonitor1x_I=0.306823 pollambdaMonitor1x_ERR=9.70262e-05 pollambdaMonitor1x_N=1e+07 "pollambdaMon1x.data"
+Detector: pollambdaMonitor1x_I=0.306823 pollambdaMonitor1x_ERR=9.70263e-05 pollambdaMonitor1x_N=1e+07 "pollambdaMon1x.data"
+
+Finally [Test_Magnetic_Userdefined: 1]. Time: 2 [s] 
+Detector: pollambdaMonitor1y_I=0.306823 pollambdaMonitor1y_ERR=9.70263e-05 pollambdaMonitor1y_N=1e+07 "pollambdaMon1y.data"
+Detector: pollambdaMonitor1z_I=0.306823 pollambdaMonitor1z_ERR=9.70263e-05 pollambdaMonitor1z_N=1e+07 "pollambdaMon1z.data"
 
 Finally [Test_Magnetic_Userdefined: 1]. Time: 3 [s] 
-
-Finally [Test_Magnetic_Userdefined: 1]. Time: 3 [s] 
-Detector: pollambdaMonitor1y_I=0.306823 pollambdaMonitor1y_ERR=9.70262e-05 pollambdaMonitor1y_N=1e+07 "pollambdaMon1y.data"
-Detector: pollambdaMonitor1z_I=0.306823 pollambdaMonitor1z_ERR=9.70262e-05 pollambdaMonitor1z_N=1e+07 "pollambdaMon1z.data"
-Detector: pollambdaMonitor2x_I=0.181478 pollambdaMonitor2x_ERR=7.46724e-05 pollambdaMonitor2x_N=5.90648e+06 "pollambdaMon2x.data"
-Detector: pollambdaMonitor2y_I=0.156788 pollambdaMonitor2y_ERR=6.94169e-05 pollambdaMonitor2y_N=5.1015e+06 "pollambdaMon2y.data"
+Detector: pollambdaMonitor2x_I=0.181467 pollambdaMonitor2x_ERR=7.46701e-05 pollambdaMonitor2x_N=5.90611e+06 "pollambdaMon2x.data"
+Detector: pollambdaMonitor2y_I=0.156751 pollambdaMonitor2y_ERR=6.94087e-05 pollambdaMonitor2y_N=5.10028e+06 "pollambdaMon2y.data"
 Detector: pollambdaMonitor2z_I=0.136605 pollambdaMonitor2z_ERR=6.48023e-05 pollambdaMonitor2z_N=4.44378e+06 "pollambdaMon2z.data"
-Detector: mpollambdaMonitor2x_I=980 mpollambdaMonitor2x_ERR=0.000250901 mpollambdaMonitor2x_N=3.90593e+06 "mpollambdaMon2x.data"
-Detector: mpollambdaMonitor2y_I=0 mpollambdaMonitor2y_ERR=0 mpollambdaMonitor2y_N=3.46072e+06 "mpollambdaMon2y.data"
+Detector: mpollambdaMonitor2x_I=392 mpollambdaMonitor2x_ERR=0.000100351 mpollambdaMonitor2x_N=3.90628e+06 "mpollambdaMon2x.data"
+Detector: mpollambdaMonitor2y_I=0 mpollambdaMonitor2y_ERR=0 mpollambdaMonitor2y_N=3.46013e+06 "mpollambdaMon2y.data"
+Detector: mpollambdaMonitor2z_I=0 mpollambdaMonitor2z_ERR=0 mpollambdaMonitor2z_N=3.08635e+06 "mpollambdaMon2z.data"
 
 Finally [Test_Magnetic_Userdefined: 1]. Time: 3 [s] 
-Detector: mpollambdaMonitor2z_I=0 mpollambdaMonitor2z_ERR=0 mpollambdaMonitor2z_N=3.08729e+06 "mpollambdaMon2z.data"
-
-Finally [Test_Magnetic_Userdefined: 1]. Time: 3 [s] 
-[n-62-23-14:23650] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-14:23650] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:220706] 3 more processes have sent help message help-mpi-btl-openib.txt / ib port not selected
+[n-62-31-16:220706] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:220706] 3 more processes have sent help message help-mpi-btl-openib.txt / error in device init
 INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Userdefined/Test_Magnetic_Userdefined.instr in dataset 1

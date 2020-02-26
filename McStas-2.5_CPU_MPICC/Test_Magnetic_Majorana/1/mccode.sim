@@ -1,6 +1,6 @@
 McStas simulation description file for Test_Magnetic_Majorana.
-Date:    Tue Feb 25 21:55:11 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:56:08 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: Test_Magnetic_Majorana
   File: 1/mccode
@@ -14,21 +14,21 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Majorana/Test_Magnetic_Majorana.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582687082
+  Seed: 1582963912
   Directory: 1
-  Nodes: 10
+  Nodes: 4
   Param: Blarge=1
   Param: Bsmall=0.003
   Param: magnetLength=1
 end simulation
 
 begin data
-  Date: Tue Feb 25 21:55:15 2020 (1582664115)
+  Date: Wed Feb 26 19:56:11 2020 (1582743371)
   type: array_2d(100, 21)
   Source: Test_Magnetic_Majorana (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Majorana/Test_Magnetic_Majorana.instr)
   component: pollambdaMonitor1x
@@ -36,8 +36,8 @@ begin data
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: pollambdaMon1x.data
-  statistics: X0=15.0009; dX=8.08441; Y0=0.952381; dY=0;
-  signal: Min=0; Max=9.49304e-09; Mean=4.18878e-10;
+  statistics: X0=14.9967; dX=8.08371; Y0=0.952381; dY=1.05367e-08;
+  signal: Min=0; Max=9.49814e-09; Mean=4.18878e-10;
   values: 8.79645e-07 2.78168e-10 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -50,7 +50,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:55:15 2020 (1582664115)
+  Date: Wed Feb 26 19:56:11 2020 (1582743371)
   type: array_2d(100, 21)
   Source: Test_Magnetic_Majorana (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Majorana/Test_Magnetic_Majorana.instr)
   component: pollambdaMonitor1y
@@ -58,8 +58,8 @@ begin data
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: pollambdaMon1y.data
-  statistics: X0=15.0009; dX=8.08441; Y0=0; dY=0;
-  signal: Min=0; Max=9.49304e-09; Mean=4.18878e-10;
+  statistics: X0=14.9967; dX=8.08371; Y0=0; dY=0;
+  signal: Min=0; Max=9.49814e-09; Mean=4.18878e-10;
   values: 8.79645e-07 2.78168e-10 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -72,7 +72,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:55:15 2020 (1582664115)
+  Date: Wed Feb 26 19:56:11 2020 (1582743371)
   type: array_2d(100, 21)
   Source: Test_Magnetic_Majorana (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Majorana/Test_Magnetic_Majorana.instr)
   component: pollambdaMonitor1z
@@ -80,8 +80,8 @@ begin data
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: pollambdaMon1z.data
-  statistics: X0=15.0009; dX=8.08441; Y0=0; dY=0;
-  signal: Min=0; Max=9.49304e-09; Mean=4.18878e-10;
+  statistics: X0=14.9967; dX=8.08371; Y0=0; dY=0;
+  signal: Min=0; Max=9.49814e-09; Mean=4.18878e-10;
   values: 8.79645e-07 2.78168e-10 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -94,7 +94,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:55:15 2020 (1582664115)
+  Date: Wed Feb 26 19:56:11 2020 (1582743371)
   type: array_2d(100, 21)
   Source: Test_Magnetic_Majorana (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Majorana/Test_Magnetic_Majorana.instr)
   component: pollambdaMonitor2x
@@ -102,8 +102,8 @@ begin data
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: pollambdaMon2x.data
-  statistics: X0=15.0009; dX=8.08441; Y0=0.952381; dY=0;
-  signal: Min=0; Max=9.49304e-09; Mean=4.18878e-10;
+  statistics: X0=14.9967; dX=8.08371; Y0=0.952381; dY=1.05367e-08;
+  signal: Min=0; Max=9.49814e-09; Mean=4.18878e-10;
   values: 8.79645e-07 2.78168e-10 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -116,7 +116,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:55:15 2020 (1582664115)
+  Date: Wed Feb 26 19:56:11 2020 (1582743371)
   type: array_2d(100, 21)
   Source: Test_Magnetic_Majorana (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Majorana/Test_Magnetic_Majorana.instr)
   component: pollambdaMonitor2y
@@ -124,8 +124,8 @@ begin data
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: pollambdaMon2y.data
-  statistics: X0=15.0009; dX=8.08441; Y0=0; dY=0;
-  signal: Min=0; Max=9.49304e-09; Mean=4.18878e-10;
+  statistics: X0=14.9967; dX=8.08371; Y0=0; dY=0;
+  signal: Min=0; Max=9.49814e-09; Mean=4.18878e-10;
   values: 8.79645e-07 2.78168e-10 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -138,7 +138,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:55:15 2020 (1582664115)
+  Date: Wed Feb 26 19:56:11 2020 (1582743371)
   type: array_2d(100, 21)
   Source: Test_Magnetic_Majorana (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Majorana/Test_Magnetic_Majorana.instr)
   component: pollambdaMonitor2z
@@ -146,8 +146,8 @@ begin data
   title: Pol-wavelength monitor
   Ncount: 10000000
   filename: pollambdaMon2z.data
-  statistics: X0=15.0009; dX=8.08441; Y0=0; dY=0;
-  signal: Min=0; Max=9.49304e-09; Mean=4.18878e-10;
+  statistics: X0=14.9967; dX=8.08371; Y0=0; dY=0;
+  signal: Min=0; Max=9.49814e-09; Mean=4.18878e-10;
   values: 8.79645e-07 2.78168e-10 1e+07
   xvar: Wavelength
   yvar: Polarisation
@@ -160,7 +160,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:55:15 2020 (1582664115)
+  Date: Wed Feb 26 19:56:11 2020 (1582743371)
   type: array_1d(100)
   Source: Test_Magnetic_Majorana (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Majorana/Test_Magnetic_Majorana.instr)
   component: mpollambdaMonitor2x
@@ -169,8 +169,8 @@ begin data
   Ncount: 10000000
   filename: mpollambdaMon2x.data
   statistics: X0=15; dX=8.14018;
-  signal: Min=0; Max=10; Mean=9.4;
-  values: 940 9.4e-05 1e+07
+  signal: Min=0; Max=4; Mean=3.76;
+  values: 376 3.76e-05 1e+07
   xvar: Wavelength
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -180,7 +180,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:55:15 2020 (1582664115)
+  Date: Wed Feb 26 19:56:11 2020 (1582743371)
   type: array_1d(100)
   Source: Test_Magnetic_Majorana (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Majorana/Test_Magnetic_Majorana.instr)
   component: mpollambdaMonitor2y
@@ -200,7 +200,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:55:15 2020 (1582664115)
+  Date: Wed Feb 26 19:56:11 2020 (1582743371)
   type: array_1d(100)
   Source: Test_Magnetic_Majorana (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Magnetic_Majorana/Test_Magnetic_Majorana.instr)
   component: mpollambdaMonitor2z

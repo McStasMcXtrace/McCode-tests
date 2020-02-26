@@ -1,6 +1,6 @@
 McStas simulation description file for BTsimple.
-Date:    Tue Feb 25 21:14:10 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:29:50 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: BTsimple
   File: 1/mccode
@@ -14,14 +14,14 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582672684
+  Seed: 1582957235
   Directory: 1
-  Nodes: 10
+  Nodes: 4
   Param: lambda=10
   Param: dlambda=9.9
   Param: maxhd=3
@@ -35,7 +35,7 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Tue Feb 25 21:14:24 2020 (1582661664)
+  Date: Wed Feb 26 19:29:59 2020 (1582741799)
   type: array_1d(101)
   Source: BTsimple (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr)
   component: BT_in
@@ -43,9 +43,9 @@ begin data
   title: Wavelength monitor
   Ncount: 10000000
   filename: BT_in.dat
-  statistics: X0=2.90836; dX=1.87793;
-  signal: Min=12.8746; Max=5.83015e+10; Mean=8.05657e+09;
-  values: 8.13714e+11 2.70354e+09 400101
+  statistics: X0=2.89716; dX=1.87244;
+  signal: Min=11.8925; Max=5.74254e+10; Mean=8.12303e+09;
+  values: 8.20426e+11 2.71998e+09 400577
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -55,7 +55,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:14:24 2020 (1582661664)
+  Date: Wed Feb 26 19:29:59 2020 (1582741799)
   type: array_2d(20, 20)
   Source: BTsimple (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr)
   component: Div_in
@@ -63,9 +63,9 @@ begin data
   title: Divergence monitor
   Ncount: 10000000
   filename: Div_in.dat
-  statistics: X0=0.000544298; dX=1.20019; Y0=-0.00100842; dY=1.20026;
-  signal: Min=0; Max=4.86947e+11; Mean=5.10325e+10;
-  values: 2.0413e+13 1.35466e+10 1e+07
+  statistics: X0=0.000374857; dX=1.19898; Y0=-0.000482125; dY=1.19931;
+  signal: Min=0; Max=4.90853e+11; Mean=5.10406e+10;
+  values: 2.04162e+13 1.35528e+10 1e+07
   xvar: X
   yvar: Y
   xlabel: X divergence [deg]
@@ -77,7 +77,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:14:24 2020 (1582661664)
+  Date: Wed Feb 26 19:29:59 2020 (1582741799)
   type: array_2d(20, 20)
   Source: BTsimple (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr)
   component: PSD_in
@@ -85,9 +85,9 @@ begin data
   title: PSD monitor
   Ncount: 10000000
   filename: PSD_in.dat
-  statistics: X0=0.00048304; dX=2.88379; Y0=-0.00239959; dY=2.8844;
-  signal: Min=4.91639e+10; Max=5.28807e+10; Mean=5.10325e+10;
-  values: 2.0413e+13 1.35466e+10 1e+07
+  statistics: X0=0.00281497; dX=2.88183; Y0=-0.00179885; dY=2.88149;
+  signal: Min=4.93435e+10; Max=5.30142e+10; Mean=5.10406e+10;
+  values: 2.04162e+13 1.35528e+10 1e+07
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -99,7 +99,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:14:24 2020 (1582661664)
+  Date: Wed Feb 26 19:29:59 2020 (1582741799)
   type: array_1d(101)
   Source: BTsimple (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr)
   component: BT_out
@@ -107,9 +107,9 @@ begin data
   title: Wavelength monitor
   Ncount: 10000000
   filename: BT_out.dat
-  statistics: X0=3.38234; dX=1.98637;
-  signal: Min=0.108638; Max=2.81776e+10; Mean=4.75231e+09;
-  values: 4.79983e+11 1.66907e+09 326745
+  statistics: X0=3.38605; dX=1.98183;
+  signal: Min=1.72342e-06; Max=2.78417e+10; Mean=4.75508e+09;
+  values: 4.80263e+11 1.67075e+09 325376
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -119,7 +119,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:14:24 2020 (1582661664)
+  Date: Wed Feb 26 19:29:59 2020 (1582741799)
   type: array_2d(20, 20)
   Source: BTsimple (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr)
   component: Div_out
@@ -127,9 +127,9 @@ begin data
   title: Divergence monitor
   Ncount: 10000000
   filename: Div_out.dat
-  statistics: X0=-5.3077e-06; dX=0.82989; Y0=0.00219972; dY=0.830351;
-  signal: Min=0; Max=3.6691e+11; Mean=1.65699e+10;
-  values: 6.62795e+12 5.76016e+09 6.07218e+06
+  statistics: X0=7.04445e-05; dX=0.829198; Y0=0.00369646; dY=0.830263;
+  signal: Min=0; Max=3.6734e+11; Mean=1.65763e+10;
+  values: 6.63054e+12 5.76139e+09 6.07372e+06
   xvar: X
   yvar: Y
   xlabel: X divergence [deg]
@@ -141,7 +141,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:14:24 2020 (1582661664)
+  Date: Wed Feb 26 19:29:59 2020 (1582741799)
   type: array_2d(20, 20)
   Source: BTsimple (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr)
   component: PSD_out
@@ -149,9 +149,9 @@ begin data
   title: PSD monitor
   Ncount: 10000000
   filename: PSD_out.dat
-  statistics: X0=-0.00247076; dX=2.50573; Y0=0.00464264; dY=2.5045;
-  signal: Min=4.54907e+09; Max=3.15296e+10; Mean=1.65699e+10;
-  values: 6.62795e+12 5.76016e+09 6.07218e+06
+  statistics: X0=-0.000950767; dX=2.50443; Y0=0.00855509; dY=2.50473;
+  signal: Min=4.32763e+09; Max=3.1984e+10; Mean=1.65763e+10;
+  values: 6.63054e+12 5.76139e+09 6.07372e+06
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -163,7 +163,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:14:24 2020 (1582661664)
+  Date: Wed Feb 26 19:29:59 2020 (1582741799)
   type: array_1d(101)
   Source: BTsimple (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/BTsimple/BTsimple.instr)
   component: BTsimple
@@ -171,9 +171,9 @@ begin data
   title: Brilliance transfer
   Ncount: 10000000
   filename: Brilliance_transfer.dat
-  statistics: X0=10.6882; dX=5.21836;
-  signal: Min=0.000598213; Max=0.0886083; Mean=0.0748362;
-  values: 7.55846 0.58761 326745
+  statistics: X0=10.6719; dX=5.21624;
+  signal: Min=3.62292e-08; Max=0.218294; Mean=0.186257;
+  values: 18.8119 0.975823 325376
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [AA]

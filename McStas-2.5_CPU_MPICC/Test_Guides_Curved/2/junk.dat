@@ -1,17 +1,17 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Feb. 24, 2020
+# Creator: McStas 2.5 - Feb. 26, 2020
 # Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr
-# Ncount: 1000000
+# Ncount: 2500000
 # Trace: no
 # Gravitation: no
-# Seed: 1582684995
+# Seed: 1582962692
 # Directory: 2
-# Nodes: 10
+# Nodes: 4
 # Param: Guide=2
 # Param: curvature=1000
 # Param: length=100
-# Date: Tue Feb 25 21:51:32 2020 (1582663892)
+# Date: Wed Feb 26 19:54:38 2020 (1582743278)
 # type: array_2d(90, 90)
 # Source: Test_Guides_Curved (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Guides_Curved/Test_Guides_Curved.instr)
 # component: dummy

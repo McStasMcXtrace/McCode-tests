@@ -1,25 +1,31 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "HZB_FLEX_20200225_202538"
+INFO: Using directory: "HZB_FLEX_20200226_183943"
 INFO: Regenerating c-file: HZB_FLEX.c
 Info:    'Guide_curved' is a contributed component.
 CFLAGS=
 INFO: Recompiling: ./HZB_FLEX.out
 INFO: ===
-[n-62-23-14:00320] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:00320] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582658746.534384] [n-62-23-14:319  :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3372.68
-[1582658746.536054] [n-62-23-14:319  :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582658746.536057] [n-62-23-14:319  :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-31-16:207791] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:207791] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582658746.539037] [n-62-23-14:319  :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582658746.539040] [n-62-23-14:319  :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
 begin instrument: HZB_FLEX
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr
   Parameters:  kI(double) kF(double) wVS(double) tilt(double) SA(double) A3(double) A4(double) L3(double) L4(double) Mono_flatswitch(int)
   Trace_enabled: yes
@@ -29,12 +35,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_FLEX/HZB_FLEX.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1582659065
+  Seed: 1582946582
   Directory: .
   Param: kI=1.55
   Param: kF=1.55

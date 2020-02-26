@@ -2,76 +2,60 @@ INFO: Using directory: "5"
 INFO: Using existing c-file: ./Test_Fermi.c
 INFO: Using existing binary: ./Test_Fermi.out
 INFO: ===
-[n-62-23-14:20252] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:20252] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:20252] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582663300.213706] [n-62-23-14:20258:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.95
-[1582663300.215728] [n-62-23-14:20258:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663300.215746] [n-62-23-14:20258:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: Using system default number of mpirun -np processes
+[n-62-31-16:219244] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:219244] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:219244] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582663300.218652] [n-62-23-14:20258:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663300.218667] [n-62-23-14:20258:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663300.236763] [n-62-23-14:20261:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.98
-[1582663300.238562] [n-62-23-14:20261:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663300.238579] [n-62-23-14:20261:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663300.240121] [n-62-23-14:20259:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.98
-[1582663300.242050] [n-62-23-14:20259:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663300.242068] [n-62-23-14:20259:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663300.242705] [n-62-23-14:20261:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663300.242760] [n-62-23-14:20261:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663300.244526] [n-62-23-14:20259:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663300.244542] [n-62-23-14:20259:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663300.248203] [n-62-23-14:20260:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.44
-[1582663300.250632] [n-62-23-14:20260:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663300.250648] [n-62-23-14:20260:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663300.253290] [n-62-23-14:20260:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663300.253335] [n-62-23-14:20260:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663300.256998] [n-62-23-14:20262:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.44
-[1582663300.258108] [n-62-23-14:20266:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.44
-[1582663300.259175] [n-62-23-14:20262:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663300.259192] [n-62-23-14:20262:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663300.259846] [n-62-23-14:20266:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663300.259863] [n-62-23-14:20266:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663300.262033] [n-62-23-14:20262:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663300.262052] [n-62-23-14:20262:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663300.262217] [n-62-23-14:20266:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663300.262243] [n-62-23-14:20266:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663300.262439] [n-62-23-14:20264:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.44
-[1582663300.264542] [n-62-23-14:20264:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663300.264557] [n-62-23-14:20264:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663300.266453] [n-62-23-14:20263:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.44
-[1582663300.266953] [n-62-23-14:20264:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663300.266968] [n-62-23-14:20264:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663300.268327] [n-62-23-14:20263:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663300.268344] [n-62-23-14:20263:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663300.269156] [n-62-23-14:20265:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.44
-[1582663300.269781] [n-62-23-14:20267:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.44
-[1582663300.270533] [n-62-23-14:20263:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663300.270550] [n-62-23-14:20263:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663300.271068] [n-62-23-14:20265:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663300.271085] [n-62-23-14:20265:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663300.271590] [n-62-23-14:20267:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663300.271606] [n-62-23-14:20267:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663300.273121] [n-62-23-14:20265:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663300.273137] [n-62-23-14:20265:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582663300.273771] [n-62-23-14:20267:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582663300.273788] [n-62-23-14:20267:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'Test_Fermi' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+Simulation 'Test_Fermi' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr): running on 4 nodes (master is 'n-62-31-16', MPI version 3.1).
+
+Test_Fermi: Using rotating Guide_channeled
+
+
+Theor: Lambda=8.01596 [Angs]
+Theor: Time from source  t=0.00257078 [s]
+Test_Fermi: Using rotating Guide_channeled
+
+Theor: Time to detection t=0.00257078 [s]
+       Time period      dt=0.01 [s]
 
 Test_Fermi: Using rotating Guide_channeled
 
 Theor: Lambda=8.01596 [Angs]
+Theor: Time from source  t=0.00257078 [s]
+       Slit pack div       3.50032 [deg] (full width)
+       Time window width  =9.72311e-05 [s] (pulse width)
+Theor: Time to detection t=0.00257078 [s]
+       Time period      dt=0.01 [s]
+       Phase           phi=92.548 [deg]
+Theor: Lambda=8.01596 [Angs]
+       Slit pack div       3.50032 [deg] (full width)
+       Time window width  =9.72311e-05 [s] (pulse width)
+       Phase           phi=92.548 [deg]
 Theor: Time from source  t=0.00257078 [s]
 Theor: Time to detection t=0.00257078 [s]
        Time period      dt=0.01 [s]
        Slit pack div       3.50032 [deg] (full width)
        Time window width  =9.72311e-05 [s] (pulse width)
        Phase           phi=92.548 [deg]
+[Test_Fermi] Initialize
+[Test_Fermi] Initialize
 [Test_Fermi] Initialize
 
 Test_Fermi: Using rotating Guide_channeled
@@ -84,164 +68,34 @@ Theor: Time to detection t=0.00257078 [s]
        Time window width  =9.72311e-05 [s] (pulse width)
        Phase           phi=92.548 [deg]
 [Test_Fermi] Initialize
+Guide_gravity: FC_GuideG: Fermi Chopper mode: frequency=100 [Hz] phase=271.92 [deg]
+Guide_channeled: FC_GuideC: Fermi Chopper mode: frequency=100 [Hz] phase=271.92 [deg]
+FermiChopper: FC_McStas: Frequency nu=100 [Hz] 6000 [rpm], time frame=0.02 [s] phase=271.92 [deg]
+
+Straight Fermi chopper option activated
+Channel width: 0.036667 cm
+Phase set is 91.920000°.
+Guide_gravity: FC_GuideG: Fermi Chopper mode: frequency=100 [Hz] phase=271.92 [deg]
+Guide_channeled: FC_GuideC: Fermi Chopper mode: frequency=100 [Hz] phase=271.92 [deg]
+FermiChopper: FC_McStas: Frequency nu=100 [Hz] 6000 [rpm], time frame=0.02 [s] phase=271.92 [deg]
+
+Straight Fermi chopper option activated
+Channel width: 0.036667 cm
+Phase set is 91.920000°.
 Monitor_nD: Monitor1_xt is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
 Guide_gravity: FC_GuideG: Fermi Chopper mode: frequency=100 [Hz] phase=271.92 [deg]
 Guide_channeled: FC_GuideC: Fermi Chopper mode: frequency=100 [Hz] phase=271.92 [deg]
-FermiChopper: FC_McStas: Frequency nu=100 [Hz] 6000 [rpm], time frame=0.02 [s] phase=271.92 [deg]
 
 Straight Fermi chopper option activated
+FermiChopper: FC_McStas: Frequency nu=100 [Hz] 6000 [rpm], time frame=0.02 [s] phase=271.92 [deg]
 Channel width: 0.036667 cm
 Phase set is 91.920000°.
-
-Test_Fermi: Using rotating Guide_channeled
-
-Theor: Lambda=8.01596 [Angs]
-Theor: Time from source  t=0.00257078 [s]
-Theor: Time to detection t=0.00257078 [s]
-       Time period      dt=0.01 [s]
-       Slit pack div       3.50032 [deg] (full width)
-       Time window width  =9.72311e-05 [s] (pulse width)
-       Phase           phi=92.548 [deg]
-[Test_Fermi] Initialize
 Monitor_nD: Monitor2_xt is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
-
-Test_Fermi: Using rotating Guide_channeled
-
-Theor: Lambda=8.01596 [Angs]
-Theor: Time from source  t=0.00257078 [s]
-Theor: Time to detection t=0.00257078 [s]
-       Time period      dt=0.01 [s]
-       Slit pack div       3.50032 [deg] (full width)
-       Time window width  =9.72311e-05 [s] (pulse width)
-       Phase           phi=92.548 [deg]
-
-
-Test_Fermi: Using rotating Guide_channeled
-
-Theor: Lambda=8.01596 [Angs]
-Theor: Time from source  t=0.00257078 [s]
-Theor: Time to detection t=0.00257078 [s]
-       Time period      dt=0.01 [s]
-[Test_Fermi] Initialize
-       Slit pack div       3.50032 [deg] (full width)
-       Time window width  =9.72311e-05 [s] (pulse width)
-       Phase           phi=92.548 [deg]
-Test_Fermi: Using rotating Guide_channeled
-
-Theor: Lambda=8.01596 [Angs]
-Theor: Time from source  t=0.00257078 [s]
-[Test_Fermi] Initialize
-Theor: Time to detection t=0.00257078 [s]
-       Time period      dt=0.01 [s]
-       Slit pack div       3.50032 [deg] (full width)
-       Time window width  =9.72311e-05 [s] (pulse width)
-       Phase           phi=92.548 [deg]
-[Test_Fermi] Initialize
-Guide_gravity: FC_GuideG: Fermi Chopper mode: frequency=100 [Hz] phase=271.92 [deg]
-
-
-Test_Fermi: Using rotating Guide_channeled
-
-Test_Fermi: Using rotating Guide_channeled
-Theor: Lambda=8.01596 [Angs]
-Theor: Time from source  t=0.00257078 [s]
-
-Theor: Time to detection t=0.00257078 [s]
-Theor: Lambda=8.01596 [Angs]
-Guide_gravity: FC_GuideG: Fermi Chopper mode: frequency=100 [Hz] phase=271.92 [deg]
-Guide_channeled: FC_GuideC: Fermi Chopper mode: frequency=100 [Hz] phase=271.92 [deg]
-       Time period      dt=0.01 [s]
-FermiChopper: FC_McStas: Frequency nu=100 [Hz] 6000 [rpm], time frame=0.02 [s] phase=271.92 [deg]
-Theor: Time from source  t=0.00257078 [s]
-       Slit pack div       3.50032 [deg] (full width)
-Theor: Time to detection t=0.00257078 [s]
-       Time period      dt=0.01 [s]
-
-Straight Fermi chopper option activated
-Channel width: 0.036667 cm
-       Slit pack div       3.50032 [deg] (full width)
-       Time window width  =9.72311e-05 [s] (pulse width)
-       Phase           phi=92.548 [deg]
-Phase set is 91.920000°.
-       Time window width  =9.72311e-05 [s] (pulse width)
-[Test_Fermi] Initialize
-       Phase           phi=92.548 [deg]
-Guide_gravity: FC_GuideG: Fermi Chopper mode: frequency=100 [Hz] phase=271.92 [deg]
-[Test_Fermi] Initialize
-Guide_channeled: FC_GuideC: Fermi Chopper mode: frequency=100 [Hz] phase=271.92 [deg]
-FermiChopper: FC_McStas: Frequency nu=100 [Hz] 6000 [rpm], time frame=0.02 [s] phase=271.92 [deg]
-
-Straight Fermi chopper option activated
-Guide_gravity: FC_GuideG: Fermi Chopper mode: frequency=100 [Hz] phase=271.92 [deg]
-Channel width: 0.036667 cm
-Phase set is 91.920000°.
 Guide_gravity: FC_GuideG: Fermi Chopper mode: frequency=100 [Hz] phase=271.92 [deg]
 Guide_channeled: FC_GuideC: Fermi Chopper mode: frequency=100 [Hz] phase=271.92 [deg]
 FermiChopper: FC_McStas: Frequency nu=100 [Hz] 6000 [rpm], time frame=0.02 [s] phase=271.92 [deg]
-
-Straight Fermi chopper option activated
-Channel width: 0.036667 cm
-Phase set is 91.920000°.
-Guide_gravity: FC_GuideG: Fermi Chopper mode: frequency=100 [Hz] phase=271.92 [deg]
-
-Test_Fermi: Using rotating Guide_channeled
-
-Theor: Lambda=8.01596 [Angs]
-Theor: Time from source  t=0.00257078 [s]
-Theor: Time to detection t=0.00257078 [s]
-       Time period      dt=0.01 [s]
-       Slit pack div       3.50032 [deg] (full width)
-       Time window width  =9.72311e-05 [s] (pulse width)
-       Phase           phi=92.548 [deg]
-Guide_gravity: FC_GuideG: Fermi Chopper mode: frequency=100 [Hz] phase=271.92 [deg]
-Guide_channeled: FC_GuideC: Fermi Chopper mode: frequency=100 [Hz] phase=271.92 [deg]
-FermiChopper: FC_McStas: Frequency nu=100 [Hz] 6000 [rpm], time frame=0.02 [s] phase=271.92 [deg]
-
-Straight Fermi chopper option activated
-Channel width: 0.036667 cm
-[Test_Fermi] Initialize
-Phase set is 91.920000°.
-
-Test_Fermi: Using rotating Guide_channeled
-
-Theor: Lambda=8.01596 [Angs]
-Theor: Time from source  t=0.00257078 [s]
-Theor: Time to detection t=0.00257078 [s]
-       Time period      dt=0.01 [s]
-       Slit pack div       3.50032 [deg] (full width)
-       Time window width  =9.72311e-05 [s] (pulse width)
-       Phase           phi=92.548 [deg]
-[Test_Fermi] Initialize
-Guide_gravity: FC_GuideG: Fermi Chopper mode: frequency=100 [Hz] phase=271.92 [deg]
-Guide_gravity: FC_GuideG: Fermi Chopper mode: frequency=100 [Hz] phase=271.92 [deg]
-Guide_channeled: FC_GuideC: Fermi Chopper mode: frequency=100 [Hz] phase=271.92 [deg]
-FermiChopper: FC_McStas: Frequency nu=100 [Hz] 6000 [rpm], time frame=0.02 [s] phase=271.92 [deg]
-
-Straight Fermi chopper option activated
-Channel width: 0.036667 cm
-Phase set is 91.920000°.
-Guide_channeled: FC_GuideC: Fermi Chopper mode: frequency=100 [Hz] phase=271.92 [deg]
-FermiChopper: FC_McStas: Frequency nu=100 [Hz] 6000 [rpm], time frame=0.02 [s] phase=271.92 [deg]
-
-Straight Fermi chopper option activated
-Channel width: 0.036667 cm
-Phase set is 91.920000°.
-Guide_channeled: FC_GuideC: Fermi Chopper mode: frequency=100 [Hz] phase=271.92 [deg]
-Guide_channeled: FC_GuideC: Fermi Chopper mode: frequency=100 [Hz] phase=271.92 [deg]
-FermiChopper: FC_McStas: Frequency nu=100 [Hz] 6000 [rpm], time frame=0.02 [s] phase=271.92 [deg]
-FermiChopper: FC_McStas: Frequency nu=100 [Hz] 6000 [rpm], time frame=0.02 [s] phase=271.92 [deg]
-
-Straight Fermi chopper option activated
-Channel width: 0.036667 cm
-Phase set is 91.920000°.
-Guide_channeled: FC_GuideC: Fermi Chopper mode: frequency=100 [Hz] phase=271.92 [deg]
-FermiChopper: FC_McStas: Frequency nu=100 [Hz] 6000 [rpm], time frame=0.02 [s] phase=271.92 [deg]
-
-Straight Fermi chopper option activated
-Channel width: 0.036667 cm
-Phase set is 91.920000°.
 
 Straight Fermi chopper option activated
 Channel width: 0.036667 cm
@@ -250,40 +104,23 @@ FermiChopper: FC_McStas: No neutron can reach the chopper.
 
 Finally [Test_Fermi: 5]. Time: 1 [s] 
 FermiChopper: FC_McStas: No neutron can reach the chopper.
-FermiChopper: FC_McStas: No neutron can reach the chopper.
 
-Finally [Test_Fermi: 5]. Time: 2 [s] 
-
-Finally [Test_Fermi: 5]. Time: 2 [s] 
-FermiChopper: FC_McStas: No neutron can reach the chopper.
-
-Finally [Test_Fermi: 5]. Time: 2 [s] 
-FermiChopper: FC_McStas: No neutron can reach the chopper.
-
-Finally [Test_Fermi: 5]. Time: 2 [s] 
-FermiChopper: FC_McStas: No neutron can reach the chopper.
-
-Finally [Test_Fermi: 5]. Time: 2 [s] 
-FermiChopper: FC_McStas: No neutron can reach the chopper.
-
-Finally [Test_Fermi: 5]. Time: 2 [s] 
-FermiChopper: FC_McStas: No neutron can reach the chopper.
-
-Finally [Test_Fermi: 5]. Time: 2 [s] 
-FermiChopper: FC_McStas: No neutron can reach the chopper.
-
-Finally [Test_Fermi: 5]. Time: 2 [s] 
+Finally [Test_Fermi: 5]. Time: 1 [s] 
 
 Save [Test_Fermi]
-Detector: Monitor1_xt_I=0.00565601 Monitor1_xt_ERR=1.7886e-06 Monitor1_xt_N=9.99985e+06 "Monitor1_xt_1582663300.x"
-Detector: Monitor1_xt_I=0.00565587 Monitor1_xt_ERR=1.78858e-06 Monitor1_xt_N=9.9996e+06 "Monitor1_xt_1582663300.y"
-Detector: Monitor1_xt_I=0.00565577 Monitor1_xt_ERR=1.78856e-06 Monitor1_xt_N=9.99942e+06 "Monitor1_xt_1582663300.t"
+Detector: Monitor1_xt_I=0.00565599 Monitor1_xt_ERR=1.7886e-06 Monitor1_xt_N=9.99982e+06 "Monitor1_xt_1582742809.x"
 FermiChopper: FC_McStas: No neutron can reach the chopper.
-Detector: Monitor2_xt_I=0.00058726 Monitor2_xt_ERR=5.76333e-07 Monitor2_xt_N=1.03828e+06 "Monitor2_xt_1582663300.x"
-Detector: Monitor2_xt_I=0.000587255 Monitor2_xt_ERR=5.76331e-07 Monitor2_xt_N=1.03827e+06 "Monitor2_xt_1582663300.y"
-Detector: Monitor2_xt_I=0.000587249 Monitor2_xt_ERR=5.76328e-07 Monitor2_xt_N=1.03826e+06 "Monitor2_xt_1582663300.t"
 
-Finally [Test_Fermi: 5]. Time: 2 [s] 
-[n-62-23-14:20252] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-14:20252] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+Finally [Test_Fermi: 5]. Time: 1 [s] 
+Detector: Monitor1_xt_I=0.00565583 Monitor1_xt_ERR=1.78857e-06 Monitor1_xt_N=9.99953e+06 "Monitor1_xt_1582742809.y"
+Detector: Monitor1_xt_I=0.0056557 Monitor1_xt_ERR=1.78855e-06 Monitor1_xt_N=9.99931e+06 "Monitor1_xt_1582742809.t"
+FermiChopper: FC_McStas: No neutron can reach the chopper.
+Detector: Monitor2_xt_I=0.000587994 Monitor2_xt_ERR=5.76693e-07 Monitor2_xt_N=1.03958e+06 "Monitor2_xt_1582742809.x"
+Detector: Monitor2_xt_I=0.000587979 Monitor2_xt_ERR=5.76686e-07 Monitor2_xt_N=1.03955e+06 "Monitor2_xt_1582742809.y"
+Detector: Monitor2_xt_I=0.00058797 Monitor2_xt_ERR=5.76681e-07 Monitor2_xt_N=1.03953e+06 "Monitor2_xt_1582742809.t"
+
+Finally [Test_Fermi: 5]. Time: 1 [s] 
+[n-62-31-16:219244] 3 more processes have sent help message help-mpi-btl-openib.txt / ib port not selected
+[n-62-31-16:219244] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:219244] 3 more processes have sent help message help-mpi-btl-openib.txt / error in device init
 INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Fermi/Test_Fermi.instr in dataset 5

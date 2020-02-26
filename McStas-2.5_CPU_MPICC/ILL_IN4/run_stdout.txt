@@ -2,64 +2,33 @@ INFO: Using directory: "1"
 INFO: Using existing c-file: ./ILL_IN4.c
 INFO: Using existing binary: ./ILL_IN4.out
 INFO: ===
-[n-62-23-14:15806] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:15806] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:15806] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582662453.914105] [n-62-23-14:15811:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662453.914230] [n-62-23-14:15811:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: Using system default number of mpirun -np processes
+[n-62-31-16:217241] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:217241] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:217241] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582662453.916392] [n-62-23-14:15811:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662453.916408] [n-62-23-14:15811:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662453.932147] [n-62-23-14:15812:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3099.93
-[1582662453.934958] [n-62-23-14:15812:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662453.934977] [n-62-23-14:15812:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662453.937453] [n-62-23-14:15812:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662453.937469] [n-62-23-14:15812:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662453.942341] [n-62-23-14:15813:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3099.93
-[1582662453.944252] [n-62-23-14:15813:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662453.944268] [n-62-23-14:15813:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662453.946597] [n-62-23-14:15813:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662453.946614] [n-62-23-14:15813:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662453.950934] [n-62-23-14:15816:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3099.93
-[1582662453.952838] [n-62-23-14:15814:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3099.93
-[1582662453.952941] [n-62-23-14:15816:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662453.952959] [n-62-23-14:15816:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662453.954637] [n-62-23-14:15814:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662453.954654] [n-62-23-14:15814:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662453.954994] [n-62-23-14:15816:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662453.955012] [n-62-23-14:15816:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662453.955077] [n-62-23-14:15817:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3099.93
-[1582662453.956778] [n-62-23-14:15814:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662453.956795] [n-62-23-14:15814:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662453.956942] [n-62-23-14:15817:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662453.956959] [n-62-23-14:15817:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662453.959092] [n-62-23-14:15817:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662453.959111] [n-62-23-14:15817:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662453.965190] [n-62-23-14:15819:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3099.93
-[1582662453.966947] [n-62-23-14:15819:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662453.966965] [n-62-23-14:15819:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662453.969202] [n-62-23-14:15819:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662453.969219] [n-62-23-14:15819:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662453.976856] [n-62-23-14:15815:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662453.976894] [n-62-23-14:15815:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662453.978305] [n-62-23-14:15818:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662453.978335] [n-62-23-14:15818:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662453.978995] [n-62-23-14:15815:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662453.979011] [n-62-23-14:15815:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662453.980760] [n-62-23-14:15820:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662453.980790] [n-62-23-14:15820:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662453.981514] [n-62-23-14:15818:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662453.981533] [n-62-23-14:15818:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662453.982928] [n-62-23-14:15820:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662453.982944] [n-62-23-14:15820:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'ILL_IN4' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+Simulation 'ILL_IN4' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr): running on 4 nodes (master is 'n-62-31-16', MPI version 3.1).
 ILL_IN4: WARNING: The choppers are NOT in closed position phase12=-22.5 [deg].
 ILL_IN4: WARNING: The choppers are NOT in closed position phase12=-22.5 [deg].
+ILL_IN4: WARNING: The choppers are NOT in closed position phase12=-22.5 [deg].
+[ILL_IN4] Initialize
+[ILL_IN4] Initialize
 [ILL_IN4] Initialize
 ILL_IN4: Thermal ToF spectrometer
   Divergence at the lead shutter: dX    =2.2026 [deg]
@@ -75,21 +44,6 @@ ILL_IN4: Thermal ToF spectrometer
   FC phase wrt BC1:               PhiFC =-196.999 [deg] L1F=5.37909 [m] delay t1F=0.00163166 [s]
 Distances: in [m]
 [H12] 6.1 [BC1] 0.583 [VS] 1.87446 [BC2] 1.65109 [PG] 1.27053 [FC] 0.675 [Spl] 2 [Det]
-ILL_IN4: WARNING: The choppers are NOT in closed position phase12=-22.5 [deg].
-ILL_IN4: WARNING: The choppers are NOT in closed position phase12=-22.5 [deg].
-ILL_IN4: WARNING: The choppers are NOT in closed position phase12=-22.5 [deg].
-[ILL_IN4] Initialize
-[ILL_IN4] Initialize
-ILL_IN4: WARNING: The choppers are NOT in closed position phase12=-22.5 [deg].
-[ILL_IN4] Initialize
-ILL_IN4: WARNING: The choppers are NOT in closed position phase12=-22.5 [deg].
-[ILL_IN4] Initialize
-[ILL_IN4] Initialize
-[ILL_IN4] Initialize
-ILL_IN4: WARNING: The choppers are NOT in closed position phase12=-22.5 [deg].
-ILL_IN4: WARNING: The choppers are NOT in closed position phase12=-22.5 [deg].
-[ILL_IN4] Initialize
-[ILL_IN4] Initialize
 
 Generate 100 Dirac peaks on (q,w) grid.
 ILL_IN4: WARNING: The choppers are NOT in closed position phase12=-22.5 [deg].
@@ -145,8 +99,6 @@ Isotropic_Sqw: SampleS: S(q,w) data from Dirac2D.sqw (coh) assumed to be classic
 Isotropic_Sqw: SampleS: Generated Dirac2D.sqw coherent Sqw
                    q=[0:15.6923 Angs-1] w=[0:283.758 meV] |S|=0.284838 size=[1000x1999] sigma=1 [barns]
                    normalization factor S(q,w)*21.4141 (auto) \int q^2 S(q) dq=59.5952
-[n-62-23-14:15806] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-14:15806] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
 Isotropic_Sqw: SampleS: Sample temperature not defined (T=0).
 Warning        Disabling detailed balance.
 Incoherent: SampleV: The target is not defined. Using direct beam (Z-axis).
@@ -155,92 +107,50 @@ Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mc
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/V.laz' (Table_Read_Offset)
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
+[n-62-31-16:217241] 3 more processes have sent help message help-mpi-btl-openib.txt / ib port not selected
+[n-62-31-16:217241] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:217241] 3 more processes have sent help message help-mpi-btl-openib.txt / error in device init
 
-
-
-
-Trace ETA 15 [s] % 72 
-
-Trace ETA 13 [s] % 84 
-Trace ETA 11 [s] % 96 
-Trace ETA 12 [s] % Trace ETA 13 [s] % 80 Trace ETA 13 [s] % 82 
-Trace ETA 11 [s] % 93 Trace ETA 14 [s] % 77 85 Trace ETA 12 [s] % 88 80 90 90 90 90 
-Trace ETA 11 [s] % 97 80 90 90 
-Finally [ILL_IN4: 1]. Time: 13 [s] 
-Warning: Number of events 96700 reaching SPLIT position Component[29] sample_flux=Monitor_nD()
-         is probably too low. Increase Ncount.
-90 
 Save [ILL_IN4]
-Detector: Obt1_I=1.11531e+11 Obt1_ERR=3.98078e+07 Obt1_N=7.852e+06 "Obt1_1582662454.x_y"
-Detector: Obt1_lambda_I=1.11507e+11 Obt1_lambda_ERR=3.98035e+07 Obt1_lambda_N=7.8503e+06 "Obt1_lambda_1582662454.L"
-Detector: Win1_I=8.73821e+10 Win1_ERR=3.11873e+07 Win1_N=7.852e+06 "Win1_1582662454.x_y"
-Detector: Win1_lambda_I=5.62473e+10 Win1_lambda_ERR=2.50221e+07 Win1_lambda_N=5.05411e+06 "Win1_lambda_1582662454.L"
-Detector: BC2_t_I=1.69206e+10 BC2_t_ERR=9.70471e+06 BC2_t_N=3.04058e+06 "BC2_t_1582662454.t"
-Detector: BC2_t_post_I=1.53704e+10 BC2_t_post_ERR=9.2498e+06 BC2_t_post_N=2.76182e+06 "BC2_t_post_1582662454.t"
-Detector: Cradle_I=1.54707e+10 Cradle_ERR=9.27993e+06 Cradle_N=2.77985e+06 "Cradle_1582662454.x_y"
-Detector: Cradle_lambda_I=1.54707e+10 Cradle_lambda_ERR=9.27993e+06 Cradle_lambda_N=2.77985e+06 "Cradle_lambda_1582662454.L"
-Detector: Cradle_t_I=1.54705e+10 Cradle_t_ERR=9.27988e+06 Cradle_t_N=2.77982e+06 "Cradle_t_1582662454.t"
-Detector: Mono_xy_I=1.54707e+10 Mono_xy_ERR=9.27993e+06 Mono_xy_N=2.77985e+06 "Mono_xy_1582662454.x_y"
-Detector: Mono_t_I=9.87335e+08 Mono_t_ERR=742031 Mono_t_N=1.7707e+06 "Mono_t_1582662454.t"
-Detector: FC_Pos_I=5.15992e+08 FC_Pos_ERR=537885 FC_Pos_N=920273 "FC_Pos_1582662454.t"
-Detector: sample_flux_I=4.43754e+06 sample_flux_ERR=4862.1 sample_flux_N=833000 "sample_flux_1582662454.x_y"
+Detector: Obt1_I=1.1159e+11 Obt1_ERR=3.98183e+07 Obt1_N=7.85613e+06 "Obt1_1582742175.x_y"
+Detector: Obt1_lambda_I=1.11565e+11 Obt1_lambda_ERR=3.98138e+07 Obt1_lambda_N=7.85433e+06 "Obt1_lambda_1582742175.L"
+Detector: Win1_I=8.74281e+10 Win1_ERR=3.11955e+07 Win1_N=7.85613e+06 "Win1_1582742175.x_y"
+Detector: Win1_lambda_I=5.62327e+10 Win1_lambda_ERR=2.50189e+07 Win1_lambda_N=5.05282e+06 "Win1_lambda_1582742175.L"
+Detector: BC2_t_I=1.6919e+10 BC2_t_ERR=9.70424e+06 BC2_t_N=3.04031e+06 "BC2_t_1582742175.t"
+Detector: BC2_t_post_I=1.53696e+10 BC2_t_post_ERR=9.24954e+06 BC2_t_post_N=2.76169e+06 "BC2_t_post_1582742175.t"
+Detector: Cradle_I=1.54692e+10 Cradle_ERR=9.27945e+06 Cradle_N=2.77958e+06 "Cradle_1582742175.x_y"
+Detector: Cradle_lambda_I=1.54692e+10 Cradle_lambda_ERR=9.27945e+06 Cradle_lambda_N=2.77958e+06 "Cradle_lambda_1582742175.L"
+Detector: Cradle_t_I=1.54688e+10 Cradle_t_ERR=9.27934e+06 Cradle_t_N=2.77952e+06 "Cradle_t_1582742175.t"
+Detector: Mono_xy_I=1.54692e+10 Mono_xy_ERR=9.27945e+06 Mono_xy_N=2.77958e+06 "Mono_xy_1582742175.x_y"
+Detector: Mono_t_I=9.81236e+08 Mono_t_ERR=739720 Mono_t_N=1.75983e+06 "Mono_t_1582742175.t"
+Detector: FC_Pos_I=5.15762e+08 FC_Pos_ERR=537774 FC_Pos_N=919832 "FC_Pos_1582742175.t"
+Detector: sample_flux_I=4.35147e+06 sample_flux_ERR=4815.14 sample_flux_N=816700 "sample_flux_1582742175.x_y"
+Detector: sample_tof_I=8.99019e+06 sample_tof_ERR=9787.67 sample_tof_N=843700 "sample_tof_1582742175.x_t"
+Detector: sample_lambda_I=9.00079e+06 sample_lambda_ERR=9793.41 sample_lambda_N=844700 "sample_lambda_1582742175.L"
+Detector: sample_w_I=9.00079e+06 sample_w_ERR=9793.41 sample_w_N=844700 "sample_w_1582742175.E"
+Detector: sample_qxy_I=8.97858e+06 sample_qxy_ERR=9781.42 sample_qxy_N=842600 "sample_qxy_1582742175.kx_ky"
+Detector: Detector_I=5.27093e+06 Detector_ERR=17999.1 Detector_N=646997 "Detector_1582742177.th_y"
+Detector: Detector_sample_I=25276.4 Detector_sample_ERR=60.0835 Detector_sample_N=392296 "Detector_sample_1582742177.th_y"
+Detector: Detector_env_I=53979.3 Detector_env_ERR=923.698 Detector_env_N=41139 "Detector_env_1582742177.th_y"
+Detector: Detector_Sqw_I=36131.6 Detector_Sqw_ERR=83.1415 Detector_Sqw_N=263758 "Detector_Sqw_1582742177.U1_U2"
 
-Finally [ILL_IN4: 1]. Time: 15 [s] 
-Warning: Number of events 90800 reaching SPLIT position Component[29] sample_flux=Monitor_nD()
-         is probably too low. Increase Ncount.
+Finally [ILL_IN4: 1]. Time: 8 [s] 
+Detector: Detector_qe_I=20912 Detector_qe_ERR=61.2328 Detector_qe_N=158264 "Detector_qe_1582742177.A_E"
+Detector: Detector_SqwV_I=8874.18 Detector_SqwV_ERR=19.1631 Detector_SqwV_N=299991 "Detector_SqwV_1582742177.U1_U2"
 
-Finally [ILL_IN4: 1]. Time: 15 [s] 
-Warning: Number of events 87300 reaching SPLIT position Component[29] sample_flux=Monitor_nD()
-         is probably too low. Increase Ncount.
-Detector: sample_tof_I=9.21553e+06 sample_tof_ERR=9908.66 sample_tof_N=865010 "sample_tof_1582662454.x_t"
-Detector: sample_lambda_I=9.22613e+06 sample_lambda_ERR=9914.37 sample_lambda_N=866000 "sample_lambda_1582662454.L"
-Detector: sample_w_I=9.22613e+06 sample_w_ERR=9914.37 sample_w_N=866000 "sample_w_1582662454.E"
-Detector: sample_qxy_I=9.20509e+06 sample_qxy_ERR=9903.15 sample_qxy_N=864010 "sample_qxy_1582662454.kx_ky"
-Detector: Detector_I=5.53729e+06 Detector_ERR=18001.3 Detector_N=668880 "Detector_1582662460.th_y"
-Detector: Detector_sample_I=24912.3 Detector_sample_ERR=59.9639 Detector_sample_N=386336 "Detector_sample_1582662460.th_y"
-Detector: Detector_env_I=53979.5 Detector_env_ERR=907.306 Detector_env_N=41121 "Detector_env_1582662460.th_y"
+Finally [ILL_IN4: 1]. Time: 10 [s] 
+Detector: Detector_qeV_I=8864.81 Detector_qeV_ERR=19.1605 Detector_qeV_N=298820 "Detector_qeV_1582742177.A_E"
 
-Finally [ILL_IN4: 1]. Time: 15 [s] 
-Warning: Number of events 86100 reaching SPLIT position Component[29] sample_flux=Monitor_nD()
-         is probably too low. Increase Ncount.
+Finally [ILL_IN4: 1]. Time: 10 [s] 
 
-Finally [ILL_IN4: 1]. Time: 15 [s] 
-Warning: Number of events 87400 reaching SPLIT position Component[29] sample_flux=Monitor_nD()
-         is probably too low. Increase Ncount.
-
-Finally [ILL_IN4: 1]. Time: 14 [s] 
-Warning: Number of events 85000 reaching SPLIT position Component[29] sample_flux=Monitor_nD()
-         is probably too low. Increase Ncount.
-Detector: Detector_Sqw_I=35769.2 Detector_Sqw_ERR=82.8626 Detector_Sqw_N=261817 "Detector_Sqw_1582662460.U1_U2"
-
-Finally [ILL_IN4: 1]. Time: 15 [s] 
-Warning: Number of events 82500 reaching SPLIT position Component[29] sample_flux=Monitor_nD()
-         is probably too low. Increase Ncount.
-
-Finally [ILL_IN4: 1]. Time: 15 [s] 
-Warning: Number of events 79100 reaching SPLIT position Component[29] sample_flux=Monitor_nD()
-         is probably too low. Increase Ncount.
-Detector: Detector_qe_I=20576.9 Detector_qe_ERR=60.7509 Detector_qe_N=156203 "Detector_qe_1582662460.A_E"
-Detector: Detector_SqwV_I=8708.81 Detector_SqwV_ERR=18.9767 Detector_SqwV_N=295214 "Detector_SqwV_1582662460.U1_U2"
-
-Finally [ILL_IN4: 1]. Time: 17 [s] 
-Detector: Detector_qeV_I=8699.34 Detector_qeV_ERR=18.9739 Detector_qeV_N=294035 "Detector_qeV_1582662460.A_E"
-Warning: Number of events 89300 reaching SPLIT position Component[29] sample_flux=Monitor_nD()
-         is probably too low. Increase Ncount.
-
-Finally [ILL_IN4: 1]. Time: 17 [s] 
-Warning: Number of events 81800 reaching SPLIT position Component[29] sample_flux=Monitor_nD()
-         is probably too low. Increase Ncount.
-Isotropic_Sqw: SampleS: 249845 neutron events (out of 520356) that should have
+Finally [ILL_IN4: 1]. Time: 10 [s] 
+Isotropic_Sqw: SampleS: 251909 neutron events (out of 524197) that should have
                scattered were transmitted because scattering conditions
 WARNING        could not be satisfied after 100 tries.
-Isotropic_Sqw: SampleS: 5 neutron events (out of 270511) reached
+Isotropic_Sqw: SampleS: 3 neutron events (out of 272288) reached
 WARNING        unrealistic weight. The S(q,w) norm might be too high.
-Isotropic_Sqw: SampleS: Scattering fraction=0.0293221 of incoming intensity
+Isotropic_Sqw: SampleS: Scattering fraction=0.0293261 of incoming intensity
                Absorption fraction           =0
-               Single   scattering intensity =38596.9 (coh=38596.9 inc=0)
+               Single   scattering intensity =38898.4 (coh=38898.4 inc=0)
                Multiple scattering intensity =0
-Isotropic_Sqw: Environment_out: 1 neutron events (out of 3209) that should have
-               scattered were transmitted because scattering conditions
-WARNING        could not be satisfied after 100 tries.
 INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN4/ILL_IN4.instr in dataset 1

@@ -2,14 +2,14 @@
  * Format:     ANSI C source code
  * Creator:    McStas <http://www.mcstas.org>
  * Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/NCrystal_example_mcstas/NCrystal_example_mcstas.instr (NCrystal_example)
- * Date:       Tue Feb 25 20:59:32 2020
+ * Date:       Wed Feb 26 19:13:16 2020
  * File:       ./NCrystal_example_mcstas.c
  * Compile:    cc -o NCrystal_example.out ./NCrystal_example_mcstas.c  -Wl,-rpath,@MCCODE_LIB@/libs/ncrystal/lib -L@MCCODE_LIB@/libs/ncrystal/lib -lNCrystal -I@MCCODE_LIB@libs/ncrystal/include
  * CFLAGS= -Wl,-rpath,@MCCODE_LIB@/libs/ncrystal/lib -L@MCCODE_LIB@/libs/ncrystal/lib -lNCrystal -I@MCCODE_LIB@libs/ncrystal/include
  */
 
 
-#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
+#define MCCODE_STRING "McStas 2.5 - Feb. 26, 2020"
 #define FLAVOR "mcstas"
 #define FLAVOR_UPPER "MCSTAS"
 #define MC_USE_DEFAULT_MAIN
@@ -112,11 +112,11 @@
 
 /* the version string is replaced when building distribution with mkdist */
 #ifndef MCCODE_STRING
-#define MCCODE_STRING "McStas 2.5 - Feb. 24, 2020"
+#define MCCODE_STRING "McStas 2.5 - Feb. 26, 2020"
 #endif
 
 #ifndef MCCODE_DATE
-#define MCCODE_DATE "Feb. 24, 2020"
+#define MCCODE_DATE "Feb. 26, 2020"
 #endif
 
 #ifndef MCCODE_VERSION

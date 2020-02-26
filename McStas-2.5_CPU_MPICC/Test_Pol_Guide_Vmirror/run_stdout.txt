@@ -2,98 +2,53 @@ INFO: Using directory: "1"
 INFO: Using existing c-file: ./Test_Pol_Guide_Vmirror.c
 INFO: Using existing binary: ./Test_Pol_Guide_Vmirror.out
 INFO: ===
-[n-62-23-14:24891] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:24891] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:24891] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582664368.569989] [n-62-23-14:24896:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664368.570030] [n-62-23-14:24896:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: Using system default number of mpirun -np processes
+[n-62-31-16:221203] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:221203] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:221203] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582664368.574521] [n-62-23-14:24896:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664368.574754] [n-62-23-14:24896:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664368.580330] [n-62-23-14:24897:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664368.580373] [n-62-23-14:24897:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664368.583561] [n-62-23-14:24897:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664368.583586] [n-62-23-14:24897:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664368.598669] [n-62-23-14:24899:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664368.598706] [n-62-23-14:24899:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664368.599016] [n-62-23-14:24901:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664368.599046] [n-62-23-14:24901:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664368.601187] [n-62-23-14:24899:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664368.601206] [n-62-23-14:24899:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664368.601213] [n-62-23-14:24901:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664368.601227] [n-62-23-14:24901:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664368.607548] [n-62-23-14:24905:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664368.607585] [n-62-23-14:24905:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664368.609746] [n-62-23-14:24905:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664368.609767] [n-62-23-14:24905:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664368.613738] [n-62-23-14:24903:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664368.613858] [n-62-23-14:24903:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664368.614104] [n-62-23-14:24898:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664368.614134] [n-62-23-14:24898:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664368.616579] [n-62-23-14:24898:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664368.616603] [n-62-23-14:24898:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664368.616739] [n-62-23-14:24903:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664368.616757] [n-62-23-14:24903:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664368.620068] [n-62-23-14:24900:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664368.620182] [n-62-23-14:24900:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664368.621641] [n-62-23-14:24902:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664368.622010] [n-62-23-14:24902:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664368.622273] [n-62-23-14:24900:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664368.622290] [n-62-23-14:24900:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664368.625660] [n-62-23-14:24902:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664368.625686] [n-62-23-14:24902:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664368.626523] [n-62-23-14:24904:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664368.626557] [n-62-23-14:24904:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582664368.628705] [n-62-23-14:24904:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582664368.628725] [n-62-23-14:24904:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'Test_Pol_Guide_Vmirror' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
-[Test_Pol_Guide_Vmirror] Initialize
-[Test_Pol_Guide_Vmirror] Initialize
-[Test_Pol_Guide_Vmirror] Initialize
-[Test_Pol_Guide_Vmirror] Initialize
-[Test_Pol_Guide_Vmirror] Initialize
-[Test_Pol_Guide_Vmirror] Initialize
-[Test_Pol_Guide_Vmirror] Initialize
-[Test_Pol_Guide_Vmirror] Initialize
-[Test_Pol_Guide_Vmirror] Initialize
-[Test_Pol_Guide_Vmirror] Initialize
-[n-62-23-14:24891] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-14:24891] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
 
-Finally [Test_Pol_Guide_Vmirror: 1]. Time: 9 [s] 
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+Simulation 'Test_Pol_Guide_Vmirror' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr): running on 4 nodes (master is 'n-62-31-16', MPI version 3.1).
+[Test_Pol_Guide_Vmirror] Initialize
+[Test_Pol_Guide_Vmirror] Initialize
+[Test_Pol_Guide_Vmirror] Initialize
+[Test_Pol_Guide_Vmirror] Initialize
+[n-62-31-16:221203] 3 more processes have sent help message help-mpi-btl-openib.txt / ib port not selected
+[n-62-31-16:221203] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:221203] 3 more processes have sent help message help-mpi-btl-openib.txt / error in device init
 
-Finally [Test_Pol_Guide_Vmirror: 1]. Time: 9 [s] 
+Finally [Test_Pol_Guide_Vmirror: 1]. Time: 6 [s] 
 
-
-Finally [Test_Pol_Guide_Vmirror: 1]. Time: 10 [s] 
-Finally [Test_Pol_Guide_Vmirror: 1]. Time: 10 [s] 
+Finally [Test_Pol_Guide_Vmirror: 1]. Time: 6 [s] 
 
 Save [Test_Pol_Guide_Vmirror]
 Detector: lamStart_I=9.42362e+12 lamStart_ERR=2.98001e+09 lamStart_N=1e+07 "lambdaStart.dat"
 
-Finally [Test_Pol_Guide_Vmirror: 1]. Time: 10 [s] 
-
-Finally [Test_Pol_Guide_Vmirror: 1]. Time: 10 [s] 
-
-Finally [Test_Pol_Guide_Vmirror: 1]. Time: 10 [s] 
+Finally [Test_Pol_Guide_Vmirror: 1]. Time: 6 [s] 
 Detector: psdStart_I=9.42362e+12 psdStart_ERR=2.98001e+09 psdStart_N=1e+07 "psdStart.dat"
-Detector: lamStopPolGuide_I=3.37639e+12 lamStopPolGuide_ERR=1.74026e+09 lamStopPolGuide_N=7.36577e+06 "lambdaStopPolGuide.dat"
-Detector: psdPolGuide_I=3.95851e+12 psdPolGuide_ERR=1.88085e+09 psdPolGuide_N=8.95434e+06 "psdPolGuide.dat"
-Detector: pollambdaMonitorX_I=3.95851e+12 pollambdaMonitorX_ERR=1.88085e+09 pollambdaMonitorX_N=8.95434e+06 "pollambdaMonX.data"
-Detector: pollambdaMonitorY_I=3.95851e+12 pollambdaMonitorY_ERR=1.88085e+09 pollambdaMonitorY_N=8.95434e+06 "pollambdaMonY.data"
-Detector: pollambdaMonitorZ_I=3.95851e+12 pollambdaMonitorZ_ERR=1.88085e+09 pollambdaMonitorZ_N=8.95434e+06 "pollambdaMonZ.data"
-Detector: MPLMon2X_I=0 MPLMon2X_ERR=0 MPLMon2X_N=8.95434e+06 "MPLMon2X.data"
+Detector: lamStopPolGuide_I=3.37415e+12 lamStopPolGuide_ERR=1.73968e+09 lamStopPolGuide_N=7.36532e+06 "lambdaStopPolGuide.dat"
+Detector: psdPolGuide_I=3.95785e+12 psdPolGuide_ERR=1.8807e+09 psdPolGuide_N=8.95298e+06 "psdPolGuide.dat"
+Detector: pollambdaMonitorX_I=3.95785e+12 pollambdaMonitorX_ERR=1.8807e+09 pollambdaMonitorX_N=8.95298e+06 "pollambdaMonX.data"
+Detector: pollambdaMonitorY_I=3.95785e+12 pollambdaMonitorY_ERR=1.8807e+09 pollambdaMonitorY_N=8.95298e+06 "pollambdaMonY.data"
+Detector: pollambdaMonitorZ_I=3.95785e+12 pollambdaMonitorZ_ERR=1.8807e+09 pollambdaMonitorZ_N=8.95298e+06 "pollambdaMonZ.data"
+Detector: MPLMon2X_I=0 MPLMon2X_ERR=0 MPLMon2X_N=8.95298e+06 "MPLMon2X.data"
+Detector: MPLMon2Y_I=-345.546 MPLMon2Y_ERR=0.0239695 MPLMon2Y_N=8.95298e+06 "MPLMon2Y.data"
+Detector: MPLMon2Z_I=0 MPLMon2Z_ERR=0 MPLMon2Z_N=8.95298e+06 "MPLMon2Z.data"
 
-
-Finally [Test_Pol_Guide_Vmirror: 1]. Time: 10 [s] 
-Finally [Test_Pol_Guide_Vmirror: 1]. Time: 10 [s] 
-Detector: MPLMon2Y_I=-863.785 MPLMon2Y_ERR=0.0598253 MPLMon2Y_N=8.95434e+06 "MPLMon2Y.data"
-Detector: MPLMon2Z_I=0 MPLMon2Z_ERR=0 MPLMon2Z_N=8.95434e+06 "MPLMon2Z.data"
-
-Finally [Test_Pol_Guide_Vmirror: 1]. Time: 10 [s] 
+Finally [Test_Pol_Guide_Vmirror: 1]. Time: 6 [s] 
 INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_Vmirror/Test_Pol_Guide_Vmirror.instr in dataset 1

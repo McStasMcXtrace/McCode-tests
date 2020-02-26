@@ -1,6 +1,6 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "templateLaueGPU_SXonly_20200225_211302"
+INFO: Using directory: "templateLaueGPU_SXonly_20200226_192838"
 INFO: Regenerating c-file: templateLaueGPU_SXonly.c
 CFLAGS=  -I@MCCODE_LIB@/share @OPENCL_CFLAGS@ -DUSE_OPENCL -DMC_RAND_ALG=1
 INFO: Recompiling: ./templateLaueGPU_SXonly.out
-gcc: error: @OPENCL_CFLAGS@: No such file or directory
+gcc: error: OPENCL_CFLAGS@: No such file or directory

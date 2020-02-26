@@ -1,5 +1,5 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "TestSANS_20200225_210359"
+INFO: Using directory: "TestSANS_20200226_191824"
 INFO: Regenerating c-file: TestSANS.c
 Info:    'SANSLiposomes' is a contributed component.
 Info:    'SANSQMonitor' is a contributed component.
@@ -12,21 +12,27 @@ Warning: Component QMonitor=SANSQMonitor(string qFilename) definition parameter
 CFLAGS=
 INFO: Recompiling: ./TestSANS.out
 INFO: ===
-[n-62-23-14:06860] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:06860] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582661041.716330] [n-62-23-14:6858 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3381.40
-[1582661041.717946] [n-62-23-14:6858 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661041.717949] [n-62-23-14:6858 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-31-16:212255] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:212255] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582661041.721194] [n-62-23-14:6858 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661041.721197] [n-62-23-14:6858 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
 begin instrument: TestSANS
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr
   Parameters:  DistSrcPin1(double) DistSrcPin2(double) DistPinSamp(double) DistSampDet(double) DetRadius(double) Lambda(double) DLambda(double)
   Trace_enabled: yes
@@ -36,12 +42,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/TestSANS/TestSANS.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1582667899
+  Seed: 1582953360
   Directory: .
   Param: DistSrcPin1=1
   Param: DistSrcPin2=10

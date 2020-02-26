@@ -1,13 +1,13 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Feb. 24, 2020
+# Creator: McStas 2.5 - Feb. 26, 2020
 # Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr
-# Ncount: 1000000
+# Ncount: 2500000
 # Trace: no
 # Gravitation: no
-# Seed: 1582681057
+# Seed: 1582960661
 # Directory: 10
-# Nodes: 10
+# Nodes: 4
 # Param: L_min=0.5
 # Param: L_max=7
 # Param: SAMPLE=10
@@ -18,7 +18,7 @@
 # Param: ABS=5.08
 # Param: DB=0
 # Param: ISISFACE=hydrogen
-# Date: Tue Feb 25 21:32:27 2020 (1582662747)
+# Date: Wed Feb 26 19:39:25 2020 (1582742365)
 # type: array_2d(128, 128)
 # Source: Samples_Incoherent (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Samples_Incoherent/Samples_Incoherent.instr)
 # component: Dirbeam

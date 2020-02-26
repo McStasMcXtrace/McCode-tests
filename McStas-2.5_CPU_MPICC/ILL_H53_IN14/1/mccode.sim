@@ -1,6 +1,6 @@
 McStas simulation description file for ILL_H53_IN14.
-Date:    Tue Feb 25 21:26:05 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:35:14 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: ILL_H53_IN14
   File: 1/mccode
@@ -14,14 +14,14 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582677787
+  Seed: 1582959179
   Directory: 1
-  Nodes: 10
+  Nodes: 4
   Param: KI=1.55
   Param: QM=1
   Param: EN=0
@@ -91,7 +91,7 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Tue Feb 25 21:26:09 2020 (1582662369)
+  Date: Wed Feb 26 19:35:16 2020 (1582742116)
   type: array_1d(60)
   Source: ILL_H53_IN14 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr)
   component: Mon_VS_L
@@ -100,8 +100,8 @@ begin data
   Ncount: 10000000
   filename: mon_vs_l.dat
   statistics: X0=4.10833; dX=0;
-  signal: Min=0; Max=4.09228e+08; Mean=6.82046e+06;
-  values: 4.09228e+08 1.1045e+06 297689
+  signal: Min=0; Max=4.08099e+08; Mean=6.80166e+06;
+  values: 4.08099e+08 1.10287e+06 297362
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
@@ -111,7 +111,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:26:09 2020 (1582662369)
+  Date: Wed Feb 26 19:35:16 2020 (1582742116)
   type: array_2d(40, 40)
   Source: ILL_H53_IN14 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr)
   component: Mon_VS_XY
@@ -119,9 +119,9 @@ begin data
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
   filename: mon_vs_xy.dat
-  statistics: X0=-5.81218e-05; dX=0.0175756; Y0=-2.29792e-05; dY=0.0363054;
-  signal: Min=311549; Max=936720; Mean=576395;
-  values: 9.22232e+08 2.48869e+06 297689
+  statistics: X0=-8.24647e-05; dX=0.0175626; Y0=-0.000190824; dY=0.0362667;
+  signal: Min=338412; Max=902128; Mean=574801;
+  values: 9.19681e+08 2.485e+06 297362
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -133,17 +133,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:26:09 2020 (1582662369)
+  Date: Wed Feb 26 19:35:16 2020 (1582742116)
   type: array_1d(60)
   Source: ILL_H53_IN14 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr)
   component: Mon_VS1_L
   position: 0 0 8.624
   title: Wavelength [Angs] monitor
   Ncount: 10000000
-  filename: Mon_VS1_L_1582662365.L
+  filename: Mon_VS1_L_1582742114.L
   statistics: X0=4.10833; dX=0;
-  signal: Min=0; Max=3.72054e+08; Mean=6.20091e+06;
-  values: 3.72054e+08 1.04718e+06 285972
+  signal: Min=0; Max=3.71159e+08; Mean=6.18599e+06;
+  values: 3.71159e+08 1.04582e+06 285708
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
@@ -153,17 +153,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:26:09 2020 (1582662369)
+  Date: Wed Feb 26 19:35:16 2020 (1582742116)
   type: array_1d(60)
   Source: ILL_H53_IN14 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr)
   component: Mon_VS2_L
   position: 0 0 9.15
   title: Wavelength [Angs] monitor
   Ncount: 10000000
-  filename: Mon_VS2_L_1582662365.L
+  filename: Mon_VS2_L_1582742114.L
   statistics: X0=4.10833; dX=0;
-  signal: Min=0; Max=3.49794e+08; Mean=5.8299e+06;
-  values: 3.49794e+08 1.0132e+06 280178
+  signal: Min=0; Max=3.49128e+08; Mean=5.8188e+06;
+  values: 3.49128e+08 1.01212e+06 279941
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
@@ -173,27 +173,27 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:26:09 2020 (1582662369)
+  Date: Wed Feb 26 19:35:16 2020 (1582742116)
   type: array_1d(20)
   Source: ILL_H53_IN14 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr)
   component: D4_SC2_1D
   position: 0.568076 0 19.3403
   title: Wavelength [Angs] monitor
   Ncount: 10000000
-  filename: D4_SC2_1D_1582662365.L
-  statistics: X0=4.05306; dX=0.0280696;
-  signal: Min=1.12645e+06; Max=5.53017e+06; Mean=3.70429e+06;
-  values: 7.40858e+07 172982 445777
+  filename: D4_SC2_1D_1582742114.L
+  statistics: X0=4.05293; dX=0.0277413;
+  signal: Min=981229; Max=5.68482e+06; Mean=3.70566e+06;
+  values: 7.41132e+07 172968 442603
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
   ylabel: Intensity [n/s/cm2/bin]
-  xlimits: 3.99287 4.11445
+  xlimits: 3.99287 4.11446
   variables: L I I_err N
 end data
 
 begin data
-  Date: Tue Feb 25 21:26:09 2020 (1582662369)
+  Date: Wed Feb 26 19:35:16 2020 (1582742116)
   type: array_0d
   Source: ILL_H53_IN14 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr)
   component: Sample_Cradle
@@ -202,35 +202,35 @@ begin data
   Ncount: 10000000
   statistics: None
   signal: None
-  values: 7.42759e+07 286862 152370
+  values: 7.49873e+07 287031 153920
   xylimits: 0 0 0 0 0 0
   variables: I I_err N
 end data
 
 begin data
-  Date: Tue Feb 25 21:26:09 2020 (1582662369)
+  Date: Wed Feb 26 19:35:16 2020 (1582742116)
   type: array_2d(50, 50)
   Source: ILL_H53_IN14 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr)
   component: D7_SC3_1D
   position: 2.04122 0 19.7535
   title:  Intensity Angle Energy Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: D7_SC3_1D_1582662365.th_E
-  statistics: X0=37.2468; dX=33.0494; Y0=4.97964; dY=0.0548117;
-  signal: Min=1.60397; Max=4.34614e+06; Mean=267674;
-  values: 6.69185e+08 1.15733e+06 3.29002e+06
+  filename: D7_SC3_1D_1582742114.th_E
+  statistics: X0=36.7982; dX=33.1788; Y0=4.97994; dY=0.0545461;
+  signal: Min=0.192608; Max=4.91256e+06; Mean=266051;
+  values: 6.65128e+08 1.16017e+06 3.27076e+06
   xvar: Longitude
   yvar: Energy
   xlabel: Longitude [deg]
   ylabel: Energy [meV]
   zvar: I
   zlabel: Signal per bin
-  xylimits: -179.973 179.979 4.83233 5.13102
+  xylimits: -179.984 179.999 4.8328 5.13104
   variables: I I_err N
 end data
 
 begin data
-  Date: Tue Feb 25 21:26:09 2020 (1582662369)
+  Date: Wed Feb 26 19:35:16 2020 (1582742116)
   type: array_2d(20, 20)
   Source: ILL_H53_IN14 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H53_IN14/ILL_H53_IN14.instr)
   component: He3H
@@ -238,9 +238,9 @@ begin data
   title: PSD monitor
   Ncount: 10000000
   filename: He3H.psd
-  statistics: X0=-0.00624698; dX=0.51202; Y0=-0.0407156; dY=2.05083;
-  signal: Min=0; Max=8.8593; Mean=1.05729;
-  values: 422.917 12.1966 5881
+  statistics: X0=0.00651085; dX=0.502845; Y0=0.140971; dY=1.95825;
+  signal: Min=0; Max=13.7754; Mean=1.30844;
+  values: 523.377 14.4705 6142
   xvar: X
   yvar: Y
   xlabel: X position [cm]

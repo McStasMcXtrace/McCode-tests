@@ -2,63 +2,28 @@ INFO: Using directory: "1"
 INFO: Using existing c-file: ./ILL_IN13.c
 INFO: Using existing binary: ./ILL_IN13.out
 INFO: ===
-[n-62-23-14:15684] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:15684] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:15684] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582662429.651021] [n-62-23-14:15690:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.10
-[1582662429.653800] [n-62-23-14:15691:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.10
-[1582662429.654902] [n-62-23-14:15690:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662429.654921] [n-62-23-14:15690:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662429.655126] [n-62-23-14:15694:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.10
+INFO: Using system default number of mpirun -np processes
+[n-62-31-16:217182] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:217182] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:217182] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582662429.655553] [n-62-23-14:15691:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662429.655572] [n-62-23-14:15691:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662429.657665] [n-62-23-14:15694:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662429.657685] [n-62-23-14:15694:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662429.657743] [n-62-23-14:15690:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662429.657758] [n-62-23-14:15690:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662429.657966] [n-62-23-14:15691:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662429.657985] [n-62-23-14:15691:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662429.659968] [n-62-23-14:15694:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662429.660002] [n-62-23-14:15694:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662429.662020] [n-62-23-14:15698:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.10
-[1582662429.663141] [n-62-23-14:15693:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.10
-[1582662429.665304] [n-62-23-14:15698:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662429.665371] [n-62-23-14:15693:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662429.665390] [n-62-23-14:15693:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662429.665630] [n-62-23-14:15698:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662429.665370] [n-62-23-14:15692:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.10
-[1582662429.667809] [n-62-23-14:15693:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662429.667826] [n-62-23-14:15693:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662429.669236] [n-62-23-14:15692:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662429.669294] [n-62-23-14:15692:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662429.669447] [n-62-23-14:15697:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662429.669489] [n-62-23-14:15697:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662429.670647] [n-62-23-14:15698:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662429.670664] [n-62-23-14:15698:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662429.671609] [n-62-23-14:15692:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662429.671683] [n-62-23-14:15692:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662429.672979] [n-62-23-14:15697:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662429.672996] [n-62-23-14:15697:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662429.674028] [n-62-23-14:15695:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662429.674059] [n-62-23-14:15695:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662429.676193] [n-62-23-14:15695:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662429.676212] [n-62-23-14:15695:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662429.677503] [n-62-23-14:15696:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662429.677572] [n-62-23-14:15696:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662429.679756] [n-62-23-14:15696:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662429.679774] [n-62-23-14:15696:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662429.691389] [n-62-23-14:15699:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3099.93
-[1582662429.693213] [n-62-23-14:15699:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662429.693229] [n-62-23-14:15699:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662429.695221] [n-62-23-14:15699:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662429.695237] [n-62-23-14:15699:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'ILL_IN13' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN13/ILL_IN13.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+Simulation 'ILL_IN13' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN13/ILL_IN13.instr): running on 4 nodes (master is 'n-62-31-16', MPI version 3.1).
 [ILL_IN13] Initialize
 [ILL_IN13] Initialize
 [ILL_IN13] Initialize
@@ -66,78 +31,43 @@ ILL_IN13: IN13 Thermal neutron backscattering spectrometer
   Monochromator CaF2(422) lambda=2.22 [Angs] Ei=16.5682 [meV] RMV=-0 [m]
   Deflector PG(002): angle=43.74 [deg] RDV=4.6 [m] RDH=0 [m]
 [ILL_IN13] Initialize
-[ILL_IN13] Initialize
-[ILL_IN13] Initialize
 Incoherent: Sample: The target is not defined. Using direct beam (Z-axis).
 Incoherent: Sample: Vc=13.827 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn]
 Incoherent: Sample_copy: Vc=13.827 [Angs] sigma_abs=5.08 [barn] sigma_inc=5.08 [barn]
-[ILL_IN13] Initialize
-[ILL_IN13] Initialize
-[ILL_IN13] Initialize
-[ILL_IN13] Initialize
-[n-62-23-14:15684] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-14:15684] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:217182] 3 more processes have sent help message help-mpi-btl-openib.txt / ib port not selected
+[n-62-31-16:217182] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:217182] 3 more processes have sent help message help-mpi-btl-openib.txt / error in device init
 
-Trace ETA 23 [s] % 47 
-
-
-
-
-Trace ETA 25 [s] % 42 
-
-Trace ETA 25 [s] % 43 
-Trace ETA 24 [s] % 45 
-Trace ETA 21 [s] % 52 Trace ETA 21 [s] % 51 Trace ETA 23 [s] % 46 Trace ETA 22 [s] % 48 Trace ETA 24 [s] % 44 Trace ETA 24 [s] % 45 50 50 50 50 50 50 50 50 60 60 60 60 60 60 60 60 60 60 70 70 70 70 70 70 80 70 70 70 70 80 80 80 80 90 80 80 80 80 90 80 90 90 90 90 90 90 
-Finally [ILL_IN13: 1]. Time: 21 [s] 
-Warning: 679740 events were removed in Component[12] Defl_lambda=L_monitor()
-         (negative time, miss next components, rounding errors, Nan, Inf).
-90 90 
-Finally [ILL_IN13: 1]. Time: 23 [s] 
-Warning: 668950 events were removed in Component[12] Defl_lambda=L_monitor()
-         (negative time, miss next components, rounding errors, Nan, Inf).
-
-
-Finally [ILL_IN13: 1]. Time: 23 [s] 
-Warning: 662900 events were removed in Component[12] Defl_lambda=L_monitor()
-         (negative time, miss next components, rounding errors, Nan, Inf).
-Finally [ILL_IN13: 1]. Time: 23 [s] 
-Warning: 677310 events were removed in Component[12] Defl_lambda=L_monitor()
-         (negative time, miss next components, rounding errors, Nan, Inf).
-
-
-Finally [ILL_IN13: 1]. Time: 24 [s] 
-Warning: 677160 events were removed in Component[12] Defl_lambda=L_monitor()
-         (negative time, miss next components, rounding errors, Nan, Inf).
-Finally [ILL_IN13: 1]. Time: 24 [s] 
-Warning: 682610 events were removed in Component[12] Defl_lambda=L_monitor()
-         (negative time, miss next components, rounding errors, Nan, Inf).
-
+Trace ETA 17 [s] % 61 
+Trace ETA 17 [s] % 61 
+Trace ETA 17 [s] % 62 
+Trace ETA 17 [s] % 62 70 70 70 70 80 80 80 80 90 90 90 90 
 Save [ILL_IN13]
-Detector: CaF2_incoming_I=6.81915e+06 CaF2_incoming_ERR=2156.43 CaF2_incoming_N=1e+07 "CaF2_incoming_1582662429.x_y"
+Detector: CaF2_incoming_I=6.81916e+06 CaF2_incoming_ERR=2156.43 CaF2_incoming_N=1e+07 "CaF2_incoming_1582742157.x_y"
 
-Finally [ILL_IN13: 1]. Time: 24 [s] 
-Warning: 677680 events were removed in Component[12] Defl_lambda=L_monitor()
+Finally [ILL_IN13: 1]. Time: 17 [s] 
+Warning: 1.71775e+06 events were removed in Component[12] Defl_lambda=L_monitor()
          (negative time, miss next components, rounding errors, Nan, Inf).
+Detector: CaF2_transmitted_I=6.32762e+06 CaF2_transmitted_ERR=656.897 CaF2_transmitted_N=9.27891e+07 "CaF2_transmitted_1582742157.x_y"
+Detector: Defl_XY_I=60589 Defl_XY_ERR=20.2574 Defl_XY_N=8.94868e+06 "Defl_XY.psd"
+Detector: Defl_lambda_I=60589 Defl_lambda_ERR=20.2574 Defl_lambda_N=8.94868e+06 "Defl_lambda.lam"
+Detector: SamposPSD_I=5882.53 SamposPSD_ERR=1.99564 SamposPSD_N=8.69162e+06 "SamposPSD.psd"
+Detector: SamposEnergy_I=5882.53 SamposEnergy_ERR=1.99564 SamposEnergy_N=8.69162e+06 "SamposEnergy_1582742157.E"
+Detector: SamposPSDcm2_I=669.524 SamposPSDcm2_ERR=0.673361 SamposPSDcm2_N=988920 "SamposPSDcm2_1582742157.x_y"
 
-Finally [ILL_IN13: 1]. Time: 24 [s] 
-Warning: 667210 events were removed in Component[12] Defl_lambda=L_monitor()
+Finally [ILL_IN13: 1]. Time: 17 [s] 
+Warning: 1.70869e+06 events were removed in Component[12] Defl_lambda=L_monitor()
          (negative time, miss next components, rounding errors, Nan, Inf).
-Detector: CaF2_transmitted_I=6.32832e+06 CaF2_transmitted_ERR=656.932 CaF2_transmitted_N=9.27996e+07 "CaF2_transmitted_1582662429.x_y"
-Detector: Defl_XY_I=60601.2 Defl_XY_ERR=20.2595 Defl_XY_N=8.9504e+06 "Defl_XY.psd"
-Detector: Defl_lambda_I=60601.2 Defl_lambda_ERR=20.2595 Defl_lambda_N=8.9504e+06 "Defl_lambda.lam"
-Detector: SamposPSD_I=5893.82 SamposPSD_ERR=1.99758 SamposPSD_N=8.7081e+06 "SamposPSD.psd"
-Detector: SamposEnergy_I=5893.82 SamposEnergy_ERR=1.99758 SamposEnergy_N=8.7081e+06 "SamposEnergy_1582662429.E"
-Detector: SamposPSDcm2_I=670.022 SamposPSDcm2_ERR=0.673607 SamposPSDcm2_N=989670 "SamposPSDcm2_1582662429.x_y"
-Detector: PSD_scattered_I=10.1979 PSD_scattered_ERR=0.0142562 PSD_scattered_N=618900 "PSD_scattered_1582662429.th_y"
-Detector: Detector_I=0.10264 Detector_ERR=0.00142906 Detector_N=6239 "Detector_1582662429.U1_y"
+Detector: PSD_scattered_I=10.194 PSD_scattered_ERR=0.0142597 PSD_scattered_N=617691 "PSD_scattered_1582742157.th_y"
 
-Finally [ILL_IN13: 1]. Time: 24 [s] 
-Warning: 698600 events were removed in Component[12] Defl_lambda=L_monitor()
+Finally [ILL_IN13: 1]. Time: 17 [s] 
+Warning: 1.70923e+06 events were removed in Component[12] Defl_lambda=L_monitor()
          (negative time, miss next components, rounding errors, Nan, Inf).
-Detector: DetectorEnergy_I=0.10264 DetectorEnergy_ERR=0.00142906 DetectorEnergy_N=6239 "DetectorEnergy_1582662429.E"
-Detector: DetectorShape_I=0.139092 DetectorShape_ERR=0.00166775 DetectorShape_N=8388 "DetectorShape_1582662429.th"
+Detector: Detector_I=0.101987 Detector_ERR=0.00142395 Detector_N=6201 "Detector_1582742157.U1_y"
+Detector: DetectorEnergy_I=0.101987 DetectorEnergy_ERR=0.00142395 DetectorEnergy_N=6201 "DetectorEnergy_1582742157.E"
+Detector: DetectorShape_I=0.135595 DetectorShape_ERR=0.00164523 DetectorShape_N=8231 "DetectorShape_1582742157.th"
 
-Finally [ILL_IN13: 1]. Time: 24 [s] 
-Warning: 678920 events were removed in Component[12] Defl_lambda=L_monitor()
+Finally [ILL_IN13: 1]. Time: 17 [s] 
+Warning: 1.71877e+06 events were removed in Component[12] Defl_lambda=L_monitor()
          (negative time, miss next components, rounding errors, Nan, Inf).
 INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN13/ILL_IN13.instr in dataset 1

@@ -1,5 +1,5 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "Test_shellguides_20200225_210804"
+INFO: Using directory: "Test_shellguides_20200226_192306"
 INFO: Regenerating c-file: Test_shellguides.c
 
 Unmatched actual parameter yheighth for component Source_gen() at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_shellguides/Test_shellguides.instr:82. Please change its name to a valid one:

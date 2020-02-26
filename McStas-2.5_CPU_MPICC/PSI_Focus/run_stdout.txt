@@ -2,75 +2,29 @@ INFO: Using directory: "1"
 INFO: Using existing c-file: ./PSI_Focus.c
 INFO: Using existing binary: ./PSI_Focus.out
 INFO: ===
-[n-62-23-14:16994] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:16994] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:16994] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582662640.990373] [n-62-23-14:17000:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.98
-[1582662640.993764] [n-62-23-14:17000:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662640.993781] [n-62-23-14:17000:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: Using system default number of mpirun -np processes
+[n-62-31-16:217752] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:217752] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:217752] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582662640.996405] [n-62-23-14:17000:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662640.996423] [n-62-23-14:17000:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662640.999631] [n-62-23-14:17003:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.44
-[1582662641.000291] [n-62-23-14:17001:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.44
-[1582662641.002206] [n-62-23-14:17001:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662641.002249] [n-62-23-14:17001:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662641.002288] [n-62-23-14:17003:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662641.002305] [n-62-23-14:17003:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662641.004529] [n-62-23-14:17003:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662641.004546] [n-62-23-14:17003:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662641.004620] [n-62-23-14:17001:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662641.004763] [n-62-23-14:16999:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.44
-[1582662641.004847] [n-62-23-14:17001:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662641.006546] [n-62-23-14:16999:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662641.006562] [n-62-23-14:16999:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662641.008713] [n-62-23-14:17005:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.61
-[1582662641.009143] [n-62-23-14:17002:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.61
-[1582662641.010343] [n-62-23-14:17005:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662641.010360] [n-62-23-14:17005:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662641.010375] [n-62-23-14:16999:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662641.010394] [n-62-23-14:16999:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662641.011460] [n-62-23-14:17002:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662641.011476] [n-62-23-14:17002:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662641.012594] [n-62-23-14:17005:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662641.012610] [n-62-23-14:17005:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662641.014317] [n-62-23-14:17002:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662641.014334] [n-62-23-14:17002:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662641.015308] [n-62-23-14:17006:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.61
-[1582662641.017185] [n-62-23-14:17006:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662641.017201] [n-62-23-14:17006:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662641.019241] [n-62-23-14:17006:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662641.019256] [n-62-23-14:17006:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662641.021880] [n-62-23-14:17004:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.12
-[1582662641.023563] [n-62-23-14:17004:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662641.023579] [n-62-23-14:17004:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662641.023733] [n-62-23-14:17007:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3101.12
-[1582662641.025580] [n-62-23-14:17007:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662641.025601] [n-62-23-14:17007:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662641.025652] [n-62-23-14:17004:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662641.025668] [n-62-23-14:17004:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662641.025877] [n-62-23-14:17008:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.78
-[1582662641.027601] [n-62-23-14:17008:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662641.027617] [n-62-23-14:17008:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662641.027873] [n-62-23-14:17007:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662641.027888] [n-62-23-14:17007:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662641.030419] [n-62-23-14:17008:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662641.030436] [n-62-23-14:17008:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'PSI_Focus' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+Simulation 'PSI_Focus' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr): running on 4 nodes (master is 'n-62-31-16', MPI version 3.1).
 [PSI_Focus] Initialize
-[PSI_Focus] Initialize
-[PSI_Focus] Initialize
-DiskChopper: FirstChopper WARNING: chopper will NOT absorb neutrons outside radius 0.7 [m]
-DiskChopper: FirstChopper WARNING: chopper will NOT absorb neutrons outside radius 0.7 [m]
-DiskChopper: FirstChopper: frequency=23.1251 [Hz] 1387.5 [rpm], time frame=0.0216215 [s] phase=28.2335 [deg]
-             2 slits, angle=11.4783 [deg] height=0.7 [m], width=0.07 [m] at radius=0.35 [m]
-DiskChopper: FirstChopper: frequency=23.1251 [Hz] 1387.5 [rpm], time frame=0.0216215 [s] phase=28.2335 [deg]
-             2 slits, angle=11.4783 [deg] height=0.7 [m], width=0.07 [m] at radius=0.35 [m]
 [PSI_Focus] Initialize
 DiskChopper: FirstChopper WARNING: chopper will NOT absorb neutrons outside radius 0.7 [m]
 DiskChopper: FirstChopper: frequency=23.1251 [Hz] 1387.5 [rpm], time frame=0.0216215 [s] phase=28.2335 [deg]
@@ -79,11 +33,18 @@ DiskChopper: FirstChopper: frequency=23.1251 [Hz] 1387.5 [rpm], time frame=0.021
 DiskChopper: FirstChopper WARNING: chopper will NOT absorb neutrons outside radius 0.7 [m]
 DiskChopper: FirstChopper: frequency=23.1251 [Hz] 1387.5 [rpm], time frame=0.0216215 [s] phase=28.2335 [deg]
              2 slits, angle=11.4783 [deg] height=0.7 [m], width=0.07 [m] at radius=0.35 [m]
+DiskChopper: FirstChopper WARNING: chopper will NOT absorb neutrons outside radius 0.7 [m]
+DiskChopper: FirstChopper: frequency=23.1251 [Hz] 1387.5 [rpm], time frame=0.0216215 [s] phase=28.2335 [deg]
+             2 slits, angle=11.4783 [deg] height=0.7 [m], width=0.07 [m] at radius=0.35 [m]
+[PSI_Focus] Initialize
+DiskChopper: FirstChopper WARNING: chopper will NOT absorb neutrons outside radius 0.7 [m]
+DiskChopper: FirstChopper: frequency=23.1251 [Hz] 1387.5 [rpm], time frame=0.0216215 [s] phase=28.2335 [deg]
+             2 slits, angle=11.4783 [deg] height=0.7 [m], width=0.07 [m] at radius=0.35 [m]
+Table from file '' (catenated) is empty.
+Table from file '' (catenated) is empty.
 Table from file '' (catenated) is empty.
 Monitor_nD: DISCTOF is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
-Table from file '' (catenated) is empty.
-Table from file '' (catenated) is empty.
 Monitor_nD: MONOTOF is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
 Table from file '' (catenated) is empty.
@@ -97,120 +58,52 @@ Monitor_nD: TOF_Det is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
 Monitor_nD: FoDet is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
-DiskChopper: FirstChopper WARNING: chopper will NOT absorb neutrons outside radius 0.7 [m]
-DiskChopper: FirstChopper: frequency=23.1251 [Hz] 1387.5 [rpm], time frame=0.0216215 [s] phase=28.2335 [deg]
-             2 slits, angle=11.4783 [deg] height=0.7 [m], width=0.07 [m] at radius=0.35 [m]
-[PSI_Focus] Initialize
-DiskChopper: FirstChopper WARNING: chopper will NOT absorb neutrons outside radius 0.7 [m]
-DiskChopper: FirstChopper: frequency=23.1251 [Hz] 1387.5 [rpm], time frame=0.0216215 [s] phase=28.2335 [deg]
-             2 slits, angle=11.4783 [deg] height=0.7 [m], width=0.07 [m] at radius=0.35 [m]
-Table from file '' (catenated) is empty.
-[PSI_Focus] Initialize
-DiskChopper: FirstChopper WARNING: chopper will NOT absorb neutrons outside radius 0.7 [m]
-DiskChopper: FirstChopper: frequency=23.1251 [Hz] 1387.5 [rpm], time frame=0.0216215 [s] phase=28.2335 [deg]
-             2 slits, angle=11.4783 [deg] height=0.7 [m], width=0.07 [m] at radius=0.35 [m]
-[PSI_Focus] Initialize
-DiskChopper: FirstChopper WARNING: chopper will NOT absorb neutrons outside radius 0.7 [m]
-Table from file '' (catenated) is empty.
-DiskChopper: FirstChopper: frequency=23.1251 [Hz] 1387.5 [rpm], time frame=0.0216215 [s] phase=28.2335 [deg]
-             2 slits, angle=11.4783 [deg] height=0.7 [m], width=0.07 [m] at radius=0.35 [m]
-Table from file '' (catenated) is empty.
-[PSI_Focus] Initialize
-[PSI_Focus] Initialize
-DiskChopper: FirstChopper WARNING: chopper will NOT absorb neutrons outside radius 0.7 [m]
-DiskChopper: FirstChopper: frequency=23.1251 [Hz] 1387.5 [rpm], time frame=0.0216215 [s] phase=28.2335 [deg]
-             2 slits, angle=11.4783 [deg] height=0.7 [m], width=0.07 [m] at radius=0.35 [m]
-Table from file '' (catenated) is empty.
-Table from file '' (catenated) is empty.
-DiskChopper: FirstChopper WARNING: chopper will NOT absorb neutrons outside radius 0.7 [m]
-DiskChopper: FirstChopper: frequency=23.1251 [Hz] 1387.5 [rpm], time frame=0.0216215 [s] phase=28.2335 [deg]
-             2 slits, angle=11.4783 [deg] height=0.7 [m], width=0.07 [m] at radius=0.35 [m]
-Table from file '' (catenated) is empty.
-[n-62-23-14:16994] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-14:16994] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:217752] 3 more processes have sent help message help-mpi-btl-openib.txt / ib port not selected
+[n-62-31-16:217752] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:217752] 3 more processes have sent help message help-mpi-btl-openib.txt / error in device init
+<E> : 7.0823 meV , E-width : 0.181623 meV 
+<E> : 7.08596 meV , E-width : 0.126341 meV 
+<E> : 7.08142 meV , E-width : 0.143327 meV 
 
-Trace ETA 15 [s] % 69 
-
-
-
-
-Trace ETA 14 [s] % 73 
-Trace ETA 16 [s] % 68 
-Trace ETA 15 [s] % 73 Trace ETA 14 [s] % 74 Trace ETA 15 [s] % 69 
-Trace ETA 16 [s] % 68 Trace ETA 16 [s] % 66 
-Trace ETA 15 [s] % 70 70 Trace ETA 14 [s] % 75 70 70 70 70 80 80 80 80 80 80 80 80 80 80 90 90 90 90 90 90 90 90 90 90 <E> : 7.08496 meV , E-width : 0.181739 meV 
-<E> : 7.09009 meV , E-width : 0.111858 meV 
-<E> : 7.13242 meV , E-width : 0.14675 meV 
-
-Finally [PSI_Focus: 1]. Time: 15 [s] 
-<E> : 7.08126 meV , E-width : 0.182626 meV 
-<E> : 7.08411 meV , E-width : 0.136908 meV 
-<E> : 7.08389 meV , E-width : 0.18056 meV 
-<E> : 7.11745 meV , E-width : 0.13555 meV 
-<E> : 7.06097 meV , E-width : 0.120039 meV 
-<E> : 7.08417 meV , E-width : 0.146673 meV 
-
-Finally [PSI_Focus: 1]. Time: 15 [s] 
-
-Finally [PSI_Focus: 1]. Time: 15 [s] 
-<E> : 7.08253 meV , E-width : 0.181503 meV 
-<E> : 7.08538 meV , E-width : 0.182734 meV 
-<E> : 7.0834 meV , E-width : 0.179247 meV 
-<E> : 7.05585 meV , E-width : 0.130706 meV 
-<E> : 7.10207 meV , E-width : 0.160147 meV 
-<E> : 7.06525 meV , E-width : 0.119816 meV 
-<E> : 7.10106 meV , E-width : 0.122318 meV 
-
-Finally [PSI_Focus: 1]. Time: 15 [s] 
-<E> : 7.0955 meV , E-width : 0.138794 meV 
-
-Finally [PSI_Focus: 1]. Time: 15 [s] 
-<E> : 7.10955 meV , E-width : 0.137577 meV 
-
-Finally [PSI_Focus: 1]. Time: 15 [s] 
-<E> : 7.08718 meV , E-width : 0.181555 meV 
-<E> : 7.06081 meV , E-width : 0.112674 meV 
-<E> : 7.10506 meV , E-width : 0.156761 meV 
-
-Finally [PSI_Focus: 1]. Time: 15 [s] 
+Finally [PSI_Focus: 1]. Time: 10 [s] 
 
 Save [PSI_Focus]
-Detector: lambdaGuideExit_I=4.34788e+09 lambdaGuideExit_ERR=4.33474e+06 lambdaGuideExit_N=3.74409e+06 "lambdaguide.dat"
-<E> : 7.0858 meV , E-width : 0.182373 meV 
-<E> : 7.03929 meV , E-width : 0.127694 meV 
-Detector: DivMonGuideExit_I=4.34731e+09 DivMonGuideExit_ERR=4.33449e+06 DivMonGuideExit_N=3.74306e+06 "divguide.dat"
-<E> : 7.14258 meV , E-width : 0.143252 meV 
+Detector: lambdaGuideExit_I=4.34693e+09 lambdaGuideExit_ERR=4.33289e+06 lambdaGuideExit_N=3.74292e+06 "lambdaguide.dat"
+Detector: DivMonGuideExit_I=4.34639e+09 DivMonGuideExit_ERR=4.33264e+06 DivMonGuideExit_N=3.74191e+06 "divguide.dat"
+<E> : 7.08235 meV , E-width : 0.18248 meV 
+Detector: PSDGuideExit_I=4.34584e+09 PSDGuideExit_ERR=4.3324e+06 PSDGuideExit_N=3.74091e+06 "psdguide.dat"
+Detector: DISCTOF_I=2.67647e+08 DISCTOF_ERR=269516 DISCTOF_N=3.68429e+06 "DISC_TOF.dat"
+Detector: PSDmon1Chopper_I=2.67649e+08 PSDmon1Chopper_ERR=269516 PSDmon1Chopper_N=3.68433e+06 "psdchopper.dat"
+<E> : 7.08207 meV , E-width : 0.180966 meV 
+<E> : 7.07788 meV , E-width : 0.135916 meV 
+Detector: PSDmonMono_I=2.67073e+08 PSDmonMono_ERR=269438 PSDmonMono_N=3.1276e+06 "psdmono.dat"
+Detector: MONOTOF_I=2.67038e+08 MONOTOF_ERR=269428 MONOTOF_N=3.12132e+06 "MONO_TOF.dat"
+<E> : 7.1135 meV , E-width : 0.149657 meV 
 
-Finally [PSI_Focus: 1]. Time: 16 [s] 
-Detector: PSDGuideExit_I=4.34677e+09 PSDGuideExit_ERR=4.33425e+06 PSDGuideExit_N=3.7421e+06 "psdguide.dat"
-Detector: DISCTOF_I=2.67682e+08 DISCTOF_ERR=269612 DISCTOF_N=3.68525e+06 "DISC_TOF.dat"
-Detector: PSDmon1Chopper_I=2.67684e+08 PSDmon1Chopper_ERR=269613 PSDmon1Chopper_N=3.6853e+06 "psdchopper.dat"
-Detector: PSDmonMono_I=2.67118e+08 PSDmonMono_ERR=269537 PSDmonMono_N=3.12824e+06 "psdmono.dat"
-Detector: MONOTOF_I=2.67088e+08 MONOTOF_ERR=269528 MONOTOF_N=3.12219e+06 "MONO_TOF.dat"
-Detector: DivMonMono_I=2.67075e+08 DivMonMono_ERR=269529 DivMonMono_N=3.11602e+06 "divmono.dat"
-<E> : 7.0871 meV , E-width : 0.181631 meV 
-Detector: FERMITOF_before_I=1.54175e+07 FERMITOF_before_ERR=17399.7 FERMITOF_before_N=5.51117e+06 "FERMI_TOF_before.dat"
-Detector: lambdaFermi_I=1.54175e+07 lambdaFermi_ERR=17399.7 lambdaFermi_N=5.5074e+06 "lambdafermi.dat"
-Detector: EMON_Fermi_I=1.45626e+07 EMON_Fermi_ERR=17234.6 EMON_Fermi_N=3.0848e+06 "emon_fermi.dat"
-<E> : 7.08397 meV , E-width : 0.182194 meV 
-Detector: DivMonfermi1_I=1.34218e+07 DivMonfermi1_ERR=16731.4 DivMonfermi1_N=1.93443e+06 "divfermi1.dat"
-Detector: PSD_Fermi1_I=1.45649e+07 PSD_Fermi1_ERR=17235.4 PSD_Fermi1_N=3.21382e+06 "psdfermi1.dat"
-Detector: PSD_Fermi2_I=444155 PSD_Fermi2_ERR=2967.12 PSD_Fermi2_N=90534 "psdfermi2.dat"
-Detector: DivMonfermi2_I=412912 DivMonfermi2_ERR=2885.86 DivMonfermi2_N=61004 "divfermi2.dat"
-Detector: FERMITOF1_I=445591 FERMITOF1_ERR=2968.37 FERMITOF1_N=93455 "FERMI_TOF1.dat.dat"
-Detector: FERMITOF2_I=205784 FERMITOF2_ERR=2198.84 FERMITOF2_N=20339 "FERMI_TOF2.dat.dat"
-Detector: PSD_SAMPLE_I=163641 PSD_SAMPLE_ERR=2005.3 PSD_SAMPLE_N=13651 "psdsample.dat"
-<E> : 7.08104 meV , E-width : 0.113487 meV 
-Detector: DivMon_Sample_I=90596.5 DivMon_Sample_ERR=1511.86 DivMon_Sample_N=7417 "div2.dat"
-Detector: EMON_SAMPLE_I=90291.8 EMON_SAMPLE_ERR=1508.75 EMON_SAMPLE_N=7391 "emon_sample.dat"
-<E> : 7.06607 meV , E-width : 0.135603 meV 
-Detector: TOF_Det_I=0 TOF_Det_ERR=0 TOF_Det_N=0 "TOF_Det_1582662641.t_A"
-<E> : 7.1268 meV , E-width : 0.169585 meV 
+Finally [PSI_Focus: 1]. Time: 10 [s] 
+Detector: DivMonMono_I=2.67024e+08 DivMonMono_ERR=269429 DivMonMono_N=3.11506e+06 "divmono.dat"
+<E> : 7.07742 meV , E-width : 0.130481 meV 
+Detector: FERMITOF_before_I=1.55322e+07 FERMITOF_before_ERR=17493.1 FERMITOF_before_N=5.51168e+06 "FERMI_TOF_before.dat"
+Detector: lambdaFermi_I=1.55324e+07 lambdaFermi_ERR=17493.1 lambdaFermi_N=5.50835e+06 "lambdafermi.dat"
+Detector: EMON_Fermi_I=1.46787e+07 EMON_Fermi_ERR=17327.8 EMON_Fermi_N=3.0835e+06 "emon_fermi.dat"
+<E> : 7.08451 meV , E-width : 0.181655 meV 
+Detector: DivMonfermi1_I=1.35463e+07 DivMonfermi1_ERR=16828.7 DivMonfermi1_N=1.93757e+06 "divfermi1.dat"
+Detector: PSD_Fermi1_I=1.46813e+07 PSD_Fermi1_ERR=17328.8 PSD_Fermi1_N=3.21342e+06 "psdfermi1.dat"
+Detector: PSD_Fermi2_I=432983 PSD_Fermi2_ERR=2915.41 PSD_Fermi2_N=89830 "psdfermi2.dat"
+<E> : 7.11592 meV , E-width : 0.157053 meV 
 
-Finally [PSI_Focus: 1]. Time: 16 [s] 
-Detector: FoDet_I=51867.1 FoDet_ERR=347.736 FoDet_N=70829 "tofdet.dat"
-Detector: EMON_DET_I=60388.6 EMON_DET_ERR=371.553 EMON_DET_N=87822 "emon_det.dat"
-<E> : 7.10625 meV , E-width : 0.153589 meV 
+Finally [PSI_Focus: 1]. Time: 10 [s] 
+Detector: DivMonfermi2_I=400468 DivMonfermi2_ERR=2830.87 DivMonfermi2_N=60259 "divfermi2.dat"
+Detector: FERMITOF1_I=434415 FERMITOF1_ERR=2916.59 FERMITOF1_N=92778 "FERMI_TOF1.dat.dat"
+Detector: FERMITOF2_I=198185 FERMITOF2_ERR=2138.84 FERMITOF2_N=20306 "FERMI_TOF2.dat.dat"
+Detector: PSD_SAMPLE_I=160150 PSD_SAMPLE_ERR=1974.47 PSD_SAMPLE_N=13631 "psdsample.dat"
+Detector: DivMon_Sample_I=89139.5 DivMon_Sample_ERR=1504.48 DivMon_Sample_N=7459 "div2.dat"
+Detector: EMON_SAMPLE_I=89192.6 EMON_SAMPLE_ERR=1504.9 EMON_SAMPLE_N=7449 "emon_sample.dat"
+<E> : 7.09038 meV , E-width : 0.122181 meV 
+Detector: TOF_Det_I=0 TOF_Det_ERR=0 TOF_Det_N=0 "TOF_Det_1582742297.t_A"
+Detector: FoDet_I=43283.3 FoDet_ERR=309.545 FoDet_N=67053 "tofdet.dat"
+Detector: EMON_DET_I=52791.3 EMON_DET_ERR=338.071 EMON_DET_N=84699 "emon_det.dat"
+<E> : 7.09662 meV , E-width : 0.151938 meV 
 
-Finally [PSI_Focus: 1]. Time: 16 [s] 
+Finally [PSI_Focus: 1]. Time: 10 [s] 
 INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/PSI_Focus/PSI_Focus.instr in dataset 1

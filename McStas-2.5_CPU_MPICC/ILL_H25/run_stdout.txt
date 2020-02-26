@@ -2,63 +2,32 @@ INFO: Using directory: "1"
 INFO: Using existing c-file: ./ILL_H25.c
 INFO: Using existing binary: ./ILL_H25.out
 INFO: ===
-[n-62-23-14:14923] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:14923] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:14923] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582662275.313807] [n-62-23-14:14930:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662275.313845] [n-62-23-14:14930:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: Using system default number of mpirun -np processes
+[n-62-31-16:216856] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:216856] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:216856] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582662275.316378] [n-62-23-14:14930:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662275.316399] [n-62-23-14:14930:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662275.317600] [n-62-23-14:14929:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662275.317644] [n-62-23-14:14929:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662275.322068] [n-62-23-14:14929:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662275.322094] [n-62-23-14:14929:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662275.325791] [n-62-23-14:14928:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662275.325828] [n-62-23-14:14928:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662275.328184] [n-62-23-14:14928:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662275.328202] [n-62-23-14:14928:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662275.329319] [n-62-23-14:14935:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662275.329350] [n-62-23-14:14935:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662275.331508] [n-62-23-14:14935:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662275.331524] [n-62-23-14:14935:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662275.331584] [n-62-23-14:14931:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662275.331616] [n-62-23-14:14931:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662275.333510] [n-62-23-14:14933:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662275.333540] [n-62-23-14:14933:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662275.334055] [n-62-23-14:14931:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662275.334071] [n-62-23-14:14931:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662275.336045] [n-62-23-14:14933:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662275.336241] [n-62-23-14:14933:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662275.339185] [n-62-23-14:14934:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662275.339279] [n-62-23-14:14934:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662275.341480] [n-62-23-14:14934:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662275.341497] [n-62-23-14:14934:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662275.344675] [n-62-23-14:14932:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662275.344712] [n-62-23-14:14932:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662275.346930] [n-62-23-14:14932:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662275.346951] [n-62-23-14:14932:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662275.349125] [n-62-23-14:14936:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662275.349160] [n-62-23-14:14936:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662275.351556] [n-62-23-14:14936:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662275.351578] [n-62-23-14:14936:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662275.354526] [n-62-23-14:14937:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662275.354579] [n-62-23-14:14937:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582662275.356764] [n-62-23-14:14937:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582662275.356782] [n-62-23-14:14937:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'ILL_H25' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H25/ILL_H25.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+Simulation 'ILL_H25' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H25/ILL_H25.instr): running on 4 nodes (master is 'n-62-31-16', MPI version 3.1).
 Instrument: ILL_H25 (H25@ILL thermal guide).
 Instrument: ILL_H25 (H25@ILL thermal guide).
 Instrument: ILL_H25 (H25@ILL thermal guide).
 [ILL_H25] Initialize
-[ILL_H25] Initialize
-Instrument: ILL_H25 (H25@ILL thermal guide).
-Instrument: ILL_H25 (H25@ILL thermal guide).
 [ILL_H25] Initialize
 [ILL_H25] Initialize
 Instrument: ILL_H25 (H25@ILL thermal guide).
@@ -67,54 +36,28 @@ Source_gen: component Thermal (square 0.14 x 0.22)
             focusing distance dist=3.18 area=0.038 x 0.2
             spectra 0.100 to 7.900 AA (1.311 to 8181.000 meV)
             T1=683.7 K (1.178 AA), T2=257.7 K (1.919 AA), T3=16.7 K (7.539 AA)
-Instrument: ILL_H25 (H25@ILL thermal guide).
-Instrument: ILL_H25 (H25@ILL thermal guide).
   Flux is dPhi/dlambda in [n/s/cm2].
-Instrument: ILL_H25 (H25@ILL thermal guide).
-Instrument: ILL_H25 (H25@ILL thermal guide).
-[ILL_H25] Initialize
 Monitor_nD: GuideOut_dxdy is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
-[ILL_H25] Initialize
-[ILL_H25] Initialize
-[ILL_H25] Initialize
-[ILL_H25] Initialize
-[n-62-23-14:14923] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-14:14923] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:216856] 3 more processes have sent help message help-mpi-btl-openib.txt / ib port not selected
+[n-62-31-16:216856] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:216856] 3 more processes have sent help message help-mpi-btl-openib.txt / error in device init
 
+Trace ETA 14 [s] % 77 
+Trace ETA 13 [s] % 78 
+Trace ETA 14 [s] % 78 
+Trace ETA 14 [s] % 78 80 80 80 80 85 85 85 85 90 90 90 90 95 95 95 95 
+Finally [ILL_H25: 1]. Time: 13 [s] 
 
-Trace ETA 43 [s] % 25 
-Trace ETA 38 [s] % 28 
-Trace ETA 39 [s] % 27 
-Trace ETA 41 [s] % 26 
-
-Trace ETA 38 [s] % 28 
-
-Trace ETA 38 [s] % 28 Trace ETA 36 [s] % 30 Trace ETA 34 [s] % 31 
-Trace ETA 41 [s] % 26 Trace ETA 41 [s] % 26 30 30 30 30 30 35 30 30 30 35 35 35 35 35 40 35 40 35 35 40 35 40 40 40 45 40 40 45 40 45 45 45 45 40 50 45 50 45 45 50 50 50 50 45 55 55 50 50 60 55 55 50 55 55 50 55 60 60 60 55 65 60 55 55 60 60 65 65 65 65 60 65 70 60 60 65 70 70 70 70 65 70 65 75 75 65 75 75 70 75 80 70 70 75 80 80 80 80 70 75 75 85 75 85 85 85 80 75 85 80 80 80 90 90 90 90 85 80 90 95 85 85 85 95 95 95 85 90 95 90 90 90 90 95 95 95 95 95 
-
-Finally [ILL_H25: 1]. Time: 39 [s] 
-Finally [ILL_H25: 1]. Time: 39 [s] 
-
-Finally [ILL_H25: 1]. Time: 40 [s] 
-
-Finally [ILL_H25: 1]. Time: 40 [s] 
-
-Finally [ILL_H25: 1]. Time: 40 [s] 
-
-Finally [ILL_H25: 1]. Time: 40 [s] 
-
-Finally [ILL_H25: 1]. Time: 40 [s] 
+Finally [ILL_H25: 1]. Time: 13 [s] 
 
 Save [ILL_H25]
-Detector: GuideOut_xy_I=7.72454e+08 GuideOut_xy_ERR=3.04403e+06 GuideOut_xy_N=1.7158e+06 "GuideOut_xy_1582662275.x_y"
+Detector: GuideOut_xy_I=7.70785e+08 GuideOut_xy_ERR=3.05373e+06 GuideOut_xy_N=1.71627e+06 "GuideOut_xy_1582742075.x_y"
 
-Finally [ILL_H25: 1]. Time: 40 [s] 
-Detector: GuideOut_dxdy_I=7.72454e+08 GuideOut_dxdy_ERR=3.04403e+06 GuideOut_dxdy_N=1.71576e+06 "GuideOut_dxdy_1582662275.hd_vd"
+Finally [ILL_H25: 1]. Time: 14 [s] 
+Detector: GuideOut_dxdy_I=7.70785e+08 GuideOut_dxdy_ERR=3.05373e+06 GuideOut_dxdy_N=1.71623e+06 "GuideOut_dxdy_1582742075.hd_vd"
+Detector: GuideOut_Phic_I=1.17642e+09 GuideOut_Phic_ERR=2.77865e+06 GuideOut_Phic_N=1.71623e+06 "GuideOut_Phic"
+Detector: GuideOut_L_I=7.37715e+08 GuideOut_L_ERR=2.93183e+06 GuideOut_L_N=1.70936e+06 "GuideOut_L_1582742075.L"
 
-Finally [ILL_H25: 1]. Time: 40 [s] 
-Detector: GuideOut_Phic_I=1.17959e+09 GuideOut_Phic_ERR=2.7828e+06 GuideOut_Phic_N=1.71576e+06 "GuideOut_Phic"
-Detector: GuideOut_L_I=7.39497e+08 GuideOut_L_ERR=2.92353e+06 GuideOut_L_N=1.70866e+06 "GuideOut_L_1582662275.L"
-
-Finally [ILL_H25: 1]. Time: 40 [s] 
+Finally [ILL_H25: 1]. Time: 14 [s] 
 INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H25/ILL_H25.instr in dataset 1

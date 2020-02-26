@@ -1,5 +1,5 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "ILL_H53_D16_20200225_204813"
+INFO: Using directory: "ILL_H53_D16_20200226_190145"
 INFO: Regenerating c-file: ILL_H53_D16.c
 Info:    'Al_window' is a contributed component.
 Info:    'PSD_Detector' is a contributed component.
@@ -7,22 +7,36 @@ Info:    Defining SPLIT from mono=Monochromator_curved() to END in instrument IL
 Info:    Defining SPLIT from D16_xy=Monitor_nD() to END in instrument ILL_H53_D16
 CFLAGS=
       INFO: Recompiling: ./ILL_H53_D16.out
+./ILL_H53_D16.c: In function 'mcraytrace':
+./ILL_H53_D16.c:34983:6: note: variable tracking size limit exceeded with -fvar-tracking-assignments, retrying without
+ 
+      ^         
+./ILL_H53_D16.c: In function 'mcinit':
+./ILL_H53_D16.c:18207:6: note: variable tracking size limit exceeded with -fvar-tracking-assignments, retrying without
+ 
+      ^     
 INFO: ===
-[n-62-23-14:03502] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:03502] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582660163.713890] [n-62-23-14:3501 :0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3100.27
-[1582660163.715977] [n-62-23-14:3501 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582660163.715981] [n-62-23-14:3501 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+[n-62-31-16:209835] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:209835] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582660163.718956] [n-62-23-14:3501 :0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582660163.718960] [n-62-23-14:3501 :0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
 begin instrument: ILL_H53_D16
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Source: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H53_D16/ILL_H53_D16.instr
   Parameters:  lambda(double) DM(double) dlambda(double) Powder(string) RV(double) L1(double) L2(double) L3(double) THETA_M(double) TwoTheta(double) RadiusDet(double) DetEthick(double) DetEgap(double) DetVthick(double) verbose(double) TILT(double) m(double) mip(double)
   Trace_enabled: yes
@@ -32,12 +46,12 @@ end instrument
 begin simulation: .
   Format: McStas
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H53_D16/ILL_H53_D16.instr
   Ncount: 1000000
   Trace: no
   Gravitation: no
-  Seed: 1582663664
+  Seed: 1582949992
   Directory: .
   Param: lambda=4.7
   Param: DM=3.355

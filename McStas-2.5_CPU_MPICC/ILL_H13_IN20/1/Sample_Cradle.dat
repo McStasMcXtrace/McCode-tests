@@ -1,13 +1,13 @@
 # Format: McCode with text headers
 # URL: http://www.mccode.org
-# Creator: McStas 2.5 - Feb. 24, 2020
+# Creator: McStas 2.5 - Feb. 26, 2020
 # Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H13_IN20/ILL_H13_IN20.instr
-# Ncount: 1000000
+# Ncount: 2500000
 # Trace: no
 # Gravitation: no
-# Seed: 1582674654
+# Seed: 1582958072
 # Directory: 1
-# Nodes: 10
+# Nodes: 4
 # Param: KF=3
 # Param: KI=3
 # Param: QM=1
@@ -74,7 +74,7 @@
 # Param: radius=0.01
 # Param: thickness=0.005
 # Param: height=0.05
-# Date: Tue Feb 25 21:19:09 2020 (1582661949)
+# Date: Wed Feb 26 19:32:24 2020 (1582741944)
 # type: array_0d
 # Source: ILL_H13_IN20 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H13_IN20/ILL_H13_IN20.instr)
 # component: Sample_Cradle
@@ -83,7 +83,7 @@
 # Ncount: 10000000
 # statistics: None
 # signal: None
-# values: 5.47567e+07 79315.7 1.00074e+06
+# values: 5.43452e+07 79022.9 992110
 # xylimits: 0 0 0 0 0 0
 # variables: I I_err N
-5.47567e+07 79315.7 1.00074e+06
+5.43452e+07 79022.9 992110

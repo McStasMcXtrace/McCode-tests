@@ -1,5 +1,5 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "Test_Pol_Guide_mirror_20200225_210638"
+INFO: Using directory: "Test_Pol_Guide_mirror_20200226_192128"
 INFO: Regenerating c-file: Test_Pol_Guide_mirror.c
 Warning: Using DEFINITION parameter of component Pol_guide_mirror() (potential syntax error) at line /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Guide_mirror/Test_Pol_Guide_mirror.instr:79
   rPar={ 0 , 0.0219 , 6.07 , 1 , 0.003 }

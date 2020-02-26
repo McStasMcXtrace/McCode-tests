@@ -1,6 +1,6 @@
 McStas simulation description file for Test_MCPL_input.
-Date:    Tue Feb 25 21:52:11 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:55:07 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: Test_MCPL_input
   File: 1/mccode
@@ -14,14 +14,14 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_MCPL_input/Test_MCPL_input.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582686414
+  Seed: 1582963666
   Directory: 1
-  Nodes: 10
+  Nodes: 4
   Param: repeat=1
   Param: E_smear=0.1
   Param: pos_smear=0.001
@@ -29,17 +29,17 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Tue Feb 25 21:52:11 2020 (1582663931)
+  Date: Wed Feb 26 19:55:07 2020 (1582743307)
   type: array_1d(40)
   Source: Test_MCPL_input (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_MCPL_input/Test_MCPL_input.instr)
   component: m1
   position: 0 0 0
   title: Wavelength [Angs] monitor
-  Ncount: 10000
-  filename: m1_1582663931.L
-  statistics: X0=3.34136; dX=1.90126;
-  signal: Min=8.16263e+07; Max=2.41557e+10; Mean=5.88544e+09;
-  values: 2.35418e+11 3.31029e+09 10000
+  Ncount: 4000
+  filename: m1_1582743307.L
+  statistics: X0=3.35436; dX=1.93534;
+  signal: Min=1.25943e+08; Max=2.34346e+10; Mean=5.88544e+09;
+  values: 2.35418e+11 5.23422e+09 4000
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
@@ -49,17 +49,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:52:11 2020 (1582663931)
+  Date: Wed Feb 26 19:55:07 2020 (1582743307)
   type: array_2d(40, 40)
   Source: Test_MCPL_input (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_MCPL_input/Test_MCPL_input.instr)
   component: m2
   position: 0 0 0
   title:  Intensity Position Position Monitor (on PREVIOUS) per bin
-  Ncount: 10000
-  filename: m2_1582663931.x_y
-  statistics: X0=-0.000158223; dX=0.0026541; Y0=0.000119989; dY=0.00255171;
-  signal: Min=0; Max=8.51607e+08; Mean=1.46676e+08;
-  values: 2.34681e+11 3.30283e+09 9990
+  Ncount: 4000
+  filename: m2_1582743307.x_y
+  statistics: X0=-0.000145592; dX=0.00269443; Y0=9.23249e-05; dY=0.0025754;
+  signal: Min=0; Max=1.00465e+09; Mean=1.46976e+08;
+  values: 2.35162e+11 5.23274e+09 3996
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -71,17 +71,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:52:12 2020 (1582663932)
+  Date: Wed Feb 26 19:55:07 2020 (1582743307)
   type: array_1d(40)
   Source: Test_MCPL_input (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_MCPL_input/Test_MCPL_input.instr)
   component: m3
   position: 0 0 0
   title: TOF [s] monitor
-  Ncount: 10000
-  filename: m3_1582663931.t
+  Ncount: 4000
+  filename: m3_1582743307.t
   statistics: X0=0.000493358; dX=0.000292114;
   signal: Min=2.82173e+09; Max=1.03226e+10; Mean=5.88456e+09;
-  values: 2.35382e+11 3.31025e+09 10000
+  values: 2.35382e+11 5.23416e+09 4000
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
@@ -91,17 +91,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:52:12 2020 (1582663932)
+  Date: Wed Feb 26 19:55:07 2020 (1582743307)
   type: array_1d(40)
   Source: Test_MCPL_input (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_MCPL_input/Test_MCPL_input.instr)
   component: m4
   position: 0 0 0
   title: Energy [meV] monitor
-  Ncount: 10000
-  filename: m4_1582663931.E
-  statistics: X0=15.9102; dX=17.6142;
-  signal: Min=1.90825e+08; Max=4.15491e+10; Mean=5.87039e+09;
-  values: 2.34816e+11 3.30451e+09 10000
+  Ncount: 4000
+  filename: m4_1582743307.E
+  statistics: X0=16.893; dX=18.7282;
+  signal: Min=3.24139e+08; Max=3.88449e+10; Mean=5.86939e+09;
+  values: 2.34776e+11 5.22382e+09 4000
   xvar: E
   yvar: (I,I_err)
   xlabel: Energy [meV]
@@ -111,16 +111,16 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:52:12 2020 (1582663932)
+  Date: Wed Feb 26 19:55:07 2020 (1582743307)
   type: array_2d(11, 1000)
   Source: Test_MCPL_input (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_MCPL_input/Test_MCPL_input.instr)
   component: m5
   position: 0 0 0
   title:  Intensity Neutron_ID  Energy Position Position Position Velocity Velocity Velocity Time_Of_Flight Monitor (on PREVIOUS)
-  Ncount: 10000
-  filename: m5_1582663931_list.p.n.U1.E.x.y.z.vx.vy.vz.t
+  Ncount: 4000
+  filename: m5_1582743307_list.p.n.U1.E.x.y.z.vx.vy.vz.t
   statistics: X0=0; dX=0; Y0=0; dY=0;
-  signal: Min=4.17916e+06; Max=4.17916e+06; Mean=0;
+  signal: Min=1.04479e+07; Max=1.04479e+07; Mean=0;
   values: 0 0 0
   xvar: List
   yvar: p

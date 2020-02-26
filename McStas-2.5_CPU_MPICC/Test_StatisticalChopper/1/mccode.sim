@@ -1,6 +1,6 @@
 McStas simulation description file for Test_StatisticalChopper.
-Date:    Tue Feb 25 22:00:32 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:59:54 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: Test_StatisticalChopper
   File: 1/mccode
@@ -14,74 +14,74 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582690923
+  Seed: 1582965451
   Directory: 1
-  Nodes: 10
+  Nodes: 4
   Param: lambda=1
 end simulation
 
 begin data
-  Date: Tue Feb 25 22:00:52 2020 (1582664452)
+  Date: Wed Feb 26 20:00:07 2020 (1582743607)
   type: array_1d(1000)
   Source: Test_StatisticalChopper (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr)
   component: before_stat_chop
   position: 0 0 0.001
   title: TOF [s] monitor
   Ncount: 10000000
-  filename: before_stat_chop_1582664432.t
-  statistics: X0=-4.37329e-07; dX=0.00165017;
-  signal: Min=2.24904e-11; Max=2.42619e-11; Mean=2.34611e-11;
-  values: 2.34611e-08 7.41915e-12 9.99976e+06
+  filename: before_stat_chop_1582743594.t
+  statistics: X0=1.25354e-07; dX=0.00165003;
+  signal: Min=2.28281e-11; Max=2.42124e-11; Mean=2.34613e-11;
+  values: 2.34613e-08 7.41917e-12 9.99982e+06
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: -0.00285803 0.00285809
+  xlimits: -0.00285796 0.00285809
   variables: t I I_err N
 end data
 
 begin data
-  Date: Tue Feb 25 22:00:52 2020 (1582664452)
+  Date: Wed Feb 26 20:00:07 2020 (1582743607)
   type: array_1d(1001)
   Source: Test_StatisticalChopper (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr)
   component: after_stat_chop
   position: 0 0 1.011
   title: TOF [s] monitor
   Ncount: 10000000
-  filename: after_stat_chop_1582664432.t
-  statistics: X0=0.000166282; dX=0.00164976;
-  signal: Min=0; Max=2.40953e-11; Mean=1.16744e-11;
-  values: 1.16861e-08 5.23617e-12 4.98091e+06
+  filename: after_stat_chop_1582743594.t
+  statistics: X0=0.000167234; dX=0.00164991;
+  signal: Min=0; Max=2.40763e-11; Mean=1.16781e-11;
+  values: 1.16898e-08 5.23701e-12 4.9825e+06
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: -0.00260274 0.0031134
+  xlimits: -0.00260263 0.00311342
   variables: t I I_err N
 end data
 
 begin data
-  Date: Tue Feb 25 22:00:52 2020 (1582664452)
+  Date: Wed Feb 26 20:00:07 2020 (1582743607)
   type: array_2d(500, 100)
   Source: Test_StatisticalChopper (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_StatisticalChopper/Test_StatisticalChopper.instr)
   component: ChopMon2
   position: 0 0 1.211
   title:  Intensity Time_Of_Flight Position Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: ChopMon2_1582664432.t_y
-  statistics: X0=0.000722308; dX=0.00164965; Y0=2.60102e-06; dY=0.028561;
-  signal: Min=0; Max=1.86326e-16; Mean=7.00251e-17;
-  values: 3.50126e-12 5.89428e-16 4.07502e+07
+  filename: ChopMon2_1582743594.t_y
+  statistics: X0=0.000723636; dX=0.0016498; Y0=-7.72628e-06; dY=0.0285572;
+  signal: Min=0; Max=1.8584e-16; Mean=7.00357e-17;
+  values: 3.50179e-12 5.89471e-16 4.07573e+07
   xvar: TOF
   yvar: y
   xlabel: TOF [s]
   ylabel: y [m]
   zvar: I
   zlabel: Signal per bin
-  xylimits: -0.00204715 0.00366922 -0.055 0.055
+  xylimits: -0.00204655 0.00366982 -0.055 0.055
   variables: I I_err N

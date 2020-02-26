@@ -1,5 +1,5 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "SAFARI_MPISI_20200225_210112"
+INFO: Using directory: "SAFARI_MPISI_20200226_191511"
 INFO: Regenerating c-file: SAFARI_MPISI.c
 Info:    Defining SPLIT from Sample=PowderN() to END in instrument SAFARI_MPISI
 CFLAGS=

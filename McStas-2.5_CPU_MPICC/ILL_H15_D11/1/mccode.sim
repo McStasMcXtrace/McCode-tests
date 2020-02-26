@@ -1,6 +1,6 @@
 McStas simulation description file for ILL_H15_D11.
-Date:    Tue Feb 25 21:21:04 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:33:09 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: ILL_H15_D11
   File: 1/mccode
@@ -14,14 +14,14 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H15_D11/ILL_H15_D11.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582675312
+  Seed: 1582958336
   Directory: 1
-  Nodes: 10
+  Nodes: 4
   Param: Lambda=4.51
   Param: Config=Borkron_1972
   Param: Lc=0
@@ -31,17 +31,17 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Tue Feb 25 21:21:28 2020 (1582662088)
+  Date: Wed Feb 26 19:33:17 2020 (1582741997)
   type: array_2d(20, 20)
   Source: ILL_H15_D11 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H15_D11/ILL_H15_D11.instr)
   component: PSD_VTE
   position: 0.12646 0 31.7996
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: PSD_VTE_1582662064.x_y
-  statistics: X0=-0.000524511; dX=0.00852872; Y0=7.03138e-06; dY=0.05714;
-  signal: Min=2.39828e+07; Max=3.88828e+07; Mean=3.25319e+07;
-  values: 1.30127e+10 2.00275e+07 2.07878e+06
+  filename: PSD_VTE_1582741989.x_y
+  statistics: X0=-0.000530395; dX=0.00851548; Y0=4.74584e-05; dY=0.0572046;
+  signal: Min=2.396e+07; Max=3.91708e+07; Mean=3.25687e+07;
+  values: 1.30275e+10 2.0035e+07 2.07993e+06
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -53,17 +53,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:21:28 2020 (1582662088)
+  Date: Wed Feb 26 19:33:17 2020 (1582741997)
   type: array_2d(20, 20)
   Source: ILL_H15_D11 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H15_D11/ILL_H15_D11.instr)
   component: PSD_IN6
   position: 0.339561 0 54.3626
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: PSD_IN6_1582662064.x_y
-  statistics: X0=4.31448e-05; dX=0.00853293; Y0=-7.70696e-05; dY=0.0575663;
-  signal: Min=2.18234e+07; Max=3.23071e+07; Mean=2.92282e+07;
-  values: 1.16913e+10 1.88937e+07 1.83701e+06
+  filename: PSD_IN6_1582741989.x_y
+  statistics: X0=2.78615e-05; dX=0.00853199; Y0=6.02364e-05; dY=0.0575387;
+  signal: Min=2.30685e+07; Max=3.28521e+07; Mean=2.9257e+07;
+  values: 1.17028e+10 1.88998e+07 1.83734e+06
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -75,17 +75,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:21:28 2020 (1582662088)
+  Date: Wed Feb 26 19:33:17 2020 (1582741997)
   type: array_2d(20, 20)
   Source: ILL_H15_D11 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H15_D11/ILL_H15_D11.instr)
   component: PSD_D7
   position: 0.393394 0 60.0623
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: PSD_D7_1582662064.x_y
-  statistics: X0=0.000143474; dX=0.00853058; Y0=-4.30113e-05; dY=0.0573461;
-  signal: Min=2.08493e+07; Max=3.05688e+07; Mean=2.74388e+07;
-  values: 1.09755e+10 1.8169e+07 1.65106e+06
+  filename: PSD_D7_1582741989.x_y
+  statistics: X0=0.000157485; dX=0.00851522; Y0=1.18676e-05; dY=0.0572771;
+  signal: Min=2.12918e+07; Max=3.11619e+07; Mean=2.74703e+07;
+  values: 1.09881e+10 1.81768e+07 1.65169e+06
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -97,61 +97,61 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:21:28 2020 (1582662088)
+  Date: Wed Feb 26 19:33:17 2020 (1582741997)
   type: array_2d(20, 20)
   Source: ILL_H15_D11 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H15_D11/ILL_H15_D11.instr)
   component: Mon_D11_In
   position: 0.411433 -0.065 61.9722
   title:  Intensity Position Wavelength Monitor (Square) per bin
   Ncount: 10000000
-  filename: Mon_D11_In_1582662064.x_L
-  statistics: X0=4.59634e-05; dX=0.00857083; Y0=4.50965; dY=0.103964;
-  signal: Min=4.43954e+06; Max=6.89805e+06; Mean=5.63775e+06;
-  values: 2.2551e+09 8.09591e+06 352683
+  filename: Mon_D11_In_1582741989.x_L
+  statistics: X0=4.4732e-05; dX=0.00858065; Y0=4.50964; dY=0.10408;
+  signal: Min=4.66172e+06; Max=7.02852e+06; Mean=5.64334e+06;
+  values: 2.25734e+09 8.09679e+06 353356
   xvar: x
   yvar: Wavelength
   xlabel: x [m]
   ylabel: Wavelength [Angs]
   zvar: I
   zlabel: Signal per bin
-  xylimits: -0.0149996 0.0149977 4.3296 4.69038
+  xylimits: -0.0149988 0.0149995 4.3296 4.69039
   variables: I I_err N
 end data
 
 begin data
-  Date: Tue Feb 25 21:21:28 2020 (1582662088)
+  Date: Wed Feb 26 19:33:17 2020 (1582741997)
   type: array_2d(20, 20)
   Source: ILL_H15_D11 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H15_D11/ILL_H15_D11.instr)
   component: Mon_D11_Out
   position: 0.419413 -0.065 62.8172
   title:  Intensity Position Wavelength Monitor (Square) per bin
   Ncount: 10000000
-  filename: Mon_D11_Out_1582662064.x_L
-  statistics: X0=2.29965e-05; dX=0.00862849; Y0=4.50721; dY=0.0977174;
-  signal: Min=2.27764e+06; Max=5.17985e+06; Mean=3.71596e+06;
-  values: 1.48638e+09 5.7378e+06 294129
+  filename: Mon_D11_Out_1582741989.x_L
+  statistics: X0=-1.22085e-05; dX=0.00864581; Y0=4.50707; dY=0.0978621;
+  signal: Min=2.25372e+06; Max=5.27214e+06; Mean=3.71097e+06;
+  values: 1.48439e+09 5.72854e+06 295012
   xvar: x
   yvar: Wavelength
   xlabel: x [m]
   ylabel: Wavelength [Angs]
   zvar: I
   zlabel: Signal per bin
-  xylimits: -0.0149999 0.0149963 4.3296 4.69038
+  xylimits: -0.0149997 0.0149988 4.3296 4.69039
   variables: I I_err N
 end data
 
 begin data
-  Date: Tue Feb 25 21:21:28 2020 (1582662088)
+  Date: Wed Feb 26 19:33:17 2020 (1582741997)
   type: array_2d(20, 20)
   Source: ILL_H15_D11 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H15_D11/ILL_H15_D11.instr)
   component: SampleF
   position: 0.803895 -0.065 103.526
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: SampleF_1582662064.x_y
-  statistics: X0=-0.000239037; dX=0.00863835; Y0=-0.000300081; dY=0.0144268;
-  signal: Min=7232.99; Max=38865.7; Mean=22152.1;
-  values: 8.86086e+06 116807 5905
+  filename: SampleF_1582741989.x_y
+  statistics: X0=4.901e-05; dX=0.00852855; Y0=-0.000157496; dY=0.0144654;
+  signal: Min=4554.92; Max=40168.2; Mean=21571.9;
+  values: 8.62876e+06 115232 5749
   xvar: x
   yvar: y
   xlabel: x [m]
@@ -163,17 +163,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:21:28 2020 (1582662088)
+  Date: Wed Feb 26 19:33:17 2020 (1582741997)
   type: array_2d(20, 20)
   Source: ILL_H15_D11 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_H15_D11/ILL_H15_D11.instr)
   component: SampleC
   position: 0.803905 -0.065 103.527
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: SampleC_1582662064.x_y
-  statistics: X0=-0.000247436; dX=0.00863998; Y0=-0.000293965; dY=0.0144262;
-  signal: Min=17694.8; Max=96692.5; Mean=55449.8;
-  values: 2.21799e+07 292190 5903
+  filename: SampleC_1582741989.x_y
+  statistics: X0=4.74113e-05; dX=0.00852797; Y0=-0.000153751; dY=0.0144658;
+  signal: Min=11521.8; Max=101006; Mean=54017;
+  values: 2.16068e+07 288354 5747
   xvar: x
   yvar: y
   xlabel: x [m]

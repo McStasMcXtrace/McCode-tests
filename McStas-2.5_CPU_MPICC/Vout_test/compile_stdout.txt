@@ -1,5 +1,5 @@
 INFO: No output directory specified (--dir)
-INFO: Using directory: "Vout_test_20200225_211158"
+INFO: Using directory: "Vout_test_20200226_192721"
 INFO: Regenerating c-file: Vout_test.c
 CFLAGS=
 INFO: Recompiling: ./Vout_test.out

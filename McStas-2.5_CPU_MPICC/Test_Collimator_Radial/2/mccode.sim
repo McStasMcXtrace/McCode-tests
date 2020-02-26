@@ -1,6 +1,6 @@
 McStas simulation description file for Test_Collimator_Radial.
-Date:    Tue Feb 25 21:36:27 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:42:40 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: Test_Collimator_Radial
   File: 2/mccode
@@ -14,29 +14,29 @@ end instrument
 begin simulation: 2
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582682124
+  Seed: 1582961285
   Directory: 2
-  Nodes: 10
+  Nodes: 4
   Param: Collimator=2
   Param: Powder=Na2Ca3Al2F14.laz
 end simulation
 
 begin data
-  Date: Tue Feb 25 21:36:30 2020 (1582662990)
+  Date: Wed Feb 26 19:42:42 2020 (1582742562)
   type: array_2d(20, 20)
   Source: Test_Collimator_Radial (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr)
   component: Monitor1_xt
   position: 0 0 1
   title:  Intensity Position Position Monitor (Square) per bin
   Ncount: 10000000
-  filename: Monitor1_xt_1582662987.x_y
-  statistics: X0=-1.04908e-07; dX=0.00190945; Y0=-1.72787e-07; dY=0.00279473;
-  signal: Min=0; Max=3.12541e-06; Mean=7.49359e-08;
+  filename: Monitor1_xt_1582742560.x_y
+  statistics: X0=-2.63958e-07; dX=0.00190935; Y0=3.30055e-07; dY=0.00279497;
+  signal: Min=0; Max=3.12538e-06; Mean=7.49359e-08;
   values: 2.99743e-05 9.47872e-09 1e+07
   xvar: x
   yvar: y
@@ -49,17 +49,17 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:36:30 2020 (1582662990)
+  Date: Wed Feb 26 19:42:42 2020 (1582742562)
   type: array_1d(1280)
   Source: Test_Collimator_Radial (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Collimator_Radial/Test_Collimator_Radial.instr)
   component: BananaTheta
   position: 0 0 1.1
   title: Angle [deg] monitor
   Ncount: 10000000
-  filename: BananaTheta_1582662987.A
-  statistics: X0=84.3882; dX=40.0883;
-  signal: Min=7.18577e-13; Max=4.34696e-11; Mean=1.13541e-11;
-  values: 1.45333e-08 1.70419e-11 2.49199e+06
+  filename: BananaTheta_1582742560.A
+  statistics: X0=84.4951; dX=40.087;
+  signal: Min=7.14625e-13; Max=4.52036e-11; Mean=1.13495e-11;
+  values: 1.45273e-08 1.70161e-11 2.49621e+06
   xvar: A
   yvar: (I,I_err)
   xlabel: Angle [deg]

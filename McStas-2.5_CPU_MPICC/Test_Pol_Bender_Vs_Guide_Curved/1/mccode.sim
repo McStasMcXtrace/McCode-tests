@@ -1,6 +1,6 @@
 McStas simulation description file for Test_Pol_Bender_Vs_Guide_Curved.
-Date:    Tue Feb 25 21:59:22 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:59:01 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: Test_Pol_Bender_Vs_Guide_Curved
   File: 1/mccode
@@ -14,20 +14,20 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582689150
+  Seed: 1582964706
   Directory: 1
-  Nodes: 10
+  Nodes: 4
   Param: guideLength=10
   Param: guideRadius=100
 end simulation
 
 begin data
-  Date: Tue Feb 25 21:59:27 2020 (1582664367)
+  Date: Wed Feb 26 19:59:05 2020 (1582743545)
   type: array_1d(20)
   Source: Test_Pol_Bender_Vs_Guide_Curved (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr)
   component: lamStart
@@ -35,9 +35,9 @@ begin data
   title: Wavelength monitor
   Ncount: 10000000
   filename: lambdaStart.dat
-  statistics: X0=4.99898; dX=2.59409;
-  signal: Min=0; Max=0.00699402; Mean=0.00627346;
-  values: 0.125469 3.96769e-05 1e+07
+  statistics: X0=5.00224; dX=2.59434;
+  signal: Min=0; Max=0.00698482; Mean=0.00627346;
+  values: 0.125469 3.96768e-05 1e+07
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -47,7 +47,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:59:27 2020 (1582664367)
+  Date: Wed Feb 26 19:59:05 2020 (1582743545)
   type: array_2d(40, 40)
   Source: Test_Pol_Bender_Vs_Guide_Curved (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr)
   component: psdStart
@@ -55,9 +55,9 @@ begin data
   title: PSD monitor
   Ncount: 10000000
   filename: psdStart.dat
-  statistics: X0=-0.000108217; dX=0.528894; Y0=3.56258e-08; dY=0.529148;
-  signal: Min=0; Max=0.0032599; Mean=7.84182e-05;
-  values: 0.125469 3.96769e-05 1e+07
+  statistics: X0=-5.55059e-05; dX=0.529172; Y0=-0.000231822; dY=0.52906;
+  signal: Min=0; Max=0.00325222; Mean=7.84182e-05;
+  values: 0.125469 3.96768e-05 1e+07
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -69,7 +69,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:59:27 2020 (1582664367)
+  Date: Wed Feb 26 19:59:05 2020 (1582743545)
   type: array_1d(20)
   Source: Test_Pol_Bender_Vs_Guide_Curved (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr)
   component: lamStopBender1
@@ -77,9 +77,9 @@ begin data
   title: Wavelength monitor
   Ncount: 10000000
   filename: lambdaStopBender1.dat
-  statistics: X0=8.65107; dX=0.61836;
-  signal: Min=0; Max=0.000768012; Mean=0.000102703;
-  values: 0.00205407 3.94896e-06 1.37339e+06
+  statistics: X0=8.64782; dX=0.6202;
+  signal: Min=0; Max=0.000768361; Mean=0.000103051;
+  values: 0.00206102 3.95424e-06 1.37594e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -89,7 +89,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:59:27 2020 (1582664367)
+  Date: Wed Feb 26 19:59:05 2020 (1582743545)
   type: array_2d(40, 40)
   Source: Test_Pol_Bender_Vs_Guide_Curved (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr)
   component: psdBender1
@@ -97,9 +97,9 @@ begin data
   title: PSD monitor
   Ncount: 10000000
   filename: psdBender1.dat
-  statistics: X0=-1.51486; dX=1.20893; Y0=0.00354133; dY=2.31261;
-  signal: Min=0; Max=8.19817e-06; Mean=1.28379e-06;
-  values: 0.00205407 3.94896e-06 1.37339e+06
+  statistics: X0=-1.51689; dX=1.20998; Y0=-0.00386618; dY=2.3125;
+  signal: Min=0; Max=8.36733e-06; Mean=1.28814e-06;
+  values: 0.00206102 3.95424e-06 1.37594e+06
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -111,7 +111,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:59:27 2020 (1582664367)
+  Date: Wed Feb 26 19:59:05 2020 (1582743545)
   type: array_1d(20)
   Source: Test_Pol_Bender_Vs_Guide_Curved (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr)
   component: lamStopBender2
@@ -119,9 +119,9 @@ begin data
   title: Wavelength monitor
   Ncount: 10000000
   filename: lambdaStopBender2.dat
-  statistics: X0=8.65008; dX=0.619565;
-  signal: Min=0; Max=0.000770053; Mean=0.000102888;
-  values: 0.00205776 3.95238e-06 1.3731e+06
+  statistics: X0=8.65189; dX=0.61923;
+  signal: Min=0; Max=0.000772379; Mean=0.000102867;
+  values: 0.00205735 3.9521e-06 1.37411e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -131,7 +131,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:59:27 2020 (1582664367)
+  Date: Wed Feb 26 19:59:05 2020 (1582743545)
   type: array_2d(40, 40)
   Source: Test_Pol_Bender_Vs_Guide_Curved (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr)
   component: psdBender2
@@ -139,9 +139,9 @@ begin data
   title: PSD monitor
   Ncount: 10000000
   filename: psdBender2.dat
-  statistics: X0=1.51557; dX=1.20868; Y0=-0.000175552; dY=2.3138;
-  signal: Min=0; Max=8.3155e-06; Mean=1.2861e-06;
-  values: 0.00205776 3.95238e-06 1.3731e+06
+  statistics: X0=1.51581; dX=1.20938; Y0=-1.94969e-05; dY=2.31676;
+  signal: Min=0; Max=8.03038e-06; Mean=1.28584e-06;
+  values: 0.00205735 3.9521e-06 1.37411e+06
   xvar: X
   yvar: Y
   xlabel: X position [cm]
@@ -153,7 +153,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:59:27 2020 (1582664367)
+  Date: Wed Feb 26 19:59:05 2020 (1582743545)
   type: array_1d(20)
   Source: Test_Pol_Bender_Vs_Guide_Curved (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr)
   component: lamStopGuide
@@ -161,9 +161,9 @@ begin data
   title: Wavelength monitor
   Ncount: 10000000
   filename: lambdaStopGuide.dat
-  statistics: X0=8.65706; dX=0.614997;
-  signal: Min=0; Max=0.000833737; Mean=0.000110416;
-  values: 0.00220833 4.26313e-06 3.33066e+06
+  statistics: X0=8.65466; dX=0.615634;
+  signal: Min=0; Max=0.000834431; Mean=0.000110938;
+  values: 0.00221877 4.27428e-06 3.3323e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -173,7 +173,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:59:27 2020 (1582664367)
+  Date: Wed Feb 26 19:59:05 2020 (1582743545)
   type: array_2d(40, 40)
   Source: Test_Pol_Bender_Vs_Guide_Curved (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/Test_Pol_Bender_Vs_Guide_Curved/Test_Pol_Bender_Vs_Guide_Curved.instr)
   component: psdGuide
@@ -181,9 +181,9 @@ begin data
   title: PSD monitor
   Ncount: 10000000
   filename: psdGuide.dat
-  statistics: X0=-1.51795; dX=1.20548; Y0=-0.000978286; dY=2.31269;
-  signal: Min=0; Max=8.85249e-06; Mean=1.3802e-06;
-  values: 0.00220832 4.26312e-06 3.33044e+06
+  statistics: X0=-1.52309; dX=1.20612; Y0=-0.0025619; dY=2.31519;
+  signal: Min=0; Max=9.05708e-06; Mean=1.3867e-06;
+  values: 0.00221872 4.27423e-06 3.33211e+06
   xvar: X
   yvar: Y
   xlabel: X position [cm]

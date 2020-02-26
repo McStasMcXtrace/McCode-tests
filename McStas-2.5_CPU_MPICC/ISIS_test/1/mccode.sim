@@ -1,6 +1,6 @@
 McStas simulation description file for ISIS_test.
-Date:    Tue Feb 25 21:30:26 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:38:07 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: ISIS_test
   File: 1/mccode
@@ -14,18 +14,18 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_test/ISIS_test.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582679307
+  Seed: 1582959917
   Directory: 1
-  Nodes: 10
+  Nodes: 4
 end simulation
 
 begin data
-  Date: Tue Feb 25 21:30:29 2020 (1582662629)
+  Date: Wed Feb 26 19:38:09 2020 (1582742289)
   type: array_1d(1000)
   Source: ISIS_test (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_test/ISIS_test.instr)
   component: lam1
@@ -33,9 +33,9 @@ begin data
   title: Wavelength monitor
   Ncount: 10000000
   filename: lambdagr.dat
-  statistics: X0=1.9831; dX=1.89177;
-  signal: Min=7.58346e+06; Max=1.24594e+10; Mean=8.23502e+08;
-  values: 8.23502e+11 5.06716e+08 9.99999e+06
+  statistics: X0=1.98548; dX=1.89401;
+  signal: Min=7.94502e+06; Max=1.25076e+10; Mean=8.24163e+08;
+  values: 8.24163e+11 5.07225e+08 9.99999e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [AA]
@@ -45,7 +45,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:30:29 2020 (1582662629)
+  Date: Wed Feb 26 19:38:09 2020 (1582742289)
   type: array_1d(1000)
   Source: ISIS_test (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_test/ISIS_test.instr)
   component: monL
@@ -53,9 +53,9 @@ begin data
   title: Wavelength [Angs] monitor
   Ncount: 10000000
   filename: LamND.dat
-  statistics: X0=1.9831; dX=1.89177;
-  signal: Min=7.58346e+06; Max=1.24594e+10; Mean=8.23502e+08;
-  values: 8.23502e+11 5.06716e+08 9.99999e+06
+  statistics: X0=1.98548; dX=1.89401;
+  signal: Min=7.94502e+06; Max=1.25076e+10; Mean=8.24163e+08;
+  values: 8.24163e+11 5.07225e+08 9.99999e+06
   xvar: L
   yvar: (I,I_err)
   xlabel: Wavelength [Angs]
@@ -65,7 +65,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:30:29 2020 (1582662629)
+  Date: Wed Feb 26 19:38:09 2020 (1582742289)
   type: array_1d(20)
   Source: ISIS_test (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ISIS_test/ISIS_test.instr)
   component: monT
@@ -73,13 +73,13 @@ begin data
   title: TOF [s] monitor
   Ncount: 10000000
   filename: timeND.dat
-  statistics: X0=0.000123274; dX=0.000118012;
-  signal: Min=2.54513e+06; Max=6.18742e+11; Mean=4.11699e+10;
-  values: 8.23397e+11 5.06619e+08 9.99977e+06
+  statistics: X0=0.000128085; dX=0.000122582;
+  signal: Min=2.53659e+06; Max=6.23263e+11; Mean=4.12015e+10;
+  values: 8.2403e+11 5.07098e+08 9.99975e+06
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 5.43499e-06 0.00257603
+  xlimits: 5.19951e-06 0.00272075
   variables: t I I_err N
 end data

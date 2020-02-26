@@ -2,77 +2,38 @@ INFO: Using directory: "2"
 INFO: Using existing c-file: ./HZB_NEAT.c
 INFO: Using existing binary: ./HZB_NEAT.out
 INFO: ===
-[n-62-23-14:11913] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:11913] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:11913] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582661729.089739] [n-62-23-14:11922:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3300.05
-[1582661729.093728] [n-62-23-14:11922:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661729.093746] [n-62-23-14:11922:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: Using system default number of mpirun -np processes
+[n-62-31-16:215806] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:215806] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:215806] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582661729.096563] [n-62-23-14:11922:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661729.096581] [n-62-23-14:11922:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661729.097388] [n-62-23-14:11919:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3300.05
-[1582661729.097747] [n-62-23-14:11921:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3300.05
-[1582661729.099748] [n-62-23-14:11919:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661729.099765] [n-62-23-14:11919:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661729.099830] [n-62-23-14:11921:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661729.099942] [n-62-23-14:11921:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661729.104351] [n-62-23-14:11923:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3211.35
-[1582661729.104614] [n-62-23-14:11919:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661729.104635] [n-62-23-14:11919:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661729.105556] [n-62-23-14:11921:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661729.105741] [n-62-23-14:11921:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661729.106098] [n-62-23-14:11923:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661729.106115] [n-62-23-14:11923:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661729.106317] [n-62-23-14:11920:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3211.35
-[1582661729.109567] [n-62-23-14:11923:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661729.109582] [n-62-23-14:11923:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661729.110197] [n-62-23-14:11920:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661729.110214] [n-62-23-14:11920:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661729.113946] [n-62-23-14:11920:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661729.113962] [n-62-23-14:11920:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661729.117635] [n-62-23-14:11924:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3211.35
-[1582661729.119401] [n-62-23-14:11924:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661729.119417] [n-62-23-14:11924:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661729.121867] [n-62-23-14:11924:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661729.121882] [n-62-23-14:11924:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661729.125685] [n-62-23-14:11927:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3211.35
-[1582661729.126465] [n-62-23-14:11926:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3211.35
-[1582661729.127547] [n-62-23-14:11927:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661729.127563] [n-62-23-14:11927:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661729.128400] [n-62-23-14:11926:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661729.128417] [n-62-23-14:11926:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661729.128794] [n-62-23-14:11928:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3211.35
-[1582661729.129599] [n-62-23-14:11927:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661729.129614] [n-62-23-14:11927:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661729.130072] [n-62-23-14:11925:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3211.35
-[1582661729.130444] [n-62-23-14:11926:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661729.130459] [n-62-23-14:11926:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661729.130694] [n-62-23-14:11928:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661729.130710] [n-62-23-14:11928:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661729.131877] [n-62-23-14:11925:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661729.131893] [n-62-23-14:11925:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661729.132877] [n-62-23-14:11928:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661729.132892] [n-62-23-14:11928:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661729.133873] [n-62-23-14:11925:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661729.133887] [n-62-23-14:11925:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'HZB_NEAT' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_NEAT/HZB_NEAT.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
-HZB_NEAT: Detailed NEAT/TOF configuration
-HZB_NEAT: Detailed NEAT/TOF configuration
-* Incoming beam: lambda=6 [Angs] EI=2.272 [meV]  KI=1.047 [Angs-1] Vi=659.339 [m/s]
-  Sample: coh=Y2O3.laz inc=NULL
-          Elastic line time: 21655.2 [us]
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+Simulation 'HZB_NEAT' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_NEAT/HZB_NEAT.instr): running on 4 nodes (master is 'n-62-31-16', MPI version 3.1).
 HZB_NEAT: Detailed NEAT/TOF configuration
 HZB_NEAT: Detailed NEAT/TOF configuration
 * Incoming beam: lambda=6 [Angs] EI=2.272 [meV]  KI=1.047 [Angs-1] Vi=659.339 [m/s]
 * Incoming beam: lambda=6 [Angs] EI=2.272 [meV]  KI=1.047 [Angs-1] Vi=659.339 [m/s]
   Sample: coh=Y2O3.laz inc=NULL
           Elastic line time: 21655.2 [us]
+HZB_NEAT: Detailed NEAT/TOF configuration
+  Sample: coh=Y2O3.laz inc=NULL
+          Elastic line time: 21655.2 [us]
+* Incoming beam: lambda=6 [Angs] EI=2.272 [meV]  KI=1.047 [Angs-1] Vi=659.339 [m/s]
   Sample: coh=Y2O3.laz inc=NULL
           Elastic line time: 21655.2 [us]
 [HZB_NEAT] Initialize
@@ -82,15 +43,6 @@ HZB_NEAT: Detailed NEAT/TOF configuration
 * Incoming beam: lambda=6 [Angs] EI=2.272 [meV]  KI=1.047 [Angs-1] Vi=659.339 [m/s]
   Sample: coh=Y2O3.laz inc=NULL
           Elastic line time: 21655.2 [us]
-* Incoming beam: lambda=6 [Angs] EI=2.272 [meV]  KI=1.047 [Angs-1] Vi=659.339 [m/s]
-  Sample: coh=Y2O3.laz inc=NULL
-          Elastic line time: 21655.2 [us]
-HZB_NEAT: Detailed NEAT/TOF configuration
-* Incoming beam: lambda=6 [Angs] EI=2.272 [meV]  KI=1.047 [Angs-1] Vi=659.339 [m/s]
-  Sample: coh=Y2O3.laz inc=NULL
-          Elastic line time: 21655.2 [us]
-[HZB_NEAT] Initialize
-[HZB_NEAT] Initialize
 [HZB_NEAT] Initialize
 Monitor_nD: Guide_Lambda is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
@@ -98,27 +50,7 @@ Monitor_nD: Guide2_Lambda is using automatic limits option 'auto' together with 
 WARNING     this may create incorrect distributions (but integrated flux will be right).
 Monitor_nD: Guide_time is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
-HZB_NEAT: Detailed NEAT/TOF configuration
-* Incoming beam: lambda=6 [Angs] EI=2.272 [meV]  KI=1.047 [Angs-1] Vi=659.339 [m/s]
-  Sample: coh=Y2O3.laz inc=NULL
-          Elastic line time: 21655.2 [us]
 Isotropic_Sqw: Sample: is a box: width=0.050000 height=0.060000 depth=0.002000 
-HZB_NEAT: Detailed NEAT/TOF configuration
-* Incoming beam: lambda=6 [Angs] EI=2.272 [meV]  KI=1.047 [Angs-1] Vi=659.339 [m/s]
-  Sample: coh=Y2O3.laz inc=NULL
-          Elastic line time: 21655.2 [us]
-HZB_NEAT: Detailed NEAT/TOF configuration
-* Incoming beam: lambda=6 [Angs] EI=2.272 [meV]  KI=1.047 [Angs-1] Vi=659.339 [m/s]
-  Sample: coh=Y2O3.laz inc=NULL
-          Elastic line time: 21655.2 [us]
-[HZB_NEAT] Initialize
-[HZB_NEAT] Initialize
-[HZB_NEAT] Initialize
-HZB_NEAT: Detailed NEAT/TOF configuration
-* Incoming beam: lambda=6 [Angs] EI=2.272 [meV]  KI=1.047 [Angs-1] Vi=659.339 [m/s]
-  Sample: coh=Y2O3.laz inc=NULL
-          Elastic line time: 21655.2 [us]
-[HZB_NEAT] Initialize
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Y2O3.laz' (Table_Read_Offset)
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Y2O3.laz' (Table_Read_Offset)
 Isotropic_sqw: Converting 871 powder lines from Y2O3.laz into S(q,w) data
@@ -135,53 +67,34 @@ Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mc
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Gas_tables/He3inCF4.table' (Table_Read_Offset)
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Gas_tables/He3inHe.table' (Table_Read_Offset)
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../contrib/Gas_tables/He3inCF4.table' (Table_Read_Offset)
-[n-62-23-14:11913] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-14:11913] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
-
-
-
-
-Trace ETA 13 [s] % 79 
-Trace ETA 22 [s] % 48 80 
-Trace ETA 11 [s] % 97 
-Trace ETA 11 [s] % 95 Trace ETA 15 [s] % 69 Trace ETA 22 [s] % 48 Trace ETA 13 [s] % 80 
-Trace ETA 16 [s] % 66 70 50 50 70 90 90 80 60 60 80 90 70 70 90 
-Finally [HZB_NEAT: 2]. Time: 17 [s] 
-80 80 
-Finally [HZB_NEAT: 2]. Time: 18 [s] 
-
-Finally [HZB_NEAT: 2]. Time: 18 [s] 
-90 90 
-Finally [HZB_NEAT: 2]. Time: 19 [s] 
+[n-62-31-16:215806] 3 more processes have sent help message help-mpi-btl-openib.txt / ib port not selected
+[n-62-31-16:215806] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:215806] 3 more processes have sent help message help-mpi-btl-openib.txt / error in device init
 
 Save [HZB_NEAT]
-Detector: Guide_PSD_I=7.90897e+07 Guide_PSD_ERR=157758 Guide_PSD_N=1.41686e+06 "Guide_PSD_1582661729.y_x"
-Detector: Guide_Lambda_I=7.90861e+07 Guide_Lambda_ERR=157755 Guide_Lambda_N=1.41675e+06 "Guide_Lambda_1582661729.L"
-Detector: Guide2_PSD_I=5.00721e+06 Guide2_PSD_ERR=10280.4 Guide2_PSD_N=1.17953e+06 "Guide2_PSD_1582661729.x_y"
-Detector: Guide2_Lambda_I=5.00703e+06 Guide2_Lambda_ERR=10280.2 Guide2_Lambda_N=1.17949e+06 "Guide2_Lambda_1582661729.L"
-Detector: Guide2_dXY_I=5.00707e+06 Guide2_dXY_ERR=10280.2 Guide2_dXY_N=1.17948e+06 "Guide2_dXY_1582661729.hd_vd"
-Detector: Guide_time_I=2.18975e+06 Guide_time_ERR=6797.29 Guide_time_N=514975 "Guide_time_1582661729.t"
-Detector: Ideal_Det_I=2046.58 Ideal_Det_ERR=12.4137 Ideal_Det_N=152085 "Ideal_Det_1582661729.A_t"
+Detector: Guide_PSD_I=7.95463e+07 Guide_PSD_ERR=158285 Guide_PSD_N=1.41812e+06 "Guide_PSD_1582741836.y_x"
+Detector: Guide_Lambda_I=7.95438e+07 Guide_Lambda_ERR=158283 Guide_Lambda_N=1.41801e+06 "Guide_Lambda_1582741836.L"
+Detector: Guide2_PSD_I=5.0386e+06 Guide2_PSD_ERR=10317.4 Guide2_PSD_N=1.18067e+06 "Guide2_PSD_1582741836.x_y"
+Detector: Guide2_Lambda_I=5.03845e+06 Guide2_Lambda_ERR=10317.2 Guide2_Lambda_N=1.18062e+06 "Guide2_Lambda_1582741836.L"
+Detector: Guide2_dXY_I=5.03837e+06 Guide2_dXY_ERR=10317.2 Guide2_dXY_N=1.18061e+06 "Guide2_dXY_1582741836.hd_vd"
+Detector: Guide_time_I=2.20973e+06 Guide_time_ERR=6832.02 Guide_time_N=515604 "Guide_time_1582741836.t"
 
-Finally [HZB_NEAT: 2]. Time: 20 [s] 
+Finally [HZB_NEAT: 2]. Time: 9 [s] 
+Detector: Ideal_Det_I=2071.01 Ideal_Det_ERR=12.4969 Ideal_Det_N=153170 "Ideal_Det_1582741836.A_t"
 
-Finally [HZB_NEAT: 2]. Time: 20 [s] 
+Finally [HZB_NEAT: 2]. Time: 9 [s] 
 
-Finally [HZB_NEAT: 2]. Time: 20 [s] 
+Finally [HZB_NEAT: 2]. Time: 9 [s] 
+Detector: Detector_I=968.94 Detector_ERR=8.70099 Detector_N=68837 "NEAT.psd"
 
-Finally [HZB_NEAT: 2]. Time: 20 [s] 
-
-Finally [HZB_NEAT: 2]. Time: 20 [s] 
-Detector: Detector_I=956.991 Detector_ERR=8.63844 Detector_N=68629 "NEAT.psd"
-
-Finally [HZB_NEAT: 2]. Time: 20 [s] 
-Isotropic_Sqw: Sample: 241168 neutron events (out of 2184588) that should have
+Finally [HZB_NEAT: 2]. Time: 9 [s] 
+Isotropic_Sqw: Sample: 241959 neutron events (out of 2194780) that should have
                scattered were transmitted because scattering conditions
 WARNING        could not be satisfied after 100 tries.
-Isotropic_Sqw: Sample: 3794 neutron events (out of 1943420) reached
+Isotropic_Sqw: Sample: 3836 neutron events (out of 1952821) reached
 WARNING        unrealistic weight. The S(q,w) norm might be too high.
-Isotropic_Sqw: Sample: Scattering fraction=0.0334423 of incoming intensity
+Isotropic_Sqw: Sample: Scattering fraction=0.0334245 of incoming intensity
                Absorption fraction           =0.481309
-               Single   scattering intensity =44000.1 (coh=42427 inc=1573.08)
-               Multiple scattering intensity =935.58
+               Single   scattering intensity =44188.9 (coh=42602.6 inc=1586.31)
+               Multiple scattering intensity =949.879
 INFO: Placing instr file copy /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/HZB_NEAT/HZB_NEAT.instr in dataset 2

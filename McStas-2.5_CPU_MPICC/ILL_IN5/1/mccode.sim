@@ -1,6 +1,6 @@
 McStas simulation description file for ILL_IN5.
-Date:    Tue Feb 25 21:27:58 2020
-Program: McStas 2.5 - Feb. 24, 2020
+Date:    Wed Feb 26 19:36:28 2020
+Program: McStas 2.5 - Feb. 26, 2020
 
 begin instrument: ILL_IN5
   File: 1/mccode
@@ -14,14 +14,14 @@ end instrument
 begin simulation: 1
   Format: McCode with text headers
   URL: http://www.mccode.org
-  Creator: McStas 2.5 - Feb. 24, 2020
+  Creator: McStas 2.5 - Feb. 26, 2020
   Instrument: /zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN5/ILL_IN5.instr
   Ncount: 10000000
   Trace: no
   Gravitation: no
-  Seed: 1582678412
+  Seed: 1582959487
   Directory: 1
-  Nodes: 10
+  Nodes: 4
   Param: lambda=4.5
   Param: dlambda=0.05
   Param: speed=8500
@@ -36,37 +36,37 @@ begin simulation: 1
 end simulation
 
 begin data
-  Date: Tue Feb 25 21:28:02 2020 (1582662482)
+  Date: Wed Feb 26 19:36:30 2020 (1582742190)
   type: array_1d(20)
   Source: ILL_IN5 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN5/ILL_IN5.instr)
   component: Det_sample_t
   position: 0 0 17.0191
   title: TOF [s] monitor
   Ncount: 10000000
-  filename: Det_sample_t_1582662478.t
-  statistics: X0=0.0162326; dX=2.63251e-05;
-  signal: Min=90202.1; Max=3.85892e+06; Mean=1.91111e+06;
-  values: 3.82223e+07 202077 52741
+  filename: Det_sample_t_1582742188.t
+  statistics: X0=0.0162317; dX=2.62022e-05;
+  signal: Min=38823.7; Max=3.93527e+06; Mean=1.89836e+06;
+  values: 3.79672e+07 201354 52284
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.0161633 0.0163019
+  xlimits: 0.0161598 0.0163027
   variables: t I I_err N
 end data
 
 begin data
-  Date: Tue Feb 25 21:28:02 2020 (1582662482)
+  Date: Wed Feb 26 19:36:30 2020 (1582742190)
   type: array_2d(100, 100)
   Source: ILL_IN5 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN5/ILL_IN5.instr)
   component: Det_ideal_ay
   position: 0 0 17.2589
   title:  Intensity Angle Position Monitor (Banana) [out] per bin
   Ncount: 10000000
-  filename: Det_ideal_ay_1582662478.th_y
-  statistics: X0=45.1686; dX=21.7172; Y0=-0.00217302; dY=0.820001;
-  signal: Min=0; Max=2893; Mean=138.485;
-  values: 1.38485e+06 3886.37 188541
+  filename: Det_ideal_ay_1582742188.th_y
+  statistics: X0=45.1756; dX=21.603; Y0=0.000323674; dY=0.819699;
+  signal: Min=0; Max=2723.88; Mean=137.927;
+  values: 1.37927e+06 3875.74 187467
   xvar: Longitude
   yvar: y
   xlabel: Longitude [deg]
@@ -78,7 +78,7 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:28:02 2020 (1582662482)
+  Date: Wed Feb 26 19:36:30 2020 (1582742190)
   type: array_2d(384, 128)
   Source: ILL_IN5 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN5/ILL_IN5.instr)
   component: Det_PSD
@@ -86,9 +86,9 @@ begin data
   title: PSD Detector
   Ncount: 10000000
   filename: in5det.dat
-  statistics: X0=3.17169; dX=1.53125; Y0=-0.00235691; dY=0.831692;
-  signal: Min=0; Max=756.966; Mean=27.6356;
-  values: 1.35835e+06 4246.9 164136
+  statistics: X0=3.17563; dX=1.52443; Y0=0.00158543; dY=0.831072;
+  signal: Min=0; Max=735.825; Mean=27.4328;
+  values: 1.34838e+06 4227.92 162867
   xvar: X
   yvar: Y
   xlabel: X position [m]
@@ -100,21 +100,21 @@ begin data
 end data
 
 begin data
-  Date: Tue Feb 25 21:28:02 2020 (1582662482)
+  Date: Wed Feb 26 19:36:30 2020 (1582742190)
   type: array_1d(50)
   Source: ILL_IN5 (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_IN5/ILL_IN5.instr)
   component: in5_t
   position: 0 0 17.2589
   title: TOF [s] monitor
   Ncount: 10000000
-  filename: in5_t_1582662478.t
-  statistics: X0=0.0211887; dX=0.000128134;
-  signal: Min=0; Max=2.16124e+06; Mean=54404.9;
-  values: 2.72024e+06 8522.32 415011
+  filename: in5_t_1582742188.t
+  statistics: X0=0.0211352; dX=0.000133607;
+  signal: Min=0; Max=2.01556e+06; Mean=54000.6;
+  values: 2.70003e+06 8483.96 411371
   xvar: t
   yvar: (I,I_err)
   xlabel: TOF [s]
   ylabel: Intensity [n/s/bin]
-  xlimits: 0.0164362 0.0309322
+  xlimits: 0.0164399 0.0308423
   variables: t I I_err N
 end data

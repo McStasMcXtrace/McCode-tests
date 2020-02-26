@@ -2,78 +2,43 @@ INFO: Using directory: "1"
 INFO: Using existing c-file: ./ILL_BRISP.c
 INFO: Using existing binary: ./ILL_BRISP.out
 INFO: ===
-[n-62-23-14:12034] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:12034] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[n-62-23-14:12034] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
-[1582661750.197663] [n-62-23-14:12040:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3200.93
-[1582661750.199481] [n-62-23-14:12040:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661750.199498] [n-62-23-14:12040:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
+INFO: Using system default number of mpirun -np processes
+[n-62-31-16:215854] mca_base_component_repository_open: unable to open mca_ess_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:215854] mca_base_component_repository_open: unable to open mca_plm_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
+[n-62-31-16:215854] mca_base_component_repository_open: unable to open mca_ras_lsf: libbat.so: cannot open shared object file: No such file or directory (ignored)
 --------------------------------------------------------------------------
-Initialization of MXM library failed.
+By default, for Open MPI 4.0 and later, infiniband ports on a device
+are not used by default.  The intent is to use UCX for these devices.
+You can override this policy by setting the btl_openib_allow_ib MCA parameter
+to true.
 
-  Error: Input/output error
+  Local host:              n-62-31-16
+  Local adapter:           mlx5_0
+  Local port:              1
 
 --------------------------------------------------------------------------
-[1582661750.201654] [n-62-23-14:12040:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661750.201672] [n-62-23-14:12040:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661750.228142] [n-62-23-14:12041:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3200.93
-[1582661750.231547] [n-62-23-14:12044:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3200.93
-[1582661750.232712] [n-62-23-14:12041:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661750.232728] [n-62-23-14:12041:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661750.233011] [n-62-23-14:12043:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3200.93
-[1582661750.233645] [n-62-23-14:12042:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3200.93
-[1582661750.234376] [n-62-23-14:12044:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661750.234392] [n-62-23-14:12044:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661750.235792] [n-62-23-14:12043:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661750.235806] [n-62-23-14:12043:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661750.235776] [n-62-23-14:12045:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3200.93
-[1582661750.235856] [n-62-23-14:12042:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661750.235872] [n-62-23-14:12042:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661750.237369] [n-62-23-14:12045:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661750.237385] [n-62-23-14:12045:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661750.237746] [n-62-23-14:12044:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661750.237761] [n-62-23-14:12044:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661750.237819] [n-62-23-14:12041:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661750.237834] [n-62-23-14:12041:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661750.238108] [n-62-23-14:12042:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661750.238124] [n-62-23-14:12042:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661750.239878] [n-62-23-14:12045:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661750.239894] [n-62-23-14:12045:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661750.241106] [n-62-23-14:12043:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661750.241121] [n-62-23-14:12043:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661750.243392] [n-62-23-14:12047:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3200.93
-[1582661750.245882] [n-62-23-14:12047:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661750.245899] [n-62-23-14:12047:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661750.247529] [n-62-23-14:12046:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3200.93
-[1582661750.247865] [n-62-23-14:12047:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661750.247881] [n-62-23-14:12047:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661750.249332] [n-62-23-14:12046:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661750.249349] [n-62-23-14:12046:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661750.251581] [n-62-23-14:12046:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661750.251655] [n-62-23-14:12046:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661750.256421] [n-62-23-14:12049:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3200.93
-[1582661750.257725] [n-62-23-14:12048:0]         sys.c:744  MXM  WARN  Conflicting CPU frequencies detected, using: 3200.93
-[1582661750.258255] [n-62-23-14:12049:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661750.258271] [n-62-23-14:12049:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661750.259343] [n-62-23-14:12048:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661750.259359] [n-62-23-14:12048:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661750.260230] [n-62-23-14:12049:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661750.260245] [n-62-23-14:12049:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-[1582661750.261329] [n-62-23-14:12048:0]      ib_dev.c:533  MXM  WARN  failed call to ibv_exp_use_priv_env(): Function not implemented
-[1582661750.261346] [n-62-23-14:12048:0]      ib_dev.c:544  MXM  ERROR ibv_query_device() returned 38: Function not implemented
-Simulation 'ILL_BRISP' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr): running on 10 nodes (master is 'n-62-23-14', MPI version 3.1).
+--------------------------------------------------------------------------
+WARNING: There was an error initializing an OpenFabrics device.
+
+  Local host:   n-62-31-16
+  Local device: mlx5_0
+--------------------------------------------------------------------------
+Simulation 'ILL_BRISP' (/zhome/89/0/38697/once/McStas-2.5_CPU_MPICC/ILL_BRISP/ILL_BRISP.instr): running on 4 nodes (master is 'n-62-31-16', MPI version 3.1).
 Instrument ILL_BRISP:
 	Time of Flight Neutron Spectrometer for Small Angle Inelastic Scattering
+Instrument ILL_BRISP:
+	Time of Flight Neutron Spectrometer for Small Angle Inelastic Scattering
+Monochr. Bragg angle     [deg] 17.5
+Wavelength               [AA]  2.01774
 Monochr. Bragg angle     [deg] 17.5
 Wavelength               [AA]  2.01774
 Neutron velocity         [m/s] 1960.63
-Instrument ILL_BRISP:
-	Time of Flight Neutron Spectrometer for Small Angle Inelastic Scattering
-Monochr. Bragg angle     [deg] 17.5
-Wavelength               [AA]  2.01774
 Incident Energy          [meV] 20.0931
 Travel time: Disk./Fermi [us]  2060.56
 CHOP Disk  Speed         [rpm] 3740
+Instrument ILL_BRISP:
+	Time of Flight Neutron Spectrometer for Small Angle Inelastic Scattering
+Monochr. Bragg angle     [deg] 17.5
 Neutron velocity         [m/s] 1960.63
 Incident Energy          [meV] 20.0931
 Travel time: Disk./Fermi [us]  2060.56
@@ -84,12 +49,24 @@ CHOP Fermi Phase         [deg] 0
 Dist. Monochromator-Fermi [m]  5.54
 Dist. Disk-Fermi          [m]  4.04
 Dist. Sample-Detector     [m]  4.5
+Wavelength               [AA]  2.01774
+Neutron velocity         [m/s] 1960.63
+Incident Energy          [meV] 20.0931
+Travel time: Disk./Fermi [us]  2060.56
 CHOP Fermi Speed         [rpm] 14960        (249.333 [Hz], 1566.61 [rad/s])
 CHOP Disk  Phase         [deg] 184.956
 CHOP Fermi Phase         [deg] 0
 Dist. Monochromator-Fermi [m]  5.54
 Dist. Disk-Fermi          [m]  4.04
 Dist. Sample-Detector     [m]  4.5
+CHOP Disk  Speed         [rpm] 3740
+CHOP Fermi Speed         [rpm] 14960        (249.333 [Hz], 1566.61 [rad/s])
+CHOP Disk  Phase         [deg] 184.956
+CHOP Fermi Phase         [deg] 0
+Dist. Monochromator-Fermi [m]  5.54
+Dist. Disk-Fermi          [m]  4.04
+Dist. Sample-Detector     [m]  4.5
+[ILL_BRISP] Initialize
 [ILL_BRISP] Initialize
 [ILL_BRISP] Initialize
 Instrument ILL_BRISP:
@@ -109,120 +86,15 @@ Dist. Sample-Detector     [m]  4.5
 [ILL_BRISP] Initialize
 Monitor_nD: LmonokOUT is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
-Instrument ILL_BRISP:
 Monitor_nD: DC_OUT_T is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
 Monitor_nD: FC_OUT_T is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
 Isotropic_Sqw: Environment_in: is a hollow cylinder: radius=0.050000 thickness=0.002000 height=0.100000 [J Comp Phys 228 (2009) 5251]
-Instrument ILL_BRISP:
-Instrument ILL_BRISP:
-	Time of Flight Neutron Spectrometer for Small Angle Inelastic Scattering
-Monochr. Bragg angle     [deg] 17.5
-Wavelength               [AA]  2.01774
-Neutron velocity         [m/s] 1960.63
-Incident Energy          [meV] 20.0931
-Travel time: Disk./Fermi [us]  2060.56
-CHOP Disk  Speed         [rpm] 3740
-CHOP Fermi Speed         [rpm] 14960        (249.333 [Hz], 1566.61 [rad/s])
-CHOP Disk  Phase         [deg] 184.956
-CHOP Fermi Phase         [deg] 0
-Dist. Monochromator-Fermi [m]  5.54
-Dist. Disk-Fermi          [m]  4.04
-Dist. Sample-Detector     [m]  4.5
-Instrument ILL_BRISP:
-	Time of Flight Neutron Spectrometer for Small Angle Inelastic Scattering
-Monochr. Bragg angle     [deg] 17.5
-Instrument ILL_BRISP:
-	Time of Flight Neutron Spectrometer for Small Angle Inelastic Scattering
-Wavelength               [AA]  2.01774
-Neutron velocity         [m/s] 1960.63
-Incident Energy          [meV] 20.0931
-Travel time: Disk./Fermi [us]  2060.56
-CHOP Disk  Speed         [rpm] 3740
-	Time of Flight Neutron Spectrometer for Small Angle Inelastic Scattering
-Monochr. Bragg angle     [deg] 17.5
-Wavelength               [AA]  2.01774
-CHOP Fermi Speed         [rpm] 14960        (249.333 [Hz], 1566.61 [rad/s])
-CHOP Disk  Phase         [deg] 184.956
-CHOP Fermi Phase         [deg] 0
-Dist. Monochromator-Fermi [m]  5.54
-Dist. Disk-Fermi          [m]  4.04
-Dist. Sample-Detector     [m]  4.5
-Monochr. Bragg angle     [deg] 17.5
-Neutron velocity         [m/s] 1960.63
-Wavelength               [AA]  2.01774
-Incident Energy          [meV] 20.0931
-Neutron velocity         [m/s] 1960.63
-Travel time: Disk./Fermi [us]  2060.56
-Incident Energy          [meV] 20.0931
-CHOP Disk  Speed         [rpm] 3740
-Travel time: Disk./Fermi [us]  2060.56
-CHOP Fermi Speed         [rpm] 14960        (249.333 [Hz], 1566.61 [rad/s])
-CHOP Disk  Speed         [rpm] 3740
-CHOP Fermi Speed         [rpm] 14960        (249.333 [Hz], 1566.61 [rad/s])
-CHOP Disk  Phase         [deg] 184.956
-CHOP Disk  Phase         [deg] 184.956
-CHOP Fermi Phase         [deg] 0
-Instrument ILL_BRISP:
-	Time of Flight Neutron Spectrometer for Small Angle Inelastic Scattering
-CHOP Fermi Phase         [deg] 0
-Dist. Monochromator-Fermi [m]  5.54
-Dist. Monochromator-Fermi [m]  5.54
-Dist. Disk-Fermi          [m]  4.04
-Dist. Disk-Fermi          [m]  4.04
-Dist. Sample-Detector     [m]  4.5
-Dist. Sample-Detector     [m]  4.5
-Monochr. Bragg angle     [deg] 17.5
-Wavelength               [AA]  2.01774
-Neutron velocity         [m/s] 1960.63
-Incident Energy          [meV] 20.0931
-Travel time: Disk./Fermi [us]  2060.56
-CHOP Disk  Speed         [rpm] 3740
-CHOP Fermi Speed         [rpm] 14960        (249.333 [Hz], 1566.61 [rad/s])
-CHOP Disk  Phase         [deg] 184.956
-CHOP Fermi Phase         [deg] 0
-Dist. Monochromator-Fermi [m]  5.54
-Dist. Disk-Fermi          [m]  4.04
-[ILL_BRISP] Initialize
-Dist. Sample-Detector     [m]  4.5
-[ILL_BRISP] Initialize
-[ILL_BRISP] Initialize
-[ILL_BRISP] Initialize
-[ILL_BRISP] Initialize
-	Time of Flight Neutron Spectrometer for Small Angle Inelastic Scattering
-Monochr. Bragg angle     [deg] 17.5
-Wavelength               [AA]  2.01774
-Neutron velocity         [m/s] 1960.63
-Incident Energy          [meV] 20.0931
-Travel time: Disk./Fermi [us]  2060.56
-CHOP Disk  Speed         [rpm] 3740
-CHOP Fermi Speed         [rpm] 14960        (249.333 [Hz], 1566.61 [rad/s])
-CHOP Disk  Phase         [deg] 184.956
-CHOP Fermi Phase         [deg] 0
-Dist. Monochromator-Fermi [m]  5.54
-Dist. Disk-Fermi          [m]  4.04
-Dist. Sample-Detector     [m]  4.5
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
-[ILL_BRISP] Initialize
-Instrument ILL_BRISP:
-	Time of Flight Neutron Spectrometer for Small Angle Inelastic Scattering
-Monochr. Bragg angle     [deg] 17.5
-Wavelength               [AA]  2.01774
-Neutron velocity         [m/s] 1960.63
-Incident Energy          [meV] 20.0931
-Travel time: Disk./Fermi [us]  2060.56
-CHOP Disk  Speed         [rpm] 3740
-CHOP Fermi Speed         [rpm] 14960        (249.333 [Hz], 1566.61 [rad/s])
-CHOP Disk  Phase         [deg] 184.956
-CHOP Fermi Phase         [deg] 0
-Dist. Monochromator-Fermi [m]  5.54
-Dist. Disk-Fermi          [m]  4.04
-Dist. Sample-Detector     [m]  4.5
 Opening input file '/zhome/89/0/38697/McStas/mcstas/2.5/tools/Python/mcrun/../mccodelib/../../../data/Al.laz' (Table_Read_Offset)
 Isotropic_sqw: Converting 26 powder lines from Al.laz into S(q,w) data
 Isotropic_sqw: q range [0:12.4125], creating 343 elements vector
-[ILL_BRISP] Initialize
 Isotropic_Sqw: Environment_in: Generated Al.laz coherent Sqw
                    q=[0:12.3763 Angs-1] w=[0:0 meV] |S|=0.129806 size=[343x1] sigma=5.98 [barns]
                Mainly elastic scattering.
@@ -261,39 +133,16 @@ Isotropic_Sqw: Environment_out: Sample temperature not defined (T=0).
 Warning        Disabling detailed balance.
 Monitor_nD: Detector_E is using automatic limits option 'auto' together with MPI.
 WARNING     this may create incorrect distributions (but integrated flux will be right).
-[n-62-23-14:12034] 9 more processes have sent help message help-mtl-mxm.txt / mxm init
-[n-62-23-14:12034] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:215854] 3 more processes have sent help message help-mpi-btl-openib.txt / ib port not selected
+[n-62-31-16:215854] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[n-62-31-16:215854] 3 more processes have sent help message help-mpi-btl-openib.txt / error in device init
 
-Trace ETA 22 [s] % 48 
-
-Trace ETA 14 [s] % 78 
-
-
-Trace ETA 15 [s] % 69 
-
-Trace ETA 20 [s] % 54 Trace ETA 23 [s] % 47 Trace ETA 15 [s] % 71 Trace ETA 20 [s] % 54 
-
-Trace ETA 23 [s] % 47 Trace ETA 16 [s] % 66 Trace ETA 22 [s] % 48 70 80 50 50 50 50 60 60 70 80 90 70 80 70 60 60 60 90 60 80 80 80 90 70 70 70 70 90 90 90 80 80 80 80 
-
-Finally [ILL_BRISP: 1]. Time: 18 [s] 
-Finally [ILL_BRISP: 1]. Time: 18 [s] 
-Warning: 112652 events were removed in Component[24] DetectorPos=Arm()
-         (negative time, miss next components, rounding errors, Nan, Inf).
-Warning: No neutron could reach Component[30] DetectorTube
-Warning: No neutron could reach Component[31] ToMonok
-Warning: No neutron could reach Component[32] ToOrigin
-Warning: No neutron could reach Component[33] Core
-Warning: No neutron could reach Component[34] Vessel
-Warning: 115178 events were removed in Component[24] DetectorPos=Arm()
-         (negative time, miss next components, rounding errors, Nan, Inf).
-Warning: No neutron could reach Component[30] DetectorTube
-Warning: No neutron could reach Component[31] ToMonok
-Warning: No neutron could reach Component[32] ToOrigin
-Warning: No neutron could reach Component[33] Core
-Warning: No neutron could reach Component[34] Vessel
-90 90 90 90 
-Finally [ILL_BRISP: 1]. Time: 21 [s] 
-Warning: 116683 events were removed in Component[24] DetectorPos=Arm()
+Trace ETA 13 [s] % 81 
+Trace ETA 13 [s] % 80 
+Trace ETA 13 [s] % 81 
+Trace ETA 13 [s] % 81 90 90 90 90 
+Finally [ILL_BRISP: 1]. Time: 13 [s] 
+Warning: 291523 events were removed in Component[24] DetectorPos=Arm()
          (negative time, miss next components, rounding errors, Nan, Inf).
 Warning: No neutron could reach Component[30] DetectorTube
 Warning: No neutron could reach Component[31] ToMonok
@@ -301,27 +150,9 @@ Warning: No neutron could reach Component[32] ToOrigin
 Warning: No neutron could reach Component[33] Core
 Warning: No neutron could reach Component[34] Vessel
 
-
-Finally [ILL_BRISP: 1]. Time: 22 [s] 
-Warning: 115468 events were removed in Component[24] DetectorPos=Arm()
+Finally [ILL_BRISP: 1]. Time: 13 [s] 
+Warning: 291127 events were removed in Component[24] DetectorPos=Arm()
          (negative time, miss next components, rounding errors, Nan, Inf).
-Warning: No neutron could reach Component[30] DetectorTube
-Warning: No neutron could reach Component[31] ToMonok
-Warning: No neutron could reach Component[32] ToOrigin
-Warning: No neutron could reach Component[33] Core
-Warning: No neutron could reach Component[34] Vessel
-
-Finally [ILL_BRISP: 1]. Time: 22 [s] 
-Finally [ILL_BRISP: 1]. Time: 22 [s] 
-Warning: 114631 events were removed in Component[24] DetectorPos=Arm()
-         (negative time, miss next components, rounding errors, Nan, Inf).
-Warning: 116831 events were removed in Component[24] DetectorPos=Arm()
-         (negative time, miss next components, rounding errors, Nan, Inf).
-Warning: No neutron could reach Component[30] DetectorTube
-Warning: No neutron could reach Component[31] ToMonok
-Warning: No neutron could reach Component[32] ToOrigin
-Warning: No neutron could reach Component[33] Core
-Warning: No neutron could reach Component[34] Vessel
 Warning: No neutron could reach Component[30] DetectorTube
 Warning: No neutron could reach Component[31] ToMonok
 Warning: No neutron could reach Component[32] ToOrigin
@@ -329,58 +160,40 @@ Warning: No neutron could reach Component[33] Core
 Warning: No neutron could reach Component[34] Vessel
 
 Save [ILL_BRISP]
-Detector: LmonokOUT_I=6.03042e+08 LmonokOUT_ERR=214484 LmonokOUT_N=1.01046e+07 "LmonokOUT_1582661750.L"
+Detector: LmonokOUT_I=6.03406e+08 LmonokOUT_ERR=214578 LmonokOUT_N=1.01065e+07 "LmonokOUT_1582741846.L"
+Detector: Monitor1_I=6.02748e+08 Monitor1_ERR=214474 Monitor1_N=1.00923e+07 "Monitor1_1582741846.x_y"
+Detector: DC_OUT_T_I=1.95277e+08 DC_OUT_T_ERR=70576.8 DC_OUT_T_N=9.74318e+06 "DC_OUT_T_1582741846.t"
 
-Finally [ILL_BRISP: 1]. Time: 22 [s] 
-Warning: 115243 events were removed in Component[24] DetectorPos=Arm()
+Finally [ILL_BRISP: 1]. Time: 13 [s] 
+Detector: HC_OUT_PSD_I=1.98622e+07 HC_OUT_PSD_ERR=24095.8 HC_OUT_PSD_N=723855 "HC_OUT_PSD_1582741846.x_y"
+Detector: FC_OUT_T_I=35065.4 FC_OUT_T_ERR=73.6802 FC_OUT_T_N=241504 "FC_OUT_T_1582741846.t"
+Detector: SampleXY_I=2850.8 SampleXY_ERR=6.97879 SampleXY_N=178475 "SampleXY_1582741846.x_y"
+Detector: Detector_I=31.9853 Detector_ERR=0.134429 Detector_N=69970 "Detector_1582741846.x_y"
+Detector: Detector_Q_I=31.885 Detector_Q_ERR=0.134229 Detector_Q_N=69764 "Detector_Q_1582741846.U1"
+Warning: 290499 events were removed in Component[24] DetectorPos=Arm()
          (negative time, miss next components, rounding errors, Nan, Inf).
+Detector: Detector_E_I=31.7772 Detector_E_ERR=0.134012 Detector_E_N=69539 "Detector_E_1582741846.U1"
 Warning: No neutron could reach Component[30] DetectorTube
 Warning: No neutron could reach Component[31] ToMonok
 Warning: No neutron could reach Component[32] ToOrigin
 Warning: No neutron could reach Component[33] Core
 Warning: No neutron could reach Component[34] Vessel
+Detector: Detector_QE_I=31.6694 Detector_QE_ERR=0.133794 Detector_QE_N=69306 "Detector_QE_1582741846.U1_U2"
 
-Finally [ILL_BRISP: 1]. Time: 22 [s] 
-Warning: 116992 events were removed in Component[24] DetectorPos=Arm()
-         (negative time, miss next components, rounding errors, Nan, Inf).
-Warning: No neutron could reach Component[30] DetectorTube
-Warning: No neutron could reach Component[31] ToMonok
-Warning: No neutron could reach Component[32] ToOrigin
-Warning: No neutron could reach Component[33] Core
-Warning: No neutron could reach Component[34] Vessel
-Detector: Monitor1_I=6.02375e+08 Monitor1_ERR=214379 Monitor1_N=1.00901e+07 "Monitor1_1582661750.x_y"
-Detector: DC_OUT_T_I=1.95134e+08 DC_OUT_T_ERR=70542.1 DC_OUT_T_N=9.73926e+06 "DC_OUT_T_1582661750.t"
-Detector: HC_OUT_PSD_I=1.98229e+07 HC_OUT_PSD_ERR=24063.3 HC_OUT_PSD_N=723118 "HC_OUT_PSD_1582661750.x_y"
-Detector: FC_OUT_T_I=34838.8 FC_OUT_T_ERR=73.4084 FC_OUT_T_N=240207 "FC_OUT_T_1582661750.t"
-Detector: SampleXY_I=2834.29 SampleXY_ERR=6.95574 SampleXY_N=177554 "SampleXY_1582661750.x_y"
-Detector: Detector_I=31.9345 Detector_ERR=0.131239 Detector_N=69835 "Detector_1582661750.x_y"
-Detector: Detector_Q_I=31.836 Detector_Q_ERR=0.131032 Detector_Q_N=69623 "Detector_Q_1582661750.U1"
-Detector: Detector_E_I=31.728 Detector_E_ERR=0.13081 Detector_E_N=69394 "Detector_E_1582661750.U1"
-
-Finally [ILL_BRISP: 1]. Time: 22 [s] 
-Detector: Detector_QE_I=31.6174 Detector_QE_ERR=0.130584 Detector_QE_N=69157 "Detector_QE_1582661750.U1_U2"
-Warning: 115203 events were removed in Component[24] DetectorPos=Arm()
-         (negative time, miss next components, rounding errors, Nan, Inf).
-Warning: No neutron could reach Component[30] DetectorTube
-Warning: No neutron could reach Component[31] ToMonok
-Warning: No neutron could reach Component[32] ToOrigin
-Warning: No neutron could reach Component[33] Core
-Warning: No neutron could reach Component[34] Vessel
-
-Finally [ILL_BRISP: 1]. Time: 22 [s] 
-Isotropic_Sqw: Environment_in: Scattering fraction=0.00829241 of incoming intensity
-               Absorption fraction           =0.280024
-               Single   scattering intensity =30.0789 (coh=29.6224 inc=0.456539)
+Finally [ILL_BRISP: 1]. Time: 13 [s] 
+Isotropic_Sqw: Environment_in: Scattering fraction=0.00829095 of incoming intensity
+               Absorption fraction           =0.280017
+               Single   scattering intensity =30.2702 (coh=29.8033 inc=0.466923)
                Multiple scattering intensity =0
 Isotropic_Sqw: Sample: Scattering fraction=0.133442 of incoming intensity
                Absorption fraction           =0.535093
-               Single   scattering intensity =1068.48 (coh=3.12407 inc=1065.36)
+               Single   scattering intensity =1076.75 (coh=3.13748 inc=1073.61)
                Multiple scattering intensity =0
-Isotropic_Sqw: Environment_out: Scattering fraction=0.00831773 of incoming intensity
-               Absorption fraction           =0.280039
-               Single   scattering intensity =22.6269 (coh=22.1316 inc=0.495277)
+Isotropic_Sqw: Environment_out: Scattering fraction=0.00830329 of incoming intensity
+               Absorption fraction           =0.280045
+               Single   scattering intensity =23.3242 (coh=22.9192 inc=0.404984)
                Multiple scattering intensity =0
-Warning: 116200 events were removed in Component[24] DetectorPos=Arm()
+Warning: 290708 events were removed in Component[24] DetectorPos=Arm()
          (negative time, miss next components, rounding errors, Nan, Inf).
 Warning: No neutron could reach Component[30] DetectorTube
 Warning: No neutron could reach Component[31] ToMonok
